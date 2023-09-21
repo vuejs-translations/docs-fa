@@ -1,17 +1,43 @@
-# ترجمه مستندات [Vue.js](vuejs.org) به فارسی
+<h1 dir="rtl">ترجمه مستندات <a href="https://vuejs.org" target="_blank">Vue.js</a> به فارسی</h1>
 
-مستندات با [VitePress](https://github.com/vuejs/vitepress) ساخته شده است و وابستگی به [@vue/theme](https://github.com/vuejs/vue-theme) دارد. محتوای وب‌سایت با فرمت Markdown در مسیر `src` نوشته شده است. برای ویرایش‌های ساده، می‌توانید مستقیماً فایل را در GitHub ویرایش کرده و Pull Request ایجاد کنید.
+<p dir="rtl">مستندات با <a href="https://github.com/vuejs/vitepress">VitePress</a> ساخته شده است و وابستگی به <a href="https://github.com/vuejs/vue-theme">&#64;vue/theme</a> دارد. محتوای وب‌سایت با فرمت Markdown در مسیر <code>src</code> نوشته شده است. برای ویرایش‌های ساده، می‌توانید مستقیماً فایل را در GitHub ویرایش کرده و Pull Request ایجاد کنید.</p>
 
-برای توسعه، pnpm به عنوان Package Manager توصیه می‌شود:
+<p dir="rtl">برای توسعه، pnpm به عنوان Package Manager توصیه می‌شود:</p>
+  
 ```bash
 pnpm i
 pnpm run dev
 ```
 
-این پروژه نیاز به Node.js نسخه `v14.0.0` یا بالاتر دارد، زیرا ما از ویژگی‌های جدید جاوااسکریپت مانند optional chaining در کدها استفاده می‌کنیم.
+<p dir="rtl">این پروژه نیاز به Node.js نسخه <code>v14.0.0</code> یا بالاتر دارد، زیرا ما از ویژگی‌های جدید جاوااسکریپت مانند optional chaining در کدها استفاده می‌کنیم.</p>
 
-در مستندات VitePress، می‌توانید در مورد [Markdown Extentions](https://vitepress.dev/guide/markdown) پشتیبانی‌شده و قابلیت [استفاده از دستورات Vue داخل Markdown](https://vitepress.dev/guide/using-vue) بیشتر بخوانید.
+<p dir="rtl">در مستندات VitePress، می‌توانید در مورد <a href="https://vitepress.dev/guide/markdown">Markdown Extentions</a> پشتیبانی‌شده و قابلیت <a href="https://vitepress.dev/guide/using-vue">استفاده از دستورات Vue داخل Markdown</a> بیشتر بخوانید.</p>
 
-برای دستورات و توصیه‌های ما درباره نوشتن و حفظ محتوای مستندات، به [راهنمای نوشتاری ما](https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md) مراجعه کنید.
+<p dir="rtl">برای دستورات و توصیه‌های ما درباره نوشتن و حفظ محتوای مستندات، به <a href="https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md">راهنمای نوشتاری ما</a> مراجعه کنید.</p>
 
-پی‌نوشت: شما کاملا بدون نیاز به یادگیری VitePress می‌توانید در ترجمه مستندات مشارکت کنید!
+<p dir="rtl">پی‌نوشت: شما کاملا بدون نیاز به یادگیری VitePress می‌توانید در ترجمه مستندات مشارکت کنید!</p>
+
+<h2 dir="rtl">چگونه می‌توانم مشارکت کنم؟</h2>
+
+<p dir="rtl">
+آموزش مشارکت در ترجمه به زودی اضافه خواهد شد.
+</p>
+
+<h2 dir="rtl">چه قوانینی را باید رعایت کنم؟</h2>
+
+<p dir="rtl">
+قوانین و نکات نگارشی به زودی اضافه خواهد شد.
+</p>
+
+<h2 dir="rtl">چه مسیری را طی کردیم و خواهیم کرد؟</h2>
+
+<p dir="rtl">
+هم‌اکنون در<a href="https://github.com/vuejs-translations/guidelines#current-active-translations-in-alphabetical-order">مرحله ۳</a> (از ۵ مرحله) قرار داریم. هدف فعلی ما ترجمه ۵۰٪ مستندات هست تا ریپازیتوری اختصاصی از <a href="https://github.com/vuejs-translations">vuejs-translations</a> دریافت کنیم. برای جزئیات بیشتر و اطلاع از فرایند کلی پروژه این <a href="https://github.com/vuejs-translations/guidelines">این صفحه</a> را مطالعه کنید.
+</p>
+
+
+<h2 dir="rtl">چگونه با مشارکت کنندگان در ارتباط باشم؟</h2>
+
+<p dir="rtl">
+در گروه تلگرامی <a href="https://t.me/Vue_Docs_Fa">@Vue_Docs_Fa</a> به می‌توانید با مشارکت‌کنندگان به طور مستقیم درارتباط باشید.
+</p>
