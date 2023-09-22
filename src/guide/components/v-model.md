@@ -209,7 +209,6 @@ export default {
 
 با استفاده از توانایی هدف قراردادن یک پراپ و رویداد خاص که در [آرگومان‌های `v-model`](#v-model-arguments) یاد گرفتیم، حالا می‌توانیم اتصال‌های `v-model` چندگانه، روی یک کامپوننت تکی ایجاد کنیم.
 
-Each `v-model` will sync to a different prop, without the need for extra options in the component:
 هر `v-model` بدون نیاز به گزینه‌های اضافه در کامپوننت با یک پراپ مختلف همگام‌سازی می‌شود:
 
 
@@ -282,7 +281,6 @@ export default {
 
 ## مدیریت پیراینده‌های `v-model` {#handling-v-model-modifiers}
 
-When we were learning about form input bindings, we saw that `v-model` has [built-in modifiers](/guide/essentials/forms#modifiers) - `.trim`, `.number` and `.lazy`. In some cases, you might also want the `v-model` on your custom input component to support custom modifiers.
 وقتی درحال یادگیری اتصال‌های input در form‌ها بودیم، دیدیم که `v-model` دارای [پیراینده‌های داخلی](/guide/essentials/forms#modifiers) `.trim`، `.number` و `.lazy` بود. گاهی اوقات همچنین ممکن است بخواهید که `v-model`‌ای که روی کامپوننت سفارشی‌شده input خود قرار دادید هم قابلیت پشتیبانی از پیراینده‌های سفارشی را داشته باشد.
 
 بیایید یک نمونه پیراینده سفارشی بسازیم، `capitalize`، که وظیفه داشته باشد حرف اول هر رشته‌ای که توسط اتصال `v-model` فراهم‌شده را به حالت بزرگ آن تبدیل کند:
