@@ -565,8 +565,14 @@ export const sidebar: ThemeConfig['sidebar'] = {
 }
 
 // Placeholder of the i18n config for @vuejs-translations.
-// const i18n: ThemeConfig['i18n'] = {
-// }
+const i18n: ThemeConfig['i18n'] = {
+  menu: 'فهرست',
+  toc: 'در این صفحه',
+  previous: 'قبلی',
+  next: 'بعدی',
+  returnToTop: 'برگشت به بالا',
+  appearance: 'ظاهر'
+}
 
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
@@ -626,7 +632,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     nav,
     sidebar,
     // Placeholder of the i18n config for @vuejs-translations.
-    // i18n,
+    i18n,
 
     localeLinks: [
       {
@@ -692,8 +698,8 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     editLink: {
-      repo: 'vuejs/docs',
-      text: 'Edit this page on GitHub'
+      repo: 'the-pesar/docs-fa',
+      text: 'ویرایش این صفحه در گیت‌هاب'
     },
 
     footer: {

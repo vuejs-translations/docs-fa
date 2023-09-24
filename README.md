@@ -17,7 +17,7 @@ pnpm run dev
 
 <p dir="rtl">پی‌نوشت: شما کاملا بدون نیاز به یادگیری VitePress می‌توانید در ترجمه مستندات مشارکت کنید!</p>
 
-<h2 dir="rtl">چگونه می‌توانم مشارکت کنم؟</h2>
+<h2 dir="rtl">راهنمای مشارکت</h2>
 
 <p dir="rtl">
  اول از همه ما از مشارکت شما خرسنیدم و به شدت از علاقه‌مندی شما به پیشرفت مستندات فارسی فریمورک Vue حمایت می‌کنیم. شما می‌توانید از طریق ترجمه صفحات و بهبود کیفیت صفحات ترجمه‌شده این پروژه را یاری کنید. برای اصلاحات جزئی می‌توانید مستقیما فایل را در گیت‌هاب ویرایش کرده و به آسانی Pull Request ایجاد کنید.
@@ -27,7 +27,7 @@ pnpm run dev
 برای مشارکت در ترجمه صفحات مراحل زیر را طی کنید:
 </p>
 
-<ul>
+<ul dir="rtl">
   <li><strong>مرحله اول: </strong>در ابتدا از این ریپازیتوری <code>frok</code> گرفته و آن را در سیستم خود <code>pull</code> کنید. سپس می‌توانید یک نگاه جزئی به پروژه برای آشنایی با ساختار آن داشته باشید. همچنین توجه کنید که برای ترجمه کردن مستندات شما نیازی به یادگیری فریمورک VitePress ندارید.</li>
 
   <li><strong>مرحله دوم: </strong>برای افزایش کیفیت ترجمه مستندات حتما بخش <a href="https://github.com/the-pesar/docs-fa/blob/main/GLOSSARY.md">واژه‌نامه</a> و شیوه نگارش را مطالعه کنید.</li>
@@ -45,21 +45,15 @@ pnpm run dev
   پی‌نوشت دوم: خواندن <a href="https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md">شیوه نگارش</a> مستندات اصلی Vue می‌تواند در فرایند ترجمه برای شما مفید باشد.
 </p>
 
-<h2 dir="rtl">چه قوانینی را باید رعایت کنم؟</h2>
-
-<p dir="rtl">
-قوانین و نکات نگارشی به زودی اضافه خواهد شد.
-</p>
-
-<h2 dir="rtl">چه مسیری را طی کردیم و خواهیم کرد؟</h2>
+<h2 dir="rtl">مسیر پروژه</h2>
 
 <p dir="rtl">
 هم‌اکنون در<a href="https://github.com/vuejs-translations/guidelines#current-active-translations-in-alphabetical-order">مرحله ۳</a> (از ۵ مرحله) قرار داریم. هدف فعلی ما ترجمه ۵۰٪ مستندات هست تا ریپازیتوری اختصاصی از <a href="https://github.com/vuejs-translations">vuejs-translations</a> دریافت کنیم. برای جزئیات بیشتر و اطلاع از فرایند کلی پروژه این <a href="https://github.com/vuejs-translations/guidelines">این صفحه</a> را مطالعه کنید.
 </p>
 
 
-<h2 dir="rtl">چگونه با مشارکت کنندگان در ارتباط باشم؟</h2>
+<h2 dir="rtl">ارتباط با مشارکت‌کنندگان</h2>
 
 <p dir="rtl">
-در گروه تلگرامی <a href="https://t.me/Vue_Docs_Fa">@Vue_Docs_Fa</a> به می‌توانید با مشارکت‌کنندگان به طور مستقیم درارتباط باشید.
+در گروه تلگرامی <a href="https://t.me/Vue_Docs_Fa">@Vue_Docs_Fa</a> یا بخش <a href="https://github.com/the-pesar/docs-fa/issues">issues</a> می‌توانید با مشارکت‌کنندگان به طور مستقیم در ارتباط باشید.
 </p>
