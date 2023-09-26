@@ -39,3 +39,9 @@
 | event | رویداد | pending |
 | expression | عبارت | pending |
 | GitHub | گیت‌هاب | pending |
+| handle | مدیریت، رسیدگی | pending |
+| animation | انیمیشن | pending |
+| transition | ترنزیشن ‌| pending |
+| state | state | pending |
+| mouse | ماوس | pending |
+
