@@ -17,7 +17,7 @@ watch(
 
 <template>
   <div class="demo">
-    Type a number: <input v-model.number="number" />
+    عددی را تایپ کنید: <input v-model.number="number" />
     <p class="big-number">{{ tweened.number.toFixed(0) }}</p>
   </div>
 </template>
