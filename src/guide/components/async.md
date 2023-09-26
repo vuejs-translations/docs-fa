@@ -1,8 +1,8 @@
-# Async Components {#async-components}
+# کامپوننت‌های غیرهمگام {#async-components}
 
-## Basic Usage {#basic-usage}
+## کاربرد اصلی {#basic-usage}
 
-In large applications, we may need to divide the app into smaller chunks and only load a component from the server when it's needed. To make that possible, Vue has a [`defineAsyncComponent`](/api/general#defineasynccomponent) function:
+در برنامه‌های بزرگ، ممکن است لازم باشد برنامه را به تکه‌های کوچکتر تقسیم کنیم و فقط در هنگام نیاز به یک کامپوننت، آن را از سرور بارگذاری کنیم. در Vue تابع [`defineAsyncComponent`](/api/general#defineasynccomponent)  این خواسته را محقق می‌سازد:
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -16,9 +16,10 @@ const AsyncComp = defineAsyncComponent(() => {
 // ... use `AsyncComp` like a normal component
 ```
 
-As you can see, `defineAsyncComponent` accepts a loader function that returns a Promise. The Promise's `resolve` callback should be called when you have retrieved your component definition from the server. You can also call `reject(reason)` to indicate the load has failed.
+همانطور که می‌بینید، `defineAsyncComponent` یک تابع بارگذار (loader) را می‌پذیرد که یک Promise را برمی‌گرداند. هنگامی که تعریف کامپوننت شما از سرور دریافت شد، تابع `resolve` در Promise بازگشتی، باید فراخوانی شود. همچنین می‌توانید با فراخوانی `reject(reason)` نشان دهید بارگذاری شکست خورده است.
 
-[ES module dynamic import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) also returns a Promise, so most of the time we will use it in combination with `defineAsyncComponent`. Bundlers like Vite and webpack also support the syntax (and will use it as bundle split points), so we can use it to import Vue SFCs:
+استفاده از [import  پویای ماژول ES](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) نیز یک Promise را برمی‌گرداند، بنابراین بیشتر اوقات از آن در ترکیب با  `defineAsyncComponent` استفاده می‌کنیم. باندلرهایی مانند Vite و webpack نیز از این ترکیب پشتیبانی می‌کنند (و از آن به عنوان نقاط تقسیم باندل استفاده می‌کنند)، بنابراین می‌توانیم از آن برای import کردن Vue SFC استفاده کنیم:
+
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -28,9 +29,10 @@ const AsyncComp = defineAsyncComponent(() =>
 )
 ```
 
-The resulting `AsyncComp` is a wrapper component that only calls the loader function when it is actually rendered on the page. In addition, it will pass along any props and slots to the inner component, so you can use the async wrapper to seamlessly replace the original component while achieving lazy loading.
 
-As with normal components, async components can be [registered globally](/guide/components/registration#global-registration) using `app.component()`:
+کامپوننت `AsyncComp` حاصل از این فرایند، یک کامپوننتِ پوششی (Wrapper) است که تابع بارگذار (loader) را تنها زمانی فراخوانی می کند که کامپوننتِ داخلی آن در صفحه رندر شده باشد. علاوه بر این، AsyncComp هرگونه پراپ (Prop) و اسلات (Slot) را به کامپوننت داخلی پاس می‌دهد، بنابراین می‌توانید از این پوششیِ ناهمگام (Async Wrapper) برای جایگزینیِ یکپارچه با کامپوننتِ اصلی در حالی که بارگذاریِ تنبل (Lazy Loading) را نیز به دست می‌آورید، استفاده کنید.
+
+همانند کامپوننت‌های عادی، کامپوننت‌های ناهمگام را می‌توان با استفاده از `()app.component`  [به طور سراسری ثبت کرد:](/guide/components/registration#global-registration)
 
 ```js
 app.component('MyComponent', defineAsyncComponent(() =>
@@ -40,7 +42,7 @@ app.component('MyComponent', defineAsyncComponent(() =>
 
 <div class="options-api">
 
-You can also use `defineAsyncComponent` when [registering a component locally](/guide/components/registration#local-registration):
+همچنین می‌توانید از `defineAsyncComponent` هنگام [ثبت محلی یک کامپوننت](/guide/components/registration#local-registration) استفاده کنید:
 
 ```vue
 <script>
@@ -64,7 +66,8 @@ export default {
 
 <div class="composition-api">
 
-They can also be defined directly inside their parent component:
+این کامپوننت‌ها همچنین می‌توانند به صورت مستقیم، درون کامپوننت والد خود تعریف شوند:
+
 
 ```vue
 <script setup>
@@ -82,9 +85,9 @@ const AdminPage = defineAsyncComponent(() =>
 
 </div>
 
-## Loading and Error States {#loading-and-error-states}
+## حالت‌های loading و خطا {#loading-and-error-states}
 
-Asynchronous operations inevitably involve loading and error states - `defineAsyncComponent()` supports handling these states via advanced options:
+عملیات‌های ناهمگام به ناچار شامل حالت‌های بارگذاری و خطا هستند، `defineAsyncComponent()` از طریق گزینه‌های پیشرفته از مدیریت این حالات پشتیبانی می‌کند:
 
 ```js
 const AsyncComp = defineAsyncComponent({
@@ -104,10 +107,11 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-If a loading component is provided, it will be displayed first while the inner component is being loaded. There is a default 200ms delay before the loading component is shown - this is because on fast networks, an instant loading state may get replaced too fast and end up looking like a flicker.
+اگر یک کامپوننت loading ارائه شود، ابتدا آن نمایش داده می‌شود تا زمانی که کامپوننت داخلی در حال بارگذاری است. یک تأخیر پیش فرض ۲۰۰ میلی ثانیه قبل از نمایش کامپوننت loading وجود دارد. این به این دلیل است که در شبکه‌های پرسرعت، یک حالت loading سریع و لحظه‌ای، ممکن است خیلی سریع جایگزین شود و در نهایت مانند یک لرزش تصویر به نظر برسد.
 
-If an error component is provided, it will be displayed when the Promise returned by the loader function is rejected. You can also specify a timeout to show the error component when the request is taking too long.
+اگر یک کامپوننت خطا ارائه شود، زمانی نمایش داده می‌شود که Promise برگردانده شده توسط تابع بارگذار رد شود. همچنین می‌توانید یک تایم‌اوت را مشخص کنید تا کامپوننت خطا، زمانی که درخواست خیلی طول می کشد نمایش داده شود.
 
-## Using with Suspense {#using-with-suspense}
+## کاربرد Suspence در ترکیب با کامپوننت‌های ناهمگام {#using-with-suspense}
 
 Async components can be used with the `<Suspense>` built-in component. The interaction between `<Suspense>` and async components is documented in the [dedicated chapter for `<Suspense>`](/guide/built-ins/suspense).
+کامپوننت‌های ناهمگام می‌ةوانند همراه با کامپوننت درونی `<Suspense>` استفاده شوند. تعامل بین `<Suspense>` و کامپوننت‌های ناهمگام در [بخش تخصیص‌یافته‌شده به `<Suspense>`](/guide/built-ins/suspense) مستند شده است.
