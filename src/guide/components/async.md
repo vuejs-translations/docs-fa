@@ -113,5 +113,4 @@ const AsyncComp = defineAsyncComponent({
 
 ## کاربرد Suspence در ترکیب با کامپوننت‌های ناهمگام {#using-with-suspense}
 
-Async components can be used with the `<Suspense>` built-in component. The interaction between `<Suspense>` and async components is documented in the [dedicated chapter for `<Suspense>`](/guide/built-ins/suspense).
 کامپوننت‌های ناهمگام می‌ةوانند همراه با کامپوننت درونی `<Suspense>` استفاده شوند. تعامل بین `<Suspense>` و کامپوننت‌های ناهمگام در [بخش تخصیص‌یافته‌شده به `<Suspense>`](/guide/built-ins/suspense) مستند شده است.
