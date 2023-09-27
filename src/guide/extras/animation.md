@@ -5,13 +5,13 @@ import Colors from './demos/Colors.vue'
 import AnimateWatcher from './demos/AnimateWatcher.vue'
 </script>
 
-# Animation Techniques {#animation-techniques}
+# تکنیک‌های انیمیشن {#animation-techniques}
 
-Vue provides the [`<Transition>`](/guide/built-ins/transition) and [`<TransitionGroup>`](/guide/built-ins/transition-group) components for handling enter / leave and list transitions. However, there are many other ways of using animations on the web, even in a Vue application. Here we will discuss a few additional techniques.
+Vue کامپوننت‌های [`<Transition>`](/guide/built-ins/transition) و [`<TransitionGroup>`](/guide/built-ins/transition-group) را برای رسیدگی به ترنزیشن‌های enter، leave و list را ارائه می‌دهد. درحالی که، روش‌های فراوانی در وب برای استفاده از انیمیشن‌ها وجود دارد. در اینجا چند تکنیک اضافی را مورد بحث قرار خواهیم داد.
 
-## Class-based Animations {#class-based-animations}
+## انیمیشن‌های کلاس محور {#class-based-animations}
 
-For elements that are not entering / leaving the DOM, we can trigger animations by dynamically adding a CSS class:
+برای عناصری که وارد یا خارج از DOM نمی شوند، می‌توانیم انیمیشن‌ها را فقط با افزودن یک کلاس CSS به صورت پویا فعال کنیم:
 
 <div class="composition-api">
 
@@ -51,8 +51,8 @@ export default {
 
 ```vue-html
 <div :class="{ shake: disabled }">
-  <button @click="warnDisabled">Click me</button>
-  <span v-if="disabled">This feature is disabled!</span>
+  <button @click="warnDisabled">روی من کلیک کن</button>
+  <span v-if="disabled">این ویژگی غیرفعال است</span>
 </div>
 ```
 
@@ -88,9 +88,9 @@ export default {
 
 <DisabledButton />
 
-## State-driven Animations {#state-driven-animations}
+## انیمیشن‌های state محور {#state-driven-animations}
 
-Some transition effects can be applied by interpolating values, for instance by binding a style to an element while an interaction occurs. Take this example for instance:
+برخی از ترنزیشن‌ها می‌توانند با درج مقادیر اعمال شوند، برای مثال وصل کردن یک style به یک عنصر در حین وقوع یک تعامل، این مثال را در نظر بگیرید:
 
 <div class="composition-api">
 
@@ -128,7 +128,7 @@ export default {
   :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }"
   class="movearea"
 >
-  <p>Move your mouse across this div...</p>
+  <p>ماوس خود را روی این قسمت حرکت دهید...</p>
   <p>x: {{ x }}</p>
 </div>
 ```
@@ -141,13 +141,13 @@ export default {
 
 <Colors />
 
-In addition to color, you can also use style bindings to animate transform, width, or height. You can even animate SVG paths using spring physics - after all, they are all attribute data bindings:
+علاوه بر رنگ، شما همچنین می‌توانید از اتصال style برای انیمیشن تبدیل عرض یا ارتفاع استفاده کنید. حتی می‌توانید مسیرهای SVG را با استفاده از فیزیک فنر انیمیشن کنید - در نهایت، همه آن‌ها اتصال داده ویژگی‌ها هستند:
 
 <ElasticHeader />
 
-## Animating with Watchers {#animating-with-watchers}
+## انیمیشن به کمک ناظرها (Watchers) {#animating-with-watchers}
 
-With some creativity, we can use watchers to animate anything based on some numerical state. For example, we can animate the number itself:
+با کمی خلاقیت، می‌توانیم از ناظرها برای انیمیشن هر چیزی بر اساس یک state عددی استفاده کنیم. به عنوان مثال، می‌توانیم خود عدد را انیمیشن کنیم:
 
 <div class="composition-api">
 
@@ -166,7 +166,7 @@ watch(number, (n) => {
 ```
 
 ```vue-html
-Type a number: <input v-model.number="number" />
+عددی را تایپ کنید: <input v-model.number="number" />
 <p>{{ tweened.number.toFixed(0) }}</p>
 ```
 
@@ -192,7 +192,7 @@ export default {
 ```
 
 ```vue-html
-Type a number: <input v-model.number="number" />
+عددی را تایپ کنید: <input v-model.number="number" />
 <p>{{ tweened.toFixed(0) }}</p>
 ```
 
@@ -202,11 +202,11 @@ Type a number: <input v-model.number="number" />
 
 <div class="composition-api">
 
-[Try it in the Playground](https://play.vuejs.org/#eNpNUstygzAM/BWNLyEzBDKd6YWSdHrpsacefSGgJG7xY7BImhL+vTKv9ILllXYlr+jEm3PJpUWRidyXjXIEHql1e2mUdrYh6KDBY8yfoiR1wRiuBZVn6OHYWA0r5q6W2pMv3ISHkBPSlNZ4AtPqAzawC2LRdj3DdEU0WA34qB910sBUnsFWmp6LpRmaRo9UHMLIrGG3h4EBQ/OEbDRpxjx51TYFKWtYKHmOF9WP4Qzs+x22EDoA9NLwmaejC/x+vhBqVxeEfAPIK3WBsi6830lRobZSDDjA580hFIt8roxrCS4bbSuskxFmzhhIAenEy92id1CnzZzfd91szETmZ72rH6zYOej7PA3rYXrKE3GUp//m5KunWx3C5CE6enS0hjZXVKczZXCwdfWyoF79YgZPqBliJ9iGSUTEYlzuRrO9X94a/lUGNTklvBTZvAMpwhYCIMWZyPksTVvjvk9JaXUacq9sSlujFJPnvej/AElH3FQ=)
+[آن را در Playground امتحان کنید](https://play.vuejs.org/#eNpNUstygzAM/BWNLyEzBDKd6YWSdHrpsacefSGgJG7xY7BImhL+vTKv9ILllXYlr+jEm3PJpUWRidyXjXIEHql1e2mUdrYh6KDBY8yfoiR1wRiuBZVn6OHYWA0r5q6W2pMv3ISHkBPSlNZ4AtPqAzawC2LRdj3DdEU0WA34qB910sBUnsFWmp6LpRmaRo9UHMLIrGG3h4EBQ/OEbDRpxjx51TYFKWtYKHmOF9WP4Qzs+x22EDoA9NLwmaejC/x+vhBqVxeEfAPIK3WBsi6830lRobZSDDjA580hFIt8roxrCS4bbSuskxFmzhhIAenEy92id1CnzZzfd91szETmZ72rH6zYOej7PA3rYXrKE3GUp//m5KunWx3C5CE6enS0hjZXVKczZXCwdfWyoF79YgZPqBliJ9iGSUTEYlzuRrO9X94a/lUGNTklvBTZvAMpwhYCIMWZyPksTVvjvk9JaXUacq9sSlujFJPnvej/AElH3FQ=)
 
 </div>
 <div class="options-api">
 
-[Try it in the Playground](https://play.vuejs.org/#eNpNUctugzAQ/JWVLyESj6hSL5Sm6qXHnnr0xYENuAXbwus8Svj3GlxIJEvendHMvgb2bkx6cshyVtiyl4b2XMnO6J6gtsLAsdcdbKZwwxVXeJmpCo/CtQQDVwCVIBFtQwzQI7leLRmAct0B+xx28YLQGVFh5aGAjNM3zvRZUNnkizhII7V6w9xTSjqiRtoYBqhcL0hq5c3S5/hu/blKbzfYwbh9LMWVf0W2zusTws60gnDK6OtqEMTaeSGVcQSnpNMVtmmAXzkLAWeQzarCQNkKaz1zkHWysPthWNryjX/IC1bRbgvjWGTG64rssbQqLF3bKUzvHmH6o1aUnFHWDeVw0G31sqJW/mIOT9h5KEw2m7CYhUsmnV/at9XKX3n24v+E5WxdNmfTbieAs4bI2DzLnDI/dVrqLpu4Nz+/a5GzZYls/AM3dcFx)
+[آن را در Playground امتحان کنید](https://play.vuejs.org/#eNpNUctugzAQ/JWVLyESj6hSL5Sm6qXHnnr0xYENuAXbwus8Svj3GlxIJEvendHMvgb2bkx6cshyVtiyl4b2XMnO6J6gtsLAsdcdbKZwwxVXeJmpCo/CtQQDVwCVIBFtQwzQI7leLRmAct0B+xx28YLQGVFh5aGAjNM3zvRZUNnkizhII7V6w9xTSjqiRtoYBqhcL0hq5c3S5/hu/blKbzfYwbh9LMWVf0W2zusTws60gnDK6OtqEMTaeSGVcQSnpNMVtmmAXzkLAWeQzarCQNkKaz1zkHWysPthWNryjX/IC1bRbgvjWGTG64rssbQqLF3bKUzvHmH6o1aUnFHWDeVw0G31sqJW/mIOT9h5KEw2m7CYhUsmnV/at9XKX3n24v+E5WxdNmfTbieAs4bI2DzLnDI/dVrqLpu4Nz+/a5GzZYls/AM3dcFx)
 
 </div>
