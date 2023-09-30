@@ -1,8 +1,8 @@
-﻿# Plugins {#plugins}
+﻿# افزونه ها {#plugins}
 
-## Introduction {#introduction}
+## مقدمه {#introduction}
 
-Plugins are self-contained code that usually add app-level functionality to Vue. This is how we install a plugin:
+پلاگین ها کدهای مستقلی هستند که معمولاً عملکردهایی را در سطح برنامه به Vue اضافه می کنند.وقتی از یک افزونه در برنامه Vue.js استفاده می‌کنید، کدهایی را اضافه می‌کنید که عملکرد برنامه شما را با ارائه ویژگی‌ها یا ابزارهای اضافی که می‌توان به آنها دسترسی پیدا کرد و در سراسر برنامه استفاده کرد، گسترش می‌دهد. به روش زیر پلاگین را نصب می کنیم:
 
 ```js
 import { createApp } from 'vue'
@@ -10,61 +10,57 @@ import { createApp } from 'vue'
 const app = createApp({})
 
 app.use(myPlugin, {
-  /* optional options */
+/* گزینه های اختیاری */
 })
 ```
 
-A plugin is defined as either an object that exposes an `install()` method, or simply a function that acts as the install function itself. The install function receives the [app instance](/api/application) along with additional options passed to `app.use()`, if any:
-
+یک افزونه یا به عنوان یک شی تعریف می‌شود که یک متد `install()` دارد ، یا به سادگی یک تابع است که خودش به عنوان تابع نصب عمل می‌کند.
+این تابع می‌تواند دسترسی به[ نمونه برنامه](/api/application)  اصلی شما داشته باشد و همچنین اگر شما در زمان استفاده از افزونه (استفاده از `app.use()`) گزینه‌های اضافی ارائه کرده باشید، این گزینه‌ها را نیز دریافت کند.
 ```js
 const myPlugin = {
   install(app, options) {
-    // configure the app
+// برنامه را کانفیگ کنید
   }
 }
 ```
 
-There is no strictly defined scope for a plugin, but common scenarios where plugins are useful include:
+ مواقع رایجی که استفاده از افزونه‌ها مفید است عبارتند از:
 
-1. Register one or more global components or custom directives with [`app.component()`](/api/application#app-component) and [`app.directive()`](/api/application#app-directive).
+1. ثبت یک یا چند کامپوننت سراسری یا دستورات سفارشی با استفاده از [`app.component()`](/api/application#app-component) و [`app.directive()`](/api/application#app-directive).
 
-2. Make a resource [injectable](/guide/components/provide-inject) throughout the app by calling [`app.provide()`](/api/application#app-provide).
+2. ایجاد یک منبع قابل تزریق ([injectable](/guide/components/provide-inject)) در سراسر برنامه با فراخوانی [`app.provide()`](/api/application#app-provide).
 
-3. Add some global instance properties or methods by attaching them to [`app.config.globalProperties`](/api/application#app-config-globalproperties).
+3. اضافه کردن ویژگی‌ها یا متدهای گلوبال با اتصال آنها به [`app.config.globalProperties`](/api/application#app-config-globalproperties).
 
-4. A library that needs to perform some combination of the above (e.g. [vue-router](https://github.com/vuejs/vue-router-next)).
+4. کتابخانه ای که باید ترکیبی از موارد فوق را انجام دهد (مثلاً [vue-router](https://github.com/vuejs/vue-router-next)).
 
-## Writing a Plugin {#writing-a-plugin}
 
-In order to better understand how to create your own Vue.js plugins, we will create a very simplified version of a plugin that displays `i18n` (short for [Internationalization](https://en.wikipedia.org/wiki/Internationalization_and_localization)) strings.
+## نوشتن یک افزونه {#writing-a-plugin}
 
-Let's begin by setting up the plugin object. It is recommended to create it in a separate file and export it, as shown below to keep the logic contained and separate.
+به منظور درک بهتر نحوه ایجاد افزونه‌ها در Vue.js، ما یک نسخه ساده‌شده از یک افزونه را ایجاد خواهیم کرد که رشته‌های `i18n` ([بین‌المللی‌سازی](https://en.wikipedia.org/wiki/Internationalization_and_localization)) را نمایش می‌دهد.
+
+بیایید با شی پلاگین شروع کنیم. توصیه می شود که آن را در یک فایل جداگانه ایجاد کرده و آن را اکسپورت کنید، همانطور که در زیر نشان داده شده است تا منطق کد ایزوله باقی بماند.
 
 ```js
 // plugins/i18n.js
 export default {
   install: (app, options) => {
-    // Plugin code goes here
+// کد افزونه اینجا نوشته می شود.
   }
 }
 ```
-
-We want to create a translation function. This function will receive a dot-delimited `key` string, which we will use to look up the translated string in the user-provided options. This is the intended usage in templates:
+می‌خواهیم یک تابع ترجمه ایجاد کنیم که یک رشته به عنوان ورودی دریافت کند. این رشته به ما کمک می‌کند تا مقدار ترجمه‌شده مرتبط را در گزینه‌هایی که توسط کاربر ارائه شده است جستجو کنیم. این تابع برای استفاده در تمپلیت طراحی شده است.
 
 ```vue-html
 <h1>{{ $translate('greetings.hello') }}</h1>
 ```
 
-Since this function should be globally available in all templates, we will make it so by attaching it to `app.config.globalProperties` in our plugin:
-
+از آنجایی که این تابع باید به صورت گلوبال در تمام تمپلیت ها در دسترس باشد،آن را به `app.config.globalProperties` متصل می کنیم:
 ```js{4-11}
 // plugins/i18n.js
 export default {
   install: (app, options) => {
-    // inject a globally available $translate() method
     app.config.globalProperties.$translate = (key) => {
-      // retrieve a nested property in `options`
-      // using `key` as the path
       return key.split('.').reduce((o, i) => {
         if (o) return o[i]
       }, options)
@@ -73,9 +69,11 @@ export default {
 }
 ```
 
-Our `$translate` function will take a string such as `greetings.hello`, look inside the user provided configuration and return the translated value.
+تابع `$translate` ما یک رشته مانند `greetings.hello` را دریافت می‌کند، در تنظیماتی که توسط کاربر ارائه شده است جستجو می‌کند و مقدار ترجمه‌شده را بازمی‌گرداند.
 
-The object containing the translated keys should be passed to the plugin during installation via additional parameters to `app.use()`:
+
+در هنگام نصب افزونه، باید شیء حاوی مقادیر ترجمه شده را به `app.use()` منتقل کنیم:
+
 
 ```js
 import i18nPlugin from './plugins/i18n'
@@ -87,17 +85,19 @@ app.use(i18nPlugin, {
 })
 ```
 
-Now, our initial expression `$translate('greetings.hello')` will be replaced by `Bonjour!` at runtime.
+حالا، عبارت اولیه ما `$translate('greetings.hello')` در زمان اجرا با  `Bonjour!` جایگزین می‌شود.
 
-See also: [Augmenting Global Properties](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
+مشاهده کنید: [افزودن ویژگی‌های جهانی](/guide/typescript/options-api#augmenting-global-properties) <sup class="vt-badge ts" />
 
 :::tip
-Use global properties scarcely, since it can quickly become confusing if too many global properties injected by different plugins are used throughout an app.
+از ویژگی‌های گلوبال با احتیاط استفاده کنید، زیرا اگر تعداد زیادی از ویژگی‌های گلوبال توسط افزونه‌های مختلف در سراسر برنامه استفاده شوند، گیج کننده خواهد بود.
 :::
 
-### Provide / Inject with Plugins {#provide-inject-with-plugins}
+### ارائه / تزریق پلاگین {#provide-inject-with-plugins}
 
-Plugins also allow us to use `inject` to provide a function or attribute to the plugin's users. For example, we can allow the application to have access to the `options` parameter to be able to use the translations object.
+افزونه‌ها در Vue.js انعطاف‌پذیری را برای استفاده از ویژگی `inject` ارائه می‌دهند که به ما امکان می‌دهد یک عملکرد یا ویژگی را به کاربران افزونه ارائه دهیم.
+به عنوان مثال، ما می‌توانیم امکان دسترسی به پارامتر `options` را به برنامه بدهیم تا بتواند از شیء حاوی مقادیر ترجمه شده استفاده کند.
+
 
 ```js{10}
 // plugins/i18n.js
@@ -108,7 +108,7 @@ export default {
 }
 ```
 
-Plugin users will now be able to inject the plugin options into their components using the `i18n` key:
+کاربران افزونه اکنون می توانند با استفاده از کلید `i18n` گزینه های افزونه را استفاده کنند:
 
 <div class="composition-api">
 
