@@ -36,8 +36,6 @@ export default {
 
 <div class="options-api">
 
-<!-- All lifecycle hooks are called with their `this` context pointing to the current active instance invoking it. -->
-
 همه هوک های چرخه حیات همراه با کلمه کلیدی `this` متعلق به آنها که به نمونه فعال فعلی که آن را فراخوانی می کند اشاره دارد، صدا زده می شوند. توجه داشته باشید این به این معنی است که شما باید از نوشتن هوک های چرخه حیات به صورت تابع پیکانی (arrow function) خودداری کنید، در صورت انجام چنین کاری قادر به دستیابی به نمونه کامپوننت از طریق کلمه کلیدی `this` نخواهید بود.
 
 </div>

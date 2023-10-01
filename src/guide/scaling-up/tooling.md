@@ -1,167 +1,167 @@
-# Tooling {#tooling}
+# ابزارها {#tooling}
 
-## Try It Online {#try-it-online}
+## بصورت آنلاین امتحان کنید {#try-it-online}
 
-You don't need to install anything on your machine to try out Vue SFCs - there are online playgrounds that allow you to do so right in the browser:
+برای امتحان SFC های Vue نیازی نیست چیزی روی دستگاه خودتان نصب کنید - محیط‌های آنلاینی وجود دارند که اجازه می‌دهند مستقیماً در مرورگرتان این کار را انجام دهید:
 
 - [Vue SFC Playground](https://play.vuejs.org)
-  - Always deployed from latest commit
-  - Designed for inspecting component compilation results
+  - همیشه از آخرین کامیت اجرا می‌شود
+  - طراحی شده برای بررسی نتایج کامپایل کامپوننت
 - [Vue + Vite on StackBlitz](https://vite.new/vue)
-  - IDE-like environment running actual Vite dev server in the browser
-  - Closest to local setup
+  - محیطی شبیه IDE که سرور واقعی Vite dev را در مرورگر اجرا می‌کند
+  - نزدیک‌ترین چیز به ستاپ محلی
 
-It is also recommended to use these online playgrounds to provide reproductions when reporting bugs.
+همچنین توصیه می‌شود از این محیط‌های آنلاین برای ارائه بازتولیدها در هنگام گزارش باگ‌ها استفاده کنید.
 
-## Project Scaffolding {#project-scaffolding}
+## ساخت پروژه | Project Scaffolding {#project-scaffolding}
 
 ### Vite {#vite}
 
-[Vite](https://vitejs.dev/) is a lightweight and fast build tool with first-class Vue SFC support. It is created by Evan You, who is also the author of Vue!
+[Vite](https://vitejs.dev/) یک ابزار سبک و سریع برای ساخت با پشتیبانی اولیه از SFC در Vue است. توسط Evan You ایجاد شده است، که نویسنده Vue هم هست!
 
-To get started with Vite + Vue, simply run:
+برای شروع کار با Vite + Vue، فقط لازم است دستور زیر را در کامندلاین اجرا کنید:
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">$</span> <span style="color:#A6ACCD;">npm create vue@latest</span></span></code></pre></div>
 
-This command will install and execute [create-vue](https://github.com/vuejs/create-vue), the official Vue project scaffolding tool.
+این دستور، [create-vue](https://github.com/vuejs/create-vue) را نصب و اجرا می‌کند، ابزار رسمی ساخت پروژه Vue.
 
-- To learn more about Vite, check out the [Vite docs](https://vitejs.dev).
-- To configure Vue-specific behavior in a Vite project, for example passing options to the Vue compiler, check out the docs for [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#readme).
+- برای یادگیری بیشتر در مورد Vite، [مستندات Vite](https://vitejs.dev) را ببینید.
+- برای پیکربندی رفتارهای خاص Vue در یک پروژه ساخته شده با Vite، برای مثال پاس دادن گزینه‌هایی به کامپایلر Vue، مستندات [‎@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#readme) را ببینید.
 
-Both online playgrounds mentioned above also support downloading files as a Vite project.
+هر دو محیط آنلاینی که در بالا ذکر شدن از دانلود فایل‌ها به عنوان یک پروژه Vite پشتیبانی می‌کنند.
 
 ### Vue CLI {#vue-cli}
 
-[Vue CLI](https://cli.vuejs.org/) is the official webpack-based toolchain for Vue. It is now in maintenance mode and we recommend starting new projects with Vite unless you rely on specific webpack-only features. Vite will provide superior developer experience in most cases.
+[Vue CLI](https://cli.vuejs.org/) مجموعه ابزار رسمی مبتنی بر وب‌پک برای Vue است. اکنون در حالت نگهداری است و توصیه می‌کنیم پروژه‌های جدید را با Vite شروع کنید، مگر اینکه به ویژگی‌های خاص وب‌پک وابسته باشید. Vite در بیشتر موارد تجربه توسعه‌دهنده بهتری ارائه می‌دهد.
 
-For information on migrating from Vue CLI to Vite:
+برای اطلاعات در مورد مهاجرت از Vue CLI به Vite:
 
-- [Vue CLI -> Vite Migration Guide from VueSchool.io](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
-- [Tools / Plugins that help with auto migration](https://github.com/vitejs/awesome-vite#vue-cli)
+- [راهنمای مهاجرت از Vue CLI به Vite در VueSchool.io](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
+- [ابزارها / پلاگین‌هایی که به مهاجرت خودکار کمک می‌کنند](https://github.com/vitejs/awesome-vite#vue-cli)
 
-### Note on In-Browser Template Compilation {#note-on-in-browser-template-compilation}
+### نکته در مورد کامپایل تمپلیت در مرورگر  {#note-on-in-browser-template-compilation}
 
-When using Vue without a build step, component templates are written either directly in the page's HTML or as inlined JavaScript strings. In such cases, Vue needs to ship the template compiler to the browser in order to perform on-the-fly template compilation. On the other hand, the compiler would be unnecessary if we pre-compile the templates with a build step. To reduce client bundle size, Vue provides [different "builds"](https://unpkg.com/browse/vue@3/dist/) optimized for different use cases.
+هنگام استفاده از Vue بدون مرحله build، تمپلیت‌های کامپوننت مستقیماً در HTML صفحه یا به عنوان رشته‌های جاوااسکریپ نوشته می‌شوند. در چنین مواردی، Vue نیاز دارد کامپایلر تمپلیت را برای کامپایل تمپلیت‌ها، به مرورگر بفرستد. از طرف دیگر، این کامپایلر غیرضروری خواهد بود اگر تمپلیت‌ها را با استفاده از یک مرحله build، از پیش کامپایل (pre-compiled) کنیم. برای کاهش اندازه باندل کلاینت، Vue گزینه‌ای هایی را برای [build در موارد استفاده مختلف](https://unpkg.com/browse/vue@3/dist/) ارائه می‌دهد:
 
-- Build files that start with `vue.runtime.*` are **runtime-only builds**: they do not include the compiler. When using these builds, all templates must be pre-compiled via a build step.
+- فایل‌های ساخته شده که با `vue.runtime.*‎` شروع می‌شوند، **runtime-only builds** هستند: آن‌ها شامل کامپایلر نیستند. هنگام استفاده از این بیلدها، تمام تمپلیت‌ها باید از طریق یک مرحله build اضافه‌تر از پیش کامپایل (pre-compiled) شوند.
 
-- Build files that do not include `.runtime` are **full builds**: they include the compiler and support compiling templates directly in the browser. However, they will increase the payload by ~14kb.
+- فایل‌های ساخته شده‌ که شامل ‍`‎.runtime` نیستند **full builds** هستند: آن‌ها شامل کامپایلر هستند و از کامپایل تمپلیت‌ها مستقیماً در مرورگر پشتیبانی می‌کنند. با این حال، آن‌ها حجم فایل را حدود ‎~14kb افزایش می‌دهند.
 
-Our default tooling setups use the runtime-only build since all templates in SFCs are pre-compiled. If, for some reason, you need in-browser template compilation even with a build step, you can do so by configuring the build tool to alias `vue` to `vue/dist/vue.esm-bundler.js` instead.
+تنظیمات پیش‌فرض ابزار ما از runtime-only build استفاده می‌کند زیرا تمام تمپلیت‌ها در SFC ها از پیش کامپایل می‌شوند. اگر به هر دلیلی، حتی با وجود مرحله‌ای برای build، نیاز به کامپایل تمپلیت در مرورگر دارید، می‌توانید این کار را با تغییر `vue` alias به `vue/dist/vue.esm-bundler.js` در ابزار build خود انجام دهید.
 
-If you are looking for a lighter-weight alternative for no-build-step usage, check out [petite-vue](https://github.com/vuejs/petite-vue).
+اگر به دنبال جایگزین سبک‌تری برای استفاده بدون مرحله build هستید، [petite-vue](https://github.com/vuejs/petite-vue) را بررسی کنید.
 
-## IDE Support {#ide-support}
+## پشتیبانی IDE {#ide-support}
 
-- The recommended IDE setup is [VSCode](https://code.visualstudio.com/) + the [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) extension. The extension provides syntax highlighting, TypeScript support, and intellisense for template expressions and component props.
+- تنظیمات توصیه شده [VSCode](https://code.visualstudio.com/) + [افزونه ویژگی‌های زبان Vue (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) است. این افزونه syntax highlighting، پشتیبانی TypeScript و intellisense برای تمپلیت و propهای کامپوننت را ارائه می‌دهد.
 
-  :::tip
-  Volar replaces [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), our previous official VSCode extension for Vue 2. If you have Vetur currently installed, make sure to disable it in Vue 3 projects.
+  :::tip نکته
+  Volar جایگزین Vetur می‌شود، افزونه رسمی قبلی VSCode ما برای Vue 2. اگر در حال حاضر Vetur نصب شده است، مطمئن شوید در پروژه‌های Vue 3 آن را غیرفعال می‌کنید.
   :::
 
-- [WebStorm](https://www.jetbrains.com/webstorm/) also provides great built-in support for Vue SFCs.
+- [WebStorm](https://www.jetbrains.com/webstorm/)  هم از SFC های Vue پشتیبانی درونی عالی ارائه می‌دهد.
 
-- Other IDEs that support the [Language Service Protocol](https://microsoft.github.io/language-server-protocol/) (LSP) can also leverage Volar's core functionalities via LSP:
+- سایر IDE هایی که از [پروتکل سرویس زبان](https://microsoft.github.io/language-server-protocol/) (LSP) پشتیبانی می‌کنند هم می‌توانند از عملکردهای اصلی Volar از طریق LSP استفاده کنند:
 
-  - Sublime Text support via [LSP-Volar](https://github.com/sublimelsp/LSP-volar).
+  - پشتیبانی Sublime Text از طریق [LSP-Volar](https://github.com/sublimelsp/LSP-volar).
 
-  - vim / Neovim support via [coc-volar](https://github.com/yaegassy/coc-volar).
+  - پشتیبانی vim / Neovim از طریق [coc-volar](https://github.com/yaegassy/coc-volar).
 
-  - emacs support via [lsp-mode](https://emacs-lsp.github.io/lsp-mode/page/lsp-volar/)
+  - پشتیبانی emacs از طریق [lsp-mode](https://emacs-lsp.github.io/lsp-mode/page/lsp-volar/).
 
 ## Browser Devtools {#browser-devtools}
 
 <VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Free Vue.js Devtools Lesson"/>
 
-The Vue browser devtools extension allows you to explore a Vue app's component tree, inspect the state of individual components, track state management events, and profile performance.
+افزونه devtools در Vue به شما اجازه می‌دهد درخت کامپوننت‌های یک برنامه را کاوش کنید، وضعیت کامپوننت‌ ها را بررسی کنید، رویدادهای state management را ردیابی کنید و عملکرد برنامه را پروفایل کنید.
 
 ![devtools screenshot](https://raw.githubusercontent.com/vuejs/devtools/main/media/screenshot-shadow.png)
 
-- [Documentation](https://devtools.vuejs.org/)
-- [Chrome Extension](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-- [Firefox Addon](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-- [Edge Extension](https://microsoftedge.microsoft.com/addons/detail/vuejs-devtools/olofadcdnkkjdfgjcmjaadnlehnnihnl)
+- [مستندات](https://devtools.vuejs.org/)
+- [افزونه Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
+- [افزونه Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
+- [افزونه Edge](https://microsoftedge.microsoft.com/addons/detail/vuejs-devtools/olofadcdnkkjdfgjcmjaadnlehnnihnl)
 - [Standalone Electron app](https://devtools.vuejs.org/guide/installation.html#standalone)
 
 ## TypeScript {#typescript}
 
-Main article: [Using Vue with TypeScript](/guide/typescript/overview).
+مقاله اصلی: [استفاده از Vue با TypeScript](/guide/typescript/overview).
 
-- [Volar](https://github.com/johnsoncodehk/volar) provides type checking for SFCs using `<script lang="ts">` blocks, including template expressions and cross-component props validation.
+- [Volar](https://github.com/johnsoncodehk/volar) بررسی انطباق تایپ برای SFC ها با استفاده از بلوک‌های `<script lang="ts"‎>` را فراهم می‌کند، شامل تمپلیت و اعتبارسنجی prop های بین کامپوننتی می‌شود.
 
-- Use [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/vue-tsc) for performing the same type checking from the command line, or for generating `d.ts` files for SFCs.
+- از [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/vue-tsc) برای انجام همان بررسی انطباق نوع از خط فرمان، یا برای تولید فایل‌های `d.ts` برای SFC ها استفاده کنید.
 
 ## Testing {#testing}
 
-Main article: [Testing Guide](/guide/scaling-up/testing).
+مقاله اصلی: [راهنمای Testing](/guide/scaling-up/testing).
 
-- [Cypress](https://www.cypress.io/) is recommended for E2E tests. It can also be used for component testing for Vue SFCs via the [Cypress Component Test Runner](https://docs.cypress.io/guides/component-testing/introduction).
+- [Cypress](https://www.cypress.io/) برای تست‌های E2E توصیه می‌شود. همچنین می‌تواند برای تست کامپوننت برای SFC های Vue از طریق [Cypress Component Test Runner](https://docs.cypress.io/guides/component-testing/introduction) استفاده شود.
 
-- [Vitest](https://vitest.dev/) is a test runner created by Vue / Vite team members that focuses on speed. It is specifically designed for Vite-based applications to provide the same instant feedback loop for unit / component testing.
+- [Vitest](https://vitest.dev/) یک اجراکننده تست است که توسط اعضای تیم Vue / Vite ایجاد شده و بر سرعت تمرکز دارد. به طور خاص برای برنامه‌های مبتنی بر Vite طراحی شده است تا همان حلقه بازخورد فوری برای تست‌های unit / کامپوننت را فراهم کند.
 
-- [Jest](https://jestjs.io/) can be made to work with Vite via [vite-jest](https://github.com/sodatea/vite-jest). However, this is only recommended if you have existing Jest-based test suites that you need to migrate over to a Vite-based setup, as Vitest provides similar functionalities with a much more efficient integration.
+- [Jest](https://jestjs.io/) می‌تواند با استفاده از [vite-jest](https://github.com/sodatea/vite-jest) با Vite کار کند. با این حال، این فقط در صورتی توصیه می‌شود که سوئیت‌های تست مبتنی بر Jest موجودی داشته باشید که نیاز به مهاجرت به یک تنظیم Vite دارند، زیرا Vitest عملکردهای مشابه را با یکپارچه‌سازی بسیار کارآمدتر فراهم می‌کند.
 
-## Linting {#linting}
+## قواعدنویسی | Linting {#linting}
 
-The Vue team maintains [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue), an [ESLint](https://eslint.org/) plugin that supports SFC-specific linting rules.
+تیم Vue پلاگین [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue) را نگهداری می‌کند، یک پلاگین [ESLint](https://eslint.org/) که از قوانین قواعدنویسی خاص SFC پشتیبانی می‌کند.
 
-Users previously using Vue CLI may be used to having linters configured via webpack loaders. However when using a Vite-based build setup, our general recommendation is:
+کاربرانی که قبلاً از Vue CLI استفاده می‌کردند ممکن است عادت داشته باشند linter ها را از طریق لودرهای webpack پیکربندی کنند. با این حال هنگام استفاده از تنظیمات build مبتنی بر Vite، توصیه کلی ما این است:
 
-1. `npm install -D eslint eslint-plugin-vue`, then follow `eslint-plugin-vue`'s [configuration guide](https://eslint.vuejs.org/user-guide/#usage).
+1. `npm install -D eslint eslint-plugin-vue` را اجرا کنید، سپس از [راهنمای پیکربندی](https://eslint.vuejs.org/user-guide/#usage) `eslint-plugin-vue` پیروی کنید.
 
-2. Setup ESLint IDE extensions, for example [ESLint for VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), so you get linter feedback right in your editor during development. This also avoids unnecessary linting cost when starting the dev server.
+2. افزونه‌های ESLint IDE را تنظیم کنید، [برای مثال ESLint برای VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)، تا بازخورد linter را مستقیماً در ادیتور خود در حین توسعه دریافت کنید. این همچنین از هزینه lint غیرضروری هنگام شروع سرور dev جلوگیری می‌کند.
 
-3. Run ESLint as part of the production build command, so you get full linter feedback before shipping to production.
+3. ESLint را به عنوان بخشی از دستور production build اجرا کنید، تا بازخورد کامل linter را قبل از ارسال به production دریافت کنید.
 
-4. (Optional) Setup tools like [lint-staged](https://github.com/okonet/lint-staged) to automatically lint modified files on git commit.
+4. (اختیاری) ابزارهایی مثل [lint-staged](https://github.com/okonet/lint-staged) را تنظیم کنید تا خودکار فایل‌های اصلاح شده را در کامیت git را lint کند.
 
-## Formatting {#formatting}
+## فرمت‌دهی (مرتب سازی کد) {#formatting}
 
-- The [Volar](https://github.com/johnsoncodehk/volar) VSCode extension provides formatting for Vue SFCs out of the box.
+- افزونه [Volar](https://github.com/johnsoncodehk/volar) برای VSCode به صورت پیش‌فرض فرمت‌دهی برای SFC های Vue ارائه می‌دهد.
 
-- Alternatively, [Prettier](https://prettier.io/) provides built-in Vue SFC formatting support.
+- به طور جایگزین، [Prettier](https://prettier.io/) از فرمت‌دهی SFC پشتیبانی می‌کند.
 
 ## SFC Custom Block Integrations {#sfc-custom-block-integrations}
 
-Custom blocks are compiled into imports to the same Vue file with different request queries. It is up to the underlying build tool to handle these import requests.
+بلوک‌های سفارشی به importهایی در همان فایل Vue با درخواست‌های متفاوت کامپایل می‌شوند. پردازش این درخواست‌های import بر عهده ابزار build پایه است.
 
-- If using Vite, a custom Vite plugin should be used to transform matched custom blocks into executable JavaScript. [Example](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
+- اگر از Vite استفاده می‌کنید، باید از یک پلاگین سفارشی Vite استفاده شود تا بلوک‌های سفارشی تبدیل به JavaScript قابل اجرا تبدیل شوند. [مثال](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#example-for-transforming-custom-blocks)
 
-- If using Vue CLI or plain webpack, a webpack loader should be configured to transform the matched blocks. [Example](https://vue-loader.vuejs.org/guide/custom-blocks.html)
+- اگر از Vue CLI یا webpack خام استفاده می‌کنید، باید یک لودر webpack پیکربندی شود تا بلوک‌های مطابق را تبدیل کند. [مثال](https://vue-loader.vuejs.org/guide/custom-blocks.html)
 
-## Lower-Level Packages {#lower-level-packages}
+## پکیج‌های سطح پایین | Lower-Level Packages {#lower-level-packages}
 
-### `@vue/compiler-sfc` {#vue-compiler-sfc}
+### `‎@vue/compiler-sfc` {#vue-compiler-sfc}
 
-- [Docs](https://github.com/vuejs/core/tree/main/packages/compiler-sfc)
+- [مستندات](https://github.com/vuejs/core/tree/main/packages/compiler-sfc)
 
-This package is part of the Vue core monorepo and is always published with the same version as the main `vue` package. It is included as a dependency of the main `vue` package and proxied under `vue/compiler-sfc` so you don't need to install it individually.
+این پکیج بخشی از monorepo هسته Vue است و همیشه با همان نسخه پکیج اصلی `vue` منتشر می‌شود. به عنوان وابستگی پکیج اصلی vue شامل شده و تحت `vue/compiler-sfc` پروکسی شده است، بنابراین نیازی نیست آن را به طور جداگانه نصب کنید.
 
-The package itself provides lower-level utilities for processing Vue SFCs and is only meant for tooling authors that need to support Vue SFCs in custom tools.
+خود این بسته ابزارهای سطح پایین‌تر برای پردازش SFC های Vue فراهم می‌کند و فقط برای نویسندگان ابزار که نیاز به پشتیبانی از SFC های Vue در ابزارهای سفارشی دارند، در نظر گرفته شده است.
 
-:::tip
-Always prefer using this package via the `vue/compiler-sfc` deep import since this ensures its version is in sync with the Vue runtime.
+:::tip نکته
+همیشه ترجیح داده می‌شود از این بسته از طریق deep import پکیج `vue/compiler-sfc` استفاده شود زیرا این اطمینان می‌دهد که نسخه آن با رانتایم Vue همگام است.
 :::
 
-### `@vitejs/plugin-vue` {#vitejs-plugin-vue}
+### `‎@vitejs/plugin-vue` {#vitejs-plugin-vue}
 
-- [Docs](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
+- [مستندات](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue)
 
-Official plugin that provides Vue SFC support in Vite.
+پلاگین رسمی که پشتیبانی از SFC را در Vite فراهم می‌کند.
 
 ### `vue-loader` {#vue-loader}
 
-- [Docs](https://vue-loader.vuejs.org/)
+- [مستندات](https://vue-loader.vuejs.org/)
 
-The official loader that provides Vue SFC support in webpack. If you are using Vue CLI, also see [docs on modifying `vue-loader` options in Vue CLI](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
+بارگذار رسمی که پشتیبانی از SFC را در webpack فراهم می‌کند. اگر از Vue CLI استفاده می‌کنید، همچنین [مستندات مربوط به تغییر گزینه‌های vue-loader در Vue CLI](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader) را ببینید.
 
-## Other Online Playgrounds {#other-online-playgrounds}
+## سایر محیط‌های آنلاین {#other-online-playgrounds}
 
 - [VueUse Playground](https://play.vueuse.org)
-- [Vue + Vite on Repl.it](https://replit.com/@templates/VueJS-with-Vite)
-- [Vue on CodeSandbox](https://codesandbox.io/s/vue-3)
-- [Vue on Codepen](https://codepen.io/pen/editor/vue)
-- [Vue on Components.studio](https://components.studio/create/vue3)
-- [Vue on WebComponents.dev](https://webcomponents.dev/create/cevue)
+- [Vue + Vite در Repl.it](https://replit.com/@templates/VueJS-with-Vite)
+- [Vue در CodeSandbox](https://codesandbox.io/s/vue-3)
+- [Vue در Codepen](https://codepen.io/pen/editor/vue)
+- [Vue در Components.studio](https://components.studio/create/vue3)
+- [Vue در WebComponents.dev](https://webcomponents.dev/create/cevue)
 
 <!-- TODO ## Backend Framework Integrations -->
