@@ -2,17 +2,18 @@
 outline: deep
 ---
 
-# Suspense {#suspense}
+# تعلیق {#suspense}
 
 :::warning Experimental Feature
-`<Suspense>` is an experimental feature. It is not guaranteed to reach stable status and the API may change before it does.
+`<Suspense>` یک ویژگی آزمایشی است. تضمینی برای رسیدن به وضعیت پایدار نیست و API ممکن است قبل از آن تغییر کند.
+
 :::
 
-`<Suspense>` is a built-in component for orchestrating async dependencies in a component tree. It can render a loading state while waiting for multiple nested async dependencies down the component tree to be resolved.
+`<Suspense>` یک کامپوننت داخلی برای هماهنگ کردن وابستگی‌های ناهمگام در یک درخت کامپوننتی است.می‌تواند وضعیت بارگیری را در حالی که منتظر تکمیل وابستگی‌های ناهمزمان مختلف است، نمایش دهد و تجربه کاربری روان تری را تضمین کند.
 
-## Async Dependencies {#async-dependencies}
+## وابستگی های غیر همگام {#async-dependencies}
 
-To explain the problem `<Suspense>` is trying to solve and how it interacts with these async dependencies, let's imagine a component hierarchy like the following:
+برای توضیح مشکلی که `<Suspense>` سعی در حل آن دارد و نحوه تعامل آن با این وابستگی‌های ناهمگام،  سلسله مراتب کامپوننتی زیر را ببینید:
 
 ```
 <Suspense>
@@ -23,20 +24,18 @@ To explain the problem `<Suspense>` is trying to solve and how it interacts with
       ├─ <ActivityFeed> (async component)
       └─ <Stats> (async component)
 ```
+در درخت کامپوننت، چندین کامپوننت تو در تو هستند که نمایش آن‌ها به منابع ناهمگام وابسته است که باید ابتدا تفکیک شوند. بدون `<Suspense>،` هر کدام از این کامپوننت‌ها باید وضعیت‌های  خطا و بارگذاری خودش را مدیریت کند. در بدترین حالت ممکن، ممکن است سه نماد بارگذاری روی صفحه ببینیم و محتوا در زمان‌های مختلفی نمایش داده شود.
 
-In the component tree there are multiple nested components whose rendering depends on some async resource to be resolved first. Without `<Suspense>`, each of them will need to handle its own loading / error and loaded states. In the worst case scenario, we may see three loading spinners on the page, with content displayed at different times.
+کامپوننت `<Suspense>` به ما این امکان را می‌دهد که در ابتدا وضعیت‌های بارگذاری/خطا با اولویت بالا را نمایش دهیم، در حالی که منتظر رفع وابستگی‌های ناهمگام تودرتو هستیم.
 
-The `<Suspense>` component gives us the ability to display top-level loading / error states while we wait on these nested async dependencies to be resolved.
+دو نوع وابستگی ناهمگام وجود دارد که `<Suspense>` می‌تواند منتظر آن‌ها بماند:
+1. کامپوننت‌ها با یک هوک `setup()` ناهمگام. این شامل کامپوننت‌هایی است که از `<script setup>` با عبارات `await` استفاده می‌کنند.
 
-There are two types of async dependencies that `<Suspense>` can wait on:
-
-1. Components with an async `setup()` hook. This includes components using `<script setup>` with top-level `await` expressions.
-
-2. [Async Components](/guide/components/async).
+2. [کامپوننت های ناهمگام](/guide/components/async).
 
 ### `async setup()` {#async-setup}
 
-A Composition API component's `setup()` hook can be async:
+هوک setup() یک کامپوننت Composition API می‌تواند ناهمگام باشد:
 
 ```js
 export default {
@@ -49,8 +48,7 @@ export default {
   }
 }
 ```
-
-If using `<script setup>`, the presence of top-level `await` expressions automatically makes the component an async dependency:
+اگر از `<script setup>` استفاده می‌شود، حضور عبارات `await` به طور خودکار کامپوننت را به یک وابستگی ناهمگام تبدیل می‌کند.
 
 ```vue
 <script setup>
@@ -63,15 +61,17 @@ const posts = await res.json()
 </template>
 ```
 
-### Async Components {#async-components}
+### کامپوننت های ناهمگام {#async-components}
 
-Async components are **"suspensible"** by default. This means that if it has a `<Suspense>` in the parent chain, it will be treated as an async dependency of that `<Suspense>`. In this case, the loading state will be controlled by the `<Suspense>`, and the component's own loading, error, delay and timeout options will be ignored.
+کامپوننت‌های ناهمگام به طور پیش‌فرض قابل **تعلیق** هستند. در این حالت، وضعیت بارگذاری توسط `<Suspense>` کنترل می‌شود و گزینه‌های بارگذاری، خطا، delay و  time-out خود کامپوننت  نادیده گرفته می‌شوند.
 
-The async component can opt-out of `Suspense` control and let the component always control its own loading state by specifying `suspensible: false` in its options.
+کامپوننت ناهمگام می‌تواند از کنترل `<Suspense>` خارج شده و با تعیین  `suspensible: false` وضعیت بارگذاری خود را کنترل کند.
 
-## Loading State {#loading-state}
+## وضعیت بارگذاری {#loading-state}
 
-The `<Suspense>` component has two slots: `#default` and `#fallback`. Both slots only allow for **one** immediate child node. The node in the default slot is shown if possible. If not, the node in the fallback slot will be shown instead.
+کامپوننت `<Suspense>` دارای دو اسلات به نام‌های `#default` و `#fallback` است. هر دو این قسمت‌ها فقط می‌توانند حاوی یک عنصر اصلی باشند. اگر امکان نمایش محتوای داخل  `#default` وجود داشته باشد، آن محتوا نمایش داده می‌شود. در صورتی که این امکان وجود نداشته باشد، محتوای داخل   `#fallback` نمایش داده می‌شود.
+
+
 
 ```vue-html
 <Suspense>
@@ -84,32 +84,33 @@ The `<Suspense>` component has two slots: `#default` and `#fallback`. Both slots
   </template>
 </Suspense>
 ```
+در رندر اولیه، `<Suspense>` محتوای اسلات پیش‌فرض را در حافظه نمایش می‌دهد. اگر در طول این فرآیند به وابستگی‌های ناهمگامی برخورد شود، وارد وضعیت **در انتظار** می‌شود. در حالت در انتظار، محتوای اسلات پشتیبان نمایش داده می‌شود. زمانی که تمام وابستگی‌های ناهمگام برطرف شده باشند، `<Suspense>` وارد وضعیت **resolved** می‌شود و محتوای اسلات پیش‌فرض  نمایش داده می‌شود.
 
-On initial render, `<Suspense>` will render its default slot content in memory. If any async dependencies are encountered during the process, it will enter a **pending** state. During the pending state, the fallback content will be displayed. When all encountered async dependencies have been resolved, `<Suspense>` enters a **resolved** state and the resolved default slot content is displayed.
+اگر هیچ وابستگی ناهمگامی در رندر اولیه مشاهده نشد،`<Suspense>` مستقیماً به حالت **resolved** می‌رود.
 
-If no async dependencies were encountered during the initial render, `<Suspense>` will directly go into a resolved state.
+`<Suspense>` را مانند یک سوئیچ در نظر بگیرید. وقتی در حالت **resolved** است، یعنی همه چیز آماده است و محتوا را نشان می دهد. تنها در صورتی به حالت **در انتظار** برمی گردد که گره ریشه در اسلات پیش فرض تغییر کند . اما اگر وابستگی‌های ناهمگام جدید که در عمق درخت جا دارند  تغییر کنند، `<Suspense>` به حالت **در انتظار** بر نمی گردد.
 
-Once in a resolved state, `<Suspense>` will only revert to a pending state if the root node of the `#default` slot is replaced. New async dependencies nested deeper in the tree will **not** cause the `<Suspense>` to revert to a pending state.
+هنگامی که یک بازگشت اتفاق می‌افتد، محتوای `fallback` به صورت فوری نمایش داده نمی‌شود، بلکه `<Suspense>` محتوای قبلی اسلات #default را نمایش می دهد . این عملکرد می‌تواند با استفاده از پراپ timeout کانفیگ شود:
+اگر نمایش محتوای پیش‌فرض جدید بیش از مهلت زمانی طول بکشد، `<Suspense>` به محتوای `fallback` تغییر خواهد کرد. مهلت زمانی 0 هم باعث می شود که محتوای `fallback` بلافاصله پس از جایگزینی ، نمایش داده شود.
 
-When a revert happens, fallback content will not be immediately displayed. Instead, `<Suspense>` will display the previous `#default` content while waiting for the new content and its async dependencies to be resolved. This behavior can be configured with the `timeout` prop: `<Suspense>` will switch to fallback content if it takes longer than `timeout` to render the new default content. A `timeout` value of `0` will cause the fallback content to be displayed immediately when default content is replaced.
+## رویدادها {#events}
 
-## Events {#events}
+کامپوننت `<Suspense>`سه رویداد را ایجاد می‌کند: `pending،` `resolve` و `fallback`.
+ رویداد `pending` در زمان ورود به وضعیت **در انتظار** رخ می‌دهد. رویداد `resolve` زمانی رخ می‌دهد که بارگذاری محتوای جدید در اسلات `default` به پایان برسد.  رویداد `fallback` نیز زمانی اتفاق می‌افتد که محتوای اسلات   `fallback` نمایش داده می‌شود.
+ 
+می‌توان از رویدادها به عنوان مثال برای نمایش یک نماد بارگذاری در روی DOM قدیمی هنگامی که کامپوننت‌های جدید در حال بارگذاری هستند، استفاده کرد.
 
-The `<Suspense>` component emits 3 events: `pending`, `resolve` and `fallback`. The `pending` event occurs when entering a pending state. The `resolve` event is emitted when new content has finished resolving in the `default` slot. The `fallback` event is fired when the contents of the `fallback` slot are shown.
+## مدیریت خطا {#error-handling}
 
-The events could be used, for example, to show a loading indicator in front of the old DOM while new components are loading.
+در حال حاضر `<Suspense>` قابلیت مدیریت خطا از طریق خود کامپوننت را فراهم نمی‌کند - با این حال، شما می‌توانید از گزینه [`errorCaptured`](/api/options-lifecycle#errorcaptured) یا هوک [`onErrorCaptured()`](/api/composition-api-lifecycle#onerrorcaptured) برای گرفتن و مدیریت خطاهای ناهمگام در کامپوننت والد `<Suspense>` استفاده کنید.
 
-## Error Handling {#error-handling}
+## ترکیب با کامپوننت‌های دیگر {#combining-with-other-components}
 
-`<Suspense>` currently does not provide error handling via the component itself - however, you can use the [`errorCaptured`](/api/options-lifecycle#errorcaptured) option or the [`onErrorCaptured()`](/api/composition-api-lifecycle#onerrorcaptured) hook to capture and handle async errors in the parent component of `<Suspense>`.
+معمول است که بخواهیم از کامپوننت `<Suspense>` به همراه کامپوننت‌های [`<Transition>`](./transition) و [`<KeepAlive>`](./keep-alive) استفاده کنیم. ترتیب تو در توی این کامپوننت‌ها مهم است تا همگی به درستی کار کنند.
 
-## Combining with Other Components {#combining-with-other-components}
+به علاوه، این کامپوننت‌ها معمولا با کامپوننت `<RouterView>` از [Vue Router](https://router.vuejs.org/) به کار می‌روند.
 
-It is common to want to use `<Suspense>` in combination with the [`<Transition>`](./transition) and [`<KeepAlive>`](./keep-alive) components. The nesting order of these components is important to get them all working correctly.
-
-In addition, these components are often used in conjunction with the `<RouterView>` component from [Vue Router](https://router.vuejs.org/).
-
-The following example shows how to nest these components so that they all behave as expected. For simpler combinations you can remove the components that you don't need:
+مثال زیر نشان می‌دهد چگونه این کامپوننت‌ها را به صورت تو در تو قرار دهید تا همگی مطابق انتظار رفتار کنند. برای ترکیب‌های ساده‌تر، می‌توانید کامپوننت‌هایی که نیاز ندارید را حذف کنید:
 
 ```vue-html
 <RouterView v-slot="{ Component }">
@@ -130,5 +131,4 @@ The following example shows how to nest these components so that they all behave
   </template>
 </RouterView>
 ```
-
-Vue Router has built-in support for [lazily loading components](https://router.vuejs.org/guide/advanced/lazy-loading.html) using dynamic imports. These are distinct from async components and currently they will not trigger `<Suspense>`. However, they can still have async components as descendants and those can trigger `<Suspense>` in the usual way.
+Vue Router برای [ بارگذاری تاخیری کامپوننت‌ها](https://router.vuejs.org/guide/advanced/lazy-loading.html) با استفاده از ایمپورت های پویا ، پشتیبانی داخلی دارد. اینها از کامپوننت‌های ناهمگام متمایز هستند و در حال حاضر باعث فراخوانی `<Suspense>` نمی‌شوند. با این حال، آن‌ها همچنان می‌توانند کامپوننت‌های ناهمگام به عنوان فرزندان داشته باشند که این کامپوننت‌های ناهمگام می‌توانند `<Suspense>` را به روش معمول فراخوانی کنند.
