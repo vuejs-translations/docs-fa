@@ -54,3 +54,5 @@ Here is the markdown table sorted alphabetically by the English column:
 | transition | ترنزیشن‌ | pending |  |
 | Vue | Vue | pending |  |
 | wrapper | پوششی، دربرگیرنده | pending |  |
+| application | اپلیکیشن | pending |  |
+| teleport | تله‌پورت | pending |  |
