@@ -53,7 +53,9 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 ## Include / Exclude {#include-exclude}
 
-By default, `<KeepAlive>` will cache any component instance inside. We can customize this behavior via the `include` and `exclude` props. Both props can be a comma-delimited string, a `RegExp`, or an array containing either types:
+به طور پیش‌فرض، `<KeepAlive>` هر نمونه‌ی کامپوننت را کش می کند. می‌توانیم این رفتار را از طریق ویژگی‌های `include` و `exclude` تغییر دهیم. هر دو ویژگی می‌توانند یک رشته با ویرگول جداشده، یک `RegExp`، یا یک آرایه را بپذیرند.
+
+به زبان ساده، `include` به Vue.js می‌گوید چه چیزی را در حافظه کش کند، در حالی که `exclude`مشخص می‌کند چه چیزی را در حافظه نگه ندارد. 
 
 ```vue-html
 <!-- comma-delimited string -->
@@ -72,10 +74,10 @@ By default, `<KeepAlive>` will cache any component instance inside. We can custo
 </KeepAlive>
 ```
 
-The match is checked against the component's [`name`](/api/options-misc#name) option, so components that need to be conditionally cached by `KeepAlive` must explicitly declare a `name` option.
+تطابق با گزینه‌ی [`name`](/api/options-misc#name) کامپوننت بررسی می‌شود، بنابراین کامپوننت‌هایی که نیاز به کش شرطی توسط `KeepAlive` دارند، باید یک گزینه‌ی `name` اعلام کنند.
 
-:::tip
-Since version 3.2.34, a single-file component using `<script setup>` will automatically infer its `name` option based on the filename, removing the need to manually declare the name.
+:::tip نکته
+از نسخه‌ی 3.2.34 به بعد، یک کامپوننت تک فایلی که از `<script setup>` استفاده می‌کند، به طور خودکار گزینه‌ی `name` خود را از نام فایل برداشت می‌کند و نیاز به اعلام دستی نام از بین می‌رود.
 :::
 
 ## حداکثر تعداد نمونه‌های کش شده {#max-cached-instances}
@@ -136,7 +138,7 @@ export default {
 
 - <span class="composition-api">`onActivated`</span><span class="options-api">`activated`</span> در زمان mount فراخوانی می‌شود، و  <span class="composition-api">`onDeactivated`</span><span class="options-api">`deactivated`</span> در زمان unmount.
 
-- این هوک‌ها برای تمام کامپوننت‌ها، هم در سطح اصلی و هم در سطوح عمیق‌تر در داخل درخت کامپوننت کش شده فراخوانی می‌شوند.
+- این هوک‌ها برای تمام کامپوننت‌ها، هم در سطح اصلی و هم در سطوح عمیق‌تر ،در داخل درخت کامپوننت کش شده، فراخوانی می‌شوند.
 
 ---
 
