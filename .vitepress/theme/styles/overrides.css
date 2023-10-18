@@ -64,3 +64,8 @@ li {
 .VPNavScreenMenu {
   direction: rtl;
 }
+
+.outline-marker {
+  left: auto !important;
+  right: -12px;
+}
