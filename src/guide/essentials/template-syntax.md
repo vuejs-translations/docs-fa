@@ -187,93 +187,95 @@ data() {
 
 اینجا دایرکتیو `v-if` افزوده / حذف خواهد کرد المنت `<p>` را بر پایه ترو بودن مقدار عبارت `seen`.
 
-### Arguments {#arguments}
+### آرگومانها {#arguments}
 
-Some directives can take an "argument", denoted by a colon after the directive name. For example, the `v-bind` directive is used to reactively update an HTML attribute:
+بعضی دایرکتیوها میتوانند یک "آرگومان" داشته باشد، توسط یک کلون (,) بعد از نام دایرکتیو نشان داده شده. برای مثال، دایرکتیو `v-bind` بصورت فعال بعنوان اتریبیوت HTML آپدیت میشود:
 
 ```vue-html
 <a v-bind:href="url"> ... </a>
 
-<!-- shorthand -->
+<!-- بطور خلاصه -->
 <a :href="url"> ... </a>
 ```
+در اینجا، `href` یک آرگومان است، که به دایرکتیو `v-bind` میگوید تا اتریبیوت `href` این المنت را با مقدار عبارت `url` بایند کند. به عبارت دیگر، هرچیزی قبل از آرگومان (یعنی، `v-bind:`) به یک تک کاراکتر فشرده شد است، `:`.
 
-Here, `href` is the argument, which tells the `v-bind` directive to bind the element's `href` attribute to the value of the expression `url`. In the shorthand, everything before the argument (i.e., `v-bind:`) is condensed into a single character, `:`.
+مثال دیگر دایرکتیو `v-on` میباشد، که به ایونتهای دام گوش میکند:
 
 Another example is the `v-on` directive, which listens to DOM events:
 
 ```vue-html
 <a v-on:click="doSomething"> ... </a>
 
-<!-- shorthand -->
+<!-- بطور خلاصه -->
 <a @click="doSomething"> ... </a>
 ```
+در اینجا، آرگومان نام ایونت برای گوش دادن به: `click` میباشد. `v-on` یک اختصار متناظر دارد، یعنی کارکتر `@`.  ما درمورد مدیریت ایونت با جزئیات بیشتری صحبت خواهیم کرد.
 
-Here, the argument is the event name to listen to: `click`. `v-on` has a corresponding shorthand, namely the `@` character. We will talk about event handling in more detail too.
+### آرگومان‌های داینامیک {#dynamic-arguments}
 
-### Dynamic Arguments {#dynamic-arguments}
-
-It is also possible to use a JavaScript expression in a directive argument by wrapping it with square brackets:
+استفاده یک عبارت جاوا اسکریپت در آرگومان دایرکتیو آرگومان با جا دادن آن در براکت نیز امکان پذیر است:
 
 ```vue-html
 <!--
-Note that there are some constraints to the argument expression,
-as explained in the "Dynamic Argument Value Constraints" and "Dynamic Argument Syntax Constraints" sections below.
+توجه کنید که بعضی محدودیتهایی برای عبارت آرگومان وجود دارد، همانطور که در "محدودیتهای مقدار آرگومان داینامیک" و "محدودیتهای سینتکس آرگومان داینامیک" توضیح داده شد.
 -->
+
 <a v-bind:[attributeName]="url"> ... </a>
 
-<!-- shorthand -->
+<!-- بطور خلاصه -->
 <a :[attributeName]="url"> ... </a>
 ```
+در اینجا، `attributeName` بطور داینامیک بعنوان یک عبارت جاوااسکریپت ارزیابی میشود، و مقدار ارزیابی شده بعنوان مقدار نهایی برای آرگومان استفاده خواهش شد. برای مثال، اگر شی کامپونین شما یک پراپرتی داده دارد، `attributeName`، که مقدارش برابر با `"href"` میباشد، سپس این بایند (ترکیب) برابر با `v-bind:href` خواهد شد.
 
-Here, `attributeName` will be dynamically evaluated as a JavaScript expression, and its evaluated value will be used as the final value for the argument. For example, if your component instance has a data property, `attributeName`, whose value is `"href"`, then this binding will be equivalent to `v-bind:href`.
-
-Similarly, you can use dynamic arguments to bind a handler to a dynamic event name:
+به همین ترتیب، شما میتوانید از آرگومانهای داینامیک جهت بایند کردن یک هندلر برای نام ایونت داینامیک استفاده کنید:
 
 ```vue-html
 <a v-on:[eventName]="doSomething"> ... </a>
 
-<!-- shorthand -->
+<!-- بطور اختصار -->
 <a @[eventName]="doSomething">
 ```
+در این مثال، وقتی مقدار `eventName` برابر با `"focus"` باشد، `v-on:[eventName]` برابر با `v-on:focus` خواهد بود.
 
-In this example, when `eventName`'s value is `"focus"`, `v-on:[eventName]` will be equivalent to `v-on:focus`.
+#### محدودیتهای مقدار آرگومان داینامیک {#dynamic-argument-value-constraints}
 
-#### Dynamic Argument Value Constraints {#dynamic-argument-value-constraints}
+آرگومانهای داینامیک انتظار میروند تا به یک رشته ارزیابی شوند، به استثنای `null`. مقدار خاص `null` میتواند استفاده شود تا بطور واضح بایند شدن را پاک کند.
 
-Dynamic arguments are expected to evaluate to a string, with the exception of `null`. The special value `null` can be used to explicitly remove the binding. Any other non-string value will trigger a warning.
+#### محدودیتهای سینتکس آرگومان داینامیک {#dynamic-argument-syntax-constraints}
 
-#### Dynamic Argument Syntax Constraints {#dynamic-argument-syntax-constraints}
-
-Dynamic argument expressions have some syntax constraints because certain characters, such as spaces and quotes, are invalid inside HTML attribute names. For example, the following is invalid:
+عبارات آرگومان داینامیک تعدادی محدودیتهای سینکتسی دارند بدلیل کاراکترهای مشخص، از جمله فضاهای خالی و کوتیشنها، نامهای نادرست درون اتریبیوت HTML میباشد. برای مثال، کد زیر نادرست است:
 
 ```vue-html
-<!-- This will trigger a compiler warning. -->
+<!-- این یک اخطار کامپایلر را ایجاد می کند. -->
 <a :['foo' + bar]="value"> ... </a>
 ```
 
-If you need to pass a complex dynamic argument, it's probably better to use a [computed property](./computed), which we will cover shortly.
+اگر شما نیاز دارید تا یک آرگومان داینامیک پیچیده ارائه بدید، احتمالا بهتر میشود تا یک [پراپری محاسبه شده](./computed) استفاده کنید، که بزودی به آن خواهیم پرداخت.
 
-When using in-DOM templates (templates directly written in an HTML file), you should also avoid naming keys with uppercase characters, as browsers will coerce attribute names into lowercase:
+هنگام استفاده از قالب های in-DOM (قالبهایی که مستقیما در یک فایل HTML نوشته شده اند)، شما همچنین باید از نامگذاری کلیدها با حروف بزرگ پرهیز کنید. همانطور که مرورگر ها نام اتریبیوتها را به حروف کوچک تبدیل میکنند:
 
 ```vue-html
 <a :[someAttr]="value"> ... </a>
 ```
 
-The above will be converted to `:[someattr]` in in-DOM templates. If your component has a `someAttr` property instead of `someattr`, your code won't work. Templates inside Single-File Components are **not** subject to this constraint.
+موارد فوق در قالبهای in-DOM به `:[someattr]` تبدیل خواهند شد. اگر کامپوننت شما یک پراپرتی `someAttr` به جای `someattr` دارد، کد شما کار نخواهد کرد. قالبهای داخلی کامپوننتهای تک فایلی مشمول این محدودیت **نیستند**.
 
-### Modifiers {#modifiers}
+### پیراینده {#modifiers}
 
-Modifiers are special postfixes denoted by a dot, which indicate that a directive should be bound in some special way. For example, the `.prevent` modifier tells the `v-on` directive to call `event.preventDefault()` on the triggered event:
+پیراینده‌ها پسوندهای خاصی هستند که با یک نقطه نشان داده میشوند، که نشان می دهد یک دایرکتیو باید به نحوی خاص مقید شود. برای مثال، پیراینده `.prevent` به دایرکتیو `v-on` میگوید تا `event.preventDefault()` را برای ایونت اجرا شده صدا بزند.
 
 ```vue-html
 <form @submit.prevent="onSubmit">...</form>
 ```
 
+شما بعدا مثالهای بیشتری درمورد پیراینده‌ها خواهید دید، [برای `v-on`](./event-handling#event-modifiers) و [برای `v-model`](./forms#modifiers)، وقتی ما آن ویژگیهارا مرور کنیم.
+
+و در پایان، 
+
 You'll see other examples of modifiers later, [for `v-on`](./event-handling#event-modifiers) and [for `v-model`](./forms#modifiers), when we explore those features.
 
-And finally, here's the full directive syntax visualized:
+And finally, در اینجا سینکتس کامل دایرکتیو به تصویر کشیده شده است:
 
-![directive syntax graph](./images/directive.png)
+![نمودار سینتکس دایرکتیو](./images/directive.png)
 
 <!-- https://www.figma.com/file/BGWUknIrtY9HOmbmad0vFr/Directive -->
