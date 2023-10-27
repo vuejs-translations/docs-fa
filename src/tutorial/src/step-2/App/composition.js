@@ -2,11 +2,11 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    // component logic
-    // declare some reactive state here.
+    // منطق کامپوننت
+    // تعریف کنید reactive چند
 
     return {
-      // exposed to template
+      // درمعرض تمپلیت قرار می‌گیرد
     }
   }
 }
