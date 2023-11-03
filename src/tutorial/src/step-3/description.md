@@ -1,19 +1,19 @@
 # Attribute Bindings {#attribute-bindings}
 
-In Vue, mustaches are only used for text interpolation. To bind an attribute to a dynamic value, we use the `v-bind` directive:
+در Vue، از علامت `{{}}` فقط برای نمایش متن استفاده می‌شود. برای اتصال دادن یک خاصیت (attribute) HTML به یک مقدار پویا (مثل یک متغیر)، از دستورالعمل `v-bind` استفاده می‌کنیم:
 
 ```vue-html
 <div v-bind:id="dynamicId"></div>
 ```
 
-A **directive** is a special attribute that starts with the `v-` prefix. They are part of Vue's template syntax. Similar to text interpolations, directive values are JavaScript expressions that have access to the component's state. The full details of `v-bind` and directive syntax are discussed in <a target="_blank" href="/guide/essentials/template-syntax.html">Guide - Template Syntax</a>.
+یک directive صفت ویژه‌ای است که با پیشوند `v-‎` شروع می‌شود. آنها بخشی از سینتکس تمپلیت Vue هستند. مشابه `{{}}`، مقادیر directive عبارت‌های جاوااسکریپت هستند که به state کامپوننت‌ها دسترسی دارند. جزئیات کامل `v-bind` و سینتکس directive ها در <a target="_blank" href="/guide/essentials/template-syntax.html"> Guide - Template Syntax </a>.
 
-The part after the colon (`:id`) is the "argument" of the directive. Here, the element's `id` attribute will be synced with the `dynamicId` property from the component's state.
+قسمت بعد از دونقطه (`‎:id`) به عنوان «آرگومان» directive شناخته می‌شود. در اینجا، خاصیت `id` عنصر (اینجا div) با خاصیت `dynamicId` از state کامپوننت Vue همگام‌سازی خواهد شد.
 
-Because `v-bind` is used so frequently, it has a dedicated shorthand syntax:
+از آنجا که `v-bind` به طور مکرر استفاده می‌شود، سینتکس مختصر تخصیص‌یافته به خود را دارد:
 
 ```vue-html
 <div :id="dynamicId"></div>
 ```
 
-Now, try to add a dynamic `class` binding to the `<h1>`, using the `titleClass` <span class="options-api">data property</span><span class="composition-api">ref</span> as its value. If it's bound correctly, the text should turn red.
+اکنون، سعی کنید یک اتصال (binding) `class` پویا به `<h1>` اضافه کنید، با استفاده از <span class="options-api">خاصیت data</span><span class="composition-api">ref</span> `titleClass` به عنوان مقدار آن. اگر به درستی متصل شده باشد، متن قرمز می‌شود.
