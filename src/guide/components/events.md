@@ -175,7 +175,7 @@ export default {
 
 </div>
 
-گزینه `emits` همچنین از یک نحو شی(object syntax) پشتیبانی می‌کند، که به ما اجازه می‌دهد اعتبار سنجی محموله(payload) رویدادهای اِمیت شده را در زمان اجرا (runtime) فراهم کنیم:
+گزینه `emits` و ماکرو `defineEmits()‎` همچنین از syntax شیء پشتیبانی می‌کنند که به ما اجازه می‌دهد payload رویدادهای ارسال شده را در زمان اجرا Validate کنیم:
 
 <div class="composition-api">
 
