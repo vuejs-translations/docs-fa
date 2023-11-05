@@ -66,3 +66,7 @@
   padding-right: 1rem !important;
   padding-left: 0 !important;
 }
+
+.vt-doc pre {
+  direction: ltr;
+}
