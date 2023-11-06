@@ -182,7 +182,7 @@ updateExample()
 .vt-flyout {
   z-index: 9;
   position: absolute;
-  right: 20px;
+  left: 20px;
 }
 
 .vt-menu-link.active {
