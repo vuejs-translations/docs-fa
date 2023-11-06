@@ -13,3 +13,8 @@
     100vh - var(--vt-nav-height) - var(--vt-banner-height, 0px)
   ) !important;
 }
+
+.vt-flyout .vt-flyout-menu {
+  right: unset;
+  left: 0;
+}
