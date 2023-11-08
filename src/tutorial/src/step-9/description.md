@@ -1,8 +1,8 @@
 # Lifecycle and Template Refs {#lifecycle-and-template-refs}
 
-So far, Vue has been handling all the DOM updates for us, thanks to reactivity and declarative rendering. However, inevitably there will be cases where we need to manually work with the DOM.
+تا اینجا، Vue به ما کمک کرده است تا تمام به‌روزرسانی‌های DOM به صورت خودکار انجام شود، از طریق reactivity (واکنش‌پذیری) و declarative rendering (رندرینگ صریح). با این حال، بدون شک مواردی وجود دارد که نیاز به دسترسی مستقیم به DOM داریم.
 
-We can request a **template ref** - i.e. a reference to an element in the template - using the <a target="_blank" href="/api/built-in-special-attributes.html#ref">special `ref` attribute</a>:
+می‌توانیم یک template ref را با استفاده از <a target="_blank" href="/api/built-in-special-attributes.html#ref">attribute مخصوصی به نام ref</a> دریافت کنیم (به عبارت دقیق‌تر یک ارجاع به یک عنصر در تمپلیت):
 
 ```vue-html
 <p ref="pElementRef">hello</p>
@@ -10,7 +10,7 @@ We can request a **template ref** - i.e. a reference to an element in the templa
 
 <div class="composition-api">
 
-To access the ref, we need to declare<span class="html"> and expose</span> a ref with matching name:
+برای دسترسی به ref، باید یک ref با همان نام تعریف کنیم<span class="html"> و اجازه دهیم تا کدهای دیگر به این ref دسترسی پیدا کنند</span>:
 
 <div class="sfc">
 
@@ -33,9 +33,9 @@ setup() {
 
 </div>
 
-Notice the ref is initialized with `null` value. This is because the element doesn't exist yet when <span class="sfc">`<script setup>`</span><span class="html">`setup()`</span> is executed. The template ref is only accessible after the component is **mounted**.
+توجه کنید که ref با مقدار null مقداردهی اولیه می‌شود. این به این دلیل است که عنصر هنوز وجود ندارد زمانی که <span class="sfc">`<script setup>`</span> <span class="html">`setup()‎`</span> اجرا می‌شوند. template ref تنها پس از اینکه کامپوننت به صورت **mounted** شده باشد، قابل دسترسی است.
 
-To run code after mount, we can use the `onMounted()` function:
+برای اجرای کد بعد از mount شدن، می‌توانیم از تابع `onMounted()‎` استفاده کنیم:
 
 <div class="sfc">
 
@@ -67,9 +67,9 @@ createApp({
 
 <div class="options-api">
 
-The element will be exposed on `this.$refs` as `this.$refs.pElementRef`. However, you can only access it after the component is **mounted**.
+عنصر به عنوان `this.$refs.pElementRef` در `this.$refs` قابل دسترسی خواهد بود. با این حال، شما فقط زمانی می‌توانید به آن دسترسی پیدا کنید پس از اینکه کامپوننت به صورت **mounted** باشد.
 
-To run code after mount, we can use the `mounted` option:
+برای اجرای کد بعد از mount شدن، می‌توانیم از گزینه `mounted` استفاده کنیم:
 
 <div class="sfc">
 
@@ -95,6 +95,6 @@ createApp({
 </div>
 </div>
 
-This is called a **lifecycle hook** - it allows us to register a callback to be called at certain times of the component's lifecycle. There are other hooks such as <span class="options-api">`created` and `updated`</span><span class="composition-api">`onUpdated` and `onUnmounted`</span>. Check out the <a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">Lifecycle Diagram</a> for more details.
+این به نام **هوک‌های چرخه حیات (lifecycle hook)** نیز شناخته می‌شود - این به ما امکان می‌دهد تا بازخوردی را در زمان‌های خاصی از چرخه حیات کامپوننت دریافت کنیم. هوک‌های دیگری نیز وجود دارند مانند <span class="options-api">`created` و `updated`</span><span class="composition-api">`onUpdated` و `onUnmounted`</span>. جهت کسب اطلاعات بیشتر می‌توانید به <a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">دیاگرام چرخه حیات (Lifecycle Diagram)</a> مراجعه کنید.
 
-Now, try to add <span class="options-api">a `mounted`</span><span class="composition-api">an `onMounted`</span> hook, access the `<p>` via <span class="options-api">`this.$refs.pElementRef`</span><span class="composition-api">`pElementRef.value`</span>, and perform some direct DOM operations on it (e.g. changing its `textContent`).
+حالا تلاش کنید تا یک هوک <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> اضافه کنید، از طریق <span class="options-api">`this.$refs.pElementRef`</span><span class="composition-api">`pElementRef.value`</span> به عنصر `<p>` دسترسی پیدا کنید و عملیات مستقیمی روی DOM انجام دهید (مثلاً تغییر `textContent` آن).
