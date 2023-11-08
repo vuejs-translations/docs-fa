@@ -1,6 +1,6 @@
 # Watchers {#watchers}
 
-Sometimes we may need to perform "side effects" reactively - for example, logging a number to the console when it changes. We can achieve this with watchers:
+گاهی اوقات ممکن است نیاز داشته باشیم که "side effects" (اثرات جانبی) را به صورت reactive رصد کنیم - به عنوان مثال، وقتی یک عدد تغییر کند، آن را در کنسول گزارش دهیم. می‌توانیم این کار را با استفاده از واتچرها (watchers) انجام دهیم:
 
 <div class="composition-api">
 
@@ -15,7 +15,7 @@ watch(count, (newCount) => {
 })
 ```
 
-`watch()` can directly watch a ref, and the callback gets fired whenever `count`'s value changes. `watch()` can also watch other types of data sources - more details are covered in <a target="_blank" href="/guide/essentials/watchers.html">Guide - Watchers</a>.
+`watch()‎` می‌تواند به صورت مستقیم یک ref را نظارت کند و وقتی مقدار `count` تغییر کند، تابع callback فراخوانی می‌شود. `watch()‎` همچنین می‌تواند نظارت بر روی داده‌هایی با تایپ‌های داده‌ دیگر نیز انجام دهد - جزئیات بیشتر در <a target="_blank" href="/guide/essentials/watchers.html">راهنمای واتچرها</a> پوشش داده شده است.
 
 </div>
 <div class="options-api">
@@ -36,8 +36,8 @@ export default {
 }
 ```
 
-Here, we are using the `watch` option to watch changes to the `count` property. The watch callback is called when `count` changes, and receives the new value as the argument. More details are covered in <a target="_blank" href="/guide/essentials/watchers.html">Guide - Watchers</a>.
+در اینجا، ما از آپشن `watch` برای نظارت بر تغییرات پراپرتی `count` استفاده می‌کنیم. تابع callback وقتی count تغییر کند، فراخوانی می‌شود و مقدار جدید به عنوان آرگومان دریافت می‌کند. جزئیات بیشتر در <a target="_blank" href="/guide/essentials/watchers.html">راهنمای واتچرها</a> پوشش داده شده است.
 
 </div>
 
-A more practical example than logging to the console would be fetching new data when an ID changes. The code we have is fetching todos data from a mock API on component mount. There is also a button that increments the todo ID that should be fetched. Try to implement a watcher that fetches a new todo when the button is clicked.
+یک مثال عملی‌تر از گزارش به کنسول، دریافت داده جدید هنگامی که ID تغییر کند خواهد بود. کدی که داریم، داده‌های todos را از یک API مجازی در زمان mount شدن مؤلفه دریافت می‌کند. همچنین یک دکمه وجود دارد که ID کاری را که باید دریافت شود افزایش می‌دهد. سعی کنید یک watcher (نظارتگر) را پیاده‌سازی کنید که یک کار جدید را هنگام کلیک بر روی دکمه دریافت کند.
