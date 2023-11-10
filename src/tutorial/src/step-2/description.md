@@ -1,16 +1,16 @@
-# رندرینگ صریح {#declarative-rendering}
+# Declarative Rendering {#declarative-rendering}
 
 <div class="sfc">
 
-آنچه در ادیتور می‌بینید یک Single-File Component (SFC) است. یک SFC یک بلوک کد خودمختار و قابل استفاده مجدد است که CSS، HTML و JavaScript مرتبط به هم را در یک فایل `‎.vue` کپسوله می‌کند.
+آنچه در ادیتور می‌بینید یک Single-File Component (SFC) است. یک SFC یک بلوک کد خودمختار و قابل استفاده مجدد است که CSS و HTML و JavaScript مرتبط به هم را در یک فایل `‎.vue` کپسوله می‌کند.
 
 </div>
 
-ویژگی اصلی Vue **رندرینگ صریح** است: با استفاده از ساختار تمپلیت که HTML را توسعه می‌دهد، می‌توانیم توصیف کنیم که HTML باید بر اساس state فعلی JavaScript چگونه به نظر برسد. هنگامی که state تغییر می‌کند، HTML به صورت خودکار به‌روزرسانی می‌شود.
+ویژگی اصلی Vue **رندرینگ صریح یا Declarative Rendering** است: با استفاده از ساختار تمپلیت که HTML را توسعه می‌دهد، می‌توانیم توصیف کنیم که HTML باید بر اساس state فعلی JavaScript چگونه به نظر برسد. هنگامی که state تغییر می‌کند، HTML به صورت خودکار به‌روزرسانی می‌شود.
 
 <div class="composition-api">
 
-state هایی که هنگام تغییر می‌توانند باعث به‌روزرسانی شوند، واکنش‌پذیر (reactive) در نظر گرفته می‌شوند. می‌توانیم state های واکنش‌پذیر را با استفاده از API مربوط به آن یعنی `reactive()‎` در Vue اعلام کنیم. شیءهای ساخته شده از `reactive()‎` شیءهای [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) در JavaScript هستند که دقیقا مثل شیءهای عادی کار می‌کنند:
+state هایی که هنگام تغییر می‌توانند باعث به‌روزرسانی شوند، reactive (واکنش‌پذیر) در نظر گرفته می‌شوند. می‌توانیم state های reactive را با استفاده از API مربوط به آن یعنی `reactive()‎` در Vue اعلام کنیم. شیءهای ساخته شده از `reactive()‎` شیءهای [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) در JavaScript هستند که دقیقا مثل شیءهای عادی کار می‌کنند:
 
 ```js
 import { reactive } from 'vue'‎
@@ -23,7 +23,7 @@ console.log(counter.count) // 0
 counter.count++‎
 ```
 
-`reactive()‎` فقط روی شیءها (شامل آرایه‌ها و انواع داخلی مثل `Map` و `Set`) کار می‌کند. از طرف دیگر، `ref()‎` می‌تواند هر نوع مقداری را بگیرد و یک شیء ایجاد کند که مقدار داخلی را تحت یک پراپرتی `‎.value` عرضه می‌کند:
+`reactive()‎` فقط روی شیءها (شامل آرایه‌ها و تایپ‌های داخلی مثل `Map` و `Set`) کار می‌کند. از طرف دیگر، `ref()‎` می‌تواند هر نوع مقداری را بگیرد و یک شیء ایجاد کند که مقدار داخلی را تحت یک پراپرتی `‎.value` عرضه می‌کند:
 
 ```js
 import { ref } from 'vue'‎
@@ -34,7 +34,7 @@ console.log(message.value) // "Hello World!"‎
 message.value = 'Changed'‎
 ```
 
-جزئیات `reactive()‎` و `ref()‎` در <a target="_blank" href="/guide/essentials/reactivity-fundamentals.html">راهنما - مبانی واکنش‌پذیری</a> گفته شده است.
+جزئیات `reactive()‎` و `ref()‎` در <a target="_blank" href="/guide/essentials/reactivity-fundamentals.html">راهنما - مبانی reactiveی</a> گفته شده است.
 
 <div class="sfc">
 
@@ -72,9 +72,9 @@ setup() {‎
 
 <div class="options-api">
 
-state هایی که هنگام تغییر می‌توانند باعث به‌روزرسانی شوند، در Vue **واکنش‌پذیر (reactive)** در نظر گرفته می‌شوند. در Vue ما، state های واکنش‌پذیر را در کامپوننت‌ها نگهداری می‌‌کنیم. <span class="html">در کد مثال، شیءی که به `createApp()‎` پاس داده می‌شود یک کامپوننت است.</span>
+state هایی که هنگام تغییر می‌توانند باعث به‌روزرسانی شوند، در Vue **reactive** در نظر گرفته می‌شوند. در Vue ما، state های reactive را در کامپوننت‌ها نگهداری می‌‌کنیم. <span class="html">در کد مثال، شیءی که به `createApp()‎` پاس داده می‌شود یک کامپوننت است.</span>
 
-می‌توانیم state های واکنش‌پذیر را با استفاده از گزینه `data` کامپوننت که باید یک تابع باشد که یک شیء را برمی‌گرداند، اعلام کنیم:
+می‌توانیم state های reactive را با استفاده از گزینه `data` کامپوننت که باید یک تابع باشد که یک شیء را برمی‌گرداند، اعلام کنیم:
 
 <div class="sfc">
 
@@ -119,7 +119,7 @@ createApp({‎
 
 <div class="composition-api">
 
-حالا سعی کنید خودتان چند state واکنش‌پذیر ایجاد کنید و از آن‌ها برای رندر محتوای متنی بصورت پویا برای `<h1>` در تمپلیت استفاده کنید.
+حالا سعی کنید خودتان چند state reactive ایجاد کنید و از آن‌ها برای رندر محتوای متنی بصورت پویا برای `<h1>` در تمپلیت استفاده کنید.
 
 </div>
 
