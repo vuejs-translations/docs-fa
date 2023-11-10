@@ -1,6 +1,6 @@
 # Slots {#slots}
 
-In addition to passing data via props, the parent component can also pass down template fragments to the child via **slots**:
+علاوه بر اینکه می‌توان داده‌ها را از طریق props به فرزند ارسال کرد، کامپوننت والد همچنین می‌تواند بخشی از تمپلیت را به فرزند از طریق **slots (اسلات‌ها)** ارسال کند:
 
 <div class="sfc">
 
@@ -21,7 +21,7 @@ In addition to passing data via props, the parent component can also pass down t
 
 </div>
 
-In the child component, it can render the slot content from the parent using the `<slot>` element as outlet:
+کامپوننت فرزند می‌تواند محتوای slot آمده از والد را با استفاده از عنصر `<slot>` به عنوان نقطه‌خروج (outlet) نمایش دهد:
 
 <div class="sfc">
 
@@ -40,10 +40,10 @@ In the child component, it can render the slot content from the parent using the
 
 </div>
 
-Content inside the `<slot>` outlet will be treated as "fallback" content: it will be displayed if the parent did not pass down any slot content:
+محتوای داخل `<slot>` به عنوان محتوای "جایگزین" (fallback) تلقی می‌شود: اگر والد محتوای اسلاتی ارسال نکرده باشد، این محتوا نمایش داده خواهد شد.
 
 ```vue-html
 <slot>Fallback content</slot>
 ```
 
-Currently we are not passing any slot content to `<ChildComp>`, so you should see the fallback content. Let's provide some slot content to the child while making use of the parent's `msg` state.
+در حال حاضر ما هیچ محتوایی تحت اسلات به `<ChildComp>` ارسال نمی‌کنیم، بنابراین شما باید محتوای جایگزین را ببینید. بیایید محتوای از جنس slot را به فرزند ارائه دهیم و در عین حال از state تعریف شده `msg` والد استفاده کنیم.
