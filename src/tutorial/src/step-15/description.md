@@ -1,13 +1,13 @@
-# You Did It! {#you-did-it}
+# You Did It {#you-did-it}
 
-You have finished the tutorial!
+شما آموزش را تمام کرده‌اید!
 
-At this point, you should have a good idea of what it's like to work with Vue. However, we covered a lot of things really fast and glossed over the details, so definitely keep learning! As a next step, you can:
+در این نقطه، شما باید دانش ابتدایی خوبی از نحوه کار با Vue داشته باشید. با این حال، ما برای افزایش سرعت بسیاری از موارد را پوشش دادیم و جزئیات را نادیده گرفتیم، بنابراین حتماً به یادگیری ادامه دهید! برای مرحله بعدی، می‌توانید:
 
-- Set up a real Vue project on your machine by following the [Quick Start](/guide/quick-start).
+- با استفاده از [Quick Start](/guide/quick-start)، یک پروژه Vue واقعی را بر روی دستگاه خود ستاپ کنید.
 
-- Go through the [Main Guide](/guide/essentials/application), which covers all the topics we learned so far in greater details, and much more.
+- به [Main Guide](/guide/essentials/application) سر بزیند، که تمام موضوعاتی که تا به اینجا یاد گرفتیم را با جزئیات بیشتر و موارد دیگر آموزش می‌دهد.
 
-- Check out some more practical [Examples](/examples/).
+- به مثال‌های عملی بیشتری در [Examples](/examples/) مراجعه کنید.
 
-We can't wait to see what you build next!
+ما نمی توانیم صبر کنیم تا ببینیم در آینده چه چیزی خواهید ساخت!

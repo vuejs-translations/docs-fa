@@ -3,3 +3,7 @@ h1 {
   cursor: pointer;
   margin-top: 3em;
 }
+
+p {
+  text-align: center;
+}
