@@ -69,3 +69,14 @@ li {
   left: auto !important;
   right: -12px;
 }
+
+.vt-doc ol > li {
+  padding-left: unset !important;
+  padding-right: 1.5rem !important;
+  text-align: right;
+}
+
+.vt-doc ol > li::before {
+  left: unset !important;
+  right: 2px !important;
+}
