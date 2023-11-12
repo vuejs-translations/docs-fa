@@ -309,7 +309,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/extras/ways-of-using-vue'
         },
         {
-          text: 'Composition API پرسش و پاسخ ',
+          text: 'سوالات متداول در مورد Composition API',
           link: '/guide/extras/composition-api-faq'
         },
         {
