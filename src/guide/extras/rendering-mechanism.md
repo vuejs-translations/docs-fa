@@ -2,17 +2,17 @@
 outline: deep
 ---
 
-# Rendering Mechanism {#rendering-mechanism}
+# مکانیزم رندرینگ | Rendering Mechanism {#rendering-mechanism}
 
-How does Vue take a template and turn it into actual DOM nodes? How does Vue update those DOM nodes efficiently? We will attempt to shed some light on these questions here by diving into Vue's internal rendering mechanism.
+Vue چگونه یک تمپلیت را می‌گیرد و آن را به نودهای DOM واقعی تبدیل می‌کند؟ Vue چگونه این نودهای DOM را به طور کارآمد به‌روزرسانی می‌کند؟ در اینجا سعی می‌کنیم با برسی مکانیزم رندرینگ داخلی Vue، پاسخی برای این سوالات پیدا کنیم.
 
-## Virtual DOM {#virtual-dom}
+## DOM مجازی | Virtual DOM {#virtual-dom}
 
-You have probably heard about the term "virtual DOM", which Vue's rendering system is based upon.
+احتمالا عبارت "virtual DOM" را شنیده‌اید که سیستم رندرینگ Vue بر پایه آن است.
 
-The virtual DOM (VDOM) is a programming concept where an ideal, or “virtual”, representation of a UI is kept in memory and synced with the “real” DOM. The concept was pioneered by [React](https://reactjs.org/), and has been adopted in many other frameworks with different implementations, including Vue.
+virtual DOM یا VDOM مفهومی برنامه‌نویسی است که در آن نمایش ایده‌آل یا "مجازی" رابط کاربری در حافظه نگهداری می‌شود و با DOM "واقعی" همگام‌سازی می‌شود. این مفهوم توسط [React](https://reactjs.org/) پایه‌گذاری شده و در بسیاری از فریم‌ورک‌های دیگر از جمله Vue با نحوه پیاده‌سازی متفاوت بکار گرفته شده است.
 
-Virtual DOM is more of a pattern than a specific technology, so there is no one canonical implementation. We can illustrate the idea using a simple example:
+virtual DOM بیشتر از یک پَتِرن برای یک فناوری خاص است، بنابراین پیاده‌سازی رسمی واحدی برای آن وجود ندارد. می‌توانیم این ایده را با یک مثال ساده توضیح دهیم:
 
 ```js
 const vnode = {
@@ -26,51 +26,51 @@ const vnode = {
 }
 ```
 
-Here, `vnode` is a plain JavaScript object (a "virtual node") representing a `<div>` element. It contains all the information that we need to create the actual element. It also contains more children vnodes, which makes it the root of a virtual DOM tree.
+در اینجا، `vnode` یک آبجکت ساده جاوااسکریپت (یک "virtual node") که نمایانگر یک عنصر `<div>` است. این شامل تمام اطلاعاتی است که برای ایجاد عنصر واقعی نیاز داریم. همچنین حاوی vnode های بیشتری است که آن را ریشه درخت DOM مجازی می‌کند.
 
-A runtime renderer can walk a virtual DOM tree and construct a real DOM tree from it. This process is called **mount**.
+یک runtime renderer (رندرر رانتایم) می‌تواند یک درخت virtual DOM را پیمایش کند و یک درخت DOM واقعی از آن بسازد. به این فرایند **mount** گفته می‌شود.
 
-If we have two copies of virtual DOM trees, the renderer can also walk and compare the two trees, figuring out the differences, and apply those changes to the actual DOM. This process is called **patch**, also known as "diffing" or "reconciliation".
+اگر دو نسخه مختلف از درخت virtual DOM داشته باشیم، رندرر می‌تواند دو درخت را پیمایش و مقایسه کند تا تفاوت‌ها را مشخص کند و آن تغییرات را بر روی DOM واقعی اعمال کند. به این فرایند **patch** گفته می‌شود که به آن "diffing" یا "reconciliation" هم گفته می‌شود.
 
-The main benefit of virtual DOM is that it gives the developer the ability to programmatically create, inspect and compose desired UI structures in a declarative way, while leaving the direct DOM manipulation to the renderer.
+دستاورد اصلی virtual DOM این است که به توسعه‌دهنده امکان می‌دهد تا به صورت اختیاری و از طریق کدهایی که به راحتی قابل فهم و تعمیم‌پذیر هستند، ساختارهای UI مورد نیاز خود را تعریف کند، در حالی که اعمال مستقیم بر روی DOM و تعامل با DOM به عهده رندرر (Renderer) باشد.
 
-## Render Pipeline {#render-pipeline}
+## رَوند رندرینگ | Render Pipeline {#render-pipeline}
 
-At the high level, this is what happens when a Vue component is mounted:
+بطور کلی، این اتفاقات هنگام mount یک کامپوننت Vue رخ می‌دهد:
 
-1. **Compile**: Vue templates are compiled into **render functions**: functions that return virtual DOM trees. This step can be done either ahead-of-time via a build step, or on-the-fly by using the runtime compiler.
+1. **Compile**: تمپلیت‌های Vue به **render functions** کامپایل می‌شوند: یعنی توابعی که درختان virtual DOM را برمی‌گردانند. این مرحله می‌تواند یا از پیش در build step انجام شود یا توسط کامپایلرِ رانتایم به صورت بی‌درنگ در مرورگر انجام شود.
 
-2. **Mount**: The runtime renderer invokes the render functions, walks the returned virtual DOM tree, and creates actual DOM nodes based on it. This step is performed as a [reactive effect](./reactivity-in-depth), so it keeps track of all reactive dependencies that were used.
+2. **Mount**: رندرر رانتایم render function ها را فراخوانی می‌کند، درخت virtual DOM برگردانده شده را پیمایش می‌کند و بر اساس آن نودهای DOM واقعی ایجاد می‌کند. این مرحله به عنوان [reactive effect](./reactivity-in-depth) انجام می‌شود، بنابراین تمام وابستگی‌های reactive که در طول mount استفاده شده‌اند را پیگیری می‌کند.
 
-3. **Patch**: When a dependency used during mount changes, the effect re-runs. This time, a new, updated Virtual DOM tree is created. The runtime renderer walks the new tree, compares it with the old one, and applies necessary updates to the actual DOM.
+3. **Patch**: هنگامی که یک وابستگی مورد استفاده در طول mount تغییر کند، effect مجددا اجرا می‌شود. این بار، یک درخت virtual DOM جدید و به‌روزرسانی شده ایجاد می‌شود. رندرر رانتایم درخت جدید را پیمایش می‌کند، آن را با درخت قدیمی مقایسه می‌کند و به‌روزرسانی‌های لازم را بر روی DOM واقعی اعمال می‌کند.
 
 ![render pipeline](./images/render-pipeline.png)
 
 <!-- https://www.figma.com/file/elViLsnxGJ9lsQVsuhwqxM/Rendering-Mechanism -->
 
-## Templates vs. Render Functions {#templates-vs-render-functions}
+## Templates در مقابل Render Functions {#templates-vs-render-functions}
 
-Vue templates are compiled into virtual DOM render functions. Vue also provides APIs that allow us to skip the template compilation step and directly author render functions. Render functions are more flexible than templates when dealing with highly dynamic logic, because you can work with vnodes using the full power of JavaScript.
+تمپلیت‌های Vue به render function های درخت virtual DOM کامپایل می‌شوند. Vue همچنین APIهایی را فراهم می‌کند که به ما اجازه می‌دهد مرحله کامپایل تمپلیت را رد کنیم و مستقیماً render functionها را بنویسیم. render function ها نسبت به تمپلیت‌ها در مواجهه با منطق بسیار پویا و انعطاف‌پذیرتر هستند، زیرا می‌توانید با استفاده از کامل قدرت جاوااسکریپت با vnodeها کار کنید.
 
-So why does Vue recommend templates by default? There are a number of reasons:
+پس چرا Vue به طور پیش‌فرض تمپلیت‌ها را توصیه می‌کند؟ چند دلیل وجود دارد:
 
-1. Templates are closer to actual HTML. This makes it easier to reuse existing HTML snippets, apply accessibility best practices, style with CSS, and for designers to understand and modify.
+1. تمپلیت‌ها نزدیک‌تر به HTML واقعی هستند. این باعث می‌شود استفاده مجدد از اسنیپت‌های موجود HTML یا اعمال روش‌های خوب دسترسی‌پذیری یا استایل دادن با CSS و درک و اصلاح توسط طراحان قالب سایت بسیار آسان‌تر شود.
 
-2. Templates are easier to statically analyze due to their more deterministic syntax. This allows Vue's template compiler to apply many compile-time optimizations to improve the performance of the virtual DOM (which we will discuss below).
+2. تمپلیت‌ها به دلیل سینتکس خاص‌شان، تحلیل آسان‌تری دارند. این مورد اجازه می‌دهد کامپایلر تمپلیت‌های Vue بسیاری از بهینه‌سازی‌های زمان کامپایل را برای بهبود عملکرد virtual DOM (که در ادامه بحث خواهیم کرد) اعمال کند.
 
-In practice, templates are sufficient for most use cases in applications. Render functions are typically only used in reusable components that need to deal with highly dynamic rendering logic. Render function usage is discussed in more detail in [Render Functions & JSX](./render-function).
+در عمل، تمپلیت‌ها برای اکثر موارد استفاده در برنامه‌ها کافی هستند. render functionها معمولاً فقط در کامپوننت‌های قابل استفاده مجدد که نیاز به مدیریت منطق رندرینگ بسیار پویا دارند، استفاده می‌شوند. استفاده از render functionها در [Render Functions & JSX](./render-function) با جزئیات مورد بحث قرار گرفته است.
 
-## Compiler-Informed Virtual DOM {#compiler-informed-virtual-dom}
+## Virtual DOM آگاه از کامپایلر | Compiler-Informed Virtual DOM {#compiler-informed-virtual-dom}
 
-The virtual DOM implementation in React and most other virtual-DOM implementations are purely runtime: the reconciliation algorithm cannot make any assumptions about the incoming virtual DOM tree, so it has to fully traverse the tree and diff the props of every vnode in order to ensure correctness. In addition, even if a part of the tree never changes, new vnodes are always created for them on each re-render, resulting in unnecessary memory pressure. This is one of the most criticized aspect of virtual DOM: the somewhat brute-force reconciliation process sacrifices efficiency in return for declarativeness and correctness.
+پیاده‌سازی virtual DOM در React و اکثر سایر پیاده‌سازی‌ دیگر virtual DOM صرفاً در رانتایم هستند: الگوریتم reconciliation (تطابق) نمی‌تواند هیچ فرضی در مورد درخت virtual DOM ورودی داشته باشد، بنابراین برای تضمین صحت باید به طور کامل درخت را پیمایش کند و props هر vnode را مقایسه کند. علاوه بر این، حتی اگر قسمتی از درخت هرگز تغییر نکند، مجدداً vnodeهای جدیدی برای آن‌ها در هر بازرندر ایجاد می‌شود که منجر به فشار غیرضروری به حافظه می‌شود. این موضوع یکی از مواردی است که بیشترین انتقاد به virtual DOM وارد کرده است: فرایند reconciliation به نوعی "نیرومند" یا "خشن" است، چرا که بدون در نظر گرفتن بهینه‌سازی‌ها، کل درخت virtual DOM را بررسی و مقایسه می‌کند.این کار باعث افت کارایی می‌شود، اما در عوض این اطمینان را می‌دهد که رندرینگ به درستی انجام می‌شود. بنابراین می‌توان گفت این روش، کارایی را برای declarativeness (تعریفی‌بودن) و صحت قربانی می‌کند.
 
-But it doesn't have to be that way. In Vue, the framework controls both the compiler and the runtime. This allows us to implement many compile-time optimizations that only a tightly-coupled renderer can take advantage of. The compiler can statically analyze the template and leave hints in the generated code so that the runtime can take shortcuts whenever possible. At the same time, we still preserve the capability for the user to drop down to the render function layer for more direct control in edge cases. We call this hybrid approach **Compiler-Informed Virtual DOM**.
+اما لزومی ندارد این‌گونه باشد. در Vue، فریم‌ورک هم کامپایلر و هم رانتایم را کنترل می‌کند. این به ما اجازه می‌دهد تا بسیاری از بهینه‌سازی‌ها را در زمان کامپایل پیاده‌سازی کنیم که فقط یک رندرر متصل شده به هم می‌تواند از آن‌ها بهره ببرد. کامپایلر می‌تواند تمپلیت را به صورت استاتیک تجزیه و تحلیل کرده و راهنمایی‌هایی در کد تولید شده بگذارد تا رانتایم بتواند هر جا که ممکن است از میان‌بر برود. در عین حال، همچنان قابلیت کاربر برای رفتن به لایه render function برای کنترل مستقیم‌تر در موارد لبه‌ای را حفظ می‌کنیم. به این رویکرد ترکیبی **Compiler-Informed Virtual DOM (Virtual DOM آگاه از کامپایلر)** می‌گوییم.
 
-Below, we will discuss a few major optimizations done by the Vue template compiler to improve the virtual DOM's runtime performance.
+در ادامه، چندین بهینه‌سازی عمده‌ای را که توسط کامپایلر تمپلیت Vue برای بهبود عملکرد رانتایم virtual DOM انجام می‌شود را بررسی خواهیم کرد.
 
 ### Static Hoisting {#static-hoisting}
 
-Quite often there will be parts in a template that do not contain any dynamic bindings:
+اغلب اوقات قسمت‌هایی در تمپلیت وجود دارد که هیچ binding پویایی ندارند:
 
 ```vue-html{2-3}
 <div>
@@ -80,15 +80,15 @@ Quite often there will be parts in a template that do not contain any dynamic bi
 </div>
 ```
 
-[Inspect in Template Explorer](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGhvaXN0ZWQgLS0+XG4gIDxkaXY+YmFyPC9kaXY+IDwhLS0gaG9pc3RlZCAtLT5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj5cbiIsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
+[در Template Explorer بررسی کنید](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGhvaXN0ZWQgLS0+XG4gIDxkaXY+YmFyPC9kaXY+IDwhLS0gaG9pc3RlZCAtLT5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj5cbiIsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
 
-The `foo` and `bar` divs are static - re-creating vnodes and diffing them on each re-render is unnecessary. The Vue compiler automatically hoists their vnode creation calls out of the render function, and reuses the same vnodes on every render. The renderer is also able to completely skip diffing them when it notices the old vnode and the new vnode are the same one.
+دو تگ div با متن `foo` و `bar` استاتیک هستند - مجدداً ایجاد کردن vnodeها و مقایسه آن‌ها در هر بازرندر غیرضروری است. کامپایلر Vue به صورت خودکار توابع ایجاد vnode آن‌ها را از render function خارج می‌کند و همان vnodeها را در هر رندر مجددا استفاده می‌کند. رندرر همچنین قادر است کاملاً از انجام مقایسه (diffing) خودداری کند زمانی که متوجه می‌شود vnode قدیمی و vnode جدید یکسان هستند.
 
-In addition, when there are enough consecutive static elements, they will be condensed into a single "static vnode" that contains the plain HTML string for all these nodes ([Example](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). These static vnodes are mounted by directly setting `innerHTML`. They also cache their corresponding DOM nodes on initial mount - if the same piece of content is reused elsewhere in the app, new DOM nodes are created using native `cloneNode()`, which is extremely efficient.
+علاوه بر این، هنگامی که تعداد کافی از عناصر استاتیک پشت سر هم وجود دارد، آن‌ها در یک "static vnode" خلاصه می‌شوند که حاوی رشته HTML ساده برای تمام این نودها است ([مثال](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). این vnodeهای استاتیک با مستقیماً تنظیم کردن `innerHTML` در برنامه mount می‌شوند. همچنین نودهای DOM متناظر خود را در mount اولیه ذخیره می‌کنند - اگر همان قطعه محتوا در جای دیگر برنامه استفاده شود، نودهای DOM جدید با استفاده از `cloneNode()‎` بومی که بسیار کارآمد است، ایجاد می‌شوند.
 
 ### Patch Flags {#patch-flags}
 
-For a single element with dynamic bindings, we can also infer a lot of information from it at compile time:
+ می‌توانیم در زمان کامپایل اطلاعات زیادی از یک element با bindingهای پویا استنباط کنیم:
 
 ```vue-html
 <!-- class binding only -->
@@ -101,9 +101,9 @@ For a single element with dynamic bindings, we can also infer a lot of informati
 <div>{{ dynamic }}</div>
 ```
 
-[Inspect in Template Explorer](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2IDpjbGFzcz1cInsgYWN0aXZlIH1cIj48L2Rpdj5cblxuPGlucHV0IDppZD1cImlkXCIgOnZhbHVlPVwidmFsdWVcIj5cblxuPGRpdj57eyBkeW5hbWljIH19PC9kaXY+Iiwib3B0aW9ucyI6e319)
+[در Template Explorer بررسی کنید](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2IDpjbGFzcz1cInsgYWN0aXZlIH1cIj48L2Rpdj5cblxuPGlucHV0IDppZD1cImlkXCIgOnZhbHVlPVwidmFsdWVcIj5cblxuPGRpdj57eyBkeW5hbWljIH19PC9kaXY+Iiwib3B0aW9ucyI6e319)
 
-When generating the render function code for these elements, Vue encodes the type of update each of them needs directly in the vnode creation call:
+هنگام تولید کد render function برای این عناصر، Vue نوع به‌روزرسانی مورد نیاز هر کدام را مستقیماً در تابع ایجاد vnode کدگذاری می‌کند:
 
 ```js{3}
 createElementVNode("div", {
@@ -111,7 +111,7 @@ createElementVNode("div", {
 }, null, 2 /* CLASS */)
 ```
 
-The last argument, `2`, is a [patch flag](https://github.com/vuejs/core/blob/main/packages/shared/src/patchFlags.ts). An element can have multiple patch flags, which will be merged into a single number. The runtime renderer can then check against the flags using [bitwise operations](https://en.wikipedia.org/wiki/Bitwise_operation) to determine whether it needs to do certain work:
+آخرین آرگومان، `2`، یک [patch flag](https://github.com/vuejs/core/blob/main/packages/shared/src/patchFlags.ts) است. یک عنصر می‌تواند چندین patch flag داشته باشد که در یک عدد مجزا ترکیب می‌شوند. سپس رندرر رانتایم می‌تواند با استفاده از [عملیات bitwise](https://en.wikipedia.org/wiki/Bitwise_operation) بر روی این flagها بررسی کند که آیا نیاز به انجام کار خاصی دارد یا خیر:
 
 ```js
 if (vnode.patchFlag & PatchFlags.CLASS /* 2 */) {
@@ -119,9 +119,9 @@ if (vnode.patchFlag & PatchFlags.CLASS /* 2 */) {
 }
 ```
 
-Bitwise checks are extremely fast. With the patch flags, Vue is able to do the least amount of work necessary when updating elements with dynamic bindings.
+بررسی‌های bitwise بسیار سریع هستند. با patch flagها، Vue قادر است کمترین مقدار کار لازم را هنگام به‌روزرسانی عناصر با dynamic binding ها انجام دهد.
 
-Vue also encodes the type of children a vnode has. For example, a template that has multiple root nodes is represented as a fragment. In most cases, we know for sure that the order of these root nodes will never change, so this information can also be provided to the runtime as a patch flag:
+Vue همچنین نوع children یک vnode را کدگذاری می‌کند. به عنوان مثال، تمپلیتی که چندین نود ریشه دارد به عنوان یک فرگمنت نمایش داده می‌شود. در اکثر موارد، مطمئن هستیم که ترتیب این نودهای ریشه هرگز تغییر نمی‌کند، بنابراین این اطلاعات نیز می‌تواند به عنوان یک patch flag به رانتایم ارائه شود:
 
 ```js{4}
 export function render() {
@@ -131,11 +131,11 @@ export function render() {
 }
 ```
 
-The runtime can thus completely skip child-order reconciliation for the root fragment.
+بنابراین رانتایم می‌تواند کاملاً از تطابق ترتیب فرزندان برای فرگمنت ریشه صرف‌نظر کند.
 
 ### Tree Flattening {#tree-flattening}
 
-Taking another look at the generated code from the previous example, you'll notice the root of the returned virtual DOM tree is created using a special `createElementBlock()` call:
+دوباره به کد تولید شده از مثال قبلی نگاهی بیندازید، متوجه می‌شوید که ریشه درخت virtual DOM برگردانده شده با یک تابع ویژه `createElementBlock()‎` ایجاد شده است:
 
 ```js{2}
 export function render() {
@@ -145,9 +145,9 @@ export function render() {
 }
 ```
 
-Conceptually, a "block" is a part of the template that has stable inner structure. In this case, the entire template has a single block because it does not contain any structural directives like `v-if` and `v-for`.
+مفهوماً، یک "block" قسمتی از تمپلیت است که ساختار داخلی ثابتی دارد. در این مورد، کل تمپلیت یک block دارد زیرا حاوی هیچ دستورالعمل ساختاری مانند `v-if` و `v-for` نیست.
 
-Each block tracks any descendant nodes (not just direct children) that have patch flags. For example:
+هر بلوکی هرگونه نودهای فرزند (نه فقط فرزندان مستقیم) که patch flags دارند را رهگیری می‌کند. به عنوان مثال:
 
 ```vue-html{3,5}
 <div> <!-- root block -->
@@ -159,7 +159,7 @@ Each block tracks any descendant nodes (not just direct children) that have patc
 </div>
 ```
 
-The result is a flattened array that contains only the dynamic descendant nodes:
+نتیجه یک آرایه تخت‌شده‌است (flattened array) که فقط حاوی نودهای فرزند پویا است:
 
 ```
 div (block root)
@@ -167,9 +167,9 @@ div (block root)
 - div with {{ bar }} binding
 ```
 
-When this component needs to re-render, it only needs to traverse the flattened tree instead of the full tree. This is called **Tree Flattening**, and it greatly reduces the number of nodes that need to be traversed during virtual DOM reconciliation. Any static parts of the template are effectively skipped.
+هنگامی که این کامپوننت نیاز به بازرندر دارد، فقط نیاز به پیمایش درخت جدید به جای درخت کامل دارد. این را **Tree Flattening** می‌نامند و تعداد نودهایی که نیاز به پیمایش در طول تطابق virtual DOM دارند را به طور قابل توجهی کاهش می‌دهد. قسمت‌های استاتیک تمپلیت به طور مؤثری رد می‌شود.
 
-`v-if` and `v-for` directives will create new block nodes:
+دستورالعمل‌های `v-if` و `v-for` نودهای block جدید ایجاد خواهند کرد:
 
 ```vue-html
 <div> <!-- root block -->
@@ -181,12 +181,12 @@ When this component needs to re-render, it only needs to traverse the flattened 
 </div>
 ```
 
-A child block is tracked inside the parent block's array of dynamic descendants. This retains a stable structure for the parent block.
+هر block والد یک آرایه‌ای از فرزندان پویایش را نگه می‌دارد. بنابراین وقتی block والد نیاز به بازرندر دارد، فقط نیاز به بررسی آرایه فرزندان پویای خودش دارد تا بفهمد چه چیزی نیاز به به‌روزرسانی دارد.
 
-### Impact on SSR Hydration {#impact-on-ssr-hydration}
+### تأثیر بر SSR Hydration {#impact-on-ssr-hydration}
 
-Both patch flags and tree flattening also greatly improve Vue's [SSR Hydration](/guide/scaling-up/ssr#client-hydration) performance:
+هم patch flag ها و هم tree flattening، عملکرد [SSR Hydration](/guide/scaling-up/ssr#client-hydration) Vue را نیز به طور قابل توجهی بهبود می‌بخشند:
 
-- Single element hydration can take fast paths based on the corresponding vnode's patch flag.
+- hydration تک عنصر می‌تواند مسیرهای سریعی بر اساس patch flag برای vnode متناظر انتخاب کند.
 
-- Only block nodes and their dynamic descendants need to be traversed during hydration, effectively achieving partial hydration at the template level.
+- فقط نودهای block و فرزندان پویای آن‌ها نیاز به پیمایش در طول hydration دارند، به طور مؤثر hydration جزئی در سطح تمپلیت را محقق می‌کند.
