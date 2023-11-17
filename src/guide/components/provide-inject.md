@@ -144,7 +144,7 @@ export default {
 
 <div class="options-api">
 
-برای تزریق داده‌های ارائه شده توسط یک کامپوننت اجدادی، از آپشن [`inject`](/api/options-api#inject) استفاده کنید:
+برای تزریق داده‌های ارائه شده توسط یک کامپوننت اجدادی، از آپشن [`inject`](/api/options-composition#inject) استفاده کنید:
 
 ```js
 export default {
