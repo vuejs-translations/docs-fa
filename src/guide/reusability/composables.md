@@ -1,25 +1,25 @@
-# Composables {#composables}
+# ترکیب‌پذیرها {#composables}
 
 <script setup>
 import { useMouse } from './mouse'
 const { x, y } = useMouse()
 </script>
 
-:::tip
-This section assumes basic knowledge of Composition API. If you have been learning Vue with Options API only, you can set the API Preference to Composition API (using the toggle at the top of the left sidebar) and re-read the [Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals) and [Lifecycle Hooks](/guide/essentials/lifecycle) chapters.
+:::tip نکته
+این بخش به دانش پایه‌ای در مورد Composition API نیاز دارد. اگر تاکنون فقط با Options API آشنا شده‌اید، می‌توانید اولویت API را به Composition API تغییر دهید (با استفاده از تاگل در بالای نوار کناری سمت چپ) و فصل‌های [مبانی واکنش‌گرایی](/guide/essentials/reactivity-fundamentals) و [قلاب‌های چرخه حیات](/guide/essentials/lifecycle) را مجدداً مطالعه کنید.
 :::
 
-## What is a "Composable"? {#what-is-a-composable}
+## یک "ترکیب پذیر" چیست؟ {#what-is-a-composable}
 
-In the context of Vue applications, a "composable" is a function that leverages Vue's Composition API to encapsulate and reuse **stateful logic**.
+در برنامه‌های Vue، یک "ترکیب‌پذیر" تابعی است که از Composition API استفاده می‌کند تا منطق **دارای حالت** را کپسوله‌سازی و قابل استفاده مجدد کند.
 
-When building frontend applications, we often need to reuse logic for common tasks. For example, we may need to format dates in many places, so we extract a reusable function for that. This formatter function encapsulates **stateless logic**: it takes some input and immediately returns expected output. There are many libraries out there for reusing stateless logic - for example [lodash](https://lodash.com/) and [date-fns](https://date-fns.org/), which you may have heard of.
+هنگام ساخت برنامه‌های فرانت‌اند، اغلب به استفاده مجدد از منطق برای انجام وظایف مشترک نیاز داریم. به عنوان مثال، ممکن است بخواهیم تاریخ‌ها را در بسیاری از نقاط فرمت کنیم، بنابراین یک تابع قابل استفاده مجدد برای این کار استخراج می‌کنیم. این تابع فرمت‌کننده منطق بدون حالت را کپسوله می‌کند: ورودی‌هایی را دریافت می‌کند و بلافاصله خروجی مورد انتظار را برمی‌گرداند. کتابخانه‌های زیادی برای استفاده مجدد از منطق بدون حالت وجود دارند - به عنوان مثال lodash و date-fns که ممکن است شما از آن‌ها شنیده باشید.
 
-By contrast, stateful logic involves managing state that changes over time. A simple example would be tracking the current position of the mouse on a page. In real-world scenarios, it could also be more complex logic such as touch gestures or connection status to a database.
+در مقابل، منطق دارای حالت شامل مدیریت حالت‌هایی است که با گذر زمان تغییر می‌کنند. یک مثال ساده ردیابی موقعیت فعلی ماوس در یک صفحه است. در سناریوهای واقعی‌تر، می‌تواند منطق پیچیده‌تری مانند حرکات لمسی یا وضعیت اتصال به یک پایگاه داده باشد.
 
-## Mouse Tracker Example {#mouse-tracker-example}
+## مثال ردیاب ماوس {#mouse-tracker-example}
 
-If we were to implement the mouse tracking functionality using the Composition API directly inside a component, it would look like this:
+اگر بخواهیم عملکرد ردیابی ماوس را با استفاده از Composition API مستقیماً در داخل یک کامپوننت پیاده سازی کنیم، به شکل زیر خواهد بود:
 
 ```vue
 <script setup>
@@ -40,7 +40,7 @@ onUnmounted(() => window.removeEventListener('mousemove', update))
 <template>Mouse position is at: {{ x }}, {{ y }}</template>
 ```
 
-But what if we want to reuse the same logic in multiple components? We can extract the logic into an external file, as a composable function:
+اما اگر بخواهیم از یک منطق در چندین کامپوننت دوباره استفاده کنیم، چه؟ ما می توانیم منطق را به عنوان یک تابع ترکیبی در یک فایل خارجی استخراج کنیم:
 
 ```js
 // mouse.js
@@ -68,7 +68,7 @@ export function useMouse() {
 }
 ```
 
-And this is how it can be used in components:
+و به این صورت می توان از آن در کامپوننت ها استفاده کرد:
 
 ```vue
 <script setup>
@@ -86,11 +86,11 @@ const { x, y } = useMouse()
 
 [Try it in the Playground](https://play.vuejs.org/#eNqNkj1rwzAQhv/KocUOGKVzSAIdurVjoQUvJj4XlfgkJNmxMfrvPcmJkkKHLrbu69H7SlrEszFyHFDsxN6drDIeHPrBHGtSvdHWwwKDwzfNHwjQWd1DIbd9jOW3K2qq6aTJxb6pgpl7Dnmg3NS0365YBnLgsTfnxiNHACvUaKe80gTKQeN3sDAIQqjignEhIvKYqMRta1acFVrsKtDEQPLYxuU7cV8Msmg2mdTilIa6gU5p27tYWKKq1c3ENphaPrGFW25+yMXsHWFaFlfiiOSvFIBJjs15QJ5JeWmaL/xYS/Mfpc9YYrPxl52ULOpwhIuiVl9k07Yvsf9VOY+EtizSWfR6xKK6itgkvQ/+fyNs6v4XJXIsPwVL+WprCiL8AEUxw5s=)
 
-As we can see, the core logic remains identical - all we had to do was move it into an external function and return the state that should be exposed. Just like inside a component, you can use the full range of [Composition API functions](/api/#composition-api) in composables. The same `useMouse()` functionality can now be used in any component.
+همانطور که می‌بینید، منطق اصلی یکسان باقی مانده است - تنها کاری که باید انجام می‌دادیم این بود که آن را در یک تابع خارجی جابجا کنیم و حالت‌هایی که باید نشان داده شوند را برگردانیم. درست مثل داخل یک کامپوننت، می‌توانید از تمام API‌های [Composition](/api/#composition-api) در ترکیب‌پذیرها استفاده کنید. همان `useMouse()` می‌تواند حالا در هر کامپوننتی استفاده شود.
 
-The cooler part about composables though, is that you can also nest them: one composable function can call one or more other composable functions. This enables us to compose complex logic using small, isolated units, similar to how we compose an entire application using components. In fact, this is why we decided to call the collection of APIs that make this pattern possible Composition API.
+قسمت جالب ترکیب‌پذیرها این است که می‌توانید آن‌ها را درون هم قرار دهید: یک تابع ترکیب‌پذیر می‌تواند یک یا چند تابع ترکیب‌پذیر دیگر را صدا بزند. این امکان به ما می‌دهد تا منطق پیچیده را با استفاده از واحدهای کوچک و مجزا ترکیب کنیم، شبیه به چگونگی ترکیب یک برنامه کامل با استفاده از کامپوننت‌ها. در واقع، همین دلیلی بود که تصمیم گرفتیم مجموعه API‌هایی که این الگو را ممکن می‌سازند را Composition API بنامیم.
 
-For example, we can extract the logic of adding and removing a DOM event listener into its own composable:
+به عنوان مثال، می‌توانیم منطق افزودن و حذف یک شنونده رویداد DOM را در composable خودش استخراج کنیم:
 
 ```js
 // event.js
@@ -104,7 +104,7 @@ export function useEventListener(target, event, callback) {
 }
 ```
 
-And now our `useMouse()` composable can be simplified to:
+و حالا useMouse() ترکیب‌پذیر ما می‌تواند ساده‌تر شود:
 
 ```js{3,9-12}
 // mouse.js
@@ -124,13 +124,13 @@ export function useMouse() {
 }
 ```
 
-:::tip
-Each component instance calling `useMouse()` will create its own copies of `x` and `y` state so they won't interfere with one another. If you want to manage shared state between components, read the [State Management](/guide/scaling-up/state-management) chapter.
+:::tip نکته
+هر مثال کامپوننت که `useMouse()` را صدا می‌زند، کپی‌های خود را از حالت‌های `x` و `y` ایجاد می‌کند تا با یکدیگر تداخل پیدا نکنند. اگر می‌خواهید حالت مشترک بین کامپوننت‌ها را مدیریت کنید، فصل [مدیریت حالت](/guide/scaling-up/state-management) را بخوانید.
 :::
 
-## Async State Example {#async-state-example}
+## مثال حالت Async {#async-state-example}
 
-The `useMouse()` composable doesn't take any arguments, so let's take a look at another example that makes use of one. When doing async data fetching, we often need to handle different states: loading, success, and error:
+ترکیب‌پذیر `useMouse()` هیچ آرگومانی نمی‌پذیرد، پس یک مثال دیگر را که از یک آرگومان استفاده می‌کند بررسی کنیم. هنگام دریافت داده‌های Async اغلب باید حالت‌های مختلف را مدیریت کنیم: بارگذاری، موفقیت و خطا:
 
 ```vue
 <script setup>
@@ -155,7 +155,7 @@ fetch('...')
 </template>
 ```
 
-It would be tedious to have to repeat this pattern in every component that needs to fetch data. Let's extract it into a composable:
+تکرار این الگو در هر کامپوننتی که نیاز به دریافت داده دارد، خسته‌کننده خواهد بود. بیایید آن را در یک ترکیب‌پذیر استخراج کنیم:
 
 ```js
 // fetch.js
@@ -174,7 +174,7 @@ export function useFetch(url) {
 }
 ```
 
-Now in our component we can just do:
+حالا در کامپوننت ما می‌توانیم فقط این کار را انجام دهیم:
 
 ```vue
 <script setup>
