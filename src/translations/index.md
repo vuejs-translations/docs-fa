@@ -2,9 +2,9 @@
 aside: false
 ---
 
-# Translations {#translations}
+# ترجمه‌ها {#translations}
 
-## Available Languages {#available-languages}
+## زبان‌های موجود {#available-languages}
 
 - [English](https://vuejs.org/) [[source](https://github.com/vuejs/docs)]
 - [简体中文 / Simplified Chinese](https://cn.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-zh-cn)]
@@ -18,8 +18,8 @@ aside: false
 
 <!-- ## Work in Progress Languages {#work-in-progress-languages} -->
 
-## Starting a new Translation {#starting-a-new-translation}
+## شروع یک ترجمه جدید {#starting-a-new-translation}
 
-The Vue documentation has recently undergone a major revision, so translations in other languages are still missing or work-in-progress.
+اسناد Vue اخیراً تحت بازنگری اساسی قرار گرفته است، بنابراین ترجمه به زبان‌های دیگر هنوز وجود ندارد یا در حال انجام است.
 
-We welcome community efforts to provide more translations. Translation efforts are managed in the [vuejs-translations](https://github.com/vuejs-translations/) GitHub organization. If you are interested in contributing, please check out the [Translation Guidelines](https://github.com/vuejs-translations/guidelines/blob/main/README.md) to get started.
+ما از تلاش های جامعه برای ارائه ترجمه های بیشتر استقبال می کنیم. تلاش های ترجمه در سازمان گیت هاب [vuejs-translations](https://github.com/vuejs-translations/) مدیریت می شود. اگر علاقه مند به مشارکت هستید، لطفا [راهنمای ترجمه](https://github.com/vuejs-translations/guidelines/blob/main/README.md) را برای شروع بررسی کنید.
