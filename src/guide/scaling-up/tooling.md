@@ -89,7 +89,7 @@
 
 - [Volar](https://github.com/johnsoncodehk/volar) بررسی انطباق تایپ برای SFC ها با استفاده از بلوک‌های `<script lang="ts"‎>` را فراهم می‌کند، شامل تمپلیت و اعتبارسنجی prop های بین کامپوننتی می‌شود.
 
-- از [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/vue-tsc) برای انجام همان بررسی انطباق نوع از خط فرمان، یا برای تولید فایل‌های `d.ts` برای SFC ها استفاده کنید.
+- از [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) برای انجام همان بررسی انطباق نوع از خط فرمان، یا برای تولید فایل‌های `d.ts` برای SFC ها استفاده کنید.
 
 ## Testing {#testing}
 
