@@ -15,8 +15,6 @@ pnpm run dev
 
 <p dir="rtl">برای دستورات و توصیه‌های ما درباره نوشتن و حفظ محتوای مستندات، به <a href="https://github.com/vuejs/docs/blob/main/.github/contributing/writing-guide.md">راهنمای نوشتاری ما</a> مراجعه کنید.</p>
 
-<p dir="rtl">پی‌نوشت: شما کاملا بدون نیاز به یادگیری VitePress می‌توانید در ترجمه مستندات مشارکت کنید!</p>
-
 <h2 dir="rtl">راهنمای مشارکت</h2>
 
 <p dir="rtl">
@@ -48,7 +46,7 @@ pnpm run dev
 <h2 dir="rtl">مسیر پروژه</h2>
 
 <p dir="rtl">
-هم‌اکنون در<a href="https://github.com/vuejs-translations/guidelines#current-active-translations-in-alphabetical-order">مرحله ۳</a> (از ۵ مرحله) قرار داریم. هدف فعلی ما ترجمه ۵۰٪ مستندات هست تا ریپازیتوری اختصاصی از <a href="https://github.com/vuejs-translations">vuejs-translations</a> دریافت کنیم. برای جزئیات بیشتر و اطلاع از فرایند کلی پروژه این <a href="https://github.com/vuejs-translations/guidelines">این صفحه</a> را مطالعه کنید.
+هم‌اکنون در مرحله ۴ (از ۵ مرحله) قرار داریم. هدف فعلی ما ترجمه کامل مستندات و انتشار آن روی دامنه اصلی می‌باشد. برای جزئیات بیشتر و اطلاع از فرایند کلی پروژه <a href="https://github.com/vuejs-translations/guidelines">این صفحه</a> را مطالعه کنید.
 </p>
 
 
