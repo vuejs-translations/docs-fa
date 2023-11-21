@@ -80,3 +80,11 @@ li {
   left: unset !important;
   right: 2px !important;
 }
+
+.vt-menu-link {
+  direction: rtl;
+}
+
+.join-translations{
+  direction: rtl;
+}
