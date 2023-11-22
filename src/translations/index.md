@@ -22,4 +22,4 @@ aside: false
 
 اسناد Vue اخیراً تحت بازنگری اساسی قرار گرفته است، بنابراین ترجمه به زبان‌های دیگر هنوز وجود ندارد یا در حال انجام است.
 
-ما به شدت از تلاش‌های جامعه برای ارائه ترجمه‌های بیشتر استقبال می کنیم. تمامی ترجمه‌ها در سازمان گیت‌هاب [vuejs-translations](https://github.com/vuejs-translations/) مدیریت می شود. اگر علاقه‌مند به مشارکت هستید، لطفا [راهنمای ترجمه](https://github.com/vuejs-translations/guidelines/blob/main/README.md) را برای شروع بررسی کنید.
+ما به شدت از تلاش‌های کامیونیتی برای ارائه ترجمه‌های بیشتر استقبال می کنیم. تمامی ترجمه‌ها در سازمان گیت‌هاب [vuejs-translations](https://github.com/vuejs-translations/) مدیریت می شود. اگر علاقه‌مند به مشارکت هستید، لطفا [راهنمای ترجمه](https://github.com/vuejs-translations/guidelines/blob/main/README.md) را برای شروع بررسی کنید.

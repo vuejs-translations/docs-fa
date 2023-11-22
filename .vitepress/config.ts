@@ -37,7 +37,7 @@ const nav: ThemeConfig['nav'] = [
     link: 'https://play.vuejs.org'
   },
   {
-    text: 'زیست‌بوم',
+    text: 'اکوسیستم',
     activeMatch: `^/ecosystem/`,
     items: [
       {
@@ -110,7 +110,7 @@ const nav: ThemeConfig['nav'] = [
       { text: 'تیم', link: '/about/team' },
       { text: 'انتشارات', link: '/about/releases' },
       {
-        text: 'راهنمای جامعه',
+        text: 'راهنمای کامیونیتی',
         link: '/about/community-guide'
       },
       { text: 'کدرفتار', link: '/about/coc' },
