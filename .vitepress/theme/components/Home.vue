@@ -19,8 +19,8 @@ onMounted(async () => {
       <br />جاوااسکریپت
     </h1>
     <p class="description">
-      یک فریمورک <strong>آسان، بهینه و انعطاف‌پذیر</strong> برای ساخت روابط
-      کاربری وب.
+      یک فریمورک <strong>آسان، بهینه و انعطاف‌پذیر</strong> که برای ساخت
+      روابط کاربری در وب طراحی شده است.
     </p>
     <div class="actions">
       <a class="get-started" href="/guide/introduction.html">
@@ -78,8 +78,8 @@ onMounted(async () => {
     <div class="vt-box">
       <h2>بهینه و با عملکرد بالا</h2>
       <p>
-        سیستم رندر کاملا واکنشی و بهینه سازی شده توسط کامپایلر که به ندرت
-        به بهینه سازی دستی نیاز دارد.
+        سیستم رندر کاملا واکنشی و بهینه‌شده توسط کامپایلر که به ندرت به
+        بهینه‌سازی دستی نیاز دارد.
       </p>
     </div>
     <div class="vt-box">
@@ -92,9 +92,9 @@ onMounted(async () => {
   </section>
 
   <section id="sponsors">
-    <h2>حامی‌های پلاتین</h2>
+    <h2>حامیان پلاتینیومی</h2>
     <SponsorsGroup tier="platinum" placement="landing" />
-    <h2>حامی‌های طلا</h2>
+    <h2>حامیان طلایی</h2>
     <SponsorsGroup tier="gold" placement="landing" />
   </section>
 
