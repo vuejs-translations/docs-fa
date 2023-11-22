@@ -1,58 +1,56 @@
 
 # واژه‌نامه
 
-این فهرستی از ترجمه‌های اصطلاحات فنی است که توسط تیم ترجمه توافق شده است. این فهرست مرجع اولیه اصطلاحات در این سایت است.
+ما توی واژه‌نامه یه سری معادل فارسی برای کلمات و عبارت‌های تخصصی فهرست کردیم که باید موقع ترجمه به اونها پایبند بمونیم. بعضی از کلمات/عبارات چندین معادل دارن که می‌تونید برحسب شرایط به انتخاب خودتون استفاده کنید. یکی از اهداف اصلی ما کامل کردن واژه‌نامه‌ست تا بتونیم فرایند ترجمه رو راحت‌تر کنیم و کیفیت ترجمه رو بالا ببریم، بنابراین اگر که معادل فارسی بهتری برای موارد زیر مدنظر دارید حتما اونها رو اصلاح کنید.
 
-Here is the markdown table sorted alphabetically by the English column:
-
-| English | فارسی | Confirmation | Description |
-|-|-|-|-|  
-| accessibility | دسترسی‌پذیری | pending |  |
-| animation | انیمیشن | pending |  |
-| annotation | | pending |  | 
-| argument | آرگومان | pending |  |
-| async | ناهمگام، غیرهمگام | pending |  |
-| attribute | شاخصه، ویژگی، صفت | pending |  |
-| binding | اتصال، پیوند | pending |  |  
-| built-in | داخلی، درونی، نهادینه‌شده | pending |  |
-| bus | | pending |  |
-| class | کلاس | pending |  |
-| command line | خط فرمان | pending |  |
-| component | کامپوننت | pending |  |
-| composable function | | pending |  |
-| Composition API | | pending |  |
-| computed | computed | pending |  |
-| conditional | شرطی | pending |  |
-| container | | pending |  |
-| data | داده | pending |  |
-| debugging | دیباگ کردن | pending |  |
-| deep | عمیق، ژرف | pending |  |
-| delay | تاخیر | pending |  |
-| dependency | وابستگی | pending |  |  
-| directive | دایرکتیو | pending |  |
-| DOM | DOM | pending |  |
-| element | المان، عنصر | pending |  |
-| emit | انتشار، ارسال | pending |  |
-| endpoint | پایانه | pending |  |
-| event | رویداد | pending |  |
-| expression | عبارت | pending |  |
-| GitHub | گیت‌هاب | pending |  |
-| handle | مدیریت، رسیدگی | pending |  |
-| hook | هوک | pending |  |
-| Lazy Loading | بارگذاری تنبل | pending |  |
-| load | بارگذاری | pending |  |
-| loader | بارگذار | pending |  |
-| modifier | پیراینده | pending |  |
-| mouse | ماوس | pending |  |
-| Object | شی | pending |  |
-| prop | پراپ | pending |  |
-| Property | پراپرتی | pending |  |
-| seamlessly | یکپارچه | pending |  |  
-| state | state | pending |  |
-| template | تمپلیت | pending |  |
-| timeout | تایم‌اوت | pending |  |
-| transition | ترنزیشن‌ | pending |  |
-| Vue | Vue | pending |  |
-| wrapper | پوششی، دربرگیرنده | pending |  |
-| application | اپلیکیشن | pending |  |
-| teleport | تله‌پورت | pending |  |
+| English | فارسی |
+|-|-|
+| accessibility | دسترسی‌پذیری |
+| animation | انیمیشن
+| annotation | |
+| argument | آرگومان |
+| async | ناهمگام، غیرهمگام |
+| attribute | شاخصه، ویژگی، صفت |
+| binding | اتصال، پیوند |
+| built-in | داخلی، درونی، نهادینه‌شده |
+| bus | |
+| class | کلاس |
+| command line | خط فرمان |
+| component | کامپوننت |
+| composable function | |
+| Composition API | |
+| computed | computed |
+| conditional | شرطی |
+| container | |
+| data | داده |
+| debugging | دیباگ کردن |
+| deep | عمیق، ژرف |
+| delay | تاخیر |
+| dependency | وابستگی |
+| directive | دایرکتیو |
+| DOM | DOM |
+| element | المان، عنصر |
+| emit | انتشار، ارسال |
+| endpoint | پایانه |
+| event | رویداد |
+| expression | عبارت |
+| GitHub | گیت‌هاب |
+| handle | مدیریت، رسیدگی |
+| hook | هوک |
+| Lazy Loading | بارگذاری تنبل |
+| load | بارگذاری |
+| loader | بارگذار |
+| modifier | پیراینده |
+| mouse | ماوس |
+| Object | شی |
+| prop | پراپ |
+| Property | پراپرتی |
+| seamlessly | یکپارچه |
+| state | state |
+| template | تمپلیت |
+| timeout | تایم‌اوت |
+| transition | ترنزیشن‌ |
+| Vue | Vue |
+| wrapper | پوششی، دربرگیرنده |
+| application | اپلیکیشن |
+| teleport | تله‌پورت |
