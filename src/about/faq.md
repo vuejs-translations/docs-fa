@@ -1,100 +1,102 @@
-# Frequently Asked Questions {#frequently-asked-questions}
+# سؤالات متداول {#frequently-asked-questions}
 
-## Who maintains Vue? {#who-maintains-vue}
+## چه کسی از ویو نگه‌داری می‌کند؟ {#who-maintains-vue}
 
-Vue is an independent, community-driven project. It was created by [Evan You](https://twitter.com/youyuxi) in 2014 as a personal side project. Today, Vue is actively maintained by [a team of both full-time and volunteer members from all around the world](/about/team), where Evan serves as the project lead. You can learn more about the story of Vue in this [documentary](https://www.youtube.com/watch?v=OrxmtDw4pVI).
+ویو یک پروژه‌ی مستقل و مدیریت‌شده توسط جامعه است. ویو توسط [ایوان یو](https://twitter.com/youyuxi) در سال ۲۰۱۴ به عنوان یک پروژه‌ی شخصی آغاز به کار کرد. امروزه ویو به صورت فعالانه توسط [گروهی از داوطلبان پاره وقت و تمام وقت از سراسر جهان](/about/team) نگه‌داری می‌شود که راهبر این پروژه ایوان یو است. برای اطلاعات بیشتر راجع به داستان ویو به [این مستند](https://www.youtube.com/watch?v=OrxmtDw4pVI) مراجعه کنید.
 
-Vue's development is primarily funded through sponsorships and we have been financially sustainable since 2016. If you or your business benefit from Vue, consider [sponsoring us](/sponsor/) to support Vue's development!
+توسعه‌ی ویو به وسیله‌ی حمایت‌های اسپانسری ادامه می‌یابد و ما از سال ۲۰۱۶ در وضعیت مالی خوبی قرار داریم. اگر شما و یا شرکت شما از ویو سود می‌برد، می‌توانید [اسپانسر](/sponsor/) شوید تا از توسعه‌ی ویو حمایت کنید!
 
-## What's the difference between Vue 2 and Vue 3? {#what-s-the-difference-between-vue-2-and-vue-3}
+## تفاوت بین ویو ۲ و ویو ۳ چیست؟ {#what-s-the-difference-between-vue-2-and-vue-3}
 
-Vue 3 is the current, latest major version of Vue. It contains new features that are not present in Vue 2, such as Teleport, Suspense, and multiple root elements per template. It also contains breaking changes that make it incompatible with Vue 2. Full details are documented in the [Vue 3 Migration Guide](https://v3-migration.vuejs.org/).
+ویو ۳ آخرین نسخه‌ی major ویو است که حاوی ویژگی‌هایی‌ست که در ویو ۲ وجود ندارند. مثل Teleport، Suspense، و چندین المان root به ازای هر template. ویو ۳ همچنین دارای breaking changeهایی است که باعث می‌شود با ویو ۲ سازگار نباشد. جزئیات کامل‌تر در [راهنمای migration به ویو ۳](https://v3-migration.vuejs.org/) موجود است.
 
-Despite the differences, the majority of Vue APIs are shared between the two major versions, so most of your Vue 2 knowledge will continue to work in Vue 3. Notably, Composition API was originally a Vue-3-only feature, but has now been backported to Vue 2 and is available in [Vue 2.7](https://github.com/vuejs/vue/blob/main/CHANGELOG.md#270-2022-07-01).
+علی‌رغم تفاوت‌ها، بخش بزرگی از APIهای ویو بین این دو نسخه یکسان هستند. پس، بخش‌های زیادی از دانشی که راجع به ویو ۲ دارید در رابطه با ویو ۳ به کارتان خواهد آمد. Composition API در اصل یک ویژگی فقط برای ویو ۳ بود، ولی حالا به ویو ۲ نیز پورت شده و در [ویو ۲.۷](https://github.com/vuejs/vue/blob/main/CHANGELOG.md#270-2022-07-01) نیز در دسترس است.
 
-In general, Vue 3 provides smaller bundle sizes, better performance, better scalability, and better TypeScript / IDE support. If you are starting a new project today, Vue 3 is the recommended choice. There are only a few reasons for you to consider Vue 2 as of now:
+به طور کلی، ویو ۳ اندازه‌های bundle کم‌حجم‌تر، performance بهتر، مقیاس‌پذیری بهتر و پشتیبانی بهتری از تایپ‌اسکریپت و IDE دارد. اگر در حال ایجاد پروژه‌ای جدید هستید، ویو ۳ انتخاب پیشنهاد می‌شود. فقط چند دلیل برای استفاده از ویو ۲ می‌تواند وجود داشته باشد:
 
-- You need to support IE11. Vue 3 leverages modern JavaScript features and does not support IE11.
+- هنوز به پشتیبانی از Internet Explorer 11 نیاز دارید. ویو ۳ از ویژگی‌های مدرن جاوا اسکریپت استفاده می‌کند و از Internet Explorer 11 پشتیبانی نمی‌کند.
 
-If you intend to migrate an existing Vue 2 app to Vue 3, consult the [migration guide](https://v3-migration.vuejs.org/).
+اگر قصد دارید که پروژه‌ای را از ویو ۲ به ویو ۳ منتقل کنید، به [راهنمای migration](https://v3-migration.vuejs.org/) مراجعه کنید.
 
-## Is Vue 2 Still Supported? {#is-vue-2-still-supported}
+## آیا ویو ۲ همچنان پشتیبانی می‌شود؟ {#is-vue-2-still-supported}
 
-Vue 2.7, which was shipped in July 2022, is the final minor release of the Vue 2 version range. Vue 2 has now entered maintenance mode: it will no longer ship new features, but will continue to receive critical bug fixes and security updates for 18 months starting from the 2.7 release date. This means **Vue 2 will reach End of Life on December 31st, 2023**.
+ویو۲.۷، که در جولای ۲۰۲۲ عرضه شد، آخرین نسخه‌ی minor ویو ۲ است. ویو ۲ حالا وارد حالت نگهداری شده است: ویو ۲ دیگر ویژگی‌های جدیدی را ارائه نمی‌دهد ولی رفع باگ‌های ضروری را دریافت می‌کند و به‌روز رسانی‌های امنیتی را تا ۱۸ ماه بعد از انتشار ویو ۲.۷ ارائه می‌دهد. این به این معناست که **ویو ۲ در تاریخ ۱۰ دی ۱۴۰۲ به پایان عمر خود می‌رسد**.
 
-We believe this should provide plenty of time for most of the ecosystem to migrate over to Vue 3. However, we also understand that there could be teams or projects that cannot upgrade by this timeline while still needing to fulfill security and compliance requirements. We are partnering with industry experts to provide extended support for Vue 2 for teams with such needs - if your team expects to be using Vue 2 beyond the end of 2023, make sure to plan ahead and learn more about [Vue 2 Extended LTS](https://v2.vuejs.org/lts/).
+ما بر این باور هستیم که این زمان زیاد برای مهاجرت بیشتر اکوسیستم به ویو ۳ کافی‌ست.
+به هر حال، ما متوجه هستیم که شاید گروه‌ها و یا پروژه‌هایی باشند که نتوانند در این مدت زمانی به ویو ۳ ارتقا یابند در حالی که همچنان نیازمند امنیت و رضایت‌مندی هستند. ما در حال همکاری با حرفه‌های صنعت هستیم تا بتوانیم پشتیبانی بیشتری برای ویو ۲ برای گروه‌هایی با این‌چنین نیازمندی‌هایی برقرار کنیم. اگر گروه شما می‌خواهد که بعد از ۲۰۲۳ همچنان از ویو ۲ استفاده کند، در این رابطه برنامه‌ریزی کنید و راجع به [پشتیبانی طولانی مدت اضافی ویو ۲](https://v2.vuejs.org/lts/) بیشتر بدانید.
 
-## What license does Vue use? {#what-license-does-vue-use}
+## ویو از چه اجازه‌نامه‌ای استفاده می‌کند؟ {#what-license-does-vue-use}
 
-Vue is a free and open source project released under the [MIT License](https://opensource.org/licenses/MIT).
+ویو یک پروژه‌ی آزاد و متن‌باز است که با اجازه‌نامه‌ی [MIT](https://opensource.org/licenses/MIT) متنشر شده است.
 
-## What browsers does Vue support? {#what-browsers-does-vue-support}
+## ویو از چه مرورگرهایی پشتیبانی می‌کند؟ {#what-browsers-does-vue-support}
 
-The latest version of Vue (3.x) only supports [browsers with native ES2015 support](https://caniuse.com/es6). This excludes IE11. Vue 3.x uses ES2015 features that cannot be polyfilled in legacy browsers, so if you need to support legacy browsers, you will need to use Vue 2.x instead.
+آخرین نسخه‌ی ویو (۳.x) فقط از [مرورگرهای با پشتیبانی درونی ES2015](https://caniuse.com/es6) پشتیبانی می‌کند. این قضیه شامل Internet Explorer 11 نمی‌شود. ویو ۳.x از ویژگی‌هایی از ES2015 استفاده می‌کند که نمی‌توانند در مرورگرهای قدیمی polyfill شوند. پس اگر شما به پشتیبانی از مرورگرهای قدیمی نیاز دارید، به جای ویو ۳ از ویو ۲ استفاده کنید.
 
-## Is Vue reliable? {#is-vue-reliable}
+## آیا ویو قابل اعتماد است؟ {#is-vue-reliable}
 
-Vue is a mature and battle-tested framework. It is one of the most widely used JavaScript frameworks in production today, with over 1.5 million users worldwide, and is downloaded close to 10 million times a month on npm.
+ویو یک framework بالغ و امتحان‌شده است. ویو یکی از پر استفاده‌ترین frameworkهای جاوا اسکریپت در production است که بیشتر از ۱.۵ میلیون کاربر در سرتاسر جهان دارد و نزدیک به ۱۰ میلیون بار در ماه در npm دانلود می‌شود.
 
-Vue is used in production by renowned organizations in varying capacities all around the world, including Wikimedia Foundation, NASA, Apple, Google, Microsoft, GitLab, Zoom, Tencent, Weibo, Bilibili, Kuaishou, and many more.
+ویو در production توسط سازمان‌های به‌نامی در سراسر جهان استفاده می‌شود که شامل بنیاد ویکی‌مدیا، NASA، اپل، گوگل، مایکروسافت، GitLab، زوم، Tencent، Weibo، Bilibili، Kuaishou و خیلی سازمان‌های دیگر است.
 
-## Is Vue fast? {#is-vue-fast}
+## آیا ویو سریع است؟ {#is-vue-fast}
 
-Vue 3 is one of the most performant mainstream frontend frameworks, and handles most web application use cases with ease, without the need for manual optimizations.
+ویو ۳ یکی از قدرتمندترین frameworkهای پراستفاده frontend است که به آسانی بیشتر کاربردهای برنامه‌های وب را بدون بهینه‌سازی‌های دستی پوشش می‌دهد.
 
-In stress-testing scenarios, Vue outperforms React and Angular by a decent margin in the [js-framework-benchmark](https://krausest.github.io/js-framework-benchmark/current.html). It also goes neck-and-neck against some of the fastest production-level non-Virtual-DOM frameworks in the benchmark.
+در سناریوهای stress-test، ویو از React و Angular با یک فاصله‌ی خوب پیشی گرفت که در [js-framework-benchmark](https://krausest.github.io/js-framework-benchmark/current.html) قابل مشاهده است. ویو همچنین شانه به شانه‌ی سریع‌ترین frameworkهای بدون virtual-DOM سطح production در benchmark پیش می‌رود.
 
-Do note that synthetic benchmarks like the above focus on raw rendering performance with dedicated optimizations and may not be fully representative of real-world performance results. If you care more about page load performance, you are welcome to audit this very website using [WebPageTest](https://www.webpagetest.org/lighthouse) or [PageSpeed Insights](https://pagespeed.web.dev/). This website is powered by Vue itself, with SSG pre-rendering, full page hydration and SPA client-side navigation. It scores 100 in performance on an emulated Moto G4 with 4x CPU throttling over slow 4G networks.
+به این نکته توجه کنید که benchmarkهای ساختگی مثل مورد بالا بر روی قدرت raw rendering با بهبودهای اختصاصی متمرکز هستند و شاید نمایان‌گر نتایج واقعی performance نباشند. اگر شما بیشتر راجع به performance بارگذاری صفحات اهمیت می‌دهید، می‌توانید این صفحه را  با استفاده از [WebPageTest](https://www.webpagetest.org/lighthouse) یا [PageSpeed](https://pagespeed.web.dev/) بررسی کنید. این وبگاه از خود ویو قدرت می‌گیرد که از pre-render با SSG، hydration کامل صفحه و جابه‌جایی سمت کاربر SPA بهره می‌برد. این وبگاه امتیاز ۱۰۰ را در performance بر روی یک Moto G4 شبیه‌سازی شده با 4x CPU throttling بر روی شبکه‌ی کند 4G گرفته است.
 
-You can learn more about how Vue automatically optimizes runtime performance in the [Rendering Mechanism](/guide/extras/rendering-mechanism) section, and how to optimize a Vue app in particularly demanding cases in the [Performance Optimization Guide](/guide/best-practices/performance).
+شما می‌توانید راجع به بهبود خودکار runtime performance به [Rendering Mechanism](/guide/extras/rendering-mechanism) مراجعه کنید و راجع به بهبود یک برنامه‌ی ویو در مواردی که به آن نیاز دارید به[Performance Optimization Guide](/guide/best-practices/performance) مراجعه کنید.
 
-## Is Vue lightweight? {#is-vue-lightweight}
+## آیا ویو سبک است؟ {#is-vue-lightweight}
 
-When you use a build tool, many of Vue's APIs are ["tree-shakable"](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking). For example, if you don't use the built-in `<Transition>` component, it won't be included in the final production bundle.
+هنگامی که شما از یک ابزار build استفاده می‌کنید، بسیاری از APIهای ویو ["tree-shakable"](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking) هستند. برای مثال، اگر شما از component درونی `<Transition>` استفاده نکنید، در bundle نهایی production قرار داده نمی‌شود.
 
-A hello world Vue app that only uses the absolutely minimal APIs has a baseline size of only around **16kb**, with minification and brotli compression. The actual size of the application will depend on how many optional features you use from the framework. In the unlikely case where an app uses every single feature that Vue provides, the total runtime size is around **27kb**.
+یک برنامه‌ی سلام دنیا با ویو که فقط از APIهای حداقلی ساخته و از فشرده‌سازی brotli استفاده و minify شده است فقط اندازه‌ای حدود **۱۶ kb** دارد. سایز واقعی برنامه به میزان استفاده شما از ویژگی‌های framework بستگی دارد. در حالت بعیدی که یک برنامه از تمامی ویژگی‌هایی که ویو ارائه می‌دهد استفاده کند، اندازه‌ی runtime آن در حدود **۲۷ kb** خواهد بود.
 
-When using Vue without a build tool, we not only lose tree-shaking, but also have to ship the template compiler to the browser. This bloats up the size to around **41kb**. Therefore, if you are using Vue primarily for progressive enhancement without a build step, consider using [petite-vue](https://github.com/vuejs/petite-vue) (only **6kb**) instead.
+وقتی از ویو بدون یک ابزار build استفاده می‌کنیم، نه تنها قابلیت tree-shaking را از دست می‌دهیم بلکه مجبوریم که template compiler به مرورگر را نیز ارائه دهیم. این قضیه اندازه را تا **۴۱ kb** افزایش می‌دهد. بنابراین، اگر ویو را عموماً برای بهبود گسترده بدون یک مرحله‌ی build استفاده می‌کنید، بهتر است که از [petite-vue](https://github.com/vuejs/petite-vue) (با فقط **۶ kb** حجم) استفاده کنید.
 
-Some frameworks, such as Svelte, use a compilation strategy that produces extremely lightweight output in single-component scenarios. However, [our research](https://github.com/yyx990803/vue-svelte-size-analysis) shows that the size difference heavily depends on the number of components in the application. While Vue has a heavier baseline size, it generates less code per component. In real-world scenarios, a Vue app may very well end up being lighter.
+بعضی از frameworkها مثل Svelte، از یک استراتژی compile استفاده می‌کنند که خروجی بسیار کم‌حجمی در سناریوهای تک-component می‌دهند. به هر حال، [تحقیقات ما](https://github.com/yyx990803/vue-svelte-size-analysis) نشان می‌دهد که اندازه بسیار به تعداد componentهای برنامه وابسته است. با این که ویو حجم اولیه سنگین‌تری دارد ولی کد کمتری به ازای هر component تولید می‌کند. در سناریوهای واقعی، یک برنامه‌ی ویو شاید خیلی بهتر و سبک‌تر باشد.
 
-## Does Vue scale? {#does-vue-scale}
+## آیا ویو مقیاس‌پذیر است؟ {#does-vue-scale}
 
-Yes. Despite a common misconception that Vue is only suitable for simple use cases, Vue is perfectly capable of handling large scale applications:
+بله. علی‌رغم یک تصور غلط که می‌گوید ویو فقط برای استفاده‌های ساده مناسب است، ویو کاملاً قابلیت مدیریت برنامه‌های با مقیاس بالا را دارد:
 
-- [Single-File Components](/guide/scaling-up/sfc) provide a modularized development model that allows different parts of an application to be developed in isolation.
+- [componentهای تک فایلی](/guide/scaling-up/sfc) یک مدل توسعه‌ی modular ارائه می‌دهد که می‌توان با آن بخش‌های متفاوتی از برنامه را جداگانه توسعه داد.
 
-- [Composition API](/guide/reusability/composables) provides first-class TypeScript integration and enables clean patterns for organizing, extracting and reusing complex logic.
+- [composition API](/guide/reusability/composables) یکپارچی درونی تایپ‌اسکریپت و الگوهایی تمیز برای مدیریت، استخراج و استفاده‌ی دوباره از منطق‌های پیچیده را ارائه می‌کند.
 
-- [Comprehensive tooling support](/guide/scaling-up/tooling) ensures a smooth development experience as the application grows.
+- [پشتیبانی فراگیر از ابزارها](/guide/scaling-up/tooling) به شما این اطمینان خاطر را می‌دهد که از یک تجربه‌ی توسعه‌ی روان در عین حال که برنامه رشد می‌کند بهره ببرید.
 
-- Lower barrier to entry and excellent documentation translate to lower onboarding and training costs for new developers.
 
-## How do I contribute to Vue? {#how-do-i-contribute-to-vue}
+- موانع کمتر برای ورود و مستندات عالی باعث می‌شود که هزینه‌های ورود و آموزش توسعه‌دهنده‌های جدید کاهش یابد.
 
-We appreciate your interest! Please check out our [Community Guide](/about/community-guide).
+## چگونه می‌توان به ویو مشارکت کرد؟ {#how-do-i-contribute-to-vue}
 
-## Should I use Options API or Composition API? {#should-i-use-options-api-or-composition-api}
+ما از توجه شما خرسندیم! لطفاً به [راهنمای جامعه](/about/community-guide)‌ی ما مراجعه کنید.
 
-If you are new to Vue, we provide a high-level comparison between the two styles [here](/guide/introduction#which-to-choose).
+## آیا من باید از Options API یا Composition API استفاده کنم؟ {#should-i-use-options-api-or-composition-api}
 
-If you have previously used Options API and are currently evaluating Composition API, check out [this FAQ](/guide/extras/composition-api-faq).
+اگر شما به تازگی از ویو استفاده می‌کنید، ما یک مقایسه‌ی سطح بالا میان این دو شیوه در [اینجا](/guide/introduction#which-to-choose) انجام داده‌ایم.
 
-## Should I use JavaScript or TypeScript with Vue? {#should-i-use-javascript-or-typescript-with-vue}
+اگر شما در گذشته از Options API استفاده کرده‌اید و در حال حاضر مشغول ارزیابی Composition API هستید، لطفاً به [این صفحه](/guide/extras/composition-api-faq) مراجعه کنید.
 
-While Vue itself is implemented in TypeScript and provides first-class TypeScript support, it does not enforce an opinion on whether you should use TypeScript as a user.
+## آیا برای ویو، من باید از جاوا اسکریپت یا تایپ‌اسکریپت استفاده کنم؟ {#should-i-use-javascript-or-typescript-with-vue}
 
-TypeScript support is an important consideration when new features are added to Vue. APIs that are designed with TypeScript in mind are typically easier for IDEs and linters to understand, even if you aren't using TypeScript yourself. Everybody wins. Vue APIs are also designed to work the same way in both JavaScript and TypeScript as much as possible.
+علی‌رغم این که ویو به خودی خود با استفاده از تایپ‌اسکریپت پیاده‌سازی شده و پشتیبانی درونی از تایپ‌اسکریپت دارد، ویو شما را به عنوان یک کاربر، مجبور به استفاده از تایپ‌اسکریپت نمی‌کند.
 
-Adopting TypeScript involves a trade-off between onboarding complexity and long-term maintainability gains. Whether such a trade-off can be justified can vary depending on your team's background and project scale, but Vue isn't really an influencing factor in making that decision.
+پشتیبانی از تایپ‌اسکریپت در هنگام اضافه شدن قابلیت‌های جدید به ویو، یک ملاحظه‌ی مهم است. APIهایی که با پشتیبانی از تایپ‌اسکریپت طراحی شده‌اند، برای IDEها و linterها آسان‌تر هستند، حتیٰ زمانی که شما از تایپ‌اسکریپت استفاده نمی‌کنید. در این شرایط، همه برنده‌اند. APIهای ویو همچنین به گونه‌ای طراحی شده‌اند که تا جایی که ممکن است در هنگام استفاده از جاوا اسکریپت یا تایپ‌اسکریپت به روش یکسان کار کنند.
 
-## How does Vue compare to Web Components? {#how-does-vue-compare-to-web-components}
+استفاده از تایپ‌اسکریپت انتخاب بین پیچیدگی‌های اولیه و مدیریت‌پذیری طولانی‌مدتی که ارائه می‌دهد است که چنین انتخابی می‌تواند بنا به پیش‌زمینه‌ی گروه شما و مقیاس پروژه متغیر باشد ولی ویو به واقع یک فاکتور اثرگذار در این تصمیم‌گیری نیست.
 
-Vue was created before Web Components were natively available, and some aspects of Vue's design (e.g. slots) were inspired by the Web Components model.
+## ویو در قیاس با web component چگونه عمل می‌کند؟ {#how-does-vue-compare-to-web-components}
 
-The Web Components specs are relatively low-level, as they are centered around defining custom elements. As a framework, Vue addresses additional higher-level concerns such as efficient DOM rendering, reactive state management, tooling, client-side routing, and server-side rendering.
+ویو قبل از ساخته شدن web componentها به طور درونی ساخته شد و بعضی از موارد طراحی‌های ویو (مثل slotها) از web componentها الهام گرفته شده است.
 
-Vue also fully supports consuming or exporting to native custom elements - check out the [Vue and Web Components Guide](/guide/extras/web-components) for more details.
+مشخصه‌های web componentها نسبتاً سطح پایین هستند، چون آن‌ها در حیطه‌ی تعریف المان‌های سفارشی متمرکز شده‌اند. به عنوان یک framework، ویو چیزهای سطح بالاتر اضافی را مثل DOM rendering مؤثر، state managment واکنش‌گر، استفاده از ابزارها، routing سمت کاربر و rendering سمت سرور در خود دارد.
+
+ویو همچنین قابلیت استفاده از و یا خروجی گرفتن به المان‌های سفارشی را به طور کامل، پشتیبانی می‌کند. به [راهنمای ویو و componentها](/guide/extras/web-components) برای جزئیات بیشتر مراجعه کنید.
 
 <!-- ## TODO How does Vue compare to React? -->
 
