@@ -1,6 +1,6 @@
 <template>
   <div class="ThemeHero">
-    <div class="container">
+    <div class="container" dir="rtl">
       <h1 class="title">
         <slot name="title" />
       </h1>

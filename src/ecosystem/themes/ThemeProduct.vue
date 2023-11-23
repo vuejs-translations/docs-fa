@@ -10,18 +10,20 @@ const props = defineProps<{
   <VTLink class="ThemeProduct" :href="product.url" no-icon>
     <article class="container">
       <figure class="figure">
-        <img class="image" :src="product.image" :alt="product.name">
+        <img class="image" :src="product.image" :alt="product.name" />
       </figure>
 
       <div class="data">
         <div class="title">
-          <h1 class="name">{{ product.name }}</h1>
+          <h1 class="name" dir="ltr">{{ product.name }}</h1>
           <p class="description">{{ product.description }}</p>
         </div>
 
         <div class="price">
-          <p v-if="product.price > 0" class="value">${{ product.price }}</p>
-          <p v-else class="free">FREE</p>
+          <p v-if="product.price > 0" class="value">
+            ${{ product.price }}
+          </p>
+          <p v-else class="free">رایگان</p>
         </div>
       </div>
     </article>
@@ -62,6 +64,7 @@ const props = defineProps<{
   font-size: 16px;
   font-weight: 500;
   transition: color 0.25s;
+  direction: ltr;
 }
 
 .description {
@@ -71,6 +74,7 @@ const props = defineProps<{
   font-weight: 500;
   color: var(--vt-c-text-2);
   transition: color 0.25s;
+  direction: ltr;
 }
 
 .price {
