@@ -3,6 +3,7 @@ name: ryu-cho
 on:
   schedule:
     - cron: '*/5 * * * *'
+  workflow_dispatch: # on button click
 
 jobs:
   ryu-cho:
@@ -18,6 +19,6 @@ jobs:
           upstream-repo-branch: main
           head-repo: https://github.com/vuejs/docs
           head-repo-branch: main
-          track-from: 0806e267bab58b32efab97254af535a183cc1e14
+          track-from: ca5f159ab3ab80fb5b2122a98bc0f428eec4cb8d
           # path-starts-with: src/
           workflow-name: ryu-cho
