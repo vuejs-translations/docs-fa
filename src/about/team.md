@@ -1,6 +1,6 @@
 ---
 page: true
-title: Meet the Team
+title: با گروه ما ملاقات کنید
 ---
 
 <script setup>
