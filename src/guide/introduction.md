@@ -2,7 +2,7 @@
 footer: false
 ---
 
-# مقدمه {#introduction}
+# معرفی {#introduction}
 
 :::info شما در حال خواندن مستندات نسخه ۳ از Vue هستید!
 

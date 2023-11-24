@@ -106,7 +106,7 @@ const nav: ThemeConfig['nav'] = [
     text: 'درباره',
     activeMatch: `^/about/`,
     items: [
-      { text: 'سوالات متدوال', link: '/about/faq' },
+      { text: 'سوالات متداول', link: '/about/faq' },
       { text: 'تیم', link: '/about/team' },
       { text: 'انتشارات', link: '/about/releases' },
       {
@@ -136,7 +136,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: 'آغاز',
       items: [
-        { text: 'مقدمه', link: '/guide/introduction' },
+        { text: 'معرفی', link: '/guide/introduction' },
         {
           text: 'شروع سریع',
           link: '/guide/quick-start'
@@ -151,15 +151,15 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/application'
         },
         {
-          text: 'ترکیب قالب (Template Syntax)',
+          text: 'Template Syntax',
           link: '/guide/essentials/template-syntax'
         },
         {
-          text: 'مبانی واکنش‌گرایی (Reactivity)',
+          text: 'مبانی Reactivity',
           link: '/guide/essentials/reactivity-fundamentals'
         },
         {
-          text: 'ویژگی‌های کامپیوتد (Computed)',
+          text: 'ویژگی‌های Computed',
           link: '/guide/essentials/computed'
         },
         {
@@ -167,11 +167,11 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/class-and-style'
         },
         {
-          text: 'اجرای شرطی (Conditional Rendering)',
+          text: 'رندر شرطی (Conditional Rendering)',
           link: '/guide/essentials/conditional'
         },
         {
-          text: 'اجرای لیست‌ها (List Rendering)',
+          text: 'رندر لیست‌ (List Rendering)',
           link: '/guide/essentials/list'
         },
         {
@@ -183,12 +183,12 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/forms'
         },
         {
-          text: 'چرخه‌حیات قلاب‌ها (Lifecycle Hooks)',
+          text: 'Lifecycle Hooks',
           link: '/guide/essentials/lifecycle'
         },
         { text: 'ناظرها (Watchers)', link: '/guide/essentials/watchers' },
         {
-          text: 'مرجع قالب‌ها (Template Refs)',
+          text: 'Template Refs',
           link: '/guide/essentials/template-refs'
         },
         {
@@ -250,7 +250,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'مقیاس‌بندی به بالا',
+      text: 'Scaling Up',
       items: [
         { text: 'Single-File Components', link: '/guide/scaling-up/sfc' },
         { text: 'Tooling', link: '/guide/scaling-up/tooling' },
@@ -274,7 +274,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/best-practices/production-deployment'
         },
         {
-          text: 'کارایی',
+          text: 'کارایی (Performance)',
           link: '/guide/best-practices/performance'
         },
         {
