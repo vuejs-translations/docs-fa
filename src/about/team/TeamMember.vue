@@ -34,7 +34,7 @@ const avatarUrl = computed(() => {
       :href="`https://github.com/sponsors/${member.socials.github}`"
       no-icon
     >
-      <VTIconHeart class="sponsor-icon" /> Sponsor
+      <VTIconHeart class="sponsor-icon" /> اسپانسر
     </VTLink>
 
     <figure class="avatar">
@@ -50,7 +50,7 @@ const avatarUrl = computed(() => {
       <p class="org">
         {{ member.title }}
         <span v-if="member.company" class="nowrap">
-          @
+          در
           <VTLink
             v-if="member.companyLink"
             class="company link"
@@ -183,6 +183,7 @@ const avatarUrl = computed(() => {
 @media (min-width: 512px) {
   .TeamMember {
     display: flex;
+    flex-direction: row-reverse;
   }
 }
 
@@ -195,7 +196,7 @@ const avatarUrl = computed(() => {
 .sponsor {
   position: absolute;
   top: 16px;
-  right: 16px;
+  left: 16px;
   display: flex;
   align-items: center;
   border: 1px solid #fd1d7c;
@@ -226,7 +227,7 @@ const avatarUrl = computed(() => {
 
 @media (min-width: 512px) {
   .avatar {
-    padding: 32px 0 0 32px;
+    padding: 32px 32px 0 0;
   }
 }
 
@@ -263,7 +264,6 @@ const avatarUrl = computed(() => {
 .org {
   padding-top: 4px;
   line-height: 20px;
-  max-width: 320px;
   font-size: 14px;
   font-weight: 500;
   color: var(--vt-c-text-2);
@@ -286,6 +286,7 @@ const avatarUrl = computed(() => {
 
 .desc {
   display: flex;
+  flex-direction: row-reverse;
 }
 
 .desc + .desc {
@@ -297,7 +298,7 @@ const avatarUrl = computed(() => {
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  padding-right: 12px;
+  padding-left: 12px;
   height: 20px;
 }
 
@@ -328,7 +329,7 @@ const avatarUrl = computed(() => {
 }
 
 .desc-item::after {
-  margin-left: 8px;
+  margin-right: 8px;
   content: '•';
   color: var(--vt-c-text-3);
   transition: color 0.25s;
