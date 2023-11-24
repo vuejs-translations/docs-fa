@@ -54,3 +54,5 @@
 | wrapper | پوششی، دربرگیرنده |
 | application | اپلیکیشن |
 | teleport | تله‌پورت |
+| community | کامیونیتی |
+| ecosystem | اکوسیستم |
