@@ -66,6 +66,7 @@ function resolveList(data: SponsorData) {
 <template>
   <div
     ref="container"
+    dir="rtl"
     class="sponsor-container"
     :class="[tier.startsWith('plat') ? 'platinum' : tier, placement]"
   >
@@ -93,7 +94,7 @@ function resolveList(data: SponsorData) {
       href="/sponsor/"
       class="sponsor-item action"
       @click="track(true)"
-      >Become a Sponsor</a
+      >حامی شوید</a
     >
   </div>
 </template>

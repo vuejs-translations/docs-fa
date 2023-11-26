@@ -1,84 +1,90 @@
-# Template Syntax {#template-syntax}
+# سینتکس قالب {#template-syntax}
 
-Vue uses an HTML-based template syntax that allows you to declaratively bind the rendered DOM to the underlying component instance's data. All Vue templates are syntactically valid HTML that can be parsed by spec-compliant browsers and HTML parsers.
+Vue  از سینتکس قالب برپایه HTML استفاده میکند که این اجازه رو به شما میدهد تا DOM نمایش داده شده را به دیتای نمونه کامپوننت پایه متصل کند. 
+تمام قالبهای Vue از لحاظ سینتکس،HTML  معتبر هستند که میتوانند توسط مرورگرهای با مشخصات سازگار و تحلیل کننده‌های HTML تحلیل شوند.
 
-Under the hood, Vue compiles the templates into highly-optimized JavaScript code. Combined with the reactivity system, Vue can intelligently figure out the minimal number of components to re-render and apply the minimal amount of DOM manipulations when the app state changes.
+در ماءواری ماجرا، Vue قالبها را به کد جاوا اسکریپت بسیار بهینه شده کامپایل میکند. همراه با سیستم واکنش پذیری، Vue میتواند بصورت هوشمندانه از حداقل تعداد کامپوننتهایی که باید مجددا رندر شوند و در هنگام تغییر وضعیت برنامه، حداقل دستکاری‌های DOM را اعمال کند.
 
-If you are familiar with Virtual DOM concepts and prefer the raw power of JavaScript, you can also [directly write render functions](/guide/extras/render-function) instead of templates, with optional JSX support. However, do note that they do not enjoy the same level of compile-time optimizations as templates.
+اگر با کلیت Virtual DOM آشنا هستید و قدرت خالص جاوااسکریپت را ترجیح می‌دهید، شما همچنین می‌توانید [مستقیما توابع مربوط به تحلیل را](/guide/extras/render-function) بجای قالبها، با پشتیبانی اختیاری از JSX بنویسید.
 
-## Text Interpolation {#text-interpolation}
+## درج متن {#text-interpolation}
 
-The most basic form of data binding is text interpolation using the "Mustache" syntax (double curly braces):
+پایه‌ای ترین شکل بایند داده درج متن با سینتکس سیبیل (دو آکولاد) میباشد:
 
 ```vue-html
-<span>Message: {{ msg }}</span>
+<span>پیام: {{ msg }}</span>
 ```
 
-The mustache tag will be replaced with the value of the `msg` property [from the corresponding component instance](/guide/essentials/reactivity-fundamentals#declaring-reactive-state). It will also be updated whenever the `msg` property changes.
+تگ سیبیل با مقدار `msg`، [پراپرتی از شی کامپوننت مربوطه] (/guide/essentials/reactivity-fundamentals#declaring-reactive-state) جایگزین خواهد شد. همچنین این مقدار با هر تغییر در پراپرتی `msg` بروزرسانی خواهد شد.
 
-## Raw HTML {#raw-html}
 
-The double mustaches interpret the data as plain text, not HTML. In order to output real HTML, you will need to use the [`v-html` directive](/api/built-in-directives#v-html):
+## HTML خام {#raw-html}
+
+آکولاد دوتایی داده را به عنوان متن ساده تفسیر میکند. برای خروجی HTML واقعی باید از [دایرکتیو `v-html`](/api/built-in-directives#v-html) استفاده کنید.
 
 ```vue-html
-<p>Using text interpolation: {{ rawHtml }}</p>
-<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+<p>استفاده از درون‌یابی متن: {{ rawHtml }}</p>
+<p>استفاده از دایرکتیو v-html: <span v-html="rawHtml"></span></p>
 ```
 
 <script setup>
-  const rawHtml = '<span style="color: red">This should be red.</span>'
+  const rawHtml = '<span style="color: red">این باید قرمز باشد.</span>'
 </script>
 
 <div class="demo">
-  <p>Using text interpolation: {{ rawHtml }}</p>
-  <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+  <p>استفاده از درون‌یابی متن: {{ rawHtml }}</p>
+  <p>استفاده از دایرکتیو v-html: <span v-html="rawHtml"></span></p>
 </div>
 
-Here we're encountering something new. The `v-html` attribute you're seeing is called a **directive**. Directives are prefixed with `v-` to indicate that they are special attributes provided by Vue, and as you may have guessed, they apply special reactive behavior to the rendered DOM. Here, we're basically saying "keep this element's inner HTML up-to-date with the `rawHtml` property on the current active instance."
+اینجا با چیزی جدید مواجه شده ایم. اتریبیوت `v-html` همانطور که می‌بینید **دایرکتیو** نام گذاری شده است. دایرکتیوها پیشوند `v-` دارند تا نمایش دهنده این باشد که آنها اتریبیوت خاصی هستند که توسط Vue عرضه شده است و همانطور که ممکن است حدس زده باشید، آنها رفتار واکنشی ویژه ای را به DOM رندر شده اعمال می کنند. اینجاست که ما اساسا می‌گوییم "این عنصر داخلی HTML را با پراپرتی `rawHTML` بر شی فعال حال حاضر بروز رسانی نگهدارید.
 
-The contents of the `span` will be replaced with the value of the `rawHtml` property, interpreted as plain HTML - data bindings are ignored. Note that you cannot use `v-html` to compose template partials, because Vue is not a string-based templating engine. Instead, components are preferred as the fundamental unit for UI reuse and composition.
+محتوای `span` با مقدار پراپرتی `rawHtml` جایگزین خواهد شد، که بعنوان HTML ساده تفسیر میشود. بایند دیتا در اینجا نادیده گرفته میشود. در نظر داشته باشید که شما نمیتوانید از `v-html` برای بایند بخشی از قالب استفاده کنید، زیرا که Vue یک موتور قالب‌بندی برپایه استرینگ نیست. در عوض، کامپوننت‌ها به عنوان واحدهای اساسی برای استفاده مجدد و بایند UI ارجحتر هستند.
 
-:::warning Security Warning
-Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS vulnerabilities](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use `v-html` on trusted content and **never** on user-provided content.
+
+:::warning هشدار امنیتی
+رندر داینامیکی HTML دلخواه بر وبسایت شما میتواند بسیار خطرناک باشد زیرا که میتواند به آسانی منجر به ]آسیب پذیری XSS [ (https://en.wikipedia.org/wiki/Cross-site_scripting) شود. از `v-html` فقط بر مطالب مورد اعتماد استفاده کنید و **هرگز** بر محتوای ارائه شده توسط کاربر استفاده نکنید.
 :::
 
-## Attribute Bindings {#attribute-bindings}
 
-Mustaches cannot be used inside HTML attributes. Instead, use a [`v-bind` directive](/api/built-in-directives#v-bind):
+## بایند اتریبیوت {#attribute-bindings}
+
+آکولادها نمیتوانند در اتریبیوت HTML استفاده شوند. در عوض یک [دایرکتیو `v-bind`](/api/built-in-directives#v-bind):
 
 ```vue-html
 <div v-bind:id="dynamicId"></div>
 ```
 
-The `v-bind` directive instructs Vue to keep the element's `id` attribute in sync with the component's `dynamicId` property. If the bound value is `null` or `undefined`, then the attribute will be removed from the rendered element.
+دایرکتیو `v-bind` به Vue دستور میدهد تا اتریبیوت `id` یک المنت را همگام با پراپرتی `dynamicId` کامپوننت نگهدارد. اگر مقدار مقید شده برابر با `null` یا `undefined` باشد، سپس اتریبیوت از المنت رندر شده حذف خواهد شد.
 
-### Shorthand {#shorthand}
+### مختصر نویسی {#shorthand}
 
-Because `v-bind` is so commonly used, it has a dedicated shorthand syntax:
+به این دلیل که `v-bind` استفاده خیلی رایجی دارد. درنتیجه یک قاعده دستوری اختصاصی مختصر نویسی دارد:
 
 ```vue-html
 <div :id="dynamicId"></div>
 ```
 
-Attributes that start with `:` may look a bit different from normal HTML, but it is in fact a valid character for attribute names and all Vue-supported browsers can parse it correctly. In addition, they do not appear in the final rendered markup. The shorthand syntax is optional, but you will likely appreciate it when you learn more about its usage later.
+
+اتریبیوتهایی که با `:` شروع میشوند ممکن است یه مقدار نسب به HTML عادی متفاوت بنظر بیان، اما این درواقع یک کاراکتر صحیح برای نامهای اتریبیوت است و تمام مرورگرهایی که از Vue پشتیبانی میکنند، میتوانند آنرا بدرستی پارس کنند. علاوه بر این، آنها در علامت نهایی رندر شده ظاهر نمیشوند. قاعده دستوری اختصاصی اختیاری میباشد، اما شما بخوبی از آن قدردان خواهید شد وقتی که از کاربردهای آن بعدا بیشتر یاد بگیرید.
 
 > For the rest of the guide, we will be using the shorthand syntax in code examples, as that's the most common usage for Vue developers.
 
-### Boolean Attributes {#boolean-attributes}
+### اتریبیوت‌های بولین {#boolean-attributes}
 
-[Boolean attributes](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) are attributes that can indicate true / false values by their presence on an element. For example, [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) is one of the most commonly used boolean attributes.
+[اتریبیوتهای بولین](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) اتریبیوتهایی هستند که میتواند true / false بودن مقادیر را با حضور آنها بر یک المنت نشان داد. برای مثال، [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) یکی رایج ترین اتریبیوتهای بولین استفاده شده میباشد.
 
-`v-bind` works a bit differently in this case:
+
+`v-bind` در این مورد مقداری متفاوت عمل میکند:
 
 ```vue-html
-<button :disabled="isButtonDisabled">Button</button>
+<button :disabled="isButtonDisabled">دکمه</button>
 ```
 
-The `disabled` attribute will be included if `isButtonDisabled` has a [truthy value](https://developer.mozilla.org/en-US/docs/Glossary/Truthy). It will also be included if the value is an empty string, maintaining consistency with `<button disabled="">`. For other [falsy values](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) the attribute will be omitted.
+اگر  `isButtonDisabled` [یک مقدار ترو](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) داشته باشد شامل اتریبیوت `disabled` خواهد شد. آن همچنان شامل خواهد شد اگر مقدار یک رشته خالی است، حفظ سازگاری با `<button disabled="">`.  برای بقیه [مقدارهای فالس](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) اتریبیوت حذف خواهد شد.
 
-### Dynamically Binding Multiple Attributes {#dynamically-binding-multiple-attributes}
+### بایند داینامیک چندین اتریبیوت {#dynamically-binding-multiple-attributes}
 
-If you have a JavaScript object representing multiple attributes that looks like this:
+اگر یک آبجکت جاوا اسکریپت دارید که چندین اتریبیوت را نمایش میدهد که مانند این است:
 
 <div class="composition-api">
 
@@ -105,15 +111,16 @@ data() {
 
 </div>
 
-You can bind them to a single element by using `v-bind` without an argument:
+شما می‌توانید آنهارا با یک المنت واحد با استفاده از `v-bind` بدون آرگیومنت بایند کنید
 
 ```vue-html
 <div v-bind="objectOfAttrs"></div>
 ```
 
-## Using JavaScript Expressions {#using-javascript-expressions}
+## استفاده از عبارات جاوا اسکریپت {#using-javascript-expressions}
 
-So far we've only been binding to simple property keys in our templates. But Vue actually supports the full power of JavaScript expressions inside all data bindings:
+
+تا کنون ما فقط به بایند کلیدهای پراپرتی ساده در قالب خود پرداختیم. اما Vue درواقع بطور قوی از عبارات جاوااسکریپت در تمام بایندهای دیتا پشتیبانی میکند
 
 ```vue-html
 {{ number + 1 }}
@@ -125,30 +132,31 @@ So far we've only been binding to simple property keys in our templates. But Vue
 <div :id="`list-${id}`"></div>
 ```
 
-These expressions will be evaluated as JavaScript in the data scope of the current component instance.
+این عبارات بعنوان جاوااسکریپت در محدوده داده شی کامپوننت حال حاضر ارزیابی خواهند شد
 
-In Vue templates, JavaScript expressions can be used in the following positions:
+در قالبهای Vue، عبارات جاوااسکریپت میتوانند در جایگاه‌های زیر استفاده شوند
 
-- Inside text interpolations (mustaches)
+- داخل درون‌یابیهای متن (آکولادها)
+- در مقدارهای اتریبیوت و هر یک از دایرکتیوهای Vue (اتریبیوتهای خاصی که با `v-` آغاز می‌شوند)
 - In the attribute value of any Vue directives (special attributes that start with `v-`)
 
-### Expressions Only {#expressions-only}
+### فقط عبارات {#expressions-only}
 
-Each binding can only contain **one single expression**. An expression is a piece of code that can be evaluated to a value. A simple check is whether it can be used after `return`.
+هر بایندی میتواند فقط شامل **یک تک اصطلاح** باشد. یک عبارتیک تکه از کدی است که میتواند برابر با یک مقداری باشد. یک بررسی ساده این است که آیا می توان از آن پس از "بازگشت" استفاده کرد یا خیر.
 
-Therefore, the following will **NOT** work:
+بنابراین موارد زیر کار **نمیکند**
 
 ```vue-html
-<!-- this is a statement, not an expression: -->
+<!-- این یک جمله است، نه اصطلاح: -->
 {{ var a = 1 }}
 
-<!-- flow control won't work either, use ternary expressions -->
+<!-- کنترل جریان نیز کار نمی کند، از عبارت های سه تایی استفاده کنید -->
 {{ if (ok) { return message } }}
 ```
 
-### Calling Functions {#calling-functions}
+### فراخوانی توابع {#calling-functions}
 
-It is possible to call a component-exposed method inside a binding expression:
+این ممکن است که متد کامپوننت شده درون اصلاح بایندی فراخوانی شود
 
 ```vue-html
 <time :title="toTitleDate(date)" :datetime="date">
@@ -156,115 +164,118 @@ It is possible to call a component-exposed method inside a binding expression:
 </time>
 ```
 
-:::tip
-Functions called inside binding expressions will be called every time the component updates, so they should **not** have any side effects, such as changing data or triggering asynchronous operations.
+:::راهنمایی
+توابعی که داخلی عبارات بایندی فراخوانی شده اند، هر دفعه که کامپوننت آپدیت میشود فراخونی خواهد شد، بنابراین آنها **نباید** هیچ اثر جانبی داشته باشد،
+همچون تغییر داده ها یا شروع عملیات ناهمزمان.
 :::
 
-### Restricted Globals Access {#restricted-globals-access}
+### دسترسی سراسری محدود شده {#restricted-globals-access}
 
-Template expressions are sandboxed and only have access to a [restricted list of globals](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsAllowList.ts#L3). The list exposes commonly used built-in globals such as `Math` and `Date`.
+عبارات قالب سندباکس هستند و فقط به [لیست سراسریهای محدود شده](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsAllowList.ts#L3) دسترسی دارند. این لیست سراسریهای داخلی که رایج‌ در استفاده هستند را نمایش میدهد، مانند `Math` و `Date`.
 
-Globals not explicitly included in the list, for example user-attached properties on `window`, will not be accessible in template expressions. You can, however, explicitly define additional globals for all Vue expressions by adding them to [`app.config.globalProperties`](/api/application#app-config-globalproperties).
+سراسریها به صراحت در این لیست گنجانده نشده‌اند، برای مثال پراپرتی‌های پیوست شده توسط کاربر بر `window`، در عبارات قالب دسترس نخواهد بود. شما میتوانید، اگرچه، بطور صریح سراسریهای بیشتر برای تمام عبارات Vue با افزودن آنها به [`app.config.globalProperties`](/api/application#app-config-globalproperties) تعریف کنید.
 
-## Directives {#directives}
+## دایرکتیوها {#directives}
 
-Directives are special attributes with the `v-` prefix. Vue provides a number of [built-in directives](/api/built-in-directives), including `v-html` and `v-bind` which we have introduced above.
+دایرکتیوها اتریبیوتهای ویژه‌ای هستند با پیشوند `v-`. Vue تعدادی [دایرکتیو داخلی](/api/built-in-directives) فراهم میکند، از جمله `v-html` و `v-bind` که ما بالاتر معرفی کردیم.
 
-Directive attribute values are expected to be single JavaScript expressions (with the exception of `v-for`, `v-on` and `v-slot`, which will be discussed in their respective sections later). A directive's job is to reactively apply updates to the DOM when the value of its expression changes. Take [`v-if`](/api/built-in-directives#v-if) as an example:
+مقادیر اتریبیوت دایرکتیو مورد انتظار است تا یک تک عبارتجاوا اسکریپتی باشد (با استثنا `v-for`، `v-on` و `v-slot`، که بعدا در بخشهای مربوط به آنها مورد بحث قرار خواهد گرفت). کار یک دایرکتیو اعمال کردن تغییرات به دام بصورت فعال میباشد وقتی که مقدار عبارت آن تغییر میکند. [`v-if`](/api/built-in-directives#v-if) را به عنوان مثال درنظر بگیرید:
 
 ```vue-html
-<p v-if="seen">Now you see me</p>
+<p v-if="seen">حالا منو میبینی</p>
 ```
 
-Here, the `v-if` directive would remove / insert the `<p>` element based on the truthiness of the value of the expression `seen`.
+اینجا دایرکتیو `v-if` افزوده / حذف خواهد کرد المنت `<p>` را بر پایه ترو بودن مقدار عبارت `seen`.
 
-### Arguments {#arguments}
+### آرگومانها {#arguments}
 
-Some directives can take an "argument", denoted by a colon after the directive name. For example, the `v-bind` directive is used to reactively update an HTML attribute:
+بعضی دایرکتیوها میتوانند یک "آرگومان" داشته باشد، توسط یک کلون (,) بعد از نام دایرکتیو نشان داده شده. برای مثال، دایرکتیو `v-bind` بصورت فعال بعنوان اتریبیوت HTML آپدیت میشود:
 
 ```vue-html
 <a v-bind:href="url"> ... </a>
 
-<!-- shorthand -->
+<!-- بطور خلاصه -->
 <a :href="url"> ... </a>
 ```
+در اینجا، `href` یک آرگومان است، که به دایرکتیو `v-bind` میگوید تا اتریبیوت `href` این المنت را با مقدار عبارت `url` بایند کند. به عبارت دیگر، هرچیزی قبل از آرگومان (یعنی، `v-bind:`) به یک تک کاراکتر فشرده شد است، `:`.
 
-Here, `href` is the argument, which tells the `v-bind` directive to bind the element's `href` attribute to the value of the expression `url`. In the shorthand, everything before the argument (i.e., `v-bind:`) is condensed into a single character, `:`.
+مثال دیگر دایرکتیو `v-on` میباشد، که به ایونتهای دام گوش میکند:
 
 Another example is the `v-on` directive, which listens to DOM events:
 
 ```vue-html
 <a v-on:click="doSomething"> ... </a>
 
-<!-- shorthand -->
+<!-- بطور خلاصه -->
 <a @click="doSomething"> ... </a>
 ```
+در اینجا، آرگومان نام ایونت برای گوش دادن به: `click` میباشد. `v-on` یک اختصار متناظر دارد، یعنی کارکتر `@`.  ما درمورد مدیریت ایونت با جزئیات بیشتری صحبت خواهیم کرد.
 
-Here, the argument is the event name to listen to: `click`. `v-on` has a corresponding shorthand, namely the `@` character. We will talk about event handling in more detail too.
+### آرگومان‌های داینامیک {#dynamic-arguments}
 
-### Dynamic Arguments {#dynamic-arguments}
-
-It is also possible to use a JavaScript expression in a directive argument by wrapping it with square brackets:
+استفاده یک عبارت جاوا اسکریپت در آرگومان دایرکتیو آرگومان با جا دادن آن در براکت نیز امکان پذیر است:
 
 ```vue-html
 <!--
-Note that there are some constraints to the argument expression,
-as explained in the "Dynamic Argument Value Constraints" and "Dynamic Argument Syntax Constraints" sections below.
+توجه کنید که بعضی محدودیتهایی برای عبارت آرگومان وجود دارد، همانطور که در "محدودیتهای مقدار آرگومان داینامیک" و "محدودیتهای سینتکس آرگومان داینامیک" توضیح داده شد.
 -->
+
 <a v-bind:[attributeName]="url"> ... </a>
 
-<!-- shorthand -->
+<!-- بطور خلاصه -->
 <a :[attributeName]="url"> ... </a>
 ```
+در اینجا، `attributeName` بطور داینامیک بعنوان یک عبارت جاوااسکریپت ارزیابی میشود، و مقدار ارزیابی شده بعنوان مقدار نهایی برای آرگومان استفاده خواهش شد. برای مثال، اگر شی کامپونین شما یک پراپرتی داده دارد، `attributeName`، که مقدارش برابر با `"href"` میباشد، سپس این بایند (ترکیب) برابر با `v-bind:href` خواهد شد.
 
-Here, `attributeName` will be dynamically evaluated as a JavaScript expression, and its evaluated value will be used as the final value for the argument. For example, if your component instance has a data property, `attributeName`, whose value is `"href"`, then this binding will be equivalent to `v-bind:href`.
-
-Similarly, you can use dynamic arguments to bind a handler to a dynamic event name:
+به همین ترتیب، شما میتوانید از آرگومانهای داینامیک جهت بایند کردن یک هندلر برای نام ایونت داینامیک استفاده کنید:
 
 ```vue-html
 <a v-on:[eventName]="doSomething"> ... </a>
 
-<!-- shorthand -->
+<!-- بطور اختصار -->
 <a @[eventName]="doSomething">
 ```
+در این مثال، وقتی مقدار `eventName` برابر با `"focus"` باشد، `v-on:[eventName]` برابر با `v-on:focus` خواهد بود.
 
-In this example, when `eventName`'s value is `"focus"`, `v-on:[eventName]` will be equivalent to `v-on:focus`.
+#### محدودیتهای مقدار آرگومان داینامیک {#dynamic-argument-value-constraints}
 
-#### Dynamic Argument Value Constraints {#dynamic-argument-value-constraints}
+آرگومانهای داینامیک انتظار میروند تا به یک رشته ارزیابی شوند، به استثنای `null`. مقدار خاص `null` میتواند استفاده شود تا بطور واضح بایند شدن را پاک کند.
 
-Dynamic arguments are expected to evaluate to a string, with the exception of `null`. The special value `null` can be used to explicitly remove the binding. Any other non-string value will trigger a warning.
+#### محدودیتهای سینتکس آرگومان داینامیک {#dynamic-argument-syntax-constraints}
 
-#### Dynamic Argument Syntax Constraints {#dynamic-argument-syntax-constraints}
-
-Dynamic argument expressions have some syntax constraints because certain characters, such as spaces and quotes, are invalid inside HTML attribute names. For example, the following is invalid:
+عبارات آرگومان داینامیک تعدادی محدودیتهای سینکتسی دارند بدلیل کاراکترهای مشخص، از جمله فضاهای خالی و کوتیشنها، نامهای نادرست درون اتریبیوت HTML میباشد. برای مثال، کد زیر نادرست است:
 
 ```vue-html
-<!-- This will trigger a compiler warning. -->
+<!-- این یک اخطار کامپایلر را ایجاد می کند. -->
 <a :['foo' + bar]="value"> ... </a>
 ```
 
-If you need to pass a complex dynamic argument, it's probably better to use a [computed property](./computed), which we will cover shortly.
+اگر شما نیاز دارید تا یک آرگومان داینامیک پیچیده ارائه بدید، احتمالا بهتر میشود تا یک [پراپری محاسبه شده](./computed) استفاده کنید، که بزودی به آن خواهیم پرداخت.
 
-When using in-DOM templates (templates directly written in an HTML file), you should also avoid naming keys with uppercase characters, as browsers will coerce attribute names into lowercase:
+هنگام استفاده از قالب های in-DOM (قالبهایی که مستقیما در یک فایل HTML نوشته شده اند)، شما همچنین باید از نامگذاری کلیدها با حروف بزرگ پرهیز کنید. همانطور که مرورگر ها نام اتریبیوتها را به حروف کوچک تبدیل میکنند:
 
 ```vue-html
 <a :[someAttr]="value"> ... </a>
 ```
 
-The above will be converted to `:[someattr]` in in-DOM templates. If your component has a `someAttr` property instead of `someattr`, your code won't work. Templates inside Single-File Components are **not** subject to this constraint.
+موارد فوق در قالبهای in-DOM به `:[someattr]` تبدیل خواهند شد. اگر کامپوننت شما یک پراپرتی `someAttr` به جای `someattr` دارد، کد شما کار نخواهد کرد. قالبهای داخلی کامپوننتهای تک فایلی مشمول این محدودیت **نیستند**.
 
-### Modifiers {#modifiers}
+### پیراینده {#modifiers}
 
-Modifiers are special postfixes denoted by a dot, which indicate that a directive should be bound in some special way. For example, the `.prevent` modifier tells the `v-on` directive to call `event.preventDefault()` on the triggered event:
+پیراینده‌ها پسوندهای خاصی هستند که با یک نقطه نشان داده میشوند، که نشان می دهد یک دایرکتیو باید به نحوی خاص مقید شود. برای مثال، پیراینده `.prevent` به دایرکتیو `v-on` میگوید تا `event.preventDefault()` را برای ایونت اجرا شده صدا بزند.
 
 ```vue-html
 <form @submit.prevent="onSubmit">...</form>
 ```
 
+شما بعدا مثالهای بیشتری درمورد پیراینده‌ها خواهید دید، [برای `v-on`](./event-handling#event-modifiers) و [برای `v-model`](./forms#modifiers)، وقتی ما آن ویژگیهارا مرور کنیم.
+
+و در پایان، 
+
 You'll see other examples of modifiers later, [for `v-on`](./event-handling#event-modifiers) and [for `v-model`](./forms#modifiers), when we explore those features.
 
-And finally, here's the full directive syntax visualized:
+And finally, در اینجا سینکتس کامل دایرکتیو به تصویر کشیده شده است:
 
-![directive syntax graph](./images/directive.png)
+![نمودار سینتکس دایرکتیو](./images/directive.png)
 
 <!-- https://www.figma.com/file/BGWUknIrtY9HOmbmad0vFr/Directive -->

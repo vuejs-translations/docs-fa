@@ -1,12 +1,12 @@
 # Event Listeners {#event-listeners}
 
-We can listen to DOM events using the `v-on` directive:
+با استفاده از دستور `v-on` می‌توانیم به رویدادهای DOM گوش دهیم:
 
 ```vue-html
 <button v-on:click="increment">{{ count }}</button>
 ```
 
-Due to its frequent use, `v-on` also has a shorthand syntax:
+همچنین به دلیل استفاده فراوان، `v-on` دارای یک نوشتار مختصر است:
 
 ```vue-html
 <button @click="increment">{{ count }}</button>
@@ -14,7 +14,7 @@ Due to its frequent use, `v-on` also has a shorthand syntax:
 
 <div class="options-api">
 
-Here, `increment` references a function declared using the `methods` option:
+در اینجا، `increment` به یک تابع ارجاع می‌دهد که با استفاده از آپشن `methods` تعریف شده است:
 
 <div class="sfc">
 
@@ -55,7 +55,7 @@ createApp({
 
 </div>
 
-Inside a method, we can access the component instance using `this`. The component instance exposes the data properties declared by `data`. We can update the component state by mutating these properties.
+درون متد، می‌توانیم با استفاده از `this` به نمونه ساخته شده از کامپوننت دسترسی پیدا کنیم (component instance). نمونه کامپوننت پراپرتی‌های داده‌ای را که توسط `data` تعریف شده‌اند را در اختیار ما می‌گذارد. می‌توانیم state کامپوننت را با تغییر دادن این خاصیت‌ها به‌روز کنیم.
 
 </div>
 
@@ -63,7 +63,7 @@ Inside a method, we can access the component instance using `this`. The componen
 
 <div class="sfc">
 
-Here, `increment` is referencing a function declared in `<script setup>`:
+در اینجا، `increment` به یک تابع ارجاع می‌دهد که در `‎<‎script setup‎>‎` تعریف شده است:
 
 ```vue{6-9}
 <script setup>
@@ -82,7 +82,7 @@ function increment() {
 
 <div class="html">
 
-Here, `increment` is referencing a method in the object returned from `setup()`:
+در اینجا، `increment` به یک متد در شی برگردانده شده از `setup()‎` ارجاع می‌دهد:
 
 ```js{$}
 setup() {
@@ -102,10 +102,10 @@ setup() {
 
 </div>
 
-Inside the function, we can update the component state by mutating refs.
+درون تابع، می‌توانیم state کامپوننت را با تغییر دادن ref ها به‌روز کنیم.
 
 </div>
 
-Event handlers can also use inline expressions, and can simplify common tasks with modifiers. These details are covered in <a target="_blank" href="/guide/essentials/event-handling.html">Guide - Event Handling</a>.
+هندلرهای رویداد همچنین می‌توانند از عبارات درون خطی استفاده کنند، و می‌توانند وظایف رایج را با استفاده از modifierها ساده کنند. این جزئیات در <a target="_blank" href="/guide/essentials/event-handling.html">راهنما - Event Handling</a> پوشش داده شده‌اند.
 
-Now, try to implement the `increment` <span class="options-api">method</span><span class="composition-api">function</span> yourself and bind it to the button using `v-on`.
+حالا سعی کنید خودتان تابع `increment` را <span class="options-api">به عنوان یک متد</span><span class="composition-api">پیاده سازی کنید</span> و آن را با استفاده از `v-on` به دکمه متصل کنید.

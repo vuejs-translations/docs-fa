@@ -106,42 +106,33 @@ updateExample()
 </script>
 
 <template>
-  <section class="tutorial">
+  <section class="tutorial" dir="rtl">
     <article class="instruction" ref="instruction">
       <PreferenceSwitch />
-      <VTFlyout :button="`${currentStepIndex} / ${totalSteps}`">
-        <VTLink
-          v-for="(step, i) of allSteps"
-          class="vt-menu-link"
-          :class="{ active: i + 1 === currentStepIndex }"
-          :href="step.link"
-          >{{ step.text }}</VTLink
-        >
+      <VTFlyout style="margin-right: 25%" :button="`${currentStepIndex} / ${totalSteps}`">
+        <VTLink v-for="(step, i) of allSteps" class="vt-menu-link" :class="{ active: i + 1 === currentStepIndex }"
+          :href="step.link">{{ step.text }}</VTLink>
       </VTFlyout>
       <div class="vt-doc" v-html="currentDescription"></div>
       <div class="hint" v-if="data[currentStep]?._hint">
         <button @click="toggleResult">
-          {{ showingHint ? 'Reset' : 'Show me!' }}
+          {{ showingHint ? 'بازنشانی' : 'نشان بده!' }}
         </button>
       </div>
       <footer>
-        <a v-if="prevStep" :href="`#${prevStep}`"
-          ><VTIconChevronLeft class="vt-link-icon" style="margin: 0" />
-          Prev</a
-        >
-        <a class="next-step" v-if="nextStep" :href="`#${nextStep}`"
-          >Next <VTIconChevronRight class="vt-link-icon"
-        /></a>
+        <a class="next-step" v-if="nextStep" :href="`#${nextStep}`" dir="ltr">
+          بعدی
+          <VTIconChevronRight  class="vt-link-icon" style="margin: 0" />
+        </a>
+
+        <a v-if="prevStep" :href="`#${prevStep}`"  dir="ltr">
+          <VTIconChevronLeft class="vt-link-icon" style="margin: 0" />
+          قبلی
+        </a>
       </footer>
     </article>
-    <Repl
-      layout="vertical"
-      :store="store"
-      :showCompileOutput="false"
-      :clearConsole="false"
-      :showImportMap="false"
-      @keyup="showingHint = false"
-    />
+    <Repl layout="vertical" :store="store" :showCompileOutput="false" :clearConsole="false" :showImportMap="false"
+      @keyup="showingHint = false" />
   </section>
 </template>
 
@@ -150,9 +141,7 @@ updateExample()
   display: flex;
   max-width: 1440px;
   margin: 0 auto;
-  --height: calc(
-    100vh - var(--vt-nav-height) - var(--vt-banner-height, 0px)
-  );
+  --height: calc(100vh - var(--vt-nav-height) - var(--vt-banner-height, 0px));
 }
 
 .preference-switch {
@@ -178,7 +167,7 @@ updateExample()
 .vt-flyout {
   z-index: 9;
   position: absolute;
-  right: 20px;
+  left: 20px;
 }
 
 .vt-menu-link.active {
@@ -257,6 +246,7 @@ button {
   .tutorial {
     display: block;
   }
+
   .instruction {
     width: 100%;
     border-right: none;
@@ -264,15 +254,16 @@ button {
     height: 30vh;
     padding: 0 24px 24px;
   }
+
   .vue-repl {
     width: 100%;
-    height: calc(
-      70vh - var(--vt-nav-height) - var(--vt-banner-height, 0px)
-    );
+    height: calc(70vh - var(--vt-nav-height) - var(--vt-banner-height, 0px));
   }
+
   :deep(.wide) {
     display: none;
   }
+
   :deep(.narrow) {
     display: inline;
   }

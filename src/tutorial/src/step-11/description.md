@@ -1,8 +1,8 @@
 # Components {#components}
 
-So far, we've only been working with a single component. Real Vue applications are typically created with nested components.
+تا اینجا، ما تنها با یک کامپوننت‌ کار کرده‌ایم. برنامه‌های واقعی Vue معمولاً با کامپوننت‌های تو در تو ایجاد می‌شوند.
 
-A parent component can render another component in its template as a child component. To use a child component, we need to first import it:
+یک کامپوننت‌ والد (پدر) می‌تواند کامپوننت‌‌های دیگر را در تمپلیت خود به عنوان کامپوننت‌ فرزند رندر کند. برای استفاده از کامپوننت‌ فرزند، ابتدا باید آن را import کنیم:
 
 <div class="composition-api">
 <div class="sfc">
@@ -27,14 +27,14 @@ export default {
 }
 ```
 
-We also need to register the component using the `components` option. Here we are using the object property shorthand to register the `ChildComp` component under the `ChildComp` key.
+همچنین باید از طریق گزینه `components` کامپوننت را ثبت کنیم. در اینجا ما از اختصار در تعریف یک ویژگی (property) در یک شیء برای ثبت کامپوننت `ChildComp` تحت کلید `ChildComp` استفاده می‌کنیم. (مترجم: این با ‍`ChildComp: ChildComp` برابر است)
 
 </div>
 </div>
 
 <div class="sfc">
 
-Then, we can use the component in the template as:
+سپس، می‌توانیم از کامپوننت در تمپلیت به صورت زیر استفاده کنیم:
 
 ```vue-html
 <ChildComp />
@@ -54,9 +54,9 @@ createApp({
 })
 ```
 
-We also need to register the component using the `components` option. Here we are using the object property shorthand to register the `ChildComp` component under the `ChildComp` key.
+همچنین باید از طریق آپشن `components` کامپوننت را ثبت کنیم. در اینجا ما از اختصار در تعریف یک ویژگی (property) در یک شیء برای ثبت کامپوننت `ChildComp` تحت کلید `ChildComp` استفاده می‌کنیم. (مترجم: این با ‍`ChildComp: ChildComp` برابر است)
 
-Because we are writing the template in the DOM, it will be subject to browser's parsing rules, which is case-insensitive for tag names. Therefore, we need to use the kebab-cased name to reference the child component:
+بدلیل اینکه ما تمپلیت را در DOM می‌نویسیم، این تمپلیت تحت قوانین تجزیه مرورگر قرار خواهد گرفت، که در مورد نام‌ تگ‌ها، حساس به بزرگی و کوچکی حروف نیست. بنابراین، باید از نام‌های kebab-case (که حروف بزرگ و کوچک را بزرگ‌نمایی نمی‌کنند) برای ارجاع به کامپوننت فرزند استفاده کنیم:
 
 ```vue-html
 <child-comp></child-comp>
@@ -65,4 +65,4 @@ Because we are writing the template in the DOM, it will be subject to browser's 
 </div>
 
 
-Now try it yourself - import the child component and render it in the template.
+حالا خودتان امتحان کنید - کامپوننت فرزند را import کنید و آن را در تمپلیت نمایش دهید. (مترجم: کامپوننت ‍‍`ChildComp` از `‎./ChildComp.vue`)

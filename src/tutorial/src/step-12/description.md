@@ -1,6 +1,6 @@
 # Props {#props}
 
-A child component can accept input from the parent via **props**. First, it needs to declare the props it accepts:
+کامپوننت فرزند می‌تواند ورودی از والد را از طریق props دریافت کند. ابتدا باید **props** دریافتی خود را اعلام کند:
 
 <div class="composition-api">
 <div class="sfc">
@@ -14,7 +14,7 @@ const props = defineProps({
 </script>
 ```
 
-Note `defineProps()` is a compile-time macro and doesn't need to be imported. Once declared, the `msg` prop can be used in the child component's template. It can also be accessed in JavaScript via the returned object of `defineProps()`.
+توجه داشته باشید `defineProps()‎` یک ماکرو زمان کامپایل است و نیازی به import شدن ندارد. هنگامی که تعریف شد، `msg` می‌تواند در تمپلیت کامپوننت فرزند استفاده شود. همچنین می‌توان با استفاده از شی برگردانده شده از `defineProps()‎` به آن در جاوااسکریپت دسترسی پیدا کرد.
 
 </div>
 
@@ -32,7 +32,7 @@ export default {
 }
 ```
 
-Once declared, the `msg` prop is exposed on `this` and can be used in the child component's template. The received props are passed to `setup()` as the first argument.
+هنگامی که تعریف شد، پِراپ `msg` روی `this` قرار گرفته و می‌تواند در تمپلیت کامپوننت فرزند استفاده شود. propهای دریافت شده به عنوان اولین آرگومان به `setup()‎` پاس داده می‌شوند.
 
 </div>
 
@@ -49,11 +49,11 @@ export default {
 }
 ```
 
-Once declared, the `msg` prop is exposed on `this` and can be used in the child component's template.
+هنگامی که تعریف شد، پِراپ `msg` روی `this` قرار گرفته و می‌تواند در قالب کامپوننت فرزند استفاده شود.
 
 </div>
 
-The parent can pass the prop to the child just like attributes. To pass a dynamic value, we can also use the `v-bind` syntax:
+والد می‌تواند prop را مانند attributeها به فرزند پاس دهد. برای پاس دادن یک مقدار داینامیک، می‌توانیم از سینتکس `v-bind` هم استفاده کنیم:
 
 <div class="sfc">
 
@@ -70,4 +70,4 @@ The parent can pass the prop to the child just like attributes. To pass a dynami
 
 </div>
 
-Now try it yourself in the editor.
+حالا خودتان در ادیتور امتحان کنید.

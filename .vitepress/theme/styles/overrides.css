@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;900&display=swap');
+
+/* RTL & Persian Styles */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+  direction: rtl;
+}
+
+:root {
+  --vt-font-family-base: 'Vazirmatn', sans-serif !important;
+  --vp-font-family-mono: 'Vazirmatn', sans-serif !important;
+}
+
+.license {
+  direction: ltr;
+}
+
+.vt-link-icon {
+  margin-left: 0;
+  margin-right: 4px;
+}
+
+.vt-doc ul {
+  padding-right: 1.25rem;
+}
+
+.vt-doc ul > li:before {
+  right: -1.25rem;
+}
+
+.vt-doc .custom-block {
+  padding: 20px 40px 4px 42px !important;
+}
+
+.vt-doc .custom-block:before {
+  left: auto !important;
+  right: 17px;
+}
+
+.outline-title {
+  direction: rtl;
+}
+
+.vt-doc .header-anchor {
+  float: right !important;
+  margin-right: -1.1em;
+  padding-left: 0.23em;
+}
+
+.vt-icon {
+  margin-right: 0px !important;
+  margin-left: 8px;
+}
+
+.top-link,
+.VPNavScreenMenu {
+  direction: rtl;
+}
+
+.outline-marker {
+  left: auto !important;
+  right: -12px;
+}
+
+.vt-doc ol > li {
+  padding-left: unset !important;
+  padding-right: 1.5rem !important;
+  text-align: right;
+}
+
+.vt-doc ol > li::before {
+  left: unset !important;
+  right: 2px !important;
+}
+
+.vt-menu-link {
+  direction: rtl;
+}
+
+.join-translations {
+  direction: rtl;
+}

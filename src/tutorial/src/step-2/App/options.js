@@ -1,4 +1,4 @@
 export default {
-  // component options
-  // declare some reactive state here.
+  // آپشن‌های کامپوننت
+  // تعریف کنید reactive های state
 }

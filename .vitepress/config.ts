@@ -8,121 +8,124 @@ import { headerPlugin } from './headerMdPlugin'
 
 const nav: ThemeConfig['nav'] = [
   {
-    text: 'Docs',
+    text: 'اسناد',
     activeMatch: `^/(guide|style-guide|cookbook|examples)/`,
     items: [
-      { text: 'Guide', link: '/guide/introduction' },
-      { text: 'Tutorial', link: '/tutorial/' },
-      { text: 'Examples', link: '/examples/' },
-      { text: 'Quick Start', link: '/guide/quick-start' },
+      { text: 'راهنما', link: '/guide/introduction' },
+      { text: 'آموزش', link: '/tutorial/' },
+      { text: 'مثال‌ها', link: '/examples/' },
+      { text: 'شروع سریع', link: '/guide/quick-start' },
       // { text: 'Style Guide', link: '/style-guide/' },
-      { text: 'Glossary', link: '/glossary/' },
+      { text: 'واژه‌نامه', link: '/glossary/' },
       {
-        text: 'Vue 2 Docs',
+        text: 'اسناد Vue ۲',
         link: 'https://v2.vuejs.org'
       },
       {
-        text: 'Migration from Vue 2',
+        text: 'مهاجرت از Vue ۲',
         link: 'https://v3-migration.vuejs.org/'
       }
     ]
   },
   {
-    text: 'API',
+    text: '(API) میانجی‌های برنامه نویسی',
     activeMatch: `^/api/`,
     link: '/api/'
   },
   {
-    text: 'Playground',
+    text: 'تفریحگاه',
     link: 'https://play.vuejs.org'
   },
   {
-    text: 'Ecosystem',
+    text: 'اکوسیستم',
     activeMatch: `^/ecosystem/`,
     items: [
       {
-        text: 'Resources',
+        text: 'منابع',
         items: [
-          { text: 'Partners', link: '/partners/' },
-          { text: 'Themes', link: '/ecosystem/themes' },
+          { text: 'همکاران', link: '/partners/' },
+          { text: 'تم‌ها', link: '/ecosystem/themes' },
           {
-            text: 'Certification',
+            text: 'گواهی‌نامه',
             link: 'https://certification.vuejs.org/?ref=vuejs-nav'
           },
-          { text: 'Jobs', link: 'https://vuejobs.com/?ref=vuejs' },
-          { text: 'T-Shirt Shop', link: 'https://vue.threadless.com/' }
+          { text: 'مشاغل', link: 'https://vuejobs.com/?ref=vuejs' },
+          { text: 'فروشگاه تیشرت', link: 'https://vue.threadless.com/' }
         ]
       },
       {
-        text: 'Official Libraries',
+        text: 'کتابخانه‌های رسمی',
         items: [
           { text: 'Vue Router', link: 'https://router.vuejs.org/' },
           { text: 'Pinia', link: 'https://pinia.vuejs.org/' },
-          { text: 'Tooling Guide', link: '/guide/scaling-up/tooling.html' }
+          {
+            text: 'رهنمای ابزارها',
+            link: '/guide/scaling-up/tooling.html'
+          }
         ]
       },
       {
-        text: 'Video Courses',
+        text: 'دوره‌های ویدیویی',
         items: [
           {
-            text: 'Vue Mastery',
+            text: 'Vue Mastery تارنمای',
             link: 'https://www.vuemastery.com/courses/'
           },
           {
-            text: 'Vue School',
+            text: 'Vue School تارنمای',
             link: 'https://vueschool.io/?friend=vuejs&utm_source=Vuejs.org&utm_medium=Link&utm_content=Navbar%20Dropdown'
           }
         ]
       },
       {
-        text: 'Help',
+        text: 'کمک',
         items: [
           {
-            text: 'Discord Chat',
+            text: 'چت دیسکورد',
             link: 'https://discord.com/invite/HBherRA'
           },
           {
-            text: 'GitHub Discussions',
+            text: 'Discussions گیت‌هاب',
             link: 'https://github.com/vuejs/core/discussions'
           },
-          { text: 'DEV Community', link: 'https://dev.to/t/vue' }
+          { text: 'DEV Community تارنمای', link: 'https://dev.to/t/vue' }
         ]
       },
       {
-        text: 'News',
+        text: 'اخبار',
         items: [
-          { text: 'Blog', link: 'https://blog.vuejs.org/' },
-          { text: 'Twitter', link: 'https://twitter.com/vuejs' },
-          { text: 'Events', link: 'https://events.vuejs.org/' },
-          { text: 'Newsletters', link: '/ecosystem/newsletters' }
+          { text: 'وبلاگ', link: 'https://blog.vuejs.org/' },
+          { text: 'توییتر', link: 'https://twitter.com/vuejs' },
+          { text: 'رویدادها', link: 'https://events.vuejs.org/' },
+          { text: 'خبرنامه‌ها', link: '/ecosystem/newsletters' }
         ]
       }
     ]
   },
   {
-    text: 'About',
+    text: 'درباره',
     activeMatch: `^/about/`,
     items: [
-      { text: 'FAQ', link: '/about/faq' },
-      { text: 'Team', link: '/about/team' },
-      { text: 'Releases', link: '/about/releases' },
+      { text: 'سوالات متداول', link: '/about/faq' },
+      { text: 'تیم', link: '/about/team' },
+      { text: 'انتشارات', link: '/about/releases' },
       {
-        text: 'Community Guide',
+        text: 'راهنمای کامیونیتی',
         link: '/about/community-guide'
       },
-      { text: 'Code of Conduct', link: '/about/coc' },
+      { text: 'کدرفتار', link: '/about/coc' },
       {
-        text: 'The Documentary',
+        text: 'مستند',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
       }
     ]
   },
   {
-    text: 'Sponsor',
+    text: 'حامی',
     link: '/sponsor/'
   },
   {
-    text: 'Partners',
+    text: 'همکاران',
     link: '/partners/',
     activeMatch: `^/partners/`
   }
@@ -131,20 +134,20 @@ const nav: ThemeConfig['nav'] = [
 export const sidebar: ThemeConfig['sidebar'] = {
   '/guide/': [
     {
-      text: 'Getting Started',
+      text: 'آغاز',
       items: [
-        { text: 'Introduction', link: '/guide/introduction' },
+        { text: 'معرفی', link: '/guide/introduction' },
         {
-          text: 'Quick Start',
+          text: 'شروع سریع',
           link: '/guide/quick-start'
         }
       ]
     },
     {
-      text: 'Essentials',
+      text: 'الزامات',
       items: [
         {
-          text: 'Creating an Application',
+          text: 'ساخت یک اپلیکیشن',
           link: '/guide/essentials/application'
         },
         {
@@ -152,41 +155,50 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/template-syntax'
         },
         {
-          text: 'Reactivity Fundamentals',
+          text: 'مبانی Reactivity',
           link: '/guide/essentials/reactivity-fundamentals'
         },
         {
-          text: 'Computed Properties',
+          text: 'ویژگی‌های Computed',
           link: '/guide/essentials/computed'
         },
         {
-          text: 'Class and Style Bindings',
+          text: 'اتصالات کلاس‌ و استایل (Class and Style Bindings)',
           link: '/guide/essentials/class-and-style'
         },
         {
-          text: 'Conditional Rendering',
+          text: 'رندر شرطی (Conditional Rendering)',
           link: '/guide/essentials/conditional'
         },
-        { text: 'List Rendering', link: '/guide/essentials/list' },
         {
-          text: 'Event Handling',
+          text: 'رندر لیست‌ (List Rendering)',
+          link: '/guide/essentials/list'
+        },
+        {
+          text: 'مدیریت رویداد‌ها (Event Handling)',
           link: '/guide/essentials/event-handling'
         },
-        { text: 'Form Input Bindings', link: '/guide/essentials/forms' },
+        {
+          text: 'اتصالات ورودی فرم (Form Input Bindings)',
+          link: '/guide/essentials/forms'
+        },
         {
           text: 'Lifecycle Hooks',
           link: '/guide/essentials/lifecycle'
         },
-        { text: 'Watchers', link: '/guide/essentials/watchers' },
-        { text: 'Template Refs', link: '/guide/essentials/template-refs' },
+        { text: 'ناظرها (Watchers)', link: '/guide/essentials/watchers' },
         {
-          text: 'Components Basics',
+          text: 'Template Refs',
+          link: '/guide/essentials/template-refs'
+        },
+        {
+          text: 'مبانی کامپوننت‌ها (Components Basics)',
           link: '/guide/essentials/component-basics'
         }
       ]
     },
     {
-      text: 'Components In-Depth',
+      text: 'کامپوننت‌ها به‌طور عمیق',
       items: [
         {
           text: 'Registration',
@@ -194,12 +206,12 @@ export const sidebar: ThemeConfig['sidebar'] = {
         },
         { text: 'Props', link: '/guide/components/props' },
         { text: 'Events', link: '/guide/components/events' },
-        { text: 'Component v-model', link: '/guide/components/v-model' },
+        { text: 'v-model', link: '/guide/components/v-model' },
         {
           text: 'Fallthrough Attributes',
           link: '/guide/components/attrs'
         },
-        { text: 'Slots', link: '/guide/components/slots' },
+        { text: 'اسلات‌ها', link: '/guide/components/slots' },
         {
           text: 'Provide / inject',
           link: '/guide/components/provide-inject'
@@ -211,7 +223,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Reusability',
+      text: 'قابلیت استفاده مجدد',
       items: [
         {
           text: 'Composables',
@@ -221,11 +233,11 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: 'Custom Directives',
           link: '/guide/reusability/custom-directives'
         },
-        { text: 'Plugins', link: '/guide/reusability/plugins' }
+        { text: 'افزونه‌ها', link: '/guide/reusability/plugins' }
       ]
     },
     {
-      text: 'Built-in Components',
+      text: 'کامپوننت‌های داخلی',
       items: [
         { text: 'Transition', link: '/guide/built-ins/transition' },
         {
@@ -255,69 +267,69 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Best Practices',
+      text: 'بهترین روش‌ها',
       items: [
         {
           text: 'Production Deployment',
           link: '/guide/best-practices/production-deployment'
         },
         {
-          text: 'Performance',
+          text: 'کارایی (Performance)',
           link: '/guide/best-practices/performance'
         },
         {
-          text: 'Accessibility',
+          text: 'دسترسی‌پذیری',
           link: '/guide/best-practices/accessibility'
         },
         {
-          text: 'Security',
+          text: 'امنیت',
           link: '/guide/best-practices/security'
         }
       ]
     },
     {
-      text: 'TypeScript',
+      text: 'تایپ‌اسکریپت',
       items: [
-        { text: 'Overview', link: '/guide/typescript/overview' },
+        { text: 'بررسی کلی', link: '/guide/typescript/overview' },
         {
-          text: 'TS with Composition API',
+          text: 'تایپ‌اسکریپت با API Composition',
           link: '/guide/typescript/composition-api'
         },
         {
-          text: 'TS with Options API',
+          text: 'تایپ‌اسکریپت با API Options',
           link: '/guide/typescript/options-api'
         }
       ]
     },
     {
-      text: 'Extra Topics',
+      text: 'موضوعات اضافی',
       items: [
         {
-          text: 'Ways of Using Vue',
+          text: 'روش‌های استفاده از Vue',
           link: '/guide/extras/ways-of-using-vue'
         },
         {
-          text: 'Composition API FAQ',
+          text: 'سوالات متداول در مورد Composition API',
           link: '/guide/extras/composition-api-faq'
         },
         {
-          text: 'Reactivity in Depth',
+          text: 'واکنش‌پذیری به تفصیل',
           link: '/guide/extras/reactivity-in-depth'
         },
         {
-          text: 'Rendering Mechanism',
+          text: 'مکانیزم رندر',
           link: '/guide/extras/rendering-mechanism'
         },
         {
-          text: 'Render Functions & JSX',
+          text: 'توابع رندر و JSX',
           link: '/guide/extras/render-function'
         },
         {
-          text: 'Vue and Web Components',
+          text: 'Vue و کامپوننت‌های وب',
           link: '/guide/extras/web-components'
         },
         {
-          text: 'Animation Techniques',
+          text: 'تکنیک‌های انیمیشن',
           link: '/guide/extras/animation'
         }
         // {
@@ -423,101 +435,101 @@ export const sidebar: ThemeConfig['sidebar'] = {
   ],
   '/examples/': [
     {
-      text: 'Basic',
+      text: 'پایه',
       items: [
         {
-          text: 'Hello World',
+          text: 'سلام دنیا',
           link: '/examples/#hello-world'
         },
         {
-          text: 'Handling User Input',
+          text: 'مدیریت ورودی کاربر',
           link: '/examples/#handling-input'
         },
         {
-          text: 'Attribute Bindings',
+          text: 'اتصال صفت‌ها',
           link: '/examples/#attribute-bindings'
         },
         {
-          text: 'Conditionals and Loops',
+          text: 'شرط‌ها و حلقه‌ها',
           link: '/examples/#conditionals-and-loops'
         },
         {
-          text: 'Form Bindings',
+          text: 'اتصالات فرم',
           link: '/examples/#form-bindings'
         },
         {
-          text: 'Simple Component',
+          text: 'کامپوننت ساده',
           link: '/examples/#simple-component'
         }
       ]
     },
     {
-      text: 'Practical',
+      text: 'کاربردی',
       items: [
         {
-          text: 'Markdown Editor',
+          text: 'ویرایشگر Markdown',
           link: '/examples/#markdown'
         },
         {
-          text: 'Fetching Data',
+          text: 'گرفتن داده',
           link: '/examples/#fetching-data'
         },
         {
-          text: 'Grid with Sort and Filter',
+          text: 'گرید با مرتب‌سازی و فیلتر',
           link: '/examples/#grid'
         },
         {
-          text: 'Tree View',
+          text: 'نمای درختی',
           link: '/examples/#tree'
         },
         {
-          text: 'SVG Graph',
+          text: 'نمودار SVG',
           link: '/examples/#svg'
         },
         {
-          text: 'Modal with Transitions',
+          text: 'مودال با انیمیشن',
           link: '/examples/#modal'
         },
         {
-          text: 'List with Transitions',
+          text: 'لیست با انیمیشن',
           link: '/examples/#list-transition'
         },
         {
-          text: 'TodoMVC',
+          text: 'نمونه TodoMVC',
           link: '/examples/#todomvc'
         }
       ]
     },
     {
       // https://eugenkiss.github.io/7guis/
-      text: '7 GUIs',
+      text: 'بنچمارک 7GUIs',
       items: [
         {
-          text: 'Counter',
+          text: 'شمارنده',
           link: '/examples/#counter'
         },
         {
-          text: 'Temperature Converter',
+          text: 'مبدل دما',
           link: '/examples/#temperature-converter'
         },
         {
-          text: 'Flight Booker',
+          text: 'رزرو پرواز',
           link: '/examples/#flight-booker'
         },
         {
-          text: 'Timer',
+          text: 'شمارنده',
           link: '/examples/#timer'
         },
         {
-          text: 'CRUD',
+          text: 'عملیات CRUD',
           link: '/examples/#crud'
         },
         {
-          text: 'Circle Drawer',
+          text: 'کشوی دایره‌ای',
           link: '/examples/#circle-drawer'
         },
         {
-          text: 'Cells',
+          text: 'سلول‌های جدول',
           link: '/examples/#cells'
         }
       ]
@@ -553,13 +565,20 @@ export const sidebar: ThemeConfig['sidebar'] = {
 }
 
 // Placeholder of the i18n config for @vuejs-translations.
-// const i18n: ThemeConfig['i18n'] = {
-// }
+const i18n: ThemeConfig['i18n'] = {
+  menu: 'فهرست',
+  toc: 'در این صفحه',
+  previous: 'قبلی',
+  next: 'بعدی',
+  returnToTop: 'برگشت به بالا',
+  appearance: 'ظاهر'
+}
 
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
 
-  lang: 'en-US',
+  lang: 'fa',
+  dir: 'rtl',
   title: 'Vue.js',
   description: 'Vue.js - The Progressive JavaScript Framework',
   srcDir: 'src',
@@ -613,7 +632,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     nav,
     sidebar,
     // Placeholder of the i18n config for @vuejs-translations.
-    // i18n,
+    i18n,
 
     localeLinks: [
       {
@@ -658,7 +677,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       },
       {
         link: '/translations/',
-        text: 'Help Us Translate!',
+        text: 'به ما در ترجمه کمک کنید!',
         isTranslationsDesc: true
       }
     ],
@@ -684,8 +703,8 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     editLink: {
-      repo: 'vuejs/docs',
-      text: 'Edit this page on GitHub'
+      repo: 'the-pesar/docs-fa',
+      text: 'ویرایش این صفحه در گیت‌هاب'
     },
 
     footer: {
@@ -700,7 +719,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   markdown: {
     config(md) {
       md.use(headerPlugin)
-        // .use(textAdPlugin)
+      // .use(textAdPlugin)
     }
   },
 

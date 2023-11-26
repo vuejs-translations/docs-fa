@@ -48,6 +48,7 @@ defineProps<{
     margin: 0 auto;
     display: flex;
     align-items: flex-start;
+    flex-direction: row-reverse;
     max-width: 960px;
   }
 }
@@ -63,7 +64,7 @@ defineProps<{
     position: sticky;
     top: calc(var(--vt-banner-height, 0px) + 32px);
     left: 0;
-    padding: 0 24px 0 0;
+    padding: 0 0 0 24px;
     width: 256px;
   }
 
@@ -75,7 +76,7 @@ defineProps<{
 @media (min-width: 960px) {
   .info {
     top: calc(var(--vt-banner-height, 0px) + 88px);
-    padding: 0 64px 0 0;
+    padding: 0 0 0 64px;
     width: 384px;
   }
 

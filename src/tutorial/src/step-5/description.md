@@ -1,6 +1,6 @@
 # Form Bindings {#form-bindings}
 
-Using `v-bind` and `v-on` together, we can create two-way bindings on form input elements:
+با استفاده همزمان از `v-bind` و `v-on`، می‌توانیم یک ارتباط دوطرفه روی عناصر ورودی فرم ایجاد کنیم:
 
 ```vue-html
 <input :value="text" @input="onInput">
@@ -11,8 +11,8 @@ Using `v-bind` and `v-on` together, we can create two-way bindings on form input
 ```js
 methods: {
   onInput(e) {
-    // a v-on handler receives the native DOM event
-    // as the argument.
+    // را DOM یک هندلر رویداد v-on
+    // به عنوان آرگومان دریافت می‌کند
     this.text = e.target.value
   }
 }
@@ -24,24 +24,24 @@ methods: {
 
 ```js
 function onInput(e) {
-  // a v-on handler receives the native DOM event
-  // as the argument.
+    // را DOM یک هندلر رویداد v-on
+    // به عنوان آرگومان دریافت می‌کند
   text.value = e.target.value
 }
 ```
 
 </div>
 
-Try typing in the input box - you should see the text in `<p>` updating as you type.
+در input box تایپ کنید - همزمان با تایپ شما، باید متن در `<p>` را به‌روز شده به شکل لایو ببینید.
 
-To simplify two-way bindings, Vue provides a directive, `v-model`, which is essentially a syntax sugar for the above:
+برای ساده کردن ارتباط دوطرفه، Vue یک directive به نام `v-model` ارائه می‌دهد که در واقع نوشتار ساده‌تری برای بالا است:
 
 ```vue-html
 <input v-model="text">
 ```
 
-`v-model` automatically syncs the `<input>`'s value with the bound state, so we no longer need to use an event handler for that.
+`v-model` به صورت خودکار مقدار `<input>` را با state متصل شده همگام‌سازی می‌کند، بنابراین دیگر نیازی به استفاده از یک هندلر رویداد برای این کار نداریم.
 
-`v-model` works not only on text inputs, but also on other input types such as checkboxes, radio buttons, and select dropdowns. We cover more details in <a target="_blank" href="/guide/essentials/forms.html">Guide - Form Bindings</a>.
+`v-model` نه تنها روی inputهای متنی، بلکه روی سایر انواع input مثل چک باکس‌ها، رادیو باتن‌ها و سلکت‌ها هم کار می‌کند(checkboxes, radio-buttons, select-dropdowns). ما جزئیات بیشتری را در <a target="_blank" href="/guide/essentials/forms.html">راهنما - Form Bindings</a> پوشش داده‌ایم.
 
-Now, try to refactor the code to use `v-model` instead.
+حالا سعی کنید کد را بازنویسی کنید تا از `v-model` استفاده کند.

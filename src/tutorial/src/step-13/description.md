@@ -1,16 +1,16 @@
 # Emits {#emits}
 
-In addition to receiving props, a child component can also emit events to the parent:
+علاوه بر دریافت props یک کامپوننت فرزند همچنین می‌تواند رویدادهایی را به والد ارسال کند:
 
 <div class="composition-api">
 <div class="sfc">
 
 ```vue
 <script setup>
-// declare emitted events
+// شده emit تعریف رویدادهای
 const emit = defineEmits(['response'])
 
-// emit with argument
+// با آرگومان emit
 emit('response', 'hello from child')
 </script>
 ```
@@ -21,10 +21,10 @@ emit('response', 'hello from child')
 
 ```js
 export default {
-  // declare emitted events
+  // شده emit تعریف رویدادهای
   emits: ['response'],
   setup(props, { emit }) {
-    // emit with argument
+    // با آرگومان emit
     emit('response', 'hello from child')
   }
 }
@@ -38,10 +38,10 @@ export default {
 
 ```js
 export default {
-  // declare emitted events
+  // شده emit تعریف رویدادهای
   emits: ['response'],
   created() {
-    // emit with argument
+    // با آرگومان emit
     this.$emit('response', 'hello from child')
   }
 }
@@ -49,9 +49,9 @@ export default {
 
 </div>
 
-The first argument to <span class="options-api">`this.$emit()`</span><span class="composition-api">`emit()`</span> is the event name. Any additional arguments are passed on to the event listener.
+اولین آرگومان <span class="options-api">`this.$emit()‎`</span><span class="composition-api">`emit()‎`</span> نام رویداد است. هر آرگومان اضافی به listener رویداد پاس داده می‌شود.
 
-The parent can listen to child-emitted events using `v-on` - here the handler receives the extra argument from the child emit call and assigns it to local state:
+والد می‌تواند با استفاده از `v-on` به رویدادهای ارسال شده از فرزند گوش دهد - در اینجا handler آرگومان اضافی را از تابع emit فرزند دریافت کرده و آن را به state محلی `childMsg` اختصاص می‌دهد:
 
 <div class="sfc">
 
@@ -68,4 +68,4 @@ The parent can listen to child-emitted events using `v-on` - here the handler re
 
 </div>
 
-Now try it yourself in the editor.
+حالا خودتان در ادیتور امتحان کنید.

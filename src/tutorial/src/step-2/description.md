@@ -2,62 +2,62 @@
 
 <div class="sfc">
 
-What you see in the editor is a Vue Single-File Component (SFC). An SFC is a reusable self-contained block of code that encapsulates HTML, CSS and JavaScript that belong together, written inside a `.vue` file.
+آنچه در ادیتور می‌بینید یک Single-File Component (SFC) است. یک SFC یک بلوک کد خودمختار و قابل استفاده مجدد است که CSS و HTML و JavaScript مرتبط به هم را در یک فایل `‎.vue` کپسوله می‌کند.
 
 </div>
 
-The core feature of Vue is **declarative rendering**: using a template syntax that extends HTML, we can describe how the HTML should look like based on JavaScript state. When the state changes, the HTML updates automatically.
+ویژگی اصلی Vue **رندرینگ صریح یا Declarative Rendering** است: با استفاده از ساختار تمپلیت که HTML را توسعه می‌دهد، می‌توانیم توصیف کنیم که HTML باید بر اساس state فعلی JavaScript چگونه به نظر برسد. هنگامی که state تغییر می‌کند، HTML به صورت خودکار به‌روزرسانی می‌شود.
 
 <div class="composition-api">
 
-State that can trigger updates when changed are considered **reactive**. We can declare reactive state using Vue's `reactive()` API. Objects created from `reactive()` are JavaScript [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) that work just like normal objects:
+state هایی که هنگام تغییر می‌توانند باعث به‌روزرسانی شوند، reactive (واکنش‌پذیر) در نظر گرفته می‌شوند. می‌توانیم state های reactive را با استفاده از API مربوط به آن یعنی `reactive()‎` در Vue اعلام کنیم. شیءهای ساخته شده از `reactive()‎` شیءهای [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) در JavaScript هستند که دقیقا مثل شیءهای عادی کار می‌کنند:
 
 ```js
-import { reactive } from 'vue'
+import { reactive } from 'vue'‎
 
-const counter = reactive({
+const counter = reactive({‎
   count: 0
-})
+‎})‎
 
 console.log(counter.count) // 0
-counter.count++
+counter.count++‎
 ```
 
-`reactive()` only works on objects (including arrays and built-in types like `Map` and `Set`). `ref()`, on the other hand, can take any value type and create an object that exposes the inner value under a `.value` property:
+`reactive()‎` فقط روی شیءها (شامل آرایه‌ها و تایپ‌های داخلی مثل `Map` و `Set`) کار می‌کند. از طرف دیگر، `ref()‎` می‌تواند هر نوع مقداری را بگیرد و یک شیء ایجاد کند که مقدار داخلی را تحت یک پراپرتی `‎.value` عرضه می‌کند:
 
 ```js
-import { ref } from 'vue'
+import { ref } from 'vue'‎
 
 const message = ref('Hello World!')
 
-console.log(message.value) // "Hello World!"
-message.value = 'Changed'
+console.log(message.value) // "Hello World!"‎
+message.value = 'Changed'‎
 ```
 
-Details on `reactive()` and `ref()` are discussed in <a target="_blank" href="/guide/essentials/reactivity-fundamentals.html">Guide - Reactivity Fundamentals</a>.
+جزئیات `reactive()‎` و `ref()‎` در <a target="_blank" href="/guide/essentials/reactivity-fundamentals.html">راهنما - مبانی reactiveی</a> گفته شده است.
 
 <div class="sfc">
 
-Reactive state declared in the component's `<script setup>` block can be used directly in the template. This is how we can render dynamic text based on the value of the `counter` object and `message` ref, using mustaches syntax:
+state های reactive اعلام شده در بلوک `<script setup>` کامپوننت می‌توانند به صورت مستقیم در تمپلیت استفاده شوند. اینجا چگونگی رندرینگ متن پویا بر اساس مقدار شیء `counter` و `message` که ref است را با استفاده از سینتکس mustache مشاهده کنید:
 
 </div>
 
 <div class="html">
 
-The object being passed to `createApp()` is a Vue component. A component's state should be declared inside its `setup()` function, and returned using an object:
+شیءی که به `createApp()‎` پاس داده می‌شود یک کامپوننت Vue است. state یک کامپوننت باید داخل تابع `setup()‎` آن اعلام شود و با استفاده از یک شیء برگردانده شود:
 
 ```js{2,5}
-setup() {
+setup() {‎
   const counter = reactive({ count: 0 })
   const message = ref('Hello World!')
-  return {
-    counter,
+  return {‎
+    counter,‎
     message
-  }
-}
+  ‎}‎ 
+‎}‎
 ```
 
-Properties in the returned object will be made available in the template. This is how we can render dynamic text based on the value of `message`, using mustaches syntax:
+پراپرتی‌های شیء برگردانده شده در تمپلیت در دسترس خواهند بود. این نحوه رندر متن بصورت پویا بر اساس مقدار `message` با استفاده از سینتکس mustache است:
 
 </div>
 
@@ -66,44 +66,44 @@ Properties in the returned object will be made available in the template. This i
 <p>count is: {{ counter.count }}</p>
 ```
 
-Notice how we did not need to use `.value` when accessing the `message` ref in templates: it is automatically unwrapped for more succinct usage.
+توجه کنید که نیازی به استفاده از `‎.value` هنگام دسترسی به `message` که ref است در تمپلیت‌ها نیست: به طور خودکار برای کوتاه‌سازی تبدیل می‌شود.
 
 </div>
 
 <div class="options-api">
 
-State that can trigger updates when changed are considered **reactive**. In Vue, reactive state is held in components. <span class="html">In the example code, the object being passed to `createApp()` is a component.</span>
+state هایی که هنگام تغییر می‌توانند باعث به‌روزرسانی شوند، در Vue **reactive** در نظر گرفته می‌شوند. در Vue ما، state های reactive را در کامپوننت‌ها نگهداری می‌‌کنیم. <span class="html">در کد مثال، شیءی که به `createApp()‎` پاس داده می‌شود یک کامپوننت است.</span>
 
-We can declare reactive state using the `data` component option, which should be a function that returns an object:
+می‌توانیم state های reactive را با استفاده از گزینه `data` کامپوننت که باید یک تابع باشد که یک شیء را برمی‌گرداند، اعلام کنیم:
 
 <div class="sfc">
 
 ```js{3-5}
-export default {
-  data() {
-    return {
-      message: 'Hello World!'
-    }
-  }
-}
+export default {‎
+  data() {‎ 
+    return {‎   
+      message: 'Hello World!'‎      
+    ‎}‎    
+  ‎}‎  
+‎}‎
 ```
 
 </div>
 <div class="html">
 
 ```js{3-5}
-createApp({
-  data() {
-    return {
-      message: 'Hello World!'
-    }
-  }
-})
+createApp({‎
+  data() {‎  
+    return {‎    
+      message: 'Hello World!'‎      
+    ‎}‎    
+  ‎}‎  
+‎})‎
 ```
 
 </div>
 
-The `message` property will be made available in the template. This is how we can render dynamic text based on the value of `message`, using mustaches syntax:
+خاصیت `message` در تمپلیت در دسترس خواهد بود. این چگونگی رندر متن بصورت پویا بر اساس مقدار `message` با استفاده از سینتکس mustache است:
 
 ```vue-html
 <h1>{{ message }}</h1>
@@ -111,7 +111,7 @@ The `message` property will be made available in the template. This is how we ca
 
 </div>
 
-The content inside the mustaches is not limited to just identifiers or paths - we can use any valid JavaScript expression:
+محتوای داخل mustache محدود به identifier یا path نیست - می‌توانیم از هر عبارت JavaScript معتبری استفاده کنیم:
 
 ```vue-html
 <h1>{{ message.split('').reverse().join('') }}</h1>
@@ -119,12 +119,12 @@ The content inside the mustaches is not limited to just identifiers or paths - w
 
 <div class="composition-api">
 
-Now, try to create some reactive state yourself, and use it to render dynamic text content for the `<h1>` in the template.
+حالا سعی کنید خودتان چند state reactive ایجاد کنید و از آن‌ها برای رندر محتوای متنی بصورت پویا برای `<h1>` در تمپلیت استفاده کنید.
 
 </div>
 
 <div class="options-api">
 
-Now, try to create a data property yourself, and use it as the text content for the `<h1>` in the template.
+حالا سعی کنید خودتان یک خاصیت data ایجاد کنید و از آن به عنوان محتوای متنی برای `<h1>` در تمپلیت استفاده کنید.
 
 </div>

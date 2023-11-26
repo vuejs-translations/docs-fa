@@ -2,25 +2,25 @@
 outline: deep
 ---
 
-# Composition API FAQ {#composition-api-faq}
+# سوالات متداول در مورد Composition API {#composition-api-faq}
 
 :::tip
-This FAQ assumes prior experience with Vue - in particular, experience with Vue 2 while primarily using Options API.
+این سوالات متداول فرض بر آشنایی قبلی با Vue - به خصوص تجربه کار با Vue 2 با استفاده از Options API - را دارد.
 :::
 
-## What is Composition API? {#what-is-composition-api}
+## Composition API چیست؟ {#what-is-composition-api}
 
 <VueSchoolLink href="https://vueschool.io/lessons/introduction-to-the-vue-js-3-composition-api" title="Free Composition API Lesson"/>
 
-Composition API is a set of APIs that allows us to author Vue components using imported functions instead of declaring options. It is an umbrella term that covers the following APIs:
+Composition API مجموعه‌ای از APIها است که به ما اجازه می‌دهد کامپوننت‌های Vue را با استفاده از توابع import شده به جای تعریف آپشن‌ها (option) بنویسیم. در واقع یک اصطلاح کلی برای پوشش APIهای زیر است:
 
-- [Reactivity API](/api/reactivity-core), e.g. `ref()` and `reactive()`, that allows us to directly create reactive state, computed state, and watchers.
+- [Reactivity API](/api/reactivity-core) مانند `ref()‎` و `reactive()‎` که به ما اجازه می‌دهد stateهای reactive، computed و watchers را به صورت مستقیم ایجاد کنیم.
 
-- [Lifecycle Hooks](/api/composition-api-lifecycle), e.g. `onMounted()` and `onUnmounted()`, that allow us to programmatically hook into the component lifecycle.
+- [Lifecycle Hooks](/api/composition-api-lifecycle) مانند `onMounted()‎` و `onUnmounted()‎` که به ما اجازه می‌دهند تا از درون برنامه (کد) به چرخه حیات کامپوننت متصل شویم.
 
-- [Dependency Injection](/api/composition-api-dependency-injection), i.e. `provide()` and `inject()`, that allow us to leverage Vue's dependency injection system while using Reactivity APIs.
+- [Dependency Injection](/api/composition-api-dependency-injection) (تزریق وابستگی) یعنی `provide()‎` و `inject()‎` که به ما اجازه می‌دهند هنگام استفاده از Reactivity APIs از سیستم تزریق وابستگی Vue استفاده کنیم.
 
-Composition API is a built-in feature of Vue 3 and [Vue 2.7](https://blog.vuejs.org/posts/vue-2-7-naruto.html). For older Vue 2 versions, use the officially maintained [`@vue/composition-api`](https://github.com/vuejs/composition-api) plugin. In Vue 3, it is also primarily used together with the [`<script setup>`](/api/sfc-script-setup) syntax in Single-File Components. Here's a basic example of a component using Composition API:
+Composition API یک ویژگی داخلی Vue 3 و [Vue 2.7](https://blog.vuejs.org/posts/vue-2-7-naruto.html) است. برای نسخه‌های قدیمی‌تر Vue 2، از پلاگین رسمی [`‎@vue/composition-api`](https://github.com/vuejs/composition-api) استفاده کنید. معمولا در Vue 3 نیز از سینتکس [`<script setup>`](/api/sfc-script-setup) در کامپوننت‌های Single-File استفاده می‌شود. مثال ساده یک کامپوننت با استفاده از Composition API:
 
 ```vue
 <script setup>
@@ -29,7 +29,7 @@ import { ref, onMounted } from 'vue'
 // reactive state
 const count = ref(0)
 
-// functions that mutate state and trigger updates
+// را تغییر می‌دهند و باعث به روز رسانی می‌شوند state توابعی که
 function increment() {
   count.value++
 }
@@ -45,113 +45,113 @@ onMounted(() => {
 </template>
 ```
 
-Despite an API style based on function composition, **Composition API is NOT functional programming**. Composition API is based on Vue's mutable, fine-grained reactivity paradigm, whereas functional programming emphasizes immutability.
+علی‌رغم سبک API مبتنی بر function composition، سیستم **Composition API برنامه‌نویسی فانکشنال نیست**. Composition API بر پایه پارادایم reactivity تغییرپذیر (mutable) و دقیق‌گرایانه Vue است، در حالی که برنامه‌نویسی فانکشنال بر عدم تغییرپذیری (immutability) تأکید دارد.
 
-If you are interested in learning how to use Vue with Composition API, you can set the site-wide API preference to Composition API using the toggle at the top of the left sidebar, and then go through the guide from the beginning.
+اگر علاقه‌مند به یادگیری استفاده از Vue با Composition API هستید، می‌توانید حالت API سراسری سایت را به Composition API تغییر دهید با استفاده از دکمه تاگل در بالای sidebar سمت چپ و سپس از ابتدا راهنما را دنبال کنید.
 
-## Why Composition API? {#why-composition-api}
+## چرا Composition API؟ {#why-composition-api}
 
-### Better Logic Reuse {#better-logic-reuse}
+### استفاده مجدد بهتر از منطق | Better Logic Reuse {#better-logic-reuse}
 
-The primary advantage of Composition API is that it enables clean, efficient logic reuse in the form of [Composable functions](/guide/reusability/composables). It solves [all the drawbacks of mixins](/guide/reusability/composables#vs-mixins), the primary logic reuse mechanism for Options API.
+مزیت اصلی Composition API این است که امکان استفاده مجدد clean (تمیز) و بهینه از logic (منطق) را به صورت [Composable functions](/guide/reusability/composables) فراهم می‌کند. این تمامی [محدودیت‌های mixin‌ها](/guide/reusability/composables#vs-mixins) را حل می‌کند که مکانیزم اصلی استفاده مجدد از logic در Options API است.
 
-Composition API's logic reuse capability has given rise to impressive community projects such as [VueUse](https://vueuse.org/), an ever-growing collection of composable utilities. It also serves as a clean mechanism for easily integrating stateful third-party services or libraries into Vue's reactivity system, for example [immutable data](/guide/extras/reactivity-in-depth#immutable-data), [state machines](/guide/extras/reactivity-in-depth#state-machines), and [RxJS](/guide/extras/reactivity-in-depth#rxjs).
+قابلیت استفاده مجدد از logic در Composition API منجر به پروژه‌های community تحسین‌برانگیزی مانند [VueUse](https://vueuse.org/) شده است، که مجموعه‌ای رو به رشد از ابزارهای composable است. همچنین به عنوان مکانیزمی clean برای ادغام آسان سرویس‌ها یا کتابخانه‌های شخص ثالث دارای state در سیستم reactivity فریمورک Vue عمل می‌کند، برای مثال [immutable data](/guide/extras/reactivity-in-depth#immutable-data)، [state machines](/guide/extras/reactivity-in-depth#state-machines) و [RxJS](/guide/extras/reactivity-in-depth#rxjs).
 
-### More Flexible Code Organization {#more-flexible-code-organization}
+### سازماندهی انعطاف‌پذیرتر کد {#more-flexible-code-organization}
 
-Many users love that we write organized code by default with Options API: everything has its place based on the option it falls under. However, Options API poses serious limitations when a single component's logic grows beyond a certain complexity threshold. This limitation is particularly prominent in components that need to deal with multiple **logical concerns**, which we have witnessed first hand in many production Vue 2 apps.
+بسیاری از کاربران دوست دارند که به طور پیش‌فرض با Options API کد منسجمی بنویسیم: هر چیزی جای خود را بر اساس آپشن مخصوصی که زیر آن قرار دارد، پیدا می‌کند. با این حال، Options API محدودیت‌های جدی هنگامی که logic یک کامپوننت خاص از حد آستانه پیچیدگی مشخصی فراتر می‌رود، ایجاد می‌کند. این محدودیت به ویژه در کامپوننت‌هایی که نیاز به مدیریت **logical concerns (چندین موضوع منطقی)** دارند، برجسته است که ما شاهد آن در بسیاری از برنامه‌های تولید شده با Vue 2 بوده‌ایم.
 
-Take the folder explorer component from Vue CLI's GUI as an example: this component is responsible for the following logical concerns:
+به عنوان مثال کامپوننت اکسپلورر پوشه‌ها از GUI Vue CLI را در نظر بگیرید: این کامپوننت مسئول موارد منطقی زیر است:
 
-- Tracking current folder state and displaying its content
-- Handling folder navigation (opening, closing, refreshing...)
-- Handling new folder creation
-- Toggling show favorite folders only
-- Toggling show hidden folders
-- Handling current working directory changes
+- پیگیری state پوشه جاری و نمایش محتوای آن
+- مدیریت ناوبری (navigation) پوشه (باز کردن، بستن، بازخوانی...)
+- ایجاد پوشه جدید
+- تاگل کردن روی نمایش پوشه‌های مورد علاقه
+- تاگل کردن روی نمایش پوشه‌های پنهان
+- مدیریت تغییرات دایرکتوری کاری جاری
 
-The [original version](https://github.com/vuejs/vue-cli/blob/a09407dd5b9f18ace7501ddb603b95e31d6d93c0/packages/@vue/cli-ui/src/components/folder/FolderExplorer.vue#L198-L404) of the component was written in Options API. If we give each line of code a color based on the logical concern it is dealing with, this is how it looks:
+[نسخه اصلی](https://github.com/vuejs/vue-cli/blob/a09407dd5b9f18ace7501ddb603b95e31d6d93c0/packages/@vue/cli-ui/src/components/folder/FolderExplorer.vue#L198-L404) این کامپوننت با  Options API نوشته شده بود. اگر به هر خط کد یک رنگ بر اساس موضوع منطقی که در حال مدیریت آن است، اختصاص دهیم، به این صورت به نظر می‌رسد:
 
 <img alt="folder component before" src="./images/options-api.png" width="129" height="500" style="margin: 1.2em auto">
 
-Notice how code dealing with the same logical concern is forced to be split under different options, located in different parts of the file. In a component that is several hundred lines long, understanding and navigating a single logical concern requires constantly scrolling up and down the file, making it much more difficult than it should be. In addition, if we ever intend to extract a logical concern into a reusable utility, it takes quite a bit of work to find and extract the right pieces of code from different parts of the file.
+توجه کنید که کد مربوط به یک موضوع منطقی یکسان مجبور به تقسیم شدن تحت آپشن‌های مختلف در قسمت‌های مختلف فایل است. در یک کامپوننت چند صد خطی، درک و ناوبری یک موضوع منطقی تکی نیازمند اسکرول مداوم بالا و پایین فایل است که آن را دشوارتر از آنچه باید باشد، می‌کند. علاوه بر این، اگر قصد استخراج یک موضوع منطقی به یک ابزار قابل استفاده مجدد داشته باشیم، پیدا کردن و استخراج قطعات مناسب کد از قسمت‌های مختلف فایل کار زیادی می‌طلبد.
 
-Here's the same component, before and after the [refactor into Composition API](https://gist.github.com/yyx990803/8854f8f6a97631576c14b63c8acd8f2e):
+اینجا همان کامپوننت، قبل و بعد از [بازنویسی به Composition API](https://gist.github.com/yyx990803/8854f8f6a97631576c14b63c8acd8f2e) است:
 
 ![folder component after](./images/composition-api-after.png)
 
-Notice how the code related to the same logical concern can now be grouped together: we no longer need to jump between different options blocks while working on a specific logical concern. Moreover, we can now move a group of code into an external file with minimal effort, since we no longer need to shuffle the code around in order to extract them. This reduced friction for refactoring is key to the long-term maintainability in large codebases.
+توجه کنید که اکنون کد مربوط به یک موضوع منطقی می‌تواند در کنار هم گروه‌بندی شود: دیگر نیازی نیست هنگام کار روی یک موضوع منطقی خاص، بین بلوک‌های آپشن‌های مختلف جابجا شویم. علاوه بر این، اکنون می‌توانیم گروهی از کد را با تلاش کمینه به یک فایل خارجی منتقل کنیم، چرا که دیگر نیازی به جابجایی کد برای استخراج آن‌ها نیست. این کاهش اصطکاک برای بازنویسی برای نگهداری طولانی مدت در کدبیس‌های بزرگ حیاتی است.
 
 ### Better Type Inference {#better-type-inference}
 
-In recent years, more and more frontend developers are adopting [TypeScript](https://www.typescriptlang.org/) as it helps us write more robust code, make changes with more confidence, and provides a great development experience with IDE support. However, the Options API, originally conceived in 2013, was designed without type inference in mind. We had to implement some [absurdly complex type gymnastics](https://github.com/vuejs/core/blob/44b95276f5c086e1d88fa3c686a5f39eb5bb7821/packages/runtime-core/src/componentPublicInstance.ts#L132-L165) to make type inference work with the Options API. Even with all this effort, type inference for Options API can still break down for mixins and dependency injection.
+در سال‌های اخیر، تعداد رو به رشدی از توسعه‌دهندگان فرانت‌اند از [TypeScript](https://www.typescriptlang.org/) استفاده می‌کنند زیرا به ما کمک می‌کند تا کد استوارتری بنویسیم، تغییرات را با اطمینان بیشتری انجام دهیم و تجربه توسعه عالی با پشتیبانی IDE داشته باشیم. با این حال، Options API که در سال 2013 طراحی شده بود، بدون در نظر گرفتن type inference طراحی شده بود. ما مجبور شدیم تا برای کار کردن type inference با Options API، برخی [چیزهای پیچیده و غیرمنطقی را پیاده‌سازی](https://github.com/vuejs/core/blob/44b95276f5c086e1d88fa3c686a5f39eb5bb7821/packages/runtime-core/src/componentPublicInstance.ts#L132-L165) کنیم. حتی با تمام این تلاش‌ها، type inference برای Options API همچنان می‌تواند برای mixin‌ها و تزریق وابستگی شکست بخورد.
 
-This had led many developers who wanted to use Vue with TS to lean towards Class API powered by `vue-class-component`. However, a class-based API heavily relies on ES decorators, a language feature that was only a stage 2 proposal when Vue 3 was being developed in 2019. We felt it was too risky to base an official API on an unstable proposal. Since then, the decorators proposal has gone through yet another complete overhaul, and finally reached stage 3 in 2022. In addition, class-based API suffers from logic reuse and organization limitations similar to Options API.
+این موضوع باعث شده بود که بسیاری از توسعه‌دهندگانی که می‌خواستند از Vue با TS استفاده کنند، بیشتر به سمت API مبتنی بر کلاس با `vue-class-component` متمایل شوند. با این حال، API مبتنی بر کلاس به شدت به ES decorators تکیه دارد، language feature که در زمان توسعه Vue 3 در سال 2019 فقط یک پیشنهاد مرحله 2 بود. از اینکه API رسمی را بر پایه یک پیشنهاد ناپایدار بنا کنیم، احساس خطر کردیم. از آن زمان، پیشنهاد decorators یک بازنگری کامل دیگر را پشت سر گذاشته و در نهایت در سال 2022 به مرحله 3 رسیده است. علاوه بر این، API مبتنی بر کلاس از محدودیت‌های مشابهی در بازاستفاده از منطق و سازماندهی کد همانند Options API رنج می‌برد.
 
-In comparison, Composition API utilizes mostly plain variables and functions, which are naturally type friendly. Code written in Composition API can enjoy full type inference with little need for manual type hints. Most of the time, Composition API code will look largely identical in TypeScript and plain JavaScript. This also makes it possible for plain JavaScript users to benefit from partial type inference.
+در مقایسه، Composition API عمدتاً از متغیرها و توابع ساده استفاده می‌کند که به طور طبیعی سازگار با type ها هستند. کد نوشته شده در Composition API می‌تواند از type inference کامل با نیاز کمینه به توضیحات manual type بهره‌مند شود. اکثر مواقع، کد Composition API در TypeScript و JavaScript ساده تقریباً یکسان به نظر می‌رسد. این امر همچنین باعث می‌شود که کاربران JavaScript ساده نیز بتوانند از type inference جزئی بهره‌مند شوند.
 
-### Smaller Production Bundle and Less Overhead {#smaller-production-bundle-and-less-overhead}
+### باندل پروداکشن کوچک‌تر و سربار کمتر | Smaller Production Bundle and Less Overhead {#smaller-production-bundle-and-less-overhead}
 
-Code written in Composition API and `<script setup>` is also more efficient and minification-friendly than Options API equivalent. This is because the template in a `<script setup>` component is compiled as a function inlined in the same scope of the `<script setup>` code. Unlike property access from `this`, the compiled template code can directly access variables declared inside `<script setup>`, without an instance proxy in between. This also leads to better minification because all the variable names can be safely shortened.
+کد نوشته شده در Composition API و `<script setup>` همچنین نسبت به معادل Options API بهینه‌تر و سازگارتر با minification است. این به این دلیل است که تمپلیت در یک کامپوننت `<script setup>` به عنوان تابعی درون خطی در همان scope کد `<script setup>` کامپایل می‌شود. بر خلاف دسترسی به پراپرتی با استفاده `this`، کد کامپایل شده تمپلیت می‌تواند بدون واسطه یک نمونه پراکسی، مستقیماً به متغیرهای اعلام شده داخل `<script setup>` دسترسی داشته باشد. این همچنین منجر به minification بهتر می‌شود زیرا نام‌های متغیرها را می‌توان با خیال راحت کوتاه کرد.
 
-## Relationship with Options API {#relationship-with-options-api}
+## ارتباط با Options API {#relationship-with-options-api}
 
-### Trade-offs {#trade-offs}
+### مزایا و معایب | Trade-offs {#trade-offs}
 
-Some users moving from Options API found their Composition API code less organized, and concluded that Composition API is "worse" in terms of code organization. We recommend users with such opinions to look at that problem from a different perspective.
+برخی از کاربرانی که از Options API به Composition API مهاجرت کرده‌اند، کد Composition API خود را کمتر منظم یافته‌اند و نتیجه گرفته‌اند که Composition API از نظر سازماندهی کد "بدتر" است. به کاربرانی با این دیدگاه توصیه می‌کنیم که این مسئله را از دیدگاه متفاوتی ببینند.
 
-It is true that Composition API no longer provides the "guard rails" that guide you to put your code into respective buckets. In return, you get to author component code like how you would write normal JavaScript. This means **you can and should apply any code organization best practices to your Composition API code as you would when writing normal JavaScript**. If you can write well-organized JavaScript, you should also be able to write well-organized Composition API code.
+درست است که Composition API دیگر محافظی (guard rails) که شما را هدایت کند تا کد خود را در قسمت‌های مربوطه قرار دهید، فراهم نمی‌کند. در عوض، شما می‌توانید کد کامپوننت را مانند نوشتن JavaScript عادی بنویسید. این بدان معناست که **شما می‌توانید و باید خودتان بهترین روش برای سازماندهی کد Composition API را انتخاب کنید مانند نوشتن JavaScript عادی عمل کنید**. اگر می‌توانید JavaScript خوب مرتب شده بنویسید، باید قادر به نوشتن کد Composition API تمیز نیز باشید.
 
-Options API does allow you to "think less" when writing component code, which is why many users love it. However, in reducing the mental overhead, it also locks you into the prescribed code organization pattern with no escape hatch, which can make it difficult to refactor or improve code quality in larger scale projects. In this regard, Composition API provides better long term scalability.
+Options API اجازه می‌دهد بدون فکر کردن زیاد کد کامپوننتی را بنویسید که بسیاری از کاربران آن را دوست دارند. با این حال، همین الگوی ثابت سازماندهی کد می‌تواند مشکل‌ساز باشد. وقتی پروژه بزرگ می‌شود، ممکن است بخواهید کد را refactor کنید یا سازماندهی آن را بهبود دهید. اما چون کد در Options API در بخش‌های ثابتی قفل شده، refactoring و بهبود سازماندهی دشوار می‌شود. در این زمینه، Composition API قابلیت مقیاس‌پذیری بلندمدت بهتری فراهم می‌کند.
 
-### Does Composition API cover all use cases? {#does-composition-api-cover-all-use-cases}
+### آیا Composition API همه موارد استفاده را پوشش می‌دهد؟ {#does-composition-api-cover-all-use-cases}
 
-Yes in terms of stateful logic. When using Composition API, there are only a few options that may still be needed: `props`, `emits`, `name`, and `inheritAttrs`.
+بله، از نظر منطق دارای state. هنگام استفاده از Composition API، تنها چند گزینه ممکن است همچنان نیاز باشد: `props`، `emits`، `name`، و `inheritAttrs`.
 
-:::tip
+:::tip نکته
 
-Since 3.3 you can directly use `defineOptions` in `<script setup>` to set the component name or `inheritAttrs` property
+از نسخه 3.3 می‌توانید مستقیماً از `defineOptions` در `<script setup>` برای تنظیم نام کامپوننت یا خاصیت `inheritAttrs` استفاده کنید.
 
 :::
 
-If you intend to exclusively use Composition API (along with the options listed above), you can shave a few kbs off your production bundle via a [compile-time flag](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags) that drops Options API related code from Vue. Note this also affects Vue components in your dependencies.
+اگر قصد دارید فقط از Composition API (همراه با گزینه‌های فهرست شده بالا) استفاده کنید، می‌توانید چند کیلوبایت از باندل تولیدی خود را از طریق یک [compile-time flag](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags) که کد مربوط به Options API را از Vue حذف می‌کند، کاهش دهید. توجه داشته باشید این همچنین کامپوننت‌های Vue در وابستگی‌های شما (اشاره به کتابخانه‌ها) را تحت تاثیر قرار می‌دهد.
 
-### Can I use both APIs in the same component? {#can-i-use-both-apis-in-the-same-component}
+### آیا می‌توانم از هر دو API در یک کامپوننت استفاده کنم؟ {#can-i-use-both-apis-in-the-same-component}
 
-Yes. You can use Composition API via the [`setup()`](/api/composition-api-setup) option in an Options API component.
+بله. می‌توانید از Composition API از طریق گزینه [`setup()`‎](/api/composition-api-setup) در یک کامپوننت Options API استفاده کنید.
 
-However, we only recommend doing so if you have an existing Options API codebase that needs to integrate with new features / external libraries written with Composition API.
+با این حال، ما تنها در صورتی این کار را توصیه می‌کنیم که یک کدبیس Options API موجود داشته باشید که نیاز به ادغام با ویژگی‌های جدید / کتابخانه‌های خارجی نوشته شده با Composition API دارد.
 
-### Will Options API be deprecated? {#will-options-api-be-deprecated}
+### آیا Options API منسوخ خواهد شد؟ {#will-options-api-be-deprecated}
 
-No, we do not have any plan to do so. Options API is an integral part of Vue and the reason many developers love it. We also realize that many of the benefits of Composition API only manifest in larger-scale projects, and Options API remains a solid choice for many low-to-medium-complexity scenarios.
+خیر، ما هیچ برنامه‌ای برای انجام این کار نداریم. Options API بخش مهمی از Vue است و دلیلی که بسیاری از توسعه‌دهندگان آن را دوست دارند. همچنین متوجه شده‌ایم که بسیاری از مزایای Composition API تنها در پروژه‌های مقیاس بزرگتر آشکار می‌شوند و Options API همچنان انتخاب مناسبی برای بسیاری از سناریوهای پیچیدگی پایین تا متوسط است.
 
-## Relationship with Class API {#relationship-with-class-api}
+## ارتباط با Class API {#relationship-with-class-api}
 
-We no longer recommend using Class API with Vue 3, given that Composition API provides great TypeScript integration with additional logic reuse and code organization benefits.
+دیگر توصیه نمی‌کنیم از Class API با Vue 3 استفاده کنید، با توجه به اینکه Composition API ادغام عالی TypeScript با مزایای اضافی استفاده مجدد از منطق و سازماندهی کد را فراهم می‌کند.
 
-## Comparison with React Hooks {#comparison-with-react-hooks}
+## مقایسه با هوک‌های ری‌اکت {#comparison-with-react-hooks}
 
-Composition API provides the same level of logic composition capabilities as React Hooks, but with some important differences.
+Composition API همان سطح از قابلیت‌های ترکیب logic هوک‌های ری‌اکت را فراهم می‌کند، اما با برخی تفاوت‌های مهم.
 
-React Hooks are invoked repeatedly every time a component updates. This creates a number of caveats that can confuse even seasoned React developers. It also leads to performance optimization issues that can severely affect development experience. Here are some examples:
+هوک‌های ری‌اکت به طور مکرر هر بار که یک کامپوننت به‌روزرسانی می‌شود، فراخوانی می‌شوند. این موضوع باعث ایجاد چندین محدودیت می‌شود که حتی توسعه‌دهندگان باتجربه ری‌اکت را گیج می‌کند. همچنین منجر به مسائل performance optimization (بهینه‌سازی عملکرد) می‌شود که می‌تواند تجربه توسعه را به شدت تحت تأثیر قرار دهد. چند مثال:
 
-- Hooks are call-order sensitive and cannot be conditional.
+- هوک‌ها به ترتیب فراخوانی حساس هستند و نمی‌توانند شرطی باشند.
 
-- Variables declared in a React component can be captured by a hook closure and become "stale" if the developer fails to pass in the correct dependencies array. This leads to React developers relying on ESLint rules to ensure correct dependencies are passed. However, the rule is often not smart enough and over-compensates for correctness, which leads to unnecessary invalidation and headaches when edge cases are encountered.
+- متغیرهای اعلام شده در یک کامپوننت ری‌اکت می‌توانند توسط یک کلوژر هوک capture شوند و اگر توسعه‌دهنده آرایه وابستگی‌های صحیح را ارسال نکند، "stale" شوند. این موضوع منجر می‌شود توسعه‌دهندگان ری‌اکت به قوانین ESLint برای اطمینان از ارسال وابستگی‌های صحیح تکیه کنند. با این حال، اغلب اوقات این قاعده به اندازه کافی هوشمند نیست و برای صحت بیش از حد سختگیری می‌کند که منجر به ابطال غیرضروری و سردرگمی هنگام مواجهه با موارد لبه‌ای می‌شود.
 
-- Expensive computations require the use of `useMemo`, which again requires manually passing in the correct dependencies array.
+- محاسبات پرهزینه نیاز به استفاده از `useMemo` دارند که دوباره نیاز به ارسال درست دستی آرایه وابستگی‌ دارد.
 
-- Event handlers passed to child components cause unnecessary child updates by default, and require explicit `useCallback` as an optimization. This is almost always needed, and again requires a correct dependencies array. Neglecting this leads to over-rendering apps by default and can cause performance issues without realizing it.
+- از آنجا که event handler های ارسال شده به کامپوننت‌های فرزند به‌طور پیش‌فرض باعث به‌روزرسانی‌های غیرضروری فرزند می‌شوند، نیاز به `useCallback` صریح به عنوان بهینه‌سازی وجود دارد. این تقریباً همیشه لازم است و دوباره نیاز به آرایه وابستگی‌های صحیح دارد. غفلت از این موضوع به‌طور پیش‌فرض منجر به بیش‌رندر کردن برنامه‌ها می‌شود و می‌تواند بدون متوجه شدن منجر به مشکلات عملکردی (performance issues) شود.
 
-- The stale closure problem, combined with Concurrent features, makes it difficult to reason about when a piece of hooks code is run, and makes working with mutable state that should persist across renders (via `useRef`) cumbersome.
+- مشکل کلوژر کهنه، در ترکیب با ویژگی‌های همزمان، باعث می‌شود استدلال در مورد زمان اجرای یک قطعه کد هوک دشوار شود و کار با state قابل تغییری که باید در طول رندرها ماندگار باشد (از طریق `useRef`) پیچیده می‌شود.
 
-In comparison, Vue Composition API:
+در مقابل، Composition API Vue:
 
-- Invokes `setup()` or `<script setup>` code only once. This makes the code align better with the intuitions of idiomatic JavaScript usage as there are no stale closures to worry about. Composition API calls are also not sensitive to call order and can be conditional.
+- `setup()‎` یا `<script setup>` را فقط یک بار فراخوانی می‌کند. این باعث می‌شود کد بهتر با شهود برنامه‌نویسی جاوااسکریپت ایدیوماتیک همراستا شود زیرا نگرانی در مورد کلوژرهای کهنه وجود ندارد. فراخوانی‌های Composition API همچنین به ترتیب فراخوانی حساس نیستند و می‌توانند شرطی باشند.
 
-- Vue's runtime reactivity system automatically collects reactive dependencies used in computed properties and watchers, so there's no need to manually declare dependencies.
+- سیستم reactivity رانتایم Vue به طور خودکار وابستگی‌های reactive مورد استفاده در پراپرتی‌های computed و watchers را جمع‌آوری می‌کند، بنابراین نیازی به اعلام دستی وابستگی‌ها نیست.
 
-- No need to manually cache callback functions to avoid unnecessary child updates. In general, Vue's fine-grained reactivity system ensures child components only update when they need to. Manual child-update optimizations are rarely a concern for Vue developers.
+- نیازی به کش کردن دستی توابع callback برای جلوگیری از به‌روزرسانی‌های غیرضروری فرزندان وجود ندارد. به‌طور کلی، سیستم reactivity دقیق‌گرایانه Vue اطمینان می‌دهد کامپوننت‌های فرزند فقط زمانی که نیاز است به‌روزرسانی شوند. بهینه‌سازی‌های به‌روزرسانی فرزندان به ندرت برای توسعه‌دهندگان Vue نگران‌کننده است.
 
-We acknowledge the creativity of React Hooks, and it is a major source of inspiration for Composition API. However, the issues mentioned above do exist in its design and we noticed Vue's reactivity model happens to provide a way around them.
+ما خلاقیت هوک‌های ری‌اکت را تأیید می‌کنیم و این یک منبع الهام عمده برای Composition API بوده است. با این حال، مسائل ذکر شده در طراحی آن وجود دارد و متوجه شدیم مدل reactivity فریمورک Vue راهی برای دور زدن آن‌ها فراهم می‌کند.

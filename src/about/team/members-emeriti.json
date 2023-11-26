@@ -1,7 +1,7 @@
 [
   {
     "name": "Sarah Drasner",
-    "title": "Director of Engineering, Core Developer Web",
+    "title": "مدیر مهندسی هسته‌ی توسعه‌ی وب",
     "company": "Google",
     "companyLink": "https://google.com",
     "projects": [
@@ -26,8 +26,8 @@
         "url": "https://github.com/sdras/ecommerce-netlify"
       }
     ],
-    "location": "Denver, CO, USA",
-    "languages": ["English"],
+    "location": "ایالات متحده، کلرادو، دنور",
+    "languages": ["انگلیسی"],
     "website": {
       "label": "sarah.dev",
       "url": "https://sarah.dev/"
@@ -40,9 +40,9 @@
   },
   {
     "name": "Chris Fritz",
-    "title": "Educator & Consultant",
-    "location": "Durham, NC, USA",
-    "languages": ["English", "German"],
+    "title": "معلم و مشاور",
+    "location": "ایالات متحده، کارولینای شمالی، دورهام",
+    "languages": ["انگلیسی", "آلمانی"],
     "socials": {
       "github": "chrisvfritz",
       "twitter": "chrisvfritz"
@@ -51,9 +51,9 @@
   },
   {
     "name": "Blake Newman",
-    "title": "Performance Specializer & Code Deleter",
-    "location": "London, UK",
-    "languages": ["English"],
+    "title": "متخصص performance و حذف‌کننده‌ی کد",
+    "location": "بریتانیای کبیر، لندن",
+    "languages": ["انگلیسی"],
     "socials": {
       "github": "blake-newman",
       "twitter": "blakenewman"
@@ -61,7 +61,7 @@
   },
   {
     "name": "kingwl",
-    "title": "Software Development Engineer",
+    "title": "مهندس توسعه‌ی نرم‌افزار",
     "company": "Chaitin",
     "companyLink": "https://chaitin.cn/",
     "projects": [
@@ -70,15 +70,15 @@
         "url": "https://github.com/vuejs/vue"
       }
     ],
-    "location": "Beijing, China",
-    "languages": ["Chinese"],
+    "location": "چین، بیجینگ (پکن)",
+    "languages": ["چینی"],
     "socials": {
       "github": "kingwl"
     }
   },
   {
     "name": "Alan Song",
-    "title": "Cofounder",
+    "title": "هم‌بنیان‌گذار",
     "company": "Futurenda",
     "companyLink": "https://www.futurenda.com/",
     "projects": [
@@ -87,41 +87,41 @@
         "url": "https://github.com/vuejs/vue-router"
       }
     ],
-    "location": "Hangzhou, China",
-    "languages": ["Chinese", "English"],
+    "location": "چین، هانگژو",
+    "languages": ["چینی", "انگلیسی"],
     "socials": {
       "github": "fnlctrl"
     }
   },
   {
     "name": "defcc",
-    "title": "Details Deity & Bug Surgeon",
+    "title": "پروردگار جزئیات و جراح باگ",
     "company": "zbj.com",
     "companyLink": "http://www.zbj.com/",
-    "location": "Chongqing, China",
-    "languages": ["Chinese", "English"],
+    "location": "چین، چونگ‌چینگ",
+    "languages": ["چینی", "انگلیسی"],
     "socials": {
       "github": "defcc"
     }
   },
   {
     "name": "gebilaoxiong",
-    "title": "Issue Annihilator",
+    "title": "نابودکننده‌ی مشکلات",
     "company": "zbj.com",
     "companyLink": "http://www.zbj.com/",
-    "location": "Chongqing, China",
-    "languages": ["Chinese", "English"],
+    "location": "چین، چونگ‌چینگ",
+    "languages": ["چینی", "انگلیسی"],
     "socials": {
       "github": "gebilaoxiong"
     }
   },
   {
     "name": "Denis Karabaza",
-    "title": "Software Engineer",
+    "title": "مهندس نرم‌افزار",
     "company": "Neolant",
     "companyLink": "http://neolant.ru/",
-    "location": "Dubna, Russia",
-    "languages": ["Russian", "English"],
+    "location": "روسیه، دوبنا",
+    "languages": ["روسی", "انگلیسی"],
     "socials": {
       "github": "simplesmiler",
       "twitter": "simplesmiler"
@@ -129,7 +129,7 @@
   },
   {
     "name": "Edd Yerburgh",
-    "title": "Full Stack Developer",
+    "title": "توسعه دهنده full-stack",
     "projects": [
       {
         "label": "vue-test-utils",
@@ -140,8 +140,8 @@
         "url": "https://github.com/avoriaz"
       }
     ],
-    "location": "London, UK",
-    "languages": ["English"],
+    "location": "بریتانیای کبیر، لندن",
+    "languages": ["انگلیسی"],
     "socials": {
       "github": "eddyerburgh",
       "twitter": "EddYerburgh"
@@ -160,8 +160,8 @@
         "url": "https://github.com/vuejs/vetur"
       }
     ],
-    "location": "Shanghai, China",
-    "languages": ["Chinese", "English", "Japanese"],
+    "location": "چین، شانگهای",
+    "languages": ["چینی", "انگلیسی", "ژاپنی"],
     "socials": {
       "github": "octref",
       "twitter": "octref"
@@ -169,7 +169,7 @@
   },
   {
     "name": "ULIVZ",
-    "title": "Senior Frontend Developer",
+    "title": "توسعه دهنده سمت کاربر با تجربه",
     "company": "AntFinancial",
     "companyLink": "https://www.antfin.com",
     "projects": [
@@ -178,13 +178,13 @@
         "url": "https://www.github.com/vuejs/vuepress"
       }
     ],
-    "location": "Hangzhou, China",
-    "languages": ["Chinese", "English"],
+    "location": "چین، هانگژو",
+    "languages": ["چینی", "انگلیسی"],
     "socials": { "github": "ulivz", "twitter": "_ulivz" }
   },
   {
     "name": "Katashin",
-    "title": "Software Engineer",
+    "title": "توسعه‌دهنده نرم‌افزار",
     "company": "ClassDo",
     "companyLink": "https://classdo.com",
     "projects": [
@@ -201,8 +201,8 @@
         "url": "https://github.com/ktsn/vue-designer"
       }
     ],
-    "location": "Singapore",
-    "languages": ["Japanese", "English"],
+    "location": "سنگاپور",
+    "languages": ["ژاپنی", "انگلیسی"],
     "socials": {
       "github": "ktsn",
       "twitter": "ktsn"
@@ -210,11 +210,11 @@
   },
   {
     "name": "Michał Sajnóg",
-    "title": "Senior Frontend Developer / Team Leader",
+    "title": "توسعه دهنده سمت کاربر با تجربه / مدیر گروه",
     "company": "Netguru",
     "companyLink": "https://netguru.co/",
-    "location": "Poznań, Poland",
-    "languages": ["Polish", "English"],
+    "location": "لهستان،  پوزنان",
+    "languages": ["لهستانی", "انگلیسی"],
     "projects": [
       {
         "label": "eslint-plugin-vue",
@@ -240,7 +240,7 @@
   },
   {
     "name": "Damian Dulisz",
-    "title": "Consultant",
+    "title": "مشاور",
     "projects": [
       {
         "label": "news.vuejs.org",
@@ -251,8 +251,8 @@
         "url": "https://vue-multiselect.js.org/"
       }
     ],
-    "location": "Wrocław, Poland",
-    "languages": ["Polish", "English"],
+    "location": "لهستان، وروتسواف",
+    "languages": ["لهستانی", "انگلیسی"],
     "socials": {
       "github": "shentao",
       "twitter": "DamianDulisz"
