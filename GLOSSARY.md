@@ -30,7 +30,7 @@
 | directive | دایرکتیو |
 | DOM | DOM |
 | element | المان، عنصر |
-| emit | انتشار، ارسال |
+| emit | emit |
 | endpoint | پایانه |
 | event | رویداد |
 | expression | عبارت |
