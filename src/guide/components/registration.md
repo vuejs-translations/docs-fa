@@ -1,14 +1,17 @@
 # Component Registration {#component-registration}
 
-> This page assumes you've already read the [Components Basics](/guide/essentials/component-basics). Read that first if you are new to components.
+>در این صفحه فرض شده است که شما از قبل [Components Basics](/guide/essentials/component-basics) را مطالعه کرده اید. اگر با مبحث کامپوننت ها آشنا نیستید صفحه معرفی شده را بخوانید.
 
 <VueSchoolLink href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components" title="Free Vue.js Component Registration Lesson"/>
 
-A Vue component needs to be "registered" so that Vue knows where to locate its implementation when it is encountered in a template. There are two ways to register components: global and local.
+به منظور این که Vue موقع برخورد با کامپوننت در template بتواند آن را پیدا کند و پیاده سازی کند، هر کامپوننت باید رجیستر شود.
+دو راه برای رجیستر کردن کامپوننت وجود دارد: سراسری و محلی.
+<!-- A Vue component needs to be "registered" so that Vue knows where to locate its implementation when it is encountered in a template. There are two ways to register components: global and local. -->
 
 ## Global Registration {#global-registration}
+میتوانیم با استفاده از متد `.component()` یک کامپوننت را بصورت سراسری در
+[برنامه ویو](/guide/essentials/application) قابل دسترسی کنیم.
 
-We can make components available globally in the current [Vue application](/guide/essentials/application) using the `.component()` method:
 
 ```js
 import { createApp } from 'vue'
@@ -16,24 +19,24 @@ import { createApp } from 'vue'
 const app = createApp({})
 
 app.component(
-  // the registered name
+  // اسم رجیستر شده
   'MyComponent',
-  // the implementation
+  // پیاده سازی کد
   {
     /* ... */
   }
 )
 ```
-
-If using SFCs, you will be registering the imported `.vue` files:
+اگر از SFCها استفاده میکنید، با import کردن فایل های `.vue` میتوانید کامپوننت ها را رجیستر کنید.
+<!-- If using SFCs, you will be registering the imported `.vue` files: -->
 
 ```js
 import MyComponent from './App.vue'
 
 app.component('MyComponent', MyComponent)
 ```
-
-The `.component()` method can be chained:
+متد `.component()` میتواند بصورت زنجیره ای استفاده شود.
+<!-- The `.component()` method can be chained: -->
 
 ```js
 app
@@ -42,10 +45,11 @@ app
   .component('ComponentC', ComponentC)
 ```
 
-Globally registered components can be used in the template of any component within this application:
+کامپوننت هایی که بصورت سراسری تعریف شده اند در template کامپوننت های تمام برنامه قابل استفاده اند.
+<!-- Globally registered components can be used in the template of any component within this application: -->
 
 ```vue-html
-<!-- this will work in any component inside the app -->
+<!-- این کامپوننت ها در تمام کامپوننت های دیگر برنامه قابل استفاده هستند -->
 <ComponentA/>
 <ComponentB/>
 <ComponentC/>
