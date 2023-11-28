@@ -226,7 +226,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'قابلیت استفاده مجدد',
       items: [
         {
-          text: 'ترکیب‌پذیرها (Composables)',
+          text: 'Composables',
           link: '/guide/reusability/composables'
         },
         {
