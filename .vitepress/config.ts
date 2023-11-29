@@ -205,7 +205,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/components/registration'
         },
         { text: 'Props', link: '/guide/components/props' },
-        { text: 'رویداد های کامپوننت (Events)', link: '/guide/components/events' },
+        {
+          text: 'رویداد های کامپوننت (Events)',
+          link: '/guide/components/events'
+        },
         { text: 'v-model', link: '/guide/components/v-model' },
         {
           text: 'Fallthrough Attributes',
@@ -252,7 +255,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: 'Scaling Up',
       items: [
-        { text: 'کامپوننت های تک فایلی (Single-File Components)', link: '/guide/scaling-up/sfc' },
+        {
+          text: 'کامپوننت های تک فایلی (Single-File Components)',
+          link: '/guide/scaling-up/sfc'
+        },
         { text: 'ابزارها (Tooling)', link: '/guide/scaling-up/tooling' },
         { text: 'مسیریابی (Routing)', link: '/guide/scaling-up/routing' },
         {
@@ -580,7 +586,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   lang: 'fa',
   dir: 'rtl',
   title: 'Vue.js',
-  description: 'Vue.js - The Progressive JavaScript Framework',
+  description: 'Vue.js - فریمورک پیش‌رونده جاوااسکریپت',
   srcDir: 'src',
   srcExclude: ['tutorial/**/description.md'],
 
@@ -635,6 +641,11 @@ export default defineConfigWithTheme<ThemeConfig>({
     i18n,
 
     localeLinks: [
+      {
+        link: 'https://vuejs.org',
+        text: 'English',
+        repo: 'https://github.com/vuejs/docs'
+      },
       {
         link: 'https://cn.vuejs.org',
         text: '简体中文',
@@ -703,7 +714,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     editLink: {
-      repo: 'the-pesar/docs-fa',
+      repo: 'vuejs-translations/docs-fa',
       text: 'ویرایش این صفحه در گیت‌هاب'
     },
 
