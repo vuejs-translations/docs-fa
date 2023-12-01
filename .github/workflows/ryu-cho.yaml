@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: vuejs-translations/ryu-cho@v1
         with:
-          access-token: ${{ secrets.GITHUB_TOKEN }}
+          access-token: ${{ secrets.RYU_CHO_ACCESS_TOKEN }}
           username: ${{ secrets.RYU_CHO_USER_NAME }}
           email: ${{ secrets.RYU_CHO_USER_EMAIL }}
           upstream-repo: https://github.com/vuejs-translations/docs-fa.git
