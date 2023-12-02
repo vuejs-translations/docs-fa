@@ -1,14 +1,16 @@
 # Component Registration {#component-registration}
 
-> This page assumes you've already read the [Components Basics](/guide/essentials/component-basics). Read that first if you are new to components.
+>در این صفحه فرض شده است که شما از قبل [Components Basics](/guide/essentials/component-basics) را مطالعه کرده اید. اگر با مبحث کامپوننت ها آشنا نیستید صفحه معرفی شده را بخوانید.
 
 <VueSchoolLink href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components" title="Free Vue.js Component Registration Lesson"/>
 
-A Vue component needs to be "registered" so that Vue knows where to locate its implementation when it is encountered in a template. There are two ways to register components: global and local.
+به منظور این که Vue موقع برخورد با کامپوننت در template بتواند آن را پیدا کند و پیاده سازی کند، هر کامپوننت باید رجیستر شود.
+دو راه برای رجیستر کردن کامپوننت وجود دارد: سراسری و محلی.
 
-## Global Registration {#global-registration}
+## رجیستر کردن سراسری {#global-registration}
+میتوانیم با استفاده از متد `.component()` یک کامپوننت را بصورت سراسری در
+[برنامه ویو](/guide/essentials/application) قابل دسترسی کنیم.
 
-We can make components available globally in the current [Vue application](/guide/essentials/application) using the `.component()` method:
 
 ```js
 import { createApp } from 'vue'
@@ -16,16 +18,16 @@ import { createApp } from 'vue'
 const app = createApp({})
 
 app.component(
-  // the registered name
+  // اسم رجیستر شده
   'MyComponent',
-  // the implementation
+  // پیاده سازی کد
   {
     /* ... */
   }
 )
 ```
 
-If using SFCs, you will be registering the imported `.vue` files:
+اگر از SFCها استفاده میکنید، با import کردن فایل های `.vue` میتوانید کامپوننت ها را رجیستر کنید.
 
 ```js
 import MyComponent from './App.vue'
@@ -33,7 +35,7 @@ import MyComponent from './App.vue'
 app.component('MyComponent', MyComponent)
 ```
 
-The `.component()` method can be chained:
+متد `.component()` میتواند بصورت زنجیره ای استفاده شود.
 
 ```js
 app
@@ -42,30 +44,29 @@ app
   .component('ComponentC', ComponentC)
 ```
 
-Globally registered components can be used in the template of any component within this application:
+کامپوننت هایی که بصورت سراسری تعریف شده اند در template کامپوننت های تمام برنامه قابل استفاده اند.
 
 ```vue-html
-<!-- this will work in any component inside the app -->
+<!-- این کامپوننت ها در تمام کامپوننت های دیگر برنامه قابل استفاده هستند -->
 <ComponentA/>
 <ComponentB/>
 <ComponentC/>
 ```
 
-This even applies to all subcomponents, meaning all three of these components will also be available _inside each other_.
+این قاعده برای کامپوننت های درون یک کامپوننت هم صادق است، به این معنی که هر سه این کامپوننت ها داخل یکدیگر قابل استفاده هستند.
 
-## Local Registration {#local-registration}
+## رجیستر کردن محلی {#local-registration}
 
-While convenient, global registration has a few drawbacks:
+رجیستر کردن سراسری کامپوننت ها آسان است اما چند اشکال دارد:
 
-1. Global registration prevents build systems from removing unused components (a.k.a "tree-shaking"). If you globally register a component but end up not using it anywhere in your app, it will still be included in the final bundle.
+1. رجیستر کردن سراسری کامپوننت مانع build systemها می شود تا کامپوننت های استفاده نشده را شناسایی و حذف کند(tree shaking). اگر یک کامپوننت بصورت سراسری رجیستر شده باشد و در هیچ کجای برنامه استفاده نشود، در باندل نهایی برنامه وجود خواهد داشت.
 
-2. Global registration makes dependency relationships less explicit in large applications. It makes it difficult to locate a child component's implementation from a parent component using it. This can affect long-term maintainability similar to using too many global variables.
-
-Local registration scopes the availability of the registered components to the current component only. It makes the dependency relationship more explicit, and is more tree-shaking friendly.
+2. رجیستر کردن سراسری باعث مبهم و نامشخص شدن روابط وابستگی در برنامه های بزرگ می شود. همچنین باعث می شود پیدا کردن child component در parent component سخت تر شود.
+این موارد میتنوانند همان اثری را داشته باشند که استفاده کردن از متغیر های سراسری زیاد در نگه داری بلند مدت برنامه داشته باشند.
 
 <div class="composition-api">
 
-When using SFC with `<script setup>`, imported components can be locally used without registration:
+هنگام استفاده از `<script setup>`، کامپوننت های import شده میتوانند بصورت محلی بدون رجیستر شدن استفاده شوند:
 
 ```vue
 <script setup>
@@ -77,7 +78,7 @@ import ComponentA from './ComponentA.vue'
 </template>
 ```
 
-In non-`<script setup>`, you will need to use the `components` option:
+در صورت عدم استفاده از `<script setup>`، نیاز به رجیستر کردن کامپوننت در آپشن components دارید:
 
 ```js
 import ComponentA from './ComponentA.js'
@@ -95,7 +96,7 @@ export default {
 </div>
 <div class="options-api">
 
-Local registration is done using the `components` option:
+رجیستر کردن محلی با استفاده از "components" انجام می شود:
 
 ```vue
 <script>
@@ -115,7 +116,7 @@ export default {
 
 </div>
 
-For each property in the `components` object, the key will be the registered name of the component, while the value will contain the implementation of the component. The above example is using the ES2015 property shorthand and is equivalent to:
+برای هر property در آبجکت `components`، یک key برای اسم کامپوننت ساخته خواهد شد و value هم پیاده سازی کامپوننت می باشد. مثال بالا استفاده کردن از ویژگی shorthand در ES2015 است که معادل کد زیر می باشد:
 
 ```js
 export default {
@@ -126,16 +127,20 @@ export default {
 }
 ```
 
-Note that **locally registered components are _not_ also available in descendant components**. In this case, `ComponentA` will be made available to the current component only, not any of its child or descendant components.
+ به یاد داشته باشید که **کامپوننت های محلی رجیستر شده در کامپوننت های هم تراز(descendant or sibling components) قابل استفاده نیستند**. در این صورت `ComponentA` فقط در همان کامپوننت قابل استفاده است و کامپوننت های child و descendant به آن دسترسی ندارند.
 
-## Component Name Casing {#component-name-casing}
+## نام گذاری کامپوننت ها {#component-name-casing}
 
-Throughout the guide, we are using PascalCase names when registering components. This is because:
+در این قسمت، ما از PascalCase برای رجیستر کردن کامپوننت ها استفاده میکنیم. به این دلایل:
 
-1. PascalCase names are valid JavaScript identifiers. This makes it easier to import and register components in JavaScript. It also helps IDEs with auto-completion.
+1. اسامی Pascal Case شناسه گر های معتبر جاوااسکریپت هستند.
+باعث راحت تر شدن import و register کردن کامپوننت ها می شود. همپنین به auto-complation IDEها کمک میکند.
 
-2. `<PascalCase />` makes it more obvious that this is a Vue component instead of a native HTML element in templates. It also differentiates Vue components from custom elements (web components).
+2. `<PascalCase />` بصورت واضح تر بیان میکند که به جای المان های نیتیو HTML یک کامپوننت Vue در template داریم.
 
-This is the recommended style when working with SFC or string templates. However, as discussed in [in-DOM Template Parsing Caveats](/guide/essentials/component-basics#in-dom-template-parsing-caveats), PascalCase tags are not usable in in-DOM templates.
+این روش پیشنهادی هنگام استفاده از SFCها و یا string templateها می باشد.
+اما همانطور که در [in-DOM Template Parsing Caveats](/guide/essentials/component-basics#in-dom-template-parsing-caveats) صبحت شد، تگ های PascalCase در in-DOM templates قابل استفاده نیستند.
 
-Luckily, Vue supports resolving kebab-case tags to components registered using PascalCase. This means a component registered as `MyComponent` can be referenced in the template via both `<MyComponent>` and `<my-component>`. This allows us to use the same JavaScript component registration code regardless of template source.
+خوشبختانه، Vue از تبدیل کردن تگ های PascalCase به تگ های kebab-case پشتیبانی میکند.
+این به این معناست که کامپوننت رجیستر شده `MyComponents` میتواند در template بصورت `MyComponent` و هم `<my-component>` رفرنس داده شود.
+این قابلیت به ما اجازه میدهد تا همان رجیستر کردن کامپوننت در جاوااسکریپت را بدون درنظر گرفتن سورس کد template استفاده کنیم.
