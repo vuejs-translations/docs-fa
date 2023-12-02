@@ -201,7 +201,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'کامپوننت‌ها به‌طور عمیق',
       items: [
         {
-          text: 'Registration',
+          text: 'رجیستر کردن (Registration)',
           link: '/guide/components/registration'
         },
         { text: 'Props', link: '/guide/components/props' },
