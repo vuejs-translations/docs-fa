@@ -6,7 +6,6 @@
 
 به منظور این که Vue موقع برخورد با کامپوننت در template بتواند آن را پیدا کند و پیاده سازی کند، هر کامپوننت باید رجیستر شود.
 دو راه برای رجیستر کردن کامپوننت وجود دارد: سراسری و محلی.
-<!-- A Vue component needs to be "registered" so that Vue knows where to locate its implementation when it is encountered in a template. There are two ways to register components: global and local. -->
 
 ## رجیستر کردن سراسری {#global-registration}
 میتوانیم با استفاده از متد `.component()` یک کامپوننت را بصورت سراسری در
@@ -27,16 +26,16 @@ app.component(
   }
 )
 ```
+
 اگر از SFCها استفاده میکنید، با import کردن فایل های `.vue` میتوانید کامپوننت ها را رجیستر کنید.
-<!-- If using SFCs, you will be registering the imported `.vue` files: -->
 
 ```js
 import MyComponent from './App.vue'
 
 app.component('MyComponent', MyComponent)
 ```
+
 متد `.component()` میتواند بصورت زنجیره ای استفاده شود.
-<!-- The `.component()` method can be chained: -->
 
 ```js
 app
@@ -46,7 +45,6 @@ app
 ```
 
 کامپوننت هایی که بصورت سراسری تعریف شده اند در template کامپوننت های تمام برنامه قابل استفاده اند.
-<!-- Globally registered components can be used in the template of any component within this application: -->
 
 ```vue-html
 <!-- این کامپوننت ها در تمام کامپوننت های دیگر برنامه قابل استفاده هستند -->
@@ -54,13 +52,12 @@ app
 <ComponentB/>
 <ComponentC/>
 ```
+
 این قاعده برای کامپوننت های درون یک کامپوننت هم صادق است، به این معنی که هر سه این کامپوننت ها داخل یکدیگر قابل استفاده هستند.
-<!-- This even applies to all subcomponents, meaning all three of these components will also be available _inside each other_. -->
 
 ## رجیستر کردن محلی {#local-registration}
 
 رجیستر کردن سراسری کامپوننت ها آسان است اما چند اشکال دارد:
-<!-- While convenient, global registration has a few drawbacks: -->
 
 1. رجیستر کردن سراسری کامپوننت مانع build systemها می شود تا کامپوننت های استفاده نشده را شناسایی و حذف کند(tree shaking). اگر یک کامپوننت بصورت سراسری رجیستر شده باشد و در هیچ کجای برنامه استفاده نشود، در باندل نهایی برنامه وجود خواهد داشت.
 
@@ -69,7 +66,7 @@ app
 
 <div class="composition-api">
 
-هنگام استفاده از `<script setup>`، کامپوننت های import شده میتوانند بصورت محلی بدون رجیستر شدن استفاده شنود:
+هنگام استفاده از `<script setup>`، کامپوننت های import شده میتوانند بصورت محلی بدون رجیستر شدن استفاده شوند:
 
 ```vue
 <script setup>
@@ -82,6 +79,7 @@ import ComponentA from './ComponentA.vue'
 ```
 
 در صورت عدم استفاده از `<script setup>`، نیاز به رجیستر کردن کامپوننت در آپشن components دارید:
+
 ```js
 import ComponentA from './ComponentA.js'
 
@@ -98,7 +96,7 @@ export default {
 </div>
 <div class="options-api">
 
-Local registration is done using the `components` option:
+رجیستر کردن محلی با استفاده از "components" انجام می شود:
 
 ```vue
 <script>
@@ -118,8 +116,7 @@ export default {
 
 </div>
 
-برای هر property در آبجکت `components`، یک key برای اسم کامپوننت ساخته خواهد شد و value هم پیاده سازی کامپوننت می باشد.
-مثال بالا استفاده کردن از ویژگی shorthand در ES2015 است که معادل کد زیر می باشد:
+برای هر property در آبجکت `components`، یک key برای اسم کامپوننت ساخته خواهد شد و value هم پیاده سازی کامپوننت می باشد. مثال بالا استفاده کردن از ویژگی shorthand در ES2015 است که معادل کد زیر می باشد:
 
 ```js
 export default {
