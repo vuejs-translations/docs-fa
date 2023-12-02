@@ -586,7 +586,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   lang: 'fa',
   dir: 'rtl',
   title: 'Vue.js',
-  description: 'Vue.js - فریمورک پیش‌رونده جاوااسکریپت',
+  description: 'Vue.js - فریمورک پیش‌رونده جاوا اسکریپت',
   srcDir: 'src',
   srcExclude: ['tutorial/**/description.md'],
 

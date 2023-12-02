@@ -56,3 +56,4 @@
 | teleport | تله‌پورت |
 | community | کامیونیتی |
 | ecosystem | اکوسیستم |
+| JavaScript | جاوا اسکریپت |
