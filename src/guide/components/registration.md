@@ -54,7 +54,7 @@ app
 <ComponentB/>
 <ComponentC/>
 ```
-این قاعده برای کامپوننت های ایکس هم درست است، به این معنی که هر سه این کامپوننت ها داخل یکدیگر قابل استفاده هستند.
+این قاعده برای کامپوننت های درون یک کامپوننت هم صادق است، به این معنی که هر سه این کامپوننت ها داخل یکدیگر قابل استفاده هستند.
 <!-- This even applies to all subcomponents, meaning all three of these components will also be available _inside each other_. -->
 
 ## رجیستر کردن محلی {#local-registration}
