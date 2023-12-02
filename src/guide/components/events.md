@@ -17,9 +17,10 @@ if (typeof window !== 'undefined') {
   }
 }
 </script>
+
 # رویداد های کامپوننت {#component-events}
 
-> این صفحه فرض می کند که شما از قبل [اصول اولیه کامپوننت ها](/guide/essentials/component-basics) را خوانده اید. اگر در مبحث کامپوننت ها تازه وارد هستید اول آن را مطالعه کنید .
+> این صفحه فرض می کند که شما از قبل [اصول اولیه کامپوننت‌ها](/guide/essentials/component-basics) را خوانده اید. اگر در مبحث کامپوننت ها تازه وارد هستید اول آن را مطالعه کنید .
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/defining-custom-events-emits" title="Free Vue.js Lesson on Defining Custom Events"/>
@@ -51,6 +52,7 @@ export default {
 </div>
 
 والد بعدا می تواند با استفاده از `v-on` به آن گوش دهد:
+
 ```vue-html
 <MyComponent @some-event="callback" />
 ```
@@ -175,14 +177,14 @@ export default {
 
 </div>
 
-گزینه `emits` و ماکرو `defineEmits()‎` همچنین از syntax شیء پشتیبانی می‌کنند که به ما اجازه می‌دهد payload رویدادهای ارسال شده را در زمان اجرا Validate کنیم:
+آپشن `emits` و ماکرو `defineEmits()‎` همچنین از سینتکس آبجکت پشتیبانی می‌کنند. اگر از TypeScript استفاده می‌کنید، می‌توانید برای آرگومان‌ها تایپ قرار دهید که به ما اجازه اعتبارسنجی زمان اجرا روی payload رویدادهای ارسال شده می‌دهد:
 
 <div class="composition-api">
 
 ```vue
 <script setup>
 const emit = defineEmits({
-  submit(payload) {
+  submit(payload: { email: string, password: string }) {
     // مقدار `true` یا `false` را برای نشان دادن
     // اعتبارسنجی موفقیت آمیز / شکست خورده برمی گرداند
   }
@@ -203,15 +205,13 @@ const emit = defineEmits<{
 
 جزئیات بیشتر: [Typing Component Emits](/guide/typescript/composition-api#typing-component-emits) <sup class="vt-badge ts" />
 
-
-
 </div>
 <div class="options-api">
 
 ```js
 export default {
   emits: {
-    submit(payload) {
+    submit(payload: { email: string, password: string }) {
       // مقدار `true` یا `false` را برای نشان دادن
       // اعتبارسنجی موفقیت آمیز / شکست خورده برمی گرداند
     }
@@ -288,3 +288,14 @@ export default {
 ```
 
 </div>
+
+## رویدادها به عنوان Props {#events-props}
+
+شما همچنین می‌توانید `events` را به عنوان `props` تعریف کرده و پاس دهید، با اضافه کردن پیشوند `on` به نام رویدادی که با حرف بزرگ شروع می‌شود. 
+استفاده از `props.onEvent` رفتار متفاوتی نسبت به استفاده از `emit('event')` دارد، زیرا اولی تنها شنونده مبتنی بر پراپرتی را پردازش می‌کند (یا `‎@event` یا`‎:on-event`)
+
+:::warning
+اگر هر دو `‎:on-event` و `‎@event` پاس داده شوند، `props.onEvent` ممکن است به جای تابع، آرایه‌ای از توابع باشد. این رفتار ثابت نیست و ممکن است در آینده تغییر کند.
+:::
+
+به همین دلیل، توصیه می‌شود به جای استفاده از `props.onEvent` برای ارسال رویدادها از `emit('event')` استفاده کنید.
