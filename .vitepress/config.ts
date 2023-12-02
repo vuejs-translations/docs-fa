@@ -204,7 +204,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: 'Registration',
           link: '/guide/components/registration'
         },
-        { text: 'Props', link: '/guide/components/props' },
+        { text: 'پراپ ها', link: '/guide/components/props' },
         { text: 'Events', link: '/guide/components/events' },
         { text: 'v-model', link: '/guide/components/v-model' },
         {
