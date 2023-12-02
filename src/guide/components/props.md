@@ -208,8 +208,8 @@ export default {
 #### آرایه {#array}
 
 ```vue-html
-<!-- Even though the array is static, we need v-bind to tell Vue that -->
-<!-- یک عبارت جاوااسکریپتی است نه یک رشته  -->
+<!-- نیاز داریم تا به ویو بگوییمv-bind اگرچه یک آرایه استایتک است اما به -->
+<!-- یک عبارت جاوااسکریپتی است نه یک رشته -->
 <BlogPost :comment-ids="[234, 266, 273]" />
 
 <!-- نسبت دادن به یک متغیر بصورت داینامیک -->
@@ -219,8 +219,8 @@ export default {
 #### آبجکت {#object}
 
 ```vue-html
-<!-- Even though the object is static, we need v-bind to tell Vue that -->
-<!-- یک عبارت جاوااسکریپتی است نه یک رشته   -->
+<!-- نیاز داریم تا به ویو بگوییمv-bind اگرچه یک آبجکت استایتک است اما به -->
+<!-- یک عبارت جاوااسکریپتی است نه یک رشته  -->
 <BlogPost
   :author="{
     name: 'Veronica',
@@ -425,8 +425,8 @@ defineProps({
   // تابع با مقدار پیش فرض
   propG: {
     type: Function,
-    // Unlike object or array default, this is not a factory 
-    // function - this is a function to serve as a default value
+    // برخلاف آبجکت یا آرایه، `default` یک تابع سازنده نیست
+    // این خود این تابع به عنوان یک مقدار پیش فرض به شمار میرود
     default() {
       return 'Default function'
     }
@@ -480,8 +480,8 @@ export default {
     // تابع با مقدار پیش فرض
     propG: {
       type: Function,
-      // Unlike object or array default, this is not a factory 
-      // function - this is a function to serve as a default value
+      // برخلاف آبجکت یا آرایه، `default` یک تابع سازنده نیست
+      // این خود این تابع به عنوان یک مقدار پیش فرض به شمار میرود
       default() {
         return 'Default function'
       }
@@ -533,8 +533,6 @@ export default {
 
 
 علاوه بر این، «type» همچنین می‌تواند یک کلاس سفارشی یا تابع سازنده باشد و این ادعا با بررسی «instanceof» انجام می‌شود. به عنوان مثال، با توجه به کلاس زیر:
-
-<!-- In addition, `type` can also be a custom class or constructor function and the assertion will be made with an `instanceof` check. For example, given the following class: -->
 
 ```js
 class Person {
@@ -607,28 +605,25 @@ export default {
 
 هنگامی که یک برای یک پراپ چندین نوع تعریف کرده ایم، قوانین تبدیل نوع داده برای `Boolean` هم اعمال خواهد شد. اگرچه هنگام استفاده همزمان از دو نوع منطقی ( boolean ) و رشته ( string ) یک نکته وجود دارد، قانون تبدیل نوع داده منطقی فقط زمانی اعمال می شود که ابتدا نوع داده منطقی ( boolean ) قبل از رشته ( string ) ذکر شود.
 
-<!-- 
-However, there is an edge when both `String` and `Boolean` are allowed - the Boolean casting rule only applies if Boolean appears before String: -->
-
 <div class="composition-api">
 
 ```js
-// disabled will be casted to true
+// true تبدیل میشود به disabled
 defineProps({
   disabled: [Boolean, Number]
 })
   
-// disabled will be casted to true
+// true تبدیل میشود به disabled
 defineProps({
   disabled: [Boolean, String]
 })
   
-// disabled will be casted to true
+// true تبدیل میشود به disabled
 defineProps({
   disabled: [Number, Boolean]
 })
   
-// disabled will be parsed as an empty string (disabled="")
+// به یک رشته خالی تبدیل میشود disabled
 defineProps({
   disabled: [String, Boolean]
 })
@@ -638,28 +633,28 @@ defineProps({
 <div class="options-api">
 
 ```js
-// disabled will be casted to true
+// true تبدیل میشود به disabled
 export default {
   props: {
     disabled: [Boolean, Number]
   }
 }
   
-// disabled will be casted to true
+// true تبدیل میشود به disabled
 export default {
   props: {
     disabled: [Boolean, String]
   }
 }
   
-// disabled will be casted to true
+// true تبدیل میشود به disabled
 export default {
   props: {
     disabled: [Number, Boolean]
   }
 }
   
-// disabled will be parsed as an empty string (disabled="")
+// به یک رشته خالی تبدیل میشود disabled
 export default {
   props: {
     disabled: [String, Boolean]
