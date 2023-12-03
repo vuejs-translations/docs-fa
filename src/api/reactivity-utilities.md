@@ -4,7 +4,7 @@
 
 بررسی می‌کند که آیا یک مقدار، یک شی ref است یا خیر.
 
-- **تایپ**
+- **تایپ (Type)**
 
   ```ts
   function isRef<T>(r: Ref<T> | unknown): r is Ref<T>
@@ -24,7 +24,7 @@
 
 اگر آرگومان یک ref باشد مقدار داخلی را برمی‌گرداند، در غیر این صورت خود آرگومان را برمی‌گرداند. این یک تابع ساده‌سازی شده برای `val = isRef(val) ? val.value : val` است. 
 
-- **تایپ**
+- **تایپ (Type)**
 
   ```ts
   function unref<T>(ref: T | Ref<T>): T
@@ -45,7 +45,7 @@
 
 همچنین برای ساخت یک ref از روی یک پروپرتی داخل یک شی واکنش‌پذیر، میتوان از این تابع استفاده کرد. ref ساخته شده با منبع آن همگام‌سازی می‌شود؛ یعنی با تغییر منبع، ref هم تغییر میکند و برعکس.
 
-- **تایپ**
+- **تایپ (Type)**
 
   ```ts
   // امضای نرمال‌سازی (3.3+)
@@ -137,7 +137,7 @@
 
 این را می توان در [ترکیب‌پذیرها](/guide/reusability/composables.html) برای نرمال‌سازی آرگومان استفاده کرد که می تواند مقدار، ref یا getter باشد.
 
-- **تایپ**
+- **تایپ (Type)**
 
   ```ts
   function toValue<T>(source: T | Ref<T> | (() => T)): T
@@ -172,7 +172,7 @@
 
 یک شی واکنش‌پذیر را به یک شیء ساده تبدیل می کند که در آن هر پروپرتی از شیء به دست آمده یک ref است که به پروپرتی متناظر شی اصلی اشاره می کند. هر مرجع با استفاده از [`toRef()`](#toref) ایجاد می شود.
 
-- **تایپ**
+- **تایپ (Type)**
 
   ```ts
   function toRefs<T extends object>(
@@ -233,7 +233,7 @@
 
 بررسی میکند که آیا یک شی، proxy ای است که توسط [`reactive()`](./reactivity-core#reactive), [`readonly()`](./reactivity-core#readonly), [`shallowReactive()`](./reactivity-advanced#shallowreactive) یا [`shallowReadonly()`](./reactivity-advanced#shallowreadonly) ساخته شده است یا خیر.
 
-- **تایپ**
+- **تایپ (Type)**
 
   ```ts
   function isProxy(value: unknown): boolean
@@ -243,7 +243,7 @@
 
 بررسی میکند که آیا یک شی، proxy ای است که توسط [`reactive()`](./reactivity-core#reactive) یا [`shallowReactive()`](./reactivity-advanced#shallowreactive) ساخته شده است یا خیر.
 
-- **تایپ**
+- **تایپ (Type)**
 
   ```ts
   function isReactive(value: unknown): boolean
@@ -255,7 +255,7 @@
 
 proxyهای ایجاد شده توسط [`readonly()`](./reactivity-core#readonly) و [`shallowReadonly()`](./reactivity-advanced#shallowreadonly) هر دو فقط خواندنی در نظر گرفته می شوند، همانطور که [`computed()`](./reactivity-core#computed) بدون تابع `set` فقط خواندنی در نظر گرفته می‌شود.
 
-- **تایپ**
+- **تایپ (Type)**
 
   ```ts
   function isReadonly(value: unknown): boolean
