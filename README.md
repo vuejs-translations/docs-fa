@@ -75,6 +75,13 @@
     <td align="center"><a href="https://github.com/mohammadshg-ir"><img src="https://avatars.githubusercontent.com/u/77042998?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Mohammad Sadegh</b></sub></a></td>
     <td align="center"><a href="https://github.com/hosseinghs"><img src="https://avatars.githubusercontent.com/u/72767346?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Hossein Ghobadi Samani</b></sub></a></td>
   </tr>
+    <tr>
+    <td align="center"><a href="https://github.com/ialiaslani"><img src="https://avatars.githubusercontent.com/u/67073328?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Ali Aslani</b></sub></a></td>
+    <td align="center"><a href="https://github.com/rmazarei"><img src="https://avatars.githubusercontent.com/u/6069042?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Rouhollah Mazarei</b></sub></a></td>
+    <td align="center"><a href="https://github.com/ShayanFaghihi"><img src="https://avatars.githubusercontent.com/u/51042338?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Shayan Faghihi</b></sub></a></td>
+    <td align="center"><a href="https://github.com/iamhosen"><img src="https://avatars.githubusercontent.com/u/99954947?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Hossein Amirhosseini</b></sub></a></td>
+    <td align="center"><a href="https://github.com/mostafa-rio"><img src="https://avatars.githubusercontent.com/u/32630862?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Mostafa Rahmani</b></sub></a></td>
+  </tr>
 </table>
 
 <h3 dir="rtl">ارتباط با مشارکت‌کنندگان</h3>
