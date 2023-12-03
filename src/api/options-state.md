@@ -1,10 +1,10 @@
-# Options: State {#options-state}
+# گزینه‌ها: وضعیت {#options-state}
 
-## data {#data}
+## داده {#data}
 
-A function that returns the initial reactive state for the component instance.
+این یک تابع است که وضعیت راکتیو اولیه را برای نمونه کامپوننت برمی‌گرداند.
 
-- **Type**
+- **نوع**
 
   ```ts
   interface ComponentOptions {
@@ -15,9 +15,9 @@ A function that returns the initial reactive state for the component instance.
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  The function is expected to return a plain JavaScript object, which will be made reactive by Vue. After the instance is created, the reactive data object can be accessed as `this.$data`. The component instance also proxies all the properties found on the data object, so `this.a` will be equivalent to `this.$data.a`.
+  انتظار می‌رود که این تابع یک شیء ساده جاوا اسکریپتی را برگرداند که توسط Vue به صورت راکتیو قرار می‌گیرد. پس از ایجاد نمونه، شیء داده راکتیو به عنوان `this.$data` قابل دسترسی است. همچنین نمونه کامپوننت تمام ویژگی‌های موجود در شیء داده را پروکسی می‌کند، بنابراین `this.a` معادل با `this.$data.a` خواهد بود.
 
   All top-level data properties must be included in the returned data object. Adding new properties to `this.$data` is possible, but it is **not** recommended. If the desired value of a property is not yet available then an empty value such as `undefined` or `null` should be included as a placeholder to ensure that Vue knows that the property exists.
 
