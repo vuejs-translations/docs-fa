@@ -42,7 +42,7 @@
 | loader | بارگذار |
 | modifier | پیراینده |
 | mouse | ماوس |
-| object | شی |
+| object | آبجکت |
 | prop | پراپ |
 | property | پراپرتی |
 | seamlessly | یکپارچه |
