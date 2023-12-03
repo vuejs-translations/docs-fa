@@ -1,17 +1,17 @@
-# API ترکیبی: setup() {#composition-api-setup}
+# Composition API: setup()‎ {#composition-api-setup}
 
 ## کاربرد عمومی {#basic-usage}
 
-هوک `setup()` در شرایط زیر زمانی که قصد استفاده از API ترکیبی (Composition API) را داریم به عنوان اولین قدم استفاده می‌شود:
+هوک `setup()‎` در شرایط زیر، زمانی که قصد استفاده از Composition API را داریم، به عنوان اولین قدم استفاده می‌شود:
 
-1. استفاده از API ترکیبی بدون مرحله ساخت (build)
-2. ترکیب کدهای نوشته شده با API ترکیبی در یک کامپوننت با ساختار API گزینه‌ای (Options API)
+1. استفاده از Composition API بدون مرحله ساخت (build)
+2. ترکیب کدهای نوشته شده با Composition API در یک کامپوننت با ساختار Options API
 
-:::نکات تکمیلی
-اگر از کامپوننت های تک فایلی (Single-File) با API ترکیبی استفاده می‌کنید، برای داشتن کدهای کوتاه‌تر و ارگونومیک‌تر توصیه می‌شود از [`<script setup>`](/api/sfc-script-setup) استفاده کنید
+:::tip نکات تکمیلی
+اگر از کامپوننت های تک فایلی (Single-File) با Composition API استفاده می‌کنید، برای داشتن کدهای کوتاه‌تر و ارگونومیک‌تر توصیه می‌شود از [`<script setup>`](/api/sfc-script-setup) استفاده کنید.
 :::
 
-با استفاده از [Reactivity APIs](./reactivity-core) و گرفتن خروجی از یک آبجکت از تابع `setup()`، می‌توان reactive state را تعریف نمود. خواص آبجکتی که از آن خروجی گرفته‌ایم نیز در نمونه (instance) از نوع کامپوننت قابل دسترس خواهد بود (به شرط آنکه سایر گزینه‌ها نیز استفاده شوند):
+با استفاده از [Reactivity APIs](./reactivity-core) و گرفتن خروجی از یک آبجکت از تابع `setup()‎`، می‌توان reactive state را تعریف نمود. پراپرتی‌های آبجکتی که از آن خروجی گرفته‌ایم نیز در نمونه ساخته شده از کامپوننت، قابل دسترس خواهد بود (به شرط آنکه سایر آپشن‌ها نیز استفاده شوند):
 
 ```vue
 <script>
@@ -38,11 +38,11 @@ export default {
 </template>
 ```
 
-خروجی [refs](/api/reactivity-core#ref) زمانی که در تمپلیت قابل دسترس باشد، بصورت خودکار از `setup` [تفکیک](/guide/essentials/reactivity-fundamentals#deep-reactivity) می‌شود، در نتیجه برای دسترسی به آن نیازی به استفاده از `.value` نیست. علاوه بر این در شرایطی که از `this` استفاده می‌کنیم، نیز به صورت خودکار تفکیک خواهند شد.
+خروجی [refs](/api/reactivity-core#ref) زمانی که در تمپلیت قابل دسترس باشد، بصورت خودکار از `setup` [تفکیک](/guide/essentials/reactivity-fundamentals#deep-reactivity) می‌شود، در نتیجه برای دسترسی به آن نیازی به استفاده از `.value` نیست. علاوه بر این، در شرایطی که از `this` استفاده می‌کنیم نیز به صورت خودکار تفکیک خواهند شد.
 
-تایع `setup()` به تنهایی دسترسی به نمونه از نوع کامپوننت (component instance) ندارد - در تابع `setup()` عبارت `this` مقدار تعریف نشده (`undefined`) دارد. تنها می‌توان از طریق Options API به مقادیر Composition-API-exposed دسترسی داشت، و نه برعکس.
+تایع `setup()‎` به تنهایی دسترسی به نمونه ساخته شده از کامپوننت را ندارد - در تابع `setup()‎` عبارت `this` مقدار تعریف نشده (`undefined`) دارد. تنها می‌توان از طریق Options API به مقادیر Composition-API-exposed دسترسی داشت، و نه برعکس.
 
-تابع `setup()` باید یک آبجکت از نوع _synchronously_ خروجی دهد. تنها زمانی می‌شود از `async setup()` استفاده کرد که کامپوننت از نوع [Suspense](../guide/built-ins/suspense) باشد.
+تابع `setup()‎` باید یک آبجکت از نوع _synchronously_ خروجی دهد. تنها زمانی می‌شود از `async setup()‎` استفاده کرد که کامپوننت از نوع [Suspense](../guide/built-ins/suspense) باشد.
 
 ## دسترسی به Props {#accessing-props}
 
@@ -60,7 +60,7 @@ export default {
 ```
 
 توجه داشته باشید که با تعمیم (destructure) کردن آبجکت `props`، متغیرهای تعمیم داده‌شده دینامیک بودن خود را از دست می‌دهند. درنتیجه توصیه می‌شود همواره از طریق فرم `props.xxx` به مقادیر `props` دسترسی داشته باشید.
-اما اگر اصرار به تعمیم دادن متغیرهای درونی props دارید، یا اینکه با حفظ دینامیک بودن آن قصد پاس کردن یک prop به تابع خارجی را دارید، می‌توان از ‌APIهای [toRefs()](./reactivity-utilities#torefs) یا [toRef()](/api/reactivity-utilities#toref) استفاده کنید:
+اما اگر اصرار به تعمیم دادن متغیرهای درونی props دارید، یا اینکه با حفظ دینامیک بودن آن قصد پاس کردن یک prop به تابع خارجی را دارید، می‌توان از ‌APIهای [toRefs()‎](./reactivity-utilities#torefs) یا [toRef()‎](/api/reactivity-utilities#toref) استفاده کنید:
 
 ```js
 import { toRefs, toRef } from 'vue'
@@ -114,7 +114,7 @@ export default {
 
 ### استفاده از مقادیر عمومی {#exposing-public-properties}
 
-تابع `expose` زمانی که مقادیر نمونه (instance) کامپوننت توسط کامپوننت مادر از طریق [template refs](/guide/essentials/template-refs#ref-on-component) در دسترس قرار گرفته باشد، برای محدودسازی صریح این مقادیر مورد استفاده قرار می‌گیرد:
+تابع `expose` زمانی که مقادیر نمونه ساخته شده از کامپوننت، توسط کامپوننت مادر از طریق [template refs](/guide/essentials/template-refs#ref-on-component) در دسترس قرار گرفته باشد، برای محدودسازی صریح این مقادیر مورد استفاده قرار می‌گیرد:
 
 ```js{5,10}
 export default {
@@ -147,7 +147,7 @@ export default {
 ```
 
 زمانی که یک render function خروجی داده می‌شود، امکان خروجی گرفتن از مقادیر دیگر وجود ندارد. زمانی که مقادیر تنها در این کامپوننت استفاده شوند، مشکلی برای ما بوجود نمی‌آورد. اما در حالتی که نیاز باشد توابع کامپوننت از طریق template refs به کامپوننت مادر ارجاع داده شوند، این روش مشکل ساز خواهد بود.
-با فراخواندن تابع [`expose()`](#exposing-public-properties) می‌توان این مشکل را برطرف نمود:
+با فراخواندن تابع [`expose()‎`](#exposing-public-properties) می‌توان این مشکل را برطرف نمود:
 
 ```js{8-10}
 import { h, ref } from 'vue'
