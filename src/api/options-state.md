@@ -17,15 +17,15 @@
 
 - **جزئیات**
 
-  انتظار می‌رود که این تابع یک شیء ساده جاوا اسکریپتی را برگرداند که توسط Vue به صورت راکتیو قرار می‌گیرد. پس از ایجاد نمونه، شیء داده راکتیو به عنوان `this.$data` قابل دسترسی است. همچنین نمونه کامپوننت تمام ویژگی‌های موجود در شیء داده را پروکسی می‌کند، بنابراین `this.a` معادل با `this.$data.a` خواهد بود.
+  انتظار می‌رود که این تابع یک شیءـ ساده جاوا اسکریپتی را برگرداند که توسط Vue به صورت راکتیو قرار می‌گیرد. پس از ایجاد نمونه، شیء داده راکتیو به عنوان `this.$data` قابل دسترسی است. همچنین نمونه کامپوننت تمام ویژگی‌های موجود در شیء داده را پروکسی می‌کند، بنابراین `this.a` معادل با `this.$data.a` خواهد بود.
 
-  All top-level data properties must be included in the returned data object. Adding new properties to `this.$data` is possible, but it is **not** recommended. If the desired value of a property is not yet available then an empty value such as `undefined` or `null` should be included as a placeholder to ensure that Vue knows that the property exists.
+در اینجا آمده است که تمام ویژگی‌های داده سطح بالا باید در شیء داده برگردانده شوند. اضافه کردن ویژگی‌های جدید به this.$data امکان‌پذیر است، اما توصیه نمی‌شود. اگر مقدار مورد نظر یک ویژگی هنوز در دسترس نیست، می‌توان یک مقدار خالی مانند undefined یا null را به عنوان یک جایگزین قرار داد تا اطمینان حاصل شود که Vue می‌داند که ویژگی وجود دارد.
 
-  Properties that start with `_` or `$` will **not** be proxied on the component instance because they may conflict with Vue's internal properties and API methods. You will have to access them as `this.$data._property`.
+  ویژگی‌هایی که با `_` یا `$` شروع می‌شوند، **نباید** به صورت پروکسی در نمونه کامپوننت قرار گیرند زیرا ممکن است با ویژگی‌ها و روش‌های داخلی و API Vue تداخل داشته باشند. شما باید به آن‌ها به عنوان `this.$data._property` دسترسی داشته باشید.
 
-  It is **not** recommended to return objects with their own stateful behavior like browser API objects and prototype properties. The returned object should ideally be a plain object that only represents the state of the component.
+این توصیه نمی‌شود که اشیاءی که دارای رفتار قابل تغییر مانند اشیاء API مرورگر و خصوصیات پروتوتایپی خود باشند، برگردانده شوند. بهتر است که شیء برگردانده شده یک شیء ساده باشد که تنها وضعیت کامپوننت را نشان می‌دهد.
 
-- **Example**
+- **مثال**
 
   ```js
   export default {
@@ -39,19 +39,19 @@
   }
   ```
 
-  Note that if you use an arrow function with the `data` property, `this` won't be the component's instance, but you can still access the instance as the function's first argument:
+توجه کنید که اگر از یک تابع arrow با ویژگی data استفاده کنید، this نمی‌تواند نمونه کامپوننت باشد، اما هنوز می‌توانید به نمونه به عنوان آرگومان اول تابع دسترسی داشته باشید.
 
   ```js
   data: (vm) => ({ a: vm.myProp })
   ```
 
-- **See also** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+- **اینجا را ببینید** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
 
-## props {#props}
+## پراپ‌ها {#props}
 
-Declare the props of a component.
+تعریف پراپ‌ها در یک کامپوننت.
 
-- **Type**
+- **تایپ**
 
   ```ts
   interface ComponentOptions {
@@ -74,11 +74,11 @@ Declare the props of a component.
   type PropType<T> = { new (): T } | { new (): T }[]
   ```
 
-  > Types are simplified for readability.
+  > تایپ ها برای خوانایی ساده شده‌اند.
 
-- **Details**
+- **جزئیات**
 
-  In Vue, all component props need to be explicitly declared. Component props can be declared in two forms:
+  در Vue، همهٔ پراپ‌های کامپوننت باید به صورت صریح اعلام شوند. پراپ‌های کامپوننت می‌توانند به دو شکل اعلام شوند:
 
   - Simple form using an array of strings
   - Full form using an object where each property key is the name of the prop, and the value is the prop's type (a constructor function) or advanced options.
