@@ -80,20 +80,20 @@
 
   در Vue، همهٔ پراپ‌های کامپوننت باید به صورت صریح اعلام شوند. پراپ‌های کامپوننت می‌توانند به دو شکل اعلام شوند:
 
-  - Simple form using an array of strings
-  - Full form using an object where each property key is the name of the prop, and the value is the prop's type (a constructor function) or advanced options.
+  - فرم ساده با استفاده از یک آرایه از رشته‌ها
+  - فرم کامل با استفاده از یک شیء که هر کلید خاصیت نام پراپ است و مقدار آن نوع پراپ (یک تابع سازنده) یا گزینه‌های پیشرفته است.
 
-  With object-based syntax, each prop can further define the following options:
+  با استفاده از object-based، هر پراپ می‌تواند گزینه‌های زیر را تعریف کند:
 
-  - **`type`**: Can be one of the following native constructors: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, any custom constructor function or an array of those. In development mode, Vue will check if a prop's value matches the declared type, and will throw a warning if it doesn't. See [Prop Validation](/guide/components/props#prop-validation) for more details.
+  - **`type`**: می‌تواند یکی از سازندگان اصلی زیر باشد: `String`، `Number`، `Boolean`، `Array`، `Object`، `Date`، `Function`، `Symbol`، هر تابع سازنده سفارشی یا یک آرایه از آن‌ها. در حالت توسعه، Vue بررسی می‌کند که آیا مقدار یک پراپ با نوع اعلام شده مطابقت دارد و در صورت عدم مطابقت، یک هشدار را نمایش می‌دهد. برای اطلاعات بیشتر، به [اعتبارسنجی پراپ](/guide/components/props#prop-validation) مراجعه کنید.
 
-    Also note that a prop with `Boolean` type affects its value casting behavior in both development and production. See [Boolean Casting](/guide/components/props#boolean-casting) for more details.
+    همچنین توجه کنید که یک پراپ با نوع `Boolean` رفتار تبدیل مقدار خود را در هر دو حالت توسعه و تولید تحت تأثیر قرار می‌دهد. برای اطلاعات بیشتر، به [تبدیل بولین](/guide/components/props#boolean-casting) مراجعه کنید.
 
-  - **`default`**: Specifies a default value for the prop when it is not passed by the parent or has `undefined` value. Object or array defaults must be returned using a factory function. The factory function also receives the raw props object as the argument.
+  - **`default`**: یک مقدار پیش‌فرض برای پراپ تعیین می‌کند که در صورت عدم ارسال آن توسط والدین یا داشتن مقدار `undefined`، استفاده می‌شود. مقادیر پیش‌فرض شیء یا آرایه باید با استفاده از یک تابع سازنده برگردانده شوند. تابع سازنده همچنین شیء پراپ‌های خام را به عنوان آرگومان دریافت می‌کند.
 
-  - **`required`**: Defines if the prop is required. In a non-production environment, a console warning will be thrown if this value is truthy and the prop is not passed.
+  - **`required`**: در این قسمت از کد، می‌توانید مشخص کنید که آیا یک پراپ مورد نیاز است یا خیر. در محیطی که در آن برنامه در حال توسعه است، اگر این مقدار حقیقی باشد و پراپ ارسال نشود، یک هشدار در کنسول نمایش داده خواهد شد.
 
-  - **`validator`**: Custom validator function that takes the prop value as the sole argument. In development mode, a console warning will be thrown if this function returns a falsy value (i.e. the validation fails).
+  - **`validator`**: در این قسمت از کد، یک تابع اعتبارسنجی سفارشی وجود دارد که مقدار پراپ را به عنوان تنها آرگومان دریافت می‌کند. در حالت توسعه، اگر این تابع یک مقدار غیرحقیقی (یعنی اعتبارسنجی ناموفق است) برگرداند، یک هشدار در کنسول نمایش داده خواهد شد.
 
 - **Example**
 
