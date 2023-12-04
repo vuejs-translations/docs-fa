@@ -5,56 +5,57 @@
 
 | English         | فارسی               |
 |-----------------|---------------------|
-| accessibility   | دسترسی‌پذیری       |
-| animation       | انیمیشن            |
+| accessibility   | دسترسی‌پذیری         |
+| animation       | انیمیشن             |
 | annotation      |                     |
-| application     | اپلیکیشن           |
-| argument        | آرگومان            |
-| async           | ناهمگام، غیرهمگام |
-| attribute       | شاخصه، ویژگی، صفت |
-| binding         | اتصال، پیوند       |
+| application     | اپلیکیشن            |
+| argument        | آرگومان             |
+| async           | ناهمگام، غیرهمگام   |
+| attribute       | شاخصه، ویژگی، صفت   |
+| binding         | اتصال، پیوند        |
 | built-in        | داخلی، درونی، نهادینه‌شده |
 | bus             |                     |
-| class           | کلاس               |
-| command line    | خط فرمان           |
-| component       | کامپوننت           |
-| composable function |              |
+| class           | کلاس                 |
+| command line    | خط فرمان            |
+| component       | کامپوننت            |
+| composable function |                 |
 | Composition API | Composition API     |
 | computed        | computed            |
-| conditional     | شرطی               |
+| conditional     | شرطی                |
 | container       |                     |
-| data            | داده               |
-| debugging       | دیباگ کردن         |
-| deep            | عمیق، ژرف          |
-| delay           | تاخیر              |
-| dependency      | وابستگی            |
-| directive       | دایرکتیو           |
+| data            | داده                |
+| debugging       | دیباگ کردن          |
+| deep            | عمیق، ژرف           |
+| delay           | تاخیر               |
+| dependency      | وابستگی             |
+| directive       | دایرکتیو            |
 | DOM             | DOM                 |
-| element         | المان، عنصر        |
+| element         | المان، عنصر         |
 | emit            | emit                |
-| endpoint        | پایانه             |
-| event           | رویداد             |
-| expression      | عبارت              |
-| GitHub          | گیت‌هاب            |
-| handle          | مدیریت، رسیدگی    |
-| hook            | هوک                |
-| JavaScript      | جاوااسکریپت      |
-| lazy loading    | بارگذاری تنبل      |
-| load            | بارگذاری           |
-| loader          | بارگذار            |
-| modifier        | پیراینده           |
-| mouse           | ماوس               |
-| object          | آبجکت              |
-| prop            | پراپ               |
-| property        | پراپرتی            |
-| seamlessly      | یکپارچه           |
+| endpoint        | پایانه              |
+| event           | رویداد              |
+| expression      | عبارت               |
+| GitHub          | گیت‌هاب              |
+| handle          | مدیریت، رسیدگی      |
+| hook            | هوک                 |
+| JavaScript      | جاوااسکریپت         |
+| lazy loading    | بارگذاری تنبل       |
+| load            | بارگذاری            |
+| loader          | بارگذار             |
+| modifier        | پیراینده            |
+| mouse           | ماوس                |
+| object          | آبجکت               |
+| prop            | پراپ                |
+| property        | پراپرتی             |
+| seamlessly      | یکپارچه             |
 | state           | state               |
-| template        | تمپلیت             |
-| timeout         | مهلت               |
-| transition      | ترنزیشن‌           |
-| teleport        | تله‌پورت           |
-| wrapper         | پوششی، دربرگیرنده |
-| community       | کامیونیتی          |
-| ecosystem       | اکوسیستم          |
+| template        | تمپلیت              |
+| timeout         | مهلت                |
+| transition      | ترنزیشن‌             |
+| teleport        | تله‌پورت             |
+| wrapper         | پوششی، دربرگیرنده   |
+| community       | کامیونیتی           |
+| ecosystem       | اکوسیستم            |
 | Vue             | Vue                 |
+| runtime         | ران‌تایم             |
 
