@@ -82,7 +82,7 @@
     <td align="center"><a href="https://github.com/iamhosen"><img src="https://avatars.githubusercontent.com/u/99954947?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Hossein Amirhosseini</b></sub></a></td>
     <td align="center"><a href="https://github.com/mostafa-rio"><img src="https://avatars.githubusercontent.com/u/32630862?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Mostafa Rahmani</b></sub></a></td>
     <td align="center"><a href="https://github.com/mohsen-d"><img src="https://avatars.githubusercontent.com/u/1769454?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Mohsen Dorparasti</b></sub></a></td>
-    <td align="center"><a href="https://github.com/vahid-bagheri"><img src="https://avatars.githubusercontent.com/u/70237190?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Bahid Bagheri</b></sub></a></td>
+    <td align="center"><a href="https://github.com/vahid-bagheri"><img src="https://avatars.githubusercontent.com/u/70237190?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Vahid Bagheri</b></sub></a></td>
   </tr>
 </table>
 
