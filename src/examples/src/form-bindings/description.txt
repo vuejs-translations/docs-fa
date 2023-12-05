@@ -1,1 +1,1 @@
-We can create two-way bindings between state and form inputs using the v-model directive.
+می‌توانیم اتصالات دو طرفه بین state و ورودی‌های فرم را با استفاده از دایرکتیو v-model ایجاد کنیم.

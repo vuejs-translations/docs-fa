@@ -1,2 +1,2 @@
-Here we are reactively binding element attributes / properties to the state.
-The :title syntax is short for v-bind:title.
+در اینجا ما به طور واکنش‌گرا، شاخصه‌ها / ویژگی‌های المان را به state متصل می‌کنیم.
+نحو :title کوتاه شده‌ی v-bind:title است.

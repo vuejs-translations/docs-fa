@@ -2,16 +2,15 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    const message = ref('Hello World!')
+    const message = ref('سلام دنیا!')
 
     function reverseMessage() {
-      // Access/mutate the value of a ref via
-      // its .value property.
+      // مقدار ref رااز طریق .value به آن دسترسی پیدا کنید یا تغییر دهید.
       message.value = message.value.split('').reverse().join('')
     }
 
     function notify() {
-      alert('navigation was prevented.')
+      alert('جلوگیری از ناوبری صورت گرفت.')
     }
 
     return {
