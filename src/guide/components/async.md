@@ -9,11 +9,11 @@ import { defineAsyncComponent } from 'vue'
 
 const AsyncComp = defineAsyncComponent(() => {
   return new Promise((resolve, reject) => {
-    // ... بارگذاری کامپوننت از سرور
+    // ... load component from server
     resolve(/* loaded component */)
   })
 })
-// ... استفاده از "asyncComp" مثل یک کامپوننت عادی
+// ... use `AsyncComp` like a normal component
 ```
 
 همانطور که می‌بینید، `defineAsyncComponent` یک تابع بارگذار (loader) را می‌پذیرد که یک Promise را برمی‌گرداند. هنگامی که تعریف کامپوننت شما از سرور دریافت شد، تابع `resolve` در Promise بازگشتی، باید فراخوانی شود. همچنین می‌توانید با فراخوانی `reject(reason)` نشان دهید بارگذاری شکست خورده است.
