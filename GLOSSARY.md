@@ -36,6 +36,7 @@
 | event           | رویداد              |
 | expression      | عبارت               |
 | GitHub          | گیت‌هاب              |
+| global          | سراسری              |
 | handle          | مدیریت، رسیدگی      |
 | hook            | هوک                 |
 | JavaScript      | جاوااسکریپت         |
@@ -45,17 +46,21 @@
 | modifier        | پیراینده            |
 | mouse           | ماوس                |
 | object          | آبجکت               |
+| option          | آپشن               |
 | prop            | پراپ                |
 | property        | پراپرتی             |
 | seamlessly      | یکپارچه             |
 | state           | state               |
+| scope           | اسکوپ               |
 | template        | تمپلیت              |
 | timeout         | مهلت                |
 | transition      | ترنزیشن‌             |
 | teleport        | تله‌پورت             |
+| type            | تایپ             |
 | wrapper         | پوششی، دربرگیرنده   |
 | community       | کامیونیتی           |
 | ecosystem       | اکوسیستم            |
 | Vue             | Vue                 |
 | runtime         | ران‌تایم             |
-
+| react           | ری‌اکت           |
+| reactive        | reactive        |
