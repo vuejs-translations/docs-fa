@@ -2,7 +2,7 @@
 
 ## renderToString() {#rendertostring}
 
-- **صادر شده از `vue/server-renderer`**
+- **صادر شده از (exported from) `vue/server-renderer`**
 
 - **تایپ (Type)**
 
@@ -32,7 +32,7 @@
 
   ### زمینه‌ی رندر سمت سرور (SSR Context) {#ssr-context}
 
-شما می‌توانید یک آبجکت زمینه‌ی اختیاری ارسال کنید که می‌تواند برای ضبط داده‌های اضافی در طول رندر استفاده شود، به عنوان مثال [دسترسی به محتوای تله‌پورت‌ها](/guide/scaling-up/ssr#teleports):
+شما می‌توانید یک آبجکت زمینه‌ی(SSR Context) اختیاری ارسال کنید که می‌تواند برای ضبط داده‌های اضافی در طول رندر استفاده شود، به عنوان مثال [دسترسی به محتوای تله‌پورت‌ها](/guide/scaling-up/ssr#teleports):
 
 ```js
 const ctx = {}
@@ -49,7 +49,7 @@ console.log(ctx.teleports) // { '#teleported': 'teleported content' }
 
 ورودی را به‌صورت [جریان قابل خواندن Node.js](https://nodejs.org/api/stream.html#stream_class_stream_readable) رندر می‌کند.
 
-- **صادر شده از `vue/server-renderer`**
+- **صادر شده از (exported from) `vue/server-renderer`**
 
 - **تایپ (Type)**
 
@@ -75,7 +75,7 @@ console.log(ctx.teleports) // { '#teleported': 'teleported content' }
 
 رندر کنید و به یک نمونه موجود [Node.js Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) ارسال کنید.
 
-- **صادر شده از `vue/server-renderer`**
+- **صادر شده از (exported from) `vue/server-renderer`**
 
 - **تایپ (Type)**
 
@@ -98,7 +98,7 @@ console.log(ctx.teleports) // { '#teleported': 'teleported content' }
 
 ورودی را به صورت [Web ReadableStream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) رندر می‌کند.
 
-- **صادر شده از `vue/server-renderer`**
+- **صادر شده از (exported from) `vue/server-renderer`**
 
 - **تایپ (Type)**
 
@@ -124,7 +124,7 @@ console.log(ctx.teleports) // { '#teleported': 'teleported content' }
 
 رندر کنید و به یک نمونه [Web WritableStream](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream) موجود منتقل کنید.
 
-- **صادر شده از `vue/server-renderer`**
+- **صادر شده از (exported from) `vue/server-renderer`**
 
 - **تایپ (Type)**
 
@@ -151,9 +151,9 @@ console.log(ctx.teleports) // { '#teleported': 'teleported content' }
 
 ## renderToSimpleStream() {#rendertosimplestream}
 
-ورودی را در حالت استریم با استفاده از یک رابط خوانا ساده رندر می کند.
+ورودی را در حالت استریم با استفاده از یک رابط (interface) خوانا ساده رندر می‌کند.
 
-- **صادر شده از `vue/server-renderer`**
+- **صادر شده از (exported from) `vue/server-renderer`**
 
 - **تایپ (Type)**
 
@@ -206,7 +206,7 @@ console.log(ctx.teleports) // { '#teleported': 'teleported content' }
 
 - **مثال**
 
-زمینه بازیابی شده را می توان برای پیوست کردن اطلاعاتی که برای رندر کردن HTML نهایی مورد نیاز است (مانند متادیتای head) استفاده کرد.
+زمینه بازیابی شده را می‌توان برای پیوست کردن اطلاعاتی که برای رندر کردن HTML نهایی مورد نیاز است (مانند متادیتای head) استفاده کرد.
 
 ```vue
 <script setup>
