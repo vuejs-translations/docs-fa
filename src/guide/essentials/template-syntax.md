@@ -115,7 +115,7 @@ data() {
 
 تا کنون ما فقط به اتصال پراپرتی ساده در تمپلیت خود پرداختیم. اما Vue درواقع بطور قوی از عبارات جاوااسکریپت (JavaScript expressions) در داخل data bindingها پشتیبانی می‌کند.
 
-```html
+```vue-html
 {{ number + 1 }}
 
 {{ ok ? 'YES' : 'NO' }}
@@ -138,7 +138,7 @@ data() {
 
 بنابراین موارد زیر کار **نمی‌کند**
 
-```html
+```vue-html
 <!-- این یک جمله است، نه اصطلاح: -->
 {{ var a = 1 }}
 
@@ -150,7 +150,7 @@ data() {
 
 می توان یک متد در کامپوننت را در داخل یک عبارت binding فراخوانی کرد:
 
-```html
+```vue-html
 <time :title="toTitleDate(date)" :datetime="date">
   {{ formatDate(date) }}
 </time>
