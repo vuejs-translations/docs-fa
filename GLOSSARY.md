@@ -68,11 +68,4 @@
 | wrapper             | پوششی، دربرگیرنده   |
 | community           | کامیونیتی           |
 | ecosystem           | اکوسیستم            |
-
-
-
-
-
-
-
-
+| code of conduct     | منشور اخلاقی         |

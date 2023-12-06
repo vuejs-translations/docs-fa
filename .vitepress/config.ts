@@ -113,7 +113,7 @@ const nav: ThemeConfig['nav'] = [
         text: 'راهنمای کامیونیتی',
         link: '/about/community-guide'
       },
-      { text: 'کدرفتار', link: '/about/coc' },
+      { text: 'منشور اخلاقی', link: '/about/coc' },
       {
         text: 'مستند',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
