@@ -22,7 +22,7 @@
 | Composition API     | Composition API     |
 | computed            | computed            |
 | conditional         | شرطی                |
-| container           |                     |
+| container           |  کانتینر               |
 | data                | داده                |
 | debugging           | دیباگ کردن          |
 | deep                | عمیق، ژرف           |
@@ -39,33 +39,40 @@
 | global              | سراسری              |
 | handle              | مدیریت، رسیدگی      |
 | hook                | هوک                 |
+| instance            | نمونه               |
+| interface           | رابط                 |
 | JavaScript          | جاوااسکریپت         |
 | lazy loading        | بارگذاری تنبل       |
 | load                | بارگذاری            |
 | loader              | بارگذار             |
+| local               | محلی                |
 | modifier            | پیراینده            |
 | mouse               | ماوس                |
 | object              | آبجکت               |
 | option              | آپشن                |
 | prop                | پراپ                |
 | property            | پراپرتی             |
+| react               | ری‌اکت               |
+| reactive            | reactive            |
+| render              | رندر                 |
+| runtime             | ران‌تایم             |
+| scope               | اسکوپ               |
 | seamlessly          | یکپارچه             |
 | state               | state               |
-| scope               | اسکوپ               |
 | template            | تمپلیت              |
 | timeout             | مهلت                |
 | transition          | ترنزیشن‌             |
 | teleport            | تله‌پورت             |
 | type                | تایپ                |
+| Vue                 | Vue                 |
 | wrapper             | پوششی، دربرگیرنده   |
 | community           | کامیونیتی           |
 | ecosystem           | اکوسیستم            |
-| Vue                 | Vue                 |
-| runtime             | ران‌تایم             |
-| react               | ری‌اکت               |
-| reactive            | reactive            |
-| instance            | نمونه               |
-| local               | محلی                |
-| interface           | رابط                 |
-| render              | رندر                 |
+
+
+
+
+
+
+
 
