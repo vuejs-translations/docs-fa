@@ -201,7 +201,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'کامپوننت‌ها به‌طور عمیق',
       items: [
         {
-          text: 'Registration',
+          text: 'رجیستر کردن (Registration)',
           link: '/guide/components/registration'
         },
         { text: 'Props', link: '/guide/components/props' },
@@ -586,7 +586,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   lang: 'fa',
   dir: 'rtl',
   title: 'Vue.js',
-  description: 'Vue.js - فریمورک پیش‌رونده جاوااسکریپت',
+  description: 'Vue.js - فریمورک پیش‌رونده جاوا اسکریپت',
   srcDir: 'src',
   srcExclude: ['tutorial/**/description.md'],
 

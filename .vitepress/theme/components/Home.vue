@@ -16,7 +16,7 @@ onMounted(async () => {
     <h1 class="tagline">
       فریمورک
       <span class="accent">پیش‌رونده</span>
-      <br />جاوااسکریپت
+      <br />جاوا اسکریپت
     </h1>
     <p class="description">
       یک فریمورک <strong>آسان، بهینه و انعطاف‌پذیر</strong> که برای ساخت
