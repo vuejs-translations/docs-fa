@@ -65,3 +65,7 @@
 | react               | ری‌اکت               |
 | reactive            | reactive            |
 | instance            | نمونه               |
+| local               | محلی                |
+| interface           | رابط                 |
+| render              | رندر                 |
+
