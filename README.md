@@ -84,6 +84,10 @@
     <td align="center"><a href="https://github.com/mohsen-d"><img src="https://avatars.githubusercontent.com/u/1769454?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Mohsen Dorparasti</b></sub></a></td>
     <td align="center"><a href="https://github.com/vahid-bagheri"><img src="https://avatars.githubusercontent.com/u/70237190?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Vahid Bagheri</b></sub></a></td>
   </tr>
+    <tr>
+    <td align="center"><a href="https://github.com/mazdakdev"><img src="https://avatars.githubusercontent.com/u/60855141?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Mazdak Pakaghideh</b></sub></a></td>
+    <td align="center"><a href="https://github.com/amirofski"><img src="https://avatars.githubusercontent.com/u/10779032?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Amir</b></sub></a></td>
+  </tr>
 </table>
 
 <h3 dir="rtl">ارتباط با مشارکت‌کنندگان</h3>
