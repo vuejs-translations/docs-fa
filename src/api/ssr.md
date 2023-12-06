@@ -73,7 +73,7 @@ console.log(ctx.teleports) // { '#teleported': 'teleported content' }
 
 ## pipeToNodeWritable() {#pipetonodewritable}
 
-رندر کنید و به یک نمونه موجود [Node.js Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) ارسال کنید.
+رندر کنید و به یک نمونه (instance) موجود [Node.js Writable stream](https://nodejs.org/api/stream.html#stream_writable_streams) ارسال کنید.
 
 - **صادر شده از (exported from) `vue/server-renderer`**
 
@@ -122,7 +122,7 @@ console.log(ctx.teleports) // { '#teleported': 'teleported content' }
 
 ## pipeToWebWritable() {#pipetowebwritable}
 
-رندر کنید و به یک نمونه [Web WritableStream](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream) موجود منتقل کنید.
+رندر کنید و به یک نمونه (instance) موجود [Web WritableStream](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream) منتقل کنید.
 
 - **صادر شده از (exported from) `vue/server-renderer`**
 
