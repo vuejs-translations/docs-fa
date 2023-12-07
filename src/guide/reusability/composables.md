@@ -65,6 +65,7 @@ export function useMouse() {
 ```
 
 کد زیر روش استفاده از آن در کامپوننت‌  را نشان می‌دهد
+
 ```vue
 <script setup>
 import { useMouse } from './mouse.js'
