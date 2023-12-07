@@ -2,15 +2,15 @@
 import TestingApiSwitcher from './TestingApiSwitcher.vue'
 </script>
 
-# Testing {#testing}
+# تست و بررسی {#testing}
 
-## Why Test? {#why-test}
+## چرا تست و بررسی؟ {#why-test}
 
-Automated tests help you and your team build complex Vue applications quickly and confidently by preventing regressions and encouraging you to break apart your application into testable functions, modules, classes, and components. As with any application, your new Vue app can break in many ways, and it's important that you can catch these issues and fix them before releasing.
+تست‌های خودکار به شما و تیمتان کمک می‌کنند تا به سرعت و با اطمینان بیشتری برنامه‌های پیچیده‌ی Vue را بسازید، باعث جلوگیری از رگرسیون‌ها شده و شما را تشویق کنند تا برنامه‌ی خود را به توابع، ماژول‌ها، کلاس‌ها و کامپوننت‌های قابل تست تقسیم کنید. همانند هر برنامه‌ی دیگری، برنامه‌ی Vue جدید شما می‌تواند به چندین روش خراب شود و مهم است که بتوانید این مشکلات را شناسایی کرده و قبل از انتشار آنها را برطرف کنید.
 
-In this guide, we'll cover basic terminology and provide our recommendations on which tools to choose for your Vue 3 application.
+در این راهنما، ما اصطلاحات پایه را پوشش می دهیم و توصیه های خود را در مورد ابزارهایی که برای برنامه Vue 3 خود انتخاب می کنید، ارائه می دهیم.
 
-There is one Vue-specific section covering composables. See [Testing Composables](#testing-composables) below for more details.
+یک بخش خاص برای Vue در مورد composables وجود دارد. برای اطلاعات بیشتر، به بخش [تست Composables](#testing-composables) در زیر مراجعه کنید.
 
 ## When to Test {#when-to-test}
 
