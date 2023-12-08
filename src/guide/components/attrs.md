@@ -8,16 +8,16 @@ outline: deep
 
 ## Attribute Inheritance {#attribute-inheritance}
 
-یک "fallthrough attribute" ویژگی یا listener رویداد `v-on` است که به کامپوننت پاس داده می‌شود، اما به طور صریح در [props](./props) یا [emits](./events#declaring-emitted-events)  تعریف نشده است. مثال‌های رایج این موارد ویژگی‌های `class`، `style` و `id` هستند.
+یک "fallthrough attribute" یک ویژگی یا listener رویداد `v-on` است که به کامپوننت پاس داده می‌شود، اما به طور صریح در [props](./props) یا [emits](./events#declaring-emitted-events)  تعریف نشده است. نمونه های رایج آن ویژگی‌های `class`، `style` و `id` هستند.
 
-وقتی یک کامپوننت root element اصلی خود را رندر می‌کند، ویژگی‌های fallthrough به طور خودکار به attributeهای root element اضافه می‌شوند. به عنوان مثال، با در نظر گرفتن یک کامپوننت `<MyButton>` با تمپلیت زیر:
+وقتی یک کامپوننت (فقط) یک root element رندر می‌کند، ویژگی‌های fallthrough به طور خودکار به attributeهای آن root element اضافه می‌شوند. به عنوان مثال، با در نظر گرفتن یک کامپوننت `<MyButton>` با template زیر:
 
 ```vue-html
 <!-- template of <MyButton> -->
 <button>click me</button>
 ```
 
-و یک والد که از این کامپوننت با این موارد استفاده می‌کند:
+و یک والد که از این کامپوننت (به این شکل) استفاده می‌کند:
 
 ```vue-html
 <MyButton class="large" />
@@ -29,11 +29,11 @@ DOM نهایی رندر شده به این صورت خواهد بود:
 <button class="large">click me</button>
 ```
 
-اینجا، `<MyButton>`  ویژگی `class` را به عنوان یک prop پذیرفته شده اعلام نکرده است. بنابراین، `class` به عنوان یک ویژگی fallthrough در نظر گرفته می‌شود و به طور خودکار به عنصر ریشه `<MyButton>` اضافه می‌شود.
+در اینجا، `<MyButton>`  ویژگی `class` را به عنوان یک prop پذیرفته شده اعلام نکرده است. بنابراین، `class` به عنوان یک ویژگی fallthrough در نظر گرفته شده و به طور خودکار به root element کامپوننت `<MyButton>` اضافه می‌شود.
 
 ### ادغام `class` و `style` {#class-and-style-merging}
 
-اگر root element کامپوننت فرزند از قبل ویژگی‌های `class` یا `style` را داشته باشد، آن با مقادیر `class` و `style` به ارث برده شده از والد ادغام می‌شود. فرض کنید تمپلیت `<MyButton>` در مثال قبلی را به این صورت تغییر دهیم:
+اگر root element کامپوننت فرزند از قبل ویژگی‌های `class` یا `style` را داشته باشد، (مقادیر) آنها با مقادیر `class` و `style` به ارث برده شده از والد ادغام می‌شود. فرض کنید تمپلیت `<MyButton>` در مثال قبلی را به این صورت تغییر دهیم:
 
 ```vue-html
 <!-- template of <MyButton> -->
@@ -54,11 +54,11 @@ DOM نهایی رندر شده به این صورت خواهد بود:
 <MyButton @click="onClick" />
 ```
 
-دریافت‌کننده رویداد `click` به root element کامپوننت `<MyButton>` اضافه می‌شود، یعنی عنصر `<button>`. وقتی `<button>` اصلی کلیک شود، متد `onClick` از کامپوننت والد را فراخوانی می‌کند. اگر `<button>` از قبل یک دریافت‌کننده رویداد `click` با `v-on` داشته باشد، آنگاه هر دو فراخوانی می‌شوند.
+دریافت‌کننده رویداد `click` به root element کامپوننت `<MyButton>` اضافه می‌شود، یعنی `<button>`. وقتی روی `<button>` اصلی کلیک شود، متد `onClick` از کامپوننت والد را فراخوانی می‌کند. اگر `<button>` از قبل یک دریافت‌کننده رویداد `click` با `v-on` داشته باشد، آنگاه هر دو فراخوانی می‌شوند.
 
 ### Nested Component Inheritance {#nested-component-inheritance}
 
-اگر یک کامپوننت، کامپوننت دیگری را به عنوان نود ریشه‌اش (root node) رندر کند، به عنوان مثال،  `<MyButton>` را بازنویسی کردیم تا `<BaseButton>` را به عنوان ریشه‌اش رندر کند:
+اگر یک کامپوننت، کامپوننت دیگری را به عنوان node ریشه‌اش (root node) رندر کند، به عنوان مثال،  `<MyButton>` را بازنویسی کردیم تا `<BaseButton>` را به عنوان ریشه‌اش رندر کند:
 
 ```vue-html
 <!-- که صرفاً یک کامپوننت دیگر را رندر می‌کند <MyButton/> تمپلیت -->
@@ -92,7 +92,7 @@ defineOptions({
 
 </div>
 
-سناریوی رایج برای غیرفعال کردن وراثت ویژگی‌ها زمانی است که attributeها نیاز دارند به عناصر دیگری به غیر از نود ریشه اعمال شوند. با تنظیم گزینه `inheritAttrs` بر روی `false`، می‌توانید کنترل کاملی بر اینکه ویژگی‌های fallthrough کجا باید اعمال شوند، داشته باشید.
+سناریوی معمول برای غیرفعال کردن وراثت ویژگی‌ها زمانی است که attributeها نیاز دارند به عناصر دیگری به غیر از node ریشه اعمال شوند. با تنظیم گزینه `inheritAttrs` بر روی `false`، می‌توانید کنترل کاملی بر اینکه ویژگی‌های fallthrough کجا باید اعمال شوند، داشته باشید.
 
 می‌توانید به این ویژگی‌های fallthrough مستقیماً در  expression‌های تمپلیت به عنوان `‎$attrs` دسترسی داشته باشید:
 
@@ -104,11 +104,11 @@ defineOptions({
 
 توجه داشته باشید که:
 
-- برخلاف props، ویژگی‌های fallthrough حروف بزرگ و کوچک اصلی خود را در جاوااسکریپت حفظ می‌کنند، بنابراین یک ویژگی مثل `foo-bar` نیاز دارد که به صورت `‎$attrs['foo-bar']` صدا زده شود.
+- برخلاف props، ویژگی‌های fallthrough (حساسیت به) حروف بزرگ و کوچک اصلی خود را در جاوااسکریپت حفظ می‌کنند، بنابراین یک ویژگی مثل `foo-bar` نیاز دارد که به صورت `‎$attrs['foo-bar']` صدا زده شود.
 
 - یک دریافت‌کننده رویداد `v-on` مثل `‎@click` در شی به عنوان یک تابع تحت `‎$attrs.onClick` در دسترس است.
 
-با استفاده از [مثال کامپوننت](#attribute-inheritance) `<MyButton>` از بخش قبلی - گاهی اوقات ممکن است نیاز داشته باشیم `<button>` واقعی را درون یک `<div>` اضافی برای اهداف استایلی قرار دهیم:
+با استفاده از [مثال کامپوننت](#attribute-inheritance) `<MyButton>` از بخش قبلی - گاهی اوقات ممکن است (برای پاسخ به) اهداف مرتبط با استایل، نیاز داشته باشیم `<button>` واقعی را درون یک `<div>` اضافی قرار دهیم:
 
 ```vue-html
 <div class="btn-wrapper">
@@ -116,7 +116,7 @@ defineOptions({
 </div>
 ```
 
-می‌خواهیم تمام ویژگی‌های fallthrough مثل `class` و listenerهای `v-on` به `<button>` داخلی اعمال شوند، نه `<div>` بیرونی. می‌توانیم با استفاده از `inheritAttrs: false` و `v-bind="$attrs"‎` این کار را انجام دهیم:
+(در عین حال) می‌خواهیم تمام ویژگی‌های fallthrough مثل `class` و listenerهای `v-on` به `<button>` داخلی اعمال شوند، نه `<div>` بیرونی. می‌توانیم با استفاده از `inheritAttrs: false` و `v-bind="$attrs"‎` این کار را انجام دهیم:
 
 ```vue-html{2}
 <div class="btn-wrapper">
@@ -124,11 +124,11 @@ defineOptions({
 </div>
 ```
 
-به یاد داشته باشید که [v-bind بدون آرگومان](/guide/essentials/template-syntax#dynamically-binding-multiple-attributes) تمام پراپرتی‌های یک شی را به عنوان attributeهای عنصر هدف متصل می‌کند.
+به یاد داشته باشید که [v-bind بدون آرگومان](/guide/essentials/template-syntax#dynamically-binding-multiple-attributes) تمام پراپرتی‌های یک شی را به عنوان attributeهای عنصر هدف bind می‌کند.
 
 ## Attribute Inheritance on Multiple Root Nodes {#attribute-inheritance-on-multiple-root-nodes}
 
-برخلاف کامپوننت‌هایی با یک root node، کامپوننت‌هایی با چندین root node رفتار خودکار اتصال attributeها را ندارند. اگر `‎$attrs` به طور صریح اتصال داده نشده باشد، یک هشدار زمان اجرا صادر می‌شود.
+برخلاف کامپوننت‌هایی با یک root node، کامپوننت‌هایی با چندین root node رفتار اتصال خودکار attributeها را ندارند. اگر `‎$attrs` به طور صریح اتصال داده نشده باشد، یک هشدار زمان اجرا صادر می‌شود.
 
 ```vue-html
 <CustomLayout id="custom-layout" @click="changeValue" />
@@ -142,7 +142,7 @@ defineOptions({
 <footer>...</footer>
 ```
 
-هشدار سرکوب می‌شود اگر `‎$attrs` به طور صریح متصل شود:
+اگر `‎$attrs` به طور صریح متصل شود، هشدار سرکوب می‌شود:
 
 ```vue-html{2}
 <header>...</header>
@@ -154,7 +154,7 @@ defineOptions({
 
 <div class="composition-api">
 
-اگر نیاز باشد، می‌توانید در `<script setup>` با استفاده از API تعریف شده `useAttrs()‎` به ویژگی‌های fallthrough یک کامپوننت دسترسی پیدا کنید:
+در صورت نیاز، می‌توانید در `<script setup>` با استفاده از API تعریف شده `useAttrs()‎` به ویژگی‌های fallthrough یک کامپوننت دسترسی پیدا کنید:
 
 ```vue
 <script setup>
@@ -175,13 +175,13 @@ export default {
 }
 ```
 
-توجه داشته باشید اگرچه شی `attrs` اینجا همیشه آخرین fallthrough attributes را منعکس می‌کند، واکنش‌گرا نیست (به دلایل عملکردی). نمی‌توانید از watcherها برای مشاهده تغییرات آن استفاده کنید. اگر به واکنش‌گرایی نیاز دارید، از یک prop استفاده کنید. به عنوان جایگزین، می‌توانید از `onUpdated()‎` برای افکت جانبی با آخرین `attrs` در هر به‌روزرسانی استفاده کنید.
+توجه داشته باشید اگرچه در اینجا شی `attrs` همیشه آخرین fallthrough attributes را برمی گرداند، اما واکنش‌گرا نیست (به خاطر دلایل عملکردی). نمی‌توانید از watcherها برای مشاهده تغییرات آن استفاده کنید. اگر به واکنش‌گرایی نیاز دارید، از یک prop استفاده کنید. به عنوان جایگزین، می‌توانید از `onUpdated()‎` برای افکت جانبی با آخرین `attrs` در هر به‌روزرسانی استفاده کنید.
 
 </div>
 
 <div class="options-api">
 
-اگر نیاز باشد، می‌توانید از طریق خاصیت `‎$attrs` در مثال به fallthrough attributes یک کامپوننت دسترسی پیدا کنید:
+در صورت نیاز، می‌توانید از طریق خاصیت `‎$attrs` در مثال به fallthrough attributes یک کامپوننت دسترسی پیدا کنید:
 
 ```js
 export default {
