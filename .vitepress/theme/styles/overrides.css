@@ -88,3 +88,8 @@ li {
 .join-translations {
   direction: rtl;
 }
+
+.aside-container .VPContentDocOutline .nested {
+  padding-left: unset;
+  padding-right: 1rem;
+}
