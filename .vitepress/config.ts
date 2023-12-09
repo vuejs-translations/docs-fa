@@ -45,6 +45,7 @@ const nav: ThemeConfig['nav'] = [
         items: [
           { text: 'همکاران', link: '/partners/' },
           { text: 'تم‌ها', link: '/ecosystem/themes' },
+          { text: 'UI Components', link: 'https://ui-libs.vercel.app/' },
           {
             text: 'گواهی‌نامه',
             link: 'https://certification.vuejs.org/?ref=vuejs-nav'
@@ -163,7 +164,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/computed'
         },
         {
-          text: 'اتصالات کلاس‌ و استایل (Class and Style Bindings)',
+          text: 'اتصال کلاس‌ و استایل (Class and Style Bindings)',
           link: '/guide/essentials/class-and-style'
         },
         {
