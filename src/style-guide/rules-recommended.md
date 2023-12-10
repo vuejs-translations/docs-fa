@@ -21,7 +21,7 @@
 
    - `name`
 
-2. **Template Compiler Options** (روشی که تمپلیت ها کامپایل می‌شوند را تغییر می‌دهد)
+2. **Template Compiler Options** (روشی که تمپلیت‌ها کامپایل می‌شوند را تغییر می‌دهد)
 
    - `compilerOptions`
 
