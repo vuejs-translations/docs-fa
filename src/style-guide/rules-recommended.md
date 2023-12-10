@@ -69,7 +69,7 @@
      - `renderTracked`
      - `renderTriggered`
 
-9. **Non-Reactive Properties** (صفات نمونه، مستقل از سیستم واکنش‌پذیری)
+9. **Non-Reactive Properties** (پراپرتی‌های نمونه مستقل از سیستم reactivity)
 
    - `methods`
 
