@@ -257,9 +257,9 @@ const inputClasses = computed(() => {
 
 </div>
 
-## ترتیب المان‌های سطح‌ بالا در کامپوننت های تک فایلی  {#single-file-component-top-level-element-order}
-**[کامپوننت های تک‌‌‌‌‌ فایلی](/guide/scaling-up/sfc)  باید  تگ های ‍‍`<script>` و `<template>` و `<style>` را ثابت و  به طوری که تگ `<style>` در آخر باشد مرتب کنند. زیرا در تمام مواقع، حداقل یکی از دو کامپوننت دیگر نیاز است.**
+## ترتیب المان‌های مرتبه اول در کامپوننت‌های تک فایلی  {#single-file-component-top-level-element-order}
 
+**[کامپوننت‌های تک‌‌‌‌‌ فایلی](/guide/scaling-up/sfc)  باید  تگ‌های ‍‍`<script>` و `<template>` و `<style>` را ثابت و  به طوری که تگ `<style>` در آخر باشد مرتب کنند. زیرا حداقل یکی از دو تگ دیگر همیشه لازم است.**
 
 
 <div class="style-example style-example-bad">
