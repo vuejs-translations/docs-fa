@@ -46,7 +46,7 @@
 
    - `setup`
 
-7. **Local State** (پراپرتی های محلیِ واکنش‌پذیر)
+7. **Local State** (پراپرتی‌های محلیِ reactive)
 
    - `data`
    - `computed`
