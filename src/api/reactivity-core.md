@@ -7,9 +7,9 @@
 - [Reactivity به صورت عمیق](/guide/extras/reactivity-in-depth)
   :::
 
-## ref() {#ref}
+## ref()‎ {#ref}
 
-یک مقدار داخلی می‌گیرد و یک ref Object قابل تغییر (mutable) و reactive برمی‌گرداند که یک پراپرتی تکی به شکل `.value` دارد که به همان مقدار داخلی اشاره می‌کند.
+یک مقدار داخلی می‌گیرد و یک ref Object قابل تغییر (mutable) و reactive برمی‌گرداند که یک پراپرتی تکی به شکل `‎.value` دارد که به همان مقدار داخلی اشاره می‌کند.
 
 - **تایپ (Type)**
 
@@ -27,7 +27,7 @@
 
   اگر یک آبجکت به عنوان یک مقدار از ref در نظر گرفته شود، آن آبجکت با [reactive()‎](#reactive) عمیقا reactive می‌شود. این جمله همچنین به این معنی است که اگر آن آبجکت ref های تو در تو داشته باشد آنها عمیقا از پوشش خارج می‌شوند (unwrapped).
 
-  برای جلوگیری از تبدیل عمیق (deep conversion) می‌توانید به جای ref از [`shallowRef()`](./reactivity-advanced#shallowref) استفاده کنید.
+  برای جلوگیری از تبدیل عمیق (deep conversion) می‌توانید به جای ref از [`shallowRef()‎`](./reactivity-advanced#shallowref) استفاده کنید.
 
 - **مثال**
 
@@ -40,10 +40,10 @@
   ```
 
 - **همچنین ببینید**
-  - [راهنما - مبانی Reactivity با `ref()`](/guide/essentials/reactivity-fundamentals#ref)
-  - [راهنما - Typing `ref()`](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
+  - [راهنما - مبانی Reactivity با `ref()‎`](/guide/essentials/reactivity-fundamentals#ref)
+  - [راهنما - Typing `ref()‎`](/guide/typescript/composition-api#typing-ref) <sup class="vt-badge ts" />
 
-## computed() {#computed}
+## computed()‎ {#computed}
 
 یک تابع getter می‌گیرد و به ازای مقدار بازگشت داده شده از getter یک آبجکت [ref](#ref) که readonly و reactive است را برمی‌گرداند. همچنین می‌تواند یک آبجکت با تابع‌های `get` و `set` برای ایجاد یک آبجکت ref که writable است را بگیرد.
 
@@ -111,9 +111,9 @@
 - **همچنین ببینید**
   - [راهنما - پراپرتی‌‌های Computed](/guide/essentials/computed)
   - [راهنما - دیباگ کردن Computed ](/guide/extras/reactivity-in-depth#computed-debugging)
-  - [راهنما - Typing `computed()`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
+  - [راهنما - Typing `computed()‎`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
 
-## reactive() {#reactive}
+## reactive()‎ {#reactive}
 
 یک پروکسی reactive از آبجکت را بر‌می‌گرداند.
 
@@ -129,7 +129,7 @@
 
   همچنین لازم به ذکر است که وقتی ref به عنوان یک المنت از یک آرایه‌ی reactive یا یک تایپ مجموعه‌ی بومی (native collection) مانند `Map` قابل دسترسی است هیچ ref unwrapping صورت نمی‌گیرد.
 
-  برای جلوگیری از تبدیل عمیق و برای نگه‌داشتن reactivity تنها در سطح root به جای reactive از [shallowReactive()](./reactivity-advanced#shallowreactive) استفاده کنید.
+  برای جلوگیری از تبدیل عمیق و برای نگه‌داشتن reactivity تنها در سطح root به جای reactive از [shallowReactive()‎](./reactivity-advanced#shallowreactive) استفاده کنید.
 
   آبجکت بازگشت داده شده و آبجکت‌های تو در توی آن به‌وسیله‌ی [ES Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) دربرگرفته می‌شوند (wrapped) و با آبجکت‌های اصلی یکی **نیستند**. توصیه می‌شود که منحصرا با reactive proxy کار کنید و از اعتماد کردن به آبجکت اصلی خودداری کنید.
 
@@ -188,9 +188,9 @@
 
 - **همچنین ببینید**
   - [راهنما - مبانی Reactivity](/guide/essentials/reactivity-fundamentals)
-  - [راهنما - Typing `reactive()`](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />
+  - [راهنما - Typing `reactive()‎`](/guide/typescript/composition-api#typing-reactive) <sup class="vt-badge ts" />
 
-## readonly() {#readonly}
+## readonly()‎ {#readonly}
 
 یک آبجکت (reactive یا معمولی) یا یک [ref](#ref) را می‌گیرد و یک پروکسی readonly را به نسخه اصلی برمی‌گرداند.
 
@@ -204,9 +204,9 @@
 
 - **جزئیات**
 
-  یک پروکسی readonly عمیق است: هر پراپرتی تو در تویی که دسترسی داشته باشید نیز readonly خواهد بود. علاوه بر این readonly رفتاری مشابه `reactive()` در ref-unwrapping دارد، به استثنای مقادیر unwrapp شده که همچنان readonly ساخته خواهند شد.
+  یک پروکسی readonly عمیق است: هر پراپرتی تو در تویی که دسترسی داشته باشید نیز readonly خواهد بود. علاوه بر این readonly رفتاری مشابه `reactive()‎` در ref-unwrapping دارد، به استثنای مقادیر unwrapp شده که همچنان readonly ساخته خواهند شد.
 
-  جهت اجتناب از تبدیل عمیق، به جای readonly از [shallowReadonly()](./reactivity-advanced#shallowreadonly) استفاده کنید.
+  جهت اجتناب از تبدیل عمیق، به جای readonly از [shallowReadonly()‎](./reactivity-advanced#shallowreadonly) استفاده کنید.
 
 - **مثال**
 
@@ -227,7 +227,7 @@
   copy.count++ // warning!
   ```
 
-## watchEffect() {#watcheffect}
+## watchEffect()‎ {#watcheffect}
 
 یک تابع را در حالی که وابستگی‌های آن را به صورت reactive رهگیری (tracking) می‌کند، بلافاصله اجرا می‌کند و هر زمان که وابستگی‌ها (dependencies) تغییر کردند، دوباره آن را اجرا می‌کند.
 
@@ -312,15 +312,15 @@
   - [راهنما - ناظران](/guide/essentials/watchers#watcheffect)
   - [راهنما - دیباگ‌ کردن ناظر](/guide/extras/reactivity-in-depth#watcher-debugging)
 
-## watchPostEffect() {#watchposteffect}
+## watchPostEffect()‎ {#watchposteffect}
 
-نام مستعاری از [`watchEffect()`](#watcheffect) با آپشن `flush: 'post'`.
+نام مستعاری از [`watchEffect()‎`](#watcheffect) با آپشن `flush: 'post'`.
 
-## watchSyncEffect() {#watchsynceffect}
+## watchSyncEffect()‎ {#watchsynceffect}
 
-نام مستعاری از [`watchEffect()`](#watcheffect) با آپشن `flush: 'sync'`.
+نام مستعاری از [`watchEffect()‎`](#watcheffect) با آپشن `flush: 'sync'`.
 
-## watch() {#watch}
+## watch()‎ {#watch}
 
 یک یا چند داده‌ی reactive را نظارت ‌می‌کند و هر زمان که منابع (sources) تغییر کردند یک callback function را اجرا می‌کند.
 
@@ -367,7 +367,7 @@
 
 - **جزئیات**
 
-  `watch()` به صورت پیش‌فرض تنبل (lazy) است به این معنی که callback تنها زمانی که منبع مورد نظارت تغییر کرده باشد فراخوانی میشود.
+  `watch()‎` به صورت پیش‌فرض تنبل (lazy) است به این معنی که callback تنها زمانی که منبع مورد نظارت تغییر کرده باشد فراخوانی میشود.
 
   اولین آرگومان، **منبعِ** watcher است. منبع‌ (source) می‌تواند یکی از موارد زیر باشد:
 
@@ -384,10 +384,10 @@
 
   - **`immediate`**: ‌کال‌بک (callback) را درست در زمان ایجاد ناظر به‌کار می‌اندازد. در اولین فراخوانی مقدار قدیمی `undefined` خواهد بود.
   - **`deep`**: اگر منبع، یک آبجکت باشد باالاجبار منبع را به شکل عمیق پیمایش می‌کند تا callback در تغییرات عمیق منبع نیز اجرا شود. ببینید [ناظران عمیق](/guide/essentials/watchers#deep-watchers).
-  - **`flush`**: زمانبندی اجرای callback را تنظیم می‌کند. ببینید [زمانبندی اجرای Callback](/guide/essentials/watchers#callback-flush-timing) و [`watchEffect()`](/api/reactivity-core#watcheffect).
+  - **`flush`**: زمانبندی اجرای callback را تنظیم می‌کند. ببینید [زمانبندی اجرای Callback](/guide/essentials/watchers#callback-flush-timing) و [`watchEffect()‎`](/api/reactivity-core#watcheffect).
   - **`onTrack / onTrigger`**: وابستگی‌های ناظر را دیباگ می‌کند. ببینید [دیباگ‌ کردن ناظر](/guide/extras/reactivity-in-depth#watcher-debugging).
 
-  ‌`watch()`در مقایسه با [`watchEffect()`](#watcheffect) به ما اجازه می‌دهد که:
+  ‌`watch()‎`در مقایسه با [`watchEffect()‎`](#watcheffect) به ما اجازه می‌دهد که:
 
   - به شکل تنبلانه (lazily) با عارضه‌جانبی (side effect) برخورد کنیم؛
   - در مورد اینکه کدام state باید ناظر را برای اجرای مجدد به کار بیاندازد جزئی‌تر باشیم؛
@@ -446,7 +446,7 @@
   })
   ```
 
-  `watch()`همان گزینه‌های دیباگ کردن و زمانبندی اجرا را با [`watchEffect()`](#watcheffect) به اشتراک می‌گذارد:
+  `watch()‎`همان گزینه‌های دیباگ کردن و زمانبندی اجرا را با [`watchEffect()‎`](#watcheffect) به اشتراک می‌گذارد:
 
   ```js
   watch(source, callback, {
