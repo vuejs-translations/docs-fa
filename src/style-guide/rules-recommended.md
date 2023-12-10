@@ -25,7 +25,7 @@
 
    - `compilerOptions`
 
-3. **Template Dependencies** (فایل هایی که در تمپلیت استفاده شده است)
+3. **Template Dependencies** (فایل‌هایی که در تمپلیت استفاده شده است)
 
    - `components`
    - `directives`
