@@ -30,7 +30,7 @@
    - `components`
    - `directives`
 
-4. **Composition** (پراپرتی هارا با آپشن ها ادغام می‌کند)
+4. **Composition** (پراپرتی‌ها را با آپشن‌ها ادغام می‌کند)
 
    - `extends`
    - `mixins`
