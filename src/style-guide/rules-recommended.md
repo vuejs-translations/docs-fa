@@ -98,7 +98,7 @@
    - `v-show`
    - `v-cloak`
 
-4. **Render Modifiers** (نحوه رندر شدن المان را تغییر می دهد)
+4. **Render Modifiers** (نحوه رندر شدن المان را تغییر می‌دهد)
 
    - `v-pre`
    - `v-once`
