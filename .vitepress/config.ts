@@ -205,9 +205,9 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: 'رجیستر کردن (Registration)',
           link: '/guide/components/registration'
         },
-        { text: 'Props', link: '/guide/components/props' },
+        { text: 'پراپ‌ها', link: '/guide/components/props' },
         {
-          text: 'رویداد های کامپوننت (Events)',
+          text: 'رویداد‌های کامپوننت (Events)',
           link: '/guide/components/events'
         },
         { text: 'v-model', link: '/guide/components/v-model' },
