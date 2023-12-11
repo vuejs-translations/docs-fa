@@ -1,8 +1,7 @@
 import { ref, computed } from 'vue'
 
 export default {
-  name: 'TreeItem', 
-  // این آیتم برای رندر بازگشتی کامپوننت ضروری است.
+  name: 'TreeItem', // این آیتم برای رندر بازگشتی کامپوننت ضروری است.
   props: {
     model: Object
   },
