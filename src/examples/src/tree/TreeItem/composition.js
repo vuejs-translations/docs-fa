@@ -1,7 +1,8 @@
 import { ref, computed } from 'vue'
 
 export default {
-  name: 'TreeItem', // necessary for self-reference
+  name: 'TreeItem', 
+  // این آیتم برای رندر بازگشتی کامپوننت ضروری است.
   props: {
     model: Object
   },
@@ -24,7 +25,7 @@ export default {
     }
 
     function addChild() {
-      props.model.children.push({ name: 'new stuff' })
+      props.model.children.push({ name: 'مورد جدید' })
     }
 
     return {
