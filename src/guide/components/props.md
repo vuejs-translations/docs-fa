@@ -1,18 +1,18 @@
-# Props {#props}
+# پراپ ها {#props}
 
-> This page assumes you've already read the [Components Basics](/guide/essentials/component-basics). Read that first if you are new to components.
+> در این صفحه فرض شده است شما از قبل [مبانی کامپوننت ها](/guide/essentials/component-basics) را مطالعه کرده اید.اگر با مبحث کامپوننت ها آشنا نیستید صفحه معرفی شده را بخوانید.
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/vue-3-reusable-components-with-props" title="Free Vue.js Props Lesson"/>
 </div>
 
-## Props Declaration {#props-declaration}
+## تعریف کردن پراپ ها {#props-declaration}
 
-Vue components require explicit props declaration so that Vue knows what external props passed to the component should be treated as fallthrough attributes (which will be discussed in [its dedicated section](/guide/components/attrs)).
+کامپوننت های Vue باید بصورت مشخص پراپ هایی تعریف شده داشته باشند تا Vue بداند پراپ هایی که از خارج کامپوننت به آن پاس داده شده را بصورت fallthrought attributes ( که در [بخش مخصوص خودش](/guide/components/attrs) توضیح داده شده ) برخورد کند.
 
 <div class="composition-api">
 
-In SFCs using `<script setup>`, props can be declared using the `defineProps()` macro:
+هنگام استفاده از SFCها در `<script setup>`، پراپ ها با استفاده از ماکروی `defineProps()` میتوانند تعریف شوند:
 
 ```vue
 <script setup>
@@ -22,39 +22,38 @@ console.log(props.foo)
 </script>
 ```
 
-In non-`<script setup>` components, props are declared using the [`props`](/api/options-state#props) option:
+در کامپوننت هایی که از `<script setup>` استفاده نمی شود، پراپ ها میتوانند بصورت آپشن [`props`](/api/options-state#props) تعریف شوند:
 
 ```js
 export default {
   props: ['foo'],
   setup(props) {
-    // setup() receives props as the first argument.
-    console.log(props.foo)
+  // .پراپ ها هستند setup() اولین آرگیومنت دریافتی در 
+  console.log(props.foo)
   }
 }
 ```
 
-Notice the argument passed to `defineProps()` is the same as the value provided to the `props` options: the same props options API is shared between the two declaration styles.
+توجه داشته باشید آرگیومنتی که به `defineProps()` پاس داده می شود همان مقداری است که توسط آپشن `props` بدست می آید. همان پراپ های options API بین دو روش تعریف پراپ مشترک هستند.
 
 </div>
 
 <div class="options-api">
 
-Props are declared using the [`props`](/api/options-state#props) option:
+پراپ ها در option API بصورت [`props`](/api/options-state#props) تعریف می شنود:
 
 ```js
 export default {
   props: ['foo'],
   created() {
-    // props are exposed on `this`
+    // پراپ ها از `this` قابل دسترسی هستند
     console.log(this.foo)
   }
 }
 ```
-
 </div>
 
-In addition to declaring props using an array of strings, we can also use the object syntax:
+پراپ ها علاوه بر این که میتوانند بصورت آرایه تغریف شوند، قابلیت تعریف شدن بصورت آبجکت ها را هم دارند:
 
 <div class="options-api">
 
@@ -71,7 +70,7 @@ export default {
 <div class="composition-api">
 
 ```js
-// in <script setup>
+// <script setup> در
 defineProps({
   title: String,
   likes: Number
@@ -79,7 +78,7 @@ defineProps({
 ```
 
 ```js
-// in non-<script setup>
+// <script setup> بجز
 export default {
   props: {
     title: String,
@@ -90,19 +89,20 @@ export default {
 
 </div>
 
-For each property in the object declaration syntax, the key is the name of the prop, while the value should be the constructor function of the expected type.
+برای هر پراپرتی در سینتکس تعریف کردن پراپ بصورت آبجکت، کلید ( key ) اسم پراپ خواهد بود، در صورتی که مقدار ( value ) باید بصورت یک تابع سازنده از تایپ مقدار آن باشد.
+این فقط مستندات و اطلاعات کامپوننت شما نیست، اگر دیگر توسعه دهندگان از تایپ هایی بجز آن تایپی که در کامپوننت تعریف شده استفاده کنند، در کنسول هشداری در ارتباط با تایپ اشتباه مشاهده می شود.
+درباره جزئیات [اعتبارسنجی پراپ ها ( Props Validation )](#prop-validation) در ادامه مستندات توضیح داده شده است.
 
-This not only documents your component, but will also warn other developers using your component in the browser console if they pass the wrong type. We will discuss more details about [prop validation](#prop-validation) further down this page.
-
+<!-- leftover -->
 <div class="options-api">
 
-See also: [Typing Component Props](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
+مشاهده کنید: [Typing Component Props](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
 
 </div>
 
 <div class="composition-api">
 
-If you are using TypeScript with `<script setup>`, it's also possible to declare props using pure type annotations:
+اگر همراه با `<script setup>` از Typescript استفاده میکنید، میتوانید با استفاده از pure type annotations پراپ ها را تعریف کنید:
 
 ```vue
 <script setup lang="ts">
@@ -112,16 +112,16 @@ defineProps<{
 }>()
 </script>
 ```
-
-More details: [Typing Component Props](/guide/typescript/composition-api#typing-component-props) <sup class="vt-badge ts" />
+<!-- leftover -->
+اطلاعات بیشتر: [Typing Component Props](/guide/typescript/composition-api#typing-component-props) <sup class="vt-badge ts" />
 
 </div>
 
-## Prop Passing Details {#prop-passing-details}
+## پاس دادن پراپ ها {#prop-passing-details}
 
-### Prop Name Casing {#prop-name-casing}
+### نگارش اسم پراپ ها {#prop-name-casing}
 
-We declare long prop names using camelCase because this avoids having to use quotes when using them as property keys, and allows us to reference them directly in template expressions because they are valid JavaScript identifiers:
+برای تعریف کردن اسامی پراپ های طولانی از نگارش camelCase استفاده میکنیم چرا که باعث می شود هنگام استفاده کردن از آن ها به عنوان کلید های پراپرتی نیازی به استفاده از quotes نباشد، و به ما اجازه میدهد که به صورت مستقیم در template expressions به آنها رفرنس بدهیم چرا که شناسه گرهای معتبر جاوااسکریپت هستند.
 
 <div class="composition-api">
 
@@ -148,77 +148,79 @@ export default {
 <span>{{ greetingMessage }}</span>
 ```
 
-Technically, you can also use camelCase when passing props to a child component (except in [in-DOM templates](/guide/essentials/component-basics#in-dom-template-parsing-caveats)). However, the convention is using kebab-case in all cases to align with HTML attributes:
+از نظر فنی، میتوانید هنگام پاس دادن پراپ به کامپوننت فرزند از نگارش camelCase استفاده کنید ( [بجز in-DOM templates](/guide/essentials/component-basics#in-dom-template-parsing-caveats) ).
+اگرچه روش معمول استفاده از نگارش kebab-case میباشد که با HTML attributeها از یک نگارش واحد پیروی کنند.
 
 ```vue-html
 <MyComponent greeting-message="hello" />
 ```
 
-We use [PascalCase for component tags](/guide/components/registration#component-name-casing) when possible because it improves template readability by differentiating Vue components from native elements. However, there isn't as much practical benefit in using camelCase when passing props, so we choose to follow each language's conventions.
+ما از [نگارش PascalCase برای تگ های کامپوننت](/guide/components/registration#component-name-casing) استفاده میکنیم، برای اینکه شناسایی بین native element ها و کامپوننت های Vue راحت تر تفاوت مشخص می شود.
+اگرچه خیلی سود کاربردی در استفاده کردن نگارش pascalCase برای پاس دادن پراپ ها وجود ندارد، به همین دلیل تصمیم گرفتیم از روش های معمول زبان ها استفاده کنیم.
 
-### Static vs. Dynamic Props {#static-vs-dynamic-props}
+### پراپ های استاتیک و داینامیک {#static-vs-dynamic-props}
 
-So far, you've seen props passed as static values, like in:
+تاکنون پراپ های استاتیک را دیده ایم، به این شکل:
 
 ```vue-html
 <BlogPost title="My journey with Vue" />
 ```
 
-You've also seen props assigned dynamically with `v-bind` or its `:` shortcut, such as in:
+همچنین دیده ایم که پراپ ها با استفاده از `v-bind` یا میانبر `:` به یک مقدار داینامیک نسبت داده شده اند، به این شکل:
 
 ```vue-html
-<!-- Dynamically assign the value of a variable -->
+<!-- نسبت دادن به یک متغیر بصورت داینامیک -->
 <BlogPost :title="post.title" />
 
-<!-- Dynamically assign the value of a complex expression -->
+<!-- نسبت دادن به یک عبارت بصورت داینامیک -->
 <BlogPost :title="post.title + ' by ' + post.author.name" />
 ```
 
-### Passing Different Value Types {#passing-different-value-types}
+### انتقال مقادیر با نوع های متفاوت {#passing-different-value-types}
+در دو مثال بالا، ما دو مقدار با نوع رشته ( string ) پاس داده ایم، اما می توان هر مقدار با هر نوعی به یک پراپ پاس داد.
 
-In the two examples above, we happen to pass string values, but _any_ type of value can be passed to a prop.
-
-#### Number {#number}
+#### عدد {#number}
 
 ```vue-html
-<!-- Even though `42` is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.       -->
+<!-- اگرچه `42` استاتیک است، به v-bind نیاز داریم تا به Vue بگوییم -->
+<!-- این یک عبارت جاوااسکریپتی است نه یک رشته. -->
 <BlogPost :likes="42" />
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- نسبت دادن به یک متغیر بصورت داینامیک -->
 <BlogPost :likes="post.likes" />
 ```
 
-#### Boolean {#boolean}
+#### بولین ( boolean ) {#boolean}
 
 ```vue-html
-<!-- Including the prop with no value will imply `true`. -->
+<!-- است `true` نوشتن تنها نام پراپ بدون مقدار به معنی مقدار  -->
 <BlogPost is-published />
 
-<!-- Even though `false` is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.          -->
+<!-- اگرچه `false` استاتیک است، به v-bind نیاز داریم تا به ویو بگوییم  -->
+<!-- یک عبارت جاوااسکریپتی است نه یک رشته-->
+
 <BlogPost :is-published="false" />
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- نسبت دادن به یک متغیر بصورت داینامیک -->
 <BlogPost :is-published="post.isPublished" />
 ```
 
-#### Array {#array}
+#### آرایه {#array}
 
 ```vue-html
-<!-- Even though the array is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.            -->
+<!-- نیاز داریم تا به ویو بگوییمv-bind اگرچه یک آرایه استایتک است اما به -->
+<!-- یک عبارت جاوااسکریپتی است نه یک رشته -->
 <BlogPost :comment-ids="[234, 266, 273]" />
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- نسبت دادن به یک متغیر بصورت داینامیک -->
 <BlogPost :comment-ids="post.commentIds" />
 ```
 
-#### Object {#object}
+#### آبجکت {#object}
 
 ```vue-html
-<!-- Even though the object is static, we need v-bind to tell Vue that -->
-<!-- this is a JavaScript expression rather than a string.             -->
+<!-- نیاز داریم تا به ویو بگوییمv-bind اگرچه یک آبجکت استایتک است اما به -->
+<!-- یک عبارت جاوااسکریپتی است نه یک رشته  -->
 <BlogPost
   :author="{
     name: 'Veronica',
@@ -226,13 +228,14 @@ In the two examples above, we happen to pass string values, but _any_ type of va
   }"
  />
 
-<!-- Dynamically assign to the value of a variable. -->
+<!-- نسبت دادن به یک متغیر بصورت داینامیک -->
 <BlogPost :author="post.author" />
 ```
 
-### Binding Multiple Properties Using an Object {#binding-multiple-properties-using-an-object}
+### اتصال چندین پراپ با استفاده از آبجکت {#binding-multiple-properties-using-an-object}
 
-If you want to pass all the properties of an object as props, you can use [`v-bind` without an argument](/guide/essentials/template-syntax#dynamically-binding-multiple-attributes) (`v-bind` instead of `:prop-name`). For example, given a `post` object:
+اگر میخواید تمام پراپرتی های یک آبجکت را به عنوان پراپ پاس بدهید، می توانید از [`v-bind` بدون آرگیومنت](/guide/essentials/template-syntax#dynamically-binding-multiple-attributes) (`v-bind` به جای `:prop-name`).
+به عنوان مثال، به آبجکت `post` توجه کنید:
 
 <div class="options-api">
 
@@ -261,23 +264,24 @@ const post = {
 
 </div>
 
-The following template:
+کد زیر:
 
 ```vue-html
 <BlogPost v-bind="post" />
 ```
 
-Will be equivalent to:
+معادل است با:
 
 ```vue-html
 <BlogPost :id="post.id" :title="post.title" />
 ```
 
-## One-Way Data Flow {#one-way-data-flow}
+## جریان داده یک طرفه {#one-way-data-flow}
+همه پراپ ها **one-way-down binding** بین پراپرتی کامپوننت فرزند و والد هستند: وقتی پراپرتی کامپوننت والد آپدیت می شود، باعث اپدیت شدن کامپوننت فرزند می شود، اما عکس این اتفاق نمی افتد.
+این از آپدیت کردن تصادفی استیت والد در کامپوننت فرزند جلوگیری میکند، که باعث می شود جریان انتقال داده در برنامه سخت تر قابل فهم شود.
 
-All props form a **one-way-down binding** between the child property and the parent one: when the parent property updates, it will flow down to the child, but not the other way around. This prevents child components from accidentally mutating the parent's state, which can make your app's data flow harder to understand.
-
-In addition, every time the parent component is updated, all props in the child component will be refreshed with the latest value. This means you should **not** attempt to mutate a prop inside a child component. If you do, Vue will warn you in the console:
+به علاوه، هربار که کامپوننت والد آپدیت می شود، تمام پراپ ها در کامپوننت فرزند به آخرین و جدیدترینن مقدار آپدیت می شوند.
+این به این معناست که **نباید** سعی به آپدیت کردن پراپ درون کامپوننت فرزند کرد، اگر این کار را انجام دهید، Vue در کنسول یک هشدار خواهد داد:
 
 <div class="composition-api">
 
@@ -303,17 +307,18 @@ export default {
 
 </div>
 
-There are usually two cases where it's tempting to mutate a prop:
+معمولا در دو حالت است که میخواهیم یک پراپ را mutate یا مقدار آن را آپدیت کنیم:
 
-1. **The prop is used to pass in an initial value; the child component wants to use it as a local data property afterwards.** In this case, it's best to define a local data property that uses the prop as its initial value:
+1. **از پراپ برای مقدار دهی اولیه استفاده می شود;  کامپوننت فرزند میخواهد از پراپ به عنوان داده ی محلی خودش استفاده کند.** 
+در این حالت بهترین راه این است که یک متغیر محلی تعریف کرده و مقدار اولیه اش را به عنوان مقدار اولیه به پراپی که میخواهیم اساین کنیم:
 
    <div class="composition-api">
 
    ```js
    const props = defineProps(['initialCounter'])
 
-   // counter only uses props.initialCounter as the initial value;
-   // it is disconnected from future prop updates.
+   // از props.initialCounter فقط به عنوان مقدار اولیه استفاده میکند counter ;
+   // بعد از آپدیت شدن، از props.initialCounter غیرمتصل می شود.
    const counter = ref(props.initialCounter)
    ```
 
@@ -335,14 +340,14 @@ There are usually two cases where it's tempting to mutate a prop:
 
    </div>
 
-2. **The prop is passed in as a raw value that needs to be transformed.** In this case, it's best to define a computed property using the prop's value:
+2. **پراپی که به کامپوننت پاس داده شده است، به خودی خود قابل استفاده نیست و نیازمند اعمال تغییرات است.** در این صورت, بهترین کار استفاده کردن از computed است:
 
    <div class="composition-api">
 
    ```js
    const props = defineProps(['size'])
 
-   // computed property that auto-updates when the prop changes
+   //  بصورت خودکار آپدیت می شود props.size پراپرتی کامپیوتد با هربار آپدیت شدن. 
    const normalizedSize = computed(() => props.size.trim().toLowerCase())
    ```
 
@@ -353,7 +358,7 @@ There are usually two cases where it's tempting to mutate a prop:
    export default {
      props: ['size'],
      computed: {
-       // computed property that auto-updates when the prop changes
+       //  بصورت خودکار آپدیت می شود props.size پراپرتی کامپیوتد با هربار آپدیت شدن. 
        normalizedSize() {
          return this.size.trim().toLowerCase()
        }
@@ -363,59 +368,65 @@ There are usually two cases where it's tempting to mutate a prop:
 
    </div>
 
-### Mutating Object / Array Props {#mutating-object-array-props}
+### آپدیت کردن پراپ های آبجکت / آرایه {#mutating-object-array-props}
 
-When objects and arrays are passed as props, while the child component cannot mutate the prop binding, it **will** be able to mutate the object or array's nested properties. This is because in JavaScript objects and arrays are passed by reference, and it is unreasonably expensive for Vue to prevent such mutations.
+وقتی آبجکت یا آرایه به عنوان پراپ پاس داده می شوند، در حالی که کامپوننت فرزند نمی تواند prop binding را آپدیت کند، **اما میتواند** پراپرتی های ابجکت یا آرایه ها را آپدیت کند.
+دلیل این موضوع این است که در جاوااسکریپت آبجکت ها و آرایه ها passed by reference هستند، و به دیلی نامعقولی هزینه ی زیادی برای Vue دارد که از چنین آپدیت هایی جلوگیری کند.
 
-The main drawback of such mutations is that it allows the child component to affect parent state in a way that isn't obvious to the parent component, potentially making it more difficult to reason about the data flow in the future. As a best practice, you should avoid such mutations unless the parent and child are tightly coupled by design. In most cases, the child should [emit an event](/guide/components/events) to let the parent perform the mutation.
+اصلی ترین عیب چنین آپدیت هایی این است که اجازه می دهد دیتا و استیت کامپوننت والد را به گونه ای اتفاق بیفتد که برای کامپوننت والد مشخص نیست، و به احتمال زیاد باعث سخت تر شدن پیگیری و تشخیص جریان داده (data flow) در  آینده می شود. بهترین راهکار این است که تا حد امکان از آپدیت هایی که به این صورت هستند دوری کرد مگر اینکه کامپوننت های والد و فرزند نزدیکی زیادی باهم داشته باشند.
+در اکثر مواقع، کامپوننت فرزند باید یک [event را emit کند](/guide/components/events) تا به کامپوننت والد بگوید آپدیت را ممکن سازد. 
 
-## Prop Validation {#prop-validation}
+## اعتبارسنجی پراپ ها {#prop-validation}
 
-Components can specify requirements for their props, such as the types you've already seen. If a requirement is not met, Vue will warn you in the browser's JavaScript console. This is especially useful when developing a component that is intended to be used by others.
+کامپوننت ها می توانند نیازمندی هایی را برای پراپ ها مشخص کنند، به عنوان مثلا نوع پراپ که در بالاتر به آن اشاره کردیم. اگر نیازمندی به درستی مشخص نشده باشد Vue در کنسول مرورگر هشدار خواهد داد. هنگامی که یک کامپوننت را توسعه میدهیم که بقیه توسعه دهدنگان از آن استفاده کنند، این ویژگی به شدت مفید خواهد بود. 
 
-To specify prop validations, you can provide an object with validation requirements to the <span class="composition-api">`defineProps()` macro</span><span class="options-api">`props` option</span>, instead of an array of strings. For example:
+برای مشخص کردن نیازمندی های یک  پراپ به جای آرایه ای از رشته ها، میتوان یک آبجکت با اعتبارسنجی از نیازمندی ها به 
+<span class="composition-api">ماکروی `defineProps()`</span>
+<span class="options-api">`props` آپشن</span>
+پاس داد.
+
 
 <div class="composition-api">
 
 ```js
 defineProps({
-  // Basic type check
-  //  (`null` and `undefined` values will allow any type)
+  // بررسی نوع ساده
+  // اجازه هر نوعی را می دهند `null` and `undefined` .
   propA: Number,
-  // Multiple possible types
+  // چندین نوع ممکن
   propB: [String, Number],
-  // Required string
+  // نوع رشته الزامی
   propC: {
     type: String,
     required: true
   },
-  // Number with a default value
+  // نوع عدد با مقدار پیش فرض
   propD: {
     type: Number,
     default: 100
   },
-  // Object with a default value
+  // نوع آبجکت با مقدار پیش فرض
   propE: {
     type: Object,
-    // Object or array defaults must be returned from
-    // a factory function. The function receives the raw
-    // props received by the component as the argument.
+    // آبجکت یا آرایه با مقدار پیش فرض باید از طریق
+    // برگردانده شود factory function
+    //  پراپ توسط کامپوننت به عنوان آرگیومنت دریافت می شود.
     default(rawProps) {
       return { message: 'hello' }
     }
   },
-  // Custom validator function
+  // تابع اعتبارسنجی سفارشی
   propF: {
     validator(value) {
-      // The value must match one of these strings
+      // باید یکی از سه مقدار زیر باشد value
       return ['success', 'warning', 'danger'].includes(value)
     }
   },
-  // Function with a default value
+  // تابع با مقدار پیش فرض
   propG: {
     type: Function,
-    // Unlike object or array default, this is not a factory 
-    // function - this is a function to serve as a default value
+    // برخلاف آبجکت یا آرایه، `default` یک تابع سازنده نیست
+    // این خود این تابع به عنوان یک مقدار پیش فرض به شمار میرود
     default() {
       return 'Default function'
     }
@@ -423,8 +434,9 @@ defineProps({
 })
 ```
 
+
 :::tip
-Code inside the `defineProps()` argument **cannot access other variables declared in `<script setup>`**, because the entire expression is moved to an outer function scope when compiled.
+کد داخل `defineProps()` **به بقیه متغیر های تعریف شده در `<script setip> دسترسی ندارد`**، به این دلیل که این عبارت هنگام کامپایل به یک فانکشن خارجی منتفل می شود. 
 :::
 
 </div>
@@ -433,43 +445,43 @@ Code inside the `defineProps()` argument **cannot access other variables declare
 ```js
 export default {
   props: {
-    // Basic type check
-    //  (`null` and `undefined` values will allow any type)
+    // بررسی نوع ساده
+    // اجازه هر نوعی را می دهند `null` and `undefined` .
     propA: Number,
-    // Multiple possible types
+    // چندین نوع ممکن
     propB: [String, Number],
-    // Required string
+    // نوع رشته الزامی
     propC: {
       type: String,
       required: true
     },
-    // Number with a default value
+    // نوع عدد با مقدار پیش فرض
     propD: {
       type: Number,
       default: 100
     },
-    // Object with a default value
+    // نوع آبجکت با مقدار پیش فرض
     propE: {
       type: Object,
-      // Object or array defaults must be returned from
-      // a factory function. The function receives the raw
-      // props received by the component as the argument.
+      // آبجکت یا آرایه با مقدار پیش فرض باید از طریق
+      // برگردانده شود factory function
+      //  پراپ توسط کامپوننت به عنوان آرگیومنت دریافت می شود.
       default(rawProps) {
         return { message: 'hello' }
       }
     },
-    // Custom validator function
+    // تابع اعتبارسنجی سفارشی
     propF: {
       validator(value) {
-        // The value must match one of these strings
+        // باید یکی از سه مقدار زیر باشد value
         return ['success', 'warning', 'danger'].includes(value)
       }
     },
-    // Function with a default value
+    // تابع با مقدار پیش فرض
     propG: {
       type: Function,
-      // Unlike object or array default, this is not a factory 
-      // function - this is a function to serve as a default value
+      // برخلاف آبجکت یا آرایه، `default` یک تابع سازنده نیست
+      // این خود این تابع به عنوان یک مقدار پیش فرض به شمار میرود
       default() {
         return 'Default function'
       }
@@ -480,45 +492,47 @@ export default {
 
 </div>
 
-Additional details:
+توضیحات بیشتر:
 
-- All props are optional by default, unless `required: true` is specified.
+- پیش فرض همه پراپ ها اختیاری است، مگر اینکه `required: true` مشخص شده باشد.
 
-- An absent optional prop other than `Boolean` will have `undefined` value.
+- پراپی که تایپ آن منطقی (boolean) نباشد، در صورت عدم داشتن مقدار، مقدار `undefiend` خواهند داشت.
 
-- The `Boolean` absent props will be cast to `false`. You can change this by setting a `default` for it — i.e.: `default: undefined` to behave as a non-Boolean prop.
+- عدم مقداردهی پراپ نوع غیرمنطقی (non-boolean types) مقدار `false` خواهد داشت. میتوان این تنظیمات را با مقداردهی مقدار پیش فرض تغییر داد. `default: undefined` تا رفتاری مانند نوع های non-Booleanها داشته باشد.
 
-- If a `default` value is specified, it will be used if the resolved prop value is `undefined` - this includes both when the prop is absent, or an explicit `undefined` value is passed.
+- اگر مقدار `default` مشخص شده باشد، استفاده خواهد شد اگر مقدار پراپ `undefiend` باشد.
+-این مورد شامل شرایطی است که پراپ مقدار دهی نشده است یا مقدار آن `undefined` پاس داده شده است.
 
-When prop validation fails, Vue will produce a console warning (if using the development build).
+هنگامی که اعتبار سنجی prop ناموفق باشد، Vue یک هشدار کنسول (در صورت استفاده از ساخت توسعه) تولید می کند.
 
 <div class="composition-api">
 
-If using [Type-based props declarations](/api/sfc-script-setup#type-only-props-emit-declarations) <sup class="vt-badge ts" />, Vue will try its best to compile the type annotations into equivalent runtime prop declarations. For example, `defineProps<{ msg: string }>` will be compiled into `{ msg: { type: String, required: true }}`.
+اگر از [Type-based props declarations](/api/sfc-script-setup#type-only-props-emit-declarations) <sup class="vt-badge ts" /> استفاده میکنید، Vue سعی میند تا به بهترین شکل ممکن type annotaions را با معادل runtime prop declarations معادل سازی کند. برای مثال `defineProps<{ msg: string }>` بعد از کامپایل به  `{ msg: { type: String, required: true }}` تبدیل می شود.
 
 </div>
 <div class="options-api">
 
 ::: tip Note
-Note that props are validated **before** a component instance is created, so instance properties (e.g. `data`, `computed`, etc.) will not be available inside `default` or `validator` functions.
+توجه داشته باشید که props **قبل از** ایجاد یک نمونه جزء تایید می‌شود، بنابراین ویژگی‌های نمونه (مانند "data"، "computed" و غیره) در توابع "default" یا "validator" در دسترس نخواهند بود.
 :::
 
 </div>
 
 ### Runtime Type Checks {#runtime-type-checks}
 
-The `type` can be one of the following native constructors:
+`نوع` می تواند یکی از تایپ های زیر باشد:
 
-- `String`
-- `Number`
-- `Boolean`
-- `Array`
-- `Object`
-- `Date`
-- `Function`
-- `Symbol`
+- `رشته ها`
+- `عدد`
+- `بولین`
+- `آرایه`
+- `آبجکت`
+- `تاریخ`
+- `تابع`
+- `سیمبل`
 
-In addition, `type` can also be a custom class or constructor function and the assertion will be made with an `instanceof` check. For example, given the following class:
+
+علاوه بر این، «type» همچنین می‌تواند یک کلاس سفارشی یا تابع سازنده باشد و این ادعا با بررسی «instanceof» انجام می‌شود. به عنوان مثال، با توجه به کلاس زیر:
 
 ```js
 class Person {
@@ -529,7 +543,7 @@ class Person {
 }
 ```
 
-You could use it as a prop's type:
+می توانید از آن به عنوان یک نوع استفاده کنید:
 
 <div class="composition-api">
 
@@ -552,11 +566,11 @@ export default {
 
 </div>
 
-Vue will use `instanceof Person` to validate whether the value of the `author` prop is indeed an instance of the `Person` class.
+Vue از `instanceof Person` برای اعتبارسنجی اینکه آیا مقدار پراپ `author` واقعا از
 
-## Boolean Casting {#boolean-casting}
+## تبدیل نوع داده منطقی (Boolean casting) {#boolean-casting}
 
-Props with `Boolean` type have special casting rules to mimic the behavior of native boolean attributes. Given a `<MyComponent>` with the following declaration:
+پراپ ها با نوع داده منطقی (boolean) قانون تبدیل خاصی دارند تا بتوانند مدل رفتاری اتریبیوت های نیتیو مرورگر را تقلید کنند.
 
 <div class="composition-api">
 
@@ -579,37 +593,37 @@ export default {
 
 </div>
 
-The component can be used like this:
+کامپوننت به این صورت قابل استفاده است:
 
 ```vue-html
-<!-- equivalent of passing :disabled="true" -->
+<!-- :disabled="true" معادل -->
 <MyComponent disabled />
 
-<!-- equivalent of passing :disabled="false" -->
+<!-- :disabled="false" معدل پاس دادن -->
 <MyComponent />
 ```
 
-When a prop is declared to allow multiple types, the casting rules for `Boolean` will also be applied. However, there is an edge when both `String` and `Boolean` are allowed - the Boolean casting rule only applies if Boolean appears before String:
+هنگامی که یک برای یک پراپ چندین نوع تعریف کرده ایم، قوانین تبدیل نوع داده برای `Boolean` هم اعمال خواهد شد. اگرچه هنگام استفاده همزمان از دو نوع منطقی ( boolean ) و رشته ( string ) یک نکته وجود دارد، قانون تبدیل نوع داده منطقی فقط زمانی اعمال می شود که ابتدا نوع داده منطقی ( boolean ) قبل از رشته ( string ) ذکر شود.
 
 <div class="composition-api">
 
 ```js
-// disabled will be casted to true
+// true تبدیل میشود به disabled
 defineProps({
   disabled: [Boolean, Number]
 })
   
-// disabled will be casted to true
+// true تبدیل میشود به disabled
 defineProps({
   disabled: [Boolean, String]
 })
   
-// disabled will be casted to true
+// true تبدیل میشود به disabled
 defineProps({
   disabled: [Number, Boolean]
 })
   
-// disabled will be parsed as an empty string (disabled="")
+// به یک رشته خالی تبدیل میشود disabled
 defineProps({
   disabled: [String, Boolean]
 })
@@ -619,28 +633,28 @@ defineProps({
 <div class="options-api">
 
 ```js
-// disabled will be casted to true
+// true تبدیل میشود به disabled
 export default {
   props: {
     disabled: [Boolean, Number]
   }
 }
   
-// disabled will be casted to true
+// true تبدیل میشود به disabled
 export default {
   props: {
     disabled: [Boolean, String]
   }
 }
   
-// disabled will be casted to true
+// true تبدیل میشود به disabled
 export default {
   props: {
     disabled: [Number, Boolean]
   }
 }
   
-// disabled will be parsed as an empty string (disabled="")
+// به یک رشته خالی تبدیل میشود disabled
 export default {
   props: {
     disabled: [String, Boolean]
