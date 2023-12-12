@@ -2,15 +2,15 @@
 import TestingApiSwitcher from './TestingApiSwitcher.vue'
 </script>
 
-# Testing {#testing}
+# تست و بررسی {#testing}
 
-## Why Test? {#why-test}
+## چرا تست و بررسی؟ {#why-test}
 
-Automated tests help you and your team build complex Vue applications quickly and confidently by preventing regressions and encouraging you to break apart your application into testable functions, modules, classes, and components. As with any application, your new Vue app can break in many ways, and it's important that you can catch these issues and fix them before releasing.
+تست‌های خودکار به شما و تیمتان کمک می‌کنند تا به سرعت و با اطمینان بیشتری برنامه‌های پیچیده‌ی Vue را بسازید، باعث جلوگیری از رگرسیون‌ها شده و شما را تشویق کنند تا برنامه‌ی خود را به توابع، ماژول‌ها، کلاس‌ها و کامپوننت‌های قابل تست تقسیم کنید. همانند هر برنامه‌ی دیگری، برنامه‌ی Vue جدید شما می‌تواند به چندین روش خراب شود و مهم است که بتوانید این مشکلات را شناسایی کرده و قبل از انتشار آنها را برطرف کنید.
 
-In this guide, we'll cover basic terminology and provide our recommendations on which tools to choose for your Vue 3 application.
+در این راهنما، ما اصطلاحات پایه را پوشش می دهیم و توصیه های خود را در مورد ابزارهایی که برای برنامه Vue 3 خود انتخاب می کنید، ارائه می دهیم.
 
-There is one Vue-specific section covering composables. See [Testing Composables](#testing-composables) below for more details.
+یک بخش خاص برای Vue در مورد composables وجود دارد. برای اطلاعات بیشتر، به بخش [تست Composables](#testing-composables) در زیر مراجعه کنید.
 
 ## When to Test {#when-to-test}
 
@@ -105,9 +105,7 @@ A component can be tested in two ways:
 
 ### Other Options {#other-options}
 
-- [Peeky](https://peeky.dev/) is another fast unit test runner with first-class Vite integration. It is also created by a Vue core team member and offers a GUI-based testing interface.
-
-- [Jest](https://jestjs.io/) is a popular unit testing framework, and can be made to work with Vite via the [vite-jest](https://github.com/sodatea/vite-jest) package. However, we only recommend Jest if you have an existing Jest test suite that needs to be migrated over to a Vite-based project, as Vitest offers a more seamless integration and better performance.
+- [Jest](https://jestjs.io/) is a popular unit testing framework. However, we only recommend Jest if you have an existing Jest test suite that needs to be migrated over to a Vite-based project, as Vitest offers a more seamless integration and better performance.
 
 ## Component Testing {#component-testing}
 

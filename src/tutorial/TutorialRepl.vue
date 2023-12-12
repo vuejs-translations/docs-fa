@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Repl, ReplStore } from '@vue/repl'
+import CodeMirror from '@vue/repl/codemirror-editor'
 import { inject, watch, version, Ref, ref, computed, nextTick } from 'vue'
 import { data } from './tutorial.data'
 import {
@@ -7,7 +8,6 @@ import {
   resolveNoBuildExample,
   onHashChange
 } from '../examples/utils'
-import '@vue/repl/style.css'
 import PreferenceSwitch from '@theme/components/PreferenceSwitch.vue'
 import {
   VTFlyout,
@@ -131,8 +131,15 @@ updateExample()
         </a>
       </footer>
     </article>
-    <Repl layout="vertical" :store="store" :showCompileOutput="false" :clearConsole="false" :showImportMap="false"
-      @keyup="showingHint = false" />
+    <Repl
+      layout="vertical"
+      :editor="CodeMirror"
+      :store="store"
+      :showCompileOutput="false"
+      :clearConsole="false"
+      :showImportMap="false"
+      @keyup="showingHint = false"
+    />
   </section>
 </template>
 

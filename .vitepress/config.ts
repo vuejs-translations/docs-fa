@@ -45,6 +45,7 @@ const nav: ThemeConfig['nav'] = [
         items: [
           { text: 'همکاران', link: '/partners/' },
           { text: 'تم‌ها', link: '/ecosystem/themes' },
+          { text: 'UI Components', link: 'https://ui-libs.vercel.app/' },
           {
             text: 'گواهی‌نامه',
             link: 'https://certification.vuejs.org/?ref=vuejs-nav'
@@ -113,7 +114,7 @@ const nav: ThemeConfig['nav'] = [
         text: 'راهنمای کامیونیتی',
         link: '/about/community-guide'
       },
-      { text: 'کدرفتار', link: '/about/coc' },
+      { text: 'منشور اخلاقی', link: '/about/coc' },
       {
         text: 'مستند',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
@@ -163,7 +164,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/computed'
         },
         {
-          text: 'اتصالات کلاس‌ و استایل (Class and Style Bindings)',
+          text: 'اتصال کلاس‌ و استایل (Class and Style Bindings)',
           link: '/guide/essentials/class-and-style'
         },
         {
@@ -201,11 +202,14 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'کامپوننت‌ها به‌طور عمیق',
       items: [
         {
-          text: 'Registration',
+          text: 'رجیستر کردن (Registration)',
           link: '/guide/components/registration'
         },
-        { text: 'Props', link: '/guide/components/props' },
-        { text: 'Events', link: '/guide/components/events' },
+        { text: 'پراپ‌ها', link: '/guide/components/props' },
+        {
+          text: 'رویداد‌های کامپوننت (Events)',
+          link: '/guide/components/events'
+        },
         { text: 'v-model', link: '/guide/components/v-model' },
         {
           text: 'Fallthrough Attributes',
@@ -217,7 +221,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/components/provide-inject'
         },
         {
-          text: 'Async Components',
+          text: 'کامپوننت‌های غیرهمگام (Async Components)',
           link: '/guide/components/async'
         }
       ]
@@ -230,7 +234,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/reusability/composables'
         },
         {
-          text: 'Custom Directives',
+          text: 'دایرکتیوهای شخصی سازی شده (Custom Directives)',
           link: '/guide/reusability/custom-directives'
         },
         { text: 'افزونه‌ها', link: '/guide/reusability/plugins' }
@@ -241,27 +245,30 @@ export const sidebar: ThemeConfig['sidebar'] = {
       items: [
         { text: 'Transition', link: '/guide/built-ins/transition' },
         {
-          text: 'TransitionGroup',
+          text: 'انتقال گروهی (TransitionGroup)',
           link: '/guide/built-ins/transition-group'
         },
         { text: 'KeepAlive', link: '/guide/built-ins/keep-alive' },
-        { text: 'Teleport', link: '/guide/built-ins/teleport' },
-        { text: 'Suspense', link: '/guide/built-ins/suspense' }
+        { text: 'تلپورت (Teleport)', link: '/guide/built-ins/teleport' },
+        { text: 'تعلیق (Suspense)', link: '/guide/built-ins/suspense' }
       ]
     },
     {
       text: 'Scaling Up',
       items: [
-        { text: 'Single-File Components', link: '/guide/scaling-up/sfc' },
-        { text: 'Tooling', link: '/guide/scaling-up/tooling' },
-        { text: 'Routing', link: '/guide/scaling-up/routing' },
+        {
+          text: 'کامپوننت های تک فایلی (Single-File Components)',
+          link: '/guide/scaling-up/sfc'
+        },
+        { text: 'ابزارها (Tooling)', link: '/guide/scaling-up/tooling' },
+        { text: 'مسیریابی (Routing)', link: '/guide/scaling-up/routing' },
         {
           text: 'State Management',
           link: '/guide/scaling-up/state-management'
         },
         { text: 'Testing', link: '/guide/scaling-up/testing' },
         {
-          text: 'Server-Side Rendering (SSR)',
+          text: 'رندرینگ سمت سرور (Server-Side Rendering (SSR))',
           link: '/guide/scaling-up/ssr'
         }
       ]
@@ -580,7 +587,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   lang: 'fa',
   dir: 'rtl',
   title: 'Vue.js',
-  description: 'Vue.js - The Progressive JavaScript Framework',
+  description: 'Vue.js - فریمورک پیش‌رونده جاوا اسکریپت',
   srcDir: 'src',
   srcExclude: ['tutorial/**/description.md'],
 
@@ -635,6 +642,11 @@ export default defineConfigWithTheme<ThemeConfig>({
     i18n,
 
     localeLinks: [
+      {
+        link: 'https://vuejs.org',
+        text: 'English',
+        repo: 'https://github.com/vuejs/docs'
+      },
       {
         link: 'https://cn.vuejs.org',
         text: '简体中文',
@@ -703,7 +715,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     editLink: {
-      repo: 'the-pesar/docs-fa',
+      repo: 'vuejs-translations/docs-fa',
       text: 'ویرایش این صفحه در گیت‌هاب'
     },
 

@@ -30,6 +30,7 @@ li {
 
 .vt-doc ul {
   padding-right: 1.25rem;
+  padding-left: 0 !important;
 }
 
 .vt-doc ul > li:before {
@@ -87,4 +88,9 @@ li {
 
 .join-translations {
   direction: rtl;
+}
+
+.aside-container .VPContentDocOutline .nested {
+  padding-left: unset;
+  padding-right: 1rem;
 }

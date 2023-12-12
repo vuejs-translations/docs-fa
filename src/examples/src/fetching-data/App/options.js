@@ -8,12 +8,12 @@ export default {
   }),
 
   created() {
-    // fetch on init
+    // (init)دریافت داده در زمان شروع
     this.fetchData()
   },
 
   watch: {
-    // re-fetch whenever currentBranch changes
+    // دریافت مجدد هرگاه که برنچ فعلی تغییر کند
     currentBranch: 'fetchData'
   },
 
