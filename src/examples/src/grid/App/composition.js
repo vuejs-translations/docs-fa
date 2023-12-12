@@ -9,10 +9,10 @@ export default {
     const searchQuery = ref('')
     const gridColumns = ['name', 'power']
     const gridData = [
-      { name: 'Chuck Norris', power: Infinity },
-      { name: 'Bruce Lee', power: 9000 },
-      { name: 'Jackie Chan', power: 7000 },
-      { name: 'Jet Li', power: 8000 }
+      { name: 'چاک نوریس', power: Infinity },
+      { name: 'بروس لی', power: 9000 },
+      { name: 'جکی جان', power: 7000 },
+      { name: 'جت لی', power: 8000 }
     ]
 
     return {

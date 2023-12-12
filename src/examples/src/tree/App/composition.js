@@ -7,22 +7,22 @@ export default {
   },
   setup() {
     const treeData = ref({
-      name: 'My Tree',
+      name: 'درخت من',
       children: [
-        { name: 'hello' },
-        { name: 'world' },
+        { name: 'سلام' },
+        { name: 'دنیا' },
         {
-          name: 'child folder',
+          name: 'پوشه فرزند',
           children: [
             {
-              name: 'child folder',
-              children: [{ name: 'hello' }, { name: 'world' }]
+              name: 'پوشه فرزند',
+              children: [{ name: 'سلام' }, { name: 'دنیا' }]
             },
-            { name: 'hello' },
-            { name: 'world' },
+            { name: 'سلام' },
+            { name: 'دنیا' },
             {
-              name: 'child folder',
-              children: [{ name: 'hello' }, { name: 'world' }]
+              name: 'پوشه فرزند',
+              children: [{ name: 'سلام' }, { name: 'دنیا' }]
             }
           ]
         }
