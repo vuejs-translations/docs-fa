@@ -42,4 +42,6 @@
 
 این منشور اخلاقی از [پیمان نگهدارندگان][صفحه اصلی]، نسخه ۱.۴، موجود در https://www.contributor-covenant.org/version/1/4/code-of-conduct.html سازگار شده است.
 
+برای پاسخ به سوالات رایج درباره این منشور اخلاقی، به https://www.contributor-covenant.org/faq مراجعه کنید
+
 [صفحه اصلی]: https://www.contributor-covenant.org
