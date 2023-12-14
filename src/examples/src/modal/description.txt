@@ -1,1 +1,1 @@
-Modal component with customizable slots and CSS transitions.
+.CSS کامپوننت مدال با اسلات ها و ترنزیشن های قابل شخصی‌سازی

@@ -1,1 +1,1 @@
-An SVG graph
+SVG یک نمودار
