@@ -89,6 +89,8 @@
     <td align="center"><a href="https://github.com/Ermiti"><img src="https://avatars.githubusercontent.com/u/99094357?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Fateme karami</b></sub></a></td>
     <td align="center"><a href="https://github.com/amirofski"><img src="https://avatars.githubusercontent.com/u/10779032?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Amir</b></sub></a></td>
     <td align="center"><a href="https://github.com/AmirHKarimi888"><img src="https://avatars.githubusercontent.com/u/119494495?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Amir H Karimi</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Saeid-Za"><img src="https://avatars.githubusercontent.com/u/65568529?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Saeid Zareie</b></sub></a></td>
+    <td align="center"><a href="https://github.com/babakzy"><img src="https://avatars.githubusercontent.com/u/20987819?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Babak Sadeghzadeh</b></sub></a></td>
   </tr>
 </table>
 
