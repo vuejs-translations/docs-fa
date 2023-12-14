@@ -9,7 +9,7 @@ export default {
     stats: Array
   },
   computed: {
-    // computed یک پراپرتی برای نقاط چند ظلعی
+    // computed یک پراپرتی برای نقاط چند ضلعی
     points() {
       const total = this.stats.length
       return this.stats
