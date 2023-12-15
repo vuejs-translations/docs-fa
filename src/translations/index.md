@@ -16,7 +16,9 @@ aside: false
 - [বাংলা / بنگالی](https://bn.vuejs.org) [[مخزن](https://github.com/vuejs-translations/docs-bn)]
 - [Italiano / ایتالیایی](https://it.vuejs.org) [[مخزن](https://github.com/vuejs-translations/docs-it)]
 
-<!-- ## Work in Progress Languages {#work-in-progress-languages} -->
+## Work in Progress Languages {#work-in-progress-languages}
+
+- [فارسی / Persian](https://fa.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-fa)]
 
 ## شروع یک ترجمه جدید {#starting-a-new-translation}
 

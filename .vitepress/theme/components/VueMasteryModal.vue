@@ -62,7 +62,7 @@ watch(
 
           <div class="vuemastery-modal-footer">
             <p class="vuemastery-modal-footer-text">
-              Video by
+              ویدیو توسط
               <a
                 href="https://www.vuemastery.com"
                 target="_blank"
@@ -71,15 +71,15 @@ watch(
               >
                 Vue Mastery.</a
               >
-              Watch Vue Mastery’s free
+              دوره رایگان معرفی
               <a
                 href="https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3"
                 target="_blank"
                 rel="sponsored noopener"
                 title="Vue.js Courses on Vue Mastery"
               >
-                Intro to Vue course.</a
-              >
+              Vue Mastrery را تماشا کنید.
+                </a>
             </p>
           </div>
         </div>

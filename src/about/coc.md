@@ -1,45 +1,45 @@
-# Code Of Conduct {#code-of-conduct}
+# منشور اخلاقی {#code-of-conduct}
 
-## Our Pledge {#our-pledge}
+## سوگند و تعهد ما {#our-pledge}
 
-In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, political party, or sexual identity and orientation. Note, however, that religion, political party, or other ideological affiliation provide no exemptions for the behavior we outline as unacceptable in this Code of Conduct.
+به منظور ایجاد یک محیط باز و دلپذیر، ما به عنوان مشارکت کنندگان و نگهدارنده ها، متعهد می شویم که مشارکت در پروژه و جامعه خود را به تجربه ای بدون آزار و اذیت برای همه تبدیل کنیم، صرف نظر از سن، اندازه بدن، ناتوانی، قومیت، ویژگی های جنسی، هویت جنسی. و بیان، سطح تجربه، تحصیلات، وضعیت اجتماعی-اقتصادی، ملیت، ظاهر شخصی، نژاد، مذهب، حزب سیاسی، یا هویت و جهت گیری جنسی. با این حال، توجه داشته باشید که مذهب، حزب سیاسی یا سایر وابستگی های ایدئولوژیک هیچ استثنایی برای رفتاری که ما در این منشور اخلاقی غیرقابل قبول توصیف می کنیم، ارائه نمی کنند.
 
-## Our Standards {#our-standards}
+## استانداردهای ما {#our-standards}
 
-Examples of behavior that contributes to creating a positive environment include:
+نمونه هایی از رفتارهایی که به ایجاد یک محیط مثبت کمک می کنند عبارتند از:
 
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Showing empathy towards other community members
+- استفاده از زبان خوشامدگویی و فراگیر
+- احترام گذاشتن به دیدگاه ها و تجربیات متفاوت
+- انتقاد سازنده را با مهربانی بپذیرید
+- تمرکز بر آنچه برای جامعه بهتر است
+- نشان دادن همدلی با سایر اعضای جامعه
 
-Examples of unacceptable behavior by participants include:
+نمونه هایی از رفتار غیرقابل قبول شرکت کنندگان عبارتند از:
 
-- The use of sexualized language or imagery and unwelcome sexual attention or advances
-- Trolling, insulting/derogatory comments, and personal or political attacks
-- Public or private harassment
-- Publishing others' private information, such as a physical or electronic address, without explicit permission
-- Other conduct which could reasonably be considered inappropriate in a professional setting
+- استفاده از زبان یا تصاویر جنسی و توجه یا پیشرفت های جنسی ناخواسته 
+- ترولینگ، نظرات توهین آمیز، و حملات شخصی یا سیاسی
+- آزار عمومی یا خصوصی
+- انتشار اطلاعات خصوصی دیگران، مانند آدرس فیزیکی یا الکترونیکی، بدون اجازه صریح
+- سایر رفتارهایی که به طور منطقی می تواند در یک محیط حرفه ای نامناسب تلقی شود
 
-## Our Responsibilities {#our-responsibilities}
+## مسئولیت‌های ما {#our-responsibilities}
 
-Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+نگهدارندگان پروژه مسئول شفاف سازی استانداردهای رفتار قابل قبول هستند و انتظار می رود در پاسخ به هر نوع رفتار غیرقابل قبول، اقدام به اصلاحی مناسب و منصفانه انجام دهند.
 
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
+نگهدارندگان پروژه این حق و مسئولیت را دارند که نظرات، تعهدات، کدها، ویرایش‌های ویکی، مسائل و سایر مشارکت‌هایی را که مطابق با این منشور اخلاقی نیستند حذف، ویرایش یا رد کنند، یا هر مشارکت‌کننده‌ای را به‌خاطر آنها رفتار نامناسب، تهدیدآمیز، توهین آمیز یا مضر و سایر رفتارهایی که انجام می‌دهند به طور موقت یا دائم ممنوع کنند.
 
-## Scope {#scope}
+## محدوده {#scope}
 
-This Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. Representation of a project may be further defined and clarified by project maintainers.
+این منشور اخلاقی رفتار هم در فضاهای پروژه و هم در فضاهای عمومی زمانی که فردی نماینده پروژه یا جامعه آن است، اعمال می شود. نمونه هایی از نمایندگی یک پروژه یا جامعه شامل استفاده از یک آدرس ایمیل رسمی پروژه، ارسال ایمیل از طریق یک حساب رسمی رسانه اجتماعی، یا اقدام به عنوان نماینده منصوب در یک رویداد آنلاین یا آفلاین است. بازنمایی یک پروژه ممکن است توسط نگهدارندگان پروژه بیشتر تعریف و توضیح داده شود.
 
-## Enforcement {#enforcement}
+## ملزم به اجرا {#enforcement}
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at community@vuejs.org. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+موارد سوء استفاده، آزار و اذیت یا رفتار غیرقابل قبول ممکن است با تماس با تیم پروژه به آدرس community@vuejs.org گزارش شود. تمامی شکایات مورد بررسی قرار خواهند گرفت و به پاسخی منتج خواهند شد که لازم و متناسب با شرایط تشخیص داده شود. تیم پروژه موظف به حفظ محرمانه بودن گزارشگر یک حادثه است. جزئیات بیشتر سیاست های اجرایی خاص ممکن است به طور جداگانه پست شود.
 
-Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
+نگهدارندگان پروژه که از قوانین رفتار با حسن نیت پیروی نمی کنند یا آنها را اجرا نمی کنند، ممکن است با عواقب موقت یا دائمی که توسط سایر اعضای رهبری پروژه تعیین می شود، مواجه شوند.
 
-## Attribution {#attribution}
+## ارجاع {#attribution}
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4, available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+این منشور اخلاقی از [پیمان نگهدارندگان][صفحه اصلی]، نسخه ۱.۴، موجود در https://www.contributor-covenant.org/version/1/4/code-of-conduct.html سازگار شده است.
 
-[homepage]: https://www.contributor-covenant.org
+[صفحه اصلی]: https://www.contributor-covenant.org
