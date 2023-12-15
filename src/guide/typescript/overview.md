@@ -2,39 +2,41 @@
 outline: deep
 ---
 
-# Using Vue with TypeScript {#using-vue-with-typescript}
+# استفاده از Vue با TypeScript {#using-vue-with-typescript}
 
-A type system like TypeScript can detect many common errors via static analysis at build time. This reduces the chance of runtime errors in production, and also allows us to more confidently refactor code in large-scale applications. TypeScript also improves developer ergonomics via type-based auto-completion in IDEs.
+TypeScript قادر است با تحلیل استاتیک در زمان ساخت بسیاری از خطاهای متداول را تشخیص دهد. این امکان باعث کاهش احتمال خطاهای زمان اجرا در محصول می‌شود و همچنین ما را قادر می‌سازد که با اطمینان بیشتری کد را در برنامه‌های بزرگ مجدداً بازنویسی (refactor) کنیم. TypeScript همچنین با استفاده از تکمیل خودکار مبتنی بر نوع در محیط‌های توسعه یکپارچه (IDE)، راحتی توسعه‌دهندگان را افزایش می‌دهد.
 
-Vue is written in TypeScript itself and provides first-class TypeScript support. All official Vue packages come with bundled type declarations that should work out-of-the-box.
+Vue نیز خود با زبان TypeScript نوشته شده و پشتیبانی از TypeScript را به شکل اولویت دار پشتیبانی می‌کند. همه بسته‌های رسمی Vue همراه با بسته‌های یکپارچه و باندل به راحتی و بدون تنظیمات و پیکربندی خاصی کار می‌کنند.
 
-## Project Setup {#project-setup}
+## راه اندازی پروژه {#project-setup}
+[`create-vue`](https://github.com/vuejs/create-vue) ابزار رسمی ساختاردهی پروژه، گزینه‌هایی برای یک پروژه Vue که با [Vite](https://vitejs.dev/) کار شده و آماده برای TypeScript است را ارائه می‌دهد.
 
-[`create-vue`](https://github.com/vuejs/create-vue), the official project scaffolding tool, offers the options to scaffold a [Vite](https://vitejs.dev/)-powered, TypeScript-ready Vue project.
+### بررسی اجمالی {#overview}
 
-### Overview {#overview}
+در یک راه‌اندازی بر پایه Vite، سرور توسعه و باندلر تنها در عملیات ترجمه شرکت می‌کنند و هیچ نوع بررسی نوعی انجام نمی‌دهند. این امر باعث می‌شود که سرور توسعه Vite حتی هنگام استفاده از TypeScript سرعت بالای خود را حفظ کند.
 
-With a Vite-based setup, the dev server and the bundler are transpilation-only and do not perform any type-checking. This ensures the Vite dev server stays blazing fast even when using TypeScript.
+- در حین توسعه، پیشنهاد می‌کنیم از یک [IDE setup](#ide-support) خوب برای دریافت فوری بازخورد در مواجه با خطاهای type استفاده کنید.
 
-- During development, we recommend relying on a good [IDE setup](#ide-support) for instant feedback on type errors.
+اگر از SFC ها (Single File Components) استفاده می‌کنید، از ابزار [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) برای بررسی نوع و تولید اعلان نوع از طریق خط فرمان استفاده کنید. `vue-tsc` یک پوشه برای واسط کاربری خط فرمان `tsc` است که به طور اساسی شبیه به `tsc` عمل می‌کند، با این تفاوت که علاوه بر فایل‌های TypeScript، از فایل‌های Vue SFC نیز پشتیبانی می‌کند. می‌توانید `vue-tsc` را در حالت watch در کنار سرور توسعه Vite اجرا کنید، یا از پلاگین Vite مانند [vite-plugin-checker](https://vite-plugin-checker.netlify.app/) استفاده کنید که بررسی‌ها را در یک thread worker جداگانه اجرا می‌کند.
 
-- If using SFCs, use the [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) utility for command line type checking and type declaration generation. `vue-tsc` is a wrapper around `tsc`, TypeScript's own command line interface. It works largely the same as `tsc` except that it supports Vue SFCs in addition to TypeScript files. You can run `vue-tsc` in watch mode in parallel to the Vite dev server, or use a Vite plugin like [vite-plugin-checker](https://vite-plugin-checker.netlify.app/) which runs the checks in a separate worker thread.
+- Vue CLI نیز پشتیبانی از TypeScript را فراهم می کند، اما دیگر توصیه نمی شود. [یادداشت‌های زیر](https://fa.vuejs.org/guide/typescript/overview.html#note-on-vue-cli-and-ts-loader) را ببینید.
 
-- Vue CLI also provides TypeScript support, but is no longer recommended. See [notes below](#note-on-vue-cli-and-ts-loader).
+### پشتیبانی از محیط توسعه یکپارچه (IDE) {#ide-support}
+- [VSCode](https://code.visualstudio.com/) به خاطر پشتیبانی بی نظیر خود از TypeScript به شدت توصیه می‌شود. 
 
-### IDE Support {#ide-support}
-
-- [Visual Studio Code](https://code.visualstudio.com/) (VSCode) is strongly recommended for its great out-of-the-box support for TypeScript.
-
-  - [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) is the official VSCode extension that provides TypeScript support inside Vue SFCs, along with many other great features.
+  - [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) یک افزونه رسمی برای VSCode است که پشتیبانی از TypeScript را در داخل فایل‌های Vue (SFC) همراه با امکانات فوق‌العاده دیگر فراهم می‌کند.
 
     :::tip
-    Volar replaces [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), our previous official VSCode extension for Vue 2. If you have Vetur currently installed, make sure to disable it in Vue 3 projects.
+    Volar جایگزین [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)، افزونه رسمی پیشین ما برای Vue 2 در VSCode است. اگر در حال حاضر Vetur نصب شده است، حتماً آن را در پروژه‌های Vue 3 غیرفعال کنید.
     :::
 
   - [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) is also needed to get type support for `*.vue` imports in TS files.
+  -  همچنین برای پشتیبانی و ایمپورت از نوع `*.vue` در فایل‌های TS، نیاز به [افزونه TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) است.
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) also provides out-of-the-box support for both TypeScript and Vue. Other JetBrains IDEs support them too, either out of the box or via [a free plugin](https://plugins.jetbrains.com/plugin/9442-vue-js). As of version 2023.2, WebStorm and the Vue Plugin come with built-in support for the Vue Language Server. You can set the Vue service to use Volar integration on all TypeScript versions, under Settings > Languages & Frameworks > TypeScript > Vue. By default, Volar will be used for TypeScript versions 5.0 and higher.
+
+- [WebStorm](https://www.jetbrains.com/webstorm/) نیز پشتیبانی آماده برای TypeScript و Vue را از طریق تنظیمات پیش فرض فراهم می کند. محیط‌های توسعه یکپارچه (IDE) دیگر JetBrains نیز به طور پیش فرض یا از طریق یک افزونه رایگان آن‌ها را پشتیبانی می کنند. از نسخه 2023.2 به بعد، WebStorm و پلاگین Vue با پشتیبانی یکپارچه از سرور زبان Vue همراه هستند. شما می توانید سرویس Vue را برای استفاده از ادغام Volar در تمام نسخه‌های TypeScript، در تنظیمات > زبان‌ها و چارچوب‌ها > TypeScript > Vue تنظیم کنید. به طور پیش فرض، Volar برای نسخه‌های TypeScript 5.0 به بالا استفاده خواهد شد.
+
 
 ### Configuring `tsconfig.json` {#configuring-tsconfig-json}
 
