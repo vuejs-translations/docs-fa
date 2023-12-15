@@ -1,1 +1,2 @@
-An example of creating a reusable grid component and using it with external data.
+بیایید یک مثال از ایجاد یک کامپوننت گرید با قابلیت استفاده مجدد و استفاده از آن با داده‌های خارجی را بررسی کنیم.
+

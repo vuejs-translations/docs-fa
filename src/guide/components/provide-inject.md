@@ -315,10 +315,6 @@ export default {
 
 تابع `computed()‎` معمولاً در کامپوننت‌های Composition API استفاده می‌شود، اما می‌تواند برای پوشش برخی کاربردها در Options API نیز کمک کننده باشد. می‌توانید بیشتر در مورد نحوه استفاده از آن با مطالعه [مبانی Reactivity](/guide/essentials/reactivity-fundamentals) و [Computed Properties](/guide/essentials/computed) با تنظیم API Preference به Composition API بیاموزید.
 
-:::warning نیاز به پیکربندی موقت
-استفاده بالا نیازمند تنظیم `app.config.unwrapInjectedRef = true`  است تا تزریق‌ها به طور خودکار  refs computed را تنظیم کنند. این رفتار بطور پیش‌فرض در Vue 3.3 انجام خواهد شد و این پیکربندی به صورت موقت برای جلوگیری از خرابی معرفی شده است. پس از 3.3 دیگر نیازی به آن نخواهد بود.
-:::
-
 </div>
 
 ## کار با کلیدهای Symbol {#working-with-symbol-keys}

@@ -1,4 +1,4 @@
-<h1>Latest Vue Core Commits</h1>
+<h1>آخرین کامیت‌های اصلی Vue</h1>
 <template v-for="branch in branches">
   <input type="radio"
     :id="branch"
@@ -12,9 +12,9 @@
   <li v-for="{ html_url, sha, author, commit } in commits">
     <a :href="html_url" target="_blank" class="commit">{{ sha.slice(0, 7) }}</a>
     - <span class="message">{{ truncate(commit.message) }}</span><br>
-    by <span class="author">
+    توسط <span class="author">
       <a :href="author.html_url" target="_blank">{{ commit.author.name }}</a>
     </span>
-    at <span class="date">{{ formatDate(commit.author.date) }}</span>
+    در زمان <span class="date">{{ formatDate(commit.author.date) }}</span>
   </li>
 </ul>

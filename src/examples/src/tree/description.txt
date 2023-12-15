@@ -1,2 +1,2 @@
-A nested tree component that recursively renders itself.
-You can double click on an item to turn it into a folder.
+یک کامپوننت درختی تو در تو که به صورت بازگشتی خودش را رندر می کند.
+می‌توانید بر روی یک گزینه دوبار کلیک کنید تا آن را به یک پوشه تبدیل کنید.
