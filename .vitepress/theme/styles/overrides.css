@@ -1,17 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;900&display=swap');
 
-::-webkit-scrollbar {
-  width: 5px;
+
+:root {
+  --vt-scroll-thumb-color-light: #C1C1C1 ;
+  --vt-scroll-track-color-light: #F1F1F1;
+
+  --vt-scroll-thumb-color-dark: #767676;
+  --vt-scroll-track-color-dark: #242424;
 }
 
-::-webkit-scrollbar-track {
-  background: #f2f1f1;
+/* Firefox */
+* {
+  scrollbar-width: thin; 
+  scrollbar-color:  var(--vt-scroll-thumb-color-light) var(--vt-scroll-track-color-light);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #aeaeae;
-  border-radius: 10px;
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 7.5px;
 }
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar-thumb {
+  background: var(--vt-scroll-thumb-color-light);
+  border-radius: 10px; 
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar-track {
+  background: var(--vt-scroll-track-color-light);
+}
+
+/* darkmode styles */
+.dark {
+  &, * {
+    scrollbar-color:  var(--vt-scroll-thumb-color-dark) var(--vt-scroll-track-color-dark);
+  }
+  &, *::-webkit-scrollbar-thumb {
+    background: var(--vt-scroll-thumb-color-dark);
+  }
+  &, *::-webkit-scrollbar-track {
+    background: var(--vt-scroll-track-color-dark);
+  }
+}
+
 
 /* RTL & Persian Styles */
 
