@@ -1,21 +1,21 @@
-# Priority D Rules: Use with Caution {#priority-d-rules-use-with-caution}
+# قوانین اولویت D : با احتیاط استفاده شوند {#priority-d-rules-use-with-caution}
 
-Some features of Vue exist to accommodate rare edge cases or smoother migrations from a legacy code base. When overused however, they can make your code more difficult to maintain or even become a source of bugs. These rules shine a light on potentially risky features, describing when and why they should be avoided.
+بعضی از ویژگی‌های Vue برای تطبیق موارد استثنایی و نادر، و یا مهاجرت روان‌تر از یک پایگاه کد قدیمی وجود دارند. با این حال، هنگامی که از آنها بیش از حد استفاده می‌شود، می‌توانند نگهداری از کد شما را دشوارتر کنند و یا حتی خود منبع اشکال شوند. این قوانین ویژگی‌های دارای پتانسیل اشکال‌زایی را نمایان می‌کنند و توضیح می‌دهند که چه زمانی و چرا باید از آن‌ها پرهیز شود.
 
-## Element selectors with `scoped` {#element-selectors-with-scoped}
+## انتخابگرهای عنصری با `scoped` {#element-selectors-with-scoped}
 
-**Element selectors should be avoided with `scoped`.**
+**از انتخابگرهای عنصری در استفاده از `scoped` باید پرهیز شود.**
 
-Prefer class selectors over element selectors in `scoped` styles, because large numbers of element selectors are slow.
+در استایل های `scoped`(محدود شده)، انتخابگر‌ کلاس را به انتخابگر‌ عنصر ترجیح دهید، زیرا تعداد زیادی از انتخابگرهای عنصری کند هستند.
 
-::: details Detailed Explanation
-To scope styles, Vue adds a unique attribute to component elements, such as `data-v-f3f3eg9`. Then selectors are modified so that only matching elements with this attribute are selected (e.g. `button[data-v-f3f3eg9]`).
+::: details <nav style="display: inline-block; cursor: pointer">توضیحات بیشتر</nav>
+Vue ویژگی‌های خاصی را برای اسکوپ کردن استایل‌ها، به عناصر کامپوننت‌ها اضافه کرده است. مانند `data-v-f3f3eg9`. سپس انتخابگر‌ها طوری اصلاح می‌شوند که تنها عناصر مرتبط با این ویژگی انتخاب شوند (برای مثال `button[data-v-f3f3eg9]`).
 
-The problem is that large numbers of element-attribute selectors (e.g. `button[data-v-f3f3eg9]`) will be considerably slower than class-attribute selectors (e.g. `.btn-close[data-v-f3f3eg9]`), so class selectors should be preferred whenever possible.
+مشکل آنجاست که تعداد زیادی از انتخابگرهای عنصری-صفتی (برای مثال `button[data-v-f3f3eg9]`) به طور قابل توجهی  کندتر از انتخابگرهای کلاس-صفتی خواهد بود (مثل `btn-close[data-v-f3f3eg9].`)، بنابراین انتخابگرهای کلاس باید تا جای ممکن ترجیح داده شوند.
 :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>بد</h3>
 
 ```vue-html
 <template>
@@ -32,7 +32,7 @@ button {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>خوب</h3>
 
 ```vue-html
 <template>
@@ -48,18 +48,18 @@ button {
 
 </div>
 
-## Implicit parent-child communication {#implicit-parent-child-communication}
+## ارتباط ضمنی والد-فرزند{#implicit-parent-child-communication}
 
-**Props and events should be preferred for parent-child component communication, instead of `this.$parent` or mutating props.**
+**Propها و Eventها برای ارتباط والد-فرزند باید به‌جای `this.$parent` یا prop های جابجاشونده ترجیح داده شوند.**
 
-An ideal Vue application is props down, events up. Sticking to this convention makes your components much easier to understand. However, there are edge cases where prop mutation or `this.$parent` can simplify two components that are already deeply coupled.
+یک اپلیکیشن ایده‌آل Vue به فرم propها پایین، و eventها بالا است. پایبندی به این قرارداد، کامپوننت‌های شما را قابل فهم‌تر می‌کند. با این حال، موارد استثنایی وجود دارند که جابجایی prop یا `this.$parent` می‌توانند دو کامپوننتی را که عمیقا جفت شده‌اند را ساده‌سازی کنند.
 
-The problem is, there are also many _simple_ cases where these patterns may offer convenience. Beware: do not be seduced into trading simplicity (being able to understand the flow of your state) for short-term convenience (writing less code).
+مشکل اینجاست که در عین حال تعداد زیادی موارد _ساده_ وجود دارند که این الگوها ممکن است برای آنها راحتی داشته باشند. هشدار: اجازه ندهید معامله سادگی (قادربودن به فهم جریان استیت‌هایتان) برای راحتی کوتاه مدت (نوشتن کد کمتر) شما را گمراه کند.
 
 <div class="options-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>بد</h3>
 
 ```js
 app.component('TodoItem', {
@@ -105,7 +105,7 @@ app.component('TodoItem', {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>خوب</h3>
 
 ```js
 app.component('TodoItem', {
@@ -156,7 +156,7 @@ app.component('TodoItem', {
 <div class="composition-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>بد</h3>
 
 ```vue
 <script setup>
@@ -207,7 +207,7 @@ function removeTodo() {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>خوب</h3>
 
 ```vue
 <script setup>
