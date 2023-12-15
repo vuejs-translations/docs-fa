@@ -30,13 +30,9 @@ Vue نیز خود با زبان TypeScript نوشته شده و پشتیبانی
     Volar جایگزین [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)، افزونه رسمی پیشین ما برای Vue 2 در VSCode است. اگر در حال حاضر Vetur نصب شده است، حتماً آن را در پروژه‌های Vue 3 غیرفعال کنید.
     :::
 
-  - [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) is also needed to get type support for `*.vue` imports in TS files.
   -  همچنین برای پشتیبانی و ایمپورت از نوع `*.vue` در فایل‌های TS، نیاز به [افزونه TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) است.
 
-- [WebStorm](https://www.jetbrains.com/webstorm/) also provides out-of-the-box support for both TypeScript and Vue. Other JetBrains IDEs support them too, either out of the box or via [a free plugin](https://plugins.jetbrains.com/plugin/9442-vue-js). As of version 2023.2, WebStorm and the Vue Plugin come with built-in support for the Vue Language Server. You can set the Vue service to use Volar integration on all TypeScript versions, under Settings > Languages & Frameworks > TypeScript > Vue. By default, Volar will be used for TypeScript versions 5.0 and higher.
-
-- [WebStorm](https://www.jetbrains.com/webstorm/) نیز پشتیبانی آماده برای TypeScript و Vue را از طریق تنظیمات پیش فرض فراهم می کند. محیط‌های توسعه یکپارچه (IDE) دیگر JetBrains نیز به طور پیش فرض یا از طریق یک افزونه رایگان آن‌ها را پشتیبانی می کنند. از نسخه 2023.2 به بعد، WebStorm و پلاگین Vue با پشتیبانی یکپارچه از سرور زبان Vue همراه هستند. شما می توانید سرویس Vue را برای استفاده از ادغام Volar در تمام نسخه‌های TypeScript، در تنظیمات > زبان‌ها و چارچوب‌ها > TypeScript > Vue تنظیم کنید. به طور پیش فرض، Volar برای نسخه‌های TypeScript 5.0 به بالا استفاده خواهد شد.
-
+- [WebStorm](https://www.jetbrains.com/webstorm/) نیز پشتیبانی برای TypeScript و Vue را از طریق تنظیمات پیش فرض فراهم می کند. محیط‌های توسعه یکپارچه (IDE) دیگر JetBrains نیز به طور پیش فرض یا از طریق یک افزونه رایگان، آن‌ها را پشتیبانی می کنند. از نسخه 2023.2 به بعد، WebStorm و Vue Plugin به صورت پشتیبانی داخلی برای سرور زبان Vue اضافه شده است. شما می توانید سرویس Vue را برای استفاده از Volar که با تمام نسخه‌های Typescript ادغام شده استفاده کنید ، در  تنظیمات > زبان‌ها و چارچوب‌ها > تایپ اسکریپت > ویو آن‌ را تنظیم کنید. به طور پیش فرض، Volar برای نسخه‌های TypeScript 5.0 به بالا استفاده خواهد شد.
 
 ### Configuring `tsconfig.json` {#configuring-tsconfig-json}
 
