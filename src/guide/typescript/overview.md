@@ -30,36 +30,36 @@ Vue نیز خود با زبان TypeScript نوشته شده و پشتیبانی
     Volar جایگزین [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)، افزونه رسمی پیشین ما برای Vue 2 در VSCode است. اگر در حال حاضر Vetur نصب شده است، حتماً آن را در پروژه‌های Vue 3 غیرفعال کنید.
     :::
 
-  -  همچنین برای پشتیبانی و ایمپورت از نوع `*.vue` در فایل‌های TS، نیاز به [افزونه TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) است.
+  -   [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) نیز برای پشتیبانی از وارد کردن `*.vue` در فایل‌های TS مورد نیاز است.
 
-- [WebStorm](https://www.jetbrains.com/webstorm/) نیز پشتیبانی برای TypeScript و Vue را از طریق تنظیمات پیش فرض فراهم می کند. محیط‌های توسعه یکپارچه (IDE) دیگر JetBrains نیز به طور پیش فرض یا از طریق یک افزونه رایگان، آن‌ها را پشتیبانی می کنند. از نسخه 2023.2 به بعد، WebStorm و Vue Plugin به صورت پشتیبانی داخلی برای سرور زبان Vue اضافه شده است. شما می توانید سرویس Vue را برای استفاده از Volar که با تمام نسخه‌های Typescript ادغام شده استفاده کنید ، در  تنظیمات > زبان‌ها و چارچوب‌ها > تایپ اسکریپت > ویو آن‌ را تنظیم کنید. به طور پیش فرض، Volar برای نسخه‌های TypeScript 5.0 به بالا استفاده خواهد شد.
+- [WebStorm](https://www.jetbrains.com/webstorm/) نیز پشتیبانی از TypeScript و Vue را از طریق تنظیمات پیش فرض فراهم می کند. محیط‌های توسعه یکپارچه (IDE) دیگر JetBrains نیز به طور پیش فرض یا از طریق یک افزونه رایگان، آن‌ها را پشتیبانی می کنند. از نسخه 2023.2 به بعد، WebStorm و Vue Plugin به صورت پشتیبانی داخلی برای سرور زبان Vue اضافه شده است. شما می توانید سرویس Vue را برای استفاده از Volar که با تمام نسخه‌های Typescript ادغام شده استفاده کنید ، در  تنظیمات > زبان‌ها و چارچوب‌ها > تایپ اسکریپت > ویو آن‌ را تنظیم کنید. به طور پیش فرض، Volar برای نسخه‌های TypeScript 5.0 به بالا استفاده خواهد شد.
 
-### Configuring `tsconfig.json` {#configuring-tsconfig-json}
+### پیکربندی `tsconfig.json` {#configuring-tsconfig-json}
 
-Projects scaffolded via `create-vue` include pre-configured `tsconfig.json`. The base config is abstracted in the [`@vue/tsconfig`](https://github.com/vuejs/tsconfig) package. Inside the project, we use [Project References](https://www.typescriptlang.org/docs/handbook/project-references.html) to ensure correct types for code running in different environments (e.g. app code and test code should have different global variables).
+پروژه‌های ساخته شده با `create-vue` به همراه یک فایل `tsconfig.json` از پیش‌ پیکربندی شده هستند. تنظیمات پایه در بسته [`@vue/tsconfig`](https://github.com/vuejs/tsconfig) انتزاع شده است. در داخل پروژه، از [ارجاعات پروژه](https://www.typescriptlang.org/docs/handbook/project-references.html) استفاده می‌کنیم تا اطمینان حاصل شود که نوع‌های صحیح برای کدی که در محیط‌های مختلف اجرا می‌شود (مانند کد برنامه و کد تست) وجود داشته باشد.
 
-When configuring `tsconfig.json` manually, some notable options include:
+در هنگام پیکربندی `tsconfig.json` به صورت دستی، برخی از گزینه‌های قابل توجه عبارتند از:
 
-- [`compilerOptions.isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules) is set to `true` because Vite uses [esbuild](https://esbuild.github.io/) for transpiling TypeScript and is subject to single-file transpile limitations. [`compilerOptions.verbatimModuleSyntax`](https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax) is [a superset of `isolatedModules`](https://github.com/microsoft/TypeScript/issues/53601) and is a good choice, too - it's what `[@vue/tsconfig](https://github.com/vuejs/tsconfig)` uses.
+- در فایل تنظیمات [`compilerOptions.isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules)  به دلیل استفاده از ابزار [esbuild](https://esbuild.github.io/) برای ترجمه TypeScript و محدودیت‌های مربوط به ترجمه فقط در یک فایل، بر روی `true` تنظیم شده است. همچنین، [`compilerOptions.verbatimModuleSyntax`](https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax) که یک [یک مجموعه دست بالا `isolatedModules`](https://github.com/microsoft/TypeScript/issues/53601) است هم یک گزینه خوب است. این تنظیمات در واقع در پروژه `[@vue/tsconfig](https://github.com/vuejs/tsconfig)` نیز استفاده می‌شوند.
 
-- If you're using Options API, you need to set [`compilerOptions.strict`](https://www.typescriptlang.org/tsconfig#strict) to `true` (or at least enable [`compilerOptions.noImplicitThis`](https://www.typescriptlang.org/tsconfig#noImplicitThis), which is a part of the `strict` flag) to leverage type checking of `this` in component options. Otherwise `this` will be treated as `any`.
+- اگر از Options API استفاده می‌کنید، برای بهره‌برداری از بررسی نوع `this` در گزینه‌های کامپوننت، باید [`compilerOptions.strict`](https://www.typescriptlang.org/tsconfig#strict) را برابر با `true` قرار دهید (یا حداقل [`compilerOptions.noImplicitThis`](https://www.typescriptlang.org/tsconfig#noImplicitThis) را فعال کنید که بخشی از پرچم `strict` است). در غیر این صورت، `this` به عنوان `any` در نظر گرفته خواهد شد.
 
-- If you have configured resolver aliases in your build tool, for example the `@/*` alias configured by default in a `create-vue` project, you need to also configure it for TypeScript via [`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig#paths).
+- اگر شما تنظیمات resolver aliases را در ابزار ساخت پروژه خود داشته باشید، به عنوان مثال alias `@/*` که به طور پیش‌فرض در یک پروژه `create-vue` تنظیم شده است، شما نیاز دارید که آن را نیز برای TypeScript از طریق [`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig#paths) تنظیم کنید.
 
-See also:
+همچنین ببینید:
 
-- [Official TypeScript compiler options docs](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
-- [esbuild TypeScript compilation caveats](https://esbuild.github.io/content-types/#typescript-caveats)
+- [مستندات رسمی گزینه های کامپایلر TypeScript](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+- [موارد قابل توجه در کامپایل TypeScript با استفاده از ابزار esbuild ](https://esbuild.github.io/content-types/#typescript-caveats)
 
-### Volar Takeover Mode {#volar-takeover-mode}
+###  حالت تصرف توسط Volar  {#volar-takeover-mode}
 
-> This section only applies for VSCode + Volar.
+> این بخش فقط برای استفاده از VSCode + Volar اعمال می شود.
 
-To get Vue SFCs and TypeScript working together, Volar creates a separate TS language service instance patched with Vue-specific support, and uses it in Vue SFCs. At the same time, plain TS files are still handled by VSCode's built-in TS language service, which is why we need [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to support Vue SFC imports in TS files. This default setup works, but for each project we are running two TS language service instances: one from Volar, one from VSCode's built-in service. This is a bit inefficient and can lead to performance issues in large projects.
+برای استفاده همزمان از فایل‌های Vue SFC و TypeScript، Volar یک نمونه جداگانه از سرویس زبان TypeScript را با پشتیبانی ویژه برای Vue ایجاد می‌کند و از آن در فایل‌های Vue SFC استفاده می‌کند. در عین حال، فایل‌های معمولی TypeScript همچنان توسط سرویس زبان TypeScript داخلی VSCode پردازش می‌شوند، به همین دلیل نیاز به پلاگین [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) برای پشتیبانی وارد کردن فایل‌های Vue SFC در فایل‌های TS وجود دارد. این تنظیم پیش‌فرض کار می‌کند، اما برای هر پروژه دو نمونه از سرویس زبان TypeScript در حال اجرا است: یکی از Volar و دیگری از سرویس داخلی VSCode. این کار کمی غیربهینه است و ممکن است منجر به مشکلات عملکردی در پروژه‌های بزرگ شود.
 
-Volar provides a feature called "Takeover Mode" to improve performance. In takeover mode, Volar provides support for both Vue and TS files using a single TS language service instance.
+Volar امکانی به نام "حالت تصرف" (Takeover Mode) را برای بهبود عملکرد فراهم می‌کند. در حالت تصرف، Volar با استفاده از یک نمونه تنها از سرویس زبان TypeScript، پشتیبانی را برای فایل‌های Vue و TS ارائه می‌دهد. به این ترتیب، فقط یک نمونه از سرویس زبان TypeScript برای هر دو نوع فایل استفاده می‌شود که باعث بهبود عملکرد و کاهش مشکلات عملکردی در پروژه‌های بزرگ می‌شود.
 
-To enable Takeover Mode, you need to disable VSCode's built-in TS language service in **your project's workspace only** by following these steps:
+برای فعال‌سازی حالت تصرف، شما باید سرویس زبان TS داخلی VSCode را **فقط در فضای کاری پروژه خود** غیرفعال کنید. برای انجام این کار، مراحل زیر را دنبال کنید:
 
 1. In your project workspace, bring up the command palette with `Ctrl + Shift + P` (macOS: `Cmd + Shift + P`).
 2. Type `built` and select "Extensions: Show Built-in Extensions".
