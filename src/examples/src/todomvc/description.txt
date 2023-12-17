@@ -1,2 +1,2 @@
-A fully spec-compliant TodoMVC implementation
+کاملا مطابق استندارد TODOMVC پیاده سازی یک
 https://todomvc.com/
