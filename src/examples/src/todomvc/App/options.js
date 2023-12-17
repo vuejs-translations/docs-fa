@@ -14,7 +14,7 @@ export default {
     visibility: 'all'
   }),
 
-  // زیر‌ نظر داشته باشید localStorage تغیرات کارها را برای پایداری 
+  // زیر‌ نظر داشته باشید localStorage تغییرات کارها را برای پایداری 
   watch: {
     todos: {
       handler(todos) {
