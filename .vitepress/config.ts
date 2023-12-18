@@ -193,7 +193,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/template-refs'
         },
         {
-          text: 'مبانی کامپوننت‌ها (Components Basics)',
+          text: 'مبانی کامپوننت‌ها',
           link: '/guide/essentials/component-basics'
         }
       ]
