@@ -8,7 +8,7 @@
   <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-computed-properties-in-vue-with-the-composition-api" title="Free Vue.js Computed Properties Lesson"/>
 </div>
 
-## مثال ابتدایی {#basic-example}
+## مثال پایه {#basic-example}
 
 عباراتی که در تمپلیت استفاده می شوند بسیار راحت هستند، اما برای عملیات‌های ساده طراحی شده‌اند. قرار دادن منطق بیش از حد در تمپلیت‌های شما ممکن است باعث ناخوانایی و دشواری در نگهداری کدها شود. به عنوان مثال، اگر یک آبجکت با یک آرایه تو در تو داشته باشیم:
 
@@ -89,7 +89,7 @@ export default {
 <span>{{ publishedBooksMessage }}</span>
 ```
 
-[امتحان کنید](https://play.vuejs.org/#eNqFkN1KxDAQhV/l0JsqaFfUq1IquwiKsF6JINaLbDNui20S8rO4lL676c82eCFCIDOZMzkzXxetlUoOjqI0ykypa2XzQtC3ktqC0ydzjUVXCIAzy87OpxjQZJ0WpwxgzlZSp+EBEKylFPGTrATuJcUXobST8sukeA8vQPzqCNe4xJofmCiJ48HV/FfbLLrxog0zdfmn4tYrXirC9mgs6WMcBB+nsJ+C8erHH0rZKmeJL0sot2tqUxHfDONuyRi2p4BggWCr2iQTgGTcLGlI7G2FHFe4Q/xGJoYn8SznQSbTQviTrRboPrHUqoZZ8hmQqfyRmTDFTC1bqalsFBN5183o/3NG33uvoWUwXYyi/gdTEpwK)
+[آن را در Playground امتحان کنید](https://play.vuejs.org/#eNqFkN1KxDAQhV/l0JsqaFfUq1IquwiKsF6JINaLbDNui20S8rO4lL676c82eCFCIDOZMzkzXxetlUoOjqI0ykypa2XzQtC3ktqC0ydzjUVXCIAzy87OpxjQZJ0WpwxgzlZSp+EBEKylFPGTrATuJcUXobST8sukeA8vQPzqCNe4xJofmCiJ48HV/FfbLLrxog0zdfmn4tYrXirC9mgs6WMcBB+nsJ+C8erHH0rZKmeJL0sot2tqUxHfDONuyRi2p4BggWCr2iQTgGTcLGlI7G2FHFe4Q/xGJoYn8SznQSbTQviTrRboPrHUqoZZ8hmQqfyRmTDFTC1bqalsFBN5183o/3NG33uvoWUwXYyi/gdTEpwK)
 
 در اینجا ما یک پراپرتی computed به نام `publishedBooksMessage`  داریم.
 
@@ -128,11 +128,11 @@ const publishedBooksMessage = computed(() => {
 </template>
 ```
 
-[امتحان کنید](https://play.vuejs.org/#eNp1kE9Lw0AQxb/KI5dtoTainkoaaREUoZ5EEONhm0ybYLO77J9CCfnuzta0vdjbzr6Zeb95XbIwZroPlMySzJW2MR6OfDB5oZrWaOvRwZIsfbOnCUrdmuCpQo+N1S0ET4pCFarUynnI4GttMT9PjLpCAUq2NIN41bXCkyYxiZ9rrX/cDF/xDYiPQLjDDRbVXqqSHZ5DUw2tg3zP8lK6pvxHe2DtvSasDs6TPTAT8F2ofhzh0hTygm5pc+I1Yb1rXE3VMsKsyDm5JcY/9Y5GY8xzHI+wnIpVw4nTI/10R2rra+S4xSPEJzkBvvNNs310ztK/RDlLLjy1Zic9cQVkJn+R7gIwxJGlMXiWnZEq77orhH3Pq2NH9DjvTfpfSBSbmA==)
+[آن را در Playground امتحان کنید](https://play.vuejs.org/#eNp1kE9Lw0AQxb/KI5dtoTainkoaaREUoZ5EEONhm0ybYLO77J9CCfnuzta0vdjbzr6Zeb95XbIwZroPlMySzJW2MR6OfDB5oZrWaOvRwZIsfbOnCUrdmuCpQo+N1S0ET4pCFarUynnI4GttMT9PjLpCAUq2NIN41bXCkyYxiZ9rrX/cDF/xDYiPQLjDDRbVXqqSHZ5DUw2tg3zP8lK6pvxHe2DtvSasDs6TPTAT8F2ofhzh0hTygm5pc+I1Yb1rXE3VMsKsyDm5JcY/9Y5GY8xzHI+wnIpVw4nTI/10R2rra+S4xSPEJzkBvvNNs310ztK/RDlLLjy1Zic9cQVkJn+R7gIwxJGlMXiWnZEq77orhH3Pq2NH9DjvTfpfSBSbmA==)
 
 در اینجا یک پراپرتی computed به نام `publishedBooksMessage` تعریف کرده‌ایم. تابع `computed()‎` انتظار دارد که یک تابع به عنوان ورودی دریافت کند که مقدار بازگشتی آن از نوع **computed ref** باشد. مشابه ref های عادی، شما می‌توانید به نتیجه محاسبه شده با عنوان `publishedBooksMessage.value` دسترسی پیدا کنید. computed ref ها همچنین در تمپلیت‌ها به صورت خودکار باز می‌شوند، بنابراین می‌توانید بدون نیاز به `‎.value` به آنها دسترسی پیدا کنید.
 
-یک پراپرتی computed به طور خودکار وابستگی‌های reactive خود را دنبال می‌کند. Vue میداند که محاسبه `publishedBooksMessage` به `author.books` وابستگی دارد، بنابراین هنگامی که `author.books` تغییر می‌کند، هر اتصالی که به `publishedBooksMessage` وابسته باشد، به‌روزرسانی می‌شود.
+یک پراپرتی computed به طور خودکار وابستگی‌های reactive خود را دنبال می‌کند. Vue می‌داند که محاسبه `publishedBooksMessage` به `author.books` وابستگی دارد، بنابراین هنگامی که `author.books` تغییر می‌کند، هر اتصالی که به `publishedBooksMessage` وابسته باشد، به‌روزرسانی می‌شود.
 
 همچنین ببینید: [Typing Computed](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
 
@@ -200,7 +200,7 @@ const now = computed(() => Date.now())
 
 ## computed قابل تغییر {#writable-computed}
 
-پراپرتی‌های computed به طور پیش‌فرض فقط امکان دریافت مقدار را دارند. اگر سعی کنید مقدار جدیدی به یک پراپرتی computed اختصاص دهید، یک هشدار در زمان اجرا دریافت خواهید کرد. در موارد نادری که نیاز به "پراپرتی computed قابل تغییر" دارید، می‌توانید با ارائه همزمان یک تابع getter و یک تابع setter  برای آن، یکی ایجاد کنید.
+پراپرتی‌های computed به طور پیش‌فرض فقط امکان باز گرداندن داده را دارند. اگر سعی کنید مقدار جدیدی به یک پراپرتی computed اختصاص دهید، یک هشدار در زمان اجرا دریافت خواهید کرد. در موارد نادری که نیاز به "پراپرتی computed قابل تغییر" دارید، می‌توانید با ارائه همزمان یک تابع getter و یک تابع setter  برای آن، یکی ایجاد کنید.
 
 <div class="options-api">
 
@@ -259,7 +259,7 @@ const fullName = computed({
 
 </div>
 
-## بهترین روش‌ها{#best-practices}
+## بهترین شیوه‌ها{#best-practices}
 
 ### توابع getter باید فقط مقدار مورد نظر را برگردانند و تغییر دیگری در برنامه ایجاد نکنند.{#getters-should-be-side-effect-free}
 
