@@ -61,31 +61,31 @@ Volar امکانی به نام "حالت تصرف" (Takeover Mode) را برای
 
 برای فعال‌سازی حالت تصرف، شما باید سرویس زبان TS داخلی VSCode را **فقط در فضای کاری پروژه خود** غیرفعال کنید. برای انجام این کار، مراحل زیر را دنبال کنید:
 
-1. In your project workspace, bring up the command palette with `Ctrl + Shift + P` (macOS: `Cmd + Shift + P`).
-2. Type `built` and select "Extensions: Show Built-in Extensions".
-3. Type `typescript` in the extension search box (do not remove `@builtin` prefix).
-4. Click the little gear icon of "TypeScript and JavaScript Language Features", and select "Disable (Workspace)".
-5. Reload the workspace. Takeover mode will be enabled when you open a Vue or TS file.
+1. در فضای کاری پروژه خود، پنجره فرمان را با فشار دادن `Ctrl + Shift + P` (macOS: `Cmd + Shift + P`) باز کنید.
+2. کلمه `built` را تایپ کنید و "Extensions: Show Built-in Extensions" را انتخاب کنید.
+3. در جعبه جستجوی پسوند، کلمه `typescript` را تایپ کنید (پیشوند `@builtin` را حذف نکنید).
+4. بر روی آیکون دنده کوچک "TypeScript and JavaScript Language Features" کلیک کنید و "Disable (Workspace)" را انتخاب کنید.
+5. فضای کاری را مجدداً بارگذاری کنید. حالت Takeover وقتی که یک فایل Vue یا TS باز کنید، فعال خواهد شد.
 
 <img src="./images/takeover-mode.png" width="590" height="426" style="margin:0px auto;border-radius:8px">
 
-### Note on Vue CLI and `ts-loader` {#note-on-vue-cli-and-ts-loader}
+### نکاتی درباره Vue CLI و `ts-loader` {#note-on-vue-cli-and-ts-loader}
 
-In webpack-based setups such as Vue CLI, it is common to perform type checking as part of the module transform pipeline, for example with `ts-loader`. This, however, isn't a clean solution because the type system needs knowledge of the entire module graph to perform type checks. Individual module's transform step simply is not the right place for the task. It leads to the following problems:
+در تنظیمات مبتنی بر webpack مانند Vue CLI، رایج است که بررسی نوع به عنوان بخشی از روند تبدیل ماژول انجام شود، به عنوان مثال با استفاده از `ts-loader`. با این حال، این یک راه‌حل تمیز نیست زیرا سیستم نوع برای انجام بررسی‌های نوع نیاز به دانشی از تمام گراف ماژول دارد. مرحله تبدیل جداگانه ماژول به تنهایی مکان مناسبی برای انجام این کار نیست. این می‌تواند به مشکلات زیر منجر می‌شود:
 
-- `ts-loader` can only type check post-transform code. This doesn't align with the errors we see in IDEs or from `vue-tsc`, which map directly back to the source code.
+- `ts-loader` فقط می‌تواند کد پس از تبدیل را بررسی کند. این با خطاهایی که در محیط‌های توسعه یکپارچه (IDE) یا از طریق `vue-tsc` مشاهده می‌شوند، که به صورت مستقیم به کد منبع map می‌شوند، هماهنگ نیست.
 
-- Type checking can be slow. When it is performed in the same thread / process with code transformations, it significantly affects the build speed of the entire application.
+- بررسی نوع می‌تواند زمانبر باشد. وقتی که در همان ترد / فرآیند با تبدیل کد انجام می‌شود، به طور قابل توجهی سرعت ساخت کل برنامه را تحت تأثیر قرار می‌دهد.
 
-- We already have type checking running right in our IDE in a separate process, so the cost of dev experience slow down simply isn't a good trade-off.
+- ما در حال حاضر قابلیت بررسی نوع را در محیط توسعه یکپارچه (IDE) خود به صورت یک فرآیند جداگانه داریم، بنابراین هزینه کاهش سرعت تجربه توسعه‌دهنده به سادگی یک تعادل مطلوب نیست.
 
-If you are currently using Vue 3 + TypeScript via Vue CLI, we strongly recommend migrating over to Vite. We are also working on CLI options to enable transpile-only TS support, so that you can switch to `vue-tsc` for type checking.
+اگر در حال حاضر از Vue 3 + TypeScript با استفاده از Vue CLI استفاده می‌کنید، به شدت توصیه می‌شود که به Vite مهاجرت کنید. ما همچنین در حال کار بر روی گزینه‌های CLI هستیم تا امکان پشتیبانی برای ترجمه‌ای (transpile-only) نوع TypeScript را فعال کنیم، به طوری که بتوانید به `vue-tsc` برای بررسی نوع تغییر کنید.
 
-## General Usage Notes {#general-usage-notes}
+## یادداشت‌های کاربردی عمومی {#general-usage-notes}
 
 ### `defineComponent()` {#definecomponent}
 
-To let TypeScript properly infer types inside component options, we need to define components with [`defineComponent()`](/api/general#definecomponent):
+برای اینکه TypeScript بتواند نوع‌ها را به درستی در گزینه‌های کامپوننت نمونه‌سازی کند، باید کامپوننت‌ها را با استفاده از `defineComponent()` تعریف کنیم.
 
 ```ts
 import { defineComponent } from 'vue'
@@ -109,7 +109,7 @@ export default defineComponent({
 })
 ```
 
-`defineComponent()` also supports inferring the props passed to `setup()` when using Composition API without `<script setup>`:
+`defineComponent()` همچنین از نوع پروپ‌هایی که به `setup()` منتقل می‌شوند وقتی از Composition API بدون `<script setup>` استفاده می‌شود، پشتیبانی می‌کند.
 
 ```ts
 import { defineComponent } from 'vue'
@@ -125,19 +125,18 @@ export default defineComponent({
 })
 ```
 
-See also:
+همچنین ببینید:
 
-- [Note on webpack Treeshaking](/api/general#note-on-webpack-treeshaking)
-- [type tests for `defineComponent`](https://github.com/vuejs/core/blob/main/packages/dts-test/defineComponent.test-d.tsx)
+- [یادداشتی درباره webpack Treeshaking](/api/general#note-on-webpack-treeshaking)
+- [تست‌های نوع برای  `defineComponent`](https://github.com/vuejs/core/blob/main/packages/dts-test/defineComponent.test-d.tsx)
 
 :::tip
-`defineComponent()` also enables type inference for components defined in plain JavaScript.
+تابع `defineComponent()` همچنین قابلیت استنباط نوع را برای کامپوننت‌های تعریف شده به صورت جاوااسکریپت ساده فراهم می‌کند.
 :::
 
-### Usage in Single-File Components {#usage-in-single-file-components}
+### استفاده در کامپوننت‌های تک فایلی {#usage-in-single-file-components}
 
-To use TypeScript in SFCs, add the `lang="ts"` attribute to `<script>` tags. When `lang="ts"` is present, all template expressions also enjoy stricter type checking.
-
+برای استفاده از TypeScript در کامپوننت‌های تک فایلی (Single-File Components)، ویژگی `lang="ts"` را به تگ `<script>` اضافه کنید. وقتی `lang="ts"` موجود است، همه عبارات قالب نیز از یک بررسی نوع دقیق‌تر بهره‌مند می‌شوند.
 ```vue
 <script lang="ts">
 import { defineComponent } from 'vue'
@@ -157,7 +156,7 @@ export default defineComponent({
 </template>
 ```
 
-`lang="ts"` can also be used with `<script setup>`:
+`lang="ts"` می‌تواند به همراه `<script setup>` استفاده شود:
 
 ```vue
 <script setup lang="ts">
@@ -173,11 +172,11 @@ const count = ref(1)
 </template>
 ```
 
-### TypeScript in Templates {#typescript-in-templates}
+### تایپ اسکریپت در قالب‌ها   {#typescript-in-templates}
 
-The `<template>` also supports TypeScript in binding expressions when `<script lang="ts">` or `<script setup lang="ts">` is used. This is useful in cases where you need to perform type casting in template expressions.
+ `<template>` نیز در صورت استفاده از `<script lang="ts">` یا `<script setup lang="ts">` از TypeScript در عبارات بایندینگ پشتیبانی می‌کند. این ویژگی در مواردی مفید است که نیاز به انجام عملگرهای نوعی در عبارات قالب (template expressions) دارید.
 
-Here's a contrived example:
+در ادامه، یک مثال ساختگی را بررسی می‌کنیم:
 
 ```vue
 <script setup lang="ts">
@@ -190,7 +189,7 @@ let x: string | number = 1
 </template>
 ```
 
-This can be worked around with an inline type cast:
+این مسئله با یک تبدیل نوع درون خطی قابل حل است.
 
 ```vue{6}
 <script setup lang="ts">
@@ -203,21 +202,20 @@ let x: string | number = 1
 ```
 
 :::tip
-If using Vue CLI or a webpack-based setup, TypeScript in template expressions requires `vue-loader@^16.8.0`.
+در صورت استفاده از Vue CLI یا یک پیکربندی مبتنی بر webpack، استفاده از TypeScript در عبارات قالب نیاز به `vue-loader@^16.8.0` دارد.
 :::
 
-### Usage with TSX
+### استفاده از TSX
 
-Vue also supports authoring components with JSX / TSX. Details are covered in the [Render Function & JSX](/guide/extras/render-function.html#jsx-tsx) guide.
+Vue نیز از نوشتن کامپوننت‌ها با استفاده از JSX / TSX پشتیبانی می‌کند. جزئیات مربوط به این موضوع در راهنمای [تابع رندر و JSX](/guide/extras/render-function.html#jsx-tsx) توضیح داده شده است.
+## کامپوننت‌های جنریک {#generic-components}
 
-## Generic Components {#generic-components}
-
-Generic components are supported in two cases:
+کامپوننت‌های جنریک در دو حالت زیر پشتیبانی می‌شوند:
 
 - In SFCs: [`<script setup>` with the `generic` attribute](/api/sfc-script-setup.html#generics)
 - Render function / JSX components: [`defineComponent()`'s function signature](/api/general.html#function-signature)
 
-## API-Specific Recipes {#api-specific-recipes}
+## دستور العمل‌های  API خاص {#api-specific-recipes}
 
 - [TS with Composition API](./composition-api)
 - [TS with Options API](./options-api)
