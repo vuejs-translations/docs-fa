@@ -7,14 +7,14 @@ const filters = {
 }
 
 export default {
-  // app initial state
+  // وضعیت اولیه برنامه
   data: () => ({
     todos: JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'),
     editedTodo: null,
     visibility: 'all'
   }),
 
-  // watch todos change for localStorage persistence
+  // زیر‌ نظر داشته باشید localStorage تغییرات کارها را برای پایداری 
   watch: {
     todos: {
       handler(todos) {
@@ -38,8 +38,8 @@ export default {
     }
   },
 
-  // methods that implement data logic.
-  // note there's no DOM manipulation here at all.
+  // .متد هایی که منطق داده را پیاده‌سازی می‌کنند
+  // .اصلا صورت نگرفته است DOM manipulation توجه داشته‌ باشید که در اینجا
   methods: {
     toggleAll(e) {
       this.todos.forEach((todo) => (todo.completed = e.target.checked))

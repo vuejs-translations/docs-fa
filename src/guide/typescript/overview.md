@@ -40,7 +40,7 @@ Vue نیز خود با زبان TypeScript نوشته شده و پشتیبانی
 
 در هنگام پیکربندی `tsconfig.json` به صورت دستی، برخی از گزینه‌های قابل توجه عبارتند از:
 
-- در فایل تنظیمات [`compilerOptions.isolatedModules`](https://www.typescriptlang.org/tsconfig#isolatedModules)  به دلیل استفاده از ابزار [esbuild](https://esbuild.github.io/) برای ترجمه TypeScript و محدودیت‌های مربوط به ترجمه فقط در یک فایل، بر روی `true` تنظیم شده است. همچنین، [`compilerOptions.verbatimModuleSyntax`](https://www.typescriptlang.org/tsconfig#verbatimModuleSyntax) که یک [یک مجموعه دست بالا `isolatedModules`](https://github.com/microsoft/TypeScript/issues/53601) است هم یک گزینه خوب است. این تنظیمات در واقع در پروژه `[@vue/tsconfig](https://github.com/vuejs/tsconfig)` نیز استفاده می‌شوند.
+- `compilerOptions.isolatedModules` به `true` تنظیم شده است زیرا Vite برای ترجمه TypeScript از [esbuild](https://esbuild.github.io/) استفاده می‌کند و تحت محدودیت‌های ترجمه در یک فایل قرار دارد. `compilerOptions.verbatimModuleSyntax` [یک فراگیر برای `isolatedModules`](https://github.com/microsoft/TypeScript/issues/53601) است و یک انتخاب خوب است - همچنین این استفاده شده در [`@vue/tsconfig`](https://github.com/vuejs/tsconfig).>>>>>>> 888c509a27579c3f9bf513b24fc9035f2be7bae8
 
 - اگر از Options API استفاده می‌کنید، برای بهره‌برداری از بررسی نوع `this` در گزینه‌های کامپوننت، باید [`compilerOptions.strict`](https://www.typescriptlang.org/tsconfig#strict) را برابر با `true` قرار دهید (یا حداقل [`compilerOptions.noImplicitThis`](https://www.typescriptlang.org/tsconfig#noImplicitThis) را فعال کنید که بخشی از پرچم `strict` است). در غیر این صورت، `this` به عنوان `any` در نظر گرفته خواهد شد.
 

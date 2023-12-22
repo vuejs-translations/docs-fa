@@ -2,6 +2,10 @@
 footer: false
 ---
 
+<script setup>
+import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
+</script>
+
 # شروع سریع {#quick-start}
 
 ## امتحان Vue بصورت آنلاین {#try-vue-online}
@@ -22,9 +26,38 @@ footer: false
 
 در این بخش به ایجاد اولیه یک برنامه تک صفحه‌ای Vue بر روی ماشین محلی خود می‌پردازیم ([Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa)). پروژه ایجاد شده از یک ابزار راه اندازی ساخت مبتنی بر [Vite](https://vitejs.dev) استفاده خواهد کرد و به ما امکان می‌دهد از [کامپوننت‌های تک فایلی](/guide/scaling-up/sfc) Vue استفاده کنیم  (SFCs).
 
-اطمینان حاصل کنید که شما یک نسخه به‌روز از [Node.js](https://nodejs.org/)  را بصورت نصب شده دارید و دایرکتوری فعلی شما همان جایی است که قصد ایجاد یک پروژه جدید را دارید. دستور زیر را در خط فرمان خود اجرا کنید (بدون علامت `<`): 
+اطمینان حاصل کنید که شما یک نسخه به‌روز از [Node.js](https://nodejs.org/)  را بصورت نصب شده دارید و دایرکتوری فعلی شما همان جایی است که قصد ایجاد یک پروژه جدید را دارید. دستور زیر را در خط فرمان خود اجرا کنید (بدون علامت `$`):
 
-<div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt;</span> <span style="color:#A6ACCD;">npm create vue@latest</span></span></code></pre></div>
+<VTCodeGroup>
+  <VTCodeGroupTab label="npm">
+
+  ```sh
+  $ npm create vue@latest
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="pnpm">
+  
+  ```sh
+  $ pnpm create vue@latest
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="yarn">
+  
+  ```sh
+  $ yarn create vue@latest
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="bun">
+  
+  ```sh
+  $ bun create vue@latest
+  ```
+
+  </VTCodeGroupTab>
+</VTCodeGroup>
 
 این دستور ابزار رسمی ایجاد اولیه پروژه Vue به نام [create-vue](https://github.com/vuejs/create-vue) را نصب و اجرا خواهد کرد. شما با گزینه‌هایی برای قابلیت‌های اختیاری مختلف مانند پشتیبانی از TypeScript و تست نویسی روبرو خواهید شد:
 
@@ -43,10 +76,44 @@ footer: false
 
 اگر در مورد یک گزینه مطمئن نیستید، فعلاً با زدن enter برای انتخاب `No` آن را نادیده بگیرید. وقتی پروژه ایجاد شد، دستورالعمل‌های زیر را برای نصب وابستگی‌ها و راه‌اندازی dev server دنبال کنید:
 
-<div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">cd</span><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span></span>
-<span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm install</span></span>
-<span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run dev</span></span>
-<span class="line"></span></code></pre></div>
+<VTCodeGroup>
+  <VTCodeGroupTab label="npm">
+
+  ```sh
+  $ cd <your-project-name>
+  $ npm install
+  $ npm run dev
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="pnpm">
+  
+  ```sh
+  $ cd <your-project-name>
+  $ pnpm install
+  $ pnpm run dev
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="yarn">
+  
+  ```sh
+  $ cd <your-project-name>
+  $ yarn
+  $ yarn dev
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="bun">
+  
+  ```sh
+  $ cd <your-project-name>
+  $ bun install
+  $ bun run dev
+  ```
+
+  </VTCodeGroupTab>
+</VTCodeGroup>
 
 حالا شما باید اولین پروژه Vue خود را بصورت اجرا شده داشته باشید! توجه داشته باشید که کامپوننت‌های نمونه در پروژه ایجاد شده با استفاده از [Composition API](/guide/introduction#composition-api) و `<script setup>` نوشته شده‌اند، به جای [Options API](/guide/introduction#options-api). چند نکته بیشتر:
 
@@ -57,8 +124,36 @@ footer: false
 
 هنگامی که آماده ارسال برنامه خود به پروداکشن هستید، کامند زیر را اجرا کنید:
 
-<div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">&gt; </span><span style="color:#A6ACCD;">npm run build</span></span>
-<span class="line"></span></code></pre></div>
+<VTCodeGroup>
+  <VTCodeGroupTab label="npm">
+
+  ```sh
+  $ npm run build
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="pnpm">
+  
+  ```sh
+  $ pnpm run build
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="yarn">
+  
+  ```sh
+  $ yarn build
+  ```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="bun">
+  
+  ```sh
+  $ bun run build
+  ```
+
+  </VTCodeGroupTab>
+</VTCodeGroup>
 
 این کار یک بیلد آماده برای محیط پروداکشن در دایرکتوری `‎./dist` پروژه شما ایجاد خواهد کرد. [راهنمای استقرار پروداکشن](/guide/best-practices/production-deployment) را برای یادگیری بیشتر در مورد ارسال برنامه خود به پروداکشن بررسی کنید.
 
