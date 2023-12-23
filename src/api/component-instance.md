@@ -324,6 +324,6 @@
 
 - **جزئیات**
 
-  تنها تفاوت `()nextTick` نسخه global این است که تابع callback که به `()this.$nextTick` پاس داده میشود ‍`this` context متعلق به آن به نمونه کاپوننت کنونی bind شده.
+  تنها تفاوت نسبت به نسخه سراسری `()nextTick` این است که callback پاس داده شده به `()this.$nextTick` دارای ‍`this` context  متصل شده به نمونه فعلی کامپوننت خواهد بود.
 
 - **همچنین ببینید** [`()nextTick`](./general#nexttick)
