@@ -4,7 +4,7 @@
 
 ## ثبت هوک‌های چرخه حیات {#registering-lifecycle-hooks}
 
-برای مثال <span class="composition-api">هوک `onMounted`</span><span class="options-api">هوک `mounted`</span> برای ایجاد کد بعد از اینکه کامپوننت رِندر اولیه را به اتمام رساند و نودهای DOM ایجاد شدند مورد استفاده قرار می‌گیرد:
+برای مثال <span class="composition-api">هوک `onMounted`</span><span class="options-api">هوک `mounted`</span> برای اجرای کد بعد از اینکه کامپوننت رِندر اولیه را به اتمام رساند و نودهای DOM ایجاد شدند مورد استفاده قرار می‌گیرد:
 
 <div class="composition-api">
 
