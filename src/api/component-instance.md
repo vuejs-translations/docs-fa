@@ -170,7 +170,7 @@
 
 - **جزئیات**
 
-  [Fallthrough Attributes](/guide/components/attrs) ویژگیها و event handler هایی هستند که توسط کامپوننت والد پاس داده میشوند اما به عنوان یک prop یا یک emitted event توسط کامپوننت فرزند تعریف نشده اند.
+  [Fallthrough Attributes](/guide/components/attrs) ویژگی‌ها و event handler هایی هستند که توسط کامپوننت والد پاس داده می‌شوند اما به عنوان یک prop یا یک emitted event توسط کامپوننت فرزند تعریف نشده‌اند.
 
   اگر فقط یک المنت ریشه وجود داشته باشد به صورت پیشفرض همه چیز در ‍`attrs$` به صورت خودکار روی المنت ریشه کامپوننت inherit خواهد شد. اگر کامپوننت چندین node ریشه‌ای داشته باشد این رفتار غیر فعال میشود. این رفتار میتواند به صورت مشخض با آپشن [`inheritAttrs`](./options-misc#inheritattrs) غیر فعال شود.
   
