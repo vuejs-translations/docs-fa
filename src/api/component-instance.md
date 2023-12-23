@@ -50,9 +50,9 @@
 
   مقدار `el$` برابر با `undefined` خواهد بود تا زمانی که کامپوننت [mounted](./options-lifecycle#mounted) شود.
   
-  - برای کامپوننتهایی که یک المنت root دارند `el$` به آن المنت اشاره خواهد کرد. 
-  - برای کامپوننتهایی که متن (text) به عنوان root دارند `el$` به text node اشاره خواهد کرد.
-  - برای کامپوننتهایی که چندین root node دارند `el$` همان placeholder DOM node خواهد بود که Vue برای پیگیری کردن از موقعیت کامپوننتها در DOM استفاده میکند (یک text node یا یک comment node در حالت SSR hydration)
+    - برای کامپوننت‌هایی که یک المنت root دارند `el$` به آن المنت اشاره خواهد کرد.
+  - برای کامپوننت‌هایی که متن (text) به عنوان root دارند `el$` به text node اشاره خواهد کرد.
+  - برای کامپوننت‌هایی که چندین root node دارند `el$` همان placeholder DOM node خواهد بود که Vue برای پیگیری کردن از موقعیت کامپوننت‌ها در DOM استفاده می‌کند (یک text node یا یک comment node در حالت SSR hydration)
 
   :::tip نکته
   برای ثبات بهتر توصیه میشود که از [template refs](/guide/essentials/template-refs) برای دسترسی مستقیم به المنتها به جای `el$` استفاده کنید.
