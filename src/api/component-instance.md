@@ -141,7 +141,7 @@
 
 ## refs$ {#refs}
 
-یک آبجکت از المنتهای DOM و نمونه های کامپوننت که توسط [template refs](/guide/essentials/template-refs) ثبت شده‌اند. 
+یک آبجکت از المنت‌های DOM و نمونه‌های کامپوننت که توسط [template refs](/guide/essentials/template-refs) ثبت شده‌اند.
 
 - **تایپ (Type)**
 
