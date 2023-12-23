@@ -14,9 +14,9 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 - اگر ترجیح می‌دهید یک راه‌اندازی HTML ساده بدون هیچ مراحل ساختی داشته باشید، می‌توانید از [JSFiddle](https://jsfiddle.net/yyx990803/2ke1ab0z/) به عنوان نقطه شروع خود استفاده کنید.
 
-- اگر شما از قبل با Node.js و مفهوم ابزارهای ساخت آشنا هستید، می‌توانید یک تنظیم کامل ساخت را مستقیماً در مرورگر خود با [StackBlitz](https://vite.new/vue) امتحان کنید.
+- اگر شما از قبل با Node.js و مفهوم build tools آشنا هستید، می‌توانید یک تنظیم کامل ساخت را مستقیماً در مرورگر خود با [StackBlitz](https://vite.new/vue) امتحان کنید.
 
-## ایجاد یک برنامه Vue {#creating-a-vue-application}
+## ایجاد برنامه Vue {#creating-a-vue-application}
 
 :::tip پیش‌نیازها
 
@@ -74,7 +74,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 <span style="color:#A6ACCD;">Scaffolding project in ./<span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span>...</span>
 <span style="color:#A6ACCD;">Done.</span></code></pre></div>
 
-اگر در مورد یک گزینه مطمئن نیستید، فعلاً با زدن enter برای انتخاب `No` آن را نادیده بگیرید. وقتی پروژه ایجاد شد، دستورالعمل‌های زیر را برای نصب وابستگی‌ها و راه‌اندازی dev server دنبال کنید:
+اگر در مورد یک گزینه مطمئن نیستید، فعلاً با زدن enter برای انتخاب `No` آن را نادیده بگیرید. پس از آن وقتی پروژه ایجاد شد، دستورالعمل‌های زیر را برای نصب وابستگی‌ها و راه‌اندازی dev server دنبال کنید:
 
 <VTCodeGroup>
   <VTCodeGroupTab label="npm">
@@ -115,7 +115,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
   </VTCodeGroupTab>
 </VTCodeGroup>
 
-حالا شما باید اولین پروژه Vue خود را بصورت اجرا شده داشته باشید! توجه داشته باشید که کامپوننت‌های نمونه در پروژه ایجاد شده با استفاده از [Composition API](/guide/introduction#composition-api) و `<script setup>` نوشته شده‌اند، به جای [Options API](/guide/introduction#options-api). چند نکته بیشتر:
+حالا شما باید اولین پروژه Vue خود را بصورت اجرا شده داشته باشید! توجه داشته باشید که کامپوننت‌هایی که برای نمونه در پروژه ایجاد شده‌اند، با استفاده از [Composition API](/guide/introduction#composition-api) و `<script setup>` نوشته شده‌اند، به جای [Options API](/guide/introduction#options-api). چند نکته بیشتر:
 
 - IDE توصیه شده [Visual Studio Code](https://code.visualstudio.com/) + [افزونه Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) است. اگر از ویرایشگرهای دیگر استفاده می‌کنید، بخش [پشتیبانی IDE](/guide/scaling-up/tooling#ide-support) را بررسی کنید.
 - جزئیات بیشتر ابزار، از جمله یکپارچه‌سازی با فریم‌ورک‌های بک‌اند، در [راهنمای ابزارها](/guide/scaling-up/tooling) مورد بحث قرار گرفته.
@@ -167,13 +167,13 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 ```
 
-اینجا از [unpkg](https://unpkg.com/) استفاده کردیم، اما شما همچنین می‌توانید از هر CDN دیگری که بسته‌های npm را ارائه می‌دهد مثل [jsdelivr](https://www.jsdelivr.com/package/npm/vue) یا [cdnjs](https://cdnjs.com/libraries/vue) استفاده کنید. البته، شما همچنین می‌توانید این فایل را دانلود و خودتان سرو کنید.
+اینجا از [unpkg](https://unpkg.com/) استفاده کردیم، اما شما همچنین می‌توانید از هر CDN دیگری که پکیج‌های npm را ارائه می‌دهد مثل [jsdelivr](https://www.jsdelivr.com/package/npm/vue) یا [cdnjs](https://cdnjs.com/libraries/vue) استفاده کنید. البته، شما همچنین می‌توانید این فایل را دانلود و خودتان سِرو کنید.
 
-هنگام استفاده از Vue از طریق CDN، هیچ مرحله‌ای برای بیلد گرفتن وجود ندارد. این موضوع تنظیمات را بسیار ساده‌تر می‌کند، و برای بهبود HTML ایستا یا یکپارچه‌سازی با یک فریم‌ورک بک‌اند مناسب است. با این حال، شما نمی‌توانید از سینتکس کامپوننت تک فایلی (SFC) استفاده کنید.
+هنگام استفاده از Vue از طریق CDN، هیچ مرحله‌ای برای بیلد گرفتن وجود ندارد. این موضوع تنظیمات را بسیار ساده‌تر می‌کند، و برای بهبود HTML استاتیک یا یکپارچه‌سازی با یک فریم‌ورک بک‌اند مناسب است. با این حال، شما نمی‌توانید از سینتکس کامپوننت تک فایلی (SFC) استفاده کنید.
 
 ### استفاده از بیلد سراسری {#using-the-global-build}
 
-لینک بالا بیلد سراسری ویو را بارگذاری می‌کند که در آن تمام API‌های سطح بالا به عنوان خاصیت‌هایی روی شی سراسری `Vue` در دسترس هستند. اینجا یک نمونه کامل با استفاده از بیلد سراسری است:
+لینک بالا بیلد سراسری Vue را بارگذاری می‌کند که در آن تمام API‌های سطح بالا به عنوان پراپرتی‌هایی روی آبجکت سراسری `Vue` در دسترس هستند. اینجا یک نمونه کامل با استفاده از بیلد سراسری است:
 
 <div class="options-api">
 
@@ -416,7 +416,7 @@ export default {
 
 به دلایل امنیتی، ماژول‌های ES تنها می‌توانند روی پروتکل `http://‎` کار کنند که مرورگرها هنگام باز کردن صفحات در وب از آن استفاده می‌کنند. برای اینکه ماژول‌های ES بر روی ماشین محلی ما کار کنند، نیاز داریم که `index.html` را از طریق پروتکل `http://‎` سرو کنیم، با استفاده از یک سرور HTTP محلی.
 
-برای راه‌اندازی یک سرور HTTP محلی، ابتدا مطمئن شوید [Node.js](https://nodejs.org/en/) نصب شده است، سپس `npx serve` را از خط فرمان در همان دایرکتوری حاوی فایل HTML خود اجرا کنید. همچنین می‌توانید از هر سرور HTTP دیگری که بتواند فایل‌های ایستا را با انواع MIME صحیح سرو کند، استفاده نمایید.
+برای راه‌اندازی یک سرور HTTP محلی، ابتدا مطمئن شوید [Node.js](https://nodejs.org/en/) نصب شده است، سپس `npx serve` را از خط فرمان در همان دایرکتوری حاوی فایل HTML خود اجرا کنید. همچنین می‌توانید از هر سرور HTTP دیگری که بتواند فایل‌های استاتیک را با انواع MIME صحیح سرو کند، استفاده نمایید.
 
 شاید متوجه شده باشید که قالب کامپوننت وارد شده به صورت یک رشته JavaScript درون خطی شده است. اگر از VSCode استفاده می‌کنید، می‌توانید افزونه [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) را نصب کرده و رشته‌ها را با یک توضیح `/*html*/` پیشوند دهید تا برای آن‌ها هایلایت سینتکس فعال شود.
 
@@ -425,16 +425,16 @@ export default {
 اگر از [معرفی](/guide/introduction) صرف‌نظر کردید، توصیه می‌کنیم قبل از حرکت به بقیه مستندات آن را بخوانید.
 
 <div class="vt-box-container next-steps">
-  <a class="vt-box" href="/guide/essentials/application.html">
-    <p class="next-steps-link">ادامه با راهنما</p>
-    <p class="next-steps-caption"> راهنما شما را به تمام جنبه‌های فریمورک با جزئیات کامل هدایت می‌کند. </p>
-  </a>
   <a class="vt-box" href="/tutorial/">
-    <p class="next-steps-link"> آموزش‌ها را امتحان کنید </p>
-    <p class="next-steps-caption"> برای کسانی که یادگیری عملی را ترجیح می‌دهند. </p>
+    <p class="next-steps-link">امتحان آموزش</p>
+    <p class="next-steps-caption">برای کسانی که ترجیح می‌دهند چیزها را به صورت عملی یاد بگیرند.</p>
+  </a>
+  <a class="vt-box" href="/guide/quick-start.html">
+    <p class="next-steps-link">خواندن راهنما</p>
+    <p class="next-steps-caption">راهنما شما را به تمام جنبه‌های فریمورک با جزئیات کامل هدایت می‌کند.</p>
   </a>
   <a class="vt-box" href="/examples/">
-    <p class="next-steps-link">مشاهده نمونه‌ها</p>
-    <p class="next-steps-caption"> نمونه‌هایی از ویژگی‌های اصلی و کارهای معمول UI را کاوش کنید. </p>
+    <p class="next-steps-link">بررسی مثال‌ها</p>
+    <p class="next-steps-caption">مثال‌هایی از ویژگی‌های اصلی و وظایف رایج رابط کاربری را کاوش کنید.</p>
   </a>
 </div>

@@ -148,7 +148,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'الزامات',
       items: [
         {
-          text: 'ساخت یک اپلیکیشن',
+          text: 'ایجاد یک برنامه Vue',
           link: '/guide/essentials/application'
         },
         {
@@ -160,36 +160,36 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/reactivity-fundamentals'
         },
         {
-          text: 'ویژگی‌های Computed',
+          text: 'پراپرتی‌های computed',
           link: '/guide/essentials/computed'
         },
         {
-          text: 'اتصال کلاس‌ و استایل (Class and Style Bindings)',
+          text: 'اتصال کلاس و استایل - Class and Style Bindings',
           link: '/guide/essentials/class-and-style'
         },
         {
-          text: 'رندر شرطی (Conditional Rendering)',
+          text: 'رندر شرطی - Conditional Rendering',
           link: '/guide/essentials/conditional'
         },
         {
-          text: 'رندر لیست‌ (List Rendering)',
+          text: 'رندر لیست - List Rendering',
           link: '/guide/essentials/list'
         },
         {
-          text: 'مدیریت رویداد‌ها (Event Handling)',
+          text: 'مدیریت رویدادها - Event Handling',
           link: '/guide/essentials/event-handling'
         },
         {
-          text: 'اتصالات ورودی فرم (Form Input Bindings)',
+          text: 'اتصال input در فرم',
           link: '/guide/essentials/forms'
         },
         {
-          text: 'Lifecycle Hooks',
+          text: 'هوک‌های چرخه حیات - Lifecycle Hooks',
           link: '/guide/essentials/lifecycle'
         },
         { text: 'ناظرها (Watchers)', link: '/guide/essentials/watchers' },
         {
-          text: 'Template Refs',
+          text: 'ارجاع از طریق تمپلیت - Template Refs',
           link: '/guide/essentials/template-refs'
         },
         {
