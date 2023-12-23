@@ -55,7 +55,7 @@
   - برای کامپوننت‌هایی که چندین root node دارند `el$` همان placeholder DOM node خواهد بود که Vue برای پیگیری کردن از موقعیت کامپوننت‌ها در DOM استفاده می‌کند (یک text node یا یک comment node در حالت SSR hydration)
 
   :::tip نکته
-  برای ثبات بهتر توصیه میشود که از [template refs](/guide/essentials/template-refs) برای دسترسی مستقیم به المنتها به جای `el$` استفاده کنید.
+  برای ثبات بهتر توصیه می‌شود که از [template refs](/guide/essentials/template-refs) برای دسترسی مستقیم به المنت‌ها به جای `el$` استفاده کنید.
   :::
 
 ## options$ {#options}
