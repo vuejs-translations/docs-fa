@@ -291,7 +291,7 @@
 
 - **همچنین ببینید**
 
-  - [کامپوننتها - رویدادها](/guide/components/events)
+  - [کامپوننت‌ها - رویدادها](/guide/components/events)
   - [آپشن `emits`](./options-state#emits)
 
 ## ()forceUpdate$ {#forceupdate}
