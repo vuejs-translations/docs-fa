@@ -219,10 +219,10 @@
 
   دومین آرگومان یک تابع callback است. این تابع مقدار جدید و قدیم متعلق به منبع watch را دریافت میکند. 
   
-  - **`immediate`**: تابع callback را فورا در موقع ساخت watcher فراخوانی میکند. در فراخوانی اول مقدار قدیمی `undefined` خواهد بود.
-  - **`deep`**: اگر منبع یک آبجکت باشد پیمایش عمیق (deep traversal) را روی آن تحمیل میکند و تابع callback هنگام تغییرات عمیق (deep mutations) روی آبجکت فراخوانی میشود. همچنین [Deep Watchers](/guide/essentials/watchers#deep-watchers) را مطالعه کنید.
-  - **`flush`**: زمانبندی flush مربوط به تابع  callback را تنظیم میکند. همچنین [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) و [`()watchEffect`](/api/reactivity-core#watcheffect) را مطالعه کنید.
-  - **`onTrack / onTrigger`**: برای دیباگ کردن وابستگیهای watcher استفاده میشود. همچنین [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging) را مطالعه کنید.
+  - **`immediate`**: تابع callback را بلافاصله در موقع ساخت watcher فراخوانی می‌کند. در فراخوانی اول مقدار قدیمی `undefined` خواهد بود.
+  - **`deep`**: اگر منبع یک آبجکت باشد پیمایش عمیق (deep traversal) را روی آن تحمیل می‌کند و تابع callback هنگام تغییرات عمیق (deep mutations) روی آبجکت فراخوانی می‌شود. همچنین [Deep Watchers](/guide/essentials/watchers#deep-watchers) را مطالعه کنید.
+  - **`flush`**: زمانبندی flush مربوط به تابع  callback را تنظیم می‌کند. همچنین [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) و [`()watchEffect`](/api/reactivity-core#watcheffect) را مطالعه کنید.
+  - **`onTrack / onTrigger`**: برای دیباگ کردن وابستگی‌های watcher استفاده می‌شود. همچنین [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging) را مطالعه کنید.
 
 - **مثال**
 
