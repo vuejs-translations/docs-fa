@@ -1,18 +1,18 @@
-# Built-in Special Attributes {#built-in-special-attributes}
+# ویژگیهای خاص ساخته شده {#built-in-special-attributes}
 
-## key {#key}
+## کلید {#key}
 
-The `key` special attribute is primarily used as a hint for Vue's virtual DOM algorithm to identify vnodes when diffing the new list of nodes against the old list.
+ویژگی خاص `key` به عنوان یک راهنما برای الگوریتم DOM مجازی Vue استفاده میشود تا هنگام تفاوتیابی لیست جدید گرهها با لیست قدیمی، vnodes را شناسایی کند.
 
-- **Expects:** `number | string | symbol`
+- **انتظارات:** `number | string | symbol`
 
-- **Details**
+- **جزئیات**
 
-  Without keys, Vue uses an algorithm that minimizes element movement and tries to patch/reuse elements of the same type in-place as much as possible. With keys, it will reorder elements based on the order change of keys, and elements with keys that are no longer present will always be removed / destroyed.
+بدون Vue ، Key از یک الگوریتم استفاده میکند که حرکت عناصر را به حداقل میرساند و سعی میکند عناصر هم نوع را در جای خود ترمیم/باز استفاده کند تا حد امکان. با key، این عناصر را بر اساس تغییر ترتیب keyها مرتب میکند و عناصری که دارای `key`هایی هستند که دیگر وجود ندارند، همیشه حذف / نابود میشوند.
 
-  Children of the same common parent must have **unique keys**. Duplicate keys will cause render errors.
+فرزندان یک والد مشترک باید دارای key های منحصر به فرد باشند. key های تکراری باعث خطاهای رندر میشوند.
 
-  The most common use case is combined with `v-for`:
+مورد استفاده رایجترین این ویژگی، همراه با `v-for` است:
 
   ```vue-html
   <ul>
@@ -20,12 +20,14 @@ The `key` special attribute is primarily used as a hint for Vue's virtual DOM al
   </ul>
   ```
 
-  It can also be used to force replacement of an element/component instead of reusing it. This can be useful when you want to:
 
-  - Properly trigger lifecycle hooks of a component
-  - Trigger transitions
+این ویژگی را میتوان برای اجبار جایگزینی یک عنصر/کامپوننت به جای باز استفاده از آن نیز استفاده کرد. این میتواند زمانی مفید باشد که شما بخواهید:
 
-  For example:
+•  به درستی هوک های چرخه حیات یک کامپوننت را فعال کنید
+
+•  ترنزیشن را فعال کنید
+
+برای مثال:
 
   ```vue-html
   <transition>
@@ -33,28 +35,28 @@ The `key` special attribute is primarily used as a hint for Vue's virtual DOM al
   </transition>
   ```
 
-  When `text` changes, the `<span>` will always be replaced instead of patched, so a transition will be triggered.
+  وقتی `text` تغییر کند، `<span>` همیشه جایگزین شده به جای ترمیم شده، بنابراین یک ترنزیشین فعال میشود.
 
-- **See also** [Guide - List Rendering - Maintaining State with `key`](/guide/essentials/list#maintaining-state-with-key)
+- **همچنین ببینید** [راهنما - لیست رندرینگ - حفظ حالت با `key`](/guide/essentials/list#maintaining-state-with-key)
 
-## ref {#ref}
+## مرجع {#ref}
 
-Denotes a [template ref](/guide/essentials/template-refs).
+یک [تمپلیت مرجع](/guide/essentials/template-refs) را نشان میدهد.
 
-- **Expects:** `string | Function`
+- **انتظارات:** `string | Function`
 
-- **Details**
+- **جزپیات**
 
-  `ref` is used to register a reference to an element or a child component.
+  `ref` برای ثبت یک مرجع به یک عنصر یا یک کامپوننت فرزند استفاده میشود.
 
-  In Options API, the reference will be registered under the component's `this.$refs` object:
+در API آپشن، مرجع زیر شیء `this.$refs` کامپوننت ثبت میشود:
 
   ```vue-html
   <!-- stored as this.$refs.p -->
   <p ref="p">hello</p>
   ```
 
-  In Composition API, the reference will be stored in a ref with matching name:
+  در Composition API, مرجع در یک مرجع با نام منطبق ذخیره می شود:
 
   ```vue
   <script setup>
@@ -68,34 +70,34 @@ Denotes a [template ref](/guide/essentials/template-refs).
   </template>
   ```
 
-  If used on a plain DOM element, the reference will be that element; if used on a child component, the reference will be the child component instance.
+  اگر از این ویژگی روی یک عنصر DOM ساده استفاده شود، مرجع آن عنصر خواهد بود؛ اگر روی یک کامپوننت فرزند استفاده شود، مرجع نمونه کامپوننت فرزند خواهد بود.
 
-  Alternatively `ref` can accept a function value which provides full control over where to store the reference:
+ به طور جایگزین `ref` میتواند یک مقدار تابعی را بپذیرد که کنترل کاملی روی اینکه کجا مرجع را ذخیره کنید، فراهم میکند:
 
   ```vue-html
   <ChildComponent :ref="(el) => child = el" />
   ```
 
-  An important note about the ref registration timing: because the refs themselves are created as a result of the render function, you must wait until the component is mounted before accessing them.
+ یک نکته مهم در مورد زمان ثبت ref این است که چون ref ها خودشان به عنوان نتیجه تابع رندر ایجاد میشوند، شما باید تا زمانی که کامپوننت نصب شود، صبر کنید تا به آنها دسترسی پیدا کنید.
 
-  `this.$refs` is also non-reactive, therefore you should not attempt to use it in templates for data-binding.
+`this.$refs` همچنین واکنشگرا نیست، بنابراین شما نباید سعی کنید که از آن در تمپلیتها برای پیوند داده استفاده کنید.
 
-- **See also**
-  - [Guide - Template Refs](/guide/essentials/template-refs)
-  - [Guide - Typing Template Refs](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
-  - [Guide - Typing Component Template Refs](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
+- **همچنین ببینید**
+  - [راهنما - تمپلیت مراجع](/guide/essentials/template-refs)
+  - [راهنما - نوع تمپلیت مراجع](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
+  - [راهنما - نوع کامپوننت تمپلیت مراجع](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
-## is {#is}
+## است {#is}
 
-Used for binding [dynamic components](/guide/essentials/component-basics#dynamic-components).
+برای اتصال [کامپوننت های داینامیک](/guide/essentials/component-basics#dynamic-components) استفاده میشود.
 
-- **Expects:** `string | Component`
+- **انتظارات:** `string | Component`
 
-- **Usage on native elements** <sup class="vt-badge">3.1+</sup>
+- **استفاده در عناصر بومی** <sup class="vt-badge">3.1+</sup>
 
-  When the `is` attribute is used on a native HTML element, it will be interpreted as a [Customized built-in element](https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example), which is a native web platform feature.
+  وقتی ویژگی `is` روی یک عنصر HTML بومی استفاده شود، به عنوان یک <a href="https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example">عنصر سفارشی ساخته شده</a> تفسیر میشود، که یک ویژگی بومی پلتفرم وب است.
 
-  There is, however, a use case where you may need Vue to replace a native element with a Vue component, as explained in [in-DOM Template Parsing Caveats](/guide/essentials/component-basics#in-dom-template-parsing-caveats). You can prefix the value of the `is` attribute with `vue:` so that Vue will render the element as a Vue component instead:
+  اما یک مورد استفاده وجود دارد که شما ممکن است نیاز داشته باشید که Vue یک عنصر بومی را با یک کامپوننت Vue جایگزین کند، که در احتیاطهای تجزیه تمپلیت در DOM توضیح داده شده است. شما میتوانید مقدار ویژگی `is` را با `vue:` پیشوند کنید تا Vue عنصر را به عنوان یک کامپوننت Vue رندر کند:
 
   ```vue-html
   <table>
@@ -103,7 +105,7 @@ Used for binding [dynamic components](/guide/essentials/component-basics#dynamic
   </table>
   ```
 
-- **See also**
+- **همچنین ببینید**
 
-  - [Built-in Special Element - `<component>`](/api/built-in-special-elements#component)
-  - [Dynamic Components](/guide/essentials/component-basics#dynamic-components)
+  - [عنصر خاص ساخته شده - `<component>`](/api/built-in-special-elements#component)
+  - [کامپوننت های داینامیک](/guide/essentials/component-basics#dynamic-components)
