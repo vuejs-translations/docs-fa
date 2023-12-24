@@ -148,7 +148,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'الزامات',
       items: [
         {
-          text: 'ایجاد یک برنامه Vue',
+          text: 'ایجاد یک اپلیکیشن Vue',
           link: '/guide/essentials/application'
         },
         {
@@ -176,7 +176,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/list'
         },
         {
-          text: 'مدیریت رویدادها - Event Handling',
+          text: 'مدیریت رویدادها',
           link: '/guide/essentials/event-handling'
         },
         {
@@ -187,7 +187,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: 'هوک‌های چرخه حیات - Lifecycle Hooks',
           link: '/guide/essentials/lifecycle'
         },
-        { text: 'ناظرها (Watchers)', link: '/guide/essentials/watchers' },
+        { text: 'ناظرها - Watchers', link: '/guide/essentials/watchers' },
         {
           text: 'ارجاع از طریق تمپلیت - Template Refs',
           link: '/guide/essentials/template-refs'
@@ -202,7 +202,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'کامپوننت‌ها به‌طور عمیق',
       items: [
         {
-          text: 'رجیستر کردن (Registration)',
+          text: 'ثبت کامپوننت',
           link: '/guide/components/registration'
         },
         { text: 'پراپ‌ها', link: '/guide/components/props' },
