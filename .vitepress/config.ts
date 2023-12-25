@@ -207,7 +207,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         },
         { text: 'پراپ‌ها', link: '/guide/components/props' },
         {
-          text: 'رویداد‌های کامپوننت (Events)',
+          text: 'رویداد‌های کامپوننت',
           link: '/guide/components/events'
         },
         { text: 'v-model', link: '/guide/components/v-model' },
