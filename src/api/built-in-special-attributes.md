@@ -87,7 +87,7 @@
   - [راهنما - نوع تمپلیت مراجع](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
   - [راهنما - نوع کامپوننت تمپلیت مراجع](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
-## است {#is}
+## is {#is}
 
 برای اتصال [کامپوننت های داینامیک](/guide/essentials/component-basics#dynamic-components) استفاده میشود.
 
