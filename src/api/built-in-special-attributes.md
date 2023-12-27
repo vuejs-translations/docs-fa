@@ -55,7 +55,7 @@
   <p ref="p">hello</p>
   ```
 
-  در Composition API, مرجع در یک مرجع با نام منطبق ذخیره می شود:
+  در Composition API، ارجاع در یک ref با نام منطبق ذخیره می‌شود:
 
   ```vue
   <script setup>
