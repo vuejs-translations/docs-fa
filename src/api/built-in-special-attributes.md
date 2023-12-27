@@ -1,4 +1,4 @@
-# ویژگیهای خاص ساخته شده {#built-in-special-attributes}
+# ویژگی‌های خاص ساخته شده {#built-in-special-attributes}
 
 ## کلید {#key}
 
