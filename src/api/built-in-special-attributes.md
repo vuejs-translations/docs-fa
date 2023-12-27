@@ -38,7 +38,7 @@
 
 - **همچنین ببینید** [راهنما - لیست رندرینگ - حفظ state با `key`](/guide/essentials/list#maintaining-state-with-key)
 
-## مرجع {#ref}
+## ref {#ref}
 
 یک [تمپلیت مرجع](/guide/essentials/template-refs) را نشان میدهد.
 
