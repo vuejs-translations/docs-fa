@@ -40,7 +40,7 @@
 
 ## ref {#ref}
 
-یک [تمپلیت مرجع](/guide/essentials/template-refs) را نشان میدهد.
+یک [ارجاع از طریق تمپلیت](/guide/essentials/template-refs) را نشان می‌دهد.
 
 - **انتظارات:** `string | Function`
 
