@@ -36,7 +36,7 @@
 
   وقتی `text` تغییر کند، همیشه المنت `<span>`  جایگزین می‌شود به جای اینکه صرفا متن آن تغییر کند، بنابراین ترنزیشین فعال می‌شود.
 
-- **همچنین ببینید** [راهنما - لیست رندرینگ - حفظ حالت با `key`](/guide/essentials/list#maintaining-state-with-key)
+- **همچنین ببینید** [راهنما - لیست رندرینگ - حفظ state با `key`](/guide/essentials/list#maintaining-state-with-key)
 
 ## مرجع {#ref}
 
