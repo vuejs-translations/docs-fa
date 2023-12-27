@@ -95,7 +95,7 @@
 
 - **استفاده در عناصر بومی** <sup class="vt-badge">3.1+</sup>
 
-  وقتی ویژگی `is` روی یک عنصر HTML بومی استفاده شود، به عنوان یک <a href="https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example">عنصر سفارشی ساخته شده</a> تفسیر میشود، که یک ویژگی بومی پلتفرم وب است.
+  وقتی ویژگی `is` روی یک عنصر HTML بومی استفاده شود، به عنوان یک <a href="https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-customized-builtin-example">عنصر سفارشی ساخته شده</a> تفسیر می‌شود، که یک ویژگی بومی پلتفرم وب است.
 
   اما یک مورد استفاده وجود دارد که شما ممکن است نیاز داشته باشید که Vue یک عنصر بومی را با یک کامپوننت Vue جایگزین کند، که در احتیاطهای تجزیه تمپلیت در DOM توضیح داده شده است. شما میتوانید مقدار ویژگی `is` را با `vue:` پیشوند کنید تا Vue عنصر را به عنوان یک کامپوننت Vue رندر کند:
 
