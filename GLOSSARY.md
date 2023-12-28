@@ -46,7 +46,7 @@
 | load                | بارگذاری            |
 | loader              | بارگذار             |
 | local               | محلی                |
-| modifier            | پیراینده            |
+| modifier            | مودیفایر            |
 | mouse               | ماوس                |
 | object              | آبجکت               |
 | option              | آپشن                |
