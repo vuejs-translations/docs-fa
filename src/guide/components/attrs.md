@@ -4,20 +4,20 @@ outline: deep
 
 # Fallthrough Attributes {#fallthrough-attributes}
 
-> این صفحه فرض می‌کند شما قبلاً [مبانی کامپوننت‌ها](/guide/essentials/component-basics) را خوانده‌اید. اگر با کامپوننت‌ها آشنایی ندارید، ابتدا آن را بخوانید.
+>در این صفحه فرض شده که شما از قبل [مبانی کامپوننت‌ها](/guide/essentials/component-basics) را مطالعه کرده اید. اگر با کامپوننت‌ها آشنایی ندارید، ابتدا آن را بخوانید.
 
-## Attribute Inheritance {#attribute-inheritance}
+## ارث‌بری اتریبیوت {#attribute-inheritance}
 
-یک "fallthrough attribute" یک ویژگی یا listener رویداد `v-on` است که به کامپوننت پاس داده می‌شود، اما به طور صریح در [props](./props) یا [emits](./events#declaring-emitted-events)  تعریف نشده است. نمونه های رایج آن ویژگی‌های `class`، `style` و `id` هستند.
+یک "fallthrough attribute" یک ویژگی یا listener رویداد `v-on` است که به کامپوننت پاس داده می‌شود، اما به طور روشن در [props](./props) یا [emits](./events#declaring-emitted-events)  تعریف نشده است. نمونه‌های رایج آن ویژگی‌های `class` ، `style` و `id` هستند.
 
-وقتی یک کامپوننت (فقط) یک root element رندر می‌کند، ویژگی‌های fallthrough به طور خودکار به attributeهای آن root element اضافه می‌شوند. به عنوان مثال، با در نظر گرفتن یک کامپوننت `<MyButton>` با template زیر:
+وقتی یک کامپوننت (فقط) یک root element را رندر می‌کند، ویژگی‌های fallthrough به طور خودکار به اتریبیوت‌های آن root element اضافه می‌شوند. به عنوان مثال، با در نظر گرفتن یک کامپوننت `<MyButton>` با تمپلیت زیر:
 
 ```vue-html
 <!-- template of <MyButton> -->
 <button>click me</button>
 ```
 
-و یک والد که از این کامپوننت (به این شکل) استفاده می‌کند:
+و یک والد که از این کامپوننت به شکل زیر استفاده می‌کند:
 
 ```vue-html
 <MyButton class="large" />
@@ -46,7 +46,7 @@ DOM نهایی رندر شده به این صورت خواهد بود:
 <button class="btn large">click me</button>
 ```
 
-### `v-on` Listener Inheritance {#v-on-listener-inheritance}
+### ارث‌بری listenerهای `v-on` {#v-on-listener-inheritance}
 
 همان قانون برای listenerهای رویداد `v-on` اعمال می‌شود:
 
@@ -56,7 +56,7 @@ DOM نهایی رندر شده به این صورت خواهد بود:
 
 دریافت‌کننده رویداد `click` به root element کامپوننت `<MyButton>` اضافه می‌شود، یعنی `<button>`. وقتی روی `<button>` اصلی کلیک شود، متد `onClick` از کامپوننت والد را فراخوانی می‌کند. اگر `<button>` از قبل یک دریافت‌کننده رویداد `click` با `v-on` داشته باشد، آنگاه هر دو فراخوانی می‌شوند.
 
-### Nested Component Inheritance {#nested-component-inheritance}
+### ارث‌بری کامپوننت‌های تودرتو {#nested-component-inheritance}
 
 اگر یک کامپوننت، کامپوننت دیگری را به عنوان node ریشه‌اش (root node) رندر کند، به عنوان مثال،  `<MyButton>` را بازنویسی کردیم تا `<BaseButton>` را به عنوان ریشه‌اش رندر کند:
 
@@ -69,11 +69,11 @@ DOM نهایی رندر شده به این صورت خواهد بود:
 
 توجه داشته باشید که:
 
-1. ویژگی‌های ارسال شده شامل هیچ‌کدام از attributeهایی که به عنوان props تعریف شده‌اند، یا listenerهای `v-on` رویدادهای تعریف شده توسط `<MyButton>` نمی‌شوند - به عبارت دیگر، props و listenerهای تعریف شده توسط `<MyButton>` "مصرف" شده‌اند.
+1. ویژگی‌های ارسال شده شامل هیچ‌کدام از اتریبیوت‌هایی که به عنوان props تعریف شده‌اند، یا listenerهای `v-on` رویدادهای تعریف شده توسط `<MyButton>` نمی‌شوند - به عبارت دیگر، props و listenerهای **تعریف شده** توسط `<MyButton>` "مصرف" شده‌اند.
 
 2. ویژگی‌های ارسال شده ممکن است به عنوان props توسط `<BaseButton>` پذیرفته شوند، اگر توسط آن اعلام شده باشند.
 
-## غیرفعال کردن Attribute Inheritance {#disabling-attribute-inheritance}
+## غیرفعال کردن ارث‌بری اتریبیوت {#disabling-attribute-inheritance}
 
 اگر **نمی‌خواهید** یک کامپوننت به طور خودکار ویژگی‌ها را به ارث ببرد، می‌توانید `inheritAttrs: false` را در آپشن‌های کامپوننت تنظیم کنید.
 
@@ -106,7 +106,7 @@ defineOptions({
 
 - برخلاف props، ویژگی‌های fallthrough (حساسیت به) حروف بزرگ و کوچک اصلی خود را در جاوااسکریپت حفظ می‌کنند، بنابراین یک ویژگی مثل `foo-bar` نیاز دارد که به صورت `‎$attrs['foo-bar']` صدا زده شود.
 
-- یک دریافت‌کننده رویداد `v-on` مثل `‎@click` در شی به عنوان یک تابع تحت `‎$attrs.onClick` در دسترس است.
+- یک دریافت‌کننده رویداد `v-on` مثل `‎@click` در آبجکت به عنوان یک تابع تحت `‎$attrs.onClick` در دسترس است.
 
 با استفاده از [مثال کامپوننت](#attribute-inheritance) `<MyButton>` از بخش قبلی - گاهی اوقات ممکن است (برای پاسخ به) اهداف مرتبط با استایل، نیاز داشته باشیم `<button>` واقعی را درون یک `<div>` اضافی قرار دهیم:
 
@@ -126,9 +126,9 @@ defineOptions({
 
 به یاد داشته باشید که [v-bind بدون آرگومان](/guide/essentials/template-syntax#dynamically-binding-multiple-attributes) تمام پراپرتی‌های یک شی را به عنوان attributeهای عنصر هدف bind می‌کند.
 
-## Attribute Inheritance on Multiple Root Nodes {#attribute-inheritance-on-multiple-root-nodes}
+## ارث‌بری اتریبیوت‌ها در چندین Root Nodes {#attribute-inheritance-on-multiple-root-nodes}
 
-برخلاف کامپوننت‌هایی با یک root node، کامپوننت‌هایی با چندین root node رفتار اتصال خودکار attributeها را ندارند. اگر `‎$attrs` به طور صریح اتصال داده نشده باشد، یک هشدار زمان اجرا صادر می‌شود.
+برخلاف کامپوننت‌هایی با یک root node، کامپوننت‌هایی با چندین root node رفتار اتصال خودکار اتریبیوت‌ها را ندارند. اگر `‎$attrs` به طور صریح اتصال داده نشده باشد، یک هشدار زمان اجرا صادر می‌شود.
 
 ```vue-html
 <CustomLayout id="custom-layout" @click="changeValue" />
@@ -142,7 +142,7 @@ defineOptions({
 <footer>...</footer>
 ```
 
-اگر `‎$attrs` به طور صریح متصل شود، هشدار سرکوب می‌شود:
+اگر `‎$attrs` به طور واضح متصل شود، هشدار دیگر نمایش داده نخواهد شد:
 
 ```vue-html{2}
 <header>...</header>
@@ -175,7 +175,7 @@ export default {
 }
 ```
 
-توجه داشته باشید اگرچه در اینجا شی `attrs` همیشه آخرین fallthrough attributes را برمی گرداند، اما واکنش‌گرا نیست (به خاطر دلایل عملکردی). نمی‌توانید از watcherها برای مشاهده تغییرات آن استفاده کنید. اگر به واکنش‌گرایی نیاز دارید، از یک prop استفاده کنید. به عنوان جایگزین، می‌توانید از `onUpdated()‎` برای افکت جانبی با آخرین `attrs` در هر به‌روزرسانی استفاده کنید.
+توجه داشته باشید اگرچه در اینجا آبجکت `attrs` همیشه آخرین fallthrough attributes را برمی گرداند، اما reactive نیست (به خاطر دلایل عملکردی). نمی‌توانید از watcherها برای مشاهده تغییرات آن استفاده کنید. اگر به reactivity نیاز دارید، از یک prop استفاده کنید. به عنوان جایگزین، می‌توانید از `onUpdated()‎` برای افکت جانبی با آخرین `attrs` در هر به‌روزرسانی استفاده کنید.
 
 </div>
 
