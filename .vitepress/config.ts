@@ -17,6 +17,7 @@ const nav: ThemeConfig['nav'] = [
       { text: 'شروع سریع', link: '/guide/quick-start' },
       // { text: 'Style Guide', link: '/style-guide/' },
       { text: 'واژه‌نامه', link: '/glossary/' },
+      { text: 'ارجاع به خطا', link: '/error-reference/' },
       {
         text: 'اسناد Vue ۲',
         link: 'https://v2.vuejs.org'
@@ -436,7 +437,8 @@ export const sidebar: ThemeConfig['sidebar'] = {
         { text: 'Render Function', link: '/api/render-function' },
         { text: 'Server-Side Rendering', link: '/api/ssr' },
         { text: 'TypeScript Utility Types', link: '/api/utility-types' },
-        { text: 'Custom Renderer', link: '/api/custom-renderer' }
+        { text: 'Custom Renderer', link: '/api/custom-renderer' },
+        { text: 'Compile-Time Flags', link: '/api/compile-time-flags' }
       ]
     }
   ],
@@ -593,15 +595,25 @@ export default defineConfigWithTheme<ThemeConfig>({
 
   head: [
     ['meta', { name: 'theme-color', content: '#3c8772' }],
-    ['meta', { name: 'twitter:site', content: '@vuejs' }],
-    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { property: 'og:url', content: 'https://vuejs.org/' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:title', content: 'Vue.js' }],
     [
       'meta',
       {
-        name: 'twitter:image',
+        property: 'og:description',
+        content: 'Vue.js - The Progressive JavaScript Framework'
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'og:image',
         content: 'https://vuejs.org/images/logo.png'
       }
     ],
+    ['meta', { name: 'twitter:site', content: '@vuejs' }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
     [
       'link',
       {

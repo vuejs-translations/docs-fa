@@ -52,7 +52,7 @@
   ```ts
   // read-only
   function computed<T>(
-    getter: () => T,
+    getter: (oldValue: T | undefined) => T,
     // see "Computed Debugging" link below
     debuggerOptions?: DebuggerOptions
   ): Readonly<Ref<Readonly<T>>>
@@ -60,7 +60,7 @@
   // writable
   function computed<T>(
     options: {
-      get: () => T
+      get: (oldValue: T | undefined) => T
       set: (value: T) => void
     },
     debuggerOptions?: DebuggerOptions
@@ -112,6 +112,7 @@
   - [راهنما - پراپرتی‌‌های Computed](/guide/essentials/computed)
   - [راهنما - دیباگ کردن Computed ](/guide/extras/reactivity-in-depth#computed-debugging)
   - [راهنما - Typing `computed()‎`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
+  - [راهنما - کارایی - Computed Stability](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
 
 ## reactive()‎ {#reactive}
 
@@ -360,6 +361,7 @@
     flush?: 'pre' | 'post' | 'sync' // default: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
+    once?: boolean // default: false (3.4+)
   }
   ```
 
@@ -386,6 +388,7 @@
   - **`deep`**: اگر منبع، یک آبجکت باشد باالاجبار منبع را به شکل عمیق پیمایش می‌کند تا callback در تغییرات عمیق منبع نیز اجرا شود. ببینید [ناظران عمیق](/guide/essentials/watchers#deep-watchers).
   - **`flush`**: زمانبندی اجرای callback را تنظیم می‌کند. ببینید [زمانبندی اجرای Callback](/guide/essentials/watchers#callback-flush-timing) و [`watchEffect()‎`](/api/reactivity-core#watcheffect).
   - **`onTrack / onTrigger`**: وابستگی‌های ناظر را دیباگ می‌کند. ببینید [دیباگ‌ کردن ناظر](/guide/extras/reactivity-in-depth#watcher-debugging).
+  - **`once`**: تنها یک بار کالبک را اجرا کند. ناظر پس از اولین اجرای کالبک به طور خودکار متوقف می‌شود. <sup class="vt-badge" data-text="3.4+" />
 
   ‌`watch()‎`در مقایسه با [`watchEffect()‎`](#watcheffect) به ما اجازه می‌دهد که:
 

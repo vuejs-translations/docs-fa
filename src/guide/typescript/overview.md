@@ -9,6 +9,7 @@ TypeScript قادر است با تحلیل استاتیک در زمان ساخت
 Vue نیز خود با زبان TypeScript نوشته شده و پشتیبانی از TypeScript را به شکل اولویت دار پشتیبانی می‌کند. همه بسته‌های رسمی Vue همراه با بسته‌های یکپارچه و باندل به راحتی و بدون تنظیمات و پیکربندی خاصی کار می‌کنند.
 
 ## راه اندازی پروژه {#project-setup}
+
 [`create-vue`](https://github.com/vuejs/create-vue) ابزار رسمی ساختاردهی پروژه، گزینه‌هایی برای یک پروژه Vue که با [Vite](https://vitejs.dev/) کار شده و آماده برای TypeScript است را ارائه می‌دهد.
 
 ### بررسی اجمالی {#overview}
@@ -22,6 +23,7 @@ Vue نیز خود با زبان TypeScript نوشته شده و پشتیبانی
 - Vue CLI نیز پشتیبانی از TypeScript را فراهم می کند، اما دیگر توصیه نمی شود. [یادداشت‌های زیر](https://fa.vuejs.org/guide/typescript/overview.html#note-on-vue-cli-and-ts-loader) را ببینید.
 
 ### پشتیبانی از محیط توسعه یکپارچه (IDE) {#ide-support}
+
 - [VSCode](https://code.visualstudio.com/) به خاطر پشتیبانی بی نظیر خود از TypeScript به شدت توصیه می‌شود. 
 
   - [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) یک افزونه رسمی برای VSCode است که پشتیبانی از TypeScript را در داخل فایل‌های Vue (SFC) همراه با امکانات فوق‌العاده دیگر فراهم می‌کند.
@@ -30,7 +32,7 @@ Vue نیز خود با زبان TypeScript نوشته شده و پشتیبانی
     Volar جایگزین [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)، افزونه رسمی پیشین ما برای Vue 2 در VSCode است. اگر در حال حاضر Vetur نصب شده است، حتماً آن را در پروژه‌های Vue 3 غیرفعال کنید.
     :::
 
-  -   [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) نیز برای پشتیبانی از وارد کردن `*.vue` در فایل‌های TS مورد نیاز است.
+  - [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) نیز برای پشتیبانی از وارد کردن `*.vue` در فایل‌های TS مورد نیاز است.
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) نیز پشتیبانی از TypeScript و Vue را از طریق تنظیمات پیش فرض فراهم می کند. محیط‌های توسعه یکپارچه (IDE) دیگر JetBrains نیز به طور پیش فرض یا از طریق یک افزونه رایگان، آن‌ها را پشتیبانی می کنند. از نسخه 2023.2 به بعد، WebStorm و Vue Plugin به صورت پشتیبانی داخلی برای سرور زبان Vue اضافه شده است. شما می توانید سرویس Vue را برای استفاده از Volar که با تمام نسخه‌های Typescript ادغام شده استفاده کنید ، در  تنظیمات > زبان‌ها و چارچوب‌ها > تایپ اسکریپت > ویو آن‌ را تنظیم کنید. به طور پیش فرض، Volar برای نسخه‌های TypeScript 5.0 به بالا استفاده خواهد شد.
 
@@ -45,6 +47,8 @@ Vue نیز خود با زبان TypeScript نوشته شده و پشتیبانی
 - اگر از Options API استفاده می‌کنید، برای بهره‌برداری از بررسی نوع `this` در گزینه‌های کامپوننت، باید [`compilerOptions.strict`](https://www.typescriptlang.org/tsconfig#strict) را برابر با `true` قرار دهید (یا حداقل [`compilerOptions.noImplicitThis`](https://www.typescriptlang.org/tsconfig#noImplicitThis) را فعال کنید که بخشی از پرچم `strict` است). در غیر این صورت، `this` به عنوان `any` در نظر گرفته خواهد شد.
 
 - اگر شما تنظیمات resolver aliases را در ابزار ساخت پروژه خود داشته باشید، به عنوان مثال alias `@/*` که به طور پیش‌فرض در یک پروژه `create-vue` تنظیم شده است، شما نیاز دارید که آن را نیز برای TypeScript از طریق [`compilerOptions.paths`](https://www.typescriptlang.org/tsconfig#paths) تنظیم کنید.
+
+- اگر قصد استفاده از TSX با Vue را دارید، [`compilerOptions.jsx`](https://www.typescriptlang.org/tsconfig#jsx) را روی `"preserve"` تنظیم کنید و [`compilerOptions.jsxImportSource`](https://www.typescriptlang.org/tsconfig#jsxImportSource) را روی "vue" تنظیم کنید.
 
 همچنین ببینید:
 

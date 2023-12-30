@@ -405,8 +405,9 @@ defineProps({
     }
   },
   // تابع اعتبارسنجی سفارشی
+  // تمام پراپ‌ها به عنوان آرگومان دوم در 3.4+ پاس داده می‌شوند
   propF: {
-    validator(value) {
+    validator(value, props) {
       // باید یکی از سه مقدار زیر باشد value
       return ['success', 'warning', 'danger'].includes(value)
     }
@@ -459,8 +460,9 @@ export default {
       }
     },
     // تابع اعتبارسنجی سفارشی
+    // تمام پراپ‌ها به عنوان آرگومان دوم در 3.4+ پاس داده می‌شوند
     propF: {
-      validator(value) {
+      validator(value, props) {
         // باید یکی از سه مقدار زیر باشد value
         return ['success', 'warning', 'danger'].includes(value)
       }

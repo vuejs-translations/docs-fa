@@ -64,9 +64,23 @@ Vue  از سینتکس تمپلیت که برپایه HTML گسترش یافته
 
 > برای بقیه راهنما، ما از دستور مختصر در مثال‌های کد استفاده خواهیم کرد، زیرا این رایج‌ترین روش استفاده برای توسعه‌دهندگان Vue است.
 
+### میانبر نام یکسان <sup class="vt-badge" data-text="3.4+" /> {#same-name-shorthand}
+
+اگر اتریبیوت نام یکسانی با مقدار جاوااسکریپت اتصال شده داشته باشد، سینتکس می‌تواند بیشتر کوتاه شود به شکلی که مقدار اتریبیوت حذف شود:
+
+```vue-html
+<!-- :id="id" همانند -->
+<div :id></div>
+
+<!-- این هم کار می‌کند -->
+<div v-bind:id></div>
+```
+
+این مشابه سینتکس میانبر ویژگی در هنگام تعریف آبجکت در JavaScript است. توجه داشته باشید این ویژگی تنها در Vue 3.4 و بالاتر در دسترس است.
+
 ### اتریبیوت‌های بولین {#boolean-attributes}
 
-[اتریبیوت‌های بولین](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) اتریبیوتهایی هستند که می‌تواند true / false بودن مقادیر را با حضور آنها بر یک المنت نشان داد. برای مثال، [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) یکی رایج ترین اتریبیوت‌های بولین استفاده شده می‌باشد.
+[اتریبیوت‌های بولین](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) اتریبیوت‌هایی هستند که می‌تواند true / false بودن مقادیر را با حضور آنها بر یک المنت نشان داد. برای مثال، [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) یکی رایج ترین اتریبیوت‌های بولین استفاده شده می‌باشد.
 
 `v-bind` در این مورد مقداری متفاوت عمل می‌کند:
 

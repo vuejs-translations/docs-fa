@@ -124,6 +124,51 @@ const Foo = defineAsyncComponent(() => import('./Foo.vue'))
 
 `v-memo` یک دایرکتیو ساخته شده است که می‌تواند برای رد شرطی به‌روزرسانی زیردرخت‌های بزرگ یا لیست‌های v-for استفاده شود. برای جزئیات بیشتر به [مرجع API](/api/built-in-directives#v-memo) آن مراجعه کنید.
 
+### Computed Stability <sup class="vt-badge" data-text="3.4+" /> {#computed-stability}
+
+از نسخه 3.4 به بعد، یک Computed تنها زمانی اِفِکت خود را فراخوانی می‌کند که مقدار محاسبه‌شده آن نسبت به قبل تغییر کرده باشد. به عنوان مثال، `isEven` زیر تنها در صورتی افکت را فراخوانی می‌کند که مقدار برگردانده‌شده از `true` به `false` تغییر کند یا برعکس:
+
+```js
+const count = ref(0)
+const isEven = computed(() => count.value % 2 === 0)
+
+watchEffect(() => console.log(isEven.value)) // true
+
+// است true همچنان computed منجر به لاگ‌های جدید نمی‌شود زیرا مقدار
+count.value = 2
+count.value = 4
+```
+
+این از فراخوانی‌های غیرضروری کاسته می‌کند، اما متأسفانه اگر computed در هر محاسبه آبجکت جدیدی ایجاد کند کار نمی‌کند:
+
+```js
+const computedObj = computed(() => {
+  return {
+    isEven: count.value % 2 === 0
+  }
+})
+```
+
+چون در هر بار یک آبجکت جدید ایجاد می‌شود، مقدار جدید از نظر فنی همیشه متفاوت از مقدار قدیمی است. حتی اگر خاصیت `isEven` یکسان بماند، مگر اینکه Vue مقایسه‌ای عمیق بین مقدار قدیم و جدید انجام دهد. چنین مقایسه‌ای ممکن است پرهزینه باشد و احتمالا ارزش آن را نداشته باشد.
+
+به جای آن، می‌توانیم این را با مقایسه‌ی دستی مقدار جدید و قدیم و برگرداندن شرطی مقدار قدیمی اگر می‌دانیم هیچ تغییری نکرده است، بهینه کنیم:
+
+```js
+const computedObj = computed((oldValue) => {
+  const newValue = {
+    isEven: count.value % 2 === 0
+  }
+  if (oldValue && oldValue.isEven === newValue.isEven) {
+    return oldValue
+  }
+  return newValue
+})
+```
+
+[مثال در Playground](https://play.vuejs.org/#eNqVVMtu2zAQ/JUFgSZK4UpuczMkow/40AJ9IC3aQ9mDIlG2EokUyKVt1PC/d0lKtoEminMQQC1nZ4c7S+7Yu66L11awGUtNoesOwQi03ZzLuu2URtiBFtUECtV2FkU5gU2OxWpRVaJA2EOlVQuXxHDJJZeFkgYJayVC5hKj6dUxLnzSjZXmV40rZfFrh3Vb/82xVrLH//5DCQNNKPkweNiNVFP+zBsrIJvDjksgGrRahjVAbRZrIWdBVLz2yBfwBrIsg6mD7LncPyryfIVnywupUmz68HOEEqqCI+XFBQzrOKR79MDdx66GCn1jhpQDZx8f0oZ+nBgdRVcH/aMuBt1xZ80qGvGvh/X6nlXwnGpPl6qsLLxTtitzFFTNl0oSN/79AKOCHHQuS5pw4XorbXsr9ImHZN7nHFdx1SilI78MeOJ7Ca+nbvgd+GgomQOv6CNjSQqXaRJuHd03+kHRdg3JoT+A3a7XsfcmpbcWkQS/LZq6uM84C8o5m4fFuOg0CemeOXXX2w2E6ylsgj2gTgeYio/f1l5UEqj+Z3yC7lGuNDlpApswNNTrql7Gd0ZJeqW8TZw5t+tGaMdDXnA2G4acs7xp1OaTj6G2YjLEi5Uo7h+I35mti3H2TQsj9Jp6etjDXC8Fhu3F9y9iS+vDZqtK2xB6ZPNGGNVYpzHA3ltZkuwTnFf70b+1tVz+MIstCmmGQzmh/p56PGf00H4YOfpR7nV8PTxubP8P2GAP9Q==)
+
+توجه داشته باشید که همیشه باید قبل از مقایسه و برگرداندن مقدار قدیمی، محاسبه کامل انجام شود تا در هر اجرا وابستگی‌های یکسانی جمع‌آوری شوند.
+
 ## بهینه‌سازی‌های عمومی {#general-optimizations}
 
 > نکات زیر هر دو عملکرد بارگذاری صفحه و به‌روزرسانی را تحت تأثیر قرار می‌دهند.
