@@ -1,6 +1,6 @@
 # Component v-model {#component-v-model}
 
-## استفاده پایه
+## استفاده پایه {#basic-usage}
 
 با استفاده از `v-model` روی یک کامپوننت می‌توان یک اتصال دوطرفه ایجاد کرد.
 
@@ -49,7 +49,7 @@ const model = defineModel()
 
 [مثال در Playground](https://play.vuejs.org/#eNqFUtFKwzAU/ZWYl06YLbK30Q10DFSYigq+5KW0t11mmoQknZPSf/cm3eqEsT0l555zuefmpKV3WsfbBuiUpjY3XDtiwTV6ziSvtTKOLNZcFKQ0qiZRnATkG6JB0BIDJen2kp5iMlfSOlLbisw8P4oeQAhFPpURxVV0zWSa9PNwEgIHtRaZA0SEpOvbeduG5q5LE0Sh2jvZ3tSqADFjFHlGSYJkmhz10zF1FseXvIo3VklcrfX9jOaq1lyAedGOoz1GpyQwnsvQ3fdTqDnTwPhQz9eQf52ob+zO1xh9NWDBbIHRgXOZqcD19PL9GXZ4H0h03whUnyHfwCrReI+97L6RBdo+0gW3j+H9uaw+7HLnQNrDUt6oV3ZBzyhmsjiz+p/dSTwJfUx2+IpD1ic+xz5enwQGXEDJJaw8Gl2I1upMzlc/hEvdOBR6SNKAjqP1J6P/o6XdL11L5h4=)
 
-### در زیر پوسته
+### در زیر پوسته {#under-the-hood}
 
 `defineModel` یک ماکرو میانبر است. کامپایلر آن را برای موارد زیر توسعه می‌دهد:
 

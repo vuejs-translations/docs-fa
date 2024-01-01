@@ -141,6 +141,7 @@ export default defineComponent({
 ### استفاده در کامپوننت‌های تک فایلی {#usage-in-single-file-components}
 
 برای استفاده از TypeScript در کامپوننت‌های تک فایلی (Single-File Components)، ویژگی `lang="ts"` را به تگ `<script>` اضافه کنید. وقتی `lang="ts"` موجود است، همه عبارات قالب نیز از یک بررسی نوع دقیق‌تر بهره‌مند می‌شوند.
+
 ```vue
 <script lang="ts">
 import { defineComponent } from 'vue'
@@ -209,9 +210,10 @@ let x: string | number = 1
 در صورت استفاده از Vue CLI یا یک پیکربندی مبتنی بر webpack، استفاده از TypeScript در عبارات قالب نیاز به `vue-loader@^16.8.0` دارد.
 :::
 
-### استفاده از TSX
+### استفاده از TSX {#usage-with-tsx}
 
 Vue نیز از نوشتن کامپوننت‌ها با استفاده از JSX / TSX پشتیبانی می‌کند. جزئیات مربوط به این موضوع در راهنمای [تابع رندر و JSX](/guide/extras/render-function.html#jsx-tsx) توضیح داده شده است.
+
 ## کامپوننت‌های جنریک {#generic-components}
 
 کامپوننت‌های جنریک در دو حالت زیر پشتیبانی می‌شوند:
