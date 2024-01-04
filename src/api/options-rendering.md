@@ -1,10 +1,10 @@
-# Options: Rendering {#options-rendering}
+# آپشن: رندر کردن {#options-rendering}
 
-## template {#template}
+## تمپلیت {#template}
 
-A string template for the component.
+یک تمپلیت رشته ای برای کامپوننت.
 
-- **Type**
+- **تایپ**
 
   ```ts
   interface ComponentOptions {
@@ -12,25 +12,25 @@ A string template for the component.
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  A template provided via the `template` option will be compiled on-the-fly at runtime. It is only supported when using a build of Vue that includes the template compiler. The template compiler is **NOT** included in Vue builds that have the word `runtime` in their names, e.g. `vue.runtime.esm-bundler.js`. Consult the [dist file guide](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) for more details about the different builds.
+    تمپلیتی که از طریق `تمپلیت` آپشن ارائه میشود، در زمان اجرا کامپایل خواهد شد. این تنها در صورتی پشتیبانی میشود که از یک سازه Vue که شامل تمپلیت کامپایلر است استفاده شود. تمپلیت کامپایلر شامل سازه Vueهایی که در نام خود کلمه `ران‌تایم` را دارند **نمیشود**، برای مثال `vue.runtime.esm-bundler.js`. برای جزئیات بیشتر در مورد سازه های مختلف، [راهنمای فایل](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) را مطالعه کنید.
+    
+  اگر رشته با `#` شروع شود به عنوان یک `querySelector` استفاده میشود و از `innerHTML` المان انتخاب شده به عنوان رشته‌ی تمپلیت استفاده خواهد شد. این امکان را فراهم میکند که تمپلیت منبع با استفاده از المان‌های `<template>` اصلی نوشته شود.
 
-  If the string starts with `#` it will be used as a `querySelector` and use the selected element's `innerHTML` as the template string. This allows the source template to be authored using native `<template>` elements.
+  اگر گزینه `render` هم در همان کامپوننت موجود باشد، گزینه `template` نادیده گرفته خواهد شد.
 
-  If the `render` option is also present in the same component, `template` will be ignored.
+  اگر کامپوننت ریشه برنامه شما گزینه‌های `template` یا `render` را مشخص نکرده باشد، Vue سعی میکند از `innerHTML` المان مونت شده به عنوان تمپلیت استفاده کند.
 
-  If the root component of your application doesn't have a `template` or `render` option specified, Vue will try to use the `innerHTML` of the mounted element as the template instead.
-
-  :::warning Security Note
-  Only use template sources that you can trust. Do not use user-provided content as your template. See [Security Guide](/guide/best-practices/security#rule-no-1-never-use-non-trusted-templates) for more details.
+:::warning نکته امنیتی
+فقط از منابع تمپلیتی استفاده کنید که به آنها اعتماد دارید. هرگز محتوای ارائه شده توسط کاربران دیگر را به عنوان تمپلیت خود استفاده نکنید. برای کسب اطلاعات بیشتر به [راهنمای امنیتی](/guide/best-practices/security#rule-no-1-never-use-non-trusted-templates) مراجعه کنید.
   :::
 
-## render {#render}
+## رندر {#render}
 
-A function that programmatically returns the virtual DOM tree of the component.
+تابعی که به صورت برنامه‌نویسی درخت DOM مجازی کامپوننت را بازمیگرداند.
 
-- **Type**
+- **تایپ**
 
   ```ts
   interface ComponentOptions {
@@ -51,21 +51,21 @@ A function that programmatically returns the virtual DOM tree of the component.
   type VNodeArrayChildren = (VNodeArrayChildren | VNodeChildAtom)[]
   ```
 
-- **Details**
+- **جزئیات**
 
-  `render` is an alternative to string templates that allows you to leverage the full programmatic power of JavaScript to declare the render output of the component.
+  `رندر` یک جایگزین برای تمپلیت‌های رشته‌ای است که به شما این امکان را میدهد که از توان کامل برنامه‌نویسی جاوااسکریپت استفاده کنید تا خروجی رندر کامپوننت را اعلام کنید.
 
-  Pre-compiled templates, for example those in Single-File Components, are compiled into the `render` option at build time. If both `render` and `template` are present in a component, `render` will take higher priority.
+  تمپلیت‌های پیش کامپایل شده، به عنوان مثال تمپلیت‌های موجود در کامپوننت‌های تک فایل، در زمان ساخت به گزینه `رندر` تبدیل میشوند. اگر هر دو `رندر` و `تمپلیت` همزمان در یک کامپوننت وجود داشته باشند، گزینه `رندر` اولویت بالاتری خواهد داشت.
 
-- **See also**
-  - [Rendering Mechanism](/guide/extras/rendering-mechanism)
-  - [Render Functions](/guide/extras/render-function)
+- **همچنان دیدن کنید از**
+  - [مکانیسم رندرینگ](/guide/extras/rendering-mechanism)
+  - [توابع رندر](/guide/extras/render-function)
 
-## compilerOptions {#compileroptions}
+## گزینه های کامپایلر {#compileroptions}
 
-Configure runtime compiler options for the component's template.
+پیکربندی گزینه‌های کامپایلر در زمان اجرا برای تمپلیت کامپوننت
 
-- **Type**
+- **تایپ**
 
   ```ts
   interface ComponentOptions {
@@ -78,19 +78,19 @@ Configure runtime compiler options for the component's template.
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  This config option is only respected when using the full build (i.e. the standalone `vue.js` that can compile templates in the browser). It supports the same options as the app-level [app.config.compilerOptions](/api/application#app-config-compileroptions), and has higher priority for the current component.
+  این گزینه پیکربندی تنها زمانی اعتبار دارد که از نسخه کامل (به عبارت دیگر `vue.js` مستقل که قادر به کامپایل تمپلیت‌ها در مرورگر است) استفاده میشود. این گزینه همان گزینه‌های مربوط به کامپایلر سطح برنامه [app.config.compilerOptions](/api/application#app-config-compileroptions) را پشتیبانی میکند و برای کامپوننت فعلی اولویت بالاتری دارد.
 
-- **See also** [app.config.compilerOptions](/api/application#app-config-compileroptions)
+- **همچنان دیدن کنید از** [app.config.compilerOptions](/api/application#app-config-compileroptions)
 
-## slots<sup class="vt-badge ts"/> {#slots}
+## اسلات‌ها<sup class="vt-badge ts"/> {#slots}
 
-An option to assist with type inference when using slots programmatically in render functions. Only supported in 3.3+.
+یک گزینه برای کمک به استخراج نوع استنتاج هنگام استفاده برنامه‌نویسی از اسلات‌ها در توابع رندر. تنها در نسخه 3.3 به بالا پشتیبانی میشود.
 
-- **Details**
+- **جزئیات**
 
-  This option's runtime value is not used. The actual types should be declared via type casting using the `SlotsType` type helper:
+  مقدار ران‌تایم این گزینه استفاده نمیشود. تایپ‌های واقعی باید از طریق تعیین تایپ با استفاده از کمک‌کننده تایپ `SlotsType` اعلام شوند.
 
   ```ts
   import { SlotsType } from 'vue'
