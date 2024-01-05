@@ -1,25 +1,24 @@
-# کامپوننت‌های غیرهمگام {#async-components}
+# کامپوننت‌های غیرهمگام - Async Components {#async-components}
 
 ## کاربرد اصلی {#basic-usage}
 
-در برنامه‌های بزرگ، ممکن است لازم باشد برنامه را به تکه‌های کوچکتر تقسیم کنیم و فقط در هنگام نیاز به یک کامپوننت، آن را از سرور بارگذاری کنیم. در Vue تابع [`defineAsyncComponent`](/api/general#defineasynccomponent)  این خواسته را محقق می‌سازد:
+در برنامه‌های بزرگ، ممکن است لازم باشد برنامه را به بخش‌های کوچکتر تقسیم کنیم و فقط در هنگام نیاز به یک کامپوننت، آن را از سرور بارگذاری کنیم. در Vue تابع [`defineAsyncComponent`](/api/general#defineasynccomponent) این خواسته را محقق می‌سازد:
 
 ```js
 import { defineAsyncComponent } from 'vue'
 
 const AsyncComp = defineAsyncComponent(() => {
   return new Promise((resolve, reject) => {
-    // ... load component from server
-    resolve(/* loaded component */)
+    // ... بارگیری کامپوننت از سرور
+    resolve(/* کامپوننت بارگذاری شده */)
   })
 })
-// ... use `AsyncComp` like a normal component
+// ...  مانند یک کامپوننت معمولی استفاده کنید `AsyncComp` از
 ```
 
 همانطور که می‌بینید، `defineAsyncComponent` یک تابع بارگذار (loader) را می‌پذیرد که یک Promise را برمی‌گرداند. هنگامی که تعریف کامپوننت شما از سرور دریافت شد، تابع `resolve` در Promise بازگشتی، باید فراخوانی شود. همچنین می‌توانید با فراخوانی `reject(reason)` نشان دهید بارگذاری شکست خورده است.
 
 استفاده از [import  پویای ماژول ES](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) نیز یک Promise را برمی‌گرداند، بنابراین بیشتر اوقات از آن در ترکیب با  `defineAsyncComponent` استفاده می‌کنیم. Bundler هایی مانند Vite و webpack نیز از این ترکیب پشتیبانی می‌کنند (و از آن به عنوان نقاط تقسیم Bundle استفاده می‌کنند)، بنابراین می‌توانیم از آن برای import کردن Vue SFC استفاده کنیم:
-
 
 ```js
 import { defineAsyncComponent } from 'vue'
@@ -28,7 +27,6 @@ const AsyncComp = defineAsyncComponent(() =>
   import('./components/MyComponent.vue')
 )
 ```
-
 
 کامپوننت `AsyncComp` حاصل از این فرایند، یک کامپوننتِ لفافه (Wrapper) است که تابع بارگذار (loader) را تنها زمانی فراخوانی می کند که کامپوننتِ داخلی آن در صفحه رندر شده باشد. علاوه بر این، AsyncComp هرگونه پراپ (Prop) و اسلات (Slot) را به کامپوننت داخلی پاس می‌دهد، بنابراین می‌توانید از این لفافه ناهمگام (Async Wrapper) برای جایگزینیِ بدون مشکل کامپوننتِ اصلی، همراه با دستیابی به بارگذاریِ تنبلانه (Lazy Loading) استفاده کنید.
 
@@ -68,7 +66,6 @@ export default {
 
 این کامپوننت‌ها همچنین می‌توانند به صورت مستقیم، درون کامپوننت والد خود تعریف شوند:
 
-
 ```vue
 <script setup>
 import { defineAsyncComponent } from 'vue'
@@ -87,29 +84,29 @@ const AdminPage = defineAsyncComponent(() =>
 
 ## حالت‌های loading و خطا {#loading-and-error-states}
 
-عملیات‌های ناهمگام ناگزیر شامل حالت‌های بارگذاری و خطا هستند، `defineAsyncComponent()` از طریق گزینه‌های پیشرفته از مدیریت این حالات پشتیبانی می‌کند:
+عملیات‌های ناهمگام ناگزیر شامل حالت‌های loading و error هستند، `defineAsyncComponent()‎` از طریق گزینه‌های پیشرفته از مدیریت این حالات پشتیبانی می‌کند:
 
 ```js
 const AsyncComp = defineAsyncComponent({
-  // the loader function
+  // loader تابع
   loader: () => import('./Foo.vue'),
 
-  // A component to use while the async component is loading
+  // async کامپوننتی برای استفاده در حین لود کامپوننت
   loadingComponent: LoadingComponent,
-  // Delay before showing the loading component. Default: 200ms.
+  // تاخیر قبل از نمایش کامپوننت لودینگ. پیش‌فرض: 200 میلی‌ثانیه
   delay: 200,
 
-  // A component to use if the load fails
+  // کامپوننتی برای استفاده در صورت خطا در بارگذاری
   errorComponent: ErrorComponent,
-  // The error component will be displayed if a timeout is
-  // provided and exceeded. Default: Infinity.
+  // در صورت تعریف مهلت زمانی و طول کشیدن بیش از آن
+  // کامپوننت خطا نمایش داده می شود. پیش فرض: بی نهایت
   timeout: 3000
 })
 ```
 
-اگر یک کامپوننت loading ارائه شود، در ابتدا آن نمایش داده می‌شود مادامی که کامپوننت داخلی در حال بارگذاری است. یک تأخیر پیش فرض ۲۰۰ میلی ثانیه قبل از نمایش کامپوننت loading وجود دارد. این (تاخیر) به این دلیل است که در شبکه‌های پرسرعت، یک وضعیت loading آنی و لحظه‌ای، ممکن است خیلی سریع (با کامپوننت اصلی) جایگزین شود و در نهایت مانند یک لرزش تصویر به نظر برسد.
+اگر یک کامپوننت loading ارائه شود، در ابتدا آن نمایش داده می‌شود تا زمانی که کامپوننت داخلی در حال بارگذاری است. یک تأخیر پیش فرض ۲۰۰ میلی ثانیه قبل از نمایش کامپوننت loading وجود دارد. این (تاخیر) به این دلیل است که در شبکه‌های پرسرعت، یک loading آنی و لحظه‌ای، ممکن است خیلی سریع (با کامپوننت اصلی) جایگزین شود و در نهایت مانند یک لرزش تصویر به نظر برسد.
 
-اگر یک کامپوننت خطا ارائه شود، زمانی نمایش داده می‌شود که Promise برگردانده شده توسط تابع بارگذار رد شود. همچنین می‌توانید یک تایم‌اوت را مشخص کنید تا کامپوننت خطا، زمانی که درخواست خیلی طول می کشد نمایش داده شود.
+اگر یک کامپوننت خطا ارائه شود، زمانی نمایش داده می‌شود که Promise برگردانده شده توسط تابع بارگذار رد شود. همچنین می‌توانید یک تایم‌اوت را مشخص کنید تا کامپوننت خطا، زمانی که درخواست خیلی طول می‌کشد نمایش داده شود.
 
 ## کاربرد Suspence در ترکیب با کامپوننت‌های ناهمگام {#using-with-suspense}
 

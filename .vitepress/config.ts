@@ -222,7 +222,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/components/provide-inject'
         },
         {
-          text: 'کامپوننت‌های غیرهمگام (Async Components)',
+          text: 'کامپوننت‌های غیرهمگام - Async Components',
           link: '/guide/components/async'
         }
       ]
