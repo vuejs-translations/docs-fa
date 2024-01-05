@@ -12,11 +12,11 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 یک بخش خاص برای Vue در مورد composables وجود دارد. برای اطلاعات بیشتر، به بخش [تست Composables](#testing-composables) در زیر مراجعه کنید.
 
-## When to Test {#when-to-test}
+## زمان نوشتن تست {#when-to-test}
 
-Start testing early! We recommend you begin writing tests as soon as you can. The longer you wait to add tests to your application, the more dependencies your application will have, and the harder it will be to start.
+تست نویسی را زودنر شروع کنید ! توضیه میکنیم هرچه سریعتر نوشتن تست ها را شروع کنید . هر چقدر دیرتر تست ها را اضافه کنید dependency های بیشتری وجود خواهند داشت و اضافه کردن تست سختتر می شود .
 
-## Testing Types {#testing-types}
+## انواع تست {#testing-types}
 
 When designing your Vue application's testing strategy, you should leverage the following testing types:
 
