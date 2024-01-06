@@ -139,3 +139,11 @@ li {
   padding-left: unset;
   padding-right: 1rem;
 }
+
+.vt-badge.ts {
+  margin-right: 0.5em;
+}
+
+.details summary {
+  direction: rtl;
+}
