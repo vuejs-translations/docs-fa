@@ -1,10 +1,10 @@
-# SFC Syntax Specification {#sfc-syntax-specification}
+# سینتکس کامپوننت های تک فایلی | SFC {#sfc-syntax-specification}
 
-## Overview {#overview}
+## نمای کلی {#overview}
 
-A Vue Single-File Component (SFC), conventionally using the `*.vue` file extension, is a custom file format that uses an HTML-like syntax to describe a Vue component. A Vue SFC is syntactically compatible with HTML.
+کامپوننت تک فایلی (SFC) در Vue که معمولاً از پسوند فایل `*.vue` استفاده می‌کند، یک قالب فایل سفارشی است که از سینتکسی شبیه به HTML برای توصیف یک کامپوننت Vue استفاده می‌کند. کامپوننت تک فایلی (SFC)  از نظر سینتکس با HTML سازگار است.
 
-Each `*.vue` file consists of three types of top-level language blocks: `<template>`, `<script>`, and `<style>`, and optionally additional custom blocks:
+هر فایل `*.vue` از سه نوع بلوک زبان سطح بالا تشکیل شده است: `<template>` و `<script>` و `<style>` و همچنین می‌توان به صورت اختیاری بلوک های سفارشی اضافه کرد:
 
 ```vue
 <template>
@@ -32,32 +32,34 @@ export default {
 </custom1>
 ```
 
-## Language Blocks {#language-blocks}
+## بلوک های زبان {#language-blocks}
 
 ### `<template>` {#template}
 
-- Each `*.vue` file can contain at most one top-level `<template>` block.
+- هر فایل `*.vue` می تواند حداکثر یک بلوک `<template>` در سطح بالا داشته باشد.
 
-- Contents will be extracted and passed on to `@vue/compiler-dom`, pre-compiled into JavaScript render functions, and attached to the exported component as its `render` option.
+- محتویات این بلوک استخراج و به `vue/compiler-dom@` منتقل می‌شوند، از قبل در توابع رندر جاوا اسکریپت کامپایل می‌شوند و به‌عنوان گزینه `render` به کامپوننت صادر شده پیوست می‌شوند.
 
 ### `<script>` {#script}
 
-- Each `*.vue` file can contain at most one `<script>` block (excluding [`<script setup>`](/api/sfc-script-setup)).
+- هر فایل `*.vue` می تواند حداکثر یک بلوک `<script>` داشته باشد (به استثنای  [`<script setup>`](/api/sfc-script-setup)).
 
-- The script is executed as an ES Module.
+- اسکریپت به عنوان یک ماژول ES اجرا می شود.
 
-- The **default export** should be a Vue component options object, either as a plain object or as the return value of [defineComponent](/api/general#definecomponent).
+- در این بلوک، **default export** باید یک آبجکت از آپشن های کامپوننت  Vue باشد، چه به‌عنوان یک آبجکت ساده یا به‌عنوان مقدار بازگشتی از [defineComponent](/api/general#definecomponent).
 
 ### `<script setup>` {#script-setup}
 
-- Each `*.vue` file can contain at most one `<script setup>` block (excluding normal `<script>`).
+- هر فایل `*.vue` می تواند حداکثر یک بلوک `<script setup>` داشته باشد (به استثنای `<script>` معمولی).
 
-- The script is pre-processed and used as the component's `setup()` function, which means it will be executed **for each instance of the component**. Top-level bindings in `<script setup>` are automatically exposed to the template. For more details, see [dedicated documentation on `<script setup>`](/api/sfc-script-setup).
+- اسکریپت از قبل پردازش شده و به عنوان تابع کامپوننت `()setup` استفاده می شود، به این معنی که **برای هر نمونه (Instance) از کامپوننت** اجرا می شود. پیوندهای سطح بالا در `<script setup>` به طور خودکار در template قرار می گیرند. برای جزئیات بیشتر، [اسناد اختصاصی در `<script setup>`](/api/sfc-script-setup) را ببینید.
+
 
 ### `<style>` {#style}
 
-- A single `*.vue` file can contain multiple `<style>` tags.
+- یک فایل `*.vue` می‌تواند حاوی چندین تگ `<style>` باشد.
 
+- یک تگ `<style>` می‌تواند دارای ویژگی‌های `scoped` یا `module` باشد (برای جزئیات بیشتر به [SFC Style Features](/api/sfc-css-features) مراجعه کنید) تا به کپسوله کردن سبک‌ها در مؤلفه فعلی کمک کند. چندین تگ `<style>` با حالت‌های کپسوله‌سازی متفاوت را می‌توان در یک جزء ترکیب کرد.
 - A `<style>` tag can have `scoped` or `module` attributes (see [SFC Style Features](/api/sfc-css-features) for more details) to help encapsulate the styles to the current component. Multiple `<style>` tags with different encapsulation modes can be mixed in the same component.
 
 ### Custom Blocks {#custom-blocks}
