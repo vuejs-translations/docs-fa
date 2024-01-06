@@ -42,28 +42,26 @@ onMounted(async () => {
     </div>
   </section>
 
-  <section dir="rtl" id="special-sponsor">
+  <section  dir="rtl" v-if="data && data.special" id="special-sponsor">
     <span class="lead">حامی ویژه</span>
-    <template v-if="data && data.special">
-      <template v-for="{ url, img, name, description } of data.special">
-        <a :href="url" target="_blank" rel="sponsored noopener">
-          <picture v-if="img.endsWith('png')">
-            <source
-              type="image/avif"
-              :srcset="`${base}/images/${img.replace(/\.png$/, '.avif')}`"
-            />
-            <img :src="`${base}/images/${img}`" :alt="name" />
-          </picture>
-          <img
-            width="168"
-            height="42"
-            v-else
-            :src="`${base}/images/${img}`"
-            :alt="name"
+    <template v-for="{ url, img, name, description } of data.special">
+      <a :href="url" target="_blank" rel="sponsored noopener">
+        <picture v-if="img.endsWith('png')">
+          <source
+            type="image/avif"
+            :srcset="`${base}/images/${img.replace(/\.png$/, '.avif')}`"
           />
-        </a>
-        <span dir="ltr">{{ description }}</span>
-      </template>
+          <img :src="`${base}/images/${img}`" :alt="name" />
+        </picture>
+        <img
+          width="168"
+          height="42"
+          v-else
+          :src="`${base}/images/${img}`"
+          :alt="name"
+        />
+      </a>
+      <span dir="ltr">{{ description }}</span>
     </template>
   </section>
 

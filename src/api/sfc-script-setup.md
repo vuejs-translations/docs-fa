@@ -227,6 +227,77 @@ const props = withDefaults(defineProps<Props>(), {
 
 This will be compiled to equivalent runtime props `default` options. In addition, the `withDefaults` helper provides type checks for the default values, and ensures the returned `props` type has the optional flags removed for properties that do have default values declared.
 
+## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
+
+This macro can be used to declare a two-way binding prop that can be consumed via `v-model` from the parent component. Example usage is also discussed in the [Component `v-model`](/guide/components/v-model) guide.
+
+Under the hood, this macro declares a model prop and a corresponding value update event. If the first argument is a literal string, it will be used as the prop name; Otherwise the prop name will default to `"modelValue"`. In both cases, you can also pass an additional object which can include the prop's options and the model ref's value transform options.
+
+```js
+// declares "modelValue" prop, consumed by parent via v-model
+const model = defineModel()
+// OR: declares "modelValue" prop with options
+const model = defineModel({ type: String })
+
+// emits "update:modelValue" when mutated
+model.value = 'hello'
+
+// declares "count" prop, consumed by parent via v-model:count
+const count = defineModel('count')
+// OR: declares "count" prop with options
+const count = defineModel('count', { type: Number, default: 0 })
+
+function inc() {
+  // emits "update:count" when mutated
+  count.value++
+}
+```
+
+### Modifiers and Transformers {#modifiers-and-transformers}
+
+To access modifiers used with the `v-model` directive, we can destructure the return value of `defineModel()` like this:
+
+```js
+const [modelValue, modelModifiers] = defineModel()
+
+// corresponds to v-model.trim
+if (modelModifiers.trim) {
+  // ...
+}
+```
+
+When a modifier is present, we likely need to transform the value when reading or syncing it back to the parent. We can achieve this by using the `get` and `set` transformer options:
+
+```js
+const [modelValue, modelModifiers] = defineModel({
+  // get() omitted as it is not needed here
+  set(value) {
+    // if the .trim modifier is used, return trimmed value
+    if (modelModifiers.trim) {
+      return value.trim()
+    }
+    // otherwise, return the value as-is
+    return value
+  }
+})
+```
+
+### Usage with TypeScript <sup class="vt-badge ts" /> {#usage-with-typescript}
+
+Like `defineProps` and `defineEmits`, `defineModel` can also receive type arguments to specify the types of the model value and the modifiers:
+
+```ts
+const modelValue = defineModel<string>()
+//    ^? Ref<string | undefined>
+
+// default model with options, required removes possible undefined values
+const modelValue = defineModel<string>({ required: true })
+//    ^? Ref<string>
+
+const [modelValue, modifiers] = defineModel<string, 'trim' | 'uppercase'>()
+//                 ^? Record<'trim' | 'uppercase', true | undefined>
+```
+
 ## defineExpose() {#defineexpose}
 
 Components using `<script setup>` are **closed by default** - i.e. the public instance of the component, which is retrieved via template refs or `$parent` chains, will **not** expose any of the bindings declared inside `<script setup>`.
@@ -249,7 +320,7 @@ defineExpose({
 
 When a parent gets an instance of this component via template refs, the retrieved instance will be of the shape `{ a: number, b: number }` (refs are automatically unwrapped just like on normal instances).
 
-## defineOptions() {#defineoptions}
+## defineOptions() <sup class="vt-badge" data-text="3.3+" /> {#defineoptions}
 
 This macro can be used to declare component options directly inside `<script setup>` without having to use a separate `<script>` block:
 
@@ -379,5 +450,5 @@ defineProps<{
 
 ## Restrictions {#restrictions}
 
-* Due to the difference in module execution semantics, code inside `<script setup>` relies on the context of an SFC. When moved into external `.js` or `.ts` files, it may lead to confusion for both developers and tools. Therefore, **`<script setup>`** cannot be used with the `src` attribute.
-* `<script setup>` does not support In-DOM Root Component Template.([Related Discussion](https://github.com/vuejs/core/issues/8391))
+- Due to the difference in module execution semantics, code inside `<script setup>` relies on the context of an SFC. When moved into external `.js` or `.ts` files, it may lead to confusion for both developers and tools. Therefore, **`<script setup>`** cannot be used with the `src` attribute.
+- `<script setup>` does not support In-DOM Root Component Template.([Related Discussion](https://github.com/vuejs/core/issues/8391))

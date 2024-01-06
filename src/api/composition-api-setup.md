@@ -1,17 +1,17 @@
-# Composition API: setup() {#composition-api-setup}
+# Composition API: setup()‎ {#composition-api-setup}
 
-## Basic Usage {#basic-usage}
+## کاربرد عمومی {#basic-usage}
 
-The `setup()` hook serves as the entry point for Composition API usage in components in the following cases:
+هوک `setup()‎` در شرایط زیر، زمانی که قصد استفاده از Composition API را داریم، به عنوان اولین قدم استفاده می‌شود:
 
-1. Using Composition API without a build step;
-2. Integrating with Composition-API-based code in an Options API component.
+1. استفاده از Composition API بدون مرحله ساخت (build)
+2. ترکیب کدهای نوشته شده با Composition API در یک کامپوننت با ساختار Options API
 
-:::info Note
-If you are using Composition API with Single-File Components, [`<script setup>`](/api/sfc-script-setup) is strongly recommended for a more succinct and ergonomic syntax.
+:::tip نکات تکمیلی
+اگر از کامپوننت های تک فایلی (Single-File) با Composition API استفاده می‌کنید، برای داشتن کدهای کوتاه‌تر و ارگونومیک‌تر توصیه می‌شود از [`<script setup>`](/api/sfc-script-setup) استفاده کنید.
 :::
 
-We can declare reactive state using [Reactivity APIs](./reactivity-core) and expose them to the template by returning an object from `setup()`. The properties on the returned object will also be made available on the component instance (if other options are used):
+با استفاده از [Reactivity APIs](./reactivity-core) و گرفتن خروجی از یک آبجکت از تابع `setup()‎`، می‌توان reactive state را تعریف نمود. پراپرتی‌های آبجکتی که از آن خروجی گرفته‌ایم نیز در نمونه ساخته شده از کامپوننت، قابل دسترس خواهد بود (به شرط آنکه سایر آپشن‌ها نیز استفاده شوند):
 
 ```vue
 <script>
@@ -38,15 +38,15 @@ export default {
 </template>
 ```
 
-[refs](/api/reactivity-core#ref) returned from `setup` are [automatically shallow unwrapped](/guide/essentials/reactivity-fundamentals#deep-reactivity) when accessed in the template so you do not need to use `.value` when accessing them. They are also unwrapped in the same way when accessed on `this`.
+خروجی [refs](/api/reactivity-core#ref) زمانی که در تمپلیت قابل دسترس باشد، بصورت خودکار از `setup` [تفکیک](/guide/essentials/reactivity-fundamentals#deep-reactivity) می‌شود، در نتیجه برای دسترسی به آن نیازی به استفاده از `.value` نیست. علاوه بر این، در شرایطی که از `this` استفاده می‌کنیم نیز به صورت خودکار تفکیک خواهند شد.
 
-`setup()` itself does not have access to the component instance - `this` will have a value of `undefined` inside `setup()`. You can access Composition-API-exposed values from Options API, but not the other way around.
+تایع `setup()‎` به تنهایی دسترسی به نمونه ساخته شده از کامپوننت را ندارد - در تابع `setup()‎` عبارت `this` مقدار تعریف نشده (`undefined`) دارد. تنها می‌توان از طریق Options API به مقادیر Composition-API-exposed دسترسی داشت، و نه برعکس.
 
-`setup()` should return an object _synchronously_. The only case when `async setup()` can be used is when the component is a descendant of a [Suspense](../guide/built-ins/suspense) component.
+تابع `setup()‎` باید یک آبجکت از نوع _synchronously_ خروجی دهد. تنها زمانی می‌شود از `async setup()‎` استفاده کرد که کامپوننت از نوع [Suspense](../guide/built-ins/suspense) باشد.
 
-## Accessing Props {#accessing-props}
+## دسترسی به Props {#accessing-props}
 
-The first argument in the `setup` function is the `props` argument. Just as you would expect in a standard component, `props` inside of a `setup` function are reactive and will be updated when new props are passed in.
+اولین آرگومان تابع `setup` مقادیر `props` می‌باشد. درست همانند سایر کامپوننت‌های استاندارد، مقدار `props` درون تایع `setup` متغیر بوده و با پاس دادن متغیر جدید، به‌ روز رسانی خواهد شد.
 
 ```js
 export default {
@@ -59,9 +59,8 @@ export default {
 }
 ```
 
-Note that if you destructure the `props` object, the destructured variables will lose reactivity. It is therefore recommended to always access props in the form of `props.xxx`.
-
-If you really need to destructure the props, or need to pass a prop into an external function while retaining reactivity, you can do so with the [toRefs()](./reactivity-utilities#torefs) and [toRef()](/api/reactivity-utilities#toref) utility APIs:
+توجه داشته باشید که با تعمیم (destructure) کردن آبجکت `props`، متغیرهای تعمیم داده‌شده دینامیک بودن خود را از دست می‌دهند. درنتیجه توصیه می‌شود همواره از طریق فرم `props.xxx` به مقادیر `props` دسترسی داشته باشید.
+اما اگر اصرار به تعمیم دادن متغیرهای درونی props دارید، یا اینکه با حفظ دینامیک بودن آن قصد پاس کردن یک prop به تابع خارجی را دارید، می‌توان از ‌APIهای [toRefs()‎](./reactivity-utilities#torefs) یا [toRef()‎](/api/reactivity-utilities#toref) استفاده کنید:
 
 ```js
 import { toRefs, toRef } from 'vue'
@@ -79,9 +78,9 @@ export default {
 }
 ```
 
-## Setup Context {#setup-context}
+## آبجکت Setup Context {#setup-context}
 
-The second argument passed to the `setup` function is a **Setup Context** object. The context object exposes other values that may be useful inside `setup`:
+دومین آرگومانی که به تابع `setup` داده می‌شود، آبجکت **Setup Context** می‌باشد. سایر پارامترهایی که ممکن است در تابع `setup` استفاده گردد، از طریق این آبجکت وارد می‌شود:
 
 ```js
 export default {
@@ -101,7 +100,7 @@ export default {
 }
 ```
 
-The context object is not reactive and can be safely destructured:
+از آنجا که آبجکت context دینامیک نمی‌باشد، با اطمینان خاطر قابل تعمیم دادن است:
 
 ```js
 export default {
@@ -111,11 +110,11 @@ export default {
 }
 ```
 
-`attrs` and `slots` are stateful objects that are always updated when the component itself is updated. This means you should avoid destructuring them and always reference properties as `attrs.x` or `slots.x`. Also note that, unlike `props`, the properties of `attrs` and `slots` are **not** reactive. If you intend to apply side effects based on changes to `attrs` or `slots`, you should do so inside an `onBeforeUpdate` lifecycle hook.
+مقادیر `attrs` و `slots` آبجکت‌های stateful هستند و همیشه با آپدیت شدن کامپوننت، مقادیر تازه دریافت می‌کنند. این بدین معنا است که مقادیر آنها نباید تعمیم داده شوند و باید بصورت `attrs.x` یا `slots.x` مورد استفاده قرار گیرند. توجه داشته باشید که برخلاف `props`، مقادیر `attrs` و `slots` دینامیک (reactive) **نیستند**. اعمال تاثیرات جانبی (side effects) روی مقادیر `attrs` و `slots` باید در چرخه عمر (lifecycle) هوک انجام شود.
 
-### Exposing Public Properties {#exposing-public-properties}
+### استفاده از مقادیر عمومی {#exposing-public-properties}
 
-`expose` is a function that can be used to explicitly limit the properties exposed when the component instance is accessed by a parent component via [template refs](/guide/essentials/template-refs#ref-on-component):
+تابع `expose` زمانی که مقادیر نمونه ساخته شده از کامپوننت، توسط کامپوننت مادر از طریق [template refs](/guide/essentials/template-refs#ref-on-component) در دسترس قرار گرفته باشد، برای محدودسازی صریح این مقادیر مورد استفاده قرار می‌گیرد:
 
 ```js{5,10}
 export default {
@@ -132,9 +131,9 @@ export default {
 }
 ```
 
-## Usage with Render Functions {#usage-with-render-functions}
+## استفاده با Render Functions {#usage-with-render-functions}
 
-`setup` can also return a [render function](/guide/extras/render-function) which can directly make use of the reactive state declared in the same scope:
+تابع `setup` می‌تواند یک خروجی از نوع [render function](/guide/extras/render-function) نیز داشته باشد. از این طریق می‌توان بصورت مستقیم از reactive state تعریف شده در اسکوپ (scope) استفاده کرد:
 
 ```js{6}
 import { h, ref } from 'vue'
@@ -147,9 +146,8 @@ export default {
 }
 ```
 
-Returning a render function prevents us from returning anything else. Internally that shouldn't be a problem, but it can be problematic if we want to expose methods of this component to the parent component via template refs.
-
-We can solve this problem by calling [`expose()`](#exposing-public-properties):
+زمانی که یک render function خروجی داده می‌شود، امکان خروجی گرفتن از مقادیر دیگر وجود ندارد. زمانی که مقادیر تنها در این کامپوننت استفاده شوند، مشکلی برای ما بوجود نمی‌آورد. اما در حالتی که نیاز باشد توابع کامپوننت از طریق template refs به کامپوننت مادر ارجاع داده شوند، این روش مشکل ساز خواهد بود.
+با فراخواندن تابع [`expose()‎`](#exposing-public-properties) می‌توان این مشکل را برطرف نمود:
 
 ```js{8-10}
 import { h, ref } from 'vue'
@@ -168,4 +166,4 @@ export default {
 }
 ```
 
-The `increment` method would then be available in the parent component via a template ref.
+تابع `increment` از طریق template ref در کامپوننت مادر قابل دسترسی خواهد بود.

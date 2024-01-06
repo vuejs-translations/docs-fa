@@ -1,22 +1,22 @@
 <script setup>
-import TestingApiSwitcher from './TestingApiSwitcher.vue'
+import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
 
-# Testing {#testing}
+# تست و بررسی {#testing}
 
-## Why Test? {#why-test}
+## چرا تست و بررسی؟ {#why-test}
 
-Automated tests help you and your team build complex Vue applications quickly and confidently by preventing regressions and encouraging you to break apart your application into testable functions, modules, classes, and components. As with any application, your new Vue app can break in many ways, and it's important that you can catch these issues and fix them before releasing.
+تست‌های خودکار به شما و تیمتان کمک می‌کنند تا به سرعت و با اطمینان بیشتری برنامه‌های پیچیده‌ی Vue را بسازید، باعث جلوگیری از رگرسیون‌ها شده و شما را تشویق کنند تا برنامه‌ی خود را به توابع، ماژول‌ها، کلاس‌ها و کامپوننت‌های قابل تست تقسیم کنید. همانند هر برنامه‌ی دیگری، برنامه‌ی Vue جدید شما می‌تواند به چندین روش خراب شود و مهم است که بتوانید این مشکلات را شناسایی کرده و قبل از انتشار آنها را برطرف کنید.
 
-In this guide, we'll cover basic terminology and provide our recommendations on which tools to choose for your Vue 3 application.
+در این راهنما، ما اصطلاحات پایه را پوشش می دهیم و توصیه های خود را در مورد ابزارهایی که برای برنامه Vue 3 خود انتخاب می کنید، ارائه می دهیم.
 
-There is one Vue-specific section covering composables. See [Testing Composables](#testing-composables) below for more details.
+یک بخش خاص برای Vue در مورد composables وجود دارد. برای اطلاعات بیشتر، به بخش [تست Composables](#testing-composables) در زیر مراجعه کنید.
 
-## When to Test {#when-to-test}
+## زمان نوشتن تست {#when-to-test}
 
-Start testing early! We recommend you begin writing tests as soon as you can. The longer you wait to add tests to your application, the more dependencies your application will have, and the harder it will be to start.
+تست نویسی را زودنر شروع کنید ! توضیه میکنیم هرچه سریعتر نوشتن تست ها را شروع کنید . هر چقدر دیرتر تست ها را اضافه کنید dependency های بیشتری وجود خواهند داشت و اضافه کردن تست سختتر می شود .
 
-## Testing Types {#testing-types}
+## انواع تست {#testing-types}
 
 When designing your Vue application's testing strategy, you should leverage the following testing types:
 
@@ -126,72 +126,68 @@ Component tests should focus on the component's public interfaces rather than in
 
   We know nothing about the implementation of Stepper, only that the "input" is the `max` prop and the "output" is the state of the DOM as the user will see it.
 
-<TestingApiSwitcher>
+<VTCodeGroup>
+  <VTCodeGroupTab label="Vue Test Utils">
 
-<div class="testing-library-api">
+  ```js
+  const valueSelector = '[data-testid=stepper-value]'
+  const buttonSelector = '[data-testid=increment]'
 
-```js
-const { getByText } = render(Stepper, {
-  props: {
-    max: 1
-  }
-})
+  const wrapper = mount(Stepper, {
+    props: {
+      max: 1
+    }
+  })
 
-getByText('0') // Implicit assertion that "0" is within the component
+  expect(wrapper.find(valueSelector).text()).toContain('0')
 
-const button = getByRole('button', { name: /increment/i })
+  await wrapper.find(buttonSelector).trigger('click')
 
-// Dispatch a click event to our increment button.
-await fireEvent.click(button)
+  expect(wrapper.find(valueSelector).text()).toContain('1')
+  ```
 
-getByText('1')
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="Cypress">
 
-await fireEvent.click(button)
-```
+  ```js
+  const valueSelector = '[data-testid=stepper-value]'
+  const buttonSelector = '[data-testid=increment]'
 
-</div>
+  mount(Stepper, {
+    props: {
+      max: 1
+    }
+  })
 
-<div class="vtu-api">
+  cy.get(valueSelector).should('be.visible').and('contain.text', '0')
+    .get(buttonSelector).click()
+    .get(valueSelector).should('contain.text', '1')
+  ```
 
-```js
-const valueSelector = '[data-testid=stepper-value]'
-const buttonSelector = '[data-testid=increment]'
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="Testing Library">
 
-const wrapper = mount(Stepper, {
-  props: {
-    max: 1
-  }
-})
+  ```js
+  const { getByText } = render(Stepper, {
+    props: {
+      max: 1
+    }
+  })
 
-expect(wrapper.find(valueSelector).text()).toContain('0')
+  getByText('0') // Implicit assertion that "0" is within the component
 
-await wrapper.find(buttonSelector).trigger('click')
+  const button = getByRole('button', { name: /increment/i })
 
-expect(wrapper.find(valueSelector).text()).toContain('1')
-```
+  // Dispatch a click event to our increment button.
+  await fireEvent.click(button)
 
-</div>
+  getByText('1')
 
-<div class="cypress-api">
+  await fireEvent.click(button)
+  ```
 
-```js
-const valueSelector = '[data-testid=stepper-value]'
-const buttonSelector = '[data-testid=increment]'
-
-mount(Stepper, {
-  props: {
-    max: 1
-  }
-})
-
-cy.get(valueSelector).should('be.visible').and('contain.text', '0')
-  .get(buttonSelector).click()
-  .get(valueSelector).should('contain.text', '1')
-```
-
-</div>
-
-</TestingApiSwitcher>
+  </VTCodeGroupTab>
+</VTCodeGroup>
 
 - **DON'T**
 

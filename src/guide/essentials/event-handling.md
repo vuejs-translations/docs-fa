@@ -1,4 +1,4 @@
-# Event Handling {#event-handling}
+# مدیریت رویدادها - Event Handling {#event-handling}
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/user-events-in-vue-3" title="Free Vue.js Events Lesson"/>
@@ -8,19 +8,19 @@
   <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-user-events-in-vue-3" title="Free Vue.js Events Lesson"/>
 </div>
 
-## Listening to Events {#listening-to-events}
+## گوش دادن به رویدادها {#listening-to-events}
 
-We can use the `v-on` directive, which we typically shorten to the `@` symbol, to listen to DOM events and run some JavaScript when they're triggered. The usage would be `v-on:click="handler"` or with the shortcut, `@click="handler"`.
+برای گوش دادن به رویدادهای DOM و اجرای کد جاوا اسکریپت در زمانی‌که آن رویدادها رخ می‌دهند، می‌توانیم از دستور `v-on` استفاده کنیم که معمولاً آن را به `@` خلاصه می‌کنیم. استفاده کردن از آن به صورت `v-on:click="handler"‎` یا با میانبر `‎@click="handler"‎` خواهد بود.
 
-The handler value can be one of the following:
+مقدار handler می‌تواند یکی از موارد زیر باشد:
 
-1. **Inline handlers:** Inline JavaScript to be executed when the event is triggered (similar to the native `onclick` attribute).
+1. **درون‌خطی (Inline handlers)**: جاوا اسکریپت درون‌خطی هنگام فراخوانی رویداد اجرا می‌شود (همانند ویژگی `onclick` در جاوا اسکریپت بومی).
 
-2. **Method handlers:** A property name or path that points to a method defined on the component.
+2. **متد (Method handlers)**: نام پراپرتی یا مسیری که به یک متد تعریف شده در کامپوننت اشاره می‌کند.
 
-## Inline Handlers {#inline-handlers}
+## درون‌خطی (Inline handlers) {#inline-handlers}
 
-Inline handlers are typically used in simple cases, for example:
+این روش معمولاً در موارد ساده استفاده می‌شوند، به عنوان مثال:
 
 <div class="composition-api">
 
@@ -48,20 +48,20 @@ data() {
 
 <div class="composition-api">
 
-[Try it in the Playground](https://play.vuejs.org/#eNo9jssKgzAURH/lko0tgrbbEqX+Q5fZaLxiqHmQ3LgJ+fdqFZcD58xMYp1z1RqRvRgP0itHEJCia4VR2llPkMDjBBkmbzUUG1oII4y0JhBIGw2hh2Znbo+7MLw+WjZ/C4TaLT3hnogPkcgaeMtFyW8j2GmXpWBtN47w5PWBHLhrPzPCKfWDXRHmPsCAaOBfgSOkdH3IGUhpDBWv9/e8vsZZ/gFFhFJN)
+[امتحان این مورد در Playground](https://play.vuejs.org/#eNo9jssKgzAURH/lko0tgrbbEqX+Q5fZaLxiqHmQ3LgJ+fdqFZcD58xMYp1z1RqRvRgP0itHEJCia4VR2llPkMDjBBkmbzUUG1oII4y0JhBIGw2hh2Znbo+7MLw+WjZ/C4TaLT3hnogPkcgaeMtFyW8j2GmXpWBtN47w5PWBHLhrPzPCKfWDXRHmPsCAaOBfgSOkdH3IGUhpDBWv9/e8vsZZ/gFFhFJN)
 
 </div>
 <div class="options-api">
 
-[Try it in the Playground](https://play.vuejs.org/#eNo9jcEKgzAQRH9lyKlF0PYqqdR/6DGXaLYo1RjiRgrivzepIizLzu7sm1XUzuVLIFEKObe+d1wpS183eYahtw4DY1UWMJr15ZpmxYAnDt7uF0BxOwXL5Evc0kbxlmyxxZLFyY2CaXSDZkqKZROYJ4tnO/Tt56HEgckyJaraGNxlsVt2u6teHeF40s20EDo9oyGy+CPIYF1xULBt4H6kOZeFiwBZnOFi+wH0B1hk)
+[امتحان این مورد در Playground](https://play.vuejs.org/#eNo9jcEKgzAQRH9lyKlF0PYqqdR/6DGXaLYo1RjiRgrivzepIizLzu7sm1XUzuVLIFEKObe+d1wpS183eYahtw4DY1UWMJr15ZpmxYAnDt7uF0BxOwXL5Evc0kbxlmyxxZLFyY2CaXSDZkqKZROYJ4tnO/Tt56HEgckyJaraGNxlsVt2u6teHeF40s20EDo9oyGy+CPIYF1xULBt4H6kOZeFiwBZnOFi+wH0B1hk)
 
 </div>
 
-## Method Handlers {#method-handlers}
+## متد (Method handlers) {#method-handlers}
 
-The logic for many event handlers will be more complex though, and likely isn't feasible with inline handlers. That's why `v-on` can also accept the name or path of a component method you'd like to call.
+منطق بسیاری از کنترل کننده‌های رویداد (event handlers) پیچیده‌تر است و احتمالا با کنترل کننده‌های inline امکان‌پذیر نیست. به همین دلیل `v-on` همچنین می‌تواند نام یا مسیری از متدِ کامپوننت که می‌خواهید صدا بزنید، بپذیرد.
 
-For example:
+به عنوان مثال:
 
 <div class="composition-api">
 
@@ -70,7 +70,7 @@ const name = ref('Vue.js')
 
 function greet(event) {
   alert(`Hello ${name.value}!`)
-  // `event` is the native DOM event
+  // است DOM رویداد بومی `event`
   if (event) {
     alert(event.target.tagName)
   }
@@ -88,9 +88,9 @@ data() {
 },
 methods: {
   greet(event) {
-    // `this` inside methods points to the current active instance
+    // داخل متدها به نمونه کامپوننت فعال کنونی اشاره می‌کند `this`
     alert(`Hello ${this.name}!`)
-    // `event` is the native DOM event
+    // است DOM رویداد بومی `event`
     if (event) {
       alert(event.target.tagName)
     }
@@ -101,41 +101,41 @@ methods: {
 </div>
 
 ```vue-html
-<!-- `greet` is the name of the method defined above -->
+<!-- نام متد تعریف شده در بالا است `greet` -->
 <button @click="greet">Greet</button>
 ```
 
 <div class="composition-api">
 
-[Try it in the Playground](https://play.vuejs.org/#eNpVj0FLxDAQhf/KMwjtXtq7dBcFQS/qzVMOrWFao2kSkkkvpf/dJIuCEBgm771vZnbx4H23JRJ3YogqaM+IxMlfpNWrd4GxI9CMA3NwK5psbaSVVjkbGXZaCediaJv3RN1XbE5FnZNVrJ3FEoi4pY0sn7BLC0yGArfjMxnjcLsXQrdNJtFxM+Ys0PcYa2CEjuBPylNYb4THtxdUobj0jH/YX3D963gKC5WyvGZ+xR7S5jf01yPzeblhWr2ZmErHw0dizivfK6PV91mKursUl6dSh/4qZ+vQ/+XE8QODonDi)
+[امتحان این مورد در Playground](https://play.vuejs.org/#eNpVj0FLxDAQhf/KMwjtXtq7dBcFQS/qzVMOrWFao2kSkkkvpf/dJIuCEBgm771vZnbx4H23JRJ3YogqaM+IxMlfpNWrd4GxI9CMA3NwK5psbaSVVjkbGXZaCediaJv3RN1XbE5FnZNVrJ3FEoi4pY0sn7BLC0yGArfjMxnjcLsXQrdNJtFxM+Ys0PcYa2CEjuBPylNYb4THtxdUobj0jH/YX3D963gKC5WyvGZ+xR7S5jf01yPzeblhWr2ZmErHw0dizivfK6PV91mKursUl6dSh/4qZ+vQ/+XE8QODonDi)
 
 </div>
 <div class="options-api">
 
-[Try it in the Playground](https://play.vuejs.org/#eNplUE1LxDAQ/StjEbYL0t5LXRQEvag3Tz00prNtNE1CMilC6X83SUkRhJDJfLz3Jm8tHo2pFo9FU7SOW2Ho0in8MdoSDHhlXhKsnQIYGLHyvL8BLJK3KmcAis3YwOnDY/XlTnt1i2G7i/eMNOnBNRkwWkQqcUFFByVAXUNPk3A9COXEgBkGRgtFDkgDTQjcWxuAwDiJBeMsMcUxszCJlsr+BaXUcLtGwiqut930579KST1IBd5Aqlgie3p/hdTIk+IK//bMGqleEbMjxjC+BZVDIv0+m9CpcNr6MDgkhLORjDBm1H56Iq3ggUvBv++7IhnUFZfnGNt6b4fRtj5wxfYL9p+Sjw==)
+[امتحان این مورد در Playground](https://play.vuejs.org/#eNplUE1LxDAQ/StjEbYL0t5LXRQEvag3Tz00prNtNE1CMilC6X83SUkRhJDJfLz3Jm8tHo2pFo9FU7SOW2Ho0in8MdoSDHhlXhKsnQIYGLHyvL8BLJK3KmcAis3YwOnDY/XlTnt1i2G7i/eMNOnBNRkwWkQqcUFFByVAXUNPk3A9COXEgBkGRgtFDkgDTQjcWxuAwDiJBeMsMcUxszCJlsr+BaXUcLtGwiqut930579KST1IBd5Aqlgie3p/hdTIk+IK//bMGqleEbMjxjC+BZVDIv0+m9CpcNr6MDgkhLORjDBm1H56Iq3ggUvBv++7IhnUFZfnGNt6b4fRtj5wxfYL9p+Sjw==)
 
 </div>
 
-A method handler automatically receives the native DOM Event object that triggers it - in the example above, we are able to access the element dispatching the event via `event.target.tagName`.
+متد کنترل کننده به طور خودکار آبجکت event بومی DOM، که رویداد آن را پاس می‌دهد، دریافت می‌کند - در مثال بالا، ما قادر به دسترسی به نام عنصر ارسال کننده رویداد از طریق `event.target.tagName` هستیم.
 
 <div class="composition-api">
 
-See also: [Typing Event Handlers](/guide/typescript/composition-api#typing-event-handlers) <sup class="vt-badge ts" />
+همچنین ببینید: [تایپِ کنترل کننده‌های رویداد](/guide/typescript/composition-api#typing-event-handlers) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
 
-See also: [Typing Event Handlers](/guide/typescript/options-api#typing-event-handlers) <sup class="vt-badge ts" />
+همچنین ببینید: [تایپِ کنترل کننده‌های رویداد](/guide/typescript/options-api#typing-event-handlers) <sup class="vt-badge ts" />
 
 </div>
 
-### Method vs. Inline Detection {#method-vs-inline-detection}
+### Method در مقابل Inline Detection {#method-vs-inline-detection}
 
-The template compiler detects method handlers by checking whether the `v-on` value string is a valid JavaScript identifier or property access path. For example, `foo`, `foo.bar` and `foo['bar']` are treated as method handlers, while `foo()` and `count++` are treated as inline handlers.
+کامپایلر تمپلیت، کنترل کننده‌های متد را با بررسی اینکه آیا مقدار رشته `v-on` یک شناسه جاوااسکریپت معتبر یا مسیر دسترسی به یک پراپرتی است، تشخیص می‌دهد. به عنوان مثال `foo` و `foo.bar` و `foo['bar']` به عنوان کنترل کننده‌های متد در نظر گرفته می‌شوند، در حالی که `foo()‎` و `count++‎` به عنوان کنترل کننده‌های درون خطی در نظر گرفته می‌شوند.
 
-## Calling Methods in Inline Handlers {#calling-methods-in-inline-handlers}
+## صدا زدن متدها در Inline Handlers {#calling-methods-in-inline-handlers}
 
-Instead of binding directly to a method name, we can also call methods in an inline handler. This allows us to pass the method custom arguments instead of the native event:
+به جای اتصال مستقیم به نام متد، ما همچنین می‌توانیم متدها را در یک  inline handler صدا بزنیم. این به ما اجازه می‌دهد تا به جای رویداد بومی، آرگومان‌های سفارشی به متد ارسال کنیم:
 
 <div class="composition-api">
 
@@ -165,26 +165,26 @@ methods: {
 
 <div class="composition-api">
 
-[Try it in the Playground](https://play.vuejs.org/#eNp9jTEOwjAMRa8SeSld6I5CBWdg9ZJGBiJSN2ocpKjq3UmpFDGx+Vn//b/ANYTjOxGcQEc7uyAqkqTQI98TW3ETq2jyYaQYzYNatSArZTzNUn/IK7Ludr2IBYTG4I3QRqKHJFJ6LtY7+zojbIXNk7yfmhahv5msvqS7PfnHGjJVp9w/hu7qKKwfEd1NSg==)
+[امتحان این مورد در Playground](https://play.vuejs.org/#eNp9jTEOwjAMRa8SeSld6I5CBWdg9ZJGBiJSN2ocpKjq3UmpFDGx+Vn//b/ANYTjOxGcQEc7uyAqkqTQI98TW3ETq2jyYaQYzYNatSArZTzNUn/IK7Ludr2IBYTG4I3QRqKHJFJ6LtY7+zojbIXNk7yfmhahv5msvqS7PfnHGjJVp9w/hu7qKKwfEd1NSg==)
 
 </div>
 <div class="options-api">
 
-[Try it in the Playground](https://play.vuejs.org/#eNptjUEKwjAQRa8yZFO7sfsSi57B7WzGdjTBtA3NVC2ldzehEFwIw8D7vM9f1cX742tmVSsd2sl6aXDgjx8ngY7vNDuBFQeAnsWMXagToQAEWg49h0APLncDAIUcT5LzlKJsqRBfPF3ljQjCvXcknEj0bRYZBzi3zrbPE6o0UBhblKiaKy1grK52J/oA//23IcmNBD8dXeVBtX0BF0pXsg==)
+[امتحان این مورد در Playground](https://play.vuejs.org/#eNptjUEKwjAQRa8yZFO7sfsSi57B7WzGdjTBtA3NVC2ldzehEFwIw8D7vM9f1cX742tmVSsd2sl6aXDgjx8ngY7vNDuBFQeAnsWMXagToQAEWg49h0APLncDAIUcT5LzlKJsqRBfPF3ljQjCvXcknEj0bRYZBzi3zrbPE6o0UBhblKiaKy1grK52J/oA//23IcmNBD8dXeVBtX0BF0pXsg==)
 
 </div>
 
-## Accessing Event Argument in Inline Handlers {#accessing-event-argument-in-inline-handlers}
+## دسترسی به آرگومان event در Inline Handlers {#accessing-event-argument-in-inline-handlers}
 
-Sometimes we also need to access the original DOM event in an inline handler. You can pass it into a method using the special `$event` variable, or use an inline arrow function:
+گاهی اوقات ما همچنین نیاز به دسترسی به رویداد DOM اصلی در یک کنترل کننده درون خطی داریم. شما می‌توانید آن را با استفاده از متغیر ویژه `‎$event` به یک متد منتقل کنید، یا از یک arrow function تک خطی استفاده کنید:
 
 ```vue-html
-<!-- using $event special variable -->
+<!-- $event استفاده از متغیر ویژه --> 
 <button @click="warn('Form cannot be submitted yet.', $event)">
   Submit
 </button>
 
-<!-- using inline arrow function -->
+<!-- inline arrow function استفاده از  -->
 <button @click="(event) => warn('Form cannot be submitted yet.', event)">
   Submit
 </button>
@@ -194,7 +194,7 @@ Sometimes we also need to access the original DOM event in an inline handler. Yo
 
 ```js
 function warn(message, event) {
-  // now we have access to the native event
+  // اکنون ما دسترسی به رویداد بومی داریم
   if (event) {
     event.preventDefault()
   }
@@ -208,7 +208,7 @@ function warn(message, event) {
 ```js
 methods: {
   warn(message, event) {
-    // now we have access to the native event
+    // اکنون ما دسترسی به رویداد بومی داریم
     if (event) {
       event.preventDefault()
     }
@@ -219,18 +219,18 @@ methods: {
 
 </div>
 
-## Event Modifiers {#event-modifiers}
+## تغییردهنده‌های رویداد - Event Modifiers {#event-modifiers}
 
-It is a very common need to call `event.preventDefault()` or `event.stopPropagation()` inside event handlers. Although we can do this easily inside methods, it would be better if the methods can be purely about data logic rather than having to deal with DOM event details.
+نیاز بسیار متداولی است که `event.preventDefault()‎` یا `event.stopPropagation()‎` را در داخل کنترل‌کننده‌های رویداد صدا بزنیم. اگرچه ما می‌توانیم به راحتی این کار را در داخل متدها انجام دهیم، بهتر است متدها به‌طور خاص برای یک عمل طراحی شده باشند و نیازی نباشد با جزئیات رویدادهای DOM سروکار داشته باشند.
 
-To address this problem, Vue provides **event modifiers** for `v-on`. Recall that modifiers are directive postfixes denoted by a dot.
+برای حل این مشکل، Vue **تغییردهنده‌های رویداد (event modifiers)**  را برای v-on ارائه می‌دهد. به یاد داشته باشید که تغییردهنده‌ها، پسوندهای دایرکتیوها هستند که با یک نقطه مشخص می‌شوند.
 
-- `.stop`
-- `.prevent`
-- `.self`
-- `.capture`
-- `.once`
-- `.passive`
+- `‎.stop`
+- `‎.prevent`
+- `‎.self`
+- `‎.capture`
+- `‎.once`
+- `‎.passive`
 
 ```vue-html
 <!-- the click event's propagation will be stopped -->
@@ -250,77 +250,77 @@ To address this problem, Vue provides **event modifiers** for `v-on`. Recall tha
 <div @click.self="doThat">...</div>
 ```
 
-::: tip
-Order matters when using modifiers because the relevant code is generated in the same order. Therefore using `@click.prevent.self` will prevent **click's default action on the element itself and its children**, while `@click.self.prevent` will only prevent click's default action on the element itself.
+::: tip نکته
+هنگامی که از تغییردهنده‌ها استفاده می‌کنید ترتیب اهمیت دارد زیرا کد مربوطه با همان ترتیب ساخته می‌شود. بنابراین استفاده از `‎@click.prevent.self` **از ارسال پیش فرض کلیک روی خود عنصر و فرزندان آن جلوگیری می‌کند**، در حالی که `‎@click.self.prevent` فقط از ارسال پیش‌فرض کلیک روی خود عنصر جلوگیری خواهد کرد.
 :::
 
-The `.capture`, `.once`, and `.passive` modifiers mirror the [options of the native `addEventListener` method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options):
+تغییردهنده‌های `‎.capture` و `‎.once` و `‎.passive` نماینده [آپشن‌های متد بومی `addEventListener`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options) هستند:
 
 ```vue-html
-<!-- use capture mode when adding the event listener -->
-<!-- i.e. an event targeting an inner element is handled here before being handled by that element -->
+<!-- استفاده کن capture هنگام اضافه کردن کنترل کننده رویداد از حالت -->
+<!-- یعنی رویدادی که یک عنصر داخلی را هدف قرار می‌دهد قبل از اینکه توسط آن عنصر مدیریت شود در اینجا مدیریت می‌شود -->
 <div @click.capture="doThis">...</div>
 
-<!-- the click event will be triggered at most once -->
+<!-- رویداد کلیک حداکثر یک بار فعال می شود -->
 <a @click.once="doThis"></a>
 
-<!-- the scroll event's default behavior (scrolling) will happen -->
-<!-- immediately, instead of waiting for `onScroll` to complete  -->
-<!-- in case it contains `event.preventDefault()`                -->
+<!-- رفتار پیش‌فرض رویداد اسکرول (پیمایش) اتفاق می‌افتد    -->
+<!-- باشید «onScroll» بلافاصله، به جای اینکه منتظر تکمیل  -->
+<!-- باشد «event.preventDefault()» در صورتی که حاوی      -->
 <div @scroll.passive="onScroll">...</div>
 ```
 
-The `.passive` modifier is typically used with touch event listeners for [improving performance on mobile devices](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scroll_performance_using_passive_listeners).
+تغییردهنده‌ `‎.passive` معمولاً با کنترل کننده‌های رویداد لمسی برای [بهبود عملکرد روی دستگاه‌های موبایل](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#improving_scroll_performance_using_passive_listeners) استفاده می‌شود.
 
-::: tip
-Do not use `.passive` and `.prevent` together, because `.passive` already indicates to the browser that you _do not_ intend to prevent the event's default behavior, and you will likely see a warning from the browser if you do so.
+::: tip توجه
+از ترکیب `‎.passive` و `‎.prevent` استفاده نکنید، زیرا `‎.passive` در واقع به مرورگر اعلام می‌کند که شما قصد ندارید از رفتار پیش فرض رویداد جلوگیری کنید، و احتمالاً اخطاری از مرورگر می‌بینید اگر این کار را انجام دهید.
 :::
 
 ## Key Modifiers {#key-modifiers}
 
-When listening for keyboard events, we often need to check for specific keys. Vue allows adding key modifiers for `v-on` or `@` when listening for key events:
+وقتی که می‌خواهیم به رویدادهای صفحه‌کلید گوش دهیم، اغلب باید کلیدهای خاصی را بررسی کنیم. Vue اجازه اضافه کردن modifier های کلید را برای `v-on` یا `@` هنگام گوش دادن به رویدادهای صفحه‌کلید می‌دهد:
 
 ```vue-html
-<!-- only call `submit` when the `key` is `Enter` -->
+<!-- صدا می‌زند `submit` باشد `Enter` ، `key` فقط زمانی که -->
 <input @keyup.enter="submit" />
 ```
 
-You can directly use any valid key names exposed via [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) as modifiers by converting them to kebab-case.
+شما می‌توانید مستقیماً از هر نام کلید معتبری که از طریق [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) در اختیار قرار گرفته است به عنوان تغییردهنده‌ با تبدیل آن‌ها به فرم kebab-case استفاده کنید.
 
 ```vue-html
 <input @keyup.page-down="onPageDown" />
 ```
 
-In the above example, the handler will only be called if `$event.key` is equal to `'PageDown'`.
+در مثال بالا، کنترل کننده فقط در صورتی صدا زده خواهد شد که `‎$event.key` برابر با `'PageDown'` باشد.
 
 ### Key Aliases {#key-aliases}
 
-Vue provides aliases for the most commonly used keys:
+Vue میانبرهایی برای پرکاربردترین کلیدها ارائه می‌دهد:
 
-- `.enter`
-- `.tab`
-- `.delete` (captures both "Delete" and "Backspace" keys)
-- `.esc`
-- `.space`
-- `.up`
-- `.down`
-- `.left`
-- `.right`
+- `‎.enter`
+- `‎.tab`
+- `‎.delete` (هم کلید «Delete» و هم «Backspace» را شامل می‌شود)
+- `‎.esc`
+- `‎.space`
+- `‎.up`
+- `‎.down`
+- `‎.left`
+- `‎.right`
 
 ### System Modifier Keys {#system-modifier-keys}
 
-You can use the following modifiers to trigger mouse or keyboard event listeners only when the corresponding modifier key is pressed:
+شما می‌توانید از تغییردهنده‌های زیر برای فعال کردن کنترل‌کننده‌های رویداد ماوس یا صفحه‌کلید فقط زمانی‌که کلید مربوطه فشرده شده باشد، استفاده کنید:
 
-- `.ctrl`
-- `.alt`
-- `.shift`
-- `.meta`
+- `‎.ctrl`
+- `‎.alt`
+- `‎.shift`
+- `‎.meta`
 
-::: tip Note
-On Macintosh keyboards, meta is the command key (⌘). On Windows keyboards, meta is the Windows key (⊞). On Sun Microsystems keyboards, meta is marked as a solid diamond (◆). On certain keyboards, specifically MIT and Lisp machine keyboards and successors, such as the Knight keyboard, space-cadet keyboard, meta is labeled “META”. On Symbolics keyboards, meta is labeled “META” or “Meta”.
+::: tip توجه
+روی صفحه‌کلیدهای مکینتاش، کلید meta همان کلید command (⌘) است. روی صفحه‌کلیدهای Windows، کلید meta کلید Windows (⊞) است. روی صفحه‌کلیدهای Sun Microsystems، کلید meta با الماس جامد (◆) مشخص شده‌ است. روی برخی از صفحه‌کلیدها، به‌طور مشخص صفحه‌کلیدهای MIT و Lisp و جانشینان آن‌ها مانند صفحه‌کلید Knight و space-cadet، کلید meta برچسب «META» دارد. روی صفحه‌کلیدهای Symbolics، کلید meta برچسب «META» یا «Meta» دارد.
 :::
 
-For example:
+به‌عنوان مثال:
 
 ```vue-html
 <!-- Alt + Enter -->
@@ -330,29 +330,29 @@ For example:
 <div @click.ctrl="doSomething">Do something</div>
 ```
 
-::: tip
-Note that modifier keys are different from regular keys and when used with `keyup` events, they have to be pressed when the event is emitted. In other words, `keyup.ctrl` will only trigger if you release a key while holding down `ctrl`. It won't trigger if you release the `ctrl` key alone.
+::: tip نکته
+توجه کنید که کلیدهای تغییردهنده‌ با کلیدهای معمولی متفاوت هستند و هنگام استفاده با رویدادهای `keyup`، باید هنگام بروز رویداد فشرده شده باشند. به عبارت دیگر، `keyup.ctrl` فقط زمانی اتفاق می‌افتد که یک کلید را رها کنید در حالی که کلید `ctrl` را پایین نگه داشته‌اید. اگر فقط کلید `ctrl` را رها کنید اتفاق نمی‌افتد.
 :::
 
-### `.exact` Modifier {#exact-modifier}
+### `‎.exact` Modifier {#exact-modifier}
 
-The `.exact` modifier allows control of the exact combination of system modifiers needed to trigger an event.
+تغییردهنده‌ `‎.exact` اجازه کنترل ترکیب دقیق تغییردهنده‌های سیستم مورد نیاز برای فعال سازی یک رویداد را می‌دهد.
 
 ```vue-html
-<!-- this will fire even if Alt or Shift is also pressed -->
+<!-- هم فشرده شود اجرا می‌شود Alt یا Shift این حتی اگر -->
 <button @click.ctrl="onClick">A</button>
 
-<!-- this will only fire when Ctrl and no other keys are pressed -->
+<!-- فشرده شده و هیچ کلید دیگری نباشد اجرا می‌شود Ctrl این فقط هنگامی که فقط  --> 
 <button @click.ctrl.exact="onCtrlClick">A</button>
 
-<!-- this will only fire when no system modifiers are pressed -->
+<!-- دیگری فشرده نشده باشد modifier این فقط زمانی اجرا می‌شود که هیچ -->
 <button @click.exact="onClick">A</button>
 ```
 
 ## Mouse Button Modifiers {#mouse-button-modifiers}
 
-- `.left`
-- `.right`
-- `.middle`
+- `‎.left`
+- `‎.right`
+- `‎.middle`
 
-These modifiers restrict the handler to events triggered by a specific mouse button.
+این تغییردهنده‌ها، کنترل‌کننده را محدود به رویدادهایی می‌کنند که توسط دکمه خاصی از ماوس فعال شده‌اند.

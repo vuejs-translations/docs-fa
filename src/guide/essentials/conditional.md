@@ -1,4 +1,4 @@
-# رِندر شرطی (Conditional Rendering) {#conditional-rendering}
+# رِندر شرطی - Conditional Rendering {#conditional-rendering}
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/conditional-rendering-in-vue-3" title="Free Vue.js Conditional Rendering Lesson"/>
@@ -74,7 +74,7 @@ const awesome = ref(true)
 
 ## `v-if` روی `<template>` {#v-if-on-template}
 
-از آنجا که `v-if` یک دستورالعمل است، باید روی یک عنصر قرار بگیرد. اما اگر بخواهیم بیش از یک عنصر را تغییر دهیم چطور؟ در این صورت می‌توان از `v-if` روی عنصر `<template>` استفاده کرد که به عنوان یک پوشش مخفی عمل می‌کند. نتیجهٔ نهایی رِندر شده شامل عنصر `<template>` نخواهد بود.
+از آنجا که `v-if` یک دایرکتیو است، باید روی یک عنصر قرار بگیرد. اما اگر بخواهیم بیش از یک عنصر را تغییر دهیم چطور؟ در این صورت می‌توان از `v-if` روی عنصر `<template>` استفاده کرد که به عنوان یک پوشش مخفی عمل می‌کند. نتیجه نهایی رِندر شده شامل عنصر `<template>` نخواهد بود.
 
 ```vue-html
 <template v-if="ok">
@@ -88,7 +88,7 @@ const awesome = ref(true)
 
 ## `v-show` {#v-show}
 
-گزینهٔ دیگر برای نمایش شرطی یک عنصر، دستور `v-show` است. استفاده از آن تا حد زیادی مشابه است:
+گزینه دیگر برای نمایش شرطی یک عنصر، دستور `v-show` است. استفاده از آن تا حد زیادی مشابه است:
 
 ```vue-html
 <h1 v-show="ok">Hello!</h1>
