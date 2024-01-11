@@ -239,7 +239,7 @@ globals هایی به صراحت در این لیست گنجانده نشده‌
 <a v-on:[eventName]="doSomething"> ... </a>
 
 <!-- بطور اختصار -->
-<a @[eventName]="doSomething">
+<a @[eventName]="doSomething"> ... </a>
 ```
 
 در این مثال، وقتی مقدار `eventName` برابر با `"focus"` باشد، `v-on:[eventName]` برابر با `v-on:focus` خواهد بود.
