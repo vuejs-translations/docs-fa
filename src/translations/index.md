@@ -19,6 +19,7 @@ aside: false
 ## Work in Progress Languages {#work-in-progress-languages}
 
 - [فارسی / Persian](https://fa.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-fa)]
+- [Čeština / Czech](https://cs.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-cs)]
 
 ## شروع یک ترجمه جدید {#starting-a-new-translation}
 

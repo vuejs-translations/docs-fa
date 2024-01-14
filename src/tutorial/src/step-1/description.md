@@ -21,6 +21,33 @@
 
 - همچنین می‌توانید بین حالت SFC یا حالت HTML جابجا شوید. حالت اول نمونه‌های کد را در قالب <a target="_blank" href="/guide/introduction.html#single-file-components">کامپوننت‌های تک فایلی (SFC)</a> نمایش می‌دهد، که بیشتر توسعه‌دهندگان وقتی از Vue با build step استفاده می‌کنند، از آن بهره می‌برند. حالت HTML نمونه‌های استفاده از Vue بدون build step را نشان می‌دهد.
 
+<div class="html">
+
+:::tip
+If you're about to use HTML-mode without a build step in your own applications, make sure you either change imports to:
+
+```js
+import { ... } from 'vue/dist/vue.esm-bundler.js'
+```
+
+inside your scripts or configure your build tool to resolve `vue` accordingly. Sample config for [Vite](https://vitejs.dev/):
+
+```js
+// vite.config.js
+export default {
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.esm-bundler.js'
+    }
+  }
+}
+```
+
+See the respective [section in Tooling guide](/guide/scaling-up/tooling.html#note-on-in-browser-template-compilation) for more information.
+:::
+
+</div>
+
 </details>
 
 آماده اید؟ برای شروع روی "بعدی" کلیک کنید.
