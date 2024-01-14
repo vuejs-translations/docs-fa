@@ -159,6 +159,6 @@
   کامپوننت های تک فایلی از یک [تگ سطح بالای `<template>`](/api/sfc-spec#language-blocks) برای بسته بندی کل تمپلیت استفاده می کنند. این کاربرد جدا از استفاده از `<template>` که در بالا توضیح داده شده است، می باشد. این تگ، بخشی از خود تمپلیت نیست و از سینتکس تمپلیت، مانند دستورها، پشتیبانی نمی کند.
 
 - **همچنین ببینید**
-  - [راهنمایی - `v-if` در `<template>`](/guide/essentials/conditional#v-if-on-template)
-  - [راهنمایی - `v-for` در `<template>`](/guide/essentials/list#v-for-on-template)
-  - [راهنمایی - اسلات های نام دار](/guide/components/slots#named-slots)
+  - [راهنما - `v-if` در `<template>`](/guide/essentials/conditional#v-if-on-template)
+  - [راهنما - `v-for` در `<template>`](/guide/essentials/list#v-for-on-template)
+  - [راهنما - اسلات های نام دار](/guide/components/slots#named-slots)
