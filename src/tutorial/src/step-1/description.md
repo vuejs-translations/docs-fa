@@ -23,14 +23,14 @@
 
 <div class="html">
 
-:::tip
-If you're about to use HTML-mode without a build step in your own applications, make sure you either change imports to:
+:::tip نکته
+اگر قصد استفاده از حالت HTML بدون مرحله بیلد در برنامه‌های خودتان را دارید، مطمئن شوید که importها را به این شکل تغییر می‌دهید:
 
 ```js
 import { ... } from 'vue/dist/vue.esm-bundler.js'
 ```
 
-inside your scripts or configure your build tool to resolve `vue` accordingly. Sample config for [Vite](https://vitejs.dev/):
+درون اسکریپت‌هایتان یا ابزار بیلد خود را برای حل مسئله، `vue`  را مطابق با آن تنظیم می‌کنید. تنظیمات نمونه برای [Vite](https://vitejs.dev/):
 
 ```js
 // vite.config.js
@@ -43,7 +43,7 @@ export default {
 }
 ```
 
-See the respective [section in Tooling guide](/guide/scaling-up/tooling.html#note-on-in-browser-template-compilation) for more information.
+برای اطلاعات بیشتر به [بخش مربوطه در راهنمای ابزارها](/guide/scaling-up/tooling.html#note-on-in-browser-template-compilation) مراجعه کنید.
 :::
 
 </div>
