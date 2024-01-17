@@ -20,6 +20,7 @@ aside: false
 
 - [Persian / فارسی](https://fa.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-fa)]
 - [Čeština / چکی](https://cs.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-cs)]
+- [العربية / عربی](https://ar.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-ar)]
 
 ## شروع یک ترجمه جدید {#starting-a-new-translation}
 
