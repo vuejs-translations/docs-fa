@@ -1,22 +1,22 @@
 <!--
-  Note we don't need .value inside templates because
-  refs are automatically "unwrapped" in templates.
+توجه داشته باشید که ما به .value درون قالب ها نیاز نداریم زیرا
+ref ها به طور خودکار در قالب ها "باز" می شوند.
 -->
 <h1>{{ message }}</h1>
 
 <!--
-  Bind to a method/function.
-  The @click syntax is short for v-on:click.
+اتصال به یک روش/عملکرد.
+سینتکس @click مخفف v-on:click است.
 -->
 <button @click="reverseMessage">Reverse Message</button>
 
-<!-- Can also be an inline expression statement -->
+<!-- همچنین می تواند یک عبارت عبارت درونی باشد -->
 <button @click="message += '!'">Append "!"</button>
 
 <!--
-  Vue also provides modifiers for common tasks
-  such as e.preventDefault() and e.stopPropagation()
+Vue همچنین اصلاح کننده هایی را برای کارهای رایج ارائه می دهد
+مانند e.preventDefault() و e.stopPropagation()
 -->
 <a href="https://vuejs.org" @click.prevent="notify">
-  A link with e.preventDefault()
+  پیوندی با e.preventDefault()
 </a>

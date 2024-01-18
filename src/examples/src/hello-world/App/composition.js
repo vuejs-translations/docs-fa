@@ -2,12 +2,11 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    // A "ref" is a reactive data source that stores a value.
-    // Technically, we don't need to wrap the string with ref()
-    // in order to display it, but we will see in the next
-    // example why it is needed if we ever intend to change
-    // the value.
-    const message = ref('Hello World!')
+    // "ref" یک منبع داده واکنش‌گرا است که یک مقدار را ذخیره می‌کند.
+    // از نظر فنی، نیازی نیست که رشته را با استفاده از ref() بپیچیم
+    // برای نمایش آن، اما در مثال بعدی خواهیم دید که چرا این کار لازم است اگر قصد داریم
+    // مقدار را تغییر دهیم.
+    const message = ref('سلام دنیا!')
 
     return {
       message
