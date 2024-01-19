@@ -455,7 +455,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/examples/#handling-input'
         },
         {
-          text: 'اتصال صفت‌ها',
+          text: 'اتصال اتریبیوت‌ها',
           link: '/examples/#attribute-bindings'
         },
         {

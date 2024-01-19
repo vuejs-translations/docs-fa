@@ -1,18 +1,19 @@
 <p>
   <span :title="message">
-    Hover your mouse over me for a few seconds to see my dynamically bound title!
+    برای چند ثانیه ماوس خود را روی من نگه دارید تا عنوان دینامیک من
+    را ببینید!
   </span>
 </p>
 
 <!--
-class bindings have special support for objects and arrays
-in addition to plain strings
--->
+  اتصال کلاس پشتیبانی ویژه‌ای برای آبجکت‌ها و آرایه‌ها
+  علاوه بر رشته‌های ساده دارد
+  -->
 <p :class="{ red: isRed }" @click="toggleRed">
-  This should be red... but click me to toggle it.
+  این باید قرمز باشد... اما روی من کلیک کنید تا تغییر کند.
 </p>
 
-<!-- style bindings also support object and arrays -->
+<!--  اتصال استایل نیز از آبجکت‌ها و آرایه‌ها پشتیبانی می‌کنند -->
 <p :style="{ color }" @click="toggleColor">
-  This should be green, and should toggle between green and blue on click.
+  این باید سبز باشد و باید با هر کلیک بین سبز و آبی تغییر کند.
 </p>

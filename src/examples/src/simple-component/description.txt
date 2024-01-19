@@ -1,2 +1,3 @@
-Here we show the simplest possible component which accepts a prop and renders it.
-Learn more about components in the guide!
+در اینجا ما ساده‌ترین کامپوننت ممکن را نشان می‌دهیم
+را می‌پذیرد و آن را رندر می‌کند prop که یک
+اطلاعات بیشتر در مورد کامپوننت‌ها در راهنما

@@ -2,3 +2,7 @@ button, a {
   display: block;
   margin-bottom: 1em;
 }
+button, a, h1 {
+  direction: rtl;
+  margin-left: auto;
+}

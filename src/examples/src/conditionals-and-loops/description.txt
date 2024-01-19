@@ -1,1 +1,2 @@
-We can render content conditionally or in a loop with the v-if and v-for directives.
+می‌توانیم محتوا را به طور شرطی یا در یک حلقه
+نمایش دهیم v-for و v-if با استفاده از دایرکتیو‌های
