@@ -9,7 +9,7 @@ export default {
       this.message = this.message.split('').reverse().join('')
     },
     notify() {
-      alert('navigation was prevented.')
+      alert('جلوگیری از ناوبری صورت گرفت')
     }
   }
 }

@@ -5,12 +5,12 @@ export default {
     const message = ref('سلام دنیا!')
 
     function reverseMessage() {
-      // مقدار ref رااز طریق .value به آن دسترسی پیدا کنید یا تغییر دهید.
+      // تغییر دهید یا به آن دسترسی پیدا کنید .value را از طریق ref مقدار
       message.value = message.value.split('').reverse().join('')
     }
 
     function notify() {
-      alert('جلوگیری از ناوبری صورت گرفت.')
+      alert('جلوگیری از ناوبری صورت گرفت')
     }
 
     return {

@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      message: 'سلام دنیا!'
+      message: '!سلام دنیا'
     }
   }
 }

@@ -1,22 +1,22 @@
 <!--
-توجه داشته باشید که ما به .value درون قالب ها نیاز نداریم زیرا
-ref ها به طور خودکار در قالب ها "باز" می شوند.
+درون تمپلیت‌ها نیاز نداریم .value توجه داشته باشید که ما به
+ها به طور خودکار در تمپلیت‌ها "باز" می شوند ref زیرا
 -->
 <h1>{{ message }}</h1>
 
 <!--
-اتصال به یک روش/عملکرد.
-سینتکس @click مخفف v-on:click است.
+اتصال به یک تابع
+است v-on:click مخفف @click سینتکس
 -->
-<button @click="reverseMessage">Reverse Message</button>
+<button @click="reverseMessage">معکوس کردن پیام</button>
 
-<!-- همچنین می تواند یک عبارت عبارت درونی باشد -->
-<button @click="message += '!'">Append "!"</button>
+<!-- همچنین می‌تواند یک عبارت درون خطی باشد -->
+<button @click="message += '!'">اضافه کردن "!"</button>
 
 <!--
-Vue همچنین اصلاح کننده هایی را برای کارهای رایج ارائه می دهد
-مانند e.preventDefault() و e.stopPropagation()
+همچنین مدیفایرهایی را برای کارهای رایج ارائه می‌دهد Vue
+e.stopPropagation() و e.preventDefault() مانند
 -->
 <a href="https://vuejs.org" @click.prevent="notify">
-  پیوندی با e.preventDefault()
+  پیوندی با ()e.preventDefault
 </a>
