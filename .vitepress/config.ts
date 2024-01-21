@@ -238,7 +238,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: 'دایرکتیوهای سفارشی - Custom Directives',
           link: '/guide/reusability/custom-directives'
         },
-        { text: 'افزونه‌ها', link: '/guide/reusability/plugins' }
+        { text: 'پلاگین‌ها', link: '/guide/reusability/plugins' }
       ]
     },
     {
