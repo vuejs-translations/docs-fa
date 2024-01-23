@@ -70,3 +70,5 @@
 | ecosystem           | اکوسیستم            |
 | code of conduct     | منشور اخلاقی         |
 | slot                | اسلات                |
+| custom              | اختصاصی، سفارشی     |
+| import              | import              |
