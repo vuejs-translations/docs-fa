@@ -22,7 +22,7 @@
 | Composition API     | Composition API     |
 | computed            | computed            |
 | conditional         | شرطی                |
-| container           |  کانتینر               |
+| container           |  کانتینر            |
 | data                | داده                |
 | debugging           | دیباگ کردن          |
 | deep                | عمیق، ژرف           |
@@ -40,7 +40,7 @@
 | handle              | مدیریت، رسیدگی      |
 | hook                | هوک                 |
 | instance            | نمونه               |
-| interface           | رابط                 |
+| interface           | رابط                |
 | JavaScript          | جاوااسکریپت         |
 | lazy loading        | بارگذاری تنبل       |
 | load                | بارگذاری            |
@@ -54,7 +54,7 @@
 | property            | پراپرتی             |
 | react               | ری‌اکت               |
 | reactive            | reactive            |
-| render              | رندر                 |
+| render              | رندر                |
 | runtime             | ران‌تایم             |
 | scope               | اسکوپ               |
 | seamlessly          | یکپارچه             |
@@ -69,3 +69,4 @@
 | community           | کامیونیتی           |
 | ecosystem           | اکوسیستم            |
 | code of conduct     | منشور اخلاقی         |
+| slot                | اسلات                |
