@@ -72,3 +72,5 @@
 | slot                | اسلات                |
 | custom              | اختصاصی، سفارشی     |
 | import              | import              |
+| listener            |                     |
+| clone               | کپی                 |
