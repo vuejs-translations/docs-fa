@@ -40,7 +40,7 @@ export default {
 
 <div class="options-api">
 
-پراپ‌ها در option API بصورت [`props`](/api/options-state#props) تعریف می‌شنود:
+پراپ‌ها در option API بصورت [`props`](/api/options-state#props) تعریف می‌شوند:
 
 ```js
 export default {
