@@ -97,25 +97,25 @@
 
 ## mergeProps()‎ {#mergeprops}
 
-Merge multiple props objects with special handling for certain props.
+چند آبجکت از پراپ‌ها را با کنترل ویژه برای برخی از آنها ادغام می‌کند.
 
-- **Type**
+- **تایپ**
 
   ```ts
   function mergeProps(...args: object[]): object
   ```
 
-- **Details**
+- **جزئیات**
 
-  `mergeProps()` supports merging multiple props objects with special handling for the following props:
+  تابع `mergeProps()‎` ادغام چند آبجکت از پراپ‌ها را با کنترل ویژه برای پراپ‌های زیر پشتیبانی می کند:
 
   - `class`
   - `style`
-  - `onXxx` event listeners - multiple listeners with the same name will be merged into an array.
+  - شنودکننده‌های رویداد‍ `onXxx` - چندین شنونده با همان نام به یک آرایه ادغام خواهند شد.
 
-  If you do not need the merge behavior and want simple overwrites, native object spread can be used instead.
+  اگر نیازی به ادغام ندارید و می‌خواهید یک جایگزین ساده داشته باشید، می‌توانید به‌جای آن از `...` یا همان spread operator بومی استفاده کنید.
 
-- **Example**
+- **مثال**
 
   ```js
   import { mergeProps } from 'vue'
@@ -141,23 +141,22 @@ Merge multiple props objects with special handling for certain props.
 
 ## cloneVNode()‎ {#clonevnode}
 
-Clones a vnode.
+یک vnode را کپی می‌کند.
 
-- **Type**
+- **تایپ**
 
   ```ts
   function cloneVNode(vnode: VNode, extraProps?: object): VNode
   ```
 
-- **Details**
+- **جزئیات**
 
-  Returns a cloned vnode, optionally with extra props to merge with the original.
+  یک vnode کپی‌شده را برمی‌گرداند، در صورت تمایل می‌توانید پراپ‌های اضافه‌ای را برای ادغام با vnode اصلی هم به کار ببرید.
 
-  Vnodes should be considered immutable once created, and you should not mutate the props of an existing vnode. Instead, clone it with different / extra props.
+  یک vnode باید پس از ایجاد، غیرقابل تغییر در نظر گرفته شوند و شما نباید پراپ‌های یک vnode موجود را دستکاری کنید. در عوض، آن را با پراپ‌های مختلف یا اضافی می‌توانید کپی کنید.
 
-  Vnodes have special internal properties, so cloning them is not as simple as an object spread. `cloneVNode()` handles most of the internal logic.
-
-- **Example**
+  در واقع vnodeها دارای ویژگی‌های داخلی خاصی هستند، بنابراین کپی کردن آنها به سادگی spread کردن یک آبجکت (‍‍‍‍‍`‎...object`) نیست. تابع `cloneVNode()‎` به خوبی منطق داخلی را مدیریت می‌کند.
+- **مثال**
 
   ```js
   import { h, cloneVNode } from 'vue'
