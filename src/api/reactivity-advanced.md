@@ -14,7 +14,7 @@
   }
   ```
 
-- **جزییات**
+- **جزئیات**
 
 برخلاف `ref`، مقدار درونی یک `shallowRef` همانطور که هست ذخیره و بازیابی می شود و عمیقا reactive نمی‌شود. فقط دسترسی مقدار «value» از آن reactive خواهد بود.
 
@@ -85,7 +85,7 @@
   }
   ```
 
-- **جزییات**
+- **جزئیات**
 
 `customRef` انتظار یک تابع Factory دارد. این تابع Factory، توابع `track` و `trigger` را به عنوان آرگومان دریافت کرده و باید یک شی را با متدهای `get` و `set` برگرداند.
 
@@ -143,7 +143,7 @@
   function shallowReactive<T extends object>(target: T): T
   ```
 
-- **جزییات**
+- **جزئیات**
   
 برخلاف `reactive`، فقط ویژگی های سطح اول یا ریشه، به شکل reactive هستند. مقادیر ویژگی‌ها همانطور که هست ذخیره و بازیابی می شود - این همچنین به این معنی است که ویژگی‌های تعریف شده با `ref` به‌طور خودکار Unwrap **نمی‌شوند**.
 
@@ -182,7 +182,7 @@
   function shallowReadonly<T extends object>(target: T): Readonly<T>
   ```
 
-- **جزییات**
+- **جزئیات**
   
 برخلاف `readonly`، فقط ویژگی های سطح اول یا ریشه، به شکل readonly هستند. مقادیر ویژگی‌ها همانطور که هست ذخیره و بازیابی می شود - این همچنین به این معنی است که ویژگی‌های تعریف شده با `ref` به‌طور خودکار Unwrap **نمی‌شوند**.
 
@@ -221,7 +221,7 @@
   function toRaw<T>(proxy: T): T
   ```
 
-- **جزییات**
+- **جزئیات**
 
 `toRaw` می تواند شی اصلی که به کمک یکی از توابع [`reactive`](./reactivity-core#reactive), [`readonly`](./reactivity-core#readonly), [`shallowReactive`](#shallowreactive) و یا [`shallowReadonly`](#shallowreadonly) ایجاد شده است، برگرداند.
 
