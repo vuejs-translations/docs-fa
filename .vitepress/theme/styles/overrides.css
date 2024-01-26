@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;900&display=swap');
 
-
 :root {
-  --vt-scroll-thumb-color-light: #C1C1C1 ;
-  --vt-scroll-track-color-light: #F1F1F1;
+  --vt-scroll-thumb-color-light: #c1c1c1;
+  --vt-scroll-track-color-light: #f1f1f1;
 
   --vt-scroll-thumb-color-dark: #767676;
   --vt-scroll-track-color-dark: #242424;
@@ -11,8 +10,9 @@
 
 /* Firefox */
 * {
-  scrollbar-width: thin; 
-  scrollbar-color:  var(--vt-scroll-thumb-color-light) var(--vt-scroll-track-color-light);
+  scrollbar-width: thin;
+  scrollbar-color: var(--vt-scroll-thumb-color-light)
+    var(--vt-scroll-track-color-light);
 }
 
 /* Chrome, Edge, and Safari */
@@ -23,7 +23,7 @@
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar-thumb {
   background: var(--vt-scroll-thumb-color-light);
-  border-radius: 10px; 
+  border-radius: 10px;
 }
 
 /* Chrome, Edge, and Safari */
@@ -33,17 +33,20 @@
 
 /* darkmode styles */
 .dark {
-  &, * {
-    scrollbar-color:  var(--vt-scroll-thumb-color-dark) var(--vt-scroll-track-color-dark);
+  &,
+  * {
+    scrollbar-color: var(--vt-scroll-thumb-color-dark)
+      var(--vt-scroll-track-color-dark);
   }
-  &, *::-webkit-scrollbar-thumb {
+  &,
+  *::-webkit-scrollbar-thumb {
     background: var(--vt-scroll-thumb-color-dark);
   }
-  &, *::-webkit-scrollbar-track {
+  &,
+  *::-webkit-scrollbar-track {
     background: var(--vt-scroll-track-color-dark);
   }
 }
-
 
 /* RTL & Persian Styles */
 
@@ -146,4 +149,12 @@ li {
 
 .details summary {
   direction: rtl;
+}
+
+.tutorial .vue-repl .toggle {
+  margin-right: 4px;
+}
+
+.tutorial .vue-repl .msg {
+  direction: ltr;
 }
