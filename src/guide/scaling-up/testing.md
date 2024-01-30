@@ -14,29 +14,31 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ## زمان نوشتن تست {#when-to-test}
 
-تست نویسی را زودنر شروع کنید ! توضیه میکنیم هرچه سریعتر نوشتن تست ها را شروع کنید . هر چقدر دیرتر تست ها را اضافه کنید dependency های بیشتری وجود خواهند داشت و اضافه کردن تست سختتر می شود .
+تست نویسی را زودنر شروع کنید! توضیه می‌کنیم هرچه سریعتر نوشتن تست‌ها را شروع کنید . هر چقدر دیرتر تست‌ها را اضافه کنید وابستگی‌های بیشتری وجود خواهند داشت و اضافه کردن تست سخت‌تر می‌شود.
 
 ## انواع تست {#testing-types}
 
-When designing your Vue application's testing strategy, you should leverage the following testing types:
+وقتی استراتژی تست اپلیکیشن Vue خود را دیزاین می‌کنید، می‌توانید از این نوع تست‌ها استفاده کنید.
 
-- **Unit**: Checks that inputs to a given function, class, or composable are producing the expected output or side effects.
-- **Component**: Checks that your component mounts, renders, can be interacted with, and behaves as expected. These tests import more code than unit tests, are more complex, and require more time to execute.
-- **End-to-end**: Checks features that span multiple pages and makes real network requests against your production-built Vue application. These tests often involve standing up a database or other backend.
+- **یونیت**:‌ بررسی می‌کند که ورودی‌های یک تابع، کلاس یا composable، خروجی یا side-effect های مورد انتظار را ایجاد می‌کنند.
 
-Each testing type plays a role in your application's testing strategy, and each will protect you against different types of issues.
+- **کامپوننت**: این نوع تست mount شدن، رندر شدن، و تعامل با کامپوننت را صحت سنجی می‌کند. این تست‌ها کد بیشتری نسبت به یونیت تست‌ها را یکباره تست می‌کنند و نسبت به یونیت تست‌ها پیچیده‌تر هستند و به زمان بیشتری برای اجرا نیاز دارند.
 
-## Overview {#overview}
+- **End-to-end**: این نوع تست فیچرهایی را بررسی می‌کند که چندین صفحه را در بر می‌گیرند و درخواست‌های شبکه واقعی را در برابر برنامه Vue ساخته‌شده شما ایجاد می‌کند. این تست‌ها اغلب نیازمند به اجرا کردن پایگاه داده یا سایر سرویس‌های بک‌اند هست.
 
-We will briefly discuss what each of these are, how they can be implemented for Vue applications, and provide some general recommendations.
+هر نوع تست نقشی در استراتژی تست برنامه شما ایفا می‌کند و هرکدام شما را در برابر انواع مختلف مشکلات محافظت می‌کنند.
+
+## بررسی اجمالی {#overview}
+
+در این قسمت ما به صورت مختصر به روش‌های تست، چگونگی پیاده‌سازی آن‌ها برای پروژه‌های Vue، و چند توصیه‌ عمومی خواهیم پرداخت.
 
 ## Unit Testing {#unit-testing}
 
-Unit tests are written to verify that small, isolated units of code are working as expected. A unit test usually covers a single function, class, composable, or module. Unit tests focus on logical correctness and only concern themselves with a small portion of the application's overall functionality. They may mock large parts of your application's environment (e.g. initial state, complex classes, 3rd party modules, and network requests).
+یونیت تست‌ها برای اطمینان از عملکرد صحیح واحدهای کوچک و مجزای کد نوشته می‌شوند. یک یونیت تست معمولا یک تابع، کلاس، composable، یا ماژول را پوشش می‌دهد. یونیت تست‌ها بر صحت منطق تمرکز دارند و فقط با بخش کوچکی از عملکرد کلی برنامه درگیر می‌شوند. ممکن است در این نوع تست بخش‌های مختلفی از محیط برنامه را ماک کنیم (مثلا حالت اولیه، کلاس‌های پیچیده، ماژول‌های third-party و درخواست‌های شبکه).
 
-In general, unit tests will catch issues with a function's business logic and logical correctness.
+به طور کلی، یونیت تست‌ها منطق بیزینس و پیاده‌سازی منطق یک تابع را صحت‌ سنجی می‌کنند.
 
-Take for example this `increment` function:
+برای مثال این تابع increment را در نظر بگیرید:
 
 ```js
 // helpers.js
@@ -48,9 +50,8 @@ export function increment (current, max = 10) {
 }
 ```
 
-Because it's very self-contained, it'll be easy to invoke the increment function and assert that it returns what it's supposed to, so we'll write a Unit Test.
-
-If any of these assertions fail, it's clear that the issue is contained within the `increment` function.
+نوشتن یونیت تست برای این تابع به دلیل نداشتن وابستگی به سادگی اجرا کردن آن و بررسی خروجی آن با استفاده از assertion ها هست.
+شکست خودن هر کدام از این assertion ها نشان دهنده یک مشکل در تابع increament هست.
 
 ```js{4-16}
 // helpers.spec.js
@@ -71,31 +72,31 @@ describe('increment', () => {
 })
 ```
 
-As mentioned previously, unit testing is typically applied to self-contained business logic, components, classes, modules, or functions that do not involve UI rendering, network requests, or other environmental concerns.
+همانطور که قبلاً ذکر شد، یونیت تست معمولاً برای منطق بیزینس بدون وابستگی، کامپوننت‌ها، کلاس‌ها، ماژول‌ها، یا توابعی که شامل رندر کردن رابط کاربری، درخواست‌های شبکه یا سایر ملاحظات محیطی نمی‌شوند، اعمال می‌شود.
 
-These are typically plain JavaScript / TypeScript modules unrelated to Vue. In general, writing unit tests for business logic in Vue applications does not differ significantly from applications using other frameworks.
+این یونیت‌ها معمولاً ماژول‌های جاوااسکریپت/تایپ‌اسکریپت ساده‌ای هستند که به ویو مربوط نمی‌شوند. به طور کلی، نحوه نوشتن یونیت تست برای منطق بیزینس در برنامه‌های ویو تفاوتی با سایر فریمورک‌ها ندارد.
 
-There are two instances where you DO unit test Vue-specific features:
+تنها دو مورد وجود دارد که در آن‌ها شما فیچرهای خاص ویو را یونیت تست می‌کنید:
 
 1. Composables
-2. Components
+2. کامپوننت‌ها
+
 
 ### Composables {#composables}
 
-One category of functions specific to Vue applications is [Composables](/guide/reusability/composables), which may require special handling during tests.
-See [Testing Composables](#testing-composables) below for more details.
+یک دسته از توابع خاص در برنامه‌های ویو، [Composible ها](/guide/reusability/composables) هستند که برای تست نیاز به مدیریت مجزا دارند. برای اطلاعات بیشتر به [تست Composible ها](#testing-composables) مراجعه کنید.
 
-### Unit Testing Components {#unit-testing-components}
+### یونیت تست کردن کامپوننت‌ها {#unit-testing-components}
 
-A component can be tested in two ways:
+یک کامپوننت می‌تواند به دو روش تست شود:
 
-1. Whitebox: Unit Testing
+1. جعبه سفید: یونیت تیست
 
-   Tests that are "Whitebox tests" are aware of the implementation details and dependencies of a component. They are focused on **isolating** the component under test. These tests will usually involve mocking some, if not all of your component's children, as well as setting up plugin state and dependencies (e.g. Pinia).
+  تست‌های "جعبه سفید"، از جزئیات پیاده‌سازی و وابستگی‌های یک کامپوننت آگاه هستند. آن‌ها بر "ایزوله‌سازی" کامپوننت مورد تست تمرکز دارند. این تست‌ها معمولاً ماک کردن برخی یا همه فرزندان کامپوننت، تنظیمات پلاگین‌ها برای مدیریت استیت و وابستگی‌ها را شامل می‌شوند.
 
-2. Blackbox: Component Testing
+2. جعبه سیاه: کامپوننت تست
 
-   Tests that are "Blackbox tests" are unaware of the implementation details of a component. These tests mock as little as possible to test the integration of your component and the entire system. They usually render all child components and are considered more of an "integration test". See the [Component Testing recommendations](#component-testing) below.
+  تست‌های "جعبه سیاه" از جزئیات پیاده‌سازی یک کامپوننت بی‌اطلاع هستند. این نوع تست‌ها از حداقل میزان ممکن ماک‌ها استفاده می‌کنند. تست‌های جعبه سیاه معمولاً تمام فرزندان را رندر می‌کنند و بیشتر به عنوان یک "Integration test" در نظر گرفته می‌شوند. برای اطلاعات بیشتر به قسمت [توصیه‌های تست کردن کامپوونت‌ها](#component-testing) رجوع کنید.
 
 ### Recommendation {#recommendation}
 
@@ -221,7 +222,7 @@ We recommend using `@vue/test-utils` for testing components in applications. `@t
 
 - [Nightwatch](https://nightwatchjs.org/) is an E2E test runner with Vue Component Testing support. ([Example Project](https://github.com/nightwatchjs-community/todo-vue))
 
-- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) for cross-browser component testing that relies on native user interaction based on standardized automation. It can also be used with Testing Library. 
+- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) for cross-browser component testing that relies on native user interaction based on standardized automation. It can also be used with Testing Library.
 
 ## E2E Testing {#e2e-testing}
 
