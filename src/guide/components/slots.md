@@ -313,7 +313,7 @@ function BaseLayout(slots) {
 </base-layout>
 ```
 
-توجه داشته باشید که عبارت، منوط به [محدودیت‌های نوشتاری](/guide/essentials/template-syntax#directives) آرگومان های دایرکتیو پویا است.
+توجه داشته باشید که عبارت، منوط به [محدودیت‌های نوشتاری](/guide/essentials/template-syntax.md#dynamic-argument-syntax-constraints) آرگومان‌های دایرکتیو پویا است.
 
 ## اسلات‌های دارای اسکوپ {#scoped-slots}
 
