@@ -16,13 +16,17 @@
 | built-in            | درونی، نهادینه‌شده   |
 | bus                 |                     |
 | class               | کلاس                 |
+| clone               | کپی                 |
+| code of conduct     | منشور اخلاقی         |
 | command line        | خط فرمان            |
 | component           | کامپوننت            |
 | composable function |                     |
 | Composition API     | Composition API     |
 | computed            | computed            |
+| community           | کامیونیتی           |
 | conditional         | شرطی                |
 | container           |  کانتینر            |
+| custom              | اختصاصی، سفارشی     |
 | data                | داده                |
 | debugging           | دیباگ کردن          |
 | deep                | عمیق، ژرف           |
@@ -30,6 +34,7 @@
 | dependency          | وابستگی             |
 | directive           | دایرکتیو            |
 | DOM                 | DOM                 |
+| ecosystem           | اکوسیستم            |
 | element             | المان، عنصر         |
 | emit                | emit                |
 | endpoint            | پایانه              |
@@ -39,6 +44,8 @@
 | global              | سراسری              |
 | handle              | مدیریت، رسیدگی      |
 | hook                | هوک                 |
+| listener            |                     |
+| import              | import              |
 | instance            | نمونه               |
 | interface           | رابط                |
 | JavaScript          | جاوااسکریپت         |
@@ -59,6 +66,7 @@
 | scope               | اسکوپ               |
 | seamlessly          | یکپارچه             |
 | state               | state               |
+| slot                | اسلات                |
 | template            | تمپلیت              |
 | timeout             | مهلت                |
 | transition          | ترنزیشن‌             |
@@ -66,11 +74,3 @@
 | type                | تایپ                |
 | Vue                 | Vue                 |
 | wrapper             | پوششی، دربرگیرنده   |
-| community           | کامیونیتی           |
-| ecosystem           | اکوسیستم            |
-| code of conduct     | منشور اخلاقی         |
-| slot                | اسلات                |
-| custom              | اختصاصی، سفارشی     |
-| import              | import              |
-| listener            |                     |
-| clone               | کپی                 |
