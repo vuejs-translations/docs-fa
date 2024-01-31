@@ -98,17 +98,15 @@ describe('increment', () => {
 
   تست‌های "جعبه سیاه" از جزئیات پیاده‌سازی یک کامپوننت بی‌اطلاع هستند. این نوع تست‌ها از حداقل میزان ممکن ماک‌ها استفاده می‌کنند. تست‌های جعبه سیاه معمولاً تمام فرزندان را رندر می‌کنند و بیشتر به عنوان یک "Integration test" در نظر گرفته می‌شوند. برای اطلاعات بیشتر به قسمت [توصیه‌های تست کردن کامپوونت‌ها](#component-testing) رجوع کنید.
 
-### Recommendation {#recommendation}
+### توصیه‌ها {#recommendation}
 
-- [Vitest](https://vitest.dev/)
+- [Vitest](https://vitest.dev/): از آنجایی که پیکربندی رسمی پروژه که توسط `create-vue` ایجاد شده، بر پایه [Vite](https://vitejs.dev/) پیشنهاد ما استفاده از چارچوب یونیت تستی است که بتواند از همان تنظیمات Vite به طور مستقیم استفاده کند. [Vitest](https://vitest.dev/), که توسط اعضای تیم Vue / Vite طراحی و نگهداری می‌شود، یک چارچوب تست است که ویژه این هدف ساخته شده است. این چارچوب به راحتی با پروژه‌های مبتنی بر Vite ادغام می‌شود و سرعت بسیار بالایی دارد.
 
-  Since the official setup created by `create-vue` is based on [Vite](https://vitejs.dev/), we recommend using a unit testing framework that can leverage the same configuration and transform pipeline directly from Vite. [Vitest](https://vitest.dev/) is a unit testing framework designed specifically for this purpose, created and maintained by Vue / Vite team members. It integrates with Vite-based projects with minimal effort, and is blazing fast.
+### گزینه‌های دیگر {#other-options}
 
-### Other Options {#other-options}
+- [Jest](https://jestjs.io/): یک چارچوب یونیت تست محبوب است. با این حال، ما در حالتی Jest را توصیه می‌کنیم که شما یک سورس کد مبتنی بر Jest دارید و می‌خواهید به Vite مهاجرت کنید، چرا که Vitest یکپارچگی و عملکرد بهتری ارائه می‌دهد.
 
-- [Jest](https://jestjs.io/) is a popular unit testing framework. However, we only recommend Jest if you have an existing Jest test suite that needs to be migrated over to a Vite-based project, as Vitest offers a more seamless integration and better performance.
-
-## Component Testing {#component-testing}
+## کامپوننت تست {#component-testing}
 
 In Vue applications, components are the main building blocks of the UI. Components are therefore the natural unit of isolation when it comes to validating your application's behavior. From a granularity perspective, component testing sits somewhere above unit testing and can be considered a form of integration testing. Much of your Vue Application should be covered by a component test and we recommend that each Vue component has its own spec file.
 
