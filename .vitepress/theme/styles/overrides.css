@@ -158,3 +158,13 @@ li {
 .tutorial .vue-repl .msg {
   direction: ltr;
 }
+
+.vt-doc a[href^="https://play.vuejs.org"]:before
+{
+  padding-left: unset;
+  padding-right: 3px;
+  margin-right: 4px;
+  margin-left: 8px;
+  margin-top: 4px;
+  padding-top: 0.5px;
+}
