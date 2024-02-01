@@ -250,8 +250,8 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/built-ins/transition-group'
         },
         { text: 'KeepAlive', link: '/guide/built-ins/keep-alive' },
-        { text: 'تلپورت (Teleport)', link: '/guide/built-ins/teleport' },
-        { text: 'تعلیق (Suspense)', link: '/guide/built-ins/suspense' }
+        { text: 'Teleport', link: '/guide/built-ins/teleport' },
+        { text: 'Suspense', link: '/guide/built-ins/suspense' }
       ]
     },
     {

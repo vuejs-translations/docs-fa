@@ -4,7 +4,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 # زنده نگه داشتن کامپوننت - KeepAlive {#keepalive}
 
-`<KeepAlive>` یک کامپوننت داخلی است که وقتی بین چند کامپوننت به صورت پویا جابجا می‌شویم به ما اجازه می‌دهد به صورت شرطی نمونه‌های ساخته شده از کامپوننت را ذخیره کنیم.
+`<KeepAlive>` یک کامپوننت داخلی است که وقتی به صورت شرطی بین چند کامپوننت پویا جابجا می‌شویم به ما این امکان را می‌دهد تا نمونه‌های ساخته شده از کامپوننت را ذخیره کنیم.
 
 ## استفاده پایه {#basic-usage}
 
@@ -79,7 +79,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 ## حداکثر تعداد نمونه‌های کش شده {#max-cached-instances}
 
-ما می‌توانیم حداکثر تعداد نمونه‌های کامپوننت که می‌توانند در حافظه ذخیره شوند را توسط ویژگی `max` محدود کنیم. وقتی `max` مشخص شده باشد، `<KeepAlive>`  مانند  [ذخیره‌سازی LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)) عمل می‌کند: اگر تعداد نمونه‌های ذخیره شده بیشتر از تعداد max شود، نمونه‌ای که اخیراً کمترین استفاده از آن شده، نابود می‌شود تا جایگاه برای نمونه جدیدی ایجاد شود.
+ما می‌توانیم حداکثر تعداد نمونه‌های کامپوننت که می‌توانند در حافظه ذخیره شوند را توسط ویژگی `max` محدود کنیم. وقتی `max` مشخص شده باشد، `<KeepAlive>` مانند [ذخیره‌سازی LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)) عمل می‌کند: اگر تعداد نمونه‌های ذخیره شده بیشتر از تعداد max شود، نمونه‌ای که اخیراً کمترین استفاده از آن شده، نابود می‌شود تا جایگاه برای نمونه جدیدی ایجاد شود.
 
 ```vue-html
 <KeepAlive :max="10">
@@ -133,7 +133,7 @@ export default {
 
 توجه داشته باشید که:
 
-- <span class="composition-api">`onActivated`</span><span class="options-api">`activated`</span> در زمان mount فراخوانی می‌شود و  <span class="composition-api">`onDeactivated`</span><span class="options-api">`deactivated`</span> در زمان unmount.
+- <span class="composition-api">`onActivated`</span><span class="options-api">`activated`</span> در زمان mount فراخوانی می‌شود و <span class="composition-api">`onDeactivated`</span><span class="options-api">`deactivated`</span> در زمان unmount.
 
 - این هوک‌ها برای تمام کامپوننت‌ها، هم در سطح اصلی و هم در سطوح عمیق‌تر، در داخل درخت کامپوننت کش شده فراخوانی می‌شوند.
 

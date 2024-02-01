@@ -6,22 +6,22 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 # ترنزیشن گروهی - TransitionGroup {#transitiongroup}
 
-`<TransitionGroup>` یک کامپوننت تعبیه شده است که برای انیمیشن‌ دادن به ورود، حذف و تغییر ترتیب عناصر یا کامپوننت‌هایی که در یک لیست نمایش داده می‌شوند طراحی شده است.
+`<TransitionGroup>` یک کامپوننت داخلی است که برای انیمیشن‌ دادن به اضافه شدن، حذف شدن و تغییر ترتیب عناصر یا کامپوننت‌هایی که در یک لیست نمایش داده می‌شوند طراحی شده است.
 
 ## تفاوت `<TransitionGroup>` با `<Transition>` {#differences-from-transition}
 
-`<TransitionGroup>` از همان پراپ‌ها، کلاس‌های  CSS و هوک‌های `<Transition>` پشتیبانی می‌کند. با تفاوت‌های زیر:
+`<TransitionGroup>` از همان پراپ‌ها، کلاس‌های CSS و هوک‌های `<Transition>` پشتیبانی می‌کند. با تفاوت‌های زیر:
 
 - بصورت پیش‌فرض، کامپوننت wrapper (المانی که برای گروه‌بندی و مدیریت المان‌ها به کار می‌رود) را رندر نمی‌کند. اما می‌توانید با استفاده از ویژگی `tag`، المان مورد نظر خود را برای رندر کردن مشخص کنید.
 
 - [حالت‌های ترنزیشن](./transition#transition-modes) در دسترس نیستند، چون در این حالت نیازی نیست بین عناصر جدا از هم ترنزیشن اعمال کنیم.
 
-- هر عنصری داخلی،  **باید**  `key` یکتا داشته باشد.
+- هر عنصری داخلی، **باید** `key` یکتا داشته باشد.
 
 - کلاس‌های CSS بر روی المان های لیست اعمال می‌شوند، **نه** بر روی کانتینر.
 
 :::tip نکته
-وقتی  در  [DOM templates ](/guide/essentials/component-basics#in-dom-template-parsing-caveats)استفاده می‌شود، باید با عنوان `<transition-group>` نوشته شود.
+وقتی در [DOM templates ](/guide/essentials/component-basics#in-dom-template-parsing-caveats)استفاده می‌شود، باید با عنوان `<transition-group>` نوشته شود.
 :::
 
 ## ترنزیشن‌های ورود / خروج {#enter-leave-transitions}
@@ -102,7 +102,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 </TransitionGroup>
 ```
 
-سپس، در هوک‌های جاوااسکریپت، به عنصر  بر اساس ایندکس آن با تأخیر انیمیشن می‌دهیم. در این مثال از کتابخانه [GreenSock](https://greensock.com/) برای  انیمیشن استفاده می‌شود.
+سپس، در هوک‌های جاوااسکریپت، به عنصر بر اساس ایندکس آن با تأخیر انیمیشن می‌دهیم. در این مثال از کتابخانه [GreenSock](https://greensock.com/) برای انیمیشن استفاده می‌شود.
 
 ```js{5}
 function onEnter(el, done) {
