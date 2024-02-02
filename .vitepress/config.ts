@@ -258,18 +258,18 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'Scaling Up',
       items: [
         {
-          text: 'کامپوننت های تک فایلی (Single-File Components)',
+          text: 'کامپوننت های تک فایلی - SFC',
           link: '/guide/scaling-up/sfc'
         },
-        { text: 'ابزارها (Tooling)', link: '/guide/scaling-up/tooling' },
-        { text: 'مسیریابی (Routing)', link: '/guide/scaling-up/routing' },
+        { text: 'ابزارها', link: '/guide/scaling-up/tooling' },
+        { text: 'مسیریابی - Routing', link: '/guide/scaling-up/routing' },
         {
           text: 'State Management',
           link: '/guide/scaling-up/state-management'
         },
         { text: 'Testing', link: '/guide/scaling-up/testing' },
         {
-          text: 'رندرینگ سمت سرور (Server-Side Rendering (SSR))',
+          text: 'رندرینگ سمت سرور - SSR',
           link: '/guide/scaling-up/ssr'
         }
       ]

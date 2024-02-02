@@ -1,4 +1,4 @@
-# مسیریابی | Routing {#routing}
+# مسیریابی - Routing {#routing}
 
 ## مسیریابی سمت کلاینت در برابر مسیریابی سمت سرور {#client-side-vs-server-side-routing}
 
@@ -13,7 +13,7 @@ routing در سمت سرور به این معنی است که سرور بر اس
 <!-- TODO update links -->
 <div>
   <VueSchoolLink href="https://vueschool.io/courses/vue-router-4-for-everyone" title="Free Vue Router Course">
-    دوره رایگان Vue Router را در Vue School ببینید 
+    دوره رایگان Vue Router را در Vue School ببینید
   </VueSchoolLink>
 </div>
 

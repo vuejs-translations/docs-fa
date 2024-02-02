@@ -1,4 +1,4 @@
-# ابزارها {#tooling}
+# ابزارها - Tooling {#tooling}
 
 ## بصورت آنلاین امتحان کنید {#try-it-online}
 
@@ -17,13 +17,13 @@
 
 ### Vite {#vite}
 
-[Vite](https://vitejs.dev/) یک ابزار سبک و سریع برای ساخت با پشتیبانی اولیه از SFC در Vue است. توسط Evan You ایجاد شده است، که نویسنده Vue هم هست!
+[Vite](https://vitejs.dev/) یک ابزار سبک و سریع برای ساخت با پشتیبانی بسیار عالی از SFC در Vue است. توسط Evan You ایجاد شده است، که نویسنده Vue هم هست!
 
 برای شروع کار با Vite + Vue، فقط لازم است دستور زیر را در کامندلاین اجرا کنید:
 
 <div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">$</span> <span style="color:#A6ACCD;">npm create vue@latest</span></span></code></pre></div>
 
-این دستور، [create-vue](https://github.com/vuejs/create-vue) را نصب و اجرا می‌کند، ابزار رسمی ساخت پروژه Vue.
+این دستور [create-vue](https://github.com/vuejs/create-vue) را نصب و اجرا می‌کند، ابزار رسمی ساخت پروژه Vue.
 
 - برای یادگیری بیشتر در مورد Vite، [مستندات Vite](https://vitejs.dev) را ببینید.
 - برای پیکربندی رفتارهای خاص Vue در یک پروژه ساخته شده با Vite، برای مثال پاس دادن گزینه‌هایی به کامپایلر Vue، مستندات [‎@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#readme) را ببینید.
@@ -39,7 +39,7 @@
 - [راهنمای مهاجرت از Vue CLI به Vite در VueSchool.io](https://vueschool.io/articles/vuejs-tutorials/how-to-migrate-from-vue-cli-to-vite/)
 - [ابزارها / پلاگین‌هایی که به مهاجرت خودکار کمک می‌کنند](https://github.com/vitejs/awesome-vite#vue-cli)
 
-### نکته در مورد کامپایل تمپلیت در مرورگر  {#note-on-in-browser-template-compilation}
+### نکته در مورد کامپایل تمپلیت در مرورگر {#note-on-in-browser-template-compilation}
 
 هنگام استفاده از Vue بدون مرحله build، تمپلیت‌های کامپوننت مستقیماً در HTML صفحه یا به عنوان رشته‌های جاوااسکریپ نوشته می‌شوند. در چنین مواردی، Vue نیاز دارد کامپایلر تمپلیت را برای کامپایل تمپلیت‌ها، به مرورگر بفرستد. از طرف دیگر، این کامپایلر غیرضروری خواهد بود اگر تمپلیت‌ها را با استفاده از یک مرحله build، از پیش کامپایل (pre-compiled) کنیم. برای کاهش اندازه باندل کلاینت، Vue گزینه‌ای هایی را برای [build در موارد استفاده مختلف](https://unpkg.com/browse/vue@3/dist/) ارائه می‌دهد:
 
@@ -53,13 +53,13 @@
 
 ## پشتیبانی IDE {#ide-support}
 
-- تنظیمات توصیه شده [VSCode](https://code.visualstudio.com/) + [افزونه ویژگی‌های زبان Vue (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) است. این افزونه syntax highlighting، پشتیبانی TypeScript و intellisense برای تمپلیت و propهای کامپوننت را ارائه می‌دهد.
+- تنظیمات توصیه شده [VSCode](https://code.visualstudio.com/) + [افزونه ویژگی‌های زبان ‎(Volar) Vue](https://marketplace.visualstudio.com/items?itemName=Vue.volar) است. این افزونه syntax highlighting، پشتیبانی TypeScript و intellisense برای تمپلیت و propهای کامپوننت را ارائه می‌دهد.
 
   :::tip نکته
   Volar جایگزین Vetur می‌شود، افزونه رسمی قبلی VSCode ما برای Vue 2. اگر در حال حاضر Vetur نصب شده است، مطمئن شوید در پروژه‌های Vue 3 آن را غیرفعال می‌کنید.
   :::
 
-- [WebStorm](https://www.jetbrains.com/webstorm/)  هم از SFC های Vue پشتیبانی درونی عالی ارائه می‌دهد.
+- [WebStorm](https://www.jetbrains.com/webstorm/) هم از SFC های Vue پشتیبانی درونی عالی ارائه می‌دهد.
 
 - سایر IDE هایی که از [پروتکل سرویس زبان](https://microsoft.github.io/language-server-protocol/) (LSP) پشتیبانی می‌کنند هم می‌توانند از عملکردهای اصلی Volar از طریق LSP استفاده کنند:
 
@@ -73,7 +73,7 @@
 
 <VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Free Vue.js Devtools Lesson"/>
 
-افزونه devtools در Vue به شما اجازه می‌دهد درخت کامپوننت‌های یک برنامه را کاوش کنید، وضعیت کامپوننت‌ ها را بررسی کنید، رویدادهای state management را ردیابی کنید و عملکرد برنامه را پروفایل کنید.
+افزونه devtools در Vue به شما اجازه می‌دهد درخت کامپوننت‌های یک برنامه را کاوش کنید، وضعیت کامپوننت‌‌ها را بررسی کنید، رویدادهای state management را ردیابی کنید و عملکرد برنامه را پروفایل کنید.
 
 ![devtools screenshot](https://raw.githubusercontent.com/vuejs/devtools/main/media/screenshot-shadow.png)
 
@@ -89,7 +89,7 @@
 
 - [Volar](https://github.com/johnsoncodehk/volar) بررسی انطباق تایپ برای SFC ها با استفاده از بلوک‌های `<script lang="ts"‎>` را فراهم می‌کند، شامل تمپلیت و اعتبارسنجی prop های بین کامپوننتی می‌شود.
 
-- از [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) برای انجام همان بررسی انطباق نوع از خط فرمان، یا برای تولید فایل‌های `d.ts` برای SFC ها استفاده کنید.
+- از [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) برای انجام همان بررسی انطباق تایپ از خط فرمان، یا برای تولید فایل‌های `d.ts` برای SFC ها استفاده کنید.
 
 ## Testing {#testing}
 
