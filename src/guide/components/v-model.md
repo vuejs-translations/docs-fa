@@ -84,6 +84,24 @@ const model = defineModel({ required: true })
 const model = defineModel({ default: 0 })
 ```
 
+:::warning هشدار
+
+اگر برای پراپ `defineModel` مقدار `default` تعریف کرده باشید و هیچ مقداری به آن از کامپوننت والد پاس ندهید، می‌تواند باعث ناهمگام‌سازی (de-synchronization) بین کامپوننت‌های والد و فرزند شود. در مثال زیر `myRef` والد برابر undefined است، اما `model` در فرزند برابر ۱ است:
+
+```js
+// child component:
+const model = defineModel({ default: 1 })
+
+// parent component:
+const myRef = ref()
+```
+
+```html
+<Child v-model="myRef"></Child>
+```
+
+:::
+
 </div>
 
 <div class="options-api">
@@ -209,7 +227,11 @@ const title = defineModel('title', { required: true })
 ```vue
 <!-- MyComponent.vue -->
 <script setup>
-defineProps(['title'])
+defineProps({
+  title: {
+    required: true
+  }
+})
 defineEmits(['update:title'])
 </script>
 
