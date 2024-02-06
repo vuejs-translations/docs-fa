@@ -24,9 +24,9 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 - نصب [Node.js](https://nodejs.org/) نسخه 18.0 یا بالاتر
 :::
 
-در این بخش به ایجاد اولیه یک برنامه تک صفحه‌ای Vue بر روی ماشین محلی خود می‌پردازیم ([Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa)). پروژه ایجاد شده از یک ابزار راه اندازی ساخت مبتنی بر [Vite](https://vitejs.dev) استفاده خواهد کرد و به ما امکان می‌دهد از [کامپوننت‌های تک فایلی](/guide/scaling-up/sfc) Vue استفاده کنیم  (SFCs).
+در این بخش به ایجاد اولیه یک برنامه تک صفحه‌ای Vue بر روی کامپیوتر خود می‌پردازیم ([Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa)). پروژه ایجاد شده از یک ابزار راه اندازی ساخت مبتنی بر [Vite](https://vitejs.dev) استفاده خواهد کرد و به ما امکان می‌دهد از [کامپوننت‌های تک فایلی](/guide/scaling-up/sfc) Vue استفاده کنیم  (SFCs).
 
-اطمینان حاصل کنید که شما یک نسخه به‌روز از [Node.js](https://nodejs.org/)  را بصورت نصب شده دارید و دایرکتوری فعلی شما همان جایی است که قصد ایجاد یک پروژه جدید را دارید. دستور زیر را در خط فرمان خود اجرا کنید (بدون علامت `$`):
+اطمینان حاصل کنید که شما یک نسخه به‌روز از [Node.js](https://nodejs.org/)  را بصورت نصب شده دارید و دایرکتوری فعلی شما همان جایی است که قصد ایجاد یک پروژه جدید را دارید. دستور زیر را در command line خود اجرا کنید (بدون علامت `$`):
 
 <VTCodeGroup>
   <VTCodeGroupTab label="npm">
@@ -74,7 +74,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 <span style="color:#A6ACCD;">Scaffolding project in ./<span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span>...</span>
 <span style="color:#A6ACCD;">Done.</span></code></pre></div>
 
-اگر در مورد یک گزینه مطمئن نیستید، فعلاً با زدن enter برای انتخاب `No` آن را نادیده بگیرید. پس از آن وقتی پروژه ایجاد شد، دستورالعمل‌های زیر را برای نصب وابستگی‌ها و راه‌اندازی dev server دنبال کنید:
+اگر در مورد یک گزینه مطمئن نیستید، فعلاً با زدن enter برای انتخاب `No` آن را نادیده بگیرید. سپس وقتی پروژه ایجاد شد، دستورالعمل‌های زیر را برای نصب وابستگی‌ها و راه‌اندازی dev server دنبال کنید:
 
 <VTCodeGroup>
   <VTCodeGroupTab label="npm">
@@ -115,7 +115,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
   </VTCodeGroupTab>
 </VTCodeGroup>
 
-حالا شما باید اولین پروژه Vue خود را بصورت اجرا شده داشته باشید! توجه داشته باشید که کامپوننت‌هایی که برای نمونه در پروژه ایجاد شده‌اند، با استفاده از [Composition API](/guide/introduction#composition-api) و `<script setup>` نوشته شده‌اند، به جای [Options API](/guide/introduction#options-api). چند نکته بیشتر:
+حالا شما باید اولین پروژه Vue خود را بصورت اجرا شده داشته باشید! توجه داشته باشید که کامپوننت‌هایی که برای نمونه در پروژه ایجاد شده‌اند، به جای [Options API](/guide/introduction#options-api) با استفاده از [Composition API](/guide/introduction#composition-api) و `<script setup>` نوشته شده‌اند. چند نکته بیشتر:
 
 - IDE توصیه شده [Visual Studio Code](https://code.visualstudio.com/) + [افزونه Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) است. اگر از ویرایشگرهای دیگر استفاده می‌کنید، بخش [پشتیبانی IDE](/guide/scaling-up/tooling#ide-support) را بررسی کنید.
 - جزئیات بیشتر ابزار، از جمله یکپارچه‌سازی با فریم‌ورک‌های بک‌اند، در [راهنمای ابزارها](/guide/scaling-up/tooling) مورد بحث قرار گرفته.
@@ -169,7 +169,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 اینجا از [unpkg](https://unpkg.com/) استفاده کردیم، اما شما همچنین می‌توانید از هر CDN دیگری که پکیج‌های npm را ارائه می‌دهد مثل [jsdelivr](https://www.jsdelivr.com/package/npm/vue) یا [cdnjs](https://cdnjs.com/libraries/vue) استفاده کنید. البته، شما همچنین می‌توانید این فایل را دانلود و خودتان سِرو کنید.
 
-هنگام استفاده از Vue از طریق CDN، هیچ مرحله‌ای برای بیلد گرفتن وجود ندارد. این موضوع تنظیمات را بسیار ساده‌تر می‌کند، و برای بهبود HTML استاتیک یا یکپارچه‌سازی با یک فریم‌ورک بک‌اند مناسب است. با این حال، شما نمی‌توانید از سینتکس کامپوننت تک فایلی (SFC) استفاده کنید.
+هنگام استفاده از Vue از طریق CDN، نیازی به مراحل بیلد گرفتن نیست. این موضوع تنظیمات را بسیار ساده‌تر می‌کند و برای بهبود HTML استاتیک یا یکپارچه‌سازی با یک فریم‌ورک بک‌اند مناسب است. با این حال، نمی‌توانید از سینتکس کامپوننت تک فایلی (SFC) استفاده کنید.
 
 ### استفاده از بیلد سراسری {#using-the-global-build}
 
@@ -223,7 +223,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 [نمونه در Codepen](https://codepen.io/vuejs-examples/pen/eYQpQEG)
 
 :::tip نکته
-بسیاری از نمونه‌های Composition API در سراسر راهنما از سینتکس `<script setup>` استفاده خواهند کرد که نیاز به ابزارهای ساخت دارد. اگر قصد استفاده از Composition API بدون مرحله ساخت را دارید، استفاده از [گزینه `setup()‎`](/api/composition-api-setup) را مشاهده کنید.
+بسیاری از نمونه‌های Composition API در سراسر راهنما از سینتکس `<script setup>` استفاده خواهند کرد که نیاز به ابزارهای بیلد دارد. اگر قصد استفاده از Composition API بدون مرحله بیلد گرفتن را دارید، استفاده از [ویژگی `setup()‎`](/api/composition-api-setup) را مشاهده کنید.
 :::
 
 </div>
@@ -288,13 +288,13 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ### فعال کردن Import maps {#enabling-import-maps}
 
-در مثال بالا، ما URL کامل CDN را وارد می‌کنیم، اما در بقیه مستندات شما کدی مانند این خواهید دید:
+در مثال بالا، ما URL کامل CDN را ایمپورت می‌کنیم، اما در بقیه مستندات شما کدی مانند این خواهید دید:
 
 ```js
 import { createApp } from 'vue'
 ```
 
-ما می‌توانیم به مرورگر بگوییم که `vue` را از کجا وارد کند با استفاده از [Import Maps](https://caniuse.com/import-maps):
+ما می‌توانیم با استفاده از [Import Maps](https://caniuse.com/import-maps) به مرورگر بگوییم که `vue` را از کجا ایمپورت کند:
 
 <div class="options-api">
 
@@ -357,14 +357,14 @@ import { createApp } from 'vue'
 
 </div>
 
-شما همچنین می‌توانید ورودی‌هایی برای سایر وابستگی‌ها به import map اضافه کنید - اما مطمئن شوید آن‌ها به نسخه ES modules کتابخانه‌ای که قصد استفاده از آن را دارید اشاره می‌کنند.
+شما همچنین می‌توانید ایمپورت های دیگری برای سایر وابستگی‌ها به import map اضافه کنید - اما مطمئن شوید آن‌ها به نسخه ES modules کتابخانه‌ای که قصد استفاده از آن را دارید اشاره می‌کنند.
 
 :::tip پشتیبانی مرورگر از Import Maps
 Import Maps یک ویژگی نسبتاً جدید مرورگر است. مطمئن شوید از یک مرورگر در محدوده پشتیبانی آن استفاده می‌کنید. به طور خاص، تنها در Safari 16.4+ پشتیبانی می‌شود.
 :::
 
 :::warning نکاتی درباره استفاده در محیط پروداکشن
-نمونه‌های تا اینجا از بیلد مناسب برای محیط توسعه Vue استفاده کرده‌اند - اگر قصد دارید از ویو از طریق CDN در محیط پروداکشن استفاده کنید، حتماً [راهنمای استقرار پروداکشن](/guide/best-practices/production-deployment#without-build-tools) را بررسی کنید.
+مثال‌های تا اینجا از نسخه توسعه Vue استفاده کرده‌اند - اگر قصد دارید از Vue از طریق CDN در محیط پروداکشن استفاده کنید، حتماً [راهنمای استقرار پروداکشن](/guide/best-practices/production-deployment#without-build-tools) را بررسی کنید.
 :::
 
 ### تفکیک ماژول‌ها {#splitting-up-the-modules}
@@ -414,19 +414,19 @@ export default {
 
 اگر `index.html` بالا را مستقیماً در مرورگر باز کنید، متوجه خواهید شد که خطایی رخ می‌دهد زیرا ماژول‌های ES نمی‌توانند روی پروتکل `file://‎` کار کنند که مرورگرها هنگام باز کردن یک فایل محلی از آن استفاده می‌کنند.
 
-به دلایل امنیتی، ماژول‌های ES تنها می‌توانند روی پروتکل `http://‎` کار کنند که مرورگرها هنگام باز کردن صفحات در وب از آن استفاده می‌کنند. برای اینکه ماژول‌های ES بر روی ماشین محلی ما کار کنند، نیاز داریم که `index.html` را از طریق پروتکل `http://‎` سرو کنیم، با استفاده از یک سرور HTTP محلی.
+به دلایل امنیتی، ماژول‌های ES تنها می‌توانند روی پروتکل `http://‎` کار کنند که مرورگرها هنگام باز کردن صفحات در وب از آن استفاده می‌کنند. برای اینکه ماژول‌های ES بر روی کامپیوتر ما کار کنند، نیاز داریم که `index.html` را از طریق پروتکل `http://‎` سرو کنیم، با استفاده از یک سرور HTTP محلی.
 
-برای راه‌اندازی یک سرور HTTP محلی، ابتدا مطمئن شوید [Node.js](https://nodejs.org/en/) نصب شده است، سپس `npx serve` را از خط فرمان در همان دایرکتوری حاوی فایل HTML خود اجرا کنید. همچنین می‌توانید از هر سرور HTTP دیگری که بتواند فایل‌های استاتیک را با انواع MIME صحیح سرو کند، استفاده نمایید.
+برای راه‌اندازی یک سرور HTTP محلی، ابتدا مطمئن شوید [Node.js](https://nodejs.org/en/) نصب شده است، سپس `npx serve` را از command line در همان دایرکتوری حاوی فایل HTML خود اجرا کنید. همچنین می‌توانید از هر سرور HTTP دیگری که بتواند فایل‌های استاتیک را با انواع MIME صحیح سرو کند، استفاده نمایید.
 
 شاید متوجه شده باشید که قالب کامپوننت وارد شده به صورت یک رشته JavaScript درون خطی شده است. اگر از VSCode استفاده می‌کنید، می‌توانید افزونه [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) را نصب کرده و رشته‌ها را با یک توضیح `/*html*/` پیشوند دهید تا برای آن‌ها هایلایت سینتکس فعال شود.
 
 ## مراحل بعدی {#next-steps}
 
-اگر از [معرفی](/guide/introduction) صرف‌نظر کردید، توصیه می‌کنیم قبل از حرکت به بقیه مستندات آن را بخوانید.
+اگر از [معرفی](/guide/introduction) رد شده اید، ما به شدت توصیه می‌کنیم که قبل از ادامه مستندات، آن را مطالعه کنید.
 
 <div class="vt-box-container next-steps">
   <a class="vt-box" href="/tutorial/">
-    <p class="next-steps-link">امتحان آموزش</p>
+    <p class="next-steps-link">امتحان کردن آموزش</p>
     <p class="next-steps-caption">برای کسانی که ترجیح می‌دهند چیزها را به صورت عملی یاد بگیرند.</p>
   </a>
   <a class="vt-box" href="/guide/quick-start.html">
@@ -435,6 +435,6 @@ export default {
   </a>
   <a class="vt-box" href="/examples/">
     <p class="next-steps-link">بررسی مثال‌ها</p>
-    <p class="next-steps-caption">مثال‌هایی از ویژگی‌های اصلی و وظایف رایج رابط کاربری را کاوش کنید.</p>
+    <p class="next-steps-caption">مثال‌هایی از ویژگی‌های اصلی و وظایف رایج رابط کاربری را بررسی کنید.</p>
   </a>
 </div>
