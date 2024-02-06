@@ -426,7 +426,7 @@ export default {
 
 <div class="vt-box-container next-steps">
   <a class="vt-box" href="/tutorial/">
-    <p class="next-steps-link">امتحان کردن تمارین</p>
+    <p class="next-steps-link">امتحان کردن آموزش</p>
     <p class="next-steps-caption">برای کسانی که ترجیح می‌دهند چیزها را به صورت عملی یاد بگیرند.</p>
   </a>
   <a class="vt-box" href="/guide/quick-start.html">
