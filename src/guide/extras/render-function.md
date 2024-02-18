@@ -238,6 +238,7 @@ const vnode = <div id={dynamicId}>hello, {userName}</div>
 - انتقال فرزندان به کامپوننت‌ها (به عبارتی اسلات‌ها) [به شیوه‌ای متفاوت کار می‌کند](#passing-slots).
 
 تعریف نوع Vue در TSX نیز قابلیت تعیین نوع را فراهم می‌کند.وقتی از TSX استفاده می‌کنید، برای تبدیل JSX به Vue، بهتر است `"jsx": "preserve"` را در `tsconfig.json` تنظیم کنید.
+
 ### تشخیص تایپ JSX {#jsx-type-inference}
 
 مشابه تبدیل، JSX Vue نیاز به تعاریف‌ تایپ مختلف دارد.
