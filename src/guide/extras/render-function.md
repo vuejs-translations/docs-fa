@@ -381,10 +381,10 @@ h(
 </button>
 ```
 
-
 #### مدیفایرهای رویداد {#event-modifiers}
 
 برای مدیفایرهای `.passive`، `.capture` و `.once`، می‌توانید پس از نام رویداد با استفاده از camelCase آنها را اضافه کنید.
+
 برای مثال:
 
 ```js
@@ -408,6 +408,7 @@ h('input', {
   onMouseoverOnceCapture={() => {}}
 />
 ```
+
 برای مشاهده سایر مدیفایرهای رویداد و کلید، می‌توانید از راهنمای [`withModifiers`](/api/render-function#withmodifiers) استفاده کنید.
 
 ```js
@@ -464,6 +465,7 @@ function render() {
   return ok.value ? <Foo /> : <Bar />
 }
 ```
+
 اگر یک کامپوننت با نام ثبت شده و به صورت مستقیم قابل دسترسی نباشد (به عنوان مثال، در یک کتابخانه ثبت شده باشد)، می‌توانید از روش [`resolveComponent()`](/api/render-function#resolvecomponent) برای حل این موضوع استفاده کنید.
 
 ### رندر کردن اسلات‌ها {#rendering-slots}
@@ -550,7 +552,8 @@ export default {
 h(MyComponent, () => 'hello')
 
 // اسلات های نام گذاری شده
-// استفاده از `null` ضروری است تا از اینکه اشیاء اسلات به عنوان پراپ‌ها تلقی شوند، جلوگیری شود.
+// استفاده از `null` ضروری است
+// تا از اینکه اشیاء اسلات به عنوان پراپ‌ها تلقی شوند، جلوگیری شود.
 h(MyComponent, null, {
   default: () => 'default slot',
   foo: () => h('div', 'foo'),
@@ -571,6 +574,7 @@ h(MyComponent, null, {
   bar: () => [<span>one</span>, <span>two</span>]
 }}</MyComponent>
 ```
+
 انتقال اسلات به عنوان توابع به آن‌ها اجازه می‌دهد که به طور تنبلانه توسط کامپوننت فرزند فراخوانی شوند. این باعث می‌شود وابستگی‌های اسلات توسط کامپوننت فرزند و نه والدین پیگیری شود، که بهبود عملکرد و دقت بروزرسانی‌ها را فراهم می‌کند.
 
 ### اسلات های محدود شده {#scoped-slots}
@@ -603,11 +607,9 @@ export default {
 معادل JSX:
 
 ```jsx
-<MyComponent>
-  {{
-    default: ({ text }) => <p>{text}</p>
-  }}
-</MyComponent>
+<MyComponent>{{
+default: ({ text }) => <p>{text}</p>
+}}</MyComponent>
 ```
 
 ### کامپوننت‌های داخلی {#built-in-components}
@@ -671,8 +673,7 @@ export default {
   render() {
     return h(SomeComponent, {
       modelValue: this.modelValue,
-      'onUpdate:modelValue': (value) =>
-        this.$emit('update:modelValue', value)
+      'onUpdate:modelValue': (value) =>this.$emit('update:modelValue', value)
     })
   }
 }
@@ -689,12 +690,8 @@ import { h, withDirectives } from 'vue'
 
 // یک دایرکتیو سفارشی
 const pin = {
-  mounted() {
-    /* ... */
-  },
-  updated() {
-    /* ... */
-  }
+  mounted() {/* ... */},
+  updated() { /* ... */}
 }
 
 // <div v-pin:top.animate="200"></div>
@@ -702,6 +699,7 @@ const vnode = withDirectives(h('div'), [
   [pin, 200, 'top', { animate: true }]
 ])
 ```
+
 اگر یک دستورالعمل با نام ثبت شده ایمپورت شده و به طور مستقیم در دسترس نباشد، می‌توانید از راهنمای [`resolveDirective`](/api/render-function#resolvedirective) برای حل این مشکل استفاده کنید.
 
 ### Template Refs {#template-refs}
@@ -765,6 +763,7 @@ function MyComponent(props, context) {
   // ...
 }
 ```
+
 دومین آرگومان، `context`، شامل سه ویژگی است: `attrs`، `emit` و `slots`. این‌ها به ترتیب معادل ویژگی‌های نمونه [`$attrs`](/api/component-instance#attrs)، [`$emit`](/api/component-instance#emit) و [`$slots`](/api/component-instance#slots) هستند.
 
 </div>
@@ -775,6 +774,7 @@ function MyComponent(props, context) {
 MyComponent.props = ['value']
 MyComponent.emits = ['click']
 ```
+
 اگر گزینه `props` مشخص نشده باشد، آن‌گاه تمام ویژگی‌ها به عنوان `props` به تابع ارسال می‌شوند، مانند `attrs`. همچنین توجه داشته باشید که نام‌های پراپ به camelCase نرمال‌سازی نمی‌شوند مگر اینکه گزینه `props` مشخص شده باشد.
 
 برای کامپوننت‌های تابعی با `props` صریح، [پراکندگی ویژگی](/guide/components/attrs) بطور مشابهی با کامپوننت‌های عادی کار می‌کند. با این حال، برای کامپوننت‌های تابعی که به طور صریح `props` خود را مشخص نمی‌کنند، فقط `class`، `style` و لیسنر رویداد `onXxx` به طور پیش‌فرض از `attrs` به ارث می‌برند. در هر دو حالت، `inheritAttrs` می‌تواند به `false` تنظیم شود تا ارث گرفتن ویژگی‌ها غیرفعال شود:
@@ -782,6 +782,7 @@ MyComponent.emits = ['click']
 ```js
 MyComponent.inheritAttrs = false
 ```
+
 کامپوننت‌های تابعی می‌توانند مانند کامپوننت‌های عادی ثبت و مصرف شوند. اگر یک تابع را به عنوان آرگومان اول به `h()` ارسال کنید، به عنوان یک کامپوننت تابعی مورد استفاده قرار می‌گیرد.
 
 ### تعیین تایپ کامپوننت‌های تابعی<sup class="vt-badge ts" /> {#typing-functional-components}
