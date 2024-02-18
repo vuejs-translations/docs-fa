@@ -116,7 +116,11 @@ import { h } from 'vue'
 export default {
   setup() {
     // استفاده از آرایه برای برگردادن چندین المان اصلی
-    return () => [h('div'), h('div'), h('div')]
+    return () => [
+      h('div'),
+      h('div'),
+      h('div')
+    ]
   }
 }
 ```
@@ -163,7 +167,11 @@ import { h } from 'vue'
 export default {
   render() {
     // استفاده از آرایه برای برگردادن چندین المان اصلی
-    return [h('div'), h('div'), h('div')]
+    return [
+      h('div'),
+      h('div'),
+      h('div')
+    ]
   }
 }
 ```
