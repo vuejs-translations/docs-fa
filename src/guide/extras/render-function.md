@@ -823,6 +823,7 @@ FComponent.emits = {
   sendMessage: (value: unknown) => typeof value === 'string'
 }
 ```
+
 **کامپوننت تابعی بی نام**
 
 ```tsx
