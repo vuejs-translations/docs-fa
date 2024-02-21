@@ -272,6 +272,42 @@ watch(
 
 </div>
 
+
+## Once Watchers <sup class="vt-badge" data-text="3.4+" /> {#once-watchers}
+
+هر زمانی که منبع داده ناظر تغییر کند ناظر کالبک خود را فراخوانی می‌کند. اگر می‌خواهید کالبک ناظر فقط یک بار در زمان تغییر داده صدا زده شود، از آپشن `once: true` استفاده کنید.
+
+<div class="options-api">
+  
+```js
+export default {
+  watch: {
+    source: {
+      handler(newValue, oldValue) {
+        // تغییر می کند، فقط یک بار فعال می‌شود `source` هنگامی که
+      },
+      once: true
+    }
+  }
+}
+```
+
+</div>
+
+<div class="composition-api">
+
+```js
+watch(
+  source,
+  (newValue, oldValue) => {
+    // تغییر می کند، فقط یک بار فعال می‌شود `source` هنگامی که
+  },
+  { once: true }
+)
+```
+
+</div>
+
 <div class="composition-api">
 
 ## `watchEffect()‎` \*\* {#watcheffect}
