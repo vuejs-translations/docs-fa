@@ -579,15 +579,15 @@ export default {
 
 این مفید است زمانی که ترنزیشن‌ها / انیمیشن‌های CSS را با استفاده از کنوانسیون کلاس ترنزیشن Vue تعریف کرده‌اید و می‌خواهید بین آن‌ها تغییر کنید.
 
-همچنین می‌توانید بر اساس state فعلی کامپوننت خود، رفتار مختلف را در هوک‌های ترنزیشن JavaScript اعمال کنید. در نهایت، راه حقیقی ایجاد ترنزیشن‌های پویا از طریق [کامپوننت‌های انتقال قابل استفاده مجدد](#reusable-transitions) است که پراپ‌ها را برای تغییر خصوصیات ترنزیشن(ها) مورد استفاده، دریافت می‌کنند.
-
-ممکن است خنده دار به نظر برسد، اما تنها محدودیت، خلاقیت شماست.
+همچنین می‌توانید بر اساس state فعلی کامپوننت خود، رفتار مختلف را در هوک‌های ترنزیشن JavaScript اعمال کنید. در نهایت، راه حقیقی ایجاد ترنزیشن‌های پویا از طریق [کامپوننت‌های انتقال قابل استفاده مجدد](#reusable-transitions) است که پراپ‌ها را برای تغییر خصوصیات ترنزیشن(ها) مورد استفاده، دریافت می‌کنند.ممکن است خنده دار به نظر برسد، اما تنها محدودیت، خلاقیت شماست.
 
 ## ترنزیشن با اتریبیوت key {#transitions-with-the-key-attribute}
 
 گاهی اوقات شما نیاز دارید که یک عنصر DOM را دوباره رندر کنید تا یک ترنزیشن رخ دهد.
 
 برای مثال این کامپوننت شمارنده را در نظر بگیرید.
+
+<div class="composition-api">
 
 ```vue
 <script setup>
@@ -604,9 +604,50 @@ setInterval(() => count.value++, 1000);
 </template>
 ```
 
+</div>
+<div class="options-api">
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      count: 1,
+      interval: null 
+    }
+  },
+  mounted() {
+    this.interval = setInterval(() => {
+      this.count++;
+    }, 1000)
+  },
+  beforeDestroy() {
+    clearInterval(this.interval)
+  }
+}
+</script>
+
+<template>
+  <Transition>
+    <span :key="count">{{ count }}</span>
+  </Transition>
+</template>
+```
+
+</div>
+
 در صورتی که اتریبیوت `key` را از کد حذف کنیم، فقط متن المنت به روز می‌شود و هیچ ترنزیشنی رخ نمی‌دهد. با این حال، با وجود اتریبیوت `key`، فریمورک Vue می‌داند که هر زمان که `count` تغییر کرد، یک عنصر `span` جدید ایجاد کند و بنابراین کامپوننت `Transition` دارای 2 عنصر مختلف برای ترنزیشن بین آن‌ها است.
 
+<div class="composition-api">
+
 [آن را در Playground امتحان کنید](https://play.vuejs.org/#eNp9UsFu2zAM/RVCl6Zo4nhYd/GcAtvQQ3fYhq1HXTSFydTKkiDJbjLD/z5KMrKgLXoTHx/5+CiO7JNz1dAja1gbpFcuQsDYuxtuVOesjzCCxx1MsPO2gwuiXnzkhhtpTYggbW8ibBJlUV/mBJXfmYh+EHqxuITNDYzcQGFWBPZ4dUXEaQnv6jrXtOuiTJoUROycFhEpAmi3agCpRQgbzp68cA49ZyV174UJKiprckxIcMJA84hHImc9oo7jPOQ0kQ4RSvH6WXW7JiV6teszfQpDPGqEIK3DLSGpQbazsyaugvqLDVx77JIhbqp5wsxwtrRvPFI7NWDhEGtYYVrQSsgELzOiUQw4I2Vh8TRgA9YJqeIR6upDABQh9TpTAPE7WN3HlxLp084Foi3N54YN1KWEVpOMkkO2ZJHsmp3aVw/BGjqMXJE22jml0X93STRw1pReKSe0tk9fMxZ9nzwVXP5B+fgK/hAOCePsh8dAt4KcnXJR+D3S16X07a9veKD3KdnZba+J/UbyJ+Zl0IyF9rk3Wxr7jJenvcvnrcz+PtweItKuZ1Np0MScMp8zOvkvb1j/P+776jrX0UbZ9A+fYSTP)
+
+</div>
+<div class="options-api">
+
+[آن را در Playground امتحان کنید](https://play.vuejs.org/#eNp9U8tu2zAQ/JUFTwkSyw6aXlQ7QB85pIe2aHPUhZHWDhOKJMiVYtfwv3dJSpbbBgEMWJydndkdUXvx0bmi71CUYhlqrxzdVAa3znqCBtey0wT7ygA0kuTZeX4G8EidN+MJoLadoRKuLkdAGULfS12C6bSGDB/i3yFx2tiAzaRIjyoUYxesICDdDaczZq1uJrNETY4XFx8G5Uu4WiwW55PBA66txy8YyNvdZFNrlP4o/Jdpbq4M/5bzYxZ8IGydloR8Alg2qmcVGcKqEi9eOoe+EqnExXsvTVCkrBkQxoKTBspn3HFDmprp+32ODA4H9mLCKDD/R2E5Zz9+Ws5PpuBjoJ1GCLV12DASJdKGa2toFtRvLOHaY8vx8DrFMGdiOJvlS48sp3rMHGb1M4xRzGQdYU6REY6rxwHJGdJxwBKsk7WiHSyK9wFQhqh14gDyIVjd0f8Wa2/bUwOyWXwQLGGRWzicuChvKC4F8bpmrTbFU7CGL2zqiJm2Tmn03100DZUox5ddCam1ffmaMPJd3Cnj9SPWz6/gT2EbsUr88Bj4VmAljjWSfoP88mL59tc33PLzsdjaptPMfqP4E1MYPGOmfepMw2Of8NK0d238+JTZ3IfbLSFnPSwVB53udyX4q/38xurTuO+K6/Fqi8MffqhR/A==)
+
+</div>
 
 ---
 

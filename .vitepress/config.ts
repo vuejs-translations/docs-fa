@@ -165,15 +165,15 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/computed'
         },
         {
-          text: 'اتصال کلاس و استایل - Class and Style Bindings',
+          text: 'اتصال کلاس و استایل',
           link: '/guide/essentials/class-and-style'
         },
         {
-          text: 'رندر شرطی - Conditional Rendering',
+          text: 'رندر شرطی',
           link: '/guide/essentials/conditional'
         },
         {
-          text: 'رندر لیست - List Rendering',
+          text: 'رندر لیست',
           link: '/guide/essentials/list'
         },
         {
@@ -185,7 +185,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/forms'
         },
         {
-          text: 'هوک‌های چرخه حیات - Lifecycle Hooks',
+          text: 'هوک‌های چرخه حیات',
           link: '/guide/essentials/lifecycle'
         },
         { text: 'ناظرها - Watchers', link: '/guide/essentials/watchers' },
@@ -235,7 +235,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/reusability/composables'
         },
         {
-          text: 'دایرکتیوهای سفارشی - Custom Directives',
+          text: 'دایرکتیوهای سفارشی',
           link: '/guide/reusability/custom-directives'
         },
         { text: 'پلاگین‌ها', link: '/guide/reusability/plugins' }
