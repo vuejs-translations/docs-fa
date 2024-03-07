@@ -224,7 +224,7 @@ export function register() {
 
 اگر کامپوننت‌های زیادی دارید، می‌توانید از ویژگی‌های ابزارهای بیلد مانند [glob import](https://vitejs.dev/guide/features.html#glob-import) در Vite یا [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) وب‌پک برای بارگذاری همه کامپوننت‌ها از یک دایرکتوری هم استفاده کنید.
 
-### Web Components and Typescript {#web-components-and-typescript}
+### Web Components and TypeScript {#web-components-and-typescript}
 
 اگر در حال توسعه یک برنامه یا کتابخانه هستید، ممکن است بخواهید کامپوننت‌های Vue خود از جمله آن‌هایی که به عنوان المنت‌های سفارشی تعریف شده‌اند را [type check](/guide/scaling-up/tooling.html#typescript) کنید.
 

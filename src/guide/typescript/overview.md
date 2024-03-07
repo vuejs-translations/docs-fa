@@ -24,15 +24,13 @@ Vue نیز خود با زبان TypeScript نوشته شده و پشتیبانی
 
 ### پشتیبانی از محیط توسعه یکپارچه (IDE) {#ide-support}
 
-- [VSCode](https://code.visualstudio.com/) به خاطر پشتیبانی بی نظیر خود از TypeScript به شدت توصیه می‌شود. 
+- [Visual Studio Code](https://code.visualstudio.com/) یا همان VSCode به خاطر پشتیبانی بی نظیر خود از TypeScript به شدت توصیه می‌شود.
 
-  - [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) یک افزونه رسمی برای VSCode است که پشتیبانی از TypeScript را در داخل فایل‌های Vue (SFC) همراه با امکانات فوق‌العاده دیگر فراهم می‌کند.
+  - [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (نام قبلی Volar) یک افزونه رسمی برای VSCode است که پشتیبانی از TypeScript را در داخل فایل‌های Vue (SFC) همراه با امکانات فوق‌العاده دیگر فراهم می‌کند.
 
-    :::tip
-    Volar جایگزین [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)، افزونه رسمی پیشین ما برای Vue 2 در VSCode است. اگر در حال حاضر Vetur نصب شده است، حتماً آن را در پروژه‌های Vue 3 غیرفعال کنید.
+    :::tip نکته
+    افزونه Vue - Official جایگزین [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur)، افزونه رسمی پیشین ما برای Vue 2 در VSCode است. اگر در حال حاضر Vetur نصب شده است، حتماً آن را در پروژه‌های Vue 3 غیرفعال کنید.
     :::
-
-  - [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) نیز برای پشتیبانی از وارد کردن `*.vue` در فایل‌های TS مورد نیاز است.
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) نیز پشتیبانی از TypeScript و Vue را از طریق تنظیمات پیش فرض فراهم می کند. محیط‌های توسعه یکپارچه (IDE) دیگر JetBrains نیز به طور پیش فرض یا از طریق یک افزونه رایگان، آن‌ها را پشتیبانی می کنند. از نسخه 2023.2 به بعد، WebStorm و Vue Plugin به صورت پشتیبانی داخلی برای سرور زبان Vue اضافه شده است. شما می توانید سرویس Vue را برای استفاده از Volar که با تمام نسخه‌های Typescript ادغام شده استفاده کنید ، در  تنظیمات > زبان‌ها و چارچوب‌ها > تایپ اسکریپت > ویو آن‌ را تنظیم کنید. به طور پیش فرض، Volar برای نسخه‌های TypeScript 5.0 به بالا استفاده خواهد شد.
 
@@ -54,24 +52,6 @@ Vue نیز خود با زبان TypeScript نوشته شده و پشتیبانی
 
 - [مستندات رسمی گزینه های کامپایلر TypeScript](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
 - [موارد قابل توجه در کامپایل TypeScript با استفاده از ابزار esbuild ](https://esbuild.github.io/content-types/#typescript-caveats)
-
-###  حالت تصرف توسط Volar  {#volar-takeover-mode}
-
-> این بخش فقط برای استفاده از VSCode + Volar اعمال می شود.
-
-برای استفاده همزمان از فایل‌های Vue SFC و TypeScript، Volar یک نمونه جداگانه از سرویس زبان TypeScript را با پشتیبانی ویژه برای Vue ایجاد می‌کند و از آن در فایل‌های Vue SFC استفاده می‌کند. در عین حال، فایل‌های معمولی TypeScript همچنان توسط سرویس زبان TypeScript داخلی VSCode پردازش می‌شوند، به همین دلیل نیاز به پلاگین [TypeScript Vue Plugin](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) برای پشتیبانی وارد کردن فایل‌های Vue SFC در فایل‌های TS وجود دارد. این تنظیم پیش‌فرض کار می‌کند، اما برای هر پروژه دو نمونه از سرویس زبان TypeScript در حال اجرا است: یکی از Volar و دیگری از سرویس داخلی VSCode. این کار کمی غیربهینه است و ممکن است منجر به مشکلات عملکردی در پروژه‌های بزرگ شود.
-
-Volar امکانی به نام "حالت تصرف" (Takeover Mode) را برای بهبود عملکرد فراهم می‌کند. در حالت تصرف، Volar با استفاده از یک نمونه تنها از سرویس زبان TypeScript، پشتیبانی را برای فایل‌های Vue و TS ارائه می‌دهد. به این ترتیب، فقط یک نمونه از سرویس زبان TypeScript برای هر دو نوع فایل استفاده می‌شود که باعث بهبود عملکرد و کاهش مشکلات عملکردی در پروژه‌های بزرگ می‌شود.
-
-برای فعال‌سازی حالت تصرف، شما باید سرویس زبان TS داخلی VSCode را **فقط در فضای کاری پروژه خود** غیرفعال کنید. برای انجام این کار، مراحل زیر را دنبال کنید:
-
-1. در فضای کاری پروژه خود، پنجره فرمان را با فشار دادن `Ctrl + Shift + P` (macOS: `Cmd + Shift + P`) باز کنید.
-2. کلمه `built` را تایپ کنید و "Extensions: Show Built-in Extensions" را انتخاب کنید.
-3. در جعبه جستجوی پسوند، کلمه `typescript` را تایپ کنید (پیشوند `@builtin` را حذف نکنید).
-4. بر روی آیکون دنده کوچک "TypeScript and JavaScript Language Features" کلیک کنید و "Disable (Workspace)" را انتخاب کنید.
-5. فضای کاری را مجدداً بارگذاری کنید. حالت Takeover وقتی که یک فایل Vue یا TS باز کنید، فعال خواهد شد.
-
-<img src="./images/takeover-mode.png" width="590" height="426" style="margin:0px auto;border-radius:8px">
 
 ### نکاتی درباره Vue CLI و `ts-loader` {#note-on-vue-cli-and-ts-loader}
 

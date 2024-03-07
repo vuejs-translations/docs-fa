@@ -117,7 +117,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 حالا شما باید اولین پروژه Vue خود را بصورت اجرا شده داشته باشید! توجه داشته باشید که کامپوننت‌هایی که برای نمونه در پروژه ایجاد شده‌اند، به جای [Options API](/guide/introduction#options-api) با استفاده از [Composition API](/guide/introduction#composition-api) و `<script setup>` نوشته شده‌اند. چند نکته بیشتر:
 
-- IDE توصیه شده [Visual Studio Code](https://code.visualstudio.com/) + [افزونه Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) است. اگر از ویرایشگرهای دیگر استفاده می‌کنید، بخش [پشتیبانی IDE](/guide/scaling-up/tooling#ide-support) را بررسی کنید.
+- IDE توصیه شده [Visual Studio Code](https://code.visualstudio.com/) + [افزونه Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) است. اگر از ویرایشگرهای دیگر استفاده می‌کنید، بخش [پشتیبانی IDE](/guide/scaling-up/tooling#ide-support) را بررسی کنید.
 - جزئیات بیشتر ابزار، از جمله یکپارچه‌سازی با فریم‌ورک‌های بک‌اند، در [راهنمای ابزارها](/guide/scaling-up/tooling) مورد بحث قرار گرفته.
 - برای یادگیری بیشتر در مورد ابزار ساخت پایه Vite، [مستندات Vite](https://vitejs.dev) را بررسی کنید.
 - اگر TypeScript را انتخاب کردید، [راهنمای استفاده از TypeScript](typescript/overview) را بررسی کنید.

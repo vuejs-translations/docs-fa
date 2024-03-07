@@ -86,10 +86,10 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ## پشتیبانی IDE {#ide-support}
 
-- تنظیمات توصیه شده [VSCode](https://code.visualstudio.com/) + [افزونه ویژگی‌های زبان ‎(Volar) Vue](https://marketplace.visualstudio.com/items?itemName=Vue.volar) است. این افزونه syntax highlighting، پشتیبانی TypeScript و intellisense برای تمپلیت و propهای کامپوننت را ارائه می‌دهد.
+- تنظیمات توصیه شده [VSCode](https://code.visualstudio.com/) + [افزونه Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (نام قبلی Volar) است. این افزونه syntax highlighting، پشتیبانی TypeScript و intellisense برای تمپلیت و propهای کامپوننت را ارائه می‌دهد.
 
   :::tip نکته
-  Volar جایگزین Vetur می‌شود، افزونه رسمی قبلی VSCode ما برای Vue 2. اگر در حال حاضر Vetur نصب شده است، مطمئن شوید در پروژه‌های Vue 3 آن را غیرفعال می‌کنید.
+  Vue - Official جایگزین Vetur می‌شود، افزونه رسمی قبلی VSCode ما برای Vue 2. اگر در حال حاضر Vetur نصب شده است، مطمئن شوید در پروژه‌های Vue 3 آن را غیرفعال می‌کنید.
   :::
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) هم از SFC های Vue پشتیبانی درونی عالی ارائه می‌دهد.
@@ -120,7 +120,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 مقاله اصلی: [استفاده از Vue با TypeScript](/guide/typescript/overview).
 
-- [Volar](https://github.com/johnsoncodehk/volar) بررسی انطباق تایپ برای SFC ها با استفاده از بلوک‌های `<script lang="ts"‎>` را فراهم می‌کند، شامل تمپلیت و اعتبارسنجی prop های بین کامپوننتی می‌شود.
+- [افزونه Vue - Official](https://github.com/johnsoncodehk/volar) بررسی انطباق تایپ برای SFC ها با استفاده از بلوک‌های `<script lang="ts"‎>` را فراهم می‌کند، شامل تمپلیت و اعتبارسنجی prop های بین کامپوننتی می‌شود.
 
 - از [`vue-tsc`](https://github.com/vuejs/language-tools/tree/master/packages/tsc) برای انجام همان بررسی انطباق تایپ از خط فرمان، یا برای تولید فایل‌های `d.ts` برای SFC ها استفاده کنید.
 
@@ -150,7 +150,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ## فرمت‌دهی (مرتب سازی کد) {#formatting}
 
-- افزونه [Volar](https://github.com/johnsoncodehk/volar) برای VSCode به صورت پیش‌فرض فرمت‌دهی برای SFC های Vue ارائه می‌دهد.
+- افزونه [Vue - Official](https://github.com/johnsoncodehk/volar) برای VSCode به صورت پیش‌فرض فرمت‌دهی برای SFC های Vue ارائه می‌دهد.
 
 - به طور جایگزین، [Prettier](https://prettier.io/) از فرمت‌دهی SFC پشتیبانی می‌کند.
 

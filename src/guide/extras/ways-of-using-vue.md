@@ -53,9 +53,8 @@ Vue برای حل این مشکل API هایی برای "رندر" کردن بر
 
 اگرچه Vue اساساً برای ساخت برنامه های وب طراحی شده است، اما به هیچ وجه فقط به مرورگر محدود نمی‌شود. شما می‌توانید:
 
-- برنامه‌های دسکتاپ را با [Electron](https://www.electronjs.org/) یا [Tauri](https://tauri.app) بسازید
+- برنامه‌های دسکتاپ را با [Electron](https://www.electronjs.org/) بسازید
 - برنامه‌های موبایل را با [Ionic Vue](https://ionicframework.com/docs/vue/overview) بسازید
-- برنامه‌های دسکتاپ و تلفن همراه را با سورس کد مشترک با [Quasar](https://quasar.dev/) بسازید
+- برنامه‌های دسکتاپ و تلفن همراه را با سورس کد مشترک با [Quasar](https://quasar.dev/) یا [Tauri](https://tauri.app) بسازید
 - وب ۳ بعدی WebGL را با [TresJS](https://tresjs.org/) تجربه کنید
 - از [Custom Renderer API](/api/custom-renderer) برای ساختن رندرهای سفارشی با هدف [WebGL](https://troisjs.github.io/) یا حتی [ترمینال](https://github.com/vue-terminal/vue-termui) استفاده کنید!
-- از [API Renderer سفارشی](/api/custom-renderer) Vue استفاده کنید تا رندرهای سفارشی بسازید. مانند آنها برای [terminal](https://github.com/vue-terminal/vue-termui) !
