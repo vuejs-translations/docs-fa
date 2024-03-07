@@ -1,14 +1,14 @@
 # تایپ اسکریپت با Options API {#typescript-with-options-api}
 
-> این صفحه فرض میکند که شما قبلاً خلاصه‌ ای در مورد [استفاده از Vue با تایپ اسکریپت](./overview). خوانده‌اید.
+>در این صفحه فرض شده که شما از قبل بخش [بررسی کلی استفاده از Vue با تایپ اسکریپت](./overview) را مطالعه کرده اید.
 
 :::tip نکته
-در حالی که Vue پشتیبانی استفاده از تایپ اسکریپت را با Options API دارد، توصیه می‌شود که Vue را از طریق Composition API با تایپ اسکریپت استفاده کنید، زیرا این روش ساده‌تر، کارآمدتر و دارای تعیین خودکار تایپ قوی‌تری است.
+در حالی که Vue قابلیت پشتیبانی استفاده از تایپ اسکریپت را با Options API دارد، توصیه می‌شود که Vue را از طریق Composition API با تایپ اسکریپت استفاده کنید، زیرا این روش ساده‌تر، کارآمدتر و دارای تعیین خودکار تایپ قوی‌تری است.
 :::
 
 ## تعریف تایپ Props کامپوننت  {#typing-component-props}
 
-برای تعیین خودکار تایپ props در Options API نیاز است که کامپوننت با استفاده از `()defineComponent` تعریف شود. با این روش Vue قادر است بر اساس گزینه‌های `props` تایپ props را تعیین کند و همچنین گزینه‌های اضافی مانند `required: true` و `default` را در نظر بگیرد:
+برای تعیین خودکار تایپ props در Options API نیاز است که کامپوننت با استفاده از `()defineComponent` تعریف شود. با این روش Vue قادر است بر اساس آپشن `props` تایپ props را تعیین کند و همچنین آپشن‌های اضافی مانند `required: true` و `default` را در نظر بگیرد:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -30,8 +30,7 @@ export default defineComponent({
 })
 ```
 
-اما گزینه‌های  `props` در زمان اجرای ران‌تایم تنها با استفاده از توابع سازنده به عنوان تایپ یک prop پشتیبانی می‌کنند - هیچ راهی برای مشخص کردن انواع پیچیده مانند آبجکت‌هایی با ویژگی‌های تو در تو یا الگوی فراخوانی تابع وجود ندارد.
-
+اما آپشن `props` در زمان اجرای ران‌تایم تنها از توابع سازنده به عنوان تایپ پایه prop پشتیبانی می‌کنند - هیچ راهی برای مشخص کردن تایپ‌های پیچیده مانند آبجکت‌هایی با ویژگی‌های تو در تو یا تشخیص امضای فراخوانی تابع وجود ندارد.
 برای تعیین ویژگی‌های پیچیده‌ی تایپ‌های props، می‌توانیم از `PropType` ابزاری برای تعیین تایپ استفاده کنیم.
 
 ```ts
@@ -92,11 +91,11 @@ export default defineComponent({
 })
 ```
 
-این کار جلوگیری میکند از حدس زدن تایپ `this` در داخل توابع توسط تایپ اسکریپت، که متأسفانه گاهی می‌تواند باعث ایجاد مشکل در تعیین خودکار تایپ شود. این مشکل بیشتر به عنوان یک [محدودیت طراحی](https://github.com/microsoft/TypeScript/issues/38845) شناخته می‌شد، و اکنون در [تایپ اسکریپت 4.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#improved-function-inference-in-objects-and-methods) بهبود یافته است.
+این کار جلوگیری می‌کند از حدس زدن تایپ `this` در داخل توابع توسط تایپ اسکریپت، که متأسفانه گاهی می‌تواند باعث ایجاد مشکل در تعیین خودکار تایپ شود. این مشکل بیشتر به عنوان یک [محدودیت طراحی](https://github.com/microsoft/TypeScript/issues/38845) شناخته می‌شد، و اکنون در [تایپ اسکریپت 4.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#improved-function-inference-in-objects-and-methods) بهبود یافته است.
 
 ## تعریف تایپ Emits کامپوننت {#typing-component-emits}
 
-ما می‌توانیم تایپ داده‌ی مورد انتظار برای یک رویداد emit شده را با استفاده از سینتکس شیء از گزینه‌ی `emits` اعلام کنیم. همچنین، تمام رویدادهای emit شده‌ای که اعلام نشده‌اند، هنگام فراخوانی، خطای تایپ ایجاد می‌کنند:
+ما می‌توانیم تایپ داده‌ مورد انتظار برای یک رویداد emit شده را با استفاده از سینتکس آبجکت از آپشن `emits` اعلام کنیم. همچنین، تمام رویدادهای emit شده‌ای که اعلام نشده‌اند، هنگام فراخوانی، خطای تایپ ایجاد می‌کنند:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -120,9 +119,9 @@ export default defineComponent({
 })
 ```
 
-##              تعریف تایپ ویژگی Computed {#typing-computed-properties}
+##              تعریف تایپ پراپرتی‌های Computed {#typing-computed-properties}
 
-یک ویژگی computed، تایپ خود را بر اساس مقدار بازگشتی‌اش تعیین می‌کند:
+یک پراپرتی computed، تایپ خود را بر اساس مقدار بازگشتی‌اش تعیین می‌کند:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -144,7 +143,7 @@ export default defineComponent({
 })
 ```
 
-در برخی موارد، ممکن است بخواهید به صراحت نوع یک ویژگی computed  را مشخص کنید تا از صحت پیاده‌سازی آن اطمینان حاصل کنید:
+در برخی موارد، ممکن است بخواهید به صراحت تایپ یک پراپرتی‌ computed  را مشخص کنید تا از صحت پیاده‌سازی آن اطمینان حاصل کنید:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -161,8 +160,7 @@ export default defineComponent({
       return this.message + '!'
     },
 
-    // مشخص کردن تایپ یک ویژگی computed
-    // قابل نوشتن
+    // قابل نوشتن computed مشخص کردن تایپ یک پراپرتی
     greetingUppercased: {
       get(): string {
         return this.greeting.toUpperCase()
@@ -200,7 +198,7 @@ export default defineComponent({
 </template>
 ```
 
-بدون تعیین نوع ضمنی، آرگومان event به صورت ضمنی نوع `any` را خواهد داشت. این امر همچنین در صورت استفاده از `"strict": true` یا `"noImplicitAny": true` در `tsconfig.json` منجر به خطای TS می‌شود. بنابراین توصیه می‌شود که به صورت صریح نوع آرگومان رویدادگیرها را مشخص کنید. علاوه بر این، ممکن است نیاز به استفاده از ادعاهای نوعی (type assertions) هنگام دسترسی به ویژگی‌های event باشید:
+بدون تعیین نوع ضمنی، آرگومان event به صورت ضمنی نوع `any` را خواهد داشت. این امر همچنین در صورت استفاده از `"strict": true` یا `"noImplicitAny": true` در `tsconfig.json` منجر به خطای TS می‌شود. بنابراین توصیه می‌شود که به صورت صریح نوع آرگومان رویدادگیرها را مشخص کنید. علاوه بر این، ممکن است نیاز به استفاده از ادعاهای نوعی (type assertions) هنگام دسترسی به پراپرتی‌های event باشید:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -214,9 +212,9 @@ export default defineComponent({
 })
 ```
 
-## افزایش ویژگی‌های سراسری {#augmenting-global-properties}
+## افزایش پراپرتی‌های سراسری {#augmenting-global-properties}
 
-برخی از پلاگین‌ها ویژگی‌هایی را که در سراسری به تمام نمونه‌های کامپوننت در دسترس هستند، از طریق [`app.config.globalProperties`](/api/application#app-config-globalproperties) نصب می‌کنند. به عنوان مثال، ما ممکن است `this.$http` را برای دریافت داده‌ها یا `this.$translate` را برای چند زبانه کردن نصب کنیم. برای اینکه این امکان به خوبی با TypeScript کار کند، Vue یک رابط `ComponentCustomProperties` را ارائه می‌دهد که طراحی شده است تا از طریق [افزایش ماژول TypeScript](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) افزایش یابد:
+برخی از پلاگین‌ها پراپرتی‌های سراسری را در تمام نمونه‌های ساخته شده از کامپوننت، از طریق [`app.config.globalProperties`](/api/application#app-config-globalproperties) نصب می‌کنند. به عنوان مثال، ما ممکن است `this.$http` را برای دریافت داده‌ها یا `this.$translate` را برای چند زبانه کردن نصب کنیم. برای اینکه این امکان به خوبی با TypeScript کار کند، Vue یک رابط `ComponentCustomProperties` را ارائه می‌دهد که طراحی شده است تا از طریق [افزایش ماژول TypeScript](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) افزایش یابد:
 
 ```ts
 import axios from 'axios'
@@ -231,7 +229,7 @@ declare module 'vue' {
 
 همچنین ببینید:
 
-- [تست‌های واحد TypeScript برای افزونگی تایپ کامپوننت](https://github.com/vuejs/core/blob/main/packages/dts-test/componentTypeExtensions.test-d.tsx)
+- [یونیت تست‌ها در TypeScript برای افزونگی تایپ کامپوننت](https://github.com/vuejs/core/blob/main/packages/dts-test/componentTypeExtensions.test-d.tsx)
 
 ### مکان قرارگیری افزایش تایپ {#type-augmentation-placement}
 
@@ -259,9 +257,9 @@ declare module 'vue' {
 }
 ```
 
-## افزایش گزینه‌های سفارشی {#augmenting-custom-options}
+## افزایش آپشن‌های سفارشی {#augmenting-custom-options}
 
-برخی از پلاگین‌ها، به عنوان مثال `vue-router`، پشتیبانی از گزینه‌های سفارشی کامپوننت مانند `beforeRouteEnter` را فراهم می‌کنند:
+برخی از پلاگین‌ها، به عنوان مثال `vue-router`، پشتیبانی از آپشن‌های سفارشی کامپوننت مانند `beforeRouteEnter` را فراهم می‌کنند:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -273,7 +271,7 @@ export default defineComponent({
 })
 ```
 
-بدون افزایش تایپ مناسب، آرگومان‌های این هوک به صورت ضمنی نوع `any` خواهند داشت. ما می‌توانیم رابط `ComponentCustomOptions` را برای پشتیبانی از این گزینه‌های سفارشی افزایش دهیم:
+بدون افزایش تایپ مناسب، آرگومان‌های این هوک به صورت ضمنی نوع `any` خواهند داشت. ما می‌توانیم رابط `ComponentCustomOptions` را برای پشتیبانی از این آپشن‌های سفارشی افزایش دهیم:
 
 ```ts
 import { Route } from 'vue-router'
@@ -285,10 +283,10 @@ declare module 'vue' {
 }
 ```
 
-حالا گزینه `beforeRouteEnter` به درستی تایپ خواهد شد. توجه داشته باشید که این فقط یک مثال است - کتابخانه‌هایی با تایپ‌های مناسب مانند `vue-router` باید به صورت خودکار این افزایش‌ها را در تعریف تایپ‌های خود انجام دهند.
+حالا آپشن `beforeRouteEnter` به درستی تایپ خواهد شد. توجه داشته باشید که این فقط یک مثال است - کتابخانه‌هایی با تایپ‌های مناسب مانند `vue-router` باید به صورت خودکار این افزایش‌ها را در تعریف تایپ‌های خود انجام دهند.
 
 مکان قرارگیری این افزایش مشمول [همان محدودیت‌ها](#type-augmentation-placement) به عنوان افزایش‌های ویژگی سراسری است.
 
 همچنین ببینید:
 
-- [تست‌های واحد TypeScript برای افزونگی نوع کامپوننت](https://github.com/vuejs/core/blob/main/packages/dts-test/componentTypeExtensions.test-d.tsx)
+- [یونیت تست‌ها در TypeScript برای افزونگی نوع کامپوننت](https://github.com/vuejs/core/blob/main/packages/dts-test/componentTypeExtensions.test-d.tsx)
