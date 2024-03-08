@@ -1,28 +1,28 @@
-# Vue and Web Components {#vue-and-web-components}
+# Vue و کامپوننت‌های وب {#vue-and-web-components}
 
-[Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) is an umbrella term for a set of web native APIs that allows developers to create reusable custom elements.
+[کامپوننت‌های وب](https://developer.mozilla.org/en-US/docs/Web/Web\\_Components) یک اصطلاح کلی برای مجموعه‌ای از APIهای بومی وب است که به توسعه‌دهندگان امکان می‌دهد تا المنت‌های سفارشی قابل استفاده‌ مجدد ایجاد کنند.
 
-We consider Vue and Web Components to be primarily complementary technologies. Vue has excellent support for both consuming and creating custom elements. Whether you are integrating custom elements into an existing Vue application, or using Vue to build and distribute custom elements, you are in good company.
+ما Vue و کامپوننت‌های وب را فناوری‌های مکمل یکدیگر در نظر می‌گیریم. Vue پشتیبانی عالی از استفاده و ایجاد المنت‌های سفارشی ارائه می‌دهد. چه در حال یکپارچه‌سازی المنت‌های سفارشی موجود در یک برنامه Vue باشید یا از Vue برای ساخت و توزیع المنت‌های سفارشی استفاده کنید، در جایگاه خوبی قرار دارید.
 
-## Using Custom Elements in Vue {#using-custom-elements-in-vue}
+## استفاده از المنت‌های سفارشی در Vue {#using-custom-elements-in-vue}
 
-Vue [scores a perfect 100% in the Custom Elements Everywhere tests](https://custom-elements-everywhere.com/libraries/vue/results/results.html). Consuming custom elements inside a Vue application largely works the same as using native HTML elements, with a few things to keep in mind:
+Vue [نمره ‎100% را در همه تست‌های المنت‌های سفارشی کسب کرده است](https://custom-elements-everywhere.com/libraries/vue/results/results.html). استفاده از المنت‌های سفارشی داخل برنامه Vue تا حد زیادی مانند استفاده از المنت‌های HTML بومی عمل می‌کند، با چند نکته که باید به آن‌ها توجه داشت:
 
-### Skipping Component Resolution {#skipping-component-resolution}
+### گذشتن از Component Resolution {#skipping-component-resolution}
 
-By default, Vue will attempt to resolve a non-native HTML tag as a registered Vue component before falling back to rendering it as a custom element. This will cause Vue to emit a "failed to resolve component" warning during development. To let Vue know that certain elements should be treated as custom elements and skip component resolution, we can specify the [`compilerOptions.isCustomElement` option](/api/application#app-config-compileroptions).
+به طور پیش‌فرض، Vue تلاش می‌کند قبل از اینکه یک تگ HTML غیربومی را به عنوان المنت سفارشی قبول کند به عنوان یک کامپوننت Vue ثبت‌شده در نظر بگیرد. این باعث می‌شود Vue در حین توسعه هشدار "failed to resolve component" را منتشر کند. برای اطلاع دادن به Vue که برخی المنت باید به عنوان المنت‌های سفارشی در نظر گرفته شوند، می‌توانیم از [آپشن `compilerOptions.isCustomElement`](/api/application#app-config-compileroptions) استفاده کنیم.
 
-If you are using Vue with a build setup, the option should be passed via build configs since it is a compile-time option.
+اگر از Vue با یک بیلد ستاپ استفاده می‌کنید، این آپشن باید از طریق تنظیمات بیلد ارسال شود زیرا یک آپشن زمان کامپایل است.
 
-#### Example In-Browser Config {#example-in-browser-config}
+#### مثال از تنظیمات درون مرورگر {#example-in-browser-config}
 
 ```js
-// Only works if using in-browser compilation.
-// If using build tools, see config examples below.
+// اگر فقط از کامپایل درون مرورگر استفاده می‌کنید کار می‌کند
+// اگر از ابزارهای بیلد استفاده می‌کنید، مثال‌های پایین را ببینید
 app.config.compilerOptions.isCustomElement = (tag) => tag.includes('-')
 ```
 
-#### Example Vite Config {#example-vite-config}
+#### مثال از تنظیمات Vite {#example-vite-config}
 
 ```js
 // vite.config.js
@@ -33,7 +33,7 @@ export default {
     vue({
       template: {
         compilerOptions: {
-          // treat all tags with a dash as custom elements
+          // همه تگ‌های دارای خط‌تیره را به‌عنوان المنت‌های سفارشی در نظر بگیر
           isCustomElement: (tag) => tag.includes('-')
         }
       }
@@ -42,7 +42,7 @@ export default {
 }
 ```
 
-#### Example Vue CLI Config {#example-vue-cli-config}
+#### مثال از تنظیمات Vue CLI {#example-vue-cli-config}
 
 ```js
 // vue.config.js
@@ -54,7 +54,7 @@ module.exports = {
       .tap(options => ({
         ...options,
         compilerOptions: {
-          // treat any tag that starts with ion- as custom elements
+          // شروع شود را به‌عنوان المنت‌های سفارشی در نظر بگیر ion- هر تگی که با
           isCustomElement: tag => tag.startsWith('ion-')
         }
       }))
@@ -64,24 +64,24 @@ module.exports = {
 
 ### Passing DOM Properties {#passing-dom-properties}
 
-Since DOM attributes can only be strings, we need to pass complex data to custom elements as DOM properties. When setting props on a custom element, Vue 3 automatically checks DOM-property presence using the `in` operator and will prefer setting the value as a DOM property if the key is present. This means that, in most cases, you won't need to think about this if the custom element follows the [recommended best practices](https://web.dev/custom-elements-best-practices/).
+از آنجایی که اتریبیوت‌ها در DOM تنها می‌توانند رشته باشند، برای انتقال داده‌های پیچیده به المنت‌های سفارشی به پراپرتی‌های DOM نیاز داریم. هنگام تنظیم props روی یک المنت سفارشی، Vue 3 به طور خودکار با استفاده از عملگر `in` وجود پراپرتی DOM را بررسی می‌کند و اگر کلید وجود داشته باشد، ترجیح می‌دهد مقدار را به عنوان پراپرتی DOM تنظیم کند. این بدان معناست که در اکثر موارد، اگر المنت سفارشی از [شیوه‌های توصیه شده](https://web.dev/custom-elements-best-practices/) پیروی کند، نیاز نیست در مورد این موضوع فکر کنید.
 
-However, there could be rare cases where the data must be passed as a DOM property, but the custom element does not properly define/reflect the property (causing the `in` check to fail). In this case, you can force a `v-bind` binding to be set as a DOM property using the `.prop` modifier:
+با این حال، ممکن است موارد نادری وجود داشته باشد که داده‌ها باید به عنوان پراپرتی DOM انتقال یابند، اما المنت سفارشی به درستی پراپرتی را تعریف/انعکاس نمی‌دهد (باعث شکست بررسی `in` می‌شود). در این مورد، می‌توانید یک اتصال `v-bind` را با استفاده از مُدیفایر `‎.prop` مجبور به تنظیم به عنوان پراپرتی DOM کنید:
 
 ```vue-html
 <my-element :user.prop="{ name: 'jack' }"></my-element>
 
-<!-- shorthand equivalent -->
+<!-- معادل مختصر -->
 <my-element .user="{ name: 'jack' }"></my-element>
 ```
 
-## Building Custom Elements with Vue {#building-custom-elements-with-vue}
+## ساخت المنت‌های سفارشی با Vue {#building-custom-elements-with-vue}
 
-The primary benefit of custom elements is that they can be used with any framework, or even without a framework. This makes them ideal for distributing components where the end consumer may not be using the same frontend stack, or when you want to insulate the end application from the implementation details of the components it uses.
+مزیت اصلی المنت‌های سفارشی این است که می‌توانند با هر فریم‌ورکی یا حتی بدون فریم‌ورک استفاده شوند. این آن‌ها را برای توزیع کامپوننت‌ها در مواردی که مصرف‌کننده نهایی ممکن است از یک استک فرانت‌اند مشابه استفاده نکند یا زمانی که می‌خواهید از جزئیات پیاده‌سازی کامپوننت‌ها در برنامه نهایی محافظت کنید، ایده‌آل می‌سازد.
 
 ### defineCustomElement {#definecustomelement}
 
-Vue supports creating custom elements using exactly the same Vue component APIs via the [`defineCustomElement`](/api/general#definecustomelement) method. The method accepts the same argument as [`defineComponent`](/api/general#definecomponent), but instead returns a custom element constructor that extends `HTMLElement`:
+Vue از طریق متد [`defineCustomElement`](/api/general#definecustomelement) از ایجاد المنت‌های سفارشی با استفاده از دقیقاً همان APIهای کامپوننت Vue پشتیبانی می‌کند. این متد همان آرگومان‌های [`defineComponent`](/api/general#definecomponent) را می‌پذیرد، اما به جای آن یک سازنده المنت سفارشی را که از `HTMLElement` مشتق شده را بازمی‌گرداند:
 
 ```vue-html
 <my-vue-element></my-vue-element>
@@ -91,7 +91,7 @@ Vue supports creating custom elements using exactly the same Vue component APIs 
 import { defineCustomElement } from 'vue'
 
 const MyVueElement = defineCustomElement({
-  // normal Vue component options here
+  // در اینجاست Vue آپشن‌های معمول کامپوننت
   props: {},
   emits: {},
   template: `...`,
@@ -100,39 +100,39 @@ const MyVueElement = defineCustomElement({
   styles: [`/* inlined css */`]
 })
 
-// Register the custom element.
-// After registration, all `<my-vue-element>` tags
-// on the page will be upgraded.
+// المنت سفارشی را ثبت کنید
+// `<my-vue-element>` پس از ثبت، همه تگ‌های
+// روی صفحه ارتقا خواهند یافت
 customElements.define('my-vue-element', MyVueElement)
 
-// You can also programmatically instantiate the element:
-// (can only be done after registration)
+// همچنین می‌توانید از طریق کد المنت را مقداردهی اولیه کنید:
+// (فقط پس از ثبت امکان‌پذیر است)
 document.body.appendChild(
   new MyVueElement({
-    // initial props (optional)
+    // اولیه (اختیاری) props
   })
 )
 ```
 
-#### Lifecycle {#lifecycle}
+#### چرخه حیات {#lifecycle}
 
-- A Vue custom element will mount an internal Vue component instance inside its shadow root when the element's [`connectedCallback`](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks) is called for the first time.
+- یک المنت سفارشی Vue یک نمونه کامپوننت Vue داخلی را در shadow root اش مانت می‌کند زمانی که [`connectedCallback`](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks) المنت برای اولین بار فراخوانی می‌شود.
 
-- When the element's `disconnectedCallback` is invoked, Vue will check whether the element is detached from the document after a microtask tick.
+- زمانی که `disconnectedCallback` المنت فراخوانی می‌شود، Vue پس از یک تیک microtask بررسی می‌کند که آیا المنت از سند جدا شده است.
 
-  - If the element is still in the document, it's a move and the component instance will be preserved;
+  - اگر المنت هنوز در سند باشد، این یک جابه‌جایی است و نمونه کامپوننت حفظ می‌شود.
 
-  - If the element is detached from the document, it's a removal and the component instance will be unmounted.
+  - اگر المنت از سند جدا شده باشد، این یک حذف است و نمونه کامپوننت آنمانت می‌شود.
 
 #### Props {#props}
 
-- All props declared using the `props` option will be defined on the custom element as properties. Vue will automatically handle the reflection between attributes / properties where appropriate.
+- همه‌ی prop های تعریف‌شده با آپشن `props` به عنوان پراپرتی‌های روی المنت سفارشی تعریف می‌شوند. Vue به طور خودکار انعکاس بین اتریبیوت‌ها/پراپرتی‌ها را در جای مناسب انجام می‌دهد.
 
-  - Attributes are always reflected to corresponding properties.
+  - اتریبیوت‌ها همیشه به پراپرتی‌های متناظر انعکاس داده می‌شوند.
 
-  - Properties with primitive values (`string`, `boolean` or `number`) are reflected as attributes.
+  - پراپرتی‌ها با تایپ داده اولیه (‍`string‍` یا `‍boolean‍` یا `‍number`) به عنوان اتریبیوت‌ها انعکاس داده می‌شوند.
 
-- Vue also automatically casts props declared with `Boolean` or `Number` types into the desired type when they are set as attributes (which are always strings). For example, given the following props declaration:
+- Vue همچنین خودکار props اعلام‌شده با تایپ‌های `Boolean` یا `Number` را زمانی که به عنوان اتریبیوت‌ها (که همیشه رشته هستند) تنظیم می‌شوند، به نوع مورد نظر تبدیل می‌کند. به عنوان مثال، با توجه به اعلام props زیر:
 
   ```js
   props: {
@@ -141,25 +141,25 @@ document.body.appendChild(
   }
   ```
 
-  And the custom element usage:
+  و استفاده از المنت سفارشی:
 
   ```vue-html
   <my-element selected index="1"></my-element>
   ```
 
-  In the component, `selected` will be cast to `true` (boolean) and `index` will be cast to `1` (number).
+  در کامپوننت، `selected` به `true` (تایپ: Boolean) و `index` به `1` (تایپ: Number) تبدیل خواهد شد.
 
-#### Events {#events}
+#### رویدادها {#events}
 
-Events emitted via `this.$emit` or setup `emit` are dispatched as native [CustomEvents](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events#adding_custom_data_%E2%80%93_customevent) on the custom element. Additional event arguments (payload) will be exposed as an array on the CustomEvent object as its `detail` property.
+رویدادهایی که از طریق ‍`this.$emit‍` یا `‍emit‍` موجود در setup، ارسال می‌شوند، به عنوان [CustomEvents](https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events#adding_custom_data_%E2%80%93_customevent) بومی روی المنت سفارشی ارسال می‌شوند. آرگومان‌های اضافی رویداد (payload) به عنوان یک آرایه روی آبجکت CustomEvent از پراپرتی ‍`detail‍` آن قابل دسترسی خواهند بود.
 
 #### Slots {#slots}
 
-Inside the component, slots can be rendered using the `<slot/>` element as usual. However, when consuming the resulting element, it only accepts [native slots syntax](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots):
+درون کامپوننت، اسلات‌ها می‌توانند با استفاده از المنت `‎<slot/>‎` مثل همیشه رندر شوند. با این حال هنگام استفاده، المنت حاصل فقط از سینتکس [اسلات بومی](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots) پشتیبانی می‌کند:
 
-- [Scoped slots](/guide/components/slots#scoped-slots) are not supported.
+- [اسلات‌های دارای اسکوپ](/guide/components/slots#scoped-slots) پشتیبانی نمی‌شوند.
 
-- When passing named slots, use the `slot` attribute instead of the `v-slot` directive:
+- هنگام ارسال اسلات‌های نامگذاری‌شده، از خاصیت `slot` به جای دایرکتیو `v-slot` استفاده کنید:
 
   ```vue-html
   <my-element>
@@ -169,15 +169,15 @@ Inside the component, slots can be rendered using the `<slot/>` element as usual
 
 #### Provide / Inject {#provide-inject}
 
-The [Provide / Inject API](/guide/components/provide-inject#provide-inject) and its [Composition API equivalent](/api/composition-api-dependency-injection#provide) also work between Vue-defined custom elements. However, note that this works **only between custom elements**. i.e. a Vue-defined custom element won't be able to inject properties provided by a non-custom-element Vue component.
+API مربوط به [Provide / Inject](/guide/components/provide-inject#provide-inject) و [معادل آن در Composition API](/api/composition-api-dependency-injection#provide) در المنت‌های سفارشی تعریف‌شده با Vue کار می‌کنند. با این حال، توجه داشته باشید که این فقط بین المنت‌های سفارشی کار می‌کند. یعنی یک المنت سفارشی تعریف‌شده در Vue نمی‌تواند پراپرتی‌های ارائه‌شده توسط یک کامپوننت Vue غیرسفارشی را تزریق کند.
 
-### SFC as Custom Element {#sfc-as-custom-element}
+### SFC به عنوان المنت سفارشی {#sfc-as-custom-element}
 
-`defineCustomElement` also works with Vue Single-File Components (SFCs). However, with the default tooling setup, the `<style>` inside the SFCs will still be extracted and merged into a single CSS file during production build. When using an SFC as a custom element, it is often desirable to inject the `<style>` tags into the custom element's shadow root instead.
+`‍defineCustomElement‍` همچنین با Vue Single-File Components (SFCs) کار می‌کند. با این حال، با تنظیم پیش‌فرض ابزار، ‍`<style>`‍ داخل SFCها در حین بیلد پروداکشن استخراج و با هم به یک فایل CSS ترکیب می‌شوند. هنگام استفاده از یک SFC به عنوان یک المنت سفارشی، اغلب مطلوب است که تگ‌های `‍<style>`‍ را به جای آن به shadow root المنت سفارشی تزریق کنیم.
 
-The official SFC toolings support importing SFCs in "custom element mode" (requires `@vitejs/plugin-vue@^1.4.0` or `vue-loader@^16.5.0`). An SFC loaded in custom element mode inlines its `<style>` tags as strings of CSS and exposes them under the component's `styles` option. This will be picked up by `defineCustomElement` and injected into the element's shadow root when instantiated.
+ابزارهای رسمی SFC از import کردن SFCها در "حالت المنت سفارشی" پشتیبانی می‌کنند (نیازمند ‍`‎@vitejs/plugin-vue@^1.4.0‍` یا ‍`vue-loader@^16.5.0‍`). یک SFC بارگذاری‌شده در حالت المنت سفارشی، تگ‌های `‍<style>`‍ خود را به عنوان رشته‌هایی از CSS درون‌خطی تبدیل می‌کند و آن‌ها را تحت آپشن `styles` کامپوننت قرار می‌دهد. این مورد توسط `‍defineCustomElement‍` برداشته می‌شود و هنگام مقداردهی اولیه المنت به shadow root آن تزریق می‌شود.
 
-To opt-in to this mode, simply end your component file name with `.ce.vue`:
+برای فعال کردن این حالت، کافی است نام فایل کامپوننت خود را با ‍`‎.ce.vue‍` تمام کنید:
 
 ```js
 import { defineCustomElement } from 'vue'
@@ -192,18 +192,18 @@ const ExampleElement = defineCustomElement(Example)
 customElements.define('my-example', ExampleElement)
 ```
 
-If you wish to customize what files should be imported in custom element mode (for example, treating _all_ SFCs as custom elements), you can pass the `customElement` option to the respective build plugins:
+برای سفارشی‌سازی اینکه کدام فایل‌ها باید در حالت المنت سفارشی import شوند (برای مثال، در نظر گرفتن _همه_ SFCها به عنوان المنت‌های سفارشی)، می‌توانید آپشن `customElement` را به پلاگین‌های بیلد مربوطه ارسال کنید:
 
-- [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#using-vue-sfcs-as-custom-elements)
+- [‎@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#using-vue-sfcs-as-custom-elements)
 - [vue-loader](https://github.com/vuejs/vue-loader/tree/next#v16-only-options)
 
-### Tips for a Vue Custom Elements Library {#tips-for-a-vue-custom-elements-library}
+### نکاتی برای کتابخانه المنت‌های سفارشی Vue {#tips-for-a-vue-custom-elements-library}
 
-When building custom elements with Vue, the elements will rely on Vue's runtime. There is a ~16kb baseline size cost depending on how many features are being used. This means it is not ideal to use Vue if you are shipping a single custom element - you may want to use vanilla JavaScript, [petite-vue](https://github.com/vuejs/petite-vue), or frameworks that specialize in small runtime size. However, the base size is more than justifiable if you are shipping a collection of custom elements with complex logic, as Vue will allow each component to be authored with much less code. The more elements you are shipping together, the better the trade-off.
+هنگام ساخت المنت‌های سفارشی با Vue، المنت‌های به رانتایم Vue وابسته خواهند بود. یک هزینه پایه حدود ‎~16kb بسته به اینکه از چه ویژگی‌هایی در حال استفاده هستند، وجود دارد. این بدان معناست که استفاده از Vue ایده‌آل نیست اگر در حال ارسال یک المنت سفارشی تکی هستید - شاید بخواهید از جاوااسکریپت خالص، [petite-vue](https://github.com/vuejs/petite-vue)، یا فریم‌ورک‌هایی که در اندازه رانتایم کوچک تخصص دارند، استفاده کنید. با این حال، اگر در حال ارسال تعداد زیادی از المنت‌های سفارشی با منطق پیچیده هستید، اندازه پایه بیش از حد، توجیه‌پذیر است. زیرا Vue به هر کامپوننت اجازه می‌دهد با کد خیلی کمتری نوشته شود. هر چه المنت‌های بیشتری را با هم ارسال کنید، مبادله بهتر است.
 
-If the custom elements will be used in an application that is also using Vue, you can choose to externalize Vue from the built bundle so that the elements will be using the same copy of Vue from the host application.
+اگر المنت‌های سفارشی در یک برنامه‌ای که از Vue هم استفاده می‌کند مورد استفاده قرار بگیرند، می‌توانید انتخاب کنید Vue را از باندل خارجی استفاده کنید تا المنت‌ها از همان کپی Vue موجود در برنامه میزبان استفاده کنند.
 
-It is recommended to export the individual element constructors to give your users the flexibility to import them on-demand and register them with desired tag names. You can also export a convenience function to automatically register all elements. Here's an example entry point of a Vue custom element library:
+توصیه می‌شود سازنده‌های المنت‌های جدا از هم را export کنید تا به کاربرانتان انعطاف‌پذیری بدهید آن‌ها را در زمان نیاز import کنند و با نام تگ دلخواه ثبت نمایند. همچنین می‌توانید یک تابع مقداردهی اولیه را export کنید تا خودکار همه المنت‌ها را ثبت کند. مثالی از نقطه ورود یک کتابخانه المنت‌های سفارشی Vue:
 
 ```js
 import { defineCustomElement } from 'vue'
@@ -222,13 +222,13 @@ export function register() {
 }
 ```
 
-If you have many components, you can also leverage build tool features such as Vite's [glob import](https://vitejs.dev/guide/features.html#glob-import) or webpack's [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) to load all components from a directory.
+اگر کامپوننت‌های زیادی دارید، می‌توانید از ویژگی‌های ابزارهای بیلد مانند [glob import](https://vitejs.dev/guide/features.html#glob-import) در Vite یا [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) وب‌پک برای بارگذاری همه کامپوننت‌ها از یک دایرکتوری هم استفاده کنید.
 
-### Web Components and Typescript {#web-components-and-typescript}
+### Web Components and TypeScript {#web-components-and-typescript}
 
-If you are developing an application or a library, you may want to [type check](/guide/scaling-up/tooling.html#typescript) your Vue components, including those that are defined as custom elements.
+اگر در حال توسعه یک برنامه یا کتابخانه هستید، ممکن است بخواهید کامپوننت‌های Vue خود از جمله آن‌هایی که به عنوان المنت‌های سفارشی تعریف شده‌اند را [type check](/guide/scaling-up/tooling.html#typescript) کنید.
 
-Custom elements are registered globally using native APIs, so by default they won't have type inference when used in Vue templates. To provide type support for Vue components registered as custom elements, we can register global component typings using the the [`GlobalComponents` interface](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage) in Vue templates and/or in [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements):
+المنت‌های سفارشی به طور سراسری با استفاده از APIهای بومی ثبت می‌شوند، بنابراین به طور پیش‌فرض هنگام استفاده در تمپلیت‌های Vue ما type inference نخواهیم داشت. برای فراهم کردن پشتیبانی از تایپ برای کامپوننت‌های Vue ما، که به عنوان المنت‌های سفارشی ثبت شده‌اند، می‌توانیم تایپ‌های سراسری کامپوننت را با استفاده از [`GlobalComponents` interface](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage) در تمپلیت‌های Vue و یا در [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements) ثبت کنیم:
 
 ```typescript
 import { defineCustomElement } from 'vue'
@@ -247,28 +247,28 @@ declare module 'vue' {
 }
 ```
 
-## Web Components vs. Vue Components {#web-components-vs-vue-components}
+## کامپوننت‌های Web در مقابل کامپوننت‌های Vue {#web-components-vs-vue-components}
 
-Some developers believe that framework-proprietary component models should be avoided, and that exclusively using Custom Elements makes an application "future-proof". Here we will try to explain why we believe that this is an overly simplistic take on the problem.
+برخی توسعه‌دهندگان باور دارند که باید از مدل‌های کامپوننت مخصوص به فریمورک اجتناب شود و استفاده انحصاری از المنت‌های سفارشی، در بروزرسانی‌های آینده برنامه را "پایدار" می‌کند. در اینجا تلاش می‌کنیم توضیح دهیم که چرا فکر می‌کنیم که این نگرش بیش از حد ساده‌گرا به مسئله است.
 
-There is indeed a certain level of feature overlap between Custom Elements and Vue Components: they both allow us to define reusable components with data passing, event emitting, and lifecycle management. However, Web Components APIs are relatively low-level and bare-bones. To build an actual application, we need quite a few additional capabilities which the platform does not cover:
+بدون شک، یک سطح مشخص از همپوشانی ویژگی بین المنت‌های سفارشی و کامپوننت‌های Vue وجود دارد: هر دو به ما این امکان را می‌دهند که کامپوننت‌های قابل استفاده با انتقال داده، ایجاد رویداد و مدیریت چرخه حیات تعریف کنیم. با این حال، APIهای کامپوننت‌های Web به نسبت سطح پایین و ابتدایی هستند. برای ساخت یک برنامه واقعی، ما به چندین قابلیت اضافی نیاز داریم که پلتفرم آنها را پوشش نمی‌دهد:
 
-- A declarative and efficient templating system;
+- یک سیستم تمپلیت‌نویسی اعلامی و کارآمد؛
 
-- A reactive state management system that facilitates cross-component logic extraction and reuse;
+- یک سیستم reactive state management که استخراج و استفاده از منطق مشترک بین کامپوننت‌ها را تسهیل می‌کند؛
 
-- A performant way to render the components on the server and hydrate them on the client (SSR), which is important for SEO and [Web Vitals metrics such as LCP](https://web.dev/vitals/). Native custom elements SSR typically involves simulating the DOM in Node.js and then serializing the mutated DOM, while Vue SSR compiles into string concatenation whenever possible, which is much more efficient.
+- روش کارآمد برای رندر کردن کامپوننت‌ها در سرور و قرار دادن آنها در مرورگر (SSR)، که برای بهینه‌سازی SEO و [متریک‌های Web Vitals مانند LCP](https://web.dev/vitals/) اهمیت دارد. رندر المنت‌های سفارشی SSR معمولاً شامل شبیه‌سازی DOM در Node.js و سپس سریالی‌سازی DOM متغیر می‌شود، در حالی که SSR در Vue هر زمان که امکان دارد به رشته های پیوسته کامپایل می شود، که به مراتب کارآمدتر است.
 
-Vue's component model is designed with these needs in mind as a coherent system.
+مدل کامپوننت Vue با توجه به این نیازها به عنوان یک سیستم منسجم طراحی شده است.
 
-With a competent engineering team, you could probably build the equivalent on top of native Custom Elements - but this also means you are taking on the long-term maintenance burden of an in-house framework, while losing out on the ecosystem and community benefits of a mature framework like Vue.
+با یک تیم مهندسی ماهر، احتمالاً می‌توانید معادل آن را بر روی المنت‌های سفارشی اصلی بسازید - اما این همچنین به معنای به‌عهده‌گیری از بار نگهداری بلندمدت یک فریم‌ورک داخلی است، در حالی که از مزایای جامعه و اکوسیستم یک فریم‌ورک بالغ مانند Vue خارج می‌شوید.
 
-There are also frameworks built using Custom Elements as the basis of their component model, but they all inevitably have to introduce their proprietary solutions to the problems listed above. Using these frameworks entails buying into their technical decisions on how to solve these problems - which, despite what may be advertised, doesn't automatically insulate you from potential future churns.
+همچنین فریم‌ورک‌هایی وجود دارند که با استفاده از المنت‌های سفارشی به عنوان پایه مدل کامپوننت خود ساخته شده‌اند، اما همگی ناگزیراً باید به راه‌حل‌های اختصاصی خود برای مشکلات فوق اشاره کنند. استفاده از این فریم‌ورک‌ها به معنای پذیرفتن تصمیمات فنی آن‌ها درباره چگونگی حل این مشکلات است - که علی‌رغم تبلیغات ممکن است به صورت خودکار شما را از مشکلات احتمالی آینده محافظت نکند.
 
-There are also some areas where we find custom elements to be limiting:
+همچنین برخی حوزه‌ها هستند که ما محدودیت‌های المنت‌های سفارشی را پیدا می‌کنیم:
 
-- Eager slot evaluation hinders component composition. Vue's [scoped slots](/guide/components/slots#scoped-slots) are a powerful mechanism for component composition, which can't be supported by custom elements due to native slots' eager nature. Eager slots also mean the receiving component cannot control when or whether to render a piece of slot content.
+- ارزیابی فوری اسلات مانع از ترکیب کامپوننت می‌شود. [اسلات‌های دارای اسکوپ](/guide/components/slots#scoped-slots) Vue یک مکانیسم قدرتمند برای ترکیب کامپوننت‌ها هست که به دلیل ماهیت فوری اسلات‌های اصلی، توسط المنت‌های سفارشی پشتیبانی نمی‌شوند. اسلات‌های فوری همچنین به این معناست که کامپوننت دریافت‌کننده نمی‌تواند زمان یا اینکه آیا یک قطعه از محتوای اسلات را ارائه کند یا خیر، کنترل کند.
 
-- Shipping custom elements with shadow DOM scoped CSS today requires embedding the CSS inside JavaScript so that they can be injected into shadow roots at runtime. They also result in duplicated styles in markup in SSR scenarios. There are [platform features](https://github.com/whatwg/html/pull/4898/) being worked on in this area - but as of now they are not yet universally supported, and there are still production performance / SSR concerns to be addressed. In the meanwhile, Vue SFCs provide [CSS scoping mechanisms](/api/sfc-css-features) that support extracting the styles into plain CSS files.
+- ارسال المنت‌های سفارشی با CSS محدود به اسکوپ shadow DOM امروزه نیازمند قرار دادن CSS درون JavaScript است تا بتوانند در زمان اجرا به shadow root ها تزریق شوند. این نیز به معنای [بروزرسانی‌هایی](https://github.com/whatwg/html/pull/4898/) است که در این زمینه در حال انجام است - اما تا به حال به صورت یکپارچه پشتیبانی نشده‌اند و هنوز نگرانی‌های کارآیی پروداکشن / SSR باید برطرف شوند. در همین حال، Vue SFC [مکانیزم های اسکوپینگ CSS](/api/sfc-css-features) را فراهم می‌کنند که از استخراج استایل‌ها به فایل‌های CSS ساده پشتیبانی می‌کنند.
 
-Vue will always stay up to date with the latest standards in the web platform, and we will happily leverage whatever the platform provides if it makes our job easier. However, our goal is to provide solutions that work well and work today. That means we have to incorporate new platform features with a critical mindset - and that involves filling the gaps where the standards fall short while that is still the case.
+Vue همیشه با آخرین استانداردهای پلتفرم وب همگام خواهد ماند، و اگر پلتفرم چیزی ارائه کند که کار ما را آسان‌تر کند، ما با خوشحالی از آن استفاده خواهیم کرد. با این حال، هدف ما ارائه راهکارهایی است که به خوبی کار کنند. این به این معناست که ما باید با یک دید انتقادی و توجه به ویژگی‌های جدید پلتفرم، آنها را یکپارچه کنیم - و این به معنای پر کردن شکاف‌ها در جایی است که استانداردها هنوز به‌طور کامل آنها را پوشش نداده‌اند تا زمانی که این موضوع وجود دارد.

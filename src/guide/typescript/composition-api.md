@@ -50,6 +50,16 @@ const props = defineProps<Props>()
 </script>
 ```
 
+This also works if `Props` is imported from an external source. This feature requires TypeScript to be a peer dependency of Vue.
+
+```vue
+<script setup lang="ts">
+import type { Props } from './foo'
+
+const props = defineProps<Props>()
+</script>
+```
+
 #### Syntax Limitations {#syntax-limitations}
 
 In version 3.2 and below, the generic type parameter for `defineProps()` were limited to a type literal or a reference to a local interface.
@@ -400,8 +410,6 @@ const openModal = () => {
 }
 </script>
 ```
-
-Note if you want to use this technique in TypeScript files instead of Vue SFCs, you need to enable Volar's [Takeover Mode](./overview#volar-takeover-mode).
 
 In cases where the exact type of the component isn't available or isn't important, `ComponentPublicInstance` can be used instead. This will only include properties that are shared by all components, such as `$el`:
 

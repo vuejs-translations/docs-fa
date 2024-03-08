@@ -1,5 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;900&display=swap');
 
+:root {
+  --vt-scroll-thumb-color-light: #c1c1c1;
+  --vt-scroll-track-color-light: #f1f1f1;
+
+  --vt-scroll-thumb-color-dark: #767676;
+  --vt-scroll-track-color-dark: #242424;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--vt-scroll-thumb-color-light)
+    var(--vt-scroll-track-color-light);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 7.5px;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar-thumb {
+  background: var(--vt-scroll-thumb-color-light);
+  border-radius: 10px;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar-track {
+  background: var(--vt-scroll-track-color-light);
+}
+
+/* darkmode styles */
+.dark {
+  &,
+  * {
+    scrollbar-color: var(--vt-scroll-thumb-color-dark)
+      var(--vt-scroll-track-color-dark);
+  }
+  &,
+  *::-webkit-scrollbar-thumb {
+    background: var(--vt-scroll-thumb-color-dark);
+  }
+  &,
+  *::-webkit-scrollbar-track {
+    background: var(--vt-scroll-track-color-dark);
+  }
+}
+
 /* RTL & Persian Styles */
 
 h1,
@@ -30,6 +78,7 @@ li {
 
 .vt-doc ul {
   padding-right: 1.25rem;
+  padding-left: 0 !important;
 }
 
 .vt-doc ul > li:before {
@@ -87,4 +136,35 @@ li {
 
 .join-translations {
   direction: rtl;
+}
+
+.aside-container .VPContentDocOutline .nested {
+  padding-left: unset;
+  padding-right: 1rem;
+}
+
+.vt-badge.ts {
+  margin-right: 0.5em;
+}
+
+.details summary {
+  direction: rtl;
+}
+
+.tutorial .vue-repl .toggle {
+  margin-right: 4px;
+}
+
+.tutorial .vue-repl .msg {
+  direction: ltr;
+}
+
+.vt-doc a[href^="https://play.vuejs.org"]:before
+{
+  padding-left: unset;
+  padding-right: 3px;
+  margin-right: 4px;
+  margin-left: 8px;
+  margin-top: 4px;
+  padding-top: 0.5px;
 }

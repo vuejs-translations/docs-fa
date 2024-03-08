@@ -15,15 +15,15 @@ export default {
     const visibility = ref('all')
     const editedTodo = ref()
 
-    // derived state
+    // مشتق شده state
     const filteredTodos = computed(() => filters[visibility.value](todos.value))
     const remaining = computed(() => filters.active(todos.value).length)
 
-    // handle routing
+    // رسیدگی به مسیر‌یابی
     window.addEventListener('hashchange', onHashChange)
     onHashChange()
 
-    // persist state
+    // پایدار state
     watchEffect(() => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(todos.value))
     })

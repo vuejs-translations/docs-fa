@@ -7,6 +7,5 @@
 - [Jakub Andrzejewski](https://dev.to/jacobandrewsky)
 - [Weekly Vue News](https://weekly-vue.news/)
 - [Vue.js Developers Newsletter](https://vuejsdevelopers.com/newsletter/)
-- [VueDose](https://vuedose.tips/articles#newsletter)
 
 اگر مورد مناسبی را می‌شناسید که در لیست بالا وجود ندارد، لطفاً با استفاده از لینک زیر یک PR ارسال کنید!

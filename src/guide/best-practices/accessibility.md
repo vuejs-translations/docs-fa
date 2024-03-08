@@ -123,7 +123,7 @@ watch(
 | main            | role="main"          | محتوای اصلی یا مرکزی سند                                                                    |
 | footer          | role="contentinfo"   | اطلاعات درباره سند اصلی: پانویس/کپی رایت/لینک به بیانیه حریم خصوصی                           |
 | aside           | role="complementary" | از محتوای اصلی پشتیبانی می‌کند، اما به تنهایی بامعناست                                       |
-| _در دسترس نیست_ | role="search"        | این بخش شامل قابلیت جستجو برای برنامه است                                                   |
+| search          | role="search"        | این بخش شامل قابلیت جستجو برای برنامه است                                                   |
 | form            | role="form"          | مجموعه‌ای از عناصر مرتبط با فرم                                                              |
 | section         | role="region"        | محتوایی که مرتبط با خواست کاربر است و احتمالا کاربران می خواهند به آن مراجعه کنند. لیبل باید برای این عنصر فراهم شود |
 
@@ -503,7 +503,7 @@ watch(
   - [ChromeVox](https://chrome.google.com/webstore/detail/chromevox-classic-extensi/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en)
 - ابزارهای بزرگنمایی
   - [MAGic](https://www.freedomscientific.com/products/software/magic/)
-  - [ZoomText](https://www.zoomtext.com/)
+  - [ZoomText](https://www.freedomscientific.com/products/software/zoomtext/)
   - [Magnifier](https://support.microsoft.com/en-us/help/11542/windows-use-magnifier-to-make-things-easier-to-see)
 
 ### تست {#testing}

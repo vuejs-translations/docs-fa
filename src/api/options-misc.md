@@ -1,10 +1,10 @@
-# Options: Misc {#options-misc}
+# Options: متفرقه (Misc) {#options-misc}
 
-## name {#name}
+## نام {#name}
 
-Explicitly declare a display name for the component.
+به صراحت یک نام نمایشی (display name) برای کامپوننت تعریف میکند.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentOptions {
@@ -12,31 +12,31 @@ Explicitly declare a display name for the component.
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  The name of a component is used for the following:
+  نام کامپوننت برای موارد زیر استفاده میشود:
 
-  - Recursive self-reference in the component's own template
-  - Display in Vue DevTools' component inspection tree
-  - Display in warning component traces
+  - خود ارجاعی بازگشتی (Recursive self-reference) در تمپلیت خود کامپوننت
+  - نمایش در درخت بازرسی (inspection tree) کامپوننت متعلق به Vue DevTools
+  - نمایش در trance‌های کامپوننت اخطار (warning)
 
-  When you use Single-File Components, the component already infers its own name from the filename. For example, a file named `MyComponent.vue` will have the inferred display name "MyComponent".
+  زمانی که از کامپوننتهای تک فایلی استفاده میکنید کامپوننت از قبل نام خود را از نام فایل میخواند (infer میکند). برای مثال یک فایل با نام `MyComponent.vue` نام نمایشی "MyComponent" را میخواند.
 
-  Another case is that when a component is registered globally with [`app.component`](/api/application#app-component), the global ID is automatically set as its name.
-
-  The `name` option allows you to override the inferred name, or to explicitly provide a name when no name can be inferred (e.g. when not using build tools, or an inlined non-SFC component).
-
-  There is one case where `name` is explicitly necessary: when matching against cacheable components in [`<KeepAlive>`](/guide/built-ins/keep-alive) via its `include / exclude` props.
-
-  :::tip
-  Since version 3.2.34, a single-file component using `<script setup>` will automatically infer its `name` option based on the filename, removing the need to manually declare the name even when used with `<KeepAlive>`.
+  مورد دیگر زمانی است که یک کامپوننت به صورت سراسری (global) با [`app.component`](/api/application#app-component) ثبت شده باشد که در این صورت آیدی سراسری به شکل خودکار به عنوان نام کامپوننت قرار میگیرد.
+  
+  آپشن `name` به شما اجازه میدهد که نام infer شده را نادیده بگیرید یا زمانی که هیچ نامی نمیتواند infer شود به صورت مشخص  یک نام تعیین کنید (برای مثال زمانی که از ابزارهای ساخت (build tools) استفاده نمیشود یا در یک کامپوننت غیر تک فایلی که به صورت inline هستند)
+  
+  یک مورد وجود دارد که نام صراحتاً ضروری است: هنگام تطبیق با کامپوننتهای قابل کش در [`<KeepAlive>`](/guide/built-ins/keep-alive) از طریق prop های `include / exclude` آن.
+  
+  :::tip نکته
+  از نسخه 3.2.34, یک کامپوننت تک فایلی با استفاده از `<script setup>` به شکل خودکار آپشن `name` خود را بر اساس نام فایل infer میکند که نیاز به تعریف نام را حتی زمان استفاده از `<KeepAlive>` از بین میبرد.
   :::
 
-## inheritAttrs {#inheritattrs}
+## آپشن inheritAttrs {#inheritattrs}
 
-Controls whether the default component attribute fallthrough behavior should be enabled.
+ اینکه رفتار پیشفرض attribute fallthrough متعلق به کامپوننت فعال باشد را کنترل میکند.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentOptions {
@@ -44,11 +44,11 @@ Controls whether the default component attribute fallthrough behavior should be 
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  By default, parent scope attribute bindings that are not recognized as props will "fallthrough". This means that when we have a single-root component, these bindings will be applied to the root element of the child component as normal HTML attributes. When authoring a component that wraps a target element or another component, this may not always be the desired behavior. By setting `inheritAttrs` to `false`, this default behavior can be disabled. The attributes are available via the `$attrs` instance property and can be explicitly bound to a non-root element using `v-bind`.
+  به صورت پیشفرض ویژگیهای پیوندی (attribute binding) مربوط به اسکوپ کامپوننت والد که به عنوان props تشخیص داده نشدند "fallthrough" خواهند کرد. این به این معنی است که وقتی یک تک کامپوننت ریشه ای (single-root component) داشته باشیم این پیوندها به عنوان ویژگی های معمولی HTML به کامپوننت ریشه فرزند اعمال می شود.  این ممکن است در زمان نوشتن یک کامپوننت که یک المنت هدف یا کامپوننت دیگر را در بر میگیرد (wraps) رفتار دلخواه ما نباشد. با تنظیم `inheritAttrs` روی `false` این رفتار پیش‌فرض را می‌توان غیرفعال کرد. ویژگی ها از طریق پراپرتی های نمونه (instance) `attrs$` در دسترس هستند و می توانند به طور صریح به یک المنت غیر root با استفاده از `v-bind` متصل شوند.
 
-- **Example**
+- **مثالها**
 
   <div class="options-api">
 
@@ -76,8 +76,8 @@ Controls whether the default component attribute fallthrough behavior should be 
   </div>
   <div class="composition-api">
 
-  When declaring this option in a component that uses `<script setup>`, you can use the [`defineOptions`](/api/sfc-script-setup#defineoptions) macro:
-
+  زمانی تعریف این آپشن در یک کامپوننت که از `<script setup>` استفاده میکند شما میتوانید از ماکرو [`defineOptions`](/api/sfc-script-setup#defineoptions) استفاده کنید.
+  
   ```vue
   <script setup>
   defineProps(['label', 'value'])
@@ -99,36 +99,15 @@ Controls whether the default component attribute fallthrough behavior should be 
   </template>
   ```
 
-  Since 3.3 you can also use `defineOptions` directly in `<script setup>`:
-
-  ```vue
-  <script setup>
-  defineProps(['label', 'value'])
-  defineEmits(['input'])
-  defineOptions({ inheritAttrs: false })
-  </script>
-
-  <template>
-    <label>
-      {{ label }}
-      <input
-        v-bind="$attrs"
-        v-bind:value="value"
-        v-on:input="$emit('input', $event.target.value)"
-      />
-    </label>
-  </template>
-  ```
-
   </div>
 
-- **See also** [Fallthrough Attributes](/guide/components/attrs)
+- **همچنین ببینید** [Fallthrough Attributes](/guide/components/attrs)
 
-## components {#components}
+## کامپوننتها {#components}
 
-An object that registers components to be made available to the component instance.
+یک آبجکت که کامپوننتها را ثبت میکند تا در دسترس نمونه‌ی کامپوننت (component instance) باشد.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentOptions {
@@ -136,7 +115,7 @@ An object that registers components to be made available to the component instan
   }
   ```
 
-- **Example**
+- **نمونه**
 
   ```js
   import Foo from './Foo.vue'
@@ -152,13 +131,13 @@ An object that registers components to be made available to the component instan
   }
   ```
 
-- **See also** [Component Registration](/guide/components/registration)
+- **همچنین ببینید** [Component Registration](/guide/components/registration)
 
-## directives {#directives}
+## دایرکتیوها (directives) {#directives}
 
-An object that registers directives to be made available to the component instance.
+یک آبجکت که دایرکتیوها را ثبت میکند که در دسترس نمونه‌ی کامپوننت باشد.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentOptions {
@@ -166,7 +145,7 @@ An object that registers directives to be made available to the component instan
   }
   ```
 
-- **Example**
+- **نمونه ها**
 
   ```js
   export default {
@@ -185,6 +164,4 @@ An object that registers directives to be made available to the component instan
   <input v-focus>
   ```
 
-  A hash of directives to be made available to the component instance.
-
-- **See also** [Custom Directives](/guide/reusability/custom-directives)
+- **همچنین ببینید** [Custom Directives](/guide/reusability/custom-directives)

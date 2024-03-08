@@ -1,20 +1,20 @@
-# TypeScript with Options API {#typescript-with-options-api}
+# تایپ اسکریپت با Options API {#typescript-with-options-api}
 
-> This page assumes you've already read the overview on [Using Vue with TypeScript](./overview).
+>در این صفحه فرض شده که شما از قبل بخش [بررسی کلی استفاده از Vue با تایپ اسکریپت](./overview) را مطالعه کرده اید.
 
-:::tip
-While Vue does support TypeScript usage with Options API, it is recommended to use Vue with TypeScript via Composition API as it offers simpler, more efficient and more robust type inference.
+:::tip نکته
+در حالی که Vue قابلیت پشتیبانی استفاده از تایپ اسکریپت را با Options API دارد، توصیه می‌شود که Vue را از طریق Composition API با تایپ اسکریپت استفاده کنید، زیرا این روش ساده‌تر، کارآمدتر و دارای تعیین خودکار تایپ قوی‌تری است.
 :::
 
-## Typing Component Props {#typing-component-props}
+## تعریف تایپ Props کامپوننت  {#typing-component-props}
 
-Type inference for props in Options API requires wrapping the component with `defineComponent()`. With it, Vue is able to infer the types for the props based on the `props` option, taking additional options such as `required: true` and `default` into account:
+برای تعیین خودکار تایپ props در Options API نیاز است که کامپوننت با استفاده از `()defineComponent` تعریف شود. با این روش Vue قادر است بر اساس آپشن `props` تایپ props را تعیین کند و همچنین آپشن‌های اضافی مانند `required: true` و `default` را در نظر بگیرد:
 
 ```ts
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  // type inference enabled
+  // تعیین خودکار تایپ فعال شده است
   props: {
     name: String,
     id: [Number, String],
@@ -22,17 +22,16 @@ export default defineComponent({
     metadata: null
   },
   mounted() {
-    this.name // type: string | undefined
-    this.id // type: number | string | undefined
-    this.msg // type: string
-    this.metadata // type: any
+    this.name // تایپ: string | undefined
+    this.id // تایپ: number | string | undefined
+    this.msg // تایپ: string
+    this.metadata // تایپ: any
   }
 })
 ```
 
-However, the runtime `props` options only support using constructor functions as a prop's type - there is no way to specify complex types such as objects with nested properties or function call signatures.
-
-To annotate complex props types, we can use the `PropType` utility type:
+اما آپشن `props` در زمان اجرای ران‌تایم تنها از توابع سازنده به عنوان تایپ پایه prop پشتیبانی می‌کنند - هیچ راهی برای مشخص کردن تایپ‌های پیچیده مانند آبجکت‌هایی با ویژگی‌های تو در تو یا تشخیص امضای فراخوانی تابع وجود ندارد.
+برای تعیین ویژگی‌های پیچیده‌ی تایپ‌های props، می‌توانیم از `PropType` ابزاری برای تعیین تایپ استفاده کنیم.
 
 ```ts
 import { defineComponent } from 'vue'
@@ -47,27 +46,27 @@ interface Book {
 export default defineComponent({
   props: {
     book: {
-      // provide more specific type to `Object`
+      //  `Object` ارائه تایپ دقیق‌تر به
       type: Object as PropType<Book>,
       required: true
     },
-    // can also annotate functions
+    // می‌توان توابع را نیز تعیین کرد
     callback: Function as PropType<(id: number) => void>
   },
   mounted() {
     this.book.title // string
     this.book.year // number
 
-    // TS Error: argument of type 'string' is not
-    // assignable to parameter of type 'number'
+    // خطای Ts : نمی‌تواند 'string' آرگومان از تایپ 
+    // اختصاص داده شود 'number' به پارامتر از تایپ 
     this.callback?.('123')
   }
 })
 ```
 
-### Caveats {#caveats}
+### احتیاط‌ها {#caveats}
 
-If your TypeScript version is less than `4.7`, you have to be careful when using function values for `validator` and `default` prop options - make sure to use arrow functions:
+اگر نسخه TypeScript شما کمتر از `4.7` است، باید هنگام استفاده از مقادیر تابع برای گزینه‌های `validator` و `default` در props احتیاط کنید - مطمئن شوید که از arrow functions استفاده می‌کنید:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -82,7 +81,7 @@ export default defineComponent({
   props: {
     bookA: {
       type: Object as PropType<Book>,
-      // Make sure to use arrow functions if your TypeScript version is less than 4.7
+      // استفاده می‌کنید arrow functions اگر نسخه تایپ اسکریپت شما کمتر از 4.7 است مطمئن شوید که از
       default: () => ({
         title: 'Arrow Function Expression'
       }),
@@ -92,11 +91,11 @@ export default defineComponent({
 })
 ```
 
-This prevents TypeScript from having to infer the type of `this` inside these functions, which, unfortunately, can cause the type inference to fail. It was a previous [design limitation](https://github.com/microsoft/TypeScript/issues/38845), and now has been improved in [TypeScript 4.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#improved-function-inference-in-objects-and-methods).
+این کار جلوگیری می‌کند از حدس زدن تایپ `this` در داخل توابع توسط تایپ اسکریپت، که متأسفانه گاهی می‌تواند باعث ایجاد مشکل در تعیین خودکار تایپ شود. این مشکل بیشتر به عنوان یک [محدودیت طراحی](https://github.com/microsoft/TypeScript/issues/38845) شناخته می‌شد، و اکنون در [تایپ اسکریپت 4.7](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-7.html#improved-function-inference-in-objects-and-methods) بهبود یافته است.
 
-## Typing Component Emits {#typing-component-emits}
+## تعریف تایپ Emits کامپوننت {#typing-component-emits}
 
-We can declare the expected payload type for an emitted event using the object syntax of the `emits` option. Also, all non-declared emitted events will throw a type error when called:
+ما می‌توانیم تایپ داده‌ مورد انتظار برای یک رویداد emit شده را با استفاده از سینتکس آبجکت از آپشن `emits` اعلام کنیم. همچنین، تمام رویدادهای emit شده‌ای که اعلام نشده‌اند، هنگام فراخوانی، خطای تایپ ایجاد می‌کنند:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -104,25 +103,25 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   emits: {
     addBook(payload: { bookName: string }) {
-      // perform runtime validation
+      // اجرای اعتبارسنجی در زمان اجرا
       return payload.bookName.length > 0
     }
   },
   methods: {
     onSubmit() {
       this.$emit('addBook', {
-        bookName: 123 // Type error!
+        bookName: 123 // خطای تایپ!
       })
 
-      this.$emit('non-declared-event') // Type error!
+      this.$emit('non-declared-event') // خطای تایپ!
     }
   }
 })
 ```
 
-## Typing Computed Properties {#typing-computed-properties}
+##              تعریف تایپ پراپرتی‌های Computed {#typing-computed-properties}
 
-A computed property infers its type based on its return value:
+یک پراپرتی computed، تایپ خود را بر اساس مقدار بازگشتی‌اش تعیین می‌کند:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -139,12 +138,12 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.greeting // type: string
+    this.greeting // تایپ: string
   }
 })
 ```
 
-In some cases, you may want to explicitly annotate the type of a computed property to ensure its implementation is correct:
+در برخی موارد، ممکن است بخواهید به صراحت تایپ یک پراپرتی‌ computed  را مشخص کنید تا از صحت پیاده‌سازی آن اطمینان حاصل کنید:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -156,12 +155,12 @@ export default defineComponent({
     }
   },
   computed: {
-    // explicitly annotate return type
+    // به صراحت تایپ بازگشت را مشخص کردن
     greeting(): string {
       return this.message + '!'
     },
 
-    // annotating a writable computed property
+    // قابل نوشتن computed مشخص کردن تایپ یک پراپرتی
     greetingUppercased: {
       get(): string {
         return this.greeting.toUpperCase()
@@ -174,11 +173,11 @@ export default defineComponent({
 })
 ```
 
-Explicit annotations may also be required in some edge cases where TypeScript fails to infer the type of a computed property due to circular inference loops.
+در برخی موارد خاص که TypeScript به دلیل حلقه‌های استنباط دایره‌ای نمی‌تواند تعیین خودکار تایپ یک ویژگی computed را انجام دهد، استفاده از annotation های صریح نیز ممکن است لازم باشد.
 
-## Typing Event Handlers {#typing-event-handlers}
+## تایپ Event Handlers {#typing-event-handlers}
 
-When dealing with native DOM events, it might be useful to type the argument we pass to the handler correctly. Let's take a look at this example:
+هنگام کار با رویدادهای بومی DOM، تعیین دقیق نوع آرگومانی که به تابع رویدادگیر ارسال می‌شود، ممکن است مفید باشد. برای درک بهتر، به مثال زیر توجه کنیم:
 
 ```vue
 <script lang="ts">
@@ -187,7 +186,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   methods: {
     handleChange(event) {
-      // `event` implicitly has `any` type
+      // دارد `any` به صورت ضمنی نوع `event`
       console.log(event.target.value)
     }
   }
@@ -199,7 +198,7 @@ export default defineComponent({
 </template>
 ```
 
-Without type annotation, the `event` argument will implicitly have a type of `any`. This will also result in a TS error if `"strict": true` or `"noImplicitAny": true` are used in `tsconfig.json`. It is therefore recommended to explicitly annotate the argument of event handlers. In addition, you may need to use type assertions when accessing the properties of `event`:
+بدون تعیین نوع ضمنی، آرگومان event به صورت ضمنی نوع `any` را خواهد داشت. این امر همچنین در صورت استفاده از `"strict": true` یا `"noImplicitAny": true` در `tsconfig.json` منجر به خطای TS می‌شود. بنابراین توصیه می‌شود که به صورت صریح نوع آرگومان رویدادگیرها را مشخص کنید. علاوه بر این، ممکن است نیاز به استفاده از ادعاهای نوعی (type assertions) هنگام دسترسی به پراپرتی‌های event باشید:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -213,9 +212,9 @@ export default defineComponent({
 })
 ```
 
-## Augmenting Global Properties {#augmenting-global-properties}
+## افزایش پراپرتی‌های سراسری {#augmenting-global-properties}
 
-Some plugins install globally available properties to all component instances via [`app.config.globalProperties`](/api/application#app-config-globalproperties). For example, we may install `this.$http` for data-fetching or `this.$translate` for internationalization. To make this play well with TypeScript, Vue exposes a `ComponentCustomProperties` interface designed to be augmented via [TypeScript module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation):
+برخی از پلاگین‌ها پراپرتی‌های سراسری را در تمام نمونه‌های ساخته شده از کامپوننت، از طریق [`app.config.globalProperties`](/api/application#app-config-globalproperties) نصب می‌کنند. به عنوان مثال، ما ممکن است `this.$http` را برای دریافت داده‌ها یا `this.$translate` را برای چند زبانه کردن نصب کنیم. برای اینکه این امکان به خوبی با TypeScript کار کند، Vue یک رابط `ComponentCustomProperties` را ارائه می‌دهد که طراحی شده است تا از طریق [افزایش ماژول TypeScript](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) افزایش یابد:
 
 ```ts
 import axios from 'axios'
@@ -228,18 +227,18 @@ declare module 'vue' {
 }
 ```
 
-See also:
+همچنین ببینید:
 
-- [TypeScript unit tests for component type extensions](https://github.com/vuejs/core/blob/main/packages/dts-test/componentTypeExtensions.test-d.tsx)
+- [یونیت تست‌ها در TypeScript برای افزونگی تایپ کامپوننت](https://github.com/vuejs/core/blob/main/packages/dts-test/componentTypeExtensions.test-d.tsx)
 
-### Type Augmentation Placement {#type-augmentation-placement}
+### مکان قرارگیری افزایش تایپ {#type-augmentation-placement}
 
-We can put this type augmentation in a `.ts` file, or in a project-wide `*.d.ts` file. Either way, make sure it is included in `tsconfig.json`. For library / plugin authors, this file should be specified in the `types` property in `package.json`.
+ما می‌توانیم این افزایش تایپ را در یک فایل `.ts` قرار دهیم، یا در یک فایل پروژه‌ای `*.d.ts`. به هر حال، اطمینان حاصل کنید که در `tsconfig.json` گنجانده شده است. برای نویسندگان کتابخانه/پلاگین، این فایل باید در ویژگی `types` در `package.json` مشخص شود.
 
-In order to take advantage of module augmentation, you will need to ensure the augmentation is placed in a [TypeScript module](https://www.typescriptlang.org/docs/handbook/modules.html). That is to say, the file needs to contain at least one top-level `import` or `export`, even if it is just `export {}`. If the augmentation is placed outside of a module, it will overwrite the original types rather than augmenting them!
+برای بهره‌برداری از افزایش ماژول، شما باید اطمینان حاصل کنید که افزایش در یک [ماژول TypeScript](https://www.typescriptlang.org/docs/handbook/modules.html) قرار گرفته است. به این معنا که فایل باید حداقل شامل یک `import` یا `export` در سطح بالا باشد، حتی اگر فقط `export {}` باشد. اگر افزایش خارج از یک ماژول قرار گیرد، به جای افزایش دادن، تایپ‌های اصلی را بازنویسی خواهد کرد!
 
 ```ts
-// Does not work, overwrites the original types.
+// کار نمی‌کند، تایپ‌های اصلی را بازنویسی می‌کند
 declare module 'vue' {
   interface ComponentCustomProperties {
     $translate: (key: string) => string
@@ -248,7 +247,7 @@ declare module 'vue' {
 ```
 
 ```ts
-// Works correctly
+// به درستی کار می‌کند
 export {}
 
 declare module 'vue' {
@@ -258,9 +257,9 @@ declare module 'vue' {
 }
 ```
 
-## Augmenting Custom Options {#augmenting-custom-options}
+## افزایش آپشن‌های سفارشی {#augmenting-custom-options}
 
-Some plugins, for example `vue-router`, provide support for custom component options such as `beforeRouteEnter`:
+برخی از پلاگین‌ها، به عنوان مثال `vue-router`، پشتیبانی از آپشن‌های سفارشی کامپوننت مانند `beforeRouteEnter` را فراهم می‌کنند:
 
 ```ts
 import { defineComponent } from 'vue'
@@ -272,7 +271,7 @@ export default defineComponent({
 })
 ```
 
-Without proper type augmentation, the arguments of this hook will implicitly have `any` type. We can augment the `ComponentCustomOptions` interface to support these custom options:
+بدون افزایش تایپ مناسب، آرگومان‌های این هوک به صورت ضمنی نوع `any` خواهند داشت. ما می‌توانیم رابط `ComponentCustomOptions` را برای پشتیبانی از این آپشن‌های سفارشی افزایش دهیم:
 
 ```ts
 import { Route } from 'vue-router'
@@ -284,10 +283,10 @@ declare module 'vue' {
 }
 ```
 
-Now the `beforeRouteEnter` option will be properly typed. Note this is just an example - well-typed libraries like `vue-router` should automatically perform these augmentations in their own type definitions.
+حالا آپشن `beforeRouteEnter` به درستی تایپ خواهد شد. توجه داشته باشید که این فقط یک مثال است - کتابخانه‌هایی با تایپ‌های مناسب مانند `vue-router` باید به صورت خودکار این افزایش‌ها را در تعریف تایپ‌های خود انجام دهند.
 
-The placement of this augmentation is subject the [same restrictions](#type-augmentation-placement) as global property augmentations.
+مکان قرارگیری این افزایش مشمول [همان محدودیت‌ها](#type-augmentation-placement) به عنوان افزایش‌های ویژگی سراسری است.
 
-See also:
+همچنین ببینید:
 
-- [TypeScript unit tests for component type extensions](https://github.com/vuejs/core/blob/main/packages/dts-test/componentTypeExtensions.test-d.tsx)
+- [یونیت تست‌ها در TypeScript برای افزونگی نوع کامپوننت](https://github.com/vuejs/core/blob/main/packages/dts-test/componentTypeExtensions.test-d.tsx)

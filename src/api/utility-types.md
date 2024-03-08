@@ -1,14 +1,14 @@
-# Utility Types {#utility-types}
+# تایپ‌های کاربردی {#utility-types}
 
-:::info
-This page only lists a few commonly used utility types that may need explanation for their usage. For a full list of exported types, consult the [source code](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/index.ts#L131).
+:::info اطلاعات
+این صفحه فقط چند تایپ کاربردی(utility types) را فهرست می‌کند که ممکن است برای استفاده از آنها نیاز به توضیح باشد. برای فهرست کامل تایپ‌های صادر شده، به [کد منبع](https://github.com/vuejs/core/blob/main/packages/runtime-core/src/index.ts#L131) مراجعه کنید.
 :::
 
 ## PropType\<T> {#proptype-t}
 
-Used to annotate a prop with more advanced types when using runtime props declarations.
+برای یادداشت نویسی(annotate) یک پراپ با تایپ‌های پیشرفته‌تر (advanced types) هنگام استفاده از اعلامیه‌های پراپ‌های ران‌تایم استفاده می‌شود.
 
-- **Example**
+- **مثال**
 
   ```ts
   import type { PropType } from 'vue'
@@ -30,27 +30,27 @@ Used to annotate a prop with more advanced types when using runtime props declar
   }
   ```
 
-- **See also** [Guide - Typing Component Props](/guide/typescript/options-api#typing-component-props)
+- **همچنین ببینید** [Guide - Typing Component Props](/guide/typescript/options-api#typing-component-props)
 
 ## MaybeRef\<T> {#mayberef}
 
-Alias for `T | Ref<T>`. Useful for annotating arguments of [Composables](/guide/reusability/composables.html).
+نام مستعار برای `T | Ref<T>‎`. مفید برای حاشیه نویسی آرگومان‌های [Composables](/guide/reusability/composables.html).
 
-- Only supported in 3.3+.
+- فقط در 3.3+ پشتیبانی می‌شود.
 
 ## MaybeRefOrGetter\<T> {#maybereforgetter}
 
-Alias for `T | Ref<T> | (() => T)`. Useful for annotating arguments of [Composables](/guide/reusability/composables.html).
+نام مستعار برای `T | Ref<T> | (() => T)‎`. مفید برای حاشیه نویسی آرگومان‌های [Composables](/guide/reusability/composables.html).
 
-- Only supported in 3.3+.
+- فقط در 3.3+ پشتیبانی می‌شود.
 
 ## ExtractPropTypes\<T> {#extractproptypes}
 
-Extract prop types from a runtime props options object. The extracted types are internal facing - i.e. the resolved props received by the component. This means boolean props and props with default values are always defined, even if they are not required.
+تایپ‌های پراپ را از یک آبجکت آپشن‌های پراپ‌ها ران‌تایم استخراج کنید. تایپ‌های استخراج‌شده رو به داخل هستند - یعنی پراپ‌های حل‌شده توسط کامپوننت دریافت شده. این بدان معناست که پایه‌های بولی و پایه‌های با مقادیر پیش‌فرض همیشه تعریف می‌شوند، حتی اگر مورد نیاز نباشند.
 
-To extract public facing props, i.e. props that the parent is allowed to pass, use [`ExtractPublicPropTypes`](#extractpublicproptypes).
+برای استخراج کردن پراپ‌های عمومی، به‌عنوان مثال‌ پراپ‌هایی که والد مجاز به عبور از آن‌ است، از [`ExtractPublicPropTypes`](#extractpublicproptypes) استفاده کنید.
 
-- **Example**
+- **مثال**
 
   ```ts
   const propsOptions = {
@@ -77,9 +77,9 @@ To extract public facing props, i.e. props that the parent is allowed to pass, u
 
 ## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
 
-Extract prop types from a runtime props options object. The extracted types are public facing - i.e. the props that the parent is allowed to pass.
+تایپ‌های پراپ را از یک آبجکت آپشن‌های پراپ‌های ران‌تایم را استخراج کنید. تایپ‌های استخراج شده در معرض عموم قرار دارند - یعنی پراپ‌هایی که والد مجاز به عبور از آنها است.
 
-- **Example**
+- **مثال**
 
   ```ts
   const propsOptions = {
@@ -106,9 +106,9 @@ Extract prop types from a runtime props options object. The extracted types are 
 
 ## ComponentCustomProperties {#componentcustomproperties}
 
-Used to augment the component instance type to support custom global properties.
+برای افزایش تایپ نمونه کامپوننت جهت پشتیبانی از پراپرتی‌های سراسری سفارشی استفاده می‌شود.
 
-- **Example**
+- **مثال**
 
   ```ts
   import axios from 'axios'
@@ -121,17 +121,17 @@ Used to augment the component instance type to support custom global properties.
   }
   ```
 
-  :::tip
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties) for more details.
+  :::tip نکته
+  افزایش‌ها باید در یک ماژول `‎.ts` یا `‎.d.ts` قرار گیرند. برای جزئیات بیشتر به [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties) مراجعه کنید.
   :::
 
-- **See also** [Guide - Augmenting Global Properties](/guide/typescript/options-api#augmenting-global-properties)
+- **همچنین ببینید** [Guide - Augmenting Global Properties](/guide/typescript/options-api#augmenting-global-properties)
 
 ## ComponentCustomOptions {#componentcustomoptions}
 
-Used to augment the component options type to support custom options.
+برای افزایش تایپ آپشن‌های کامپوننت جهت پشتیبانی از آپشن‌های سفارشی استفاده می‌شود.
 
-- **Example**
+- **مثال**
 
   ```ts
   import { Route } from 'vue-router'
@@ -143,17 +143,17 @@ Used to augment the component options type to support custom options.
   }
   ```
 
-  :::tip
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties) for more details.
+  :::tip نکته
+  افزایش‌ها باید در یک ماژول `‎.ts` یا `‎.d.ts` قرار گیرند. برای جزئیات بیشتر به [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties) مراجعه کنید.
   :::
 
-- **See also** [Guide - Augmenting Custom Options](/guide/typescript/options-api#augmenting-custom-options)
+- **همچنین ببینید** [Guide - Augmenting Custom Options](/guide/typescript/options-api#augmenting-custom-options)
 
 ## ComponentCustomProps {#componentcustomprops}
 
-Used to augment allowed TSX props in order to use non-declared props on TSX elements.
+برای افزایش پراپ‌های مجاز TSX به منظور استفاده از پراپ‌های اعلام نشده (non-declared) در عناصر TSX استفاده می‌شود.
 
-- **Example**
+- **مثال**
 
   ```ts
   declare module 'vue' {
@@ -170,17 +170,17 @@ Used to augment allowed TSX props in order to use non-declared props on TSX elem
   <MyComponent hello="world" />
   ```
 
-  :::tip
-  Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties) for more details.
+  :::tip نکته
+  افزایش‌ها باید در یک ماژول `‎.ts` یا `‎.d.ts` قرار گیرند. برای جزئیات بیشتر به [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties) مراجعه کنید.
   :::
 
 ## CSSProperties {#cssproperties}
 
-Used to augment allowed values in style property bindings.
+برای افزایش مقادیر مجاز در پراپرتی‌های متصل کردن استایل استفاده می‌شود.
 
-- **Example**
+- **مثال**
 
-  Allow any custom CSS property
+  اجازه دادن به هر پراپرتی سفارشی CSS
 
   ```ts
   declare module 'vue' {
@@ -198,12 +198,12 @@ Used to augment allowed values in style property bindings.
   <div :style="{ '--bg-color': 'blue' }"></div>
   ```
 
-:::tip
-Augmentations must be placed in a module `.ts` or `.d.ts` file. See [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties) for more details.
+:::tip نکته
+افزایش‌ها باید در یک ماژول `‎.ts` یا `‎.d.ts` قرار گیرند. برای جزئیات بیشتر به [Type Augmentation Placement](/guide/typescript/options-api#augmenting-global-properties) مراجعه کنید.
 :::
 
-:::info See also
-SFC `<style>` tags support linking CSS values to dynamic component state using the `v-bind` CSS function. This allows for custom properties without type augmentation.
+:::info همچنین ببینید
+تگ‌های `<style>` یک SFC از لینک کردن مقادیر CSS به استیت‌های پویا کامپوننت با استفاده از تابع `v-bind` CSS پشتیبانی می‌کنند. این امکان را برای پراپرتی‌های سفارشی بدون افزایش تایپ فراهم می کند.
 
 - [v-bind() in CSS](/api/sfc-css-features#v-bind-in-css)
   :::

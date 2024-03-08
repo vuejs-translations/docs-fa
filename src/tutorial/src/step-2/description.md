@@ -10,7 +10,7 @@
 
 <div class="composition-api">
 
-state هایی که هنگام تغییر می‌توانند باعث به‌روزرسانی شوند، reactive (واکنش‌پذیر) در نظر گرفته می‌شوند. می‌توانیم state های reactive را با استفاده از API مربوط به آن یعنی `reactive()‎` در Vue اعلام کنیم. شیءهای ساخته شده از `reactive()‎` شیءهای [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) در JavaScript هستند که دقیقا مثل شیءهای عادی کار می‌کنند:
+state هایی که هنگام تغییر می‌توانند باعث به‌روزرسانی شوند، reactive (واکنش‌پذیر) در نظر گرفته می‌شوند. می‌توانیم state های reactive را با استفاده از API مربوط به آن یعنی `reactive()‎` در Vue اعلام کنیم. آبجکت‌های ساخته شده از `reactive()‎` آبجکت‌های [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) در JavaScript هستند که دقیقا مثل آبجکت‌های عادی رفتار می‌کنند:
 
 ```js
 import { reactive } from 'vue'‎
@@ -23,7 +23,7 @@ console.log(counter.count) // 0
 counter.count++‎
 ```
 
-`reactive()‎` فقط روی شیءها (شامل آرایه‌ها و تایپ‌های داخلی مثل `Map` و `Set`) کار می‌کند. از طرف دیگر، `ref()‎` می‌تواند هر نوع مقداری را بگیرد و یک شیء ایجاد کند که مقدار داخلی را تحت یک پراپرتی `‎.value` عرضه می‌کند:
+`reactive()‎` فقط روی آبجکت‌ها (شامل آرایه‌ها و تایپ‌های داخلی مثل `Map` و `Set`) کار می‌کند. از طرف دیگر، `ref()‎` می‌تواند هر نوع مقداری را بگیرد و یک آبجکت ایجاد کند که مقدار داخلی را تحت یک پراپرتی `‎.value` عرضه می‌کند:
 
 ```js
 import { ref } from 'vue'‎
@@ -34,17 +34,17 @@ console.log(message.value) // "Hello World!"‎
 message.value = 'Changed'‎
 ```
 
-جزئیات `reactive()‎` و `ref()‎` در <a target="_blank" href="/guide/essentials/reactivity-fundamentals.html">راهنما - مبانی reactiveی</a> گفته شده است.
+جزئیات `reactive()‎` و `ref()‎` در <a target="_blank" href="/guide/essentials/reactivity-fundamentals.html">راهنما - مبانی Reactivity</a> گفته شده است.
 
 <div class="sfc">
 
-state های reactive اعلام شده در بلوک `<script setup>` کامپوننت می‌توانند به صورت مستقیم در تمپلیت استفاده شوند. اینجا چگونگی رندرینگ متن پویا بر اساس مقدار شیء `counter` و `message` که ref است را با استفاده از سینتکس mustache مشاهده کنید:
+state های reactive اعلام شده در بلوک `<script setup>` کامپوننت می‌توانند به صورت مستقیم در تمپلیت استفاده شوند. اینجا چگونگی رندرینگ متن پویا بر اساس مقدار آبجکت `counter` و `message` که ref است را با استفاده از سینتکس mustache مشاهده می‌کنید:
 
 </div>
 
 <div class="html">
 
-شیءی که به `createApp()‎` پاس داده می‌شود یک کامپوننت Vue است. state یک کامپوننت باید داخل تابع `setup()‎` آن اعلام شود و با استفاده از یک شیء برگردانده شود:
+آبجکتی که به `createApp()‎` پاس داده می‌شود یک کامپوننت Vue است. state یک کامپوننت باید داخل تابع `setup()‎` آن اعلام شود و با استفاده از یک آبجکت برگردانده شود:
 
 ```js{2,5}
 setup() {‎
@@ -57,7 +57,7 @@ setup() {‎
 ‎}‎
 ```
 
-پراپرتی‌های شیء برگردانده شده در تمپلیت در دسترس خواهند بود. این نحوه رندر متن بصورت پویا بر اساس مقدار `message` با استفاده از سینتکس mustache است:
+پراپرتی‌های آبجکت برگردانده شده در تمپلیت در دسترس خواهند بود. این نحوه رندر متن بصورت پویا بر اساس مقدار `message` با استفاده از سینتکس mustache است:
 
 </div>
 
@@ -72,9 +72,9 @@ setup() {‎
 
 <div class="options-api">
 
-state هایی که هنگام تغییر می‌توانند باعث به‌روزرسانی شوند، در Vue **reactive** در نظر گرفته می‌شوند. در Vue ما، state های reactive را در کامپوننت‌ها نگهداری می‌‌کنیم. <span class="html">در کد مثال، شیءی که به `createApp()‎` پاس داده می‌شود یک کامپوننت است.</span>
+state هایی که هنگام تغییر می‌توانند باعث به‌روزرسانی شوند، در Vue **reactive** در نظر گرفته می‌شوند. در Vue ما، state های reactive را در کامپوننت‌ها نگهداری می‌‌کنیم. <span class="html">در کد مثال، آبجکتی که به `createApp()‎` پاس داده می‌شود یک کامپوننت است.</span>
 
-می‌توانیم state های reactive را با استفاده از گزینه `data` کامپوننت که باید یک تابع باشد که یک شیء را برمی‌گرداند، اعلام کنیم:
+می‌توانیم state های reactive را با استفاده از گزینه `data` کامپوننت که باید یک تابع باشد که یک آبجکت را برمی‌گرداند، اعلام کنیم:
 
 <div class="sfc">
 

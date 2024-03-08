@@ -1,12 +1,12 @@
-# Built-in Special Elements {#built-in-special-elements}
+# عناصر خاص ساخته شده {#built-in-special-elements}
 
-:::info Not Components
-`<component>`, `<slot>` and `<template>` are component-like features and part of the template syntax. They are not true components and are compiled away during template compilation. As such, they are conventionally written with lowercase in templates.
+:::info کامپوننت نیستند
+`<component>` و `<slot>` و `<template>` شبه-کامپوننت اند و بخشی از سینتکس تمپلیت هستند. آنها کامپوننت‌های واقعی نیستند و در هنگام کامپایل تمپلیت حذف می‌شوند. به همین دلیل، معمولا با حروف کوچک در تمپلیت‌ها نوشته می‌شوند.
 :::
 
 ## `<component>` {#component}
 
-A "meta component" for rendering dynamic components or elements.
+یک «متا کامپوننت» برای رندر کردن کامپوننت‌ها یا عناصر پویا.
 
 - **Props**
 
@@ -16,17 +16,17 @@ A "meta component" for rendering dynamic components or elements.
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  The actual component to render is determined by the `is` prop.
+  کامپوننت ایی که باید رندر شود توسط پراپ `is` تعیین می شود.
 
-  - When `is` is a string, it could be either an HTML tag name or a component's registered name.
+  - وقتی `is` یک رشته باشد، می‌تواند یا نام یک تگ HTML یا نام ثبت شده یک کامپوننت باشد.
 
-  - Alternatively, `is` can also be directly bound to the definition of a component.
+  - به عنوان جایگزین، `is` همچنین می‌تواند مستقیما به تعریف یک کامپوننت متصل شود.
 
-- **Example**
+- **مثال**
 
-  Rendering components by registered name (Options API):
+  رندر کردن کامپوننت ها با نام ثبت شده (Options API):
 
   ```vue
   <script>
@@ -48,7 +48,7 @@ A "meta component" for rendering dynamic components or elements.
   </template>
   ```
 
-  Rendering components by definition (Composition API with `<script setup>`):
+  رندر کردن کامپوننت ها با تعریف (Composition API with `<script setup>`):
 
   ```vue
   <script setup>
@@ -61,13 +61,13 @@ A "meta component" for rendering dynamic components or elements.
   </template>
   ```
 
-  Rendering HTML elements:
+  رندر کردن عناصر HTML:
 
   ```vue-html
   <component :is="href ? 'a' : 'span'"></component>
   ```
 
-  The [built-in components](./built-in-components) can all be passed to `is`, but you must register them if you want to pass them by name. For example:
+  [کامپوننت های ساخته شده](./built-in-components) می توانند همه به `is` داده شوند، اما اگر می خواهید آنها را با نام بدهید، باید آنها را ثبت کنید. برای مثال:
 
   ```vue
   <script>
@@ -88,9 +88,9 @@ A "meta component" for rendering dynamic components or elements.
   </template>
   ```
 
-  Registration is not required if you pass the component itself to `is` rather than its name, e.g. in `<script setup>`.
+  ثبت نیاز نیست اگر شما خود کامپوننت را به `is` بدهید به جای نام آن، مثلا در `<script setup>`.
 
-  If `v-model` is used on a `<component>` tag, the template compiler will expand it to a `modelValue` prop and `update:modelValue` event listener, much like it would for any other component. However, this won't be compatible with native HTML elements, such as `<input>` or `<select>`. As a result, using `v-model` with a dynamically created native element won't work:
+  اگر `v-model` روی تگ `<component>` استفاده شود، کامپایلر تمپلیت آن را به یک پراپ `modelValue` و یک گوش دهنده رویداد `update:modelValue` گسترش می دهد، مانند آنچه که برای هر کامپوننت دیگری انجام می‌شود. اما این با عناصر HTML بومی، مانند `<input>` یا `<select>`، سازگار نیست. در نتیجه، استفاده از `v-model` با یک عنصر بومی ایجاد شده به صورت پویا کار نمی‌کند:
 
   ```vue
   <script setup>
@@ -106,13 +106,13 @@ A "meta component" for rendering dynamic components or elements.
   </template>
   ```
 
-  In practice, this edge case isn't common as native form fields are typically wrapped in components in real applications. If you do need to use a native element directly then you can split the `v-model` into an attribute and event manually.
+  در عمل، این مورد لبه‌ای رایج نیست زیرا فیلدهای فرم بومی معمولا در برنامه‌های واقعی درون کامپوننت‌ها قرار می‌گیرند. اگر شما نیاز داشته باشید از یک عنصر بومی به طور مستقیم استفاده کنید، می‌توانید `v-model` را به یک ویژگی و یک رویداد به صورت دستی تقسیم کنید.
 
-- **See also** [Dynamic Components](/guide/essentials/component-basics#dynamic-components)
+- **همچنین ببینید** [کامپوننت های پویا](/guide/essentials/component-basics#dynamic-components)
 
 ## `<slot>` {#slot}
 
-Denotes slot content outlets in templates.
+  نشان دهنده خروجی های محتوای اسلات در تمپلیت ها.
 
 - **Props**
 
@@ -130,35 +130,35 @@ Denotes slot content outlets in templates.
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  The `<slot>` element can use the `name` attribute to specify a slot name. When no `name` is specified, it will render the default slot. Additional attributes passed to the slot element will be passed as slot props to the scoped slot defined in the parent.
+  عنصر `<slot>` می تواند از ویژگی `name` برای مشخص کردن نام اسلات استفاده کند. وقتی هیچ `name` مشخص نشود، اسلات پیشفرض را رندر میکند. ویژگیهای اضافی که به عنصر اسلات داده میشوند، به عنوان پراپ اسلات به اسلات اسکوپ شده که در والد تعریف شده اند، منتقل می شوند.
 
-  The element itself will be replaced by its matched slot content.
+خود عنصر با محتوای اسلات مطابقت یافته اش جایگزین می شود.
 
-  `<slot>` elements in Vue templates are compiled into JavaScript, so they are not to be confused with [native `<slot>` elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot).
+  عناصر `<slot>` در تمپلیت های Vue به جاوا اسکریپت ترجمه می شوند، بنابراین نباید با [عناصر `<slot>` بومی](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) اشتباه گرفته شوند.
 
-- **See also** [Component - Slots](/guide/components/slots)
+- **همچنین ببینید** [کامپوننت - اسلات ها](/guide/components/slots)
 
 ## `<template>` {#template}
 
-The `<template>` tag is used as a placeholder when we want to use a built-in directive without rendering an element in the DOM.
+  وقتی می خواهیم از یک دستور داخلی استفاده کنیم تگ `<template>` بعنوان یک جایگزین استفاده می شود بدون اینکه یک عنصر را در DOM رندر کنیم.
 
-- **Details**
+- **جزئیات**
 
-  The special handling for `<template>` is only triggered if it is used with one of these directives:
+  رفتار ویژه برای `<template>` فقط زمانی فعال می شود که با یکی از این دستورها استفاده شود:
 
-  - `v-if`, `v-else-if`, or `v-else`
+  - `v-if` - `v-else-if` - `v-else`
   - `v-for`
   - `v-slot`
 
-  If none of those directives are present then it will be rendered as a [native `<template>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) instead.
+  اگر هیچ کدام از این دستورها وجود نداشته باشند، به جای آن به عنوان یک [عنصر `<template>` بومی](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template) رندر میشود.
 
-  A `<template>` with a `v-for` can also have a [`key` attribute](/api/built-in-special-attributes#key). All other attributes and directives will be discarded, as they aren't meaningful without a corresponding element.
+  یک `<template>` با یک `v-for` نیز میتواند یک [ویژگی `key`](/api/built-in-special-attributes#key) داشته باشد. تمام ویژگی ها و دستورهای دیگر حذف خواهند شد، زیرا بدون یک عنصر متناظر معنادار نیستند.
 
-  Single-file components use a [top-level `<template>` tag](/api/sfc-spec#language-blocks) to wrap the entire template. That usage is separate from the use of `<template>` described above. That top-level tag is not part of the template itself and doesn't support template syntax, such as directives.
+  کامپوننت های تک فایلی از یک [تگ سطح بالای `<template>`](/api/sfc-spec#language-blocks) برای بسته بندی کل تمپلیت استفاده می کنند. این کاربرد جدا از استفاده از `<template>` که در بالا توضیح داده شده است، می باشد. این تگ، بخشی از خود تمپلیت نیست و از سینتکس تمپلیت، مانند دستورها، پشتیبانی نمی کند.
 
-- **See also**
-  - [Guide - `v-if` on `<template>`](/guide/essentials/conditional#v-if-on-template)
-  - [Guide - `v-for` on `<template>`](/guide/essentials/list#v-for-on-template)
-  - [Guide - Named slots](/guide/components/slots#named-slots)
+- **همچنین ببینید**
+  - [راهنما - `v-if` در `<template>`](/guide/essentials/conditional#v-if-on-template)
+  - [راهنما - `v-for` در `<template>`](/guide/essentials/list#v-for-on-template)
+  - [راهنما - اسلات های نام دار](/guide/components/slots#named-slots)

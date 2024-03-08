@@ -6,7 +6,7 @@
       <div></div>
       <div></div>
     </div>
-    <div>Repl is loading...</div>
+    <div> ...درحال بارگذاری است Repl </div>
   </div>
 </template>
 

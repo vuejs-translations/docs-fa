@@ -1,6 +1,6 @@
 ---
 page: true
-title: Examples
+title: مثال‌ها
 aside: false
 footer: false
 outline: false

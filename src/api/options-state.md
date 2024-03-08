@@ -1,10 +1,10 @@
 # Options: State {#options-state}
 
-## data {#data}
+## دیتا {#data}
 
-A function that returns the initial reactive state for the component instance.
+ یک تابع که مقدار reactive کامپوننت نمونه را برمی‌گرداند .
 
-- **Type**
+- **type**
 
   ```ts
   interface ComponentOptions {
@@ -15,17 +15,17 @@ A function that returns the initial reactive state for the component instance.
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  The function is expected to return a plain JavaScript object, which will be made reactive by Vue. After the instance is created, the reactive data object can be accessed as `this.$data`. The component instance also proxies all the properties found on the data object, so `this.a` will be equivalent to `this.$data.a`.
+  همانطور که انتظار می‌رود این تابع یک آبجکت ساده جاوااسکریپتی را برمی‌گرداند که توسط vue به صورت reactive ساخته می‌شود. وقتی نمونه ساخته شد، داده های آبجکت reactive توسط `this.$data` قابل دسترسی است. همچنین کامپوننت نمونه تمام ویژگی‌های موجود در داده آبجکت را پروکسی می‌کند، بنابراین `this.a` معادل با `this.$data.a` خواهد بود.
 
-  All top-level data properties must be included in the returned data object. Adding new properties to `this.$data` is possible, but it is **not** recommended. If the desired value of a property is not yet available then an empty value such as `undefined` or `null` should be included as a placeholder to ensure that Vue knows that the property exists.
+  تمام دیتای پراپرتی‌های مرتبه اول باید با دیتا آبجکت برگردانده شود. اضافه کردن ویژگی‌های جدید به this.$data امکان‌پذیر است، اما توصیه نمی‌شود. اگر مقدار مورد نظر یک ویژگی هنوز در دسترس نیست، می‌توان یک مقدار خالی مانند undefined یا null را به عنوان یک جایگزین قرار داد تا اطمینان حاصل شود که Vue می‌داند که ویژگی وجود دارد.
 
-  Properties that start with `_` or `$` will **not** be proxied on the component instance because they may conflict with Vue's internal properties and API methods. You will have to access them as `this.$data._property`.
+  ویژگی‌هایی که با `_` یا `$` شروع می‌شوند، **نباید** به صورت پروکسی در کامپوننت نمونه قرار گیرند زیرا ممکن است با ویژگی‌ها و روش‌های داخلی و API Vue تداخل داشته باشند. شما می‌توانید به آن‌ها توسط `this.$data._property` دسترسی داشته باشید.
 
-  It is **not** recommended to return objects with their own stateful behavior like browser API objects and prototype properties. The returned object should ideally be a plain object that only represents the state of the component.
+  توصیه می‌شود که آبجکت‌هایی که دارای رفتار قابل تغییر مانند آبجکت‌های API مرورگر و خصوصیات پروتوتایپی خود می‌باشد، برگردانده نشود. بهتر است که آبجکت برگردانده شده یک آبجکت ساده باشد که تنها وضعیت کامپوننت را نشان می‌دهد.
 
-- **Example**
+- **مثال**
 
   ```js
   export default {
@@ -39,19 +39,19 @@ A function that returns the initial reactive state for the component instance.
   }
   ```
 
-  Note that if you use an arrow function with the `data` property, `this` won't be the component's instance, but you can still access the instance as the function's first argument:
+توجه کنید که اگر از یک تابع arrow با ویژگی `data` استفاده کنید، `this` نمی‌تواند نمونه کامپوننت باشد، اما هنوز می‌توانید به نمونه به عنوان آرگومان اول تابع دسترسی داشته باشید.
 
   ```js
   data: (vm) => ({ a: vm.myProp })
   ```
 
-- **See also** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
+- **اینجا را ببینید** [Reactivity in Depth](/guide/extras/reactivity-in-depth)
 
-## props {#props}
+## پراپ‌ها {#props}
 
-Declare the props of a component.
+تعریف پراپ‌ها در یک کامپوننت.
 
-- **Type**
+- **تایپ**
 
   ```ts
   interface ComponentOptions {
@@ -68,36 +68,36 @@ Declare the props of a component.
     type?: PropType<T>
     required?: boolean
     default?: T | ((rawProps: object) => T)
-    validator?: (value: unknown) => boolean
+    validator?: (value: unknown, rawProps: object) => boolean
   }
 
   type PropType<T> = { new (): T } | { new (): T }[]
   ```
 
-  > Types are simplified for readability.
+  > تایپ ها برای خوانایی ساده شده‌اند.
 
-- **Details**
+- **جزئیات**
 
-  In Vue, all component props need to be explicitly declared. Component props can be declared in two forms:
+  در Vue، همهٔ پراپ‌های کامپوننت باید به صورت صریح اعلام شوند. پراپ‌های کامپوننت می‌توانند به دو شکل اعلام شوند:
 
-  - Simple form using an array of strings
-  - Full form using an object where each property key is the name of the prop, and the value is the prop's type (a constructor function) or advanced options.
+  - فرم ساده با استفاده از یک آرایه از رشته‌ها
+  - فرم کامل با استفاده از یک آبجکت که هر کلید خاصیت نام پراپ است و مقدار آن نوع پراپ (یک تابع سازنده) یا گزینه‌های پیشرفته است.
 
-  With object-based syntax, each prop can further define the following options:
+  با استفاده از object-based، هر پراپ می‌تواند گزینه‌های زیر را تعریف کند:
 
-  - **`type`**: Can be one of the following native constructors: `String`, `Number`, `Boolean`, `Array`, `Object`, `Date`, `Function`, `Symbol`, any custom constructor function or an array of those. In development mode, Vue will check if a prop's value matches the declared type, and will throw a warning if it doesn't. See [Prop Validation](/guide/components/props#prop-validation) for more details.
+  - **`type`**: می‌تواند یکی از سازندگان اصلی زیر باشد: `String`، `Number`، `Boolean`، `Array`، `Object`، `Date`، `Function`، `Symbol`، هر تابع سازنده سفارشی یا یک آرایه از آن‌ها. در حالت توسعه، Vue بررسی می‌کند که آیا مقدار یک پراپ با نوع اعلام شده مطابقت دارد و در صورت عدم مطابقت، یک هشدار را نمایش می‌دهد. برای اطلاعات بیشتر، به [اعتبارسنجی پراپ](/guide/components/props#prop-validation) مراجعه کنید.
 
-    Also note that a prop with `Boolean` type affects its value casting behavior in both development and production. See [Boolean Casting](/guide/components/props#boolean-casting) for more details.
+    همچنین توجه کنید که یک پراپ با نوع `Boolean` رفتار تبدیل مقدار خود را در هر دو حالت توسعه و تولید تحت تأثیر قرار می‌دهد. برای اطلاعات بیشتر، به [تبدیل بولین](/guide/components/props#boolean-casting) مراجعه کنید.
 
-  - **`default`**: Specifies a default value for the prop when it is not passed by the parent or has `undefined` value. Object or array defaults must be returned using a factory function. The factory function also receives the raw props object as the argument.
+  - **`default`**: یک مقدار پیش‌فرض برای پراپ تعیین می‌کند که در صورت عدم ارسال آن توسط والدین یا داشتن مقدار `undefined`، استفاده می‌شود. مقادیر پیش‌فرض شیء یا آرایه باید با استفاده از یک تابع سازنده برگردانده شوند. تابع سازنده همچنین آبجکت‌ها پراپ‌های خام را به عنوان آرگومان دریافت می‌کند.
 
-  - **`required`**: Defines if the prop is required. In a non-production environment, a console warning will be thrown if this value is truthy and the prop is not passed.
+  - **`required`**: در این قسمت از کد، می‌توانید مشخص کنید که آیا یک پراپ مورد نیاز است یا خیر. در محیطی که در آن برنامه در حال توسعه است، اگر این مقدار حقیقی باشد و پراپ ارسال نشود، یک هشدار در کنسول نمایش داده خواهد شد.
 
-  - **`validator`**: Custom validator function that takes the prop value as the sole argument. In development mode, a console warning will be thrown if this function returns a falsy value (i.e. the validation fails).
+  - **`validator`**: در این قسمت از کد، یک تابع اعتبارسنجی سفارشی وجود دارد که مقدار پراپ را به عنوان تنها آرگومان دریافت می‌کند. در حالت توسعه، اگر این تابع یک مقدار غیرحقیقی (یعنی اعتبارسنجی ناموفق است) برگرداند، یک هشدار در کنسول نمایش داده خواهد شد.
 
-- **Example**
+- **نمونه**
 
-  Simple declaration:
+  اعلام ساده:
 
   ```js
   export default {
@@ -105,7 +105,7 @@ Declare the props of a component.
   }
   ```
 
-  Object declaration with validations:
+  تعریف آبجکت همراه با اعتبار‌سنجنی:
 
   ```js
   export default {
@@ -125,13 +125,13 @@ Declare the props of a component.
   }
   ```
 
-- **See also**
-  - [Guide - Props](/guide/components/props)
-  - [Guide - Typing Component Props](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
+- **این مطالب را هم ببینید**
+  - [راهنما - پراپ‌ها](/guide/components/props)
+  - [راهنما - Typing Component Props](/guide/typescript/options-api#typing-component-props) <sup class="vt-badge ts" />
 
 ## computed {#computed}
 
-Declare computed properties to be exposed on the component instance.
+مقدار computed را برای قرار گرفتن در کامپونیت نمونه مشخص کنید
 
 - **Type**
 
@@ -158,13 +158,16 @@ Declare computed properties to be exposed on the component instance.
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  The option accepts an object where the key is the name of the computed property, and the value is either a computed getter, or an object with `get` and `set` methods (for writable computed properties).
+در این روش یک آبجکت هر جا که یک `key` به نام یک مقدار computed باشد آن را می‌پذیرد
+.و مقدار یا گیرنده computed است یا یک آبجکت با متد های `gey` یا `set` (برای computed هایی که مقدار های قابل نوشتن داشته باشند)
 
-  All getters and setters have their `this` context automatically bound to the component instance.
+در این کد، ما می‌توانیم ویژگی‌های computed را با استفاده از یک آبجکت تعریف کنیم. هر ویژگی computed شامل یک نام و یک تابع محاسبه است. این تابع محاسبه می‌تواند یک تابع ساده باشد که مقدار computed را بر اساس مقادیر دیگر در کامپوننت برگرداند.
 
-  Note that if you use an arrow function with a computed property, `this` won't point to the component's instance, but you can still access the instance as the function's first argument:
+همچنین، ما می‌توانیم ویژگی‌های computed قابل تغییر را تعریف کنیم. برای این کار، باید یک آبجکت با دو متد `get` و `set` تعریف کنیم. متد `get` مقدار computed را برگردانده و متد `set` مقدار جدید را تنظیم می‌کند.
+
+در نهایت، باید توجه کنیم که اگر از یک تابع `arrow` با ویژگی computed استفاده می‌کنیم، `this` به نمونه کامپوننت اشاره نخواهد کرد. اما می‌توانیم به نمونه کامپوننت به عنوان آرگومان اول تابع دسترسی داشته باشیم.
 
   ```js
   export default {
@@ -174,7 +177,7 @@ Declare computed properties to be exposed on the component instance.
   }
   ```
 
-- **Example**
+- **مثال**
 
   ```js
   export default {
@@ -207,13 +210,13 @@ Declare computed properties to be exposed on the component instance.
   }
   ```
 
-- **See also**
-  - [Guide - Computed Properties](/guide/essentials/computed)
-  - [Guide - Typing Computed Properties](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
+- **همچنین ببینید**
+  - [راهنما - Computed Properties](/guide/essentials/computed)
+  - [راهنما - Typing Computed Properties](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
 
-## methods {#methods}
+## متدها {#methods}
 
-Declare methods to be mixed into the component instance.
+متدها را مشخص کنید که با کامپوننت نمونه میکس شود
 
 - **Type**
 
@@ -225,13 +228,13 @@ Declare methods to be mixed into the component instance.
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  Declared methods can be directly accessed on the component instance, or used in template expressions. All methods have their `this` context automatically bound to the component instance, even when passed around.
+متد‌های خواسته شده را می‌توان مستقیما در کامپوننت نمونه مشاهده کرد یا در template استفاده کرد. همه متد‌های دارای `this` وقتی که مقادیر را به اطراف پاس می‌کند به صورت اتوماتیک به کامپوننت نمونه متصل است
 
-  Avoid using arrow functions when declaring methods, as they will not have access to the component instance via `this`.
+  هنگام استفاده از فاکشن arrow وقتی که متد‌ها را مشخص کرده‌اید توسط `this` به کامپوننت نمونه دسترسی ندارند
 
-- **Example**
+- **مثال**
 
   ```js
   export default {
@@ -283,24 +286,24 @@ Declare watch callbacks to be invoked on data change.
   }
   ```
 
-  > Types are simplified for readability.
+  >  تایپ ها برای خوانایی ساده شده‌اند.
 
-- **Details**
+- **جزئیات**
 
-  The `watch` option expects an object where keys are the reactive component instance properties to watch (e.g. properties declared via `data` or `computed`) — and values are the corresponding callbacks. The callback receives the new value and the old value of the watched source.
+  گزینه watch یک آبجکت را صدا می‌زند که key این آبجکت نام خصوصیت های reative کامپوننت نمونه هستند که می‌خواهید آن ها را پایش کنید. این پراپرتی ها می‌تواند از طریق گزینه های `data` و  `computed` کامپوننت فراخوانی شود.مقادیر آبجکت watch توابع برگشتی هر خصوصیت پایش شده هستند که هنگام تغییر خصوصیت های پایش شده فراخوانی می‌شوند. هر تابع دو مقدار قدیم و جدید آرگومان را دریافت می‌کند
 
-  In addition to a root-level property, the key can also be a simple dot-delimited path, e.g. `a.b.c`. Note that this usage does **not** support complex expressions - only dot-delimited paths are supported. If you need to watch complex data sources, use the imperative [`$watch()`](/api/component-instance#watch) API instead.
+  به علاوه‌ی پراپرتی های root-level، key می‌تواند یک مسیر ساده نقطه‌گذاری شده باشد، به عنوان مثال `a.b.c`. لطفا توجه داشته باشید که این روش فقط از مسیرهای نقطه‌گذاری شده پشتیبانی می‌کند و از عبارات پیچیده **پشتیبانی نمی‌کند**. اگر منابع داده‌ای پیچیده را می‌خواهید پایش کنید، به جای آن از API `$watch()` استفاده کنید., use the imperative [`$watch()`](/api/component-instance#watch) API instead.
 
-  The value can also be a string of a method name (declared via `methods`), or an object that contains additional options. When using the object syntax, the callback should be declared under the `handler` field. Additional options include:
+  مقدار می‌تواند رشته ای از نام متد (مشخص شده توسط `methods`) یا یک آبجکت همراه با گزینه‌های دلخواه باشد.هنگام استفاده از سینتکس آبجکت, کال‌بک در زیر فیلد `handler` تعیین می‌شود. مقادریر دلخواه می‌تواند :
 
-  - **`immediate`**: trigger the callback immediately on watcher creation. Old value will be `undefined` on the first call.
-  - **`deep`**: force deep traversal of the source if it is an object or an array, so that the callback fires on deep mutations. See [Deep Watchers](/guide/essentials/watchers#deep-watchers).
-  - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) and [`watchEffect()`](/api/reactivity-core#watcheffect).
-  - **`onTrack / onTrigger`**: debug the watcher's dependencies. See [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging).
+  - **`immediate`** : بلافاصله بعد از watcher ساخته شده برمی‌گردد. مقدار قدیمی در اولین call کردن `undefined` برمی‌گرداند
+  - **`deep`**: اجبار می‌کند که منبع آیا یک آبجکت است یا آرایه و آن را به صورت عمیق برمی‌گرداند. ببینید [Deep Watchers](/guide/essentials/watchers#deep-watchers).
+  - **`flush`**: تنظیم کنید که چه زمانی مقدار را برگرداند. ببینید [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) و [`watchEffect()`](/api/reactivity-core#watcheffect).
+  - **`onTrack / onTrigger`**: دیباگ کردن وابستگی های watcher. ببینید [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging).
 
-  Avoid using arrow functions when declaring watch callbacks as they will not have access to the component instance via `this`.
+  دقت کنید که هنگام استفاده از فاکشن arrow هنگامی که مقدار برگشتی را از watch نمی‌توانید بگیرید زیرا کامپوننت نمونه به `this` دسترسی ندارد
 
-- **Example**
+- **مثال**
 
   ```js
   export default {
@@ -368,11 +371,11 @@ Declare watch callbacks to be invoked on data change.
   }
   ```
 
-- **See also** [Watchers](/guide/essentials/watchers)
+- **همچنین ببینید** [Watchers](/guide/essentials/watchers)
 
 ## emits {#emits}
 
-Declare the custom events emitted by the component.
+یک event سفارشی را با کامپوننت emit کنیم
 
 - **Type**
 
@@ -388,18 +391,18 @@ Declare the custom events emitted by the component.
   type EmitValidator = (...args: unknown[]) => boolean
   ```
 
-- **Details**
+- **جزئیات**
 
-  Emitted events can be declared in two forms:
+  emited events می‌تواند به دو روش فراخوانی شود:
 
-  - Simple form using an array of strings
-  - Full form using an object where each property key is the name of the event, and the value is either `null` or a validator function.
+  - روش ساده: در این روش یک از یک آرایه از رشته‌ها استفاده می‌کنیم.
+  - روش کامل : در این روش از یک آبجکت استفاده می‌کنیم که `key` هر پراپرتی برابر با نام یک `event` است, و مقدار یا `null` یا یک فاکشن ارزیابی validator است
 
-  The validation function will receive the additional arguments passed to the component's `$emit` call. For example, if `this.$emit('foo', 1)` is called, the corresponding validator for `foo` will receive the argument `1`. The validator function should return a boolean to indicate whether the event arguments are valid.
+  فاکشن validator آرگومان‌های انتخابی را پس از دریافت به کامپوننت `$emit` ارسال می‌کند.برای مثال, اگر `this.$emit(`foo`, 1)` صدا زده شود, متناظر validator برای `foo` آرگومان `1` را دریافت می‌کند.فاکشن validator می‌تواند یک booleon را برگرداند تا از صحت آرگومان مطمين شود.
 
-  Note that the `emits` option affects which event listeners are considered component event listeners, rather than native DOM event listeners. The listeners for declared events will be removed from the component's `$attrs` object, so they will not be passed through to the component's root element. See [Fallthrough Attributes](/guide/components/attrs) for more details.
+  لطفا توجه کنید که `emits` بر روی event listeners کامپوننت تأثیر می‌گذارد، نه event listener DOM اصلی. event listeners های مشخص شده از آبجکت کامپوننت `$attrs` حذف خواهند شد، بنابراین المنت ها را به کامپوننت root بر نمی‌گرداند [Fallthrough Attributes](/guide/components/attrs) برای کسب اطلاعات بیشتر بخوانید.
 
-- **Example**
+- **مثال**
 
   Array syntax:
 
@@ -433,13 +436,13 @@ Declare the custom events emitted by the component.
   }
   ```
 
-- **See also**
-  - [Guide - Fallthrough Attributes](/guide/components/attrs)
-  - [Guide - Typing Component Emits](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
+- **همچنین ببینید**
+  - [راهنما - Fallthrough Attributes](/guide/components/attrs)
+  - [راهنما - Typing Component Emits](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
 
 ## expose {#expose}
 
-Declare exposed public properties when the component instance is accessed by a parent via template refs.
+مشخص کردن پراپرتی‌های عمومی وقتی که کامپوننت به پراپرتی ها توسط والد template refs دسترسی دارد
 
 - **Type**
 
@@ -449,15 +452,15 @@ Declare exposed public properties when the component instance is accessed by a p
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  By default, a component instance exposes all instance properties to the parent when accessed via `$parent`, `$root`, or template refs. This can be undesirable, since a component most likely has internal state or methods that should be kept private to avoid tight coupling.
+به طور پیشفرض, یک کامپوننت instance تمام پراپرتی‌ها را در دسترس والد خود قرار می‌دهد و این برای حفظ محرمانگی برخی اطلاعات در `$parent` , `$root` یا template refs ایجاد مشکل می‌کند.
 
-  The `expose` option expects a list of property name strings. When `expose` is used, only the properties explicitly listed will be exposed on the component's public instance.
+در اینجا ما از `expose` استفاده می‌کنیم. تنها پراپرتی‌هایی که نام آنها را نوشته اید هنگاهی که از `expose` استفاده می‌کنید به شما می‌دهد.تنها مقادیری که شما مشخص کرده اید در کامپوننت به صورت عمومی قابل دیدن است
 
-  `expose` only affects user-defined properties - it does not filter out built-in component instance properties.
+`expose` تنها بر روی پراپرتی‌های کاربری تاثیر میگذارد و هیچ کدام از build-in properties های کامپوننت را فیلتر نمی‌کند
 
-- **Example**
+- **مثال**
 
   ```js
   export default {

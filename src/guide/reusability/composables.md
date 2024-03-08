@@ -1,4 +1,4 @@
-# ترکیب‌پذیرها {#composables}
+# Composables - کامپوزبل ها {#composables}
 
 <script setup>
 import { useMouse } from './mouse'
@@ -6,20 +6,20 @@ const { x, y } = useMouse()
 </script>
 
 :::tip نکته
-این بخش به دانش پایه‌ای در مورد Composition API نیاز دارد. اگر تاکنون فقط با Options API آشنا شده‌اید، می‌توانید اولویت API را به Composition API تغییر دهید (با استفاده از تاگل در بالای نوار کناری سمت چپ) و فصل‌های [مبانی واکنش‌گرایی](/guide/essentials/reactivity-fundamentals) و [قلاب‌های چرخه حیات](/guide/essentials/lifecycle) را مجدداً مطالعه کنید.
+این بخش به دانش پایه‌ای در مورد Composition API نیاز دارد. اگر تاکنون فقط با Options API آشنا شده‌اید، می‌توانید اولویت API را به Composition API تغییر دهید (با استفاده از تاگل در بالای نوار کناری سمت چپ) و فصل‌های [مبانی Reactivity](/guide/essentials/reactivity-fundamentals) و [هوک‌های چرخه حیات](/guide/essentials/lifecycle) را مجدداً مطالعه کنید.
 :::
 
-## یک "ترکیب پذیر" چیست؟ {#what-is-a-composable}
+## یک "Composable" چیست؟ {#what-is-a-composable}
 
-در برنامه‌های Vue، یک "ترکیب‌پذیر" تابعی است که از Composition API استفاده می‌کند تا منطق **دارای حالت** را کپسوله‌سازی و قابل استفاده مجدد کند.
+در برنامه‌های Vue، یک "Composable" تابعی است که از Composition API استفاده می‌کند تا منطق **stateful** را کپسوله‌سازی و قابل استفاده مجدد کند. (کلمه stateful به نگه داشتن وضعیت قبلی سیستم و تاثیر گذار بودن آن در پاسخ اشاره دارد در صورتی که کلمه stateless اشاره به این دارد که وضعیت سیستم در پاسخ گویی تاثیری ندارد و در جایی نگه داشته نمی‌شود)
 
-هنگام ساخت برنامه‌های فرانت‌اند، اغلب به استفاده مجدد از منطق برای انجام وظایف مشترک نیاز داریم. به عنوان مثال، ممکن است بخواهیم تاریخ‌ها را در بسیاری از نقاط فرمت کنیم، بنابراین یک تابع قابل استفاده مجدد برای این کار استخراج می‌کنیم. این تابع فرمت‌کننده منطق بدون حالت را کپسوله می‌کند: ورودی‌هایی را دریافت می‌کند و بلافاصله خروجی مورد انتظار را برمی‌گرداند. کتابخانه‌های زیادی برای استفاده مجدد از منطق بدون حالت وجود دارند - به عنوان مثال lodash و date-fns که ممکن است شما از آن‌ها شنیده باشید.
+هنگام ساخت برنامه‌های فرانت‌اند، اغلب به استفاده مجدد از کد برای کارهای رایج نیاز داریم. به عنوان مثال، ممکن است بخواهیم تاریخ‌ها را در بسیاری از منطقه‌ها فرمت کنیم، بنابراین یک تابع قابل استفاده مجدد برای این کار قرار می‌دهیم. این تابع فرمت‌کننده منطق را بصورت stateless کپسوله می‌کند: ورودی‌هایی را دریافت می‌کند و بلافاصله خروجی مورد انتظار را برمی‌گرداند. کتابخانه‌های زیادی برای استفاده مجدد از منطق بصورت stateless وجود دارند - به عنوان مثال [lodash](https://lodash.com/) و [date-fns](https://date-fns.org/) که ممکن است شما از آن‌ها شنیده باشید.
 
-در مقابل، منطق دارای حالت شامل مدیریت حالت‌هایی است که با گذر زمان تغییر می‌کنند. یک مثال ساده ردیابی موقعیت فعلی ماوس در یک صفحه است. در سناریوهای واقعی‌تر، می‌تواند منطق پیچیده‌تری مانند حرکات لمسی یا وضعیت اتصال به یک پایگاه داده باشد.
+در مقابل، منطق stateful شامل مدیریت حالت‌هایی است که با گذر زمان تغییر می‌کنند. یک مثال ساده ردیابی موقعیت فعلی ماوس در یک صفحه است. در سناریوهای واقعی‌تر، می‌تواند منطق پیچیده‌تری مانند حرکات لمسی یا وضعیت اتصال به یک پایگاه داده باشد.
 
 ## مثال ردیاب ماوس {#mouse-tracker-example}
 
-اگر بخواهیم عملکرد ردیابی ماوس را با استفاده از Composition API مستقیماً در داخل یک کامپوننت پیاده سازی کنیم، به شکل زیر خواهد بود:
+اگر بخواهیم عملکرد ردیابی ماوس را با استفاده از Composition API مستقیماً در داخل یک کامپوننت پیاده‌سازی کنیم، به شکل زیر خواهد بود:
 
 ```vue
 <script setup>
@@ -40,35 +40,35 @@ onUnmounted(() => window.removeEventListener('mousemove', update))
 <template>Mouse position is at: {{ x }}, {{ y }}</template>
 ```
 
-اما اگر بخواهیم از یک منطق در چندین کامپوننت دوباره استفاده کنیم، چه؟ ما می توانیم منطق را به عنوان یک تابع ترکیبی در یک فایل خارجی استخراج کنیم:
+اما اگر بخواهیم از یک منطق در چندین کامپوننت دوباره استفاده کنیم، چه؟ ما می‌توانیم منطق را به عنوان یک تابع composable در یک فایل خارجی export کنیم:
 
 ```js
 // mouse.js
 import { ref, onMounted, onUnmounted } from 'vue'
 
-// by convention, composable function names start with "use"
+// شروع می‌شود "use" با composable طبق قرارداد، نام توابع 
 export function useMouse() {
-  // state encapsulated and managed by the composable
+  // مدیریت می‌شود composable کپسوله شده و توسط state
   const x = ref(0)
   const y = ref(0)
 
-  // a composable can update its managed state over time.
+  // مدیریت شده خود را در طول زمان به روز کند state می‌تواند composable یک
   function update(event) {
     x.value = event.pageX
     y.value = event.pageY
   }
 
-  // a composable can also hook into its owner component's
-  // lifecycle to setup and teardown side effects.
+  // همچنین می‌تواند به چرخه عمر کامپوننت مالک خود متصل شود composable یک
+  // تا عوارض جانبی را راه‌اندازی کند و یا از بین ببرد
   onMounted(() => window.addEventListener('mousemove', update))
   onUnmounted(() => window.removeEventListener('mousemove', update))
 
-  // expose managed state as return value
+  // مدیریت شده را در اختیار می‌گذارد state مقدار بازگشت داده شده از    
   return { x, y }
 }
 ```
 
-و به این صورت می توان از آن در کامپوننت ها استفاده کرد:
+و به این صورت می‌توان از آن در کامپوننت‌ها استفاده کرد:
 
 ```vue
 <script setup>
@@ -84,13 +84,13 @@ const { x, y } = useMouse()
   Mouse position is at: {{ x }}, {{ y }}
 </div>
 
-[Try it in the Playground](https://play.vuejs.org/#eNqNkj1rwzAQhv/KocUOGKVzSAIdurVjoQUvJj4XlfgkJNmxMfrvPcmJkkKHLrbu69H7SlrEszFyHFDsxN6drDIeHPrBHGtSvdHWwwKDwzfNHwjQWd1DIbd9jOW3K2qq6aTJxb6pgpl7Dnmg3NS0365YBnLgsTfnxiNHACvUaKe80gTKQeN3sDAIQqjignEhIvKYqMRta1acFVrsKtDEQPLYxuU7cV8Msmg2mdTilIa6gU5p27tYWKKq1c3ENphaPrGFW25+yMXsHWFaFlfiiOSvFIBJjs15QJ5JeWmaL/xYS/Mfpc9YYrPxl52ULOpwhIuiVl9k07Yvsf9VOY+EtizSWfR6xKK6itgkvQ/+fyNs6v4XJXIsPwVL+WprCiL8AEUxw5s=)
+[آن را در Playground امتحان کنید](https://play.vuejs.org/#eNqNkj1rwzAQhv/KocUOGKVzSAIdurVjoQUvJj4XlfgkJNmxMfrvPcmJkkKHLrbu69H7SlrEszFyHFDsxN6drDIeHPrBHGtSvdHWwwKDwzfNHwjQWd1DIbd9jOW3K2qq6aTJxb6pgpl7Dnmg3NS0365YBnLgsTfnxiNHACvUaKe80gTKQeN3sDAIQqjignEhIvKYqMRta1acFVrsKtDEQPLYxuU7cV8Msmg2mdTilIa6gU5p27tYWKKq1c3ENphaPrGFW25+yMXsHWFaFlfiiOSvFIBJjs15QJ5JeWmaL/xYS/Mfpc9YYrPxl52ULOpwhIuiVl9k07Yvsf9VOY+EtizSWfR6xKK6itgkvQ/+fyNs6v4XJXIsPwVL+WprCiL8AEUxw5s=)
 
-همانطور که می‌بینید، منطق اصلی یکسان باقی مانده است - تنها کاری که باید انجام می‌دادیم این بود که آن را در یک تابع خارجی جابجا کنیم و حالت‌هایی که باید نشان داده شوند را برگردانیم. درست مثل داخل یک کامپوننت، می‌توانید از تمام API‌های [Composition](/api/#composition-api) در ترکیب‌پذیرها استفاده کنید. همان `useMouse()` می‌تواند حالا در هر کامپوننتی استفاده شود.
+همانطور که می‌بینید، منطق اصلی یکسان باقی مانده است - تنها کاری که باید انجام می‌دادیم این بود که آن را در یک تابع خارجی جابجا کنیم و stateهایی که باید نشان داده شوند را برگردانیم. درست مثل داخل یک کامپوننت، می‌توانید از تمام API‌های [Composition](/api/#composition-api) در composables استفاده کنید. همان `useMouse()‎` می‌تواند حالا در هر کامپوننتی استفاده شود.
 
-قسمت جالب ترکیب‌پذیرها این است که می‌توانید آن‌ها را درون هم قرار دهید: یک تابع ترکیب‌پذیر می‌تواند یک یا چند تابع ترکیب‌پذیر دیگر را صدا بزند. این امکان به ما می‌دهد تا منطق پیچیده را با استفاده از واحدهای کوچک و مجزا ترکیب کنیم، شبیه به چگونگی ترکیب یک برنامه کامل با استفاده از کامپوننت‌ها. در واقع، همین دلیلی بود که تصمیم گرفتیم مجموعه API‌هایی که این الگو را ممکن می‌سازند را Composition API بنامیم.
+قسمت جالب composables این است که می‌توانید آن‌ها را داخل یکدیگر قرار دهید: یک تابع ترکیب‌پذیر می‌تواند یک یا چند تابع ترکیب‌پذیر دیگر را صدا بزند. با داشتن این امکان می‌توانیم منطق پیچیده را با استفاده از واحدهای کوچک و مجزا ترکیب کنیم، شبیه به چگونگی ترکیب یک برنامه کامل با استفاده از کامپوننت‌ها. در واقع، به همین دلیلی بود که تصمیم گرفتیم مجموعه API‌هایی که این الگو را ممکن می‌سازند را Composition API بنامیم.
 
-به عنوان مثال، می‌توانیم منطق افزودن و حذف یک شنونده رویداد DOM را در composable خودش استخراج کنیم:
+به عنوان مثال، می‌توانیم منطق افزودن و حذف یک شنونده رویداد DOM را در composable خودش export کنیم:
 
 ```js
 // event.js
@@ -104,7 +104,7 @@ export function useEventListener(target, event, callback) {
 }
 ```
 
-و حالا useMouse() ترکیب‌پذیر ما می‌تواند ساده‌تر شود:
+و حالا composable ما یعنی `useMouse()‎` می‌تواند ساده‌تر شود:
 
 ```js{3,9-12}
 // mouse.js
@@ -125,12 +125,12 @@ export function useMouse() {
 ```
 
 :::tip نکته
-هر مثال کامپوننت که `useMouse()` را صدا می‌زند، کپی‌های خود را از حالت‌های `x` و `y` ایجاد می‌کند تا با یکدیگر تداخل پیدا نکنند. اگر می‌خواهید حالت مشترک بین کامپوننت‌ها را مدیریت کنید، فصل [مدیریت حالت](/guide/scaling-up/state-management) را بخوانید.
+هر نمونه ساخته شده از کامپوننت که `useMouse()‎` را صدا می‌زند، کپی‌های خود را از حالت‌های `x` و `y` ایجاد می‌کند تا با یکدیگر تداخل پیدا نکنند. اگر می‌خواهید حالت مشترک بین کامپوننت‌ها را مدیریت کنید، فصل [State Management](/guide/scaling-up/state-management) را بخوانید.
 :::
 
-## مثال حالت Async {#async-state-example}
+## مثال Async State {#async-state-example}
 
-ترکیب‌پذیر `useMouse()` هیچ آرگومانی نمی‌پذیرد، پس یک مثال دیگر را که از یک آرگومان استفاده می‌کند بررسی کنیم. هنگام دریافت داده‌های Async اغلب باید حالت‌های مختلف را مدیریت کنیم: بارگذاری، موفقیت و خطا:
+`useMouse()‎` هیچ آرگومانی را نمی‌پذیرد، پس بیاید یک مثال دیگر که از یک آرگومان استفاده می‌کند را بررسی کنیم. هنگام دریافت داده‌های Async اغلب باید حالت‌های مختلف را مدیریت کنیم: loading و success و error:
 
 ```vue
 <script setup>
@@ -155,7 +155,7 @@ fetch('...')
 </template>
 ```
 
-تکرار این الگو در هر کامپوننتی که نیاز به دریافت داده دارد، خسته‌کننده خواهد بود. بیایید آن را در یک ترکیب‌پذیر استخراج کنیم:
+تکرار این الگو در هر کامپوننتی که نیاز به دریافت داده دارد، خسته‌کننده خواهد بود. بیایید آن را در یک composable بنویسیم:
 
 ```js
 // fetch.js
@@ -174,7 +174,7 @@ export function useFetch(url) {
 }
 ```
 
-حالا در کامپوننت ما می‌توانیم فقط این کار را انجام دهیم:
+حالا فقط نیاز است در کامپوننت این کار را انجام دهیم:
 
 ```vue
 <script setup>
@@ -184,29 +184,29 @@ const { data, error } = useFetch('...')
 </script>
 ```
 
-### Accepting Reactive State {#accepting-reactive-state}
+## قبول کردن state های reactive {#accepting-reactive-state}
 
-`useFetch()` takes a static URL string as input - so it performs the fetch only once and is then done. What if we want it to re-fetch whenever the URL changes? In order to achieve this, we need to pass reactive state into the composable function, and let the composable create watchers that perform actions using the passed state.
+تابع `useFetch()‎` یک آدرس رشته‌ای به عنوان ورودی می‌گیرد، سپس داده را دریافت می‌کند و کار آن تمام می‌شود. ولی اگر بخواهیم هربار که URL عوض شد دریافت دوباره انجام شود چه؟ برای رسیدن به این هدف، باید reactive را به داخل تابع composable پاس دهیم و بگذاریم ناظرهایی را برای انجام کارهایی با استفاده از state پاس داده شده ایجاد کند.
 
-For example, `useFetch()` should be able to accept a ref:
+برای مثال تابع `useFetch()‎` باید بتواند یک `ref` را قبول کند:
 
 ```js
 const url = ref('/initial-url')
 
 const { data, error } = useFetch(url)
 
-// this should trigger a re-fetch
+// این باید باعث درخواست مجدد شود
 url.value = '/new-url'
 ```
 
-Or, accept a getter function:
+یا یک تابع دریافت کننده (getter) را قبول کند:
 
 ```js
-// re-fetch when props.id changes
+// تغییر کرد، دوباره درخواست بزند props.id وقتی
 const { data, error } = useFetch(() => `/posts/${props.id}`)
 ```
 
-We can refactor our existing implementation with the [`watchEffect()`](/api/reactivity-core.html#watcheffect) and [`toValue()`](/api/reactivity-utilities.html#tovalue) APIs:
+می‌توانیم مثال پیاده‌سازی شده خود را با API های [`toValue()‎`](/api/reactivity-utilities.html#tovalue) و [`watchEffect()‎`](/api/reactivity-core.html#watcheffect) بازنویسی کنیم:
 
 ```js{8,13}
 // fetch.js
@@ -235,51 +235,51 @@ export function useFetch(url) {
 }
 ```
 
-`toValue()` is an API added in 3.3. It is designed to normalize refs or getters into values. If the argument is a ref, it returns the ref's value; if the argument is a function, it will call the function and return its return value. Otherwise, it returns the argument as-is. It works similarly to [`unref()`](/api/reactivity-utilities.html#unref), but with special treatment for functions.
+تابع `toValue()‎` یک API است که در ورژن ۳.۳ اضافه شده که برای عادی سازی ref ها یا getters طراحی شده: اگر آرگومان یک ref باشد، مقدار ref برگردانده می‌شود، اگر آرگومان یک تابع باشد، تابع را صدا می‌زند و مقدار بازگشتی آن را برمی‌گرداند؛ در غیر این صورت، آرگومان را همانطور که هست برمیگرداند. به طور مشابه `unref()‎` اما با عملکرد مخصوص برای تابع‌ها.
 
-Notice that `toValue(url)` is called **inside** the `watchEffect` callback. This ensures that any reactive dependencies accessed during the `toValue()` normalization are tracked by the watcher.
+توجه داشته باشید که `toValue()‎` درون تابع بازگشتی `watchEffect` فراخوانده می‌شود. این تضمین می‌کند که وابستگی‌های reactive که در طول اجرای `toValue()‎` به آن دسترسی پیدا می‌کند توسط ناظر دنبال می‌شوند.
 
-This version of `useFetch()` now accepts static URL strings, refs, and getters, making it much more flexible. The watch effect will run immediately, and will track any dependencies accessed during `toValue(url)`. If no dependencies are tracked (e.g. url is already a string), the effect runs only once; otherwise, it will re-run whenever a tracked dependency changes.
+این نسخه از `useEffect()‎` رشته‌های URL ایستا، refs، و تابع‌های دریافت کننده را قبول می‌کند. این ویژگی آن را انعطاف پذیرتر می‌کند؛ ناظر بلافاصله اجرا می‌شود و وابستگی‌هایی که در طول `toValue()‎` به آنها دسترسی پیدا کرده را ردیابی می‌کند، اگر هیچ وابستگی دنبال نشود، مثلا آدرس همان موقع هم یک رشته باشد، تاثیر (effect) فقط یکبار اجرا می‌شود؛ در غیر این صورت هربار که وابستگی دنبال شده تغییر کند دوباره اجرا می‌شود.
 
-Here's [the updated version of `useFetch()`](https://play.vuejs.org/#eNp9Vdtu40YM/RVWL1ZQr5RF0JfAMXpLgRZtd5Fu90kvY4mKJ5FnhLnYMQz/+5IcSZF3g30IbPNyyHPIYU7ZL31f7CNmt9nK1073ATyG2K8ro3e9dQFO4LBdQm13fQzYwBlaZ3ewoKTFLCh6/ANDvZ38RTmaiidPkZWprfEBNsrj/66DO1hsQ+j9bVk+eWv6TtW4tV2DrgjHXte2wYKKlsE21pcEkNJ1Q5nUUb54v7gajVHwxhbz/Aru1lOhHymn2KsuIsWPGSdoVFBLQOeso57vJgI5gc0CHQZ3JHfCPFUGJjimQH1dGt6T5VyZVZnUJB3pR8Ad8QtIvwD+tqqB3gqXWzasNjEEa2D/rrXurso0aAM/VRn8XHe6fmYLk9ZVtj6dQMP5vCpTiqBXYdXoPWXrlkKFEEUyMEH36w+29z/AvfBEIhVNQIfNLRCWBBc79F49ouDy4CVx6GlqQXQg3Af+nNWn0JLKp2+pD+w8pmZYY8r5nT6gI9pcdtU7ZB7sSyXp95sYa1ZKm8eiKEb/qpykzJbZbMFofy/39aDIcd+2WIclBPtZ5nO5u5XBF0lpo6mDJrYXO5CGnbZAmk17Z2LH+zF60gJ95eK/WQO58kdTz1cIoCwphZ4a+EBsYIM0e4SWqwvlFMV1p91i+GROc/vWPoe23R4hbFEeRwrlLrbOGht9dwRvQYeFh+BU/UwPW3lQE0CDPZqG9uUIm+MFFyE4sifspOzdqPHwfF674eczcBZk5YJuda1VR0U6dQTqVpmGxpJWl+ULAOqgdICgd2jjUJTNBBANa30FB911/DyjM8KTrANP3SZmim38QIbSlsLcQfukS4oVlA1nM5DI8E77gUAYb4AngqkjmRCTFLZ8KAT9YlApkrJoMa0ZFTtDzTJCjsNqfTtJHCL54yxHCEaGXx0sOTKVeUPPykzrPKmX6g1IBg/wkZ4B6ZDnw6IsyflE051vKC3npwHgYnPp3rWQ/6PCtkiDI+8aroubGS0uJsAjeabPb/oyhEvm3I+cp3zxkBZBfi2uXlMHWZZwc30tVhbnTBcgeJpQqx9FaLoBgl5l/J9Ad+g+9KyDrzK6dsNIM9V19vCX2IKLuBzt9Rbr5zfsT/6FbVX2kd+r22OVTb6g3COG5L7/7198oe+Tc2eb2FH0d5wPLFLkHlPYr9E01PYsTrr9Uy4bnYVP/v4loPEjKW5U5JD4KqO79tt3qL+2e1PcSB6reP4CbzCltA==), with an artificial delay and randomized error for demo purposes.
+اینجا [نسخه به روز رسانی شده از`()useFetch`](https://play.vuejs.org/#eNp9Vdtu20YQ/ZUpUUA0qpAOjL4YktCbC7Rom8BN8sSHrMihtfZql9iLZEHgv2dml6SpxMiDIWkuZ+acmR2fs1+7rjgEzG6zlaut7Dw49KHbVFruO2M9nMFiu4Ta7LvgsYEeWmv2sKCkxSwoOPwTfb2b/EU5mopHR5GVro12HrbC4UerYA2Lnfeduy3LR2d0p0SNO6MatIU/dbI2DRZUtPSmMa4kgJQuG8qkjvLF28XVaAwRb2wxz69gvZkK/UQ5xUGogBQ/ZpyhEV4sAa01lnpeTwRyApsFWvT2RO6Eea40THBMgfq6NLwlS1/pVZnUJB3ph8c98fNIvwD+MaKBzkQut2xYbYP3RsPhTWvsusokSA0/Vxn8UitZP7GFSX/+8Sz7z1W2OZ9BQt+vypQXS1R+1cgDQciW4iMrimR0wu8270znfoC7SBaJWdAeLTa3QFgxuNijc+IBIy5PPyYOjU19RDEI954/Z/UptKTy6VvqA5XD1AwLTTl/0Aco4s5lV51F5sG+VJJ+v4qxYbmkfiiKYvSvyknPbJnNtoyW+HJpj4Icd22LtV+CN5/ikC4XuNL4HFPaoGsvie3FIqSJp1WIzabl00HxkoyetEVfufhv1kAu3EnX8z0CKEtKofcGzhMb2CItAELL1SPlFMV1pwVj+GROc/vWPoc26oDgdxhfSArlLnbWaBOcOoEzIP3CgbeifqLXLRyICaDBDnVD+3KC7emCSyQ4sifspOx61Hh4Qy/d8BsaOEdkYb1sZS2FoiJKnIC6FbqhsaTVZfk8gDgK6cHLPZowFGUzAQTNWl/BUSrFbzRYHXmSdeAp28RMsI0fyFDaUJg9Spd0SbERZcvZDBRleCPdQMCPh8ARwdRRnBCTjGz5WkT0i0GlSMqixTR6VKyHmmWEHIfV+naSOETyRx8vEYwMv7pa8dJU+hU9Kz2t86ReqjcgaTzCe3oGpEOeD4uyJOcjTXe+obScHwaAi82lo9dC/q/wuyINjrwbuC5uZrS4WAQeyTN9ftOXIVwy537iecoX92kR4q/F1UvqIMsSbq6vo5XF6ekCeEcTauVDFJpuQESvMv53IBXadx3r4KqMrt0w0kwoZY5/R5u3AZejvd5h/fSK/dE9s63K3vN7tQesssnnhX1An9x3//+Hz/R9cu5NExRFf8d5zyIF7jGF/RZ0Q23P4mK3f8XLRmfhg7t79qjdSIobjXLE+Cqju/b7d6i/tHtT3MQ8VrH/Ahstp5A=)، با تاخیر مصنوعی و خطای تصادفی برای اهداف نمایشی موجود است.
 
-## Conventions and Best Practices {#conventions-and-best-practices}
+## قرارداد‌ها و بهترین شیوه‌ها {#conventions-and-best-practices}
 
-### Naming {#naming}
+### نام‌گذاری {#naming}
 
-It is a convention to name composable functions with camelCase names that start with "use".
+این یک قرارداد است که تابع‌های composable به صورت camelCase و با کلمه use شروع شوند.
 
-### Input Arguments {#input-arguments}
+### آرگومان‌های ورودی {#input-arguments}
 
-A composable can accept ref or getter arguments even if it doesn't rely on them for reactivity. If you are writing a composable that may be used by other developers, it's a good idea to handle the case of input arguments being refs or getters instead of raw values. The [`toValue()`](/api/reactivity-utilities#tovalue) utility function will come in handy for this purpose:
+composable می‌تواند refها یا getters را به عنوان آرگومان‌های ورودی قبول کند، حتی اگر برای reactivity به آنها نیازی نداشته باشد، اگر در حال نوشتن یک composable هستید که ممکن است توسط توسعه دهندگان دیگر استفاده شود، ایده خوبی است که حالت‌هایی که ممکن است به جای مقادیر خام، آرگومان های ورودی refs یا getters باشند را هندل کنید. تابع [`()toValue`](/api/reactivity-utilities#tovalue) برای این هدف مفید خواهد بود:
 
 ```js
 import { toValue } from 'vue'
 
 function useFeature(maybeRefOrGetter) {
-  // If maybeRefOrGetter is a ref or a getter,
-  // its normalized value will be returned.
-  // Otherwise, it is returned as-is.
+  // باشد getter یا ref یک maybeRefOrGetter اگر
+  // مقدار نرمال شده آن برگردانده خواهد شد
+  // در غیر این صورت همانطور که هست برگردانده می‌شود
   const value = toValue(maybeRefOrGetter)
 }
 ```
 
-If your composable creates reactive effects when the input is a ref or a getter, make sure to either explicitly watch the ref / getter with `watch()`, or call `toValue()` inside a `watchEffect()` so that it is properly tracked.
+اگر زمانی که ورودی composable شما یک ref یا getter هست اثری reactive ایجاد می‌کند، مطمئن شوید که ref یا getter را به طور واضح با `()watch` می‌بینید. همچنین `()toValue` را درون `()watchEffect` صدا بزنید تا به درستی ردیابی شود.
 
-The [useFetch() implementation discussed earlier](#accepting-reactive-state) provides a concrete example of a composable that accepts refs, getters and plain values as input argument.
+پیاده‌سازی [useFetch()‎ که قبلاً مورد بحث قرار گرفت](#accepting-reactive-state)، یک مثال واضح از یک composable ارائه می‌کند که ref یا getter و یا مقادیر ساده را به عنوان آرگومان ورودی قبول می‌کند.
 
-### Return Values {#return-values}
+### مقادیر بازگشتی {#return-values}
 
-You have probably noticed that we have been exclusively using `ref()` instead of `reactive()` in composables. The recommended convention is for composables to always return a plain, non-reactive object containing multiple refs. This allows it to be destructured in components while retaining reactivity:
+احتمالاً توجه کرده اید که ما به جای `()reactive` در composableها به طور انحصاری از `()ref` استفاده کرده ایم. قرارداد پیشنهادی این است که composableها همیشه یک آبجکت ساده و غیر reactive حاوی چندین ref را برگردانند. این عملکرد اجازه می‌دهد تا در کامپوننت‌های سازنده با حفظ reactivity تجزیه شود:
 
 ```js
 // x and y are refs
 const { x, y } = useMouse()
 ```
 
-Returning a reactive object from a composable will cause such destructures to lose the reactivity connection to the state inside the composable, while the refs will retain that connection.
+برگرداندن یک آبجکت reactive از یک composable باعث می‌شود که ساختار ارتباط واکنش‌پذیری را با فضای داخل composable را از دست بدهد در حالی که ref می‌تواند ارتباط را حفظ کند.
 
-If you prefer to use returned state from composables as object properties, you can wrap the returned object with `reactive()` so that the refs are unwrapped. For example:
+اگر ترجیح می‌دهید از این حالت بازگشتی تابع‌های composable به عنوان  ویژگی های آبجکت استفاده کنید، می‌توانید آبجکت برگشتی را با `()reactive` پیش ببرید تا ref ها قابل دسترسی شوند، برای مثال:
 
 ```js
 const mouse = reactive(useMouse())
@@ -291,31 +291,31 @@ console.log(mouse.x)
 Mouse position is at: {{ mouse.x }}, {{ mouse.y }}
 ```
 
-### Side Effects {#side-effects}
+### تاثیرات (effect) جانبی {#side-effects}
 
-It is OK to perform side effects (e.g. adding DOM event listeners or fetching data) in composables, but pay attention to the following rules:
+افزودن تاثیرات جانبی، مانند رویدادهای گوش دهنده DOM یا درخواست داده ایرادی ندارد اما باید قوانین زیر را مد نظر داشت:
 
-- If you are working on an application that uses [Server-Side Rendering](/guide/scaling-up/ssr) (SSR), make sure to perform DOM-specific side effects in post-mount lifecycle hooks, e.g. `onMounted()`. These hooks are only called in the browser, so you can be sure that code inside them has access to the DOM.
+- اگر روی برنامه‌ای کار می‌کنید که از [رندر سمت سرور](/guide/scaling-up/ssr) (SSR) استفاده می‌کند، مطمئن شوید که اثرهای جانبی خاص DOM در چرخه هوک‌های نصب شده انجام می‌شوند. مثلا `onUnmounted()‎`. ین هوک‌ها فقط در مرورگر فراخوانی می‌شوند، پس می‌توان مطمئن باشید که کدهای آن به DOM دسترسی دارند.
 
-- Remember to clean up side effects in `onUnmounted()`. For example, if a composable sets up a DOM event listener, it should remove that listener in `onUnmounted()` as we have seen in the `useMouse()` example. It can be a good idea to use a composable that automatically does this for you, like the `useEventListener()` example.
+- به یاد داشته باشید که اثرهای جانبی را در `onUnmounted()‎` حذف کنید، برای مثال اگر یک composable، یک شنونده رویداد DOM را راه اندازی کند، باید آن شنونده را در `onUnmounted()‎` حذف کند. همانطور که در مثال `useMouse()‎` دیدیم؛ یک ایده خوب این است که از composable ایی استفاده کنیم که به طور خودکار این کار را انجام دهد. مثلا `useEventListener()‎`
 
-### Usage Restrictions {#usage-restrictions}
+## محدودیت در استفاده {#usage-restrictions}
 
-Composables should only be called in `<script setup>` or the `setup()` hook. They should also be called **synchronously** in these contexts. In some cases, you can also call them in lifecycle hooks like `onMounted()`.
+composableها فقط باید در `<script setup>`  یا هوک `setup()‎` به صورت **synchronously** (همزمان) صدا زده شوند. در بعضی موارد می‌توان در چرخه هوک‌هایی مانند `onMounted()‎` نیز فراخوانی شوند.
 
-These restrictions are important because these are the contexts where Vue is able to determine the current active component instance. Access to an active component instance is necessary so that:
+این محدودیت‌ها مهم هستند. زیرا با این مضمون Vue می‌تواند تشخیص دهد کدام یک از کامپوننت‌های فعلی، فعال هستند. دسترسی به یک نمونه از کامپوننت های فعال، به دلایل زیر ضروری است:
 
-1. Lifecycle hooks can be registered to it.
+1. هوک‌های چرخه حیات را می‌توان در آن ثبت کرد.
 
-2. Computed properties and watchers can be linked to it, so that they can be disposed when the instance is unmounted to prevent memory leaks.
+2. ویژگی‌های computed و ناظرهای نصب شده را می‌توان به آن پیوند کرد. به طوری که بعدا آنها را هنگام unmounted شدن یک نمونه، دور انداخت تا از نشت حافظه جلوگیری شود.
 
-:::tip
-`<script setup>` is the only place where you can call composables **after** using `await`. The compiler automatically restores the active instance context for you after the async operation.
+:::tip نکته
+تنها جایی که می‌توانید composableها را بعد از کلمه `await` صدا بزنید `<script setup>` است.  کامپایلر بعد از اجرای موارد `async`، محتوای موارد فعال را بازیابی می‌کند.
 :::
 
-## Extracting Composables for Code Organization {#extracting-composables-for-code-organization}
+## استفاده از composableها برای سازماندهی کد {#extracting-composables-for-code-organization}
 
-Composables can be extracted not only for reuse, but also for code organization. As the complexity of your components grow, you may end up with components that are too large to navigate and reason about. Composition API gives you the full flexibility to organize your component code into smaller functions based on logical concerns:
+composableها نه فقط برای استفاده دوباره، بلکه برای سازماندهی کردن کد نیز می‌توانند استفاده شوند. به نسبت افزایش پیچیدگی کامپوننت‌ها، ممکن است با کامپوننت‌هایی مواجه شوید که برای پیمایش و استدلال بسیار بزرگ هستند، composable کردن API به شما انعطاف پذیری کاملی را می‌دهد تا کد کامپوننت خود را بر اساس منطق های مرتبط سازماندهی کنید:
 
 ```vue
 <script setup>
@@ -329,11 +329,11 @@ const { qux } = useFeatureC(baz)
 </script>
 ```
 
-To some extent, you can think of these extracted composables as component-scoped services that can talk to one another.
+تا حدودی می‌توان این composableهای نوشته شده را به عنوان سرویس‌هایی با کامپوننت‌های مشخص‌شده در نظر گرفت که می‌توانند با یکدیگر تعامل کنند.
 
-## Using Composables in Options API {#using-composables-in-options-api}
+## استفاده از composable در Options API {#using-composables-in-options-api}
 
-If you are using Options API, composables must be called inside `setup()`, and the returned bindings must be returned from `setup()` so that they are exposed to `this` and the template:
+اگر از Options API استفاده می‌کنید، composableها باید درون `setup()‎` صدا زده شوند و پیوند برگردانده شده نیز باید از `setup()‎` برگردانده شوند تا توسط `this` و تمپلیت قابل دسترسی باشند:
 
 ```js
 import { useMouse } from './mouse.js'
@@ -346,42 +346,44 @@ export default {
     return { x, y, data, error }
   },
   mounted() {
-    // setup() exposed properties can be accessed on `this`
+    // مشاهده کرد "this" را می‌توان در setup() ویژگی‌های در معرض نمایش گذاشته شده توسط
     console.log(this.x)
   }
   // ...other options
 }
 ```
 
-## Comparisons with Other Techniques {#comparisons-with-other-techniques}
+## مقایسه با سایر تکنیک‌ها {#comparisons-with-other-techniques}
 
-### vs. Mixins {#vs-mixins}
+### در مقابل Mixins {#vs-mixins}
 
-Users coming from Vue 2 may be familiar with the [mixins](/api/options-composition#mixins) option, which also allows us to extract component logic into reusable units. There are three primary drawbacks to mixins:
+کاربرانی که از نسخه ۲ می‌آیند ممکن است با آپشن mixins آشنا باشند که همچنین به ما امکان می‌دهد که منطق کامپوننت را در واحد‌هایی با قابلیت استفاده مجدد بنویسیم. سه اشکال اصلی برای mixins وجود دارد:  
 
-1. **Unclear source of properties**: when using many mixins, it becomes unclear which instance property is injected by which mixin, making it difficult to trace the implementation and understand the component's behavior. This is also why we recommend using the refs + destructure pattern for composables: it makes the property source clear in consuming components.
+1. **منبع نامشخص برای پراپرتی‌ها:** هنگام استفاده از بسیاری از mixins‌ها، مشخص نمی‌شود که کدام نوع پراپرتی توسط کدام mixin تزریق می‌شود و ردیابی پیاده‌سازی و درک رفتار کامپوننت را دشوار می‌کند.  همچنین به همین دلیل است که ما استفاده از "refs + destructure pattern" را برای composableها توصیه می‌کنیم: این موضوع منبع پراپرتی را در کامپوننت‌های استفاده کننده مشخص می‌کند.
 
-2. **Namespace collisions**: multiple mixins from different authors can potentially register the same property keys, causing namespace collisions. With composables, you can rename the destructured variables if there are conflicting keys from different composables.
+2. **تلاقی فضای نام‌ها:** چندین mixin از نویسندگان مختلف به طور بالقوه می‌توانند کلیدهای پراپرتی یکسانی را ثبت کنند و باعث برخورد فضای نام شوند، اما هنگام استفاده از composableها، اگر کلیدهای متناقض از composableهای مختلف وجود داشته باشد، می‌توان نام متغیرهای تخریب شده را عوض کرد.
 
-3. **Implicit cross-mixin communication**: multiple mixins that need to interact with one another have to rely on shared property keys, making them implicitly coupled. With composables, values returned from one composable can be passed into another as arguments, just like normal functions.
+3. **ارتباط بی قید و شرط ترکیب‌های مقابل:** چندین mixins که نیاز به تعامل با یکدیگر دارند، باید به کلیدهای پراپرتی مشترک تکیه کنند و آنها را بدون شرط جفت می‌کند. با استفاده از composableها می‌توان مقادیر بازگشتی یک composable را به عنوان آرگومان به دیگری ارسال کرد. درست مانند توابع عادی
 
-For the above reasons, we no longer recommend using mixins in Vue 3. The feature is kept only for migration and familiarity reasons.
+به دلایل بالا، استفاده از mixins ها را از این به‌بعد در Vue ۳ توصیه نمی‌کنیم؛ این ویژگی فقط به دلایل آشنایی و مهاجرت نگه‌داری می‌شود.
 
-### vs. Renderless Components {#vs-renderless-components}
+### در مقابل کامپوننت‌های بدون رندر {#vs-renderless-components}
 
-In the component slots chapter, we discussed the [Renderless Component](/guide/components/slots#renderless-components) pattern based on scoped slots. We even implemented the same mouse tracking demo using renderless components.
+در فصل اسلات‌ها، الگوی [کامپوننت بدون رندر](/guide/components/slots#renderless-components) را بر اساس اسلات‌های دارای اسکوپ مورد بحث قرار دادیم. حتی همان نسخه نمایشی ردیابی ماوس را با استفاده از اجزای رندر اجرا کردیم.
 
-The main advantage of composables over renderless components is that composables do not incur the extra component instance overhead. When used across an entire application, the amount of extra component instances created by the renderless component pattern can become a noticeable performance overhead.
+مزیت اصلی Composableها نسبت به کامپوننت‌های بدون رندر این است که Composableها هزینه‌های اضافی را متحمل نمی‌شوند. هنگامی که در همه یک برنامه کاربردی استفاده می‌شود، تعداد نمونه های اضافی ایجاد شده توسط الگوی کامپوننت بدون رندر می‌تواند به یک سربار عملکرد قابل توجه تبدیل شود.
 
-The recommendation is to use composables when reusing pure logic, and use components when reusing both logic and visual layout.
+توصیه این است که هنگام استفاده مجدد از منطق خالص، از Composables استفاده کنید، و هنگام استفاده مجدد از منطق و طرح بصری، از کامپوننت‌ها.
 
-### vs. React Hooks {#vs-react-hooks}
+### در مقابل هوک‌های ری‌اکت {#vs-react-hooks}
 
-If you have experience with React, you may notice that this looks very similar to custom React hooks. Composition API was in part inspired by React hooks, and Vue composables are indeed similar to React hooks in terms of logic composition capabilities. However, Vue composables are based on Vue's fine-grained reactivity system, which is fundamentally different from React hooks' execution model. This is discussed in more detail in the [Composition API FAQ](/guide/extras/composition-api-faq#comparison-with-react-hooks).
+اگر تجربه‌ای با React دارید، ممکن است متوجه شوید که این شبیه به کاستوم هوک‌های React به نظر می‌رسد. Composition API تا حدی الهام گرفته از React hooks بوده است، و Vue composables در واقع شبیه به React hooks از نظر توانایی‌های ترکیب منطق هستند. با این حال، Vue composables بر پایه‌ی سیستم واکنش‌پذیری دقیق‌تر ذره‌ای Vue است، که بنیاداً متفاوت از مدل اجرایی React hooks است. این موضوع با جزئیات بیشتری در Composition API FAQ بحث شده است.
 
-## Further Reading {#further-reading}
+اگر تجربه کار با ری‌اکت داشته باشید، ممکن است متوجه شوید که این بسیار شبیه به هوک‌های سفارشی ری‌اکت است. Composition API تا حدی از هوک‌های ری‌اکت الهام گرفته شده است و Composable های Vue در واقع از نظر قابلیت‌های ترکیب منطقی شبیه به هوک های ری‌اکت هستند. با این حال، Composable های Vue مبتنی بر سیستم reactivity دقیق‌تر ذره‌ای Vue هستند که اساساً با نوع اجرای هوک‌های ری‌اکت تفاوت دارد. که با جزئیات بیشتر در [سوالات متداول از Composition API](/guide/extras/composition-api-faq#comparison-with-react-hooks) مورد بحث قرار گرفته است.
 
-- [Reactivity In Depth](/guide/extras/reactivity-in-depth): for a low-level understanding of how Vue's reactivity system works.
-- [State Management](/guide/scaling-up/state-management): for patterns of managing state shared by multiple components.
-- [Testing Composables](/guide/scaling-up/testing#testing-composables): tips on unit testing composables.
-- [VueUse](https://vueuse.org/): an ever-growing collection of Vue composables. The source code is also a great learning resource.
+## مطالعه بیشتر {#further-reading}
+
+- [reactivity در عمق](/guide/extras/reactivity-in-depth): برای درک نحوه عملکرد سیستم reactivity در Vue در سطح پایین‌تر
+- [State Management](/guide/scaling-up/state-management): برای الگوهای مدیریت state که توسط چندین کامپوننت مشترک هستند
+- [تست Composables](/guide/scaling-up/testing#testing-composables): نکاتی در مورد تست واحدهای Composables
+- [VueUse](https://vueuse.org/): مجموعه ای در حال رشد از Vue composables. کد منبع نیز یک منبع یادگیری عالی است.

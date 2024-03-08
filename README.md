@@ -1,16 +1,18 @@
 <h1 dir="rtl">ترجمه مستندات <a href="https://vuejs.org" target="_blank">Vue</a> به فارسی💚</h1>
 
-<p dir="rtl">ما توی این پروژه گروه کوچیکی از اکوسیستم بزرگ Vue هستیم که روی ترجمه مستندات این فریمورک می‌کنیم، تا کسی که حتی زبان انگلیسی رو خوب بلد نیست بتونه توسعه‌ی فرانت‌اند با این فریمورک رو همراه داکیومنت رسمی و فارسی خودش کاملا اصولی و درست یاد بگیره؛ بدون اینکه بخواد ریالی برای آموزش هزینه کنه.</p>
-
-<p dir="rtl"></p>
+<p dir="rtl">
+ما توی این پروژه گروه کوچیکی از اکوسیستم بزرگ Vue هستیم که روی ترجمه‌ی مستندات این فریمورک کار می‌کنیم، تا کسی که حتی زبان انگلیسی رو خوب بلد نیست بتونه توسعه‌ی فرانت‌اند با این فریمورک رو همراه داکیومنت رسمی و فارسی خودش کاملا اصولی و درست یاد بگیره؛ بدون اینکه بخواد ریالی برای آموزش هزینه کنه.
+</p>
 
 <h2 dir="rtl">راهنمای مشارکت🌱</h2>
 
 <p dir="rtl">
- اول از همه مشارکت شما باعث دلگرمی ماست و به شدت از علاقه‌مندی شما به پیشرفت مستندات فارسی فریمورک Vue حمایت می‌کنیم. شما می‌تونید با ترجمه صفحات و بهبود کیفیت صفحات ترجمه‌شده به توسعه‌ی این پروژه کمک کنید.
+ اول از همه مشارکت شما باعث دلگرمی ماست و به شدت از علاقه‌مندی شما به پیشرفت مستندات فارسی فریمورک Vue حمایت می‌کنیم. شما می‌تونید با ترجمه‌ی صفحات و بهبود کیفیت صفحات ترجمه‌شده به توسعه‌ی این پروژه کمک کنید.
 </p>
 
-<p dir="rtl">قبل از شروع بهتره که این چند نکته رو درنظر داشته باشید:</p>
+<p dir="rtl">
+قبل از شروع بهتره که این چند نکته رو درنظر داشته باشید:
+</p>
 
 <ul dir="rtl">
   <li>⚙️ مستندات با <a href="https://github.com/vuejs/vitepress">VitePress</a> ساخته شده و از <a href="https://github.com/vuejs/vue-theme">vue/theme&#64;</a> استفاده می‌کنه.</li>
@@ -36,13 +38,19 @@
 برای مشارکت کردن توی پروژه باید این مراحل ساده رو طی کنید:
 </p>
 
-<p><strong>مرحله اول: </strong> اول از همه از این ریپازیتوری یه <code>fork</code> رو بگیرید و اون رو روی سیستم خودتون <code>pull</code> کنید. بعد می‌تونید یه نگاه جزئی به پروژه برای آشنایی با ساختار اون داشته باشید. با دستور <code>pnpm install</code> وابستگی‌ها رو نصب و با <code>pnpm run dev</code> هم پروژه رو اجرا کنید.</p>
+<p dir="rtl">
+<strong>مرحله اول: </strong> اول از همه از این ریپازیتوری یه <code>fork</code> رو بگیرید و اون رو روی سیستم خودتون <code>pull</code> کنید. بعد می‌تونید یه نگاه جزئی به پروژه برای آشنایی با ساختار اون داشته باشید. با دستور <code>pnpm install</code> وابستگی‌ها رو نصب و با <code>pnpm run dev</code> هم پروژه رو اجرا کنید.
+</p>
   
-<p><strong>مرحله دوم: </strong> از توی مستندات یه صفحه‌ که تا به حال به فارسی ترجمه نشده رو پیدا کنید و از این <a href="https://github.com/vuejs-translations/docs-fa/issues/8">لیست</a> مطمئن بشید که کسی درحال ترجمه اون صفحه نباشه. بعد با اعلام کردن این صفحه توی گروه تلگرام و بعد از هماهنگی می‌تونید ترجمه صفحه‌ی جدید رو شروع کنید.</p>
+<p dir="rtl">
+<strong>مرحله دوم: </strong> از توی مستندات یه صفحه‌ که تا به حال به فارسی ترجمه نشده رو پیدا کنید و از این <a href="https://github.com/vuejs-translations/docs-fa/issues/8">لیست</a> مطمئن بشید که کسی درحال ترجمه اون صفحه نباشه. بعد با اعلام کردن این صفحه توی گروه تلگرام و بعد از هماهنگی می‌تونید ترجمه صفحه‌ی جدید رو شروع کنید.
+</p>
 
-<p><strong>مرحله سوم: </strong>بعد از اتمام کامل ترجمه‌ی صفحه، می‌تونید یه <code>PR</code> بسازید تا بعد از بررسی <code>merge</code> بشه.</p>
+<p dir="rtl">
+<strong>مرحله سوم: </strong>بعد از اتمام کامل ترجمه‌ی صفحه، می‌تونید یه <code>PR</code> بسازید تا بعد از بررسی <code>merge</code> بشه.
+</p>
 
-<p>پی‌نوشت: برای اصطلاح یا بهبود صفحات ترجمه شده نیاز به هماهنگی نیست.</p>
+<p dir="rtl">پی‌نوشت: برای اصلاح یا بهبود صفحات ترجمه شده نیاز به هماهنگی نیست.</p>
 
 <h2 dir="rtl">مشارکت‌کنندگان🪴</h2>
 
@@ -66,6 +74,36 @@
     <td align="center"><a href="https://github.com/rsharifnasab"><img src="https://avatars.githubusercontent.com/u/11211946?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Roozbeh Sharifnasab</b></sub></a></td>
     <td align="center"><a href="https://github.com/mohammadshg-ir"><img src="https://avatars.githubusercontent.com/u/77042998?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Mohammad Sadegh</b></sub></a></td>
     <td align="center"><a href="https://github.com/hosseinghs"><img src="https://avatars.githubusercontent.com/u/72767346?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Hossein Ghobadi Samani</b></sub></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/ialiaslani"><img src="https://avatars.githubusercontent.com/u/67073328?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Ali Aslani</b></sub></a></td>
+    <td align="center"><a href="https://github.com/rmazarei"><img src="https://avatars.githubusercontent.com/u/6069042?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Rouhollah Mazarei</b></sub></a></td>
+    <td align="center"><a href="https://github.com/ShayanFaghihi"><img src="https://avatars.githubusercontent.com/u/51042338?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Shayan Faghihi</b></sub></a></td>
+    <td align="center"><a href="https://github.com/iamhosen"><img src="https://avatars.githubusercontent.com/u/99954947?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Hossein Amirhosseini</b></sub></a></td>
+    <td align="center"><a href="https://github.com/mostafa-rio"><img src="https://avatars.githubusercontent.com/u/32630862?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Mostafa Rahmani</b></sub></a></td>
+    <td align="center"><a href="https://github.com/mohsen-d"><img src="https://avatars.githubusercontent.com/u/1769454?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Mohsen Dorparasti</b></sub></a></td>
+    <td align="center"><a href="https://github.com/vahid-bagheri"><img src="https://avatars.githubusercontent.com/u/70237190?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Vahid Bagheri</b></sub></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/mazdakdev"><img src="https://avatars.githubusercontent.com/u/60855141?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Mazdak Pakaghideh</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Ermiti"><img src="https://avatars.githubusercontent.com/u/99094357?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Fateme karami</b></sub></a></td>
+    <td align="center"><a href="https://github.com/amirofski"><img src="https://avatars.githubusercontent.com/u/10779032?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Amir</b></sub></a></td>
+    <td align="center"><a href="https://github.com/AmirHKarimi888"><img src="https://avatars.githubusercontent.com/u/119494495?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Amir H Karimi</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Saeid-Za"><img src="https://avatars.githubusercontent.com/u/65568529?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Saeid Zareie</b></sub></a></td>
+    <td align="center"><a href="https://github.com/babakzy"><img src="https://avatars.githubusercontent.com/u/20987819?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Babak Sadeghzadeh</b></sub></a></td>
+    <td align="center"><a href="https://github.com/esmaeilbahrani"><img src="https://avatars.githubusercontent.com/u/44259840?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Esmaeil Bahrani Fard</b></sub></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/msmosavar"><img src="https://avatars.githubusercontent.com/u/79406740?v=4&s=64" width="64px;" alt=""/><br /><sub><b>M.Sadeq Mosavar</b></sub></a></td>
+    <td align="center"><a href="https://github.com/MMDShen"><img src="https://avatars.githubusercontent.com/u/80104926?v=4&s=64" width="64px;" alt=""/><br /><sub><b>محمد شرفی</b></sub></a></td>
+    <td align="center"><a href="https://github.com/pooooriya"><img src="https://avatars.githubusercontent.com/u/65160744?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Pouriya Babaali</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Navidkhm"><img src="https://avatars.githubusercontent.com/u/51302086?v=4&s=64" width="64px;" alt=""/><br /><sub><b>M.Navid</b></sub></a></td>
+    <td align="center"><a href="https://github.com/behkha"><img src="https://avatars.githubusercontent.com/u/25830517?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Behzad Khanlar</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Slrhoseini"><img src="https://avatars.githubusercontent.com/u/103253681?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Salar Hosseini</b></sub></a></td>
+    <td align="center"><a href="https://github.com/morteza-mortezai"><img src="https://avatars.githubusercontent.com/u/75200938?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Morteza Mortezai</b></sub></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/imblackline"><img src="https://avatars.githubusercontent.com/u/37950099?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Amirhossein Yaghoubnezhad</b></sub></a></td>
   </tr>
 </table>
 

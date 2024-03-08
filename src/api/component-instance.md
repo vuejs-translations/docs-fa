@@ -1,16 +1,16 @@
-# Component Instance {#component-instance}
+# نمونه کامپوننت (component instance) {#component-instance}
 
 :::info
-This page documents the built-in properties and methods exposed on the component public instance, i.e. `this`.
+این صفحه پراپرتی‌ها و توابع داخلی که در نمونه عمومی (public instance) کامپوننت exposed شده یعنی `this` را مستند سازی می‌کند.
 
-All properties listed on this page are readonly (except nested properties in `$data`).
+تمام پراپرتی‌هایی که در این صفحه لیست شده اند readonly هستند (به غیر از پراپرتی‌های تو در تو در `data$`)
 :::
 
-## $data {#data}
+## data$ {#data}
 
-The object returned from the [`data`](./options-state#data) option, made reactive by the component. The component instance proxies access to the properties on its data object.
+آبجکت بازگردانده شده از آپشن [`data`](./options-state#data) که توسط کامپوننت reactive شده. نمونه کامپوننت دسترسی به پراپرتی‌ها روی ابجکت data خودش را پراکسی می‌کند.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -18,11 +18,11 @@ The object returned from the [`data`](./options-state#data) option, made reactiv
   }
   ```
 
-## $props {#props}
+## props$ {#props}
 
-An object representing the component's current, resolved props.
+این آبجکت prop های کنونی resolve شده کامپوننت را نشان میدهد.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -30,15 +30,15 @@ An object representing the component's current, resolved props.
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  Only props declared via the [`props`](./options-state#props) option will be included. The component instance proxies access to the properties on its props object.
+  تنها propهای تعریف شده توسط [`props`](./options-state#props) شامل این آبجکت خواهند شد. کامپوننت نمونه دسترسی به پراپرتی‌ها روی آبجکت props را پراکسی می‌کند.
 
-## $el {#el}
+## el$ {#el}
 
-The root DOM node that the component instance is managing.
+همان root DOM node است که نمونه کامپوننت در حال مدیریت آن است.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -46,23 +46,23 @@ The root DOM node that the component instance is managing.
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  `$el` will be `undefined` until the component is [mounted](./options-lifecycle#mounted).
+  مقدار `el$` برابر با `undefined` خواهد بود تا زمانی که کامپوننت [mounted](./options-lifecycle#mounted) شود.
+  
+    - برای کامپوننت‌هایی که یک المنت root دارند `el$` به آن المنت اشاره خواهد کرد.
+  - برای کامپوننت‌هایی که متن (text) به عنوان root دارند `el$` به text node اشاره خواهد کرد.
+  - برای کامپوننت‌هایی که چندین root node دارند `el$` همان placeholder DOM node خواهد بود که Vue برای پیگیری کردن از موقعیت کامپوننت‌ها در DOM استفاده می‌کند (یک text node یا یک comment node در حالت SSR hydration)
 
-  - For components with a single root element, `$el` will point to that element.
-  - For components with text root, `$el` will point to the text node.
-  - For components with multiple root nodes, `$el` will be the placeholder DOM node that Vue uses to keep track of the component's position in the DOM (a text node, or a comment node in SSR hydration mode).
-
-  :::tip
-  For consistency, it is recommended to use [template refs](/guide/essentials/template-refs) for direct access to elements instead of relying on `$el`.
+  :::tip نکته
+  برای ثبات بهتر توصیه می‌شود که از [template refs](/guide/essentials/template-refs) برای دسترسی مستقیم به المنت‌ها به جای `el$` استفاده کنید.
   :::
 
-## $options {#options}
+## options$ {#options}
 
-The resolved component options used for instantiating the current component instance.
+  آپشن‌های resolved شده کامپوننت که برای نمونه سازی از نمونه کامپوننت کنونی استفاده شده است.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -70,15 +70,15 @@ The resolved component options used for instantiating the current component inst
   }
   ```
 
-- **Details**
+- **جزئیات**
+  
+  آبجکت `options$` آپشن‌های resolve شده برای کامپوننت کنونی را نمایش می‌دهد و حاصل ادغام این منابع ممکن است:
 
-  The `$options` object exposes the resolved options for the current component and is the merge result of these possible sources:
+  - mixinهای سراسری
+  - کامپوننت‌های بر پایه `extends`
+  - mixinهای کامپوننت
 
-  - Global mixins
-  - Component `extends` base
-  - Component mixins
-
-  It is typically used to support custom component options:
+  معمولا برای پشتیبانی از آپشن‌های سفارشی کامپوننت استفاده می‌شود:
 
   ```js
   const app = createApp({
@@ -89,13 +89,13 @@ The resolved component options used for instantiating the current component inst
   })
   ```
 
-- **See also** [`app.config.optionMergeStrategies`](/api/application#app-config-optionmergestrategies)
+- **همچنین ببینید** [`app.config.optionMergeStrategies`](/api/application#app-config-optionmergestrategies)
 
-## $parent {#parent}
+## parent$ {#parent}
 
-The parent instance, if the current instance has one. It will be `null` for the root instance itself.
+پراپرتی parent$ اگر نمونه جاری یک والد داشته باشد شامل نمونه والد (parent instance) است. برای خود نمونه ریشه (root instance) پراپرتی parent$ برابر با مقدار `null` خواهد بود.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -103,11 +103,11 @@ The parent instance, if the current instance has one. It will be `null` for the 
   }
   ```
 
-## $root {#root}
+## root$ {#root}
 
-The root component instance of the current component tree. If the current instance has no parents this value will be itself.
+نمونه کامپوننت ریشه متعلق به درخت کامپوننت (component tree) کنونی. اگر نمونه کنونی والدی نداشته باشد این مقدار برابر با خودش خواهد بود.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -115,11 +115,11 @@ The root component instance of the current component tree. If the current instan
   }
   ```
 
-## $slots {#slots}
+## slots$ {#slots}
 
-An object representing the [slots](/guide/components/slots) passed by the parent component.
+یک ابجکت که [اسلات‌های](/guide/components/slots) pass شده توسط کامپوننت والد را منتشر می‌کند.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -129,21 +129,21 @@ An object representing the [slots](/guide/components/slots) passed by the parent
   type Slot = (...args: any[]) => VNode[]
   ```
 
-- **Details**
+- **جزئیات**
 
-  Typically used when manually authoring [render functions](/guide/extras/render-function), but can also be used to detect whether a slot is present.
 
-  Each slot is exposed on `this.$slots` as a function that returns an array of vnodes under the key corresponding to that slot's name. The default slot is exposed as `this.$slots.default`.
+  معمولا زمانی که به شکل دستی در حال ساخت [render functionها](/guide/extras/render-function) هستیم از آن استفاده می‌شود اما همچنین می‌تواند برای تشخیص اینکه یک اسلات موجود است یا خیر استفاده شود.
+  هر اسلات روی `this.$slots` به عنوان یک تابع که یک آرایه از vnodeها را برمی‌گرداند را منتشر می‌کند که متصل به کلید مربوط به نام آن اسلات است. اسلات پیش‌فرض به عنوان this.$slots.default منتشر شده است.
 
-  If a slot is a [scoped slot](/guide/components/slots#scoped-slots), arguments passed to the slot functions are available to the slot as its slot props.
+  اگر یک اسلات یک [scoped slot](/guide/components/slots#scoped-slots) باشد آرگومان‌های پاس داده شده به توابع slot به عنوان slot props در دسترس slot قرار می‌گیرند.
 
-- **See also** [Render Functions - Rendering Slots](/guide/extras/render-function#rendering-slots)
+- **همچنین ببینید** [Render Functions - Rendering Slots](/guide/extras/render-function#rendering-slots)
 
-## $refs {#refs}
+## refs$ {#refs}
 
-An object of DOM elements and component instances, registered via [template refs](/guide/essentials/template-refs).
+یک آبجکت از المنت‌های DOM و نمونه‌های کامپوننت که توسط [template refs](/guide/essentials/template-refs) ثبت شده‌اند.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -151,16 +151,16 @@ An object of DOM elements and component instances, registered via [template refs
   }
   ```
 
-- **See also**
+- **همچنین ببینید**
 
   - [Template refs](/guide/essentials/template-refs)
   - [Special Attributes - ref](./built-in-special-attributes.md#ref)
 
-## $attrs {#attrs}
+## attrs$ {#attrs}
 
-An object that contains the component's fallthrough attributes.
+یک آبجکت که شامل ویژگی‌های fallthrough متعلق به کامپوننت است.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -168,21 +168,21 @@ An object that contains the component's fallthrough attributes.
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  [Fallthrough Attributes](/guide/components/attrs) are attributes and event handlers passed by the parent component, but not declared as a prop or an emitted event by the child.
+  [Fallthrough Attributes](/guide/components/attrs) ویژگی‌ها و event handler هایی هستند که توسط کامپوننت والد پاس داده می‌شوند اما به عنوان یک prop یا یک emitted event توسط کامپوننت فرزند تعریف نشده‌اند.
 
-  By default, everything in `$attrs` will be automatically inherited on the component's root element if there is only a single root element. This behavior is disabled if the component has multiple root nodes, and can be explicitly disabled with the [`inheritAttrs`](./options-misc#inheritattrs) option.
+  اگر فقط یک المنت ریشه وجود داشته باشد به صورت پیش‌فرض همه چیز در ‍`attrs$` به صورت خودکار بر روی المنت ریشه کامپوننت به ارث برده می‌شود . اگر کامپوننت چندین node ریشه‌ای داشته باشد این رفتار غیر فعال می‌شود. این رفتار می‌تواند به صورت مشخص با آپشن [`inheritAttrs`](./options-misc#inheritattrs) غیر فعال شود.
 
-- **See also**
+- **همچنین ببینید**
 
   - [Fallthrough Attributes](/guide/components/attrs)
 
-## $watch() {#watch}
+## ()watch$ {#watch}
 
-Imperative API for creating watchers.
+یک API دستوری برای ساخت wathcerها.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -210,32 +210,32 @@ Imperative API for creating watchers.
   type StopHandle = () => void
   ```
 
-- **Details**
+- **جزئیات**
 
-  The first argument is the watch source. It can be a component property name string, a simple dot-delimited path string, or a getter function.
+  اولین آرگومان منبع watch است که می‌تواند یک string نام متعلق به یک پراپرتی از یک کامپوننت، یک dot-delimited path string، یک string ساده و یا یک تابع getter باشد.
 
-  The second argument is the callback function. The callback receives the new value and the old value of the watched source.
+  دومین آرگومان یک تابع callback است. این تابع مقدار جدید و قدیم متعلق به منبع watch را دریافت می‌کند.
+  
+  - **`immediate`**: تابع callback را بلافاصله در موقع ساخت watcher فراخوانی می‌کند. در فراخوانی اول مقدار قدیمی `undefined` خواهد بود.
+  - **`deep`**: اگر منبع یک آبجکت باشد پیمایش عمیق (deep traversal) را روی آن تحمیل می‌کند و تابع callback هنگام تغییرات عمیق (deep mutations) روی آبجکت فراخوانی می‌شود. همچنین [Deep Watchers](/guide/essentials/watchers#deep-watchers) را مطالعه کنید.
+  - **`flush`**: زمانبندی flush مربوط به تابع  callback را تنظیم می‌کند. همچنین [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) و [`()watchEffect`](/api/reactivity-core#watcheffect) را مطالعه کنید.
+  - **`onTrack / onTrigger`**: برای دیباگ کردن وابستگی‌های watcher استفاده می‌شود. همچنین [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging) را مطالعه کنید.
 
-  - **`immediate`**: trigger the callback immediately on watcher creation. Old value will be `undefined` on the first call.
-  - **`deep`**: force deep traversal of the source if it is an object, so that the callback fires on deep mutations. See [Deep Watchers](/guide/essentials/watchers#deep-watchers).
-  - **`flush`**: adjust the callback's flush timing. See [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) and [`watchEffect()`](/api/reactivity-core#watcheffect).
-  - **`onTrack / onTrigger`**: debug the watcher's dependencies. See [Watcher Debugging](/guide/extras/reactivity-in-depth#watcher-debugging).
+- **مثال**
 
-- **Example**
-
-  Watch a property name:
+  watch کردن نام یک پراپرتی:
 
   ```js
   this.$watch('a', (newVal, oldVal) => {})
   ```
 
-  Watch a dot-delimited path:
+  Watch کردن یک مسیر dot-delimited:
 
   ```js
   this.$watch('a.b', (newVal, oldVal) => {})
   ```
 
-  Using getter for more complex expressions:
+  استفاده از getter برای عبارات پیچیده تر:
 
   ```js
   this.$watch(
@@ -248,7 +248,7 @@ Imperative API for creating watchers.
   )
   ```
 
-  Stopping the watcher:
+  متوقف کردن یک watcher:
 
   ```js
   const unwatch = this.$watch('a', cb)
@@ -257,15 +257,15 @@ Imperative API for creating watchers.
   unwatch()
   ```
 
-- **See also**
+- **همچنین ببینید**
   - [Options - `watch`](/api/options-state#watch)
   - [Guide - Watchers](/guide/essentials/watchers)
 
-## $emit() {#emit}
+## ()emit$ {#emit}
 
-Trigger a custom event on the current instance. Any additional arguments will be passed into the listener's callback function.
+فراخوانی یک رویداد سفارشی روی نمونه (instance) حاضر. هر آرگومان اضافه‌ای به تابع callback متعلق به listener پاس داده می‌شود.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -273,7 +273,7 @@ Trigger a custom event on the current instance. Any additional arguments will be
   }
   ```
 
-- **Example**
+- **نمونه**
 
   ```js
   export default {
@@ -286,16 +286,16 @@ Trigger a custom event on the current instance. Any additional arguments will be
   }
   ```
 
-- **See also**
+- **همچنین ببینید**
 
-  - [Component - Events](/guide/components/events)
-  - [`emits` option](./options-state#emits)
+  - [کامپوننت‌ها - رویدادها](/guide/components/events)
+  - [آپشن `emits`](./options-state#emits)
 
-## $forceUpdate() {#forceupdate}
+## ()forceUpdate$ {#forceupdate}
 
-Force the component instance to re-render.
+نمونه کامپوننت را مجبور می‌کند تا دوباره رندر (re-render) شوند.
 
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -303,15 +303,15 @@ Force the component instance to re-render.
   }
   ```
 
-- **Details**
+- **جزئیات**
+  
+  با توجه به سیستم خودکار reactivity متعلق به Vue این به ندرت مورد نیاز قرار میگیرد. تنها زمانی به آن نیاز دارید که شما در یک کامپوننت به صورت مشخص یک non-reactive state در کامپوننت به کمک reactivity API ها ایجاد کرده باشید.
 
-  This should be rarely needed given Vue's fully automatic reactivity system. The only cases where you may need it is when you have explicitly created non-reactive component state using advanced reactivity APIs.
+## ()nextTick$ {#nexttick}
 
-## $nextTick() {#nexttick}
+نسخه Instance-bound از نسخه سراسری [`()nextTick`](./general#nexttick).
 
-Instance-bound version of the global [`nextTick()`](./general#nexttick).
-
-- **Type**
+- **تایپ (Type)**
 
   ```ts
   interface ComponentPublicInstance {
@@ -319,8 +319,8 @@ Instance-bound version of the global [`nextTick()`](./general#nexttick).
   }
   ```
 
-- **Details**
+- **جزئیات**
 
-  The only difference from the global version of `nextTick()` is that the callback passed to `this.$nextTick()` will have its `this` context bound to the current component instance.
+  تنها تفاوت نسبت به نسخه سراسری `()nextTick` این است که callback پاس داده شده به `()this.$nextTick` دارای ‍`this` context  متصل شده به نمونه فعلی کامپوننت خواهد بود.
 
-- **See also** [`nextTick()`](./general#nexttick)
+- **همچنین ببینید** [`()nextTick`](./general#nexttick)

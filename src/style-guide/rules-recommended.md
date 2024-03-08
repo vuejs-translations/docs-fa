@@ -1,55 +1,55 @@
-# Priority C Rules: Recommended {#priority-c-rules-recommended}
+# قوانین اولویت C: پیشنهاد‌‌ شده {#priority-c-rules-recommended}
 
-Where multiple, equally good options exist, an arbitrary choice can be made to ensure consistency. In these rules, we describe each acceptable option and suggest a default choice. That means you can feel free to make a different choice in your own codebase, as long as you're consistent and have a good reason. Please do have a good reason though! By adapting to the community standard, you will:
+زمانی که که انتخاب‌های متعدد و به یک اندازه خوب وجود دارد، می‌توان برای حفظ ثبات، یک انتخاب دلخواه انجام داد. در این قوانین، ما هر یک از انتخاب‌های قابل قبول را شرح داده و یک انتخاب پیش‌فرض را پیشنهاد می‌دهیم. این به این معنا است که شما آزاد هستید تا انتخاب های متفاوتی در کدهای خودتان داشته باشید، تا زمانی که ‌در آنها ثابت هستید و برایشان دلیل معقولی دارید. لطفا دلیل معقول و منطبق با کامیونیتی خود داشته باشید. با منطبق شدن با استندارد های کامیونیتی شما:
 
-1. Train your brain to more easily parse most of the community code you encounter
-2. Be able to copy and paste most community code examples without modification
-3. Often find new hires are already accustomed to your preferred coding style, at least in regards to Vue
+1. ذهن خود را آموزش می‌دهید تا بسیاری از کدهای کامیونیتی که با آنها مواجه می‌شوید را تجزیه و تحلیل کنید.
+2. قادر خواهید بود بیشتر کدهای کامیونیتی را بدون تغییر دادن، کپی و پیست کنید.
+3. غالباً می‌بینید کارمندان جدید استخدام شده، دست کم در مورد Vue، از قبل به سبک کدنویسی مورد علاقه شما عادت کرده‌اند.
 
-## Component/instance options order {#component-instance-options-order}
+## ترتیب آ‌پشن‌های کامپوننت/نمونه {#component-instance-options-order}
 
-**Component/instance options should be ordered consistently.**
+**آپشن‌های کامپوننت/نمونه باید همیشه به طور ثابت مرتب شوند.**
 
-This is the default order we recommend for component options. They're split into categories, so you'll know where to add new properties from plugins.
+این ترتیب پیش‌‌‌فرضی است که ما برای آپشن‌های کامپوننت پیشنهاد می‌دهیم. آنها به دسته‌هایی تقسیم می‌شوند تا بدانید در کجا پراپرتی‌های جدید را از طریق افزونه‌ها اضافه کنید.
 
-1. **Global Awareness** (requires knowledge beyond the component)
+1. **Global Awareness** (نیاز به دانشی فراتر از کامپوننت دارد)
 
    - `name`
 
-2. **Template Compiler Options** (changes the way templates are compiled)
+2. **Template Compiler Options** (روشی که تمپلیت‌ها کامپایل می‌شوند را تغییر می‌دهد)
 
    - `compilerOptions`
 
-3. **Template Dependencies** (assets used in the template)
+3. **Template Dependencies** (فایل‌هایی که در تمپلیت استفاده شده است)
 
    - `components`
    - `directives`
 
-4. **Composition** (merges properties into the options)
+4. **Composition** (پراپرتی‌ها را با آپشن‌ها ادغام می‌کند)
 
    - `extends`
    - `mixins`
    - `provide`/`inject`
 
-5. **Interface** (the interface to the component)
+5. **Interface** (رابط کامپوننت)
 
    - `inheritAttrs`
    - `props`
    - `emits`
 
-6. **Composition API** (the entry point for using the Composition API)
+6. **Composition API** (نقطه ورود برای استفاده از Composition API)
 
    - `setup`
 
-7. **Local State** (local reactive properties)
+7. **Local State** (پراپرتی‌های محلیِ reactive)
 
    - `data`
    - `computed`
 
-8. **Events** (callbacks triggered by reactive events)
+8. **Events** (تماس‌های بازگشتی که به واسطه رویداد‌های reactive ایجاد می‌شوند)
 
    - `watch`
-   - Lifecycle Events (in the order they are called)
+   - رویداد‌های چرخه ی حیات (به ترتیبی که‌ فرا‌خوان می‌شوند)
      - `beforeCreate`
      - `created`
      - `beforeMount`
@@ -64,28 +64,28 @@ This is the default order we recommend for component options. They're split into
      - `renderTracked`
      - `renderTriggered`
 
-9. **Non-Reactive Properties** (instance properties independent of the reactivity system)
+9. **Non-Reactive Properties** (پراپرتی‌های نمونه مستقل از سیستم reactivity)
 
    - `methods`
 
-10. **Rendering** (the declarative description of the component output)
+10. **Rendering** (توضیحاتِ اخباریِ خروجیِ کامپوننت)
     - `template`/`render`
 
-## Element attribute order {#element-attribute-order}
+## ترتیب صفات المان‌ها {#element-attribute-order}
 
-**The attributes of elements (including components) should be ordered consistently.**
+**صفات المان‌ها (از جمله کامپوننت ها)، باید همیشه به طور ثابت مرتب شوند.**
 
-This is the default order we recommend for component options. They're split into categories, so you'll know where to add custom attributes and directives.
+این ترتیب پیش‌‌فرضی است که ما برای آپشن‌های کامپوننت پیشنهاد می‌دهیم. آنها به دسته‌هایی تقسیم می‌شوند تا بدانید در کجا از صفات و دایرکتیو‌های شخصی سازی شده استفاده کنید.
 
-1. **Definition** (provides the component options)
+1. **Definition** (آپشن‌های کامپوننت را فراهم می‌کند)
 
    - `is`
 
-2. **List Rendering** (creates multiple variations of the same element)
+2. **List Rendering** (نسخه‌های متفاوتی از یک المان می‌سازد)
 
    - `v-for`
 
-3. **Conditionals** (whether the element is rendered/shown)
+3. **Conditionals** (رندر/نمایش‌ داده شدن یا نشدن یک المان را تعیین می‌کند)
 
    - `v-if`
    - `v-else-if`
@@ -93,44 +93,44 @@ This is the default order we recommend for component options. They're split into
    - `v-show`
    - `v-cloak`
 
-4. **Render Modifiers** (changes the way the element renders)
+4. **Render Modifiers** (نحوه رندر شدن المان را تغییر می‌دهد)
 
    - `v-pre`
    - `v-once`
 
-5. **Global Awareness** (requires knowledge beyond the component)
+5. **Global Awareness** (نیاز به دانشی فراتر از کامپوننت دارد)
 
    - `id`
 
-6. **Unique Attributes** (attributes that require unique values)
+6. **Unique Attributes** (صفاتی که به مقادیر منحصر به فرد نیاز دارد)
 
    - `ref`
    - `key`
 
-7. **Two-Way Binding** (combining binding and events)
+7. **Two-Way Binding** (ترکیب اتصال و رویداد‌ها)
 
    - `v-model`
 
-8. **Other Attributes** (all unspecified bound & unbound attributes)
+8. **Other Attributes** (تمام صفاتِ مشخص نشدهِ محدود شده و محدود نشده)
 
-9. **Events** (component event listeners)
+9. **Events** (دریافت کننده‌های رویداد‌های کامپوننت)
 
    - `v-on`
 
-10. **Content** (overrides the content of the element)
+10. **Content** (محتوای المان را بازنویسی می‌کند)
     - `v-html`
     - `v-text`
 
-## Empty lines in component/instance options {#empty-lines-in-component-instance-options}
+## خطوط خالی در آپشن های کامپوننت/نمونه {#empty-lines-in-component-instance-options}
 
-**You may want to add one empty line between multi-line properties, particularly if the options can no longer fit on your screen without scrolling.**
+**شاید بخواهید یک خط خالی بین پراپرتی‌های چندخطی اضافه کنید، به ویژه اگر آپشن‌ها دیگر بدون اسکرول کردن نمی‌توانند در صفحه شما جا بگیرند.**
 
-When components begin to feel cramped or difficult to read, adding spaces between multi-line properties can make them easier to skim again. In some editors, such as Vim, formatting options like this can also make them easier to navigate with the keyboard.
+زمانی که احساس می‌کنید کامپوننت‌ها شلوغ یا به سختی خوانده می‌شوند، اضافه کردن فاصله بین پراپرتی‌های چندخطی می‌تواند باعث شود دوباره بتوان به راحتی آن‌ها را مرور کرد. در برخی ویرایشگرها مانند Vim، گزینه‌های قالب‌بندی مثل این می‌تواند باعث شود حرکت بین آن‌ها با صفحه‌کلید راحت‌تر باشد.
 
 <div class="options-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>نا‌مناسب</h3>
 
 ```js
 props: {
@@ -162,7 +162,7 @@ computed: {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>مناسب</h3>
 
 ```js
 // No spaces are also fine, as long as the component
@@ -196,7 +196,7 @@ computed: {
 <div class="composition-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>بد</h3>
 
 ```js
 defineProps({
@@ -222,7 +222,7 @@ const inputClasses = computed(() => {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>خوب</h3>
 
 ```js
 defineProps({
@@ -253,12 +253,13 @@ const inputClasses = computed(() => {
 
 </div>
 
-## Single-file component top-level element order {#single-file-component-top-level-element-order}
+## ترتیب المان‌های مرتبه اول در کامپوننت‌های تک فایلی  {#single-file-component-top-level-element-order}
 
-**[Single-File Components](/guide/scaling-up/sfc) should always order `<script>`, `<template>`, and `<style>` tags consistently, with `<style>` last, because at least one of the other two is always necessary.**
+**[کامپوننت‌های تک‌‌‌‌‌ فایلی](/guide/scaling-up/sfc)  باید  تگ‌های ‍‍`<script>` و `<template>` و `<style>` را ثابت و  به طوری که تگ `<style>` در آخر باشد مرتب کنند. زیرا حداقل یکی از دو تگ دیگر همیشه لازم است.**
+
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>بد</h3>
 
 ```vue-html
 <style>/* ... */</style>
@@ -281,7 +282,7 @@ const inputClasses = computed(() => {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>خوب</h3>
 
 ```vue-html
 <!-- ComponentA.vue -->

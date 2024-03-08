@@ -1,10 +1,10 @@
 # Render Function APIs {#render-function-apis}
 
-## h() {#h}
+## h()‎ {#h}
 
-Creates virtual DOM nodes (vnodes).
+گره‌های DOM مجازی (virtual DOM) یا به اصطلاح vnode می‌سازد.
 
-- **Type**
+- **تایپ**
 
   ```ts
   // full signature
@@ -24,19 +24,19 @@ Creates virtual DOM nodes (vnodes).
   type Slots = { [name: string]: Slot }
   ```
 
-  > Types are simplified for readability.
+  > تایپ‌ها برای خوانایی بهتر ساده‌سازی شده‌اند.
 
-- **Details**
+- **جزئیات**
 
-  The first argument can either be a string (for native elements) or a Vue component definition. The second argument is the props to be passed, and the third argument is the children.
+  اولین آرگومان می‌تواند یک رشته (برای عناصر بومی) یا یک تعریف کامپوننت Vue باشد. آرگومان دوم پراپ‌های قابل انتقال است و آرگومان سوم نیز فرزندان آن است.
 
-  When creating a component vnode, the children must be passed as slot functions. A single slot function can be passed if the component expects only the default slot. Otherwise, the slots must be passed as an object of slot functions.
+  هنگام ایجاد یک کامپوننت vnode، فرزندان باید به عنوان توابع اسلات (slot functions) منتقل شوند. اگر کامپوننت فقط انتظار اسلات پیش‌فرض را دارد، می‌توانید فقط یک تابع اسلات را منتقل کنید. در غیر این صورت، اسلات‌ها باید به عنوان یک آبجکتی از توابع منتقل شوند.
 
-  For convenience, the props argument can be omitted when the children is not a slots object.
+  برای راحتی، آرگومان props را می‌توان هنگام عدم وجود آبجکت اسلات‌ها، حذف کرد.
 
-- **Example**
+- **مثال**
 
-  Creating native elements:
+  ایجاد عناصر بومی:
 
   ```js
   import { h } from 'vue'
@@ -67,7 +67,7 @@ Creates virtual DOM nodes (vnodes).
   h('div', ['hello', h('span', 'hello')])
   ```
 
-  Creating components:
+  ایجاد کامپوننت:
 
   ```js
   import Foo from './Foo.vue'
@@ -93,29 +93,29 @@ Creates virtual DOM nodes (vnodes).
   })
   ```
 
-- **See also** [Guide - Render Functions - Creating VNodes](/guide/extras/render-function#creating-vnodes)
+- **همچنین ببینید** [راهنما - رندر فانکشن‌ها - ایجاد VNode](/guide/extras/render-function#creating-vnodes)
 
-## mergeProps() {#mergeprops}
+## mergeProps()‎ {#mergeprops}
 
-Merge multiple props objects with special handling for certain props.
+چند آبجکت از پراپ‌ها را با کنترل ویژه برای برخی از آنها ادغام می‌کند.
 
-- **Type**
+- **تایپ**
 
   ```ts
   function mergeProps(...args: object[]): object
   ```
 
-- **Details**
+- **جزئیات**
 
-  `mergeProps()` supports merging multiple props objects with special handling for the following props:
+  تابع `mergeProps()‎` ادغام چند آبجکت از پراپ‌ها را با کنترل ویژه برای پراپ‌های زیر پشتیبانی می کند:
 
   - `class`
   - `style`
-  - `onXxx` event listeners - multiple listeners with the same name will be merged into an array.
+  - شنودکننده‌های رویداد‍ `onXxx` - چندین شنونده با همان نام به یک آرایه ادغام خواهند شد.
 
-  If you do not need the merge behavior and want simple overwrites, native object spread can be used instead.
+  اگر نیازی به ادغام ندارید و می‌خواهید یک جایگزین ساده داشته باشید، می‌توانید به‌جای آن از `...` یا همان spread operator بومی استفاده کنید.
 
-- **Example**
+- **مثال**
 
   ```js
   import { mergeProps } from 'vue'
@@ -139,25 +139,24 @@ Merge multiple props objects with special handling for certain props.
    */
   ```
 
-## cloneVNode() {#clonevnode}
+## cloneVNode()‎ {#clonevnode}
 
-Clones a vnode.
+یک vnode را کپی می‌کند.
 
-- **Type**
+- **تایپ**
 
   ```ts
   function cloneVNode(vnode: VNode, extraProps?: object): VNode
   ```
 
-- **Details**
+- **جزئیات**
 
-  Returns a cloned vnode, optionally with extra props to merge with the original.
+  یک vnode کپی‌شده را برمی‌گرداند، در صورت تمایل می‌توانید پراپ‌های اضافه‌ای را برای ادغام با vnode اصلی هم به کار ببرید.
 
-  Vnodes should be considered immutable once created, and you should not mutate the props of an existing vnode. Instead, clone it with different / extra props.
+  یک vnode باید پس از ایجاد، غیرقابل تغییر در نظر گرفته شوند و شما نباید پراپ‌های یک vnode موجود را دستکاری کنید. در عوض، آن را با پراپ‌های مختلف یا اضافی می‌توانید کپی کنید.
 
-  Vnodes have special internal properties, so cloning them is not as simple as an object spread. `cloneVNode()` handles most of the internal logic.
-
-- **Example**
+  در واقع vnodeها دارای ویژگی‌های داخلی خاصی هستند، بنابراین کپی کردن آنها به سادگی spread کردن یک آبجکت (‍‍‍‍‍`‎...object`) نیست. تابع `cloneVNode()‎` به خوبی منطق داخلی را مدیریت می‌کند.
+- **مثال**
 
   ```js
   import { h, cloneVNode } from 'vue'
@@ -166,35 +165,35 @@ Clones a vnode.
   const cloned = cloneVNode(original, { id: 'foo' })
   ```
 
-## isVNode() {#isvnode}
+## isVNode()‎ {#isvnode}
 
-Checks if a value is a vnode.
+این تابع vnode بودن مقدار ورودی را بررسی می‌کند.
 
-- **Type**
+- **تایپ**
 
   ```ts
   function isVNode(value: unknown): boolean
   ```
 
-## resolveComponent() {#resolvecomponent}
+## resolveComponent()‎ {#resolvecomponent}
 
-For manually resolving a registered component by name.
+برای گرفتن یک کامپوننت رجیسترشده به صورت دستی با نام آن به کار می‌رود.
 
-- **Type**
+- **تایپ**
 
   ```ts
   function resolveComponent(name: string): Component | string
   ```
 
-- **Details**
+- **جزئیات**
 
-  **Note: you do not need this if you can import the component directly.**
+  **توجه: اگر می توانید کامپوننت را مستقیماً import کنید، به این نیازی ندارید.**
 
-  `resolveComponent()` must be called inside<span class="composition-api"> either `setup()` or</span> the render function in order to resolve from the correct component context.
+  تابع `resolveComponent()‎` باید در داخل <span class="composition-api">`setup()‎` یا</span> رندر فانکشن اجرا شود تا به درستی بتواند حتما از context یک کامپوننت صحیح این عملیات را انجام دهد.
 
-  If the component is not found, a runtime warning will be emitted, and the name string is returned.
+  اگر کامپوننت یافت نشود، یک هشدار Runtime صادر شده و نام ورودی را در خروجی برمی‌گرداند.
 
-- **Example**
+- **مثال**
 
   <div class="composition-api">
 
@@ -228,33 +227,33 @@ For manually resolving a registered component by name.
 
   </div>
 
-- **See also** [Guide - Render Functions - Components](/guide/extras/render-function#components)
+- **همچنین ببینید** [راهنما - رندر فانکشن‌ها - کامپوننت‌ها](/guide/extras/render-function#components)
 
-## resolveDirective() {#resolvedirective}
+## resolveDirective()‎ {#resolvedirective}
 
-For manually resolving a registered directive by name.
+برای گرفتن یک دایرکتیو رجیسترشده به صورت دستی با نام آن به کار می‌رود.
 
-- **Type**
+- **تایپ**
 
   ```ts
   function resolveDirective(name: string): Directive | undefined
   ```
 
-- **Details**
+- **جزئیات**
 
-  **Note: you do not need this if you can import the directive directly.**
+  **توجه: اگر می توانید دایرکتیو را مستقیماً import کنید، به این نیازی ندارید.**
 
-  `resolveDirective()` must be called inside<span class="composition-api"> either `setup()` or</span> the render function in order to resolve from the correct component context.
+  تابع `resolveDirective()‎` باید در داخل <span class="composition-api">`setup()‎` یا</span> رندر فانکشن اجرا شود تا به درستی بتواند حتما از context یک کامپوننت صحیح این عملیات را انجام دهد.
 
-  If the directive is not found, a runtime warning will be emitted, and the function returns `undefined`.
+  اگر دایرکتیو یافت نشود، یک هشدار Runtime صادر شده و `undefined` را در خروجی برمی‌گرداند.
 
-- **See also** [Guide - Render Functions - Custom Directives](/guide/extras/render-function#custom-directives)
+- **همچنین ببینید** [راهنما - رندر فانکشن‌ها - دایرکتیوهای اختصاصی](/guide/extras/render-function#custom-directives)
 
-## withDirectives() {#withdirectives}
+## withDirectives()‎ {#withdirectives}
 
-For adding custom directives to vnodes.
+برای افزودن دایرکتیوهای اختصاصی به vnodeها استفاده می‌شود.
 
-- **Type**
+- **تایپ**
 
   ```ts
   function withDirectives(
@@ -271,11 +270,11 @@ For adding custom directives to vnodes.
   >
   ```
 
-- **Details**
+- **جزئیات**
 
-  Wraps an existing vnode with custom directives. The second argument is an array of custom directives. Each custom directive is also represented as an array in the form of `[Directive, value, argument, modifiers]`. Tailing elements of the array can be omitted if not needed.
+یک vnode موجود را با دایرکتیوهای اختصاصی می‌پوشاند. دومین آرگومان یک آرایه از دایرکتیوهای اختصاصی است. هر دایرکتیو یک آرایه به شکل `[Directive, value, argument, modifiers]` نشان داده می شود و هر عنصر آرایه را می توان در صورت عدم نیاز حذف کرد.
 
-- **Example**
+- **مثال**
 
   ```js
   import { h, withDirectives } from 'vue'
@@ -296,19 +295,19 @@ For adding custom directives to vnodes.
   ])
   ```
 
-- **See also** [Guide - Render Functions - Custom Directives](/guide/extras/render-function#custom-directives)
+- **همچنین ببینید** [راهنما - رندر فانکشن‌ها - دایرکتیوهای اختصاصی](/guide/extras/render-function#custom-directives)
 
-## withModifiers() {#withmodifiers}
+## withModifiers()‎ {#withmodifiers}
 
-For adding built-in [`v-on` modifiers](/guide/essentials/event-handling#event-modifiers) to an event handler function.
+برای افزودن مودیفایرهای از پیش تعریف شده به رویدادها به کار می‌رود([`v-on` modifier](/guide/essentials/event-handling#event-modifiers)).
 
-- **Type**
+- **تایپ**
 
   ```ts
   function withModifiers(fn: Function, modifiers: string[]): Function
   ```
 
-- **Example**
+- **مثال**
 
   ```js
   import { h, withModifiers } from 'vue'
@@ -321,4 +320,4 @@ For adding built-in [`v-on` modifiers](/guide/essentials/event-handling#event-mo
   })
   ```
 
-- **See also** [Guide - Render Functions - Event Modifiers](/guide/extras/render-function#event-modifiers)
+- **همچنین ببینید** [راهنما - رندر فانکشن‌ها - مودیفایرهای رویداد](/guide/extras/render-function#event-modifiers)

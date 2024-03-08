@@ -17,6 +17,7 @@ const nav: ThemeConfig['nav'] = [
       { text: 'شروع سریع', link: '/guide/quick-start' },
       // { text: 'Style Guide', link: '/style-guide/' },
       { text: 'واژه‌نامه', link: '/glossary/' },
+      { text: 'ارجاع به خطا', link: '/error-reference/' },
       {
         text: 'اسناد Vue ۲',
         link: 'https://v2.vuejs.org'
@@ -45,6 +46,7 @@ const nav: ThemeConfig['nav'] = [
         items: [
           { text: 'همکاران', link: '/partners/' },
           { text: 'تم‌ها', link: '/ecosystem/themes' },
+          { text: 'UI Components', link: 'https://ui-libs.vercel.app/' },
           {
             text: 'گواهی‌نامه',
             link: 'https://certification.vuejs.org/?ref=vuejs-nav'
@@ -113,7 +115,7 @@ const nav: ThemeConfig['nav'] = [
         text: 'راهنمای کامیونیتی',
         link: '/about/community-guide'
       },
-      { text: 'کدرفتار', link: '/about/coc' },
+      { text: 'منشور اخلاقی', link: '/about/coc' },
       {
         text: 'مستند',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
@@ -147,7 +149,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'الزامات',
       items: [
         {
-          text: 'ساخت یک اپلیکیشن',
+          text: 'ایجاد یک اپلیکیشن Vue',
           link: '/guide/essentials/application'
         },
         {
@@ -159,40 +161,40 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/reactivity-fundamentals'
         },
         {
-          text: 'ویژگی‌های Computed',
+          text: 'پراپرتی‌های computed',
           link: '/guide/essentials/computed'
         },
         {
-          text: 'اتصالات کلاس‌ و استایل (Class and Style Bindings)',
+          text: 'اتصال کلاس و استایل',
           link: '/guide/essentials/class-and-style'
         },
         {
-          text: 'رندر شرطی (Conditional Rendering)',
+          text: 'رندر شرطی',
           link: '/guide/essentials/conditional'
         },
         {
-          text: 'رندر لیست‌ (List Rendering)',
+          text: 'رندر لیست',
           link: '/guide/essentials/list'
         },
         {
-          text: 'مدیریت رویداد‌ها (Event Handling)',
+          text: 'مدیریت رویدادها',
           link: '/guide/essentials/event-handling'
         },
         {
-          text: 'اتصالات ورودی فرم (Form Input Bindings)',
+          text: 'اتصال input در فرم',
           link: '/guide/essentials/forms'
         },
         {
-          text: 'Lifecycle Hooks',
+          text: 'هوک‌های چرخه حیات',
           link: '/guide/essentials/lifecycle'
         },
-        { text: 'ناظرها (Watchers)', link: '/guide/essentials/watchers' },
+        { text: 'ناظرها - Watchers', link: '/guide/essentials/watchers' },
         {
-          text: 'Template Refs',
+          text: 'ارجاع از طریق تمپلیت - Template Refs',
           link: '/guide/essentials/template-refs'
         },
         {
-          text: 'مبانی کامپوننت‌ها (Components Basics)',
+          text: 'مبانی کامپوننت‌ها',
           link: '/guide/essentials/component-basics'
         }
       ]
@@ -201,12 +203,12 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'کامپوننت‌ها به‌طور عمیق',
       items: [
         {
-          text: 'Registration',
+          text: 'ثبت کامپوننت',
           link: '/guide/components/registration'
         },
-        { text: 'Props', link: '/guide/components/props' },
+        { text: 'پراپ‌ها', link: '/guide/components/props' },
         {
-          text: 'رویداد های کامپوننت (Events)',
+          text: 'رویداد‌های کامپوننت',
           link: '/guide/components/events'
         },
         { text: 'v-model', link: '/guide/components/v-model' },
@@ -220,7 +222,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/components/provide-inject'
         },
         {
-          text: 'کامپوننت‌های غیرهمگام (Async Components)',
+          text: 'کامپوننت‌های غیرهمگام - Async Components',
           link: '/guide/components/async'
         }
       ]
@@ -233,10 +235,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/reusability/composables'
         },
         {
-          text: 'دایرکتیوهای شخصی سازی شده (Custom Directives)',
+          text: 'دایرکتیوهای سفارشی',
           link: '/guide/reusability/custom-directives'
         },
-        { text: 'افزونه‌ها', link: '/guide/reusability/plugins' }
+        { text: 'پلاگین‌ها', link: '/guide/reusability/plugins' }
       ]
     },
     {
@@ -244,30 +246,30 @@ export const sidebar: ThemeConfig['sidebar'] = {
       items: [
         { text: 'Transition', link: '/guide/built-ins/transition' },
         {
-          text: 'انتقال گروهی (TransitionGroup)',
+          text: 'TransitionGroup',
           link: '/guide/built-ins/transition-group'
         },
         { text: 'KeepAlive', link: '/guide/built-ins/keep-alive' },
-        { text: 'تلپورت (Teleport)', link: '/guide/built-ins/teleport' },
-        { text: 'تعلیق (Suspense)', link: '/guide/built-ins/suspense' }
+        { text: 'Teleport', link: '/guide/built-ins/teleport' },
+        { text: 'Suspense', link: '/guide/built-ins/suspense' }
       ]
     },
     {
       text: 'Scaling Up',
       items: [
         {
-          text: 'کامپوننت های تک فایلی (Single-File Components)',
+          text: 'کامپوننت های تک فایلی - SFC',
           link: '/guide/scaling-up/sfc'
         },
-        { text: 'ابزارها (Tooling)', link: '/guide/scaling-up/tooling' },
-        { text: 'مسیریابی (Routing)', link: '/guide/scaling-up/routing' },
+        { text: 'ابزارها', link: '/guide/scaling-up/tooling' },
+        { text: 'مسیریابی - Routing', link: '/guide/scaling-up/routing' },
         {
           text: 'State Management',
           link: '/guide/scaling-up/state-management'
         },
         { text: 'Testing', link: '/guide/scaling-up/testing' },
         {
-          text: 'رندرینگ سمت سرور (Server-Side Rendering (SSR))',
+          text: 'رندرینگ سمت سرور - SSR',
           link: '/guide/scaling-up/ssr'
         }
       ]
@@ -435,7 +437,8 @@ export const sidebar: ThemeConfig['sidebar'] = {
         { text: 'Render Function', link: '/api/render-function' },
         { text: 'Server-Side Rendering', link: '/api/ssr' },
         { text: 'TypeScript Utility Types', link: '/api/utility-types' },
-        { text: 'Custom Renderer', link: '/api/custom-renderer' }
+        { text: 'Custom Renderer', link: '/api/custom-renderer' },
+        { text: 'Compile-Time Flags', link: '/api/compile-time-flags' }
       ]
     }
   ],
@@ -452,7 +455,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/examples/#handling-input'
         },
         {
-          text: 'اتصال صفت‌ها',
+          text: 'اتصال اتریبیوت‌ها',
           link: '/examples/#attribute-bindings'
         },
         {
@@ -586,21 +589,31 @@ export default defineConfigWithTheme<ThemeConfig>({
   lang: 'fa',
   dir: 'rtl',
   title: 'Vue.js',
-  description: 'Vue.js - فریمورک پیش‌رونده جاوااسکریپت',
+  description: 'Vue.js - فریمورک پیش‌رونده جاوا اسکریپت',
   srcDir: 'src',
   srcExclude: ['tutorial/**/description.md'],
 
   head: [
     ['meta', { name: 'theme-color', content: '#3c8772' }],
-    ['meta', { name: 'twitter:site', content: '@vuejs' }],
-    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { property: 'og:url', content: 'https://vuejs.org/' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:title', content: 'Vue.js' }],
     [
       'meta',
       {
-        name: 'twitter:image',
+        property: 'og:description',
+        content: 'Vue.js - The Progressive JavaScript Framework'
+      }
+    ],
+    [
+      'meta',
+      {
+        property: 'og:image',
         content: 'https://vuejs.org/images/logo.png'
       }
     ],
+    ['meta', { name: 'twitter:site', content: '@vuejs' }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
     [
       'link',
       {
@@ -710,7 +723,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/' },
       { icon: 'twitter', link: 'https://twitter.com/vuejs' },
-      { icon: 'discord', link: 'https://discord.com/invite/HBherRA' }
+      { icon: 'discord', link: 'https://discord.com/invite/vue' }
     ],
 
     editLink: {
@@ -728,6 +741,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   },
 
   markdown: {
+    theme: 'github-dark',
     config(md) {
       md.use(headerPlugin)
       // .use(textAdPlugin)

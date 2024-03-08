@@ -1,3 +1,7 @@
 .red {
   color: red;
 }
+p {
+  direction: rtl;
+  margin-left: auto;
+}

@@ -82,7 +82,7 @@ function increment() {
 
 <div class="html">
 
-در اینجا، `increment` به یک متد در شی برگردانده شده از `setup()‎` ارجاع می‌دهد:
+در اینجا، `increment` به یک متد در آبجکت برگردانده شده از `setup()‎` ارجاع می‌دهد:
 
 ```js{$}
 setup() {
@@ -106,6 +106,6 @@ setup() {
 
 </div>
 
-هندلرهای رویداد همچنین می‌توانند از عبارات درون خطی استفاده کنند، و می‌توانند وظایف رایج را با استفاده از modifierها ساده کنند. این جزئیات در <a target="_blank" href="/guide/essentials/event-handling.html">راهنما - Event Handling</a> پوشش داده شده‌اند.
+هندلرهای رویداد همچنین می‌توانند از عبارات درون خطی استفاده کنند و می‌توانند وظایف رایج را با استفاده از modifierها ساده کنند. این جزئیات در <a target="_blank" href="/guide/essentials/event-handling.html">راهنما - Event Handling</a> پوشش داده شده‌اند.
 
 حالا سعی کنید خودتان تابع `increment` را <span class="options-api">به عنوان یک متد</span><span class="composition-api">پیاده سازی کنید</span> و آن را با استفاده از `v-on` به دکمه متصل کنید.
