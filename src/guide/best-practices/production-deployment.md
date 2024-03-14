@@ -28,7 +28,7 @@
 اگر از یک راه‌اندازی سفارشی استفاده می‌کنید، مطمئن شوید که:
 
 1. `vue` به `vue.runtime.esm-bundler.js` ختم شده است.
-2. [فلگ‌های زمان کامپایل](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags) به درستی پیکربندی شده‌اند.
+2. [فلگ‌های زمان کامپایل](/api/compile-time-flags) به درستی پیکربندی شده‌اند.
 3. <code>process.env<wbr>.NODE_ENV</code> در زمان build با "production" جایگزین شده است.
 
 مراجع اضافی:

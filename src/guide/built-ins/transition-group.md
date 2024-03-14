@@ -102,7 +102,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 </TransitionGroup>
 ```
 
-سپس، در هوک‌های جاوااسکریپت، به عنصر بر اساس ایندکس آن با تأخیر انیمیشن می‌دهیم. در این مثال از کتابخانه [GreenSock](https://greensock.com/) برای انیمیشن استفاده می‌شود.
+سپس، در هوک‌های جاوااسکریپت، به عنصر بر اساس ایندکس آن با تأخیر انیمیشن می‌دهیم. در این مثال از کتابخانه [GSAP library](https://gsap.com/) برای انیمیشن استفاده می‌شود.
 
 ```js{5}
 function onEnter(el, done) {
