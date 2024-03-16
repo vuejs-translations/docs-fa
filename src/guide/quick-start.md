@@ -24,9 +24,9 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 - نصب [Node.js](https://nodejs.org/) نسخه 18.0 یا بالاتر
 :::
 
-در این بخش به ایجاد اولیه یک برنامه تک صفحه‌ای Vue بر روی کامپیوتر خود می‌پردازیم ([Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa)). پروژه ایجاد شده از یک ابزار راه اندازی ساخت مبتنی بر [Vite](https://vitejs.dev) استفاده خواهد کرد و به ما امکان می‌دهد از [کامپوننت‌های تک فایلی](/guide/scaling-up/sfc) Vue استفاده کنیم  (SFCs).
+در این بخش به ایجاد اولیه یک برنامه تک صفحه‌ای Vue بر روی کامپیوتر خود می‌پردازیم ([Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa)). پروژه ایجاد شده از یک ابزار راه اندازی ساخت مبتنی بر [Vite](https://vitejs.dev) استفاده خواهد کرد و به ما امکان می‌دهد از [کامپوننت‌های تک فایلی](/guide/scaling-up/sfc) Vue استفاده کنیم (SFC).
 
-اطمینان حاصل کنید که شما یک نسخه به‌روز از [Node.js](https://nodejs.org/)  را بصورت نصب شده دارید و دایرکتوری فعلی شما همان جایی است که قصد ایجاد یک پروژه جدید را دارید. دستور زیر را در command line خود اجرا کنید (بدون علامت `$`):
+اطمینان حاصل کنید که شما یک نسخه به‌روز از [Node.js](https://nodejs.org/) را بصورت نصب شده دارید و دایرکتوری فعلی شما همان جایی است که قصد ایجاد یک پروژه جدید را دارید. دستور زیر را در command line خود اجرا کنید (بدون علامت `$`):
 
 <VTCodeGroup>
   <VTCodeGroupTab label="npm">
@@ -431,12 +431,12 @@ export default {
     <p class="next-steps-link">امتحان کردن آموزش</p>
     <p class="next-steps-caption">برای کسانی که ترجیح می‌دهند چیزها را به صورت عملی یاد بگیرند.</p>
   </a>
-  <a class="vt-box" href="/guide/quick-start.html">
-    <p class="next-steps-link">خواندن راهنما</p>
-    <p class="next-steps-caption">راهنما شما را به تمام جنبه‌های فریمورک با جزئیات کامل هدایت می‌کند.</p>
-  </a>
   <a class="vt-box" href="/examples/">
     <p class="next-steps-link">بررسی مثال‌ها</p>
     <p class="next-steps-caption">مثال‌هایی از ویژگی‌های اصلی و وظایف رایج رابط کاربری را بررسی کنید.</p>
+  </a>
+  <a class="vt-box" href="/guide/essentials/application.html">
+    <p class="next-steps-link">خواندن ادامه راهنما</p>
+    <p class="next-steps-caption">راهنما شما را به تمام جنبه‌های فریمورک با جزئیات کامل هدایت می‌کند.</p>
   </a>
 </div>
