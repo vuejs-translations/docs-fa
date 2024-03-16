@@ -728,7 +728,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     editLink: {
       repo: 'vuejs-translations/docs-fa',
-      text: 'ویرایش این صفحه در گیت‌هاب'
+      text: 'اصلاح ترجمه این صفحه در گیت‌هاب'
     },
 
     footer: {
