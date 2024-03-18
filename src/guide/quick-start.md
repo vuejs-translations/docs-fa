@@ -37,21 +37,21 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="pnpm">
-  
+
   ```sh
   $ pnpm create vue@latest
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="yarn">
-  
+
   ```sh
   $ yarn create vue@latest
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="bun">
-  
+
   ```sh
   $ bun create vue@latest
   ```
@@ -79,35 +79,35 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 <VTCodeGroup>
   <VTCodeGroupTab label="npm">
 
-  ```sh
-  $ cd <your-project-name>
+  ```sh-vue
+  $ cd {{'<your-project-name>'}}
   $ npm install
   $ npm run dev
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="pnpm">
-  
-  ```sh
-  $ cd <your-project-name>
+
+  ```sh-vue
+  $ cd {{'<your-project-name>'}}
   $ pnpm install
   $ pnpm run dev
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="yarn">
-  
-  ```sh
-  $ cd <your-project-name>
+
+  ```sh-vue
+  $ cd {{'<your-project-name>'}}
   $ yarn
   $ yarn dev
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="bun">
-  
-  ```sh
-  $ cd <your-project-name>
+
+  ```sh-vue
+  $ cd {{'<your-project-name>'}}
   $ bun install
   $ bun run dev
   ```
@@ -133,21 +133,21 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="pnpm">
-  
+
   ```sh
   $ pnpm run build
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="yarn">
-  
+
   ```sh
   $ yarn build
   ```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="bun">
-  
+
   ```sh
   $ bun run build
   ```

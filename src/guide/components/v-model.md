@@ -27,7 +27,7 @@ function update() {
 
 ```vue-html
 <!-- Parent.vue -->
-<Child v-model="count" />
+<Child v-model="countModel" />
 ```
 
 مقدار برگردانده شده توسط `defineModel()‎` یک ref است. می‌توان به آن دسترسی یافت و آن را تغییر داد مانند هر ref دیگری، به جز اینکه به عنوان یک اتصال دوطرفه بین داده والد و داده محلی عمل می‌کند:
