@@ -1,5 +1,8 @@
 <script lang="ts">
-const shuffleMembers = (members: Member[], pinTheFirstMember = false): void => {
+const shuffleMembers = (
+  members: Member[],
+  pinTheFirstMember = false
+): void => {
   let offset = pinTheFirstMember ? 1 : 0
   // `i` is between `1` and `length - offset`
   // `j` is between `0` and `length - offset - 1`
@@ -7,11 +10,8 @@ const shuffleMembers = (members: Member[], pinTheFirstMember = false): void => {
   // `offset + j` is between `offset` and `length - 1`
   let i = members.length - offset
   while (i > 0) {
-    const j = Math.floor(Math.random() * i);
-    [
-      members[offset + i - 1],
-      members[offset + j]
-    ] = [
+    const j = Math.floor(Math.random() * i)
+    ;[members[offset + i - 1], members[offset + j]] = [
       members[offset + j],
       members[offset + i - 1]
     ]
@@ -37,39 +37,45 @@ shuffleMembers(membersPartnerData as Member[])
   <div class="TeamPage">
     <TeamHero>
       <template #title>با گروه ما ملاقات کنید!</template>
-      <template #lead
-        >توسعه‌ی ویو و اکوسیستم آن توسط یک گروه بین‌المللی هدایت می‌شود که برخی از منتخبان آن در زیر آورده شده است.</template
-      >
+      <template #lead>
+        توسعه‌ی ویو و اکوسیستم آن توسط یک گروه بین‌المللی هدایت می‌شود
+         که برخی از منتخبان آن در زیر آورده شده است.
+
+      </template>
 
       <template #action>
         <VTLink
           href="https://github.com/vuejs/governance/blob/master/Team-Charter.md"
-          >راجع به گروه‌ها بیشتر بدانید</VTLink
         >
+          راجع به گروه‌ها بیشتر بدانید
+        </VTLink>
       </template>
     </TeamHero>
 
-    <TeamList :members="membersCoreData as Member[]">
+    <TeamList :members="(membersCoreData as Member[])">
       <template #title>اعضای تیم هسته</template>
-      <template #lead
-        >افرادی هستند که به طور فعالانه در مدیریت و نگه‌داری یک یا چندین پروژه های هسته‌ی ویو نقش دارند.
-        آن‌ها مشارکت‌های مهمی به اکوسیستم ویو داشته‌اند و ما موفقیت پروژه و کاربران آن را مدیون این افراد هستیم.</template
-      >
+      <template #lead>
+        افرادی هستند که به طور فعالانه در مدیریت
+        و نگه‌داری یک یا چندین پروژه‌های هسته‌ی ویو نقش دارند.
+        آن‌ها مشارکت‌های مهمی به اکوسیستم ویو داشته‌اند
+        و ما موفقیت پروژه و کاربران آن را مدیون این افراد هستیم.
+      </template>
     </TeamList>
 
-    <TeamList :members="membersEmeritiData as Member[]">
+    <TeamList :members="(membersEmeritiData as Member[])">
       <template #title>اعضای هسته‌ی افتخاری</template>
-      <template #lead
-        >اینجا ما یاد کاربران هسته‌ای که در گذشته به طور فعالانه مشارکت‌های با ارزشی داشته‌اند را گرامی می‌داریم.</template
-      >
+      <template #lead>
+        اینجا ما یاد کاربران هسته‌ای که در گذشته به طور فعالانه
+        مشارکت‌های با ارزشی داشته‌اند را گرامی می‌داریم.
+        </template>
     </TeamList>
 
     <TeamList :members="membersPartnerData as Member[]">
       <template #title>شرکای جامعه</template>
-      <template #lead
-        >برخی از اعضای جامعه‌ی ویو آن را چنان تکمیل کرده‌اند که نیازمند اشاره‌ی خاصی هستند.
-        ما روابط صمیمی‌ای با این شرکای کلیدی داریم به طوری که اغلب ویژگی‌های جدید و اخبار را با آنان به اشتراک می‌گذاریم.</template
-      >
+      <template #lead>
+        برخی از اعضای جامعه‌ی ویو آن را چنان تکمیل کرده‌اند که نیازمند اشاره‌ی خاصی هستند.
+        ما روابط صمیمی‌ای با این شرکای کلیدی داریم به طوری که اغلب ویژگی‌های جدید و اخبار را با آنان به اشتراک می‌گذاریم.
+      </template>
     </TeamList>
   </div>
 </template>

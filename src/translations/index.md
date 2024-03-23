@@ -15,10 +15,10 @@ aside: false
 - [Português / پرتغالی](https://pt.vuejs.org) [[مخزن](https://github.com/vuejs-translations/docs-pt)]
 - [বাংলা / بنگالی](https://bn.vuejs.org) [[مخزن](https://github.com/vuejs-translations/docs-bn)]
 - [Italiano / ایتالیایی](https://it.vuejs.org) [[مخزن](https://github.com/vuejs-translations/docs-it)]
+- [فارسی / Persian](https://fa.vuejs.org) [[source](https://github.com/vuejs-translations/docs-fa)]
 
 ## زبان‌های درحال پیشرفت {#work-in-progress-languages}
 
-- [Persian / فارسی](https://fa.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-fa)]
 - [Čeština / چکی](https://cs.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-cs)]
 - [العربية / عربی](https://ar.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-ar)]
 

@@ -21,7 +21,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 :::tip پیش‌نیازها
 
 - آشنایی با خط فرمان (command line)
-- نصب [Node.js](https://nodejs.org/) نسخه 18.0 یا بالاتر
+- نصب [Node.js](https://nodejs.org/) نسخه 18.3 یا بالاتر
 :::
 
 در این بخش به ایجاد اولیه یک برنامه تک صفحه‌ای Vue بر روی کامپیوتر خود می‌پردازیم ([Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa)). پروژه ایجاد شده از یک ابزار راه اندازی ساخت مبتنی بر [Vite](https://vitejs.dev) استفاده خواهد کرد و به ما امکان می‌دهد از [کامپوننت‌های تک فایلی](/guide/scaling-up/sfc) Vue استفاده کنیم (SFC).
