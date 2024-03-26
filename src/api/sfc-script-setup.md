@@ -1,15 +1,15 @@
 # \<script setup> {#script-setup}
 
-`<script setup>` is a compile-time syntactic sugar for using Composition API inside Single-File Components (SFCs). It is the recommended syntax if you are using both SFCs and Composition API. It provides a number of advantages over the normal `<script>` syntax:
+`<script setup>` یک مدل نوشتاری راحت تر در زمان کامپایل برای استفاده از Composition API درون فایل های Single-File Components(SFCs) می باشد. اگر از SFCها و Composition API استفاده میکنید، توصیه میشود از تگ `setup` نیز استفاده کنید. نسب به `<script>` معمولی دارای نقاط مثبت زیر است:
 
-- More succinct code with less boilerplate
-- Ability to declare props and emitted events using pure TypeScript
-- Better runtime performance (the template is compiled into a render function in the same scope, without an intermediate proxy)
-- Better IDE type-inference performance (less work for the language server to extract types from code)
+- کد مختصر تر با کار کمتر
+- قابلیت تعریف props و emit events با استفاده از تایپ اسکریپت
+- کارایی و پرفرمونس بهتر در زمان اجرا (تمپلیت در همان اسکوپ به یک render function تبدیل می شود، بدون پروکس میانی)
+- پرفرمونس بهتر IDE برای تشخیص type-inference (برای تشخیص نوع داده ها کار کمتری انجام می شود)
 
-## Basic Syntax {#basic-syntax}
+## سینتکس ساده {#basic-syntax}
 
-To opt-in to the syntax, add the `setup` attribute to the `<script>` block:
+به منظور استفاده از این سینتکس، اتریبیوت `setup` را به تگ `<script>` اضافه کنید
 
 ```vue
 <script setup>
@@ -17,11 +17,11 @@ console.log('hello script setup')
 </script>
 ```
 
-The code inside is compiled as the content of the component's `setup()` function. This means that unlike normal `<script>`, which only executes once when the component is first imported, code inside `<script setup>` will **execute every time an instance of the component is created**.
+کد داخل اسکریپت تبدیل می شود به محتوای داخل تابع `()setup` کامپوننت. به این معنی که برخلاف تگ معمولی اسکریپت `<script>`, که فقط یک بار زمانی که کامپوننت برای بار اول ایمپرت شده است اجرا می شود, کد داخل `<script setup>` **هر با که یک instance از کامپوننت ساخته شود، اجرا می شود**.
 
 ### Top-level bindings are exposed to template {#top-level-bindings-are-exposed-to-template}
 
-When using `<script setup>`, any top-level bindings (including variables, function declarations, and imports) declared inside `<script setup>` are directly usable in the template:
+زمانی که از `<script setup>` استفاده میکنید, هر top-level bindings (شامل متغیرها, توابع و ایمپرت ها) که داخل `<script setup>` قرار دارند، به صورت مستقیم در تمپلیت قابل استفاده هستند:
 
 ```vue
 <script setup>
@@ -39,7 +39,7 @@ function log() {
 </template>
 ```
 
-Imports are exposed in the same fashion. This means you can directly use an imported helper function in template expressions without having to expose it via the `methods` option:
+ایپمرت ها هم به همین صورت قابل استفاده هستند. به این معنی که شما میتوانید به صورت مستقیم از یک متد کمکی که ایمپرت کرده اید بدون تعریف کردن آن در `methods` به صورت مستقیم در تمپلیت استفاده کنید:
 
 ```vue
 <script setup>
@@ -52,8 +52,7 @@ import { capitalize } from './helpers'
 ```
 
 ## Reactivity {#reactivity}
-
-Reactive state needs to be explicitly created using [Reactivity APIs](./reactivity-core). Similar to values returned from a `setup()` function, refs are automatically unwrapped when referenced in templates:
+Reactive states باید دقیقا با استفاده از [Reactivity APIs](./reactivity-core) ساخته شوند. همانند دیتاهایی که از تابع `setup()` برگردانده می شوند، refs ها هم به صورت خودکار بدون نیاز به `.value` قابل استفاده هستند:
 
 ```vue
 <script setup>
@@ -67,9 +66,9 @@ const count = ref(0)
 </template>
 ```
 
-## Using Components {#using-components}
+## استفاده از کامپوننت ها {#using-components}
 
-Values in the scope of `<script setup>` can also be used directly as custom component tag names:
+مقادیر در  `<script setup>` به صورت مستقیم به عنوان تگ های یک کامپوننت قابل استفاده می باشد:
 
 ```vue
 <script setup>
@@ -81,11 +80,12 @@ import MyComponent from './MyComponent.vue'
 </template>
 ```
 
-Think of `MyComponent` as being referenced as a variable. If you have used JSX, the mental model is similar here. The kebab-case equivalent `<my-component>` also works in the template - however PascalCase component tags are strongly recommended for consistency. It also helps differentiating from native custom elements.
+`MyComponent` را به عنوان یک referenced variable در نظر بگیرید. اگر از JSX استفاده کرده اید, مدل فکری شبیه است. معادل kebab-case `<my-component>` در تمپلیت قابل استفاده است - اگرچه استفاده از تگ های PascalCase برای یکپارچگی توصیه می شود.
+همچنین برای تشخیص بهتر از Native HTML Elements بهتر است.
 
-### Dynamic Components {#dynamic-components}
+### کامپوننت های Dynamic {#dynamic-components}
 
-Since components are referenced as variables instead of registered under string keys, we should use dynamic `:is` binding when using dynamic components inside `<script setup>`:
+از آن جایی که کامپوننت ها به جای کامپوننت های رجیستر شده با کلید، به عنوان referenced values در نظر گرفته می شوند , در `script setup` هنگام استفاده از کامپوننت های داینامیک باید از `is:` استفاده کنیم:
 
 ```vue
 <script setup>
@@ -99,21 +99,25 @@ import Bar from './Bar.vue'
 </template>
 ```
 
-Note how the components can be used as variables in a ternary expression.
+توجه داشته باشید در یک ternary expression کامپوننت ها به عنوان متغیر استفاده می شوند.
 
-### Recursive Components {#recursive-components}
+### کامپوننت های Recursive {#recursive-components}
 
-An SFC can implicitly refer to itself via its filename. E.g. a file named `FooBar.vue` can refer to itself as `<FooBar/>` in its template.
+<!-- An SFC can implicitly refer to itself via its filename. E.g. a file named `FooBar.vue` can refer to itself as `<FooBar/>` in its template.
 
-Note this has lower priority than imported components. If you have a named import that conflicts with the component's inferred name, you can alias the import:
+Note this has lower priority than imported components. If you have a named import that conflicts with the component's inferred name, you can alias the import: -->
+یک SFC میتواند صراحتا با استناد به اسم فایلش به خودش رفرنس شود.
+برای مثال یک فایل با اسم `FooBar.vue` می تواند به صورت `</ FooBar>` در تمپلیت استفاده شود.
+
 
 ```js
 import { FooBar as FooBarChild } from './components'
 ```
 
-### Namespaced Components {#namespaced-components}
+### کامپوننت های Namespaced {#namespaced-components}
 
-You can use component tags with dots like `<Foo.Bar>` to refer to components nested under object properties. This is useful when you import multiple components from a single file:
+برای استفاده از کامپوننت های درون آبجکت ایمپرت شده، میتوان از dot در تگ های کامپوننت استفاده کرد.
+برای زمانی مناسب است که از یک فایل چندین کامپوننت ایمپرت میکنید:
 
 ```vue
 <script setup>
@@ -127,9 +131,10 @@ import * as Form from './form-components'
 </template>
 ```
 
-## Using Custom Directives {#using-custom-directives}
+## Using Custom Directives (Directiveهای سفارشی سازی شده) {#using-custom-directives}
 
-Globally registered custom directives just work as normal. Local custom directives don't need to be explicitly registered with `<script setup>`, but they must follow the naming scheme `vNameOfDirective`:
+Directiveهای سفارشی سازی شده ی گلوبال به صورت نرمال قابل استفاده هستند.
+Directiveهای مخلی نیازی ندارند که حتما در `<script setup>` رجسیتر شوند، اما برای نام گذاری باید از این اسکیما و طرح پیروی کنند `vNameOfDirective` : 
 
 ```vue
 <script setup>
@@ -140,11 +145,14 @@ const vMyDirective = {
 }
 </script>
 <template>
-  <h1 v-my-directive>This is a Heading</h1>
+  <h1 v-my-directive>این یک h1 است</h1>
 </template>
 ```
 
-If you're importing a directive from elsewhere, it can be renamed to fit the required naming scheme:
+اگر یک directive .را از جای دیگری ایمپرت میکنید، میتوانید به نام دلخواه خود تغییرش دهید.
+
+اسکیما:
+
 
 ```vue
 <script setup>
@@ -154,7 +162,7 @@ import { myDirective as vMyDirective } from './MyDirective.js'
 
 ## defineProps() & defineEmits() {#defineprops-defineemits}
 
-To declare options like `props` and `emits` with full type inference support, we can use the `defineProps` and `defineEmits` APIs, which are automatically available inside `<script setup>`:
+برای تعریف کردن `props` و `emits` با پشتیبانی کامل تایپ, می توان از APIهای `defineProps` و `defineEmits` استفاده کرد که بصورت پیشفرض در `<script setup>` قابل دسترسی هستند:
 
 ```vue
 <script setup>
@@ -167,17 +175,16 @@ const emit = defineEmits(['change', 'delete'])
 </script>
 ```
 
-- `defineProps` and `defineEmits` are **compiler macros** only usable inside `<script setup>`. They do not need to be imported, and are compiled away when `<script setup>` is processed.
+- `defineProps` و `defineEmits` جزو **compiler macros** هستند و فقط داخل `<script setup>` قابل استفاده هستند. نیازی به ایمپرت کردن آن ها نیست, و هنگامی که `script setup` پردازش می شود، کامپایل می شوند.
 
-- `defineProps` accepts the same value as the `props` option, while `defineEmits` accepts the same value as the `emits` option.
+- `defineProps` همان مقداری که آپشن props دریافت میکرد را دریافت میکند, 
+- `defineProps` و `defineEmits`بر اساس دیتاهای ورودی تشخیص نوع داده مناسبی دارند .
 
-- `defineProps` and `defineEmits` provide proper type inference based on the options passed.
-
-- The options passed to `defineProps` and `defineEmits` will be hoisted out of setup into module scope. Therefore, the options cannot reference local variables declared in setup scope. Doing so will result in a compile error. However, it _can_ reference imported bindings since they are in the module scope as well.
+آپشن پاس داده شده به `defineProps` و `defineEmits` از تابع host، setup میشوند به خارج از اسکوپ ماژول.
 
 ### Type-only props/emit declarations<sup class="vt-badge ts" /> {#type-only-props-emit-declarations}
 
-Props and emits can also be declared using pure-type syntax by passing a literal type argument to `defineProps` or `defineEmits`:
+پراپ ها و امیت ها همچنین می توانند با استفاده از pure-type syntax با پاس دادن یک literal type به `defineProps` یا `defineEmits` استفاده کرد: 
 
 ```ts
 const props = defineProps<{
@@ -197,21 +204,22 @@ const emit = defineEmits<{
 }>()
 ```
 
-- `defineProps` or `defineEmits` can only use either runtime declaration OR type declaration. Using both at the same time will result in a compile error.
+- از `defineProps` یا `defineEmits` یا در type  declaration و یا type declaration استفاده می شود . استفاده از هر دو به صورت همزمان باعث ایجاد کامپایل ارور می شود.
 
-- When using type declaration, the equivalent runtime declaration is automatically generated from static analysis to remove the need for double declaration and still ensure correct runtime behavior.
+- هنگام استفاده از type declaration, برای اطمینان از عملکرد درست هنگام اجرا معادل runtime declaration به صورت خودکار از روی static analysis ساخته می شود تا تعاریف دوپلیکت را حذف کند.
 
-  - In dev mode, the compiler will try to infer corresponding runtime validation from the types. For example here `foo: String` is inferred from the `foo: string` type. If the type is a reference to an imported type, the inferred result will be `foo: null` (equal to `any` type) since the compiler does not have information of external files.
+  - در حالت توسعه, کامپایلر تلاش میکند تا نوع داده ها را بر اساس اعتبارسنجی متناظر آن ها تشخیص دهد.
+  For example here `foo: String` is inferred from the `foo: string` type. If the type is a reference to an imported type, the inferred result will be `foo: null` (equal to `any` type) since the compiler does not have information of external files.
 
-  - In prod mode, the compiler will generate the array format declaration to reduce bundle size (the props here will be compiled into `['foo', 'bar']`)
+  - در حالت پروداکشن, کامپایلر به منظور کاهش حجم باندل، یک آرایه از فرمت تعریف شده درست خواهد کرد (پراپ ها به `['foo', 'bar']` کامپایل می شوند)
 
 - In version 3.2 and below, the generic type parameter for `defineProps()` were limited to a type literal or a reference to a local interface.
 
   This limitation has been resolved in 3.3. The latest version of Vue supports referencing imported and a limited set of complex types in the type parameter position. However, because the type to runtime conversion is still AST-based, some complex types that require actual type analysis, e.g. conditional types, are not supported. You can use conditional types for the type of a single prop, but not the entire props object.
 
-### Default props values when using type declaration {#default-props-values-when-using-type-declaration}
+### مقادیر پیش فرض پراپ ها هنگام تعریف پراپ ها {#default-props-values-when-using-type-declaration}
 
-One drawback of the type-only `defineProps` declaration is that it doesn't have a way to provide default values for the props. To resolve this problem, a `withDefaults` compiler macro is also provided:
+یکی از نقاط منفی استفاده از `defineProps` این است که راهی برای مقدار دهی پیش فرض به پراپ ها ندارد. برای حل این مشکل از compiler macro `withDefaults` استفاده میکنیم:
 
 ```ts
 export interface Props {
@@ -253,7 +261,7 @@ function inc() {
 }
 ```
 
-:::warning
+:::هشدار
 If you have a `default` value for `defineModel` prop and you don't provide any value for this prop from the parent component, it can cause a de-synchronization between parent and child components. In the example below, the parent's `myRef` is undefined, but the child's `model` is 1:
 
 ```js
@@ -299,7 +307,7 @@ const [modelValue, modelModifiers] = defineModel({
 })
 ```
 
-### Usage with TypeScript <sup class="vt-badge ts" /> {#usage-with-typescript}
+### استفاده با تایپ اسکریپت <sup class="vt-badge ts" /> {#usage-with-typescript}
 
 Like `defineProps` and `defineEmits`, `defineModel` can also receive type arguments to specify the types of the model value and the modifiers:
 
