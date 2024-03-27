@@ -2,10 +2,9 @@
 outline: deep
 ---
 
-# Style Guide {#style-guide}
+# راهنمای استایل (ظاهر) {#style-guide}
 
-This is the official style guide for Vue-specific code. If you use Vue in a project, it's a great reference to avoid errors, bikeshedding, and anti-patterns. However, we don't believe that any style guide is ideal for all teams or projects, so mindful deviations are encouraged based on past experience, the surrounding tech stack, and personal values.
-
+این بخش رسمی آموزش ظاهر مخصوص vue است. اگر از vue در پروژه‌ای استفتده می‌کنید این بهترین منبع برای دور شدن از ارور ها, bikeshedding و ضد الگوهاست.با این‌حال ما فکر نمیکنیم 
 For the most part, we also avoid suggestions about JavaScript or HTML in general. We don't mind whether you use semicolons or trailing commas. We don't mind whether your HTML uses single-quotes or double-quotes for attribute values. Some exceptions will exist however, where we've found that a particular pattern is helpful in the context of Vue.
 
 Finally, we've split rules into four categories:
