@@ -2,12 +2,12 @@
 pageClass: api
 ---
 
-# Built-in Components {#built-in-components}
+# کامپوننت‌های نهادینه‌شده {#built-in-components}
 
-:::info Registration and Usage
-Built-in components can be used directly in templates without needing to be registered. They are also tree-shakeable: they are only included in the build when they are used.
+:::info ثبت و استفاده
+کامپوننت‌های نهادینه شده می‌توانند مستقیما و بدون نیاز به ثبت در تمپلیت‌ها استفاده شوند. آنها همچنین tree-shakable (اصطلاحی است که که برای کدهای غیرقابل استفاده یا کدهای مرده استفاده می‌گردد) هستند یعنی تنها در ساخت و در هنگامی که استفاده می‌شوند، شامل می‌شوند.
 
-When using them in [render functions](/guide/extras/render-function), they need to be imported explicitly. For example:
+هنگام استفاده آنها در [توابع رندر](/guide/extras/render-function)، آنها باید به صراحت ایمپورت شوند. برای نمونه:
 
 ```js
 import { h, Transition } from 'vue'
@@ -21,7 +21,7 @@ h(Transition, {
 
 ## `<Transition>` {#transition}
 
-Provides animated transition effects to a **single** element or component.
+جلوه های ترنزیشن متحرک را به یک عنصر یا کامپوننت ارائه می دهد.
 
 - **Props**
 
@@ -78,7 +78,7 @@ Provides animated transition effects to a **single** element or component.
   }
   ```
 
-- **Events**
+- **رویدادها**
 
   - `@before-enter`
   - `@before-leave`
@@ -92,9 +92,9 @@ Provides animated transition effects to a **single** element or component.
   - `@leave-cancelled` (`v-show` only)
   - `@appear-cancelled`
 
-- **Example**
+- **مثال**
 
-  Simple element:
+  عنصر ساده:
 
   ```vue-html
   <Transition>
@@ -102,7 +102,7 @@ Provides animated transition effects to a **single** element or component.
   </Transition>
   ```
 
-  Forcing a transition by changing the `key` attribute:
+  اعمال یک ترنزیشن به وسیله صفت `key`:
 
   ```vue-html
   <Transition>
@@ -110,7 +110,7 @@ Provides animated transition effects to a **single** element or component.
   </Transition>
   ```
 
-  Dynamic component, with transition mode + animate on appear:
+  کامپوننت پویا، با mode ترنزیشن + انیمیشن در حالت ظاهرشدن:
 
   ```vue-html
   <Transition name="fade" mode="out-in" appear>
@@ -118,7 +118,7 @@ Provides animated transition effects to a **single** element or component.
   </Transition>
   ```
 
-  Listening to transition events:
+  گوش‌دادن به رویدادهای ترنزیشن:
 
   ```vue-html
   <Transition @after-enter="onTransitionComplete">
@@ -126,15 +126,15 @@ Provides animated transition effects to a **single** element or component.
   </Transition>
   ```
 
-- **See also** [Guide - Transition](/guide/built-ins/transition)
+- **همچنین ببینید** [راهنما - ترنزیشن](/guide/built-ins/transition)
 
 ## `<TransitionGroup>` {#transitiongroup}
 
-Provides transition effects for **multiple** elements or components in a list.
+جلوه های ترنزیشن را برای **چندین** عنصر یا کامپوننت در یک لیست ارائه می دهد.
 
 - **Props**
 
-  `<TransitionGroup>` accepts the same props as `<Transition>` except `mode`, plus two additional props:
+  `<TransitionGroup>` پراپ‌های یکسانی همانند `<Transition>` دریافت می‌کند، بجز `mode` و دو پراپ اضافی دیگر:
 
   ```ts
   interface TransitionGroupProps extends Omit<TransitionProps, 'mode'> {
@@ -150,19 +150,19 @@ Provides transition effects for **multiple** elements or components in a list.
   }
   ```
 
-- **Events**
+- **رویدادها**
 
-  `<TransitionGroup>` emits the same events as `<Transition>`.
+  `<TransitionGroup>` رویدادهایی همانند `<Transition>` منتشر می‌کند.
 
-- **Details**
+- **جزییات**
 
-  By default, `<TransitionGroup>` doesn't render a wrapper DOM element, but one can be defined via the `tag` prop.
+  به طور پیش‌فرض، `<TransitionGroup>` یک المنت پوشاننده دام را رندر نمی‌کند، اما آن می‌تواند با پراپ `tag` تعریف شود.
 
-  Note that every child in a `<transition-group>` must be [**uniquely keyed**](/guide/essentials/list#maintaining-state-with-key) for the animations to work properly.
+  توجه کنید که هر فرزند داخل یک `<transition-group>` باید [**uniquely keyed**](/guide/essentials/list#maintaining-state-with-key) (منحصرا کلید گذاری شده) باشد تا انیمیشن‌ها به طور مناسب کار کنند.
 
-  `<TransitionGroup>` supports moving transitions via CSS transform. When a child's position on screen has changed after an update, it will get applied a moving CSS class (auto generated from the `name` attribute or configured with the `move-class` prop). If the CSS `transform` property is "transition-able" when the moving class is applied, the element will be smoothly animated to its destination using the [FLIP technique](https://aerotwist.com/blog/flip-your-animations/).
+  `<TransitionGroup>` ترنزیشن‌های متحرک را به وسیله CSS transform پشتیبانی می‌کند. هنگامی که جایگاه یک فرزند در صفحه پس از یک بروزرسانی تغییر کرده‌است، یک کلاس متحرک CSS را اعمال خواهد کرد (یا از صفت `name` تولید شده یا با پراپ `move-class` پیکربندی شده). اگر پراپرتی `transform` در CSS هنگامی که کلاس متحرک اعمال شده "transition-able" باشد، عنصر به آرامی به وسیله [FLIP technique](https://aerotwist.com/blog/flip-your-animations/) به مقصد خود متحرک خواهد شد.
 
-- **Example**
+- **مثال**
 
   ```vue-html
   <TransitionGroup tag="ul" name="slide">
@@ -172,11 +172,11 @@ Provides transition effects for **multiple** elements or components in a list.
   </TransitionGroup>
   ```
 
-- **See also** [Guide - TransitionGroup](/guide/built-ins/transition-group)
+- **همچنین ببینید** [راهنما - ترنزیشن گروهی](/guide/built-ins/transition-group)
 
 ## `<KeepAlive>` {#keepalive}
 
-Caches dynamically toggled components wrapped inside.
+حافظه پنهان اجزای پوشیده شده در داخل را به صورت پویا تغییر داده است.
 
 - **Props**
 
@@ -201,17 +201,17 @@ Caches dynamically toggled components wrapped inside.
   type MatchPattern = string | RegExp | (string | RegExp)[]
   ```
 
-- **Details**
+- **جزییات**
 
-  When wrapped around a dynamic component, `<KeepAlive>` caches the inactive component instances without destroying them.
+  هنگامی که یک کامپوننت پویا به وسیله آن پوشیده می‌شود،`<KeepAlive>` کامپوننت غیرفعال را بدون نابود کردن آن در حافظه پنهان ذخیره می‌کند.
 
-  There can only be one active component instance as the direct child of `<KeepAlive>` at any time.
+  همواره تنها یک نمونه کامپوننت فعال می‌تواند به عنوان فرزند مستقیم `<KeepAlive>` وجود داشته باشد.
 
-  When a component is toggled inside `<KeepAlive>`, its `activated` and `deactivated` lifecycle hooks will be invoked accordingly, providing an alternative to `mounted` and `unmounted`, which are not called. This applies to the direct child of `<KeepAlive>` as well as to all of its descendants.
+  هنگامی که یک کامپوننت در داخل `<KeepAlive>` تغییر می‌کند، هوک‌های `activated` و `deactivated` در چرخه حیات با استناد به آن فراخوانی می‌شوند و جایگزین‌هایی برای هوک‌های `mounted` و `unmounted` که فراخوانی نشده‌اند، فراهم می‌کنند. این درمورد فرزند مستقیم `<KeepAlive>` و تمام فرزندان آن فرزند صدق می‌کند.
 
-- **Example**
+- **مثال**
 
-  Basic usage:
+  استفاده پایه:
 
   ```vue-html
   <KeepAlive>
@@ -219,7 +219,7 @@ Caches dynamically toggled components wrapped inside.
   </KeepAlive>
   ```
 
-  When used with `v-if` / `v-else` branches, there must be only one component rendered at a time:
+  هنگامی که با شاخه‌های `v-if` / `v-else` استفاده شود، باید فقط یک کامپوننت در یک زمان رندر شود:
 
   ```vue-html
   <KeepAlive>
@@ -228,7 +228,7 @@ Caches dynamically toggled components wrapped inside.
   </KeepAlive>
   ```
 
-  Used together with `<Transition>`:
+  به همراه `<Transition>` استفاده شود:
 
   ```vue-html
   <Transition>
@@ -238,26 +238,26 @@ Caches dynamically toggled components wrapped inside.
   </Transition>
   ```
 
-  Using `include` / `exclude`:
+  با `include` / `exclude` استفاده شود:
 
   ```vue-html
-  <!-- comma-delimited string -->
+  <!-- رشته محدود شده با کاما -->
   <KeepAlive include="a,b">
     <component :is="view"></component>
   </KeepAlive>
 
-  <!-- regex (use `v-bind`) -->
+  <!-- ریجکس (استفاده با `v-bind`) -->
   <KeepAlive :include="/a|b/">
     <component :is="view"></component>
   </KeepAlive>
 
-  <!-- Array (use `v-bind`) -->
+  <!-- آرایه (استفاده با `v-bind`) -->
   <KeepAlive :include="['a', 'b']">
     <component :is="view"></component>
   </KeepAlive>
   ```
 
-  Usage with `max`:
+  در استفاده با `max`:
 
   ```vue-html
   <KeepAlive :max="10">
@@ -265,11 +265,11 @@ Caches dynamically toggled components wrapped inside.
   </KeepAlive>
   ```
 
-- **See also** [Guide - KeepAlive](/guide/built-ins/keep-alive)
+- **همچنین ببینید** [راهنما - زنده نگه داشتن کامپوننت](/guide/built-ins/keep-alive)
 
 ## `<Teleport>` {#teleport}
 
-Renders its slot content to another part of the DOM.
+محتوای slot خود را به بخش دیگری از DOM رندر می‌کند.
 
 - **Props**
 
@@ -289,9 +289,9 @@ Renders its slot content to another part of the DOM.
   }
   ```
 
-- **Example**
+- **مثال**
 
-  Specifying target container:
+  مشخص کردن نگهدارنده هدف:
 
   ```vue-html
   <Teleport to="#some-id" />
@@ -299,7 +299,7 @@ Renders its slot content to another part of the DOM.
   <Teleport to="[data-teleport]" />
   ```
 
-  Conditionally disabling:
+  غیرفعال کردن شرطی:
 
   ```vue-html
   <Teleport to="#popup" :disabled="displayVideoInline">
@@ -307,11 +307,11 @@ Renders its slot content to another part of the DOM.
   </Teleport>
   ```
 
-- **See also** [Guide - Teleport](/guide/built-ins/teleport)
+- **همچنین ببینید** [راهنما - تلپورت](/guide/built-ins/teleport)
 
 ## `<Suspense>` <sup class="vt-badge experimental" /> {#suspense}
 
-Used for orchestrating nested async dependencies in a component tree.
+برای هماهنگ کردن وابستگی‌های ناهمگام تودرتو در یک درخت کامپوننت استفاده می‌شود.
 
 - **Props**
 
@@ -321,16 +321,16 @@ Used for orchestrating nested async dependencies in a component tree.
   }
   ```
 
-- **Events**
+- **رویدادها**
 
   - `@resolve`
   - `@pending`
   - `@fallback`
 
-- **Details**
+- **جزییات**
 
-  `<Suspense>` accepts two slots: the `#default` slot and the `#fallback` slot. It will display the content of the fallback slot while rendering the default slot in memory.
+  `<Suspense>` دو slot را می‌پذیرد: اسلات `#default` و اسلات `#fallback`. محتوای اسلات fallback را در هنگام رندر کردن اسلات default موجود در حافظه نمایش می‌دهد.
 
-  If it encounters async dependencies ([Async Components](/guide/components/async) and components with [`async setup()`](/guide/built-ins/suspense#async-setup)) while rendering the default slot, it will wait until all of them are resolved before displaying the default slot.
+  اگر با وابستگی‌های ناهمگام مواجه شود ([کامپوننت‌های ناهمگام](/guide/components/async) و کامپوننت‌های با [`()async setup`](/guide/built-ins/suspense#async-setup)) در هنگام رندر اسلات default، منتظر خواهد ماند تا پیش از نمایش اسلات default، همگی آنها resolve شوند.
 
-- **See also** [Guide - Suspense](/guide/built-ins/suspense)
+- **همچنین ببینید** [راهنما - تعلیق](/guide/built-ins/suspense)
