@@ -21,18 +21,18 @@ outline: deep
 این قوانین برای بهبود خوانایی و/یا تجربه توسعه دهنده در اکثر پروژه ها یافت شده است. در صورت وجود ارور کد شما همچنان اجرا می شود، اما نقض ها باید کم باشند و به خوبی توجیه شوند.
 - [دیدن همه قوانین الویت ب](./rules-strongly-recommended)
 
-### Priority C: Recommended {#priority-c-recommended}
+### الویت‌های پ: توصیه می‌شوند. {#priority-c-recommended}
 
-Where multiple, equally good options exist, an arbitrary choice can be made to ensure consistency. In these rules, we describe each acceptable option and suggest a default choice. That means you can feel free to make a different choice in your own codebase, as long as you're consistent and have a good reason. Please do have a good reason though! By adapting to the community standard, you will:
+در جایی که گزینه های متعدد و به همه به یک اندازه خوب وجود دارد، می توان یک انتخاب دلخواه برای اطمینان از ثبات انجام داد. در این قوانین، هر یک از گزینه های قابل قبول را شرح می دهیم و یک انتخاب پیش فرض را پیشنهاد می کنیم. این بدان معناست که می‌توانید با خیال راحت انتخاب متفاوتی در پایگاه کد خود داشته باشید، به شرطی که بدون تغییر باشد و دلیل خوبی داشته باشید. لطفاً دلیل خوبی داشته باشید! با انطباق با استاندارد جامعه، شما:
 
-1. Train your brain to more easily parse most of the community code you encounter
-2. Be able to copy and paste most community code examples without modification
-3. Often find new hires are already accustomed to your preferred coding style, at least in regards to Vue
+1.مغز خود را آموزش دهید تا به راحتی بیشتر کدهای کامیونیتی را که با آن روبرو می شوید تجزیه کند
+2. بتوانید اکثر نمونه های کد کامیونیتی را بدون تغییر کپی و پیست کنید
+3. اغلب می‌بینید که کارمندهای جدید از همین الانش هم به سبک کدنویسی مورد علاقه شما عادت کرده‌اند، حداقل راجع به Vue
 
-- [See all priority C rules](./rules-recommended)
+- [دیدن همه قوانین الویت پ](./rules-recommended)
 
-### Priority D: Use with Caution {#priority-d-use-with-caution}
+### الویت‌های ج: با احتیاط از آنها استفاده کنید {#priority-d-use-with-caution}
 
-Some features of Vue exist to accommodate rare edge cases or smoother migrations from a legacy code base. When overused however, they can make your code more difficult to maintain or even become a source of bugs. These rules shine a light on potentially risky features, describing when and why they should be avoided.
+برخی از ویژگی‌های Vue برای تطبیق موارد ارورهای نادر یا مهاجرت‌‌های نرم از یک پایگاه کدهای قدیمی وجود دارد. با این حال، وقتی بیش از حد از این ویژگی‌ها استفاده می شود، می توانند حفظ کد شما را دشوارتر کنند یا حتی به منبع ارورها تبدیل شوند. این قوانین به ویژگی‌های بالقوه پرخطر اشاره می‌کنند و توضیح می‌دهند که چه زمانی و چرا باید از آنها اجتناب کرد.
 
-- [See all priority D rules](./rules-use-with-caution)
+- [دیدن همه قوانین الویت ج](./rules-use-with-caution)
