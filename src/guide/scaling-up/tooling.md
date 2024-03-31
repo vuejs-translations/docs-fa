@@ -86,10 +86,10 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ## پشتیبانی IDE {#ide-support}
 
-- تنظیمات توصیه شده [VSCode](https://code.visualstudio.com/) + [افزونه Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (نام قبلی Volar) است. این افزونه syntax highlighting، پشتیبانی TypeScript و intellisense برای تمپلیت و propهای کامپوننت را ارائه می‌دهد.
+- تنظیمات توصیه شده [VS Code](https://code.visualstudio.com/) + [افزونه Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (نام قبلی Volar) است. این افزونه syntax highlighting، پشتیبانی TypeScript و intellisense برای تمپلیت و propهای کامپوننت را ارائه می‌دهد.
 
   :::tip نکته
-  Vue - Official جایگزین Vetur می‌شود، افزونه رسمی قبلی VSCode ما برای Vue 2. اگر در حال حاضر Vetur نصب شده است، مطمئن شوید در پروژه‌های Vue 3 آن را غیرفعال می‌کنید.
+  Vue - Official جایگزین Vetur می‌شود، افزونه رسمی قبلی VS Code ما برای Vue 2. اگر در حال حاضر Vetur نصب شده است، مطمئن شوید در پروژه‌های Vue 3 آن را غیرفعال می‌کنید.
   :::
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) هم از SFC های Vue پشتیبانی درونی عالی ارائه می‌دهد.
@@ -142,7 +142,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 1. `npm install -D eslint eslint-plugin-vue` را اجرا کنید، سپس از [راهنمای پیکربندی](https://eslint.vuejs.org/user-guide/#usage) `eslint-plugin-vue` پیروی کنید.
 
-2. افزونه‌های ESLint IDE را تنظیم کنید، [برای مثال ESLint برای VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)، تا بازخورد linter را مستقیماً در ادیتور خود در حین توسعه دریافت کنید. این همچنین از هزینه lint غیرضروری هنگام شروع سرور dev جلوگیری می‌کند.
+2. افزونه‌های ESLint IDE را تنظیم کنید، [برای مثال ESLint برای VS Code](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)، تا بازخورد linter را مستقیماً در ادیتور خود در حین توسعه دریافت کنید. این همچنین از هزینه lint غیرضروری هنگام شروع سرور dev جلوگیری می‌کند.
 
 3. ESLint را به عنوان بخشی از دستور production build اجرا کنید، تا بازخورد کامل linter را قبل از ارسال به production دریافت کنید.
 
@@ -150,7 +150,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ## فرمت‌دهی (مرتب سازی کد) {#formatting}
 
-- افزونه [Vue - Official](https://github.com/johnsoncodehk/volar) برای VSCode به صورت پیش‌فرض فرمت‌دهی برای SFC های Vue ارائه می‌دهد.
+- افزونه [Vue - Official](https://github.com/johnsoncodehk/volar) برای VS Code به صورت پیش‌فرض فرمت‌دهی برای SFC های Vue ارائه می‌دهد.
 
 - به طور جایگزین، [Prettier](https://prettier.io/) از فرمت‌دهی SFC پشتیبانی می‌کند.
 

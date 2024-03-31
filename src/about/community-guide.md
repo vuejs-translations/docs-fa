@@ -35,7 +35,7 @@ outline: deep
 - [صفحه‌ی awesome vue](https://github.com/vuejs/awesome-vue): سایر منابع عالی که توسط آدم‌های دیگر منتشر شده است را مشاهده کنید.
 - [کاوش‌گر vue telescope](https://vuetelescope.com/explore): وبگاه‌هایی که با vue ساخته شده‌اند، با دیدگاه‌هایی راجع به framework و کتابخانه‌های مورد استفاده توسط آن‌ها.
 - [ساخته شده با Vue.js](https://madewithvuejs.com/): نمایان‌گر پروژه‌ها و کتابخانه هایی که با vue ساخته شده‌اند.
-- [بخش show and tell (نمایش بده و بگو) تالار گفتگو](https://forum.vuejs.org/c/show-and-tell): مکان عالی دیگری برای بازدید از چیزهایی که دیگران با استفاده و برای اکوسیستم روبه‌رشد vue ساخته‌اند.
+- [بخش show and tell (نمایش بده و بگو) تالار گفتگو](https://github.com/vuejs/core/discussions/categories/show-and-tell): مکان عالی دیگری برای بازدید از چیزهایی که دیگران با استفاده و برای اکوسیستم روبه‌رشد vue ساخته‌اند.
 
 ## شما چه کارهایی می‌توانید انجام دهید؟ {#what-you-can-do}
 

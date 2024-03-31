@@ -16,11 +16,12 @@ aside: false
 - [বাংলা / بنگالی](https://bn.vuejs.org) [[مخزن](https://github.com/vuejs-translations/docs-bn)]
 - [Italiano / ایتالیایی](https://it.vuejs.org) [[مخزن](https://github.com/vuejs-translations/docs-it)]
 - [فارسی / Persian](https://fa.vuejs.org) [[source](https://github.com/vuejs-translations/docs-fa)]
+- [Русский / Russian](https://ru.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ru)]
+- [Čeština / چکی](https://cs.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-cs)]
 
 ## زبان‌های درحال پیشرفت {#work-in-progress-languages}
 
-- [Čeština / چکی](https://cs.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-cs)]
-- [العربية / عربی](https://ar.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-ar)]
+- [العربية / Arabic](https://ar.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ar)]
 
 ## شروع یک ترجمه جدید {#starting-a-new-translation}
 

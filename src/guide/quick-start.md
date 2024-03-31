@@ -420,7 +420,7 @@ export default {
 
 برای راه‌اندازی یک سرور HTTP محلی، ابتدا مطمئن شوید [Node.js](https://nodejs.org/en/) نصب شده است، سپس `npx serve` را از command line در همان دایرکتوری حاوی فایل HTML خود اجرا کنید. همچنین می‌توانید از هر سرور HTTP دیگری که بتواند فایل‌های استاتیک را با انواع MIME صحیح سرو کند، استفاده نمایید.
 
-شاید متوجه شده باشید که قالب کامپوننت وارد شده به صورت یک رشته JavaScript درون خطی شده است. اگر از VSCode استفاده می‌کنید، می‌توانید افزونه [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) را نصب کرده و رشته‌ها را با یک توضیح `/*html*/` پیشوند دهید تا برای آن‌ها هایلایت سینتکس فعال شود.
+شاید متوجه شده باشید که قالب کامپوننت وارد شده به صورت یک رشته JavaScript درون خطی شده است. اگر از VS Code استفاده می‌کنید، می‌توانید افزونه [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) را نصب کرده و رشته‌ها را با یک توضیح `/*html*/` پیشوند دهید تا برای آن‌ها هایلایت سینتکس فعال شود.
 
 ## مراحل بعدی {#next-steps}
 
