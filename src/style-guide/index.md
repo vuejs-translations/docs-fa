@@ -4,24 +4,22 @@ outline: deep
 
 # راهنمای استایل (ظاهر) {#style-guide}
 
-این بخش رسمی آموزش ظاهر مخصوص vue است. اگر از vue در پروژه‌ای استفتده می‌کنید این بهترین منبع برای دور شدن از ارور ها, bikeshedding و ضد الگوهاست.با این‌حال ما فکر نمیکنیم 
-For the most part, we also avoid suggestions about JavaScript or HTML in general. We don't mind whether you use semicolons or trailing commas. We don't mind whether your HTML uses single-quotes or double-quotes for attribute values. Some exceptions will exist however, where we've found that a particular pattern is helpful in the context of Vue.
+این بخش رسمی آموزش ظاهر مخصوص vue است. اگر از vue در پروژه‌ای استفاده می‌کنید این بهترین منبع برای دور شدن از ارور ها, bikeshedding و ضد الگوهاست.با این‌حال ما فکر نمیکنیم هیچ راهنمایی‌ای برای تمامی تیم‌ها و پروژه‌ها ایده‌ال باشد. تجربه نشان می‌دهد الگوهای ذهنی را میزان فناوری در اطراف و ارزش‌های ذهنی مشخص می‌کنند.
+در بیشتر موارد، ما همچنین از پیشنهادات در مورد جاوا اسکریپت یا به طور کلی HTML اجتناب می کنیم. برای ما حائز اهمیت نیست اگر نقطه ویرگول یا کاماهای انتهایی استفاده می‌کنید. ما اهمیتی نمی‌دهیم که در HTML شما برای استرینگ‌ها از نقل قول‌های تک یا دو نقل قول (double quotation or single quotation) استفاده می‌کنید. با این حال، برخی استثناها وجود دارد، مثلا ما دریافتیم که داشتن یک الگوی خاص در زمینه Vue مفید است.
 
-Finally, we've split rules into four categories:
+در نهایت، قوانین به چهار دسته تقسیم می‌شوند:
 
-## Rule Categories {#rule-categories}
+## دسته‌بندی‌های قوانین {#rule-categories}
 
-### Priority A: Essential (Error Prevention) {#priority-a-essential-error-prevention}
+### اولویت‌های الف: ضروری‌‌ها (پیشگیری از خطا) {#priority-a-essential-error-prevention}
 
-These rules help prevent errors, so learn and abide by them at all costs. Exceptions may exist, but should be very rare and only be made by those with expert knowledge of both JavaScript and Vue.
+این قوانین به جلوگیری از خطاها کمک می کنند، بنابراین آنها را یاد بگیرید و به هر قیمتی از آنها استفاده کنید. ممکن است استثنائاتی وجود داشته باشد، اما بسیار کمیاب هستند و فقط توسط افرادی که در جاوا اسکریپت و Vue تبحر دارند، ممکن است ایجاد شوند.
+- [دیدن همه قوانین الویت الف](./rules-essential)
 
-- [See all priority A rules](./rules-essential)
+### اولویت‌های ب: به شدت توصیه می شود. {#priority-b-strongly-recommended}
 
-### Priority B: Strongly Recommended {#priority-b-strongly-recommended}
-
-These rules have been found to improve readability and/or developer experience in most projects. Your code will still run if you violate them, but violations should be rare and well-justified.
-
-- [See all priority B rules](./rules-strongly-recommended)
+این قوانین برای بهبود خوانایی و/یا تجربه توسعه دهنده در اکثر پروژه ها یافت شده است. در صورت وجود ارور کد شما همچنان اجرا می شود، اما نقض ها باید کم باشند و به خوبی توجیه شوند.
+- [دیدن همه قوانین الویت ب](./rules-strongly-recommended)
 
 ### Priority C: Recommended {#priority-c-recommended}
 
