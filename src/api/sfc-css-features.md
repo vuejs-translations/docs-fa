@@ -120,7 +120,7 @@
 
 کلاس‌های حاصل هش می‌شوند تا از تداخل جلوگیری شود، که همان اثر کپسوله کردن CSS به کامپوننت فعلی را ایجاد می‌کند.
 
-برای جزئیات بیشتر مانند [استثنائات سراسری](https://github.com/css-modules/css-modules#exceptions) و [ترکیب](https://github.com/css-modules/css-modules#composition)، به [CSS Modules spec](https://github.com/css-modules/css-modules) مراجعه کنید.
+برای جزئیات بیشتر مانند [استثنائات سراسری](https://github.com/css-modules/css-modules/blob/master/docs/composition.md#exceptions) و [ترکیب](https://github.com/css-modules/css-modules/blob/master/docs/composition.md#composition)، به [CSS Modules spec](https://github.com/css-modules/css-modules) مراجعه کنید.
 
 ### سفارشی سازی نام ماژول تزریق شده{#custom-inject-name}
 

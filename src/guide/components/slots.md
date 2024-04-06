@@ -1,4 +1,4 @@
-# اسلات‌ها {#slots}
+# اسلات‌ها - Slots {#slots}
 
 >در این صفحه فرض شده که شما از قبل [مبانی کامپوننت‌ها](/guide/essentials/component-basics) را مطالعه کرده اید. اگر با کامپوننت‌ها آشنایی ندارید، ابتدا آن را بخوانید.
 
@@ -83,7 +83,7 @@ function FancyButton(slotContent) {
 
 </div>
 
-بوسیله اسلات‌ها، کامپوننت `<FancyButton>` ما  انعطاف پذیرتر و قابل استفاده دوباره است. ما حالا می‌توانیم در مکان‌های مختلف با محتوای درونی متفاوت از آن استفاده کنیم، اما با همان استایل `fancy-btn`.
+بوسیله اسلات‌ها، کامپوننت `<FancyButton>` ما انعطاف پذیرتر و قابل استفاده دوباره است. ما حالا می‌توانیم در مکان‌های مختلف با محتوای درونی متفاوت از آن استفاده کنیم، اما با همان استایل `fancy-btn`.
 
 سازوکار اسلاتِ کامپوننت‌های Vue از [المنت `<slot>` کامپوننت وب بومی](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot) الهام گرفته است، اما با امکانات اضافی که بعدا خواهیم دید.
 
@@ -295,6 +295,35 @@ function BaseLayout(slots) {
     </div>`
 }
 ```
+
+## اسلات‌های شرطی {#conditional-slots}
+
+گاهی اوقات می‌خواهید چیزی را بر اساس وجود یا عدم وجود یک اسلات رندر کنید.
+
+می‌توانید از پراپرتی [‎$slots](/api/component-instance.html#slots) در ترکیب با [v-if](/guide/essentials/conditional.html#v-if) برای رسیدن به این هدف استفاده کنید.
+
+در مثال زیر یک کامپوننت کارت را با دو اسلات شرطی تعریف می‌کنیم: `header` و `footer`.
+زمانی که هدر / فوتر حضور داشته باشد، می‌خواهیم آنها را با یک المنت جدا بپیچیم تا استایل اضافی اعمال شود:
+
+```vue-html
+<template>
+  <div class="card">
+    <div v-if="$slots.header" class="card-header">
+      <slot name="header" />
+    </div>
+    
+    <div class="card-content">
+      <slot />
+    </div>
+    
+    <div v-if="$slots.footer" class="card-footer">
+      <slot name="footer" />
+    </div>
+  </div>
+</template>
+```
+
+[آن را در Playground امتحان کنید](https://play.vuejs.org/#eNqFVD1v2zAQ/SsEWyBLIjVoJlcN0AYZ2qEt2oxaaOkkMaZIgqRcGYH/e4+kqFi26wAejvfevfu0XugXrbPtAHRFC1sZrh2x4AZ9X0rea2UceWCmJo1RPbnKcv/w9KtSFnnkIxMfDnotmAN8EVJ4WrDQTgh51wGrwUx+RLrb+6eOW4I/1wGJcJGjewrND1RP1Gpo2CB8+klOL9QqJR1IV+S+lbfVGqXcYW3QL9QiXOToPqPmn1PLCz+9ps5iIQ1vs2erJA75xbNLWqlecwHmp3ZcSVvSFQmIx5gQ6u/34HNmgOvkrzqoNmf8z3b0vpL+MmDBbKGkM+aYacFF+PHPDxjRnsFe1YNA9gXwN1glBl9jpH0dZI1lH/BCtd/CqXDZPtnHEcduU1O+UM/cB35J8XQeLrT+Wu7H7C7ElXKPU0xn5690Ofeab0klmLWfcUDIKmlakEe2N7xB4L0VytksHlhJFwE3yfu6e88mkvWAlDkmnxePwpN9kGkhOd3eieYbGstq48kdV5u856udY04zJevob1BYtxNxlplPkHaxVgb7XpFbPRI8AV6TtWDV5lNENatr3PaKfAgO3NIsMM1z1sGg1ig8G5yKUKhoN7u1GOBY6U6Pp1rTIJPYZXJs/v+JBW871xq2u5g6fNjCTOj+H/sTpqs=)
 
 ## نام‌ دهی اسلات بصورت پویا {#dynamic-slot-names}
 
