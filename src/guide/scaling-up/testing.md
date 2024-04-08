@@ -189,17 +189,17 @@ describe('increment', () => {
   </VTCodeGroupTab>
 </VTCodeGroup>
 
-- **DON'T**
+- **نباید ها**
 
-  Don't assert the private state of a component instance or test the private methods of a component. Testing implementation details makes the tests brittle, as they are more likely to break and require updates when the implementation changes.
+از بررسی وضعیت خصوصی یک نمونه کامپوننت یا تست متدهای خصوصی آن خودداری کنید. تست کردن جزئیات نحوه‌ی عملکرد (پیاده‌سازی) یک کامپوننت، باعث می‌شود که این تست‌ها شکننده شوند. چرا که با هر تغییر در نحوه‌ی پیاده‌سازی، به احتمال زیاد تست‌ها نیز نیاز به به‌روزرسانی پیدا می‌کنند.
 
-  The component's ultimate job is rendering the correct DOM output, so tests focusing on the DOM output provide the same level of correctness assurance (if not more) while being more robust and resilient to change.
+هدف نهایی یک کامپوننت، رندر خروجی صحیح DOM است. بنابراین، تست‌هایی که بر خروجی DOM تمرکز می‌کنند، همان سطح اطمینان از صحت عملکرد (و حتی ممکن است سطح بالاتری) را به همراه داشته باشند، در عین حال که نسبت به تغییرات مقاوم‌تر و انعطاف‌پذیرتر هستند.
 
-  Don't rely exclusively on snapshot tests. Asserting HTML strings does not describe correctness. Write tests with intentionality.
+به طور انحصاری بر تست‌های اسنپ‌شات تکیه نکنید. بررسی و تأیید صرفاً کدهای HTML، بیانگر صحت عملکرد نیست. تست‌ها را با مفهوم و هدف مشخصی بنویسید.
 
-  If a method needs to be tested thoroughly, consider extracting it into a standalone utility function and write a dedicated unit test for it. If it cannot be extracted cleanly, it may be tested as a part of a component, integration, or end-to-end test that covers it.
+در صورتی که نیاز به تستی جامع برای یک متد وجود دارد، در نظر بگیرید که آن را به یک تابع مستقل (utility function) تبدیل کنید و سپس یک تست واحد اختصاصی برای آن بنویسید. اگر امکان تبدیل تمیز این متد به تابع مستقل وجود ندارد، می‌توان آن را در قالب تست کامپوننت، تست یکپارچه‌سازی (integration test) یا تست انتها به انتها (end-to-end test) که آن را پوشش می‌دهد، تست کرد.
 
-### Recommendation {#recommendation-1}
+### پیشنهاد {#recommendation-1}
 
 - [Vitest](https://vitest.dev/) for components or composables that render headlessly (e.g. the [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) function in VueUse). Components and DOM can be tested using [`@vue/test-utils`](https://github.com/vuejs/test-utils).
 
