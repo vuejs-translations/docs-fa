@@ -201,9 +201,7 @@ describe('increment', () => {
 
 ### پیشنهاد {#recommendation-1}
 
-  - [Vitest](https://vitest.dev/) : برای کامپوننت ها یا کامپوزیبل هایی که بدون ویژگی بصری (headlessly) رندر میشوند (ماننده تابع [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) در VueUse). کامپوننت‌ها و DOM را می‌توان با استفاده از [`@vue/test-utils`](https://github.com/vuejs/test-utils) .تست کرد
-  
-- [Vitest](https://vitest.dev/) for components or composables that render headlessly (e.g. the [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) function in VueUse). Components and DOM can be tested using [`@vue/test-utils`](https://github.com/vuejs/test-utils).
+  - [Vitest](https://vitest.dev/) : برای کامپوننت ها یا کامپوزیبل هایی که بدون ویژگی بصری (headlessly) رندر میشوند (ماننده تابع [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) در VueUse). کامپوننت‌ها و DOM را می‌توان با استفاده از [`@vue/test-utils`](https://github.com/vuejs/test-utils) تست کرد.
 
 - [Cypress Component Testing](https://on.cypress.io/component) for components whose expected behavior depends on properly rendering styles or triggering native DOM events. It can be used with Testing Library via [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
 
@@ -211,7 +209,7 @@ The main differences between Vitest and browser-based runners are speed and exec
 
 ### Mounting Libraries {#mounting-libraries}
 
-Component testing often involves mounting the component being tested in isolation, triggering simulated user input events, and asserting on the rendered DOM output. There are dedicated utility libraries that make these tasks simpler.
+تست کامپوننت‌ها اغلب شامل این موارد است: بارگذاری جداگانه کامپوننت مورد نظر، شبیه‌سازی رویدادهای ورودی کاربران و بررسی خروجی رندر شده‌ی DOM. کتابخانه‌های کمکی ویژه‌ای وجود دارند که این کارها را ساده‌تر می‌کنند.
 
 - [`@vue/test-utils`](https://github.com/vuejs/test-utils) is the official low-level component testing library that was written to provide users access to Vue specific APIs. It's also the lower-level library `@testing-library/vue` is built on top of.
 
