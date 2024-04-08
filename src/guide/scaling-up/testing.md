@@ -201,6 +201,8 @@ describe('increment', () => {
 
 ### پیشنهاد {#recommendation-1}
 
+- [Vitest](https://vitest.dev/) برای کامپوننت‌ها یا کامپوزبل‌هایی که بدون سر (headless) رندر می‌شوند (مانند تابع useFavicon در VueUse). کامپوننت‌ها و DOM را می‌توان با استفاده از @vue/test-utils (https://test-utils.vuejs.org/) تست کرد.
+  
 - [Vitest](https://vitest.dev/) for components or composables that render headlessly (e.g. the [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) function in VueUse). Components and DOM can be tested using [`@vue/test-utils`](https://github.com/vuejs/test-utils).
 
 - [Cypress Component Testing](https://on.cypress.io/component) for components whose expected behavior depends on properly rendering styles or triggering native DOM events. It can be used with Testing Library via [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
