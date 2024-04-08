@@ -107,10 +107,10 @@ describe('increment', () => {
 - [Jest](https://jestjs.io/): یک چارچوب یونیت تست محبوب است. با این حال، ما در حالتی Jest را توصیه می‌کنیم که شما یک سورس کد مبتنی بر Jest دارید و می‌خواهید به Vite مهاجرت کنید، چرا که Vitest یکپارچگی و عملکرد بهتری ارائه می‌دهد.
 
 ## کامپوننت تست {#component-testing}
+در برنامه‌های Vue، کامپوننت‌ها اصلی‌ترین قطعات سازنده رابط کاربری (UI) هستند. بنابراین، کامپوننت‌ها واحد ایده‌آلی برای جداسازی به منظور اعتبارسنجی رفتار برنامه شما هستند. از نظر دقت و جزئیات، تست کردن کامپوننت در چارچوب دقت و جزئیات، در سطحی بالاتر از
+ تست واحدی (unit testing) قرار دارد و می‌توان آن را یک شکل از تست ادغامی (integration testing) در نظر گرفت. بخش زیادی از برنامه Vue شما باید تحت پوشش تست کامپوننت قرار گیرد و توصیه می‌کنیم برای هر کامپوننت یک فایل مشخص (spec file) و مجزا داشته باشید.
 
-In Vue applications, components are the main building blocks of the UI. Components are therefore the natural unit of isolation when it comes to validating your application's behavior. From a granularity perspective, component testing sits somewhere above unit testing and can be considered a form of integration testing. Much of your Vue Application should be covered by a component test and we recommend that each Vue component has its own spec file.
-
-Component tests should catch issues relating to your component's props, events, slots that it provides, styles, classes, lifecycle hooks, and more.
+تست های کامپوننت باید ایرادات مربوط به پارامترها (props), رویدادها (events), قابلیت‌ها و ویژگی‌های که ارائه میدهد، استایل ها (styles), کلاس ها، هوک های (hooks) چرخه حیات، و سایر موارد را شناسایی کند.
 
 Component tests should not mock child components, but instead test the interactions between your component and its children by interacting with the components as a user would. For example, a component test should click on an element like a user would instead of programmatically interacting with the component.
 
