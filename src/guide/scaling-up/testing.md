@@ -201,23 +201,23 @@ describe('increment', () => {
 
 ### پیشنهاد {#recommendation-1}
 
-  - [Vitest](https://vitest.dev/) : برای کامپوننت ها یا کامپوزیبل هایی که بدون ویژگی بصری (headlessly) رندر میشوند (ماننده تابع [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) در VueUse). کامپوننت‌ها و DOM را می‌توان با استفاده از [`@vue/test-utils`](https://github.com/vuejs/test-utils) تست کرد.
+- [Vitest](https://vitest.dev/) : برای کامپوننت ها یا کامپوزیبل هایی که بدون ویژگی بصری (headlessly) رندر میشوند (ماننده تابع [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) در VueUse). کامپوننت‌ها و DOM را می‌توان با استفاده از [`@vue/test-utils`](https://github.com/vuejs/test-utils) تست کرد.
 
-- [Cypress Component Testing](https://on.cypress.io/component) for components whose expected behavior depends on properly rendering styles or triggering native DOM events. It can be used with Testing Library via [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
+- [Cypress Component Testing](https://on.cypress.io/component) برای کامپوننت‌هایی که رفتار مورد انتظار آن‌ها وابسته به رندر صحیح استایل‌ها یا فعال سازی رویدادهای بومی DOM است. می‌توان از کتابخانه [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro) استفاده کرد.
 
-The main differences between Vitest and browser-based runners are speed and execution context. In short, browser-based runners, like Cypress, can catch issues that node-based runners, like Vitest, cannot (e.g. style issues, real native DOM events, cookies, local storage, and network failures), but browser-based runners are _orders of magnitude slower than Vitest_ because they do open a browser, compile your stylesheets, and more. Cypress is a browser-based runner that supports component testing. Please read [Vitest's comparison page](https://vitest.dev/guide/comparisons.html#cypress) for the latest information comparing Vitest and Cypress.
+تفاوت‌های اصلی بین Vitest و اجراکننده‌های مبتنی بر مرورگر، سرعت و زمینه اجرا هستند. به طور خلاصه، اجراکننده‌های مبتنی بر مرورگر مانند Cypress می‌توانند مشکلاتی را شناسایی کنند که اجراکننده‌های مبتنی بر Node.js مانند Vitest قادر به آن نیستند (مانند مشکلات استایل، رویدادهای بومی واقعی DOM، کوکی‌ها، حافظه محلی و خرابی‌های شبکه). با این حال، اجراکننده‌های مبتنی بر مرورگر به دلیل باز کردن مرورگر، کامپایل کردن استایل‌شیت‌ها و موارد دیگر، به مراتب کندتر از Vitest هستند. Cypress یک اجراکننده مبتنی بر مرورگر است که از تست کامپوننت پشتیبانی می‌کند. برای مقایسه‌ی به‌روز Vitest و Cypress، لطفا به صفحه [Vitest's comparison page](https://vitest.dev/guide/comparisons.html#cypress) مراجعه کنید.
 
-### Mounting Libraries {#mounting-libraries}
+### بارگذاری کتابخانه‌ها {#mounting-libraries}
 
 تست کامپوننت‌ها اغلب شامل این موارد است: بارگذاری جداگانه کامپوننت مورد نظر، شبیه‌سازی رویدادهای ورودی کاربران و بررسی خروجی رندر شده‌ی DOM. کتابخانه‌های کمکی ویژه‌ای وجود دارند که این کارها را ساده‌تر می‌کنند.
+ک
+- [`@vue/test-utils`](https://github.com/vuejs/test-utils) کتابخانه ای رسمی تست کامپوننت سطح پایینی است که با هدف ارائه دسترسی کاربران به APIهای اختصاصی Vue نوشته شده است. این کتابخانه همچنین زیربنای کتابخانه سطح بالاتر `@testing-library/vue` می‌باشد که برای تست کامپوننت‌های Vue مورد استفاده قرار می‌گیرد.
 
-- [`@vue/test-utils`](https://github.com/vuejs/test-utils) is the official low-level component testing library that was written to provide users access to Vue specific APIs. It's also the lower-level library `@testing-library/vue` is built on top of.
+- [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) یک کتابخانه تست کامپوننت برای Vue.js است که بر تست کامپوننت‌ها بدون وابستگی به جزئیات پیاده‌سازی آن‌ها تمرکز دارد. اصل هدایت‌گر این کتابخانه این است که هرچه تست‌ها به نحوه‌ی واقعی استفاده از نرم‌افزار نزدیک‌تر باشند، اطمینان بیشتری را برای توسعه‌دهندگان به ارمغان می‌آورند.
 
-- [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) is a Vue testing library focused on testing components without relying on implementation details. Its guiding principle is that the more tests resemble the way software is used, the more confidence they can provide.
+برای تست کامپوننت‌های برنامه، استفاده از کتابخانه `vue/test-utils@` را توصیه می‌کنیم. کتابخانه `testing-library/vue@` در تست کامپوننت‌های ناهمزمان (asynchronous) با قابلیت Suspense مشکلاتی دارد، لذا باید با احتیاط از آن استفاده کرد.
 
-We recommend using `@vue/test-utils` for testing components in applications. `@testing-library/vue` has issues with testing asynchronous component with Suspense, so it should be used with caution.
-
-### Other Options {#other-options-1}
+### انتخاب های دیگر {#other-options-1}
 
 - [Nightwatch](https://nightwatchjs.org/) is an E2E test runner with Vue Component Testing support. ([Example Project](https://github.com/nightwatchjs-community/todo-vue))
 
