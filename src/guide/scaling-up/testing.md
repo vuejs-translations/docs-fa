@@ -110,20 +110,23 @@ describe('increment', () => {
 در برنامه‌های Vue، کامپوننت‌ها اصلی‌ترین قطعات سازنده رابط کاربری (UI) هستند. بنابراین، کامپوننت‌ها واحد ایده‌آلی برای جداسازی به منظور اعتبارسنجی رفتار برنامه شما هستند. از نظر دقت و جزئیات، تست کردن کامپوننت در چارچوب دقت و جزئیات، در سطحی بالاتر از
  تست واحدی (unit testing) قرار دارد و می‌توان آن را یک شکل از تست ادغامی (integration testing) در نظر گرفت. بخش زیادی از برنامه Vue شما باید تحت پوشش تست کامپوننت قرار گیرد و توصیه می‌کنیم برای هر کامپوننت یک فایل مشخص (spec file) و مجزا داشته باشید.
 
-تست های کامپوننت باید ایرادات مربوط به پارامترها (props), رویدادها (events), قابلیت‌ها و ویژگی‌های که ارائه میدهد، استایل ها (styles), کلاس ها، هوک های (hooks) چرخه حیات، و سایر موارد را شناسایی کند.
+تست های کامپوننت باید ایرادات مربوط به پارامترها (props), رویدادها (events), اسلات‌هایی (slots) که ارائه می‌دهد ، استایل ها (styles), کلاس ها، هوک های (hooks) چرخه حیات، و سایر موارد را شناسایی کند.
 
-Component tests should not mock child components, but instead test the interactions between your component and its children by interacting with the components as a user would. For example, a component test should click on an element like a user would instead of programmatically interacting with the component.
+تست‌های کامپوننت نباید کامپوننت‌های فرزند (child components) را ماک (mock) کنند، بلکه باید با برقراری ارتباط با کامپوننت‌ها همانطور که کاربر انجام می‌دهد، تعامل بین کامپوننت شما و فرزندانش را تست کنند. به عنوان مثال، یک تست کامپوننت باید روی یک عنصر کلیک کند، همانطور که کاربر انجام می‌دهد، به جای اینکه به صورت کدنویسی با کامپوننت تعامل کند.
 
-Component tests should focus on the component's public interfaces rather than internal implementation details. For most components, the public interface is limited to: events emitted, props, and slots. When testing, remember to **test what a component does, not how it does it**.
+تست‌های کامپوننت باید روی رابط‌های کاربری عمومی (public interfaces) کامپوننت تمرکز کنند، نه جزئیات پیاده‌سازی داخلی آن. برای بیشتر کامپوننت ها، روابط کاربری عمومی تفسیر میشه به: رویدادهای اجرا شده، پرامترها، و اسلات ها. هنگام تست، به یاد داشته باشید که **عملکرد (چه کاری انجام می‌دهد) کامپوننت را تست کنید، نه چگونگی انجام آن.**
 
-**DO**
+**بایدها**
 
-- For **Visual** logic: assert correct render output based on inputted props and slots.
-- For **Behavioral** logic: assert correct render updates or emitted events in response to user input events.
+- برای منطق ظاهری (Visual): خروجی رندر (render output) صحیح را بر اساس داده‌های ورودی (props) و اسلات‌های ارائه شده تأیید کنید.
+- برای منطق رفتاری (Behavioral): بروزرسانی‌های رندر (render updates) یا رویدادهای اجرا شده صحیح را در پاسخ به رویدادهای ورودی کاربر تأیید کنید.
 
-  In the below example, we demonstrate a Stepper component that has a DOM element labeled "increment" and can be clicked. We pass a prop called `max` that prevents the Stepper from being incremented past `2`, so if we click the button 3 times, the UI should still say `2`.
+در این مثال، ما یک کامپوننت شمارنده (Stepper) را نشان می‌دهیم که یک عنصر DOM با برچسب "افزایش" دارد و قابل کلیک است. ما یک پارامیتر (prop) به نام max پاس می‌دهیم که از افزایش شمارنده فراتر از عدد ۲ جلوگیری می‌کند. بنابراین، اگر روی دکمه ۳ بار کلیک کنیم، رابط کاربری همچنان عدد ۲ را نمایش خواهد داد.
 
-  We know nothing about the implementation of Stepper, only that the "input" is the `max` prop and the "output" is the state of the DOM as the user will see it.
+در این مثال، ما بر رفتار و تعامل بیرونی کامپوننت شمارنده (Stepper) تمرکز می‌کنیم، بدون اینکه وارد جزئیات پیاده‌سازی داخلی آن شویم. ورودی این کامپوننت، یک داده‌ی ورودی (prop) به نام `max` است و خروجی آن، وضعیت نهایی رابط کاربری (DOM) است، همان‌طور که کاربر آن را مشاهده می‌کند.
+
+بدون در نظر گرفتن جزئیات داخلی کامپوننت شمارنده (Stepper)، تنها بر ورودی و خروجی آن تمرکز می‌کنیم: ورودی داده‌ی `max` و خروجی، وضعیت نهایی رابط کاربری است که کاربر می‌بیند.
+
 
 <VTCodeGroup>
   <VTCodeGroupTab label="Vue Test Utils">
