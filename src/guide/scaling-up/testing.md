@@ -219,59 +219,58 @@ describe('increment', () => {
 
 ### انتخاب های دیگر {#other-options-1}
 
-- [Nightwatch](https://nightwatchjs.org/) is an E2E test runner with Vue Component Testing support. ([Example Project](https://github.com/nightwatchjs-community/todo-vue))
+- [Nightwatch](https://nightwatchjs.org/) یک اجراکننده تست E2E با پشتیبانی از تست کامپوننت Vue است. ([Example Project](https://github.com/nightwatchjs-community/todo-vue))
 
-- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) for cross-browser component testing that relies on native user interaction based on standardized automation. It can also be used with Testing Library.
+- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) برای تست کامپوننت بین‌مرورگرها است که بر تعامل کاربر بومی بر اساس استاندارد اتوماسیون تکیه می‌کند. همچنین امکان استفاده از آن به همراه Testing Library وجود دارد.
 
-## E2E Testing {#e2e-testing}
+## تست انتها به انتها (E2E) {#e2e-testing}
 
-While unit tests provide developers with some degree of confidence, unit and component tests are limited in their abilities to provide holistic coverage of an application when deployed to production. As a result, end-to-end (E2E) tests provide coverage on what is arguably the most important aspect of an application: what happens when users actually use your applications.
+در حالی که تست‌های واحد تا حدی به توسعه‌دهندگان اطمینان می‌دهند، اما تست‌های واحد و کامپوننت در پوشش جامع یک برنامه‌ی کاربردی (اپلیکیشن) پس از استقرار در محیط تولید محدودیت‌هایی دارند. در نتیجه، تست‌های انتها به انتها (E2E) روی مهم‌ترین جنبه‌ی یک اپلیکیشن تمرکز می‌کنند: آنچه زمانی که کاربران به طور واقعی از برنامه استفاده می‌کنند، اتفاق می‌افتد.
 
-End-to-end tests focus on multi-page application behavior that makes network requests against your production-built Vue application. They often involve standing up a database or other backend and may even be run against a live staging environment.
+تست‌های انتها به انتها (E2E) بر رفتار برنامه‌های چند صفحه‌ای که درخواست‌های شبکه‌ای را به سمت برنامه‌ی Vue شما که در محیط تولید ساخته شده است، ارسال می‌کنند، تمرکز دارند. این تست‌ها اغلب شامل ایجاد یک پایگاه داده یا بک‌اند دیگر و حتی ممکن است در یک محیط استیجینگ زنده اجرا شوند.
 
-End-to-end tests will often catch issues with your router, state management library, top-level components (e.g. an App or Layout), public assets, or any request handling. As stated above, they catch critical issues that may be impossible to catch with unit tests or component tests.
+تست‌های انتها به انتها (E2E) اغلب مشکلاتی را در روتر، کتابخانه مدیریت وضعیت، کامپوننت‌های سطح بالا (مانند App یا Layout)، دارایی‌های عمومی یا هرگونه مدیریت درخواست شناسایی می‌کنند. همانطور که گفته شد، آن‌ها مسائل بحرانی را که ممکن است با تست‌های واحد یا تست‌های کامپوننت قابل شناسایی نباشند، کشف می‌کنند.
 
-End-to-end tests do not import any of your Vue application's code but instead rely completely on testing your application by navigating through entire pages in a real browser.
+تست‌های انتها به انتها (E2E) هیچ کد برنامه Vue شما را بارگیری نمی‌کنند، بلکه به طور کامل بر تست برنامه شما با پیمایش در صفحات کامل در یک مرورگر واقعی تکیه می‌کنند.
 
-End-to-end tests validate many of the layers in your application. They can either target your locally built application or even a live Staging environment. Testing against your Staging environment not only includes your frontend code and static server but all associated backend services and infrastructure.
+تست‌های انتها به انتها (E2E) بسیاری از لایه‌های موجود در برنامه‌ی کاربردی شما را اعتبارسنجی می‌کنند. این تست‌ها می‌توانند روی برنامه‌ی ساخته‌شده‌ی محلی شما یا حتی یک محیط استیجینگ زنده اجرا شوند. تست در برابر محیط استیجینگ نه تنها کد فرونت‌اند و سرور استاتیک شما را در بر می‌گیرد، بلکه شامل همه‌ی سرویس‌های بک‌اند و زیرساخت مرتبط نیز می‌شود.
 
-> The more your tests resemble how your software is used, the more confidence they can give you. - [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - Author of the Testing Library
+> هرچقدر تست‌های شما بیشتر شبیه به نحوه‌ی استفاده از نرم‌افزارتان باشند، اطمینان بیشتری به شما می‌دهند.  - [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - نویسنده کتاب خانه تست نویسی (Testing Library)
 
-By testing how user actions impact your application, E2E tests are often the key to higher confidence in whether an application is functioning properly or not.
+با تست کردن نحوه‌ی تاثیرگذاری اقدامات کاربر بر برنامه‌ی شما، تست‌های E2E اغلب کلید اطمینان بیشتر به عملکرد صحیح یا نادرست برنامه هستند.
 
-### Choosing an E2E Testing Solution {#choosing-an-e2e-testing-solution}
+### انتخاب یک راه حل تست E2E {#choosing-an-e2e-testing-solution}
 
-While end-to-end (E2E) testing on the web has gained a negative reputation for unreliable (flaky) tests and slowing down development processes, modern E2E tools have made strides forward to create more reliable, interactive, and useful tests. When choosing an E2E testing framework, the following sections provide some guidance on things to keep in mind when choosing a testing framework for your application.
+در حالی که تست انتها به انتها (E2E) در وب، پیش‌تر به دلیل غیرقابل اعتماد بودن (ناپایداری) تست‌ها و کند کردن فرآیند توسعه، شهرت منفی‌ای به دست آورده بود، ابزارهای مدرن E2E گام‌های بلندی برای ایجاد تست‌های قابل اعتمادتر، تعاملی‌تر و مفیدتر برداشته‌اند. بخش‌های زیر هنگام انتخاب یک چارچوب تست E2E برای اپلیکیشن‌تان، نکاتی را برای در نظر گرفتن ارائه می‌دهند.
 
-#### Cross-browser testing {#cross-browser-testing}
+#### تست بین مرورگری {#cross-browser-testing}
 
-One of the primary benefits that end-to-end (E2E) testing is known for is its ability to test your application across multiple browsers. While it may seem desirable to have 100% cross-browser coverage, it is important to note that cross browser testing has diminishing returns on a team's resources due to the additional time and machine power required to run them consistently. As a result, it is important to be mindful of this trade-off when choosing the amount of cross-browser testing your application needs.
+یکی از مهم‌ترین مزایای تست‌های انتها به انتها (E2E) امکان تست کردن برنامه‌ی شما در مرورگرهای مختلف است. در حالی که دستیابی به پوشش کامل تست بین‌مرورگری (۱۰۰٪) ایده‌آل به نظر می‌رسد، لازم است توجه داشته باشید که اجرای مداوم تست‌های بین‌مرورگری به دلیل نیاز به زمان و منابع سخت‌افزاری اضافی، بازدهی کاهشی دارد. بنابراین، هنگام تعیین میزان تست بین‌مرورگری مورد نیاز برای برنامه‌ی خود، باید به این موضوع توجه ویژه‌ای داشته باشید.
 
-#### Faster feedback loops {#faster-feedback-loops}
+#### حلقه‌های بازخورد سریع‌تر {#faster-feedback-loops}
 
-One of the primary problems with end-to-end (E2E) tests and development is that running the entire suite takes a long time. Typically, this is only done in continuous integration and deployment (CI/CD) pipelines. Modern E2E testing frameworks have helped to solve this by adding features like parallelization, which allows for CI/CD pipelines to often run magnitudes faster than before. In addition, when developing locally, the ability to selectively run a single test for the page you are working on while also providing hot reloading of tests can help boost a developer's workflow and productivity.
+یکی از چالش‌های اصلی تست و توسعه‌ی E2E، زمان‌بر بودن اجرای کل مجموعه تست است. به طور معمول، این تست‌ها تنها در خطوط انتقال و استقرار مداوم (CI/CD) اجرا می‌شوند. چارچوب‌های مدرن تست E2E با افزودن ویژگی‌هایی مانند موازی‌سازی (parallelization) به حل این مشکل کمک کرده‌اند. موازی‌سازی باعث می‌شود تا خطوط CI/CD اغلب چندین برابر سریع‌تر از قبل اجرا شوند. علاوه بر این، هنگام توسعه‌ی محلی، امکان اجرای انتخابی یک تست برای صفحه‌ای که روی آن کار می‌کنید، به همراه قابلیت بازگذاری داغ تست‌ها (hot reloading) می‌تواند به بهبود روند کاری و بهره‌وری توسعه‌دهنده کمک کند.
 
-#### First-class debugging experience {#first-class-debugging-experience}
+#### تجربه اشکال‌زدایی درجه یک {#first-class-debugging-experience}
 
-While developers have traditionally relied on scanning logs in a terminal window to help determine what went wrong in a test, modern end-to-end (E2E) test frameworks allow developers to leverage tools they are already familiar with, e.g. browser developer tools.
+در حالی که توسعه‌دهندگان به طور سنتی برای یافتن مشکل در تست‌ها به بررسی لاگ‌ها در پنجره ترمینال اتکا می‌کردند، چارچوب‌های مدرن تست E2E به آنها امکان می‌دهند از ابزارهایی که از قبل با آنها آشنا هستند، مانند ابزارهای توسعه‌دهنده مرورگر، استفاده کنند.
+#### دید در حالت بدون رابط کاربری (headless mode) {#visibility-in-headless-mode}
 
-#### Visibility in headless mode {#visibility-in-headless-mode}
+زمانی که تست‌های انتها به انتها (E2E) در خطوط انتقال و استقرار مداوم (CI/CD) اجرا می‌شوند، اغلب در مرورگرهای بدون رابط کاربری (headless browsers) اجرا می‌شوند، به این معنی که هیچ مرورگر قابل مشاهده‌ای برای کاربر باز نمی‌شود. یکی از ویژگی‌های کلیدی چارچوب‌های مدرن تست E2E، امکان مشاهده‌ی اسنپ‌شات‌ها (snapshots) و/یا ویدیوهایی از برنامه‌ی کاربردی در طول تست است که بینشی در مورد چرایی رخ دادن خطاها به توسعه‌دهندگان می‌دهد. به طور سنتی، حفظ این یکپارچه‌سازی‌ها (ادغام‌ها) کاری خسته‌کننده بود.
 
-When end-to-end (E2E) tests are run in continuous integration/deployment pipelines, they are often run in headless browsers (i.e., no visible browser is opened for the user to watch). A critical feature of modern E2E testing frameworks is the ability to see snapshots and/or videos of the application during testing, providing some insight into why errors are happening. Historically, it was tedious to maintain these integrations.
-
-### Recommendation {#recommendation-2}
+### پیشنهاد {#recommendation-2}
 
 - [Cypress](https://www.cypress.io/)
 
-  Overall, we believe Cypress provides the most complete E2E solution with features like an informative graphical interface, excellent debuggability, built-in assertions and stubs, flake-resistance, parallelization, and snapshots. As mentioned above, it also provides support for [Component Testing](https://docs.cypress.io/guides/component-testing/introduction). However, it only supports Chromium-based browsers and Firefox.
+به طور کلی، ما معتقدیم که Cypress با برخورداری از ویژگی‌هایی مانند رابط گرافیکی آموزنده، قابلیت اشکال‌زدایی عالی، تعیینات (assertions) و استاب‌های (stubs) داخلی، مقاومت در برابر ناپایداری (flake-resistance)، موازی‌سازی (parallelization) و اسنپ‌شات‌ها، کامل‌ترین راه‌حل برای تست‌های E2E را ارائه می‌دهد. همانطور که پیش‌تر ذکر شد، همچنین از تست کامپوننت [ComponentTesting](https://docs.cypress.io/guides/component-testing/introduction). پشتیبانی میکند. لازم به ذکر است که این ابزار در حال حاضر تنها از مرورگرهای مبتنی بر Chromium و فایرفاکس پشتیبانی می‌کند.
 
-### Other Options {#other-options-2}
+### انتخاب های دیگر {#other-options-2}
 
 - [Playwright](https://playwright.dev/) is also a great E2E testing solution with a wider range of browser support (mainly WebKit). See [Why Playwright](https://playwright.dev/docs/why-playwright) for more details.
 
 - [Nightwatch](https://nightwatchjs.org/) is an E2E testing solution based on [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). This gives it the widest browser support range.
 
-- [WebdriverIO](https://webdriver.io/) is a test automation framework for web and mobile testing based on the WebDriver protocol.
+- [WebdriverIO](https://webdriver.io/) یک چارچوب تست خودکار برای وب و موبایل است که بر اساس پروتکل WebDriver بنا شده است.
 
 ## Recipes {#recipes}
 
