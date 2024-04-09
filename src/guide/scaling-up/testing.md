@@ -265,24 +265,23 @@ describe('increment', () => {
 به طور کلی، ما معتقدیم که Cypress با برخورداری از ویژگی‌هایی مانند رابط گرافیکی آموزنده، قابلیت اشکال‌زدایی عالی، تعیینات (assertions) و استاب‌های (stubs) داخلی، مقاومت در برابر ناپایداری (flake-resistance)، موازی‌سازی (parallelization) و اسنپ‌شات‌ها، کامل‌ترین راه‌حل برای تست‌های E2E را ارائه می‌دهد. همانطور که پیش‌تر ذکر شد، همچنین از تست کامپوننت [ComponentTesting](https://docs.cypress.io/guides/component-testing/introduction). پشتیبانی میکند. لازم به ذکر است که این ابزار در حال حاضر تنها از مرورگرهای مبتنی بر Chromium و فایرفاکس پشتیبانی می‌کند.
 
 ### انتخاب های دیگر {#other-options-2}
+- [Playwright](https://playwright.dev/) همچنین، Vitest یک راه حل عالی برای تست E2E با پشتیبانی از طیف وسیع‌تری از مرورگرها (عمدتاً WebKit) است. برای جزئیات بیشتر [Why Playwright](https://playwright.dev/docs/why-playwright)  را ببینید.
 
-- [Playwright](https://playwright.dev/) is also a great E2E testing solution with a wider range of browser support (mainly WebKit). See [Why Playwright](https://playwright.dev/docs/why-playwright) for more details.
-
-- [Nightwatch](https://nightwatchjs.org/) is an E2E testing solution based on [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). This gives it the widest browser support range.
+- [Nightwatch](https://nightwatchjs.org/) یک راه حل تست انتها به انتها (E2E) است که بر پایه [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver) ساخته شده است. این امر باعث می‌شود Nightwatch از گسترده‌ترین پشتیبانی مرورگر در میان فریمورک‌های تست E2E برخوردار باشد.
 
 - [WebdriverIO](https://webdriver.io/) یک چارچوب تست خودکار برای وب و موبایل است که بر اساس پروتکل WebDriver بنا شده است.
 
-## Recipes {#recipes}
+## دستورالعمل‌ها {#recipes}
 
-### Adding Vitest to a Project {#adding-vitest-to-a-project}
+### اضافه کردن Vitest به پروژه {#adding-vitest-to-a-project}
 
-In a Vite-based Vue project, run:
+در یک پروژه ویو (Vue) مبتنی بر ویت (Vite)، دستور زیر را اجرا کنید:
 
 ```sh
 > npm install -D vitest happy-dom @testing-library/vue
 ```
 
-Next, update the Vite configuration to add the `test` option block:
+در مرحله بعد، پیکربندی Vite را برای اضافه کردن بلاک گزینه `test` به روز رسانی کنید:
 
 ```js{6-12}
 // vite.config.js
@@ -300,8 +299,9 @@ export default defineConfig({
 })
 ```
 
-:::tip
-If you use TypeScript, add `vitest/globals` to the `types` field in your `tsconfig.json`.
+:::راهنمایی
+
+اگر از TypeScript استفاده می‌کنید، `vitest/globals` را به فیلد `types` در `tsconfig.json` خود اضافه کنید.
 
 ```json
 // tsconfig.json
@@ -315,7 +315,7 @@ If you use TypeScript, add `vitest/globals` to the `types` field in your `tsconf
 
 :::
 
-Then, create a file ending in `*.test.js` in your project. You can place all test files in a test directory in the project root or in test directories next to your source files. Vitest will automatically search for them using the naming convention.
+سپس، یک فایل با پسوند `*.test.js` در پروژه خود ایجاد کنید. شما می‌توانید تمامی فایل‌های تستی خود را در یک پوشه تست (test) در ریشه پروژه قرار دهید یا در پوشه‌های تست مجزایی کنار فایل‌های سورس (source) خود جایگذاری کنید. Vitest با استفاده از توافق نام‌گذاری (naming convention) به صورت خودکار به جستجوی آنها می‌پردازد.
 
 ```js
 // MyComponent.test.js
@@ -334,7 +334,7 @@ test('it should work', () => {
 })
 ```
 
-Finally, update `package.json` to add the test script and run it:
+در نهایت، package.json را برای اضافه کردن اسکریپت تست و اجرای آن به روز کنید:
 
 ```json{4}
 {
@@ -349,18 +349,18 @@ Finally, update `package.json` to add the test script and run it:
 > npm test
 ```
 
-### Testing Composables {#testing-composables}
+### تست کامپوزِبل‌ها {#testing-composables}
 
-> This section assumes you have read the [Composables](/guide/reusability/composables) section.
+> این بخش فرض می‌کند که شما بخش کامپوزِبل‌ها را مطالعه کرده‌اید. [Composables](/guide/reusability/composables) section.
 
-When it comes to testing composables, we can divide them into two categories: composables that do not rely on a host component instance, and composables that do.
+وقتی صحبت از تست کامپوزِبل‌ها می‌شود، می‌توانیم آن‌ها را به دو دسته تقسیم کنیم: کامپوزِبل‌هایی که به نمونه‌ای از یک کامپوننت میزبان وابسته نیستند، و کامپوزِبل‌هایی که وابسته هستند.
 
-A composable depends on a host component instance when it uses the following APIs:
+یک کامپوزِبل به نمونه‌ای از یک کامپوننت میزبان وابسته است هنگامی که از API های زیر استفاده می کند:
 
-- Lifecycle hooks
-- Provide / Inject
+- قلاب‌های چرخه عمر (Lifecycle hooks)
+- فراهم کردن / دریافت (Provide / Inject)
 
-If a composable only uses Reactivity APIs, then it can be tested by directly invoking it and asserting its returned state/methods:
+اگر یک کامپوزِبل فقط از API های Reactivity استفاده کند، می‌توان آن را با فراخوانی مستقیم و بررسی خروجیِ حالت (state) و متدهای برگشتی، تست کرد:
 
 ```js
 // counter.js
@@ -390,7 +390,7 @@ test('useCounter', () => {
 })
 ```
 
-A composable that relies on lifecycle hooks or Provide / Inject needs to be wrapped in a host component to be tested. We can create a helper like the following:
+یک کامپوزِبلی که به قلاب‌های چرخه عمر (lifecycle hooks) یا الگوی Provide/Inject وابسته باشد، برای تست شدن نیاز به پوشاندن (wrap) شدن در یک کامپوننت میزبان دارد. ما می‌توانیم یک تابع کمکی (helper) به شکل زیر ایجاد کنیم:
 
 ```js
 // test-utils.js
@@ -427,7 +427,7 @@ test('useFoo', () => {
 })
 ```
 
-For more complex composables, it could also be easier to test it by writing tests against the wrapper component using [Component Testing](#component-testing) techniques.
+برای کامپوزِبل‌های پیچیده‌تر بیشتر، همچنین می‌توان با نوشتن تست برای کامپوننت Wrapper با استفاده از تکنیک‌های [Component Testing](#component-testing)، کار را آسان‌تر کرد.
 
 <!--
 TODO more testing recipes can be added in the future e.g.
