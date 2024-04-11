@@ -265,7 +265,8 @@ describe('increment', () => {
 به طور کلی، ما معتقدیم که Cypress با برخورداری از ویژگی‌هایی مانند رابط گرافیکی آموزنده، قابلیت اشکال‌زدایی عالی، تعیینات (assertions) و استاب‌های (stubs) داخلی، مقاومت در برابر ناپایداری (flake-resistance)، موازی‌سازی (parallelization) و اسنپ‌شات‌ها، کامل‌ترین راه‌حل برای تست‌های E2E را ارائه می‌دهد. همانطور که پیش‌تر ذکر شد، همچنین از تست کامپوننت [ComponentTesting](https://docs.cypress.io/guides/component-testing/introduction). پشتیبانی میکند. لازم به ذکر است که این ابزار در حال حاضر تنها از مرورگرهای مبتنی بر Chromium و فایرفاکس پشتیبانی می‌کند.
 
 ### انتخاب های دیگر {#other-options-2}
-- [Playwright](https://playwright.dev/) همچنین، Vitest یک راه حل عالی برای تست E2E با پشتیبانی از طیف وسیع‌تری از مرورگرها (عمدتاً WebKit) است. برای جزئیات بیشتر [Why Playwright](https://playwright.dev/docs/why-playwright)  را ببینید.
+
+- [Playwright](https://playwright.dev/) همچنین، یک راه حل عالی برای تست E2E با پشتیبانی از طیف وسیع‌تری از مرورگرها (عمدتاً WebKit) است. برای جزئیات بیشتر [Why Playwright](https://playwright.dev/docs/why-playwright) را ببینید.
 
 - [Nightwatch](https://nightwatchjs.org/) یک راه حل تست انتها به انتها (E2E) است که بر پایه [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver) ساخته شده است. این امر باعث می‌شود Nightwatch از گسترده‌ترین پشتیبانی مرورگر در میان فریمورک‌های تست E2E برخوردار باشد.
 
