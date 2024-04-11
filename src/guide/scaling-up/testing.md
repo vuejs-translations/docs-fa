@@ -299,7 +299,7 @@ export default defineConfig({
 })
 ```
 
-:::راهنمایی
+:::tip راهنمایی
 
 اگر از TypeScript استفاده می‌کنید، `vitest/globals` را به فیلد `types` در `tsconfig.json` خود اضافه کنید.
 
