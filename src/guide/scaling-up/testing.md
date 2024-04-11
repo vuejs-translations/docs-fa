@@ -107,23 +107,24 @@ describe('increment', () => {
 - [Jest](https://jestjs.io/): یک چارچوب یونیت تست محبوب است. با این حال، ما در حالتی Jest را توصیه می‌کنیم که شما یک سورس کد مبتنی بر Jest دارید و می‌خواهید به Vite مهاجرت کنید، چرا که Vitest یکپارچگی و عملکرد بهتری ارائه می‌دهد.
 
 ## کامپوننت تست {#component-testing}
+در برنامه‌های Vue، کامپوننت‌ها اصلی‌ترین قطعات سازنده رابط کاربری (UI) هستند. بنابراین، کامپوننت‌ها واحد ایده‌آلی برای جداسازی به منظور اعتبارسنجی رفتار برنامه شما هستند. از نظر دقت و جزئیات، تست کردن کامپوننت در چارچوب دقت و جزئیات، در سطحی بالاتر از
+ تست واحدی (unit testing) قرار دارد و می‌توان آن را یک شکل از تست ادغامی (integration testing) در نظر گرفت. بخش زیادی از برنامه Vue شما باید تحت پوشش تست کامپوننت قرار گیرد و توصیه می‌کنیم برای هر کامپوننت یک فایل مشخص (spec file) و مجزا داشته باشید.
 
-In Vue applications, components are the main building blocks of the UI. Components are therefore the natural unit of isolation when it comes to validating your application's behavior. From a granularity perspective, component testing sits somewhere above unit testing and can be considered a form of integration testing. Much of your Vue Application should be covered by a component test and we recommend that each Vue component has its own spec file.
+تست‌های کامپوننت باید ایرادات مربوط به پراپ‌ها (props)، رویدادها (events)، اسلات‌هایی (slots) که ارائه می‌دهد، استایل‌ها (styles)، کلاس‌ها، هوک‌های چرخه حیات، و سایر موارد را شناسایی کند.
 
-Component tests should catch issues relating to your component's props, events, slots that it provides, styles, classes, lifecycle hooks, and more.
+تست‌های کامپوننت نباید کامپوننت‌های فرزند (child components) را ماک (mock) کنند، بلکه باید با برقراری ارتباط با کامپوننت‌ها همانطور که کاربر انجام می‌دهد، تعامل بین کامپوننت شما و فرزندانش را تست کنند. به عنوان مثال، یک تست کامپوننت باید روی یک عنصر کلیک کند، همانطور که کاربر انجام می‌دهد، به جای اینکه به صورت کدنویسی با کامپوننت تعامل کند.
 
-Component tests should not mock child components, but instead test the interactions between your component and its children by interacting with the components as a user would. For example, a component test should click on an element like a user would instead of programmatically interacting with the component.
+تست‌های کامپوننت باید روی رابط‌های کاربری عمومی (public interfaces) کامپوننت تمرکز کنند، نه جزئیات پیاده‌سازی داخلی آن. برای بیشتر کامپوننت ها، روابط کاربری عمومی تفسیر میشه به: رویدادهای اجرا شده، پراپ‌ها و اسلات ها. هنگام تست، به یاد داشته باشید که **عملکرد (چه کاری انجام می‌دهد) کامپوننت را تست کنید، نه چگونگی انجام آن.**
 
-Component tests should focus on the component's public interfaces rather than internal implementation details. For most components, the public interface is limited to: events emitted, props, and slots. When testing, remember to **test what a component does, not how it does it**.
+**بایدها**
 
-**DO**
+- برای منطق ظاهری (Visual): خروجی رندر (render output) صحیح را بر اساس پراپ‌های ورودی و اسلات‌های ارائه شده تأیید کنید.
+- برای منطق رفتاری (Behavioral): بروزرسانی‌های رندر (render updates) یا رویدادهای اجرا شده صحیح را در پاسخ به رویدادهای ورودی کاربر تأیید کنید.
 
-- For **Visual** logic: assert correct render output based on inputted props and slots.
-- For **Behavioral** logic: assert correct render updates or emitted events in response to user input events.
+در این مثال، ما یک کامپوننت شمارنده (Stepper) را نشان می‌دهیم که یک عنصر DOM با برچسب "افزایش" دارد و قابل کلیک است. ما یک پارامیتر (prop) به نام `max` پاس می‌دهیم که از افزایش شمارنده فراتر از عدد ۲ جلوگیری می‌کند. بنابراین، اگر روی دکمه ۳ بار کلیک کنیم، رابط کاربری همچنان عدد ۲ را نمایش خواهد داد.
 
-  In the below example, we demonstrate a Stepper component that has a DOM element labeled "increment" and can be clicked. We pass a prop called `max` that prevents the Stepper from being incremented past `2`, so if we click the button 3 times, the UI should still say `2`.
+بدون در نظر گرفتن جزئیات داخلی کامپوننت شمارنده (Stepper)، تنها بر ورودی و خروجی آن تمرکز می‌کنیم: ورودی داده‌ی `max` و خروجی، وضعیت نهایی رابط کاربری است که کاربر می‌بیند.
 
-  We know nothing about the implementation of Stepper, only that the "input" is the `max` prop and the "output" is the state of the DOM as the user will see it.
 
 <VTCodeGroup>
   <VTCodeGroupTab label="Vue Test Utils">
@@ -188,101 +189,99 @@ Component tests should focus on the component's public interfaces rather than in
   </VTCodeGroupTab>
 </VTCodeGroup>
 
-- **DON'T**
+- **نباید ها**
 
-  Don't assert the private state of a component instance or test the private methods of a component. Testing implementation details makes the tests brittle, as they are more likely to break and require updates when the implementation changes.
+  از بررسی state داخلی یک نمونه کامپوننت یا تست متدهای داخلی آن خودداری کنید. تست کردن جزئیات نحوه‌ی عملکرد و پیاده‌سازی یک کامپوننت، باعث می‌شود که این تست‌ها شکننده شوند. چرا که با هر تغییر در نحوه‌ی پیاده‌سازی، به احتمال زیاد تست‌ها نیز نیاز به به‌روزرسانی پیدا می‌کنند.
 
-  The component's ultimate job is rendering the correct DOM output, so tests focusing on the DOM output provide the same level of correctness assurance (if not more) while being more robust and resilient to change.
+  هدف نهایی یک کامپوننت، رندر خروجی صحیح DOM است. بنابراین، تست‌هایی که بر خروجی DOM تمرکز می‌کنند، همان سطح اطمینان از صحت عملکرد (و حتی ممکن است سطح بالاتری) را به همراه داشته باشند، در عین حال که نسبت به تغییرات مقاوم‌تر و انعطاف‌پذیرتر هستند.
 
-  Don't rely exclusively on snapshot tests. Asserting HTML strings does not describe correctness. Write tests with intentionality.
+به طور انحصاری بر تست‌های اسنپ‌شات تکیه نکنید. بررسی و تأیید صرفاً کدهای HTML، بیانگر صحت عملکرد نیست. تست‌ها را با مفهوم و هدف مشخصی بنویسید.
 
-  If a method needs to be tested thoroughly, consider extracting it into a standalone utility function and write a dedicated unit test for it. If it cannot be extracted cleanly, it may be tested as a part of a component, integration, or end-to-end test that covers it.
+  در صورتی که نیاز به تستی جامع برای یک متد وجود دارد، در نظر بگیرید که آن را به یک تابع مستقل (utility function) تبدیل کنید و سپس یک تست واحد اختصاصی برای آن بنویسید. اگر امکان تبدیل تمیز این متد به تابع مستقل وجود ندارد، می‌توان آن را در قالب تست کامپوننت، تست یکپارچه‌سازی (integration test) یا تست انتها به انتها (end-to-end) که آن را پوشش می‌دهد، تست کرد.
 
-### Recommendation {#recommendation-1}
+### پیشنهاد {#recommendation-1}
 
-- [Vitest](https://vitest.dev/) for components or composables that render headlessly (e.g. the [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) function in VueUse). Components and DOM can be tested using [`@vue/test-utils`](https://github.com/vuejs/test-utils).
+- [Vitest](https://vitest.dev/) : برای کامپوننت ها یا کامپوزیبل هایی که بدون ویژگی بصری (headlessly) رندر میشوند (ماننده تابع [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) در VueUse). کامپوننت‌ها و DOM را می‌توان با استفاده از [`@vue/test-utils`](https://github.com/vuejs/test-utils) تست کرد.
 
-- [Cypress Component Testing](https://on.cypress.io/component) for components whose expected behavior depends on properly rendering styles or triggering native DOM events. It can be used with Testing Library via [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
+- [Cypress Component Testing](https://on.cypress.io/component) برای کامپوننت‌هایی که رفتار مورد انتظار آن‌ها وابسته به رندر صحیح استایل‌ها یا فعال سازی رویدادهای بومی DOM است. می‌توان از کتابخانه [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro) استفاده کرد.
 
-The main differences between Vitest and browser-based runners are speed and execution context. In short, browser-based runners, like Cypress, can catch issues that node-based runners, like Vitest, cannot (e.g. style issues, real native DOM events, cookies, local storage, and network failures), but browser-based runners are _orders of magnitude slower than Vitest_ because they do open a browser, compile your stylesheets, and more. Cypress is a browser-based runner that supports component testing. Please read [Vitest's comparison page](https://vitest.dev/guide/comparisons.html#cypress) for the latest information comparing Vitest and Cypress.
+تفاوت‌های اصلی بین Vitest و اجراکننده‌های مبتنی بر مرورگر، سرعت و زمینه اجرا هستند. به طور خلاصه، اجراکننده‌های مبتنی بر مرورگر مانند Cypress می‌توانند مشکلاتی را شناسایی کنند که اجراکننده‌های مبتنی بر Node.js مانند Vitest قادر به آن نیستند (مانند مشکلات استایل، رویدادهای بومی واقعی DOM، کوکی‌ها، حافظه محلی و خرابی‌های شبکه). با این حال، اجراکننده‌های مبتنی بر مرورگر به دلیل باز کردن مرورگر، کامپایل کردن استایل‌شیت‌ها و موارد دیگر، به مراتب کندتر از Vitest هستند. Cypress یک اجراکننده مبتنی بر مرورگر است که از تست کامپوننت پشتیبانی می‌کند. برای مقایسه‌ی به‌روز Vitest و Cypress، لطفا به صفحه [Vitest's comparison page](https://vitest.dev/guide/comparisons.html#cypress) مراجعه کنید.
 
-### Mounting Libraries {#mounting-libraries}
+### بارگذاری کتابخانه‌ها {#mounting-libraries}
 
-Component testing often involves mounting the component being tested in isolation, triggering simulated user input events, and asserting on the rendered DOM output. There are dedicated utility libraries that make these tasks simpler.
+تست کامپوننت‌ها اغلب شامل این موارد است: بارگذاری جداگانه کامپوننت مورد نظر، شبیه‌سازی رویدادهای ورودی کاربران و بررسی خروجی رندر شده‌ی DOM. کتابخانه‌های کمکی ویژه‌ای وجود دارند که این کارها را ساده‌تر می‌کنند.
+- [`@vue/test-utils`](https://github.com/vuejs/test-utils) کتابخانه ای رسمی تست کامپوننت سطح پایینی است که با هدف ارائه دسترسی کاربران به APIهای اختصاصی Vue نوشته شده است. این کتابخانه همچنین زیربنای کتابخانه سطح بالاتر `@testing-library/vue` می‌باشد که برای تست کامپوننت‌های Vue مورد استفاده قرار می‌گیرد.
 
-- [`@vue/test-utils`](https://github.com/vuejs/test-utils) is the official low-level component testing library that was written to provide users access to Vue specific APIs. It's also the lower-level library `@testing-library/vue` is built on top of.
+- [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) یک کتابخانه تست کامپوننت برای Vue.js است که بر تست کامپوننت‌ها بدون وابستگی به جزئیات پیاده‌سازی آن‌ها تمرکز دارد. اصل هدایت‌گر این کتابخانه این است که هرچه تست‌ها به نحوه‌ی واقعی استفاده از نرم‌افزار نزدیک‌تر باشند، اطمینان بیشتری را برای توسعه‌دهندگان به ارمغان می‌آورند.
 
-- [`@testing-library/vue`](https://github.com/testing-library/vue-testing-library) is a Vue testing library focused on testing components without relying on implementation details. Its guiding principle is that the more tests resemble the way software is used, the more confidence they can provide.
+برای تست کامپوننت‌های برنامه، استفاده از کتابخانه `vue/test-utils@` را توصیه می‌کنیم. کتابخانه `testing-library/vue@` در تست کامپوننت‌های ناهمزمان (asynchronous) با قابلیت Suspense مشکلاتی دارد، لذا باید با احتیاط از آن استفاده کرد.
 
-We recommend using `@vue/test-utils` for testing components in applications. `@testing-library/vue` has issues with testing asynchronous component with Suspense, so it should be used with caution.
+### انتخاب های دیگر {#other-options-1}
 
-### Other Options {#other-options-1}
+- [Nightwatch](https://nightwatchjs.org/) یک اجراکننده تست E2E با پشتیبانی از تست کامپوننت Vue است. ([Example Project](https://github.com/nightwatchjs-community/todo-vue))
 
-- [Nightwatch](https://nightwatchjs.org/) is an E2E test runner with Vue Component Testing support. ([Example Project](https://github.com/nightwatchjs-community/todo-vue))
+- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) برای تست کامپوننت بین‌مرورگرها است که بر تعامل کاربر بومی بر اساس استاندارد اتوماسیون تکیه می‌کند. همچنین امکان استفاده از آن به همراه Testing Library وجود دارد.
 
-- [WebdriverIO](https://webdriver.io/docs/component-testing/vue) for cross-browser component testing that relies on native user interaction based on standardized automation. It can also be used with Testing Library.
+## تست انتها به انتها (E2E) {#e2e-testing}
 
-## E2E Testing {#e2e-testing}
+در حالی که تست‌های واحد تا حدی به توسعه‌دهندگان اطمینان می‌دهند، اما تست‌های واحد و کامپوننت در پوشش جامع یک برنامه‌ی کاربردی (اپلیکیشن) پس از استقرار در محیط تولید محدودیت‌هایی دارند. در نتیجه، تست‌های انتها به انتها (E2E) روی مهم‌ترین جنبه‌ی یک اپلیکیشن تمرکز می‌کنند: آنچه زمانی که کاربران به طور واقعی از برنامه استفاده می‌کنند، اتفاق می‌افتد.
 
-While unit tests provide developers with some degree of confidence, unit and component tests are limited in their abilities to provide holistic coverage of an application when deployed to production. As a result, end-to-end (E2E) tests provide coverage on what is arguably the most important aspect of an application: what happens when users actually use your applications.
+تست‌های انتها به انتها (E2E) بر رفتار برنامه‌های چند صفحه‌ای که درخواست‌های شبکه‌ای را به سمت برنامه‌ی Vue شما که در محیط تولید ساخته شده است، ارسال می‌کنند، تمرکز دارند. این تست‌ها اغلب شامل ایجاد یک پایگاه داده یا بک‌اند دیگر و حتی ممکن است در یک محیط استیجینگ زنده اجرا شوند.
 
-End-to-end tests focus on multi-page application behavior that makes network requests against your production-built Vue application. They often involve standing up a database or other backend and may even be run against a live staging environment.
+تست‌های انتها به انتها (E2E) اغلب مشکلاتی را در روتر، کتابخانه مدیریت وضعیت، کامپوننت‌های سطح بالا (مانند App یا Layout)، دارایی‌های عمومی یا هرگونه مدیریت درخواست شناسایی می‌کنند. همانطور که گفته شد، آن‌ها مسائل بحرانی را که ممکن است با تست‌های واحد یا تست‌های کامپوننت قابل شناسایی نباشند، کشف می‌کنند.
 
-End-to-end tests will often catch issues with your router, state management library, top-level components (e.g. an App or Layout), public assets, or any request handling. As stated above, they catch critical issues that may be impossible to catch with unit tests or component tests.
+تست‌های انتها به انتها (E2E) هیچ کد برنامه Vue شما را بارگیری نمی‌کنند، بلکه به طور کامل بر تست برنامه شما با پیمایش در صفحات کامل در یک مرورگر واقعی تکیه می‌کنند.
 
-End-to-end tests do not import any of your Vue application's code but instead rely completely on testing your application by navigating through entire pages in a real browser.
+تست‌های انتها به انتها (E2E) بسیاری از لایه‌های موجود در برنامه‌ی کاربردی شما را اعتبارسنجی می‌کنند. این تست‌ها می‌توانند روی برنامه‌ی ساخته‌شده‌ی محلی شما یا حتی یک محیط استیجینگ زنده اجرا شوند. تست در برابر محیط استیجینگ نه تنها کد فرونت‌اند و سرور استاتیک شما را در بر می‌گیرد، بلکه شامل همه‌ی سرویس‌های بک‌اند و زیرساخت مرتبط نیز می‌شود.
 
-End-to-end tests validate many of the layers in your application. They can either target your locally built application or even a live Staging environment. Testing against your Staging environment not only includes your frontend code and static server but all associated backend services and infrastructure.
+> هرچقدر تست‌های شما بیشتر شبیه به نحوه‌ی استفاده از نرم‌افزارتان باشند، اطمینان بیشتری به شما می‌دهند.  - [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - نویسنده کتاب خانه تست نویسی (Testing Library)
 
-> The more your tests resemble how your software is used, the more confidence they can give you. - [Kent C. Dodds](https://twitter.com/kentcdodds/status/977018512689455106) - Author of the Testing Library
+با تست کردن نحوه‌ی تاثیرگذاری اقدامات کاربر بر برنامه‌ی شما، تست‌های E2E اغلب کلید اطمینان بیشتر به عملکرد صحیح یا نادرست برنامه هستند.
 
-By testing how user actions impact your application, E2E tests are often the key to higher confidence in whether an application is functioning properly or not.
+### انتخاب یک راه حل تست E2E {#choosing-an-e2e-testing-solution}
 
-### Choosing an E2E Testing Solution {#choosing-an-e2e-testing-solution}
+در حالی که تست انتها به انتها (E2E) در وب، پیش‌تر به دلیل غیرقابل اعتماد بودن (ناپایداری) تست‌ها و کند کردن فرآیند توسعه، شهرت منفی‌ای به دست آورده بود، ابزارهای مدرن E2E گام‌های بلندی برای ایجاد تست‌های قابل اعتمادتر، تعاملی‌تر و مفیدتر برداشته‌اند. بخش‌های زیر هنگام انتخاب یک چارچوب تست E2E برای اپلیکیشن‌تان، نکاتی را برای در نظر گرفتن ارائه می‌دهند.
 
-While end-to-end (E2E) testing on the web has gained a negative reputation for unreliable (flaky) tests and slowing down development processes, modern E2E tools have made strides forward to create more reliable, interactive, and useful tests. When choosing an E2E testing framework, the following sections provide some guidance on things to keep in mind when choosing a testing framework for your application.
+#### تست بین مرورگری {#cross-browser-testing}
 
-#### Cross-browser testing {#cross-browser-testing}
+یکی از مهم‌ترین مزایای تست‌های انتها به انتها (E2E) امکان تست کردن برنامه‌ی شما در مرورگرهای مختلف است. در حالی که دستیابی به پوشش کامل تست بین‌مرورگری (۱۰۰٪) ایده‌آل به نظر می‌رسد، لازم است توجه داشته باشید که اجرای مداوم تست‌های بین‌مرورگری به دلیل نیاز به زمان و منابع سخت‌افزاری اضافی، بازدهی کاهشی دارد. بنابراین، هنگام تعیین میزان تست بین‌مرورگری مورد نیاز برای برنامه‌ی خود، باید به این موضوع توجه ویژه‌ای داشته باشید.
 
-One of the primary benefits that end-to-end (E2E) testing is known for is its ability to test your application across multiple browsers. While it may seem desirable to have 100% cross-browser coverage, it is important to note that cross browser testing has diminishing returns on a team's resources due to the additional time and machine power required to run them consistently. As a result, it is important to be mindful of this trade-off when choosing the amount of cross-browser testing your application needs.
+#### حلقه‌های بازخورد سریع‌تر {#faster-feedback-loops}
 
-#### Faster feedback loops {#faster-feedback-loops}
+یکی از چالش‌های اصلی تست و توسعه‌ی E2E، زمان‌بر بودن اجرای کل مجموعه تست است. به طور معمول، این تست‌ها تنها در خطوط انتقال و استقرار مداوم (CI/CD) اجرا می‌شوند. چارچوب‌های مدرن تست E2E با افزودن ویژگی‌هایی مانند موازی‌سازی (parallelization) به حل این مشکل کمک کرده‌اند. موازی‌سازی باعث می‌شود تا خطوط CI/CD اغلب چندین برابر سریع‌تر از قبل اجرا شوند. علاوه بر این، هنگام توسعه‌ی محلی، امکان اجرای انتخابی یک تست برای صفحه‌ای که روی آن کار می‌کنید، به همراه قابلیت بازگذاری داغ تست‌ها (hot reloading) می‌تواند به بهبود روند کاری و بهره‌وری توسعه‌دهنده کمک کند.
 
-One of the primary problems with end-to-end (E2E) tests and development is that running the entire suite takes a long time. Typically, this is only done in continuous integration and deployment (CI/CD) pipelines. Modern E2E testing frameworks have helped to solve this by adding features like parallelization, which allows for CI/CD pipelines to often run magnitudes faster than before. In addition, when developing locally, the ability to selectively run a single test for the page you are working on while also providing hot reloading of tests can help boost a developer's workflow and productivity.
+#### تجربه اشکال‌زدایی درجه یک {#first-class-debugging-experience}
 
-#### First-class debugging experience {#first-class-debugging-experience}
+در حالی که توسعه‌دهندگان به طور سنتی برای یافتن مشکل در تست‌ها به بررسی لاگ‌ها در پنجره ترمینال اتکا می‌کردند، چارچوب‌های مدرن تست E2E به آنها امکان می‌دهند از ابزارهایی که از قبل با آنها آشنا هستند، مانند ابزارهای توسعه‌دهنده مرورگر، استفاده کنند.
+#### دید در حالت بدون رابط کاربری (headless mode) {#visibility-in-headless-mode}
 
-While developers have traditionally relied on scanning logs in a terminal window to help determine what went wrong in a test, modern end-to-end (E2E) test frameworks allow developers to leverage tools they are already familiar with, e.g. browser developer tools.
+زمانی که تست‌های انتها به انتها (E2E) در خطوط انتقال و استقرار مداوم (CI/CD) اجرا می‌شوند، اغلب در مرورگرهای بدون رابط کاربری (headless browsers) اجرا می‌شوند، به این معنی که هیچ مرورگر قابل مشاهده‌ای برای کاربر باز نمی‌شود. یکی از ویژگی‌های کلیدی چارچوب‌های مدرن تست E2E، امکان مشاهده‌ی اسنپ‌شات‌ها (snapshots) و/یا ویدیوهایی از برنامه‌ی کاربردی در طول تست است که بینشی در مورد چرایی رخ دادن خطاها به توسعه‌دهندگان می‌دهد. به طور سنتی، حفظ این یکپارچه‌سازی‌ها (ادغام‌ها) کاری خسته‌کننده بود.
 
-#### Visibility in headless mode {#visibility-in-headless-mode}
-
-When end-to-end (E2E) tests are run in continuous integration/deployment pipelines, they are often run in headless browsers (i.e., no visible browser is opened for the user to watch). A critical feature of modern E2E testing frameworks is the ability to see snapshots and/or videos of the application during testing, providing some insight into why errors are happening. Historically, it was tedious to maintain these integrations.
-
-### Recommendation {#recommendation-2}
+### پیشنهاد {#recommendation-2}
 
 - [Cypress](https://www.cypress.io/)
 
-  Overall, we believe Cypress provides the most complete E2E solution with features like an informative graphical interface, excellent debuggability, built-in assertions and stubs, flake-resistance, parallelization, and snapshots. As mentioned above, it also provides support for [Component Testing](https://docs.cypress.io/guides/component-testing/introduction). However, it only supports Chromium-based browsers and Firefox.
+  به طور کلی، ما معتقدیم که Cypress با برخورداری از ویژگی‌هایی مانند رابط گرافیکی آموزنده، قابلیت اشکال‌زدایی عالی، تعیینات (assertions) و استاب‌های (stubs) داخلی، مقاومت در برابر ناپایداری (flake-resistance)، موازی‌سازی (parallelization) و اسنپ‌شات‌ها، کامل‌ترین راه‌حل برای تست‌های E2E را ارائه می‌دهد. همانطور که پیش‌تر ذکر شد، همچنین از تست کامپوننت [ComponentTesting](https://docs.cypress.io/guides/component-testing/introduction). پشتیبانی می‌کند. لازم به ذکر است که این ابزار در حال حاضر تنها از مرورگرهای مبتنی بر Chromium و فایرفاکس پشتیبانی می‌کند.
 
-### Other Options {#other-options-2}
+### انتخاب های دیگر {#other-options-2}
 
-- [Playwright](https://playwright.dev/) is also a great E2E testing solution with a wider range of browser support (mainly WebKit). See [Why Playwright](https://playwright.dev/docs/why-playwright) for more details.
+- [Playwright](https://playwright.dev/) همچنین، یک راه حل عالی برای تست E2E با پشتیبانی از طیف وسیع‌تری از مرورگرها (عمدتاً WebKit) است. برای جزئیات بیشتر [Why Playwright](https://playwright.dev/docs/why-playwright) را ببینید.
 
-- [Nightwatch](https://nightwatchjs.org/) is an E2E testing solution based on [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). This gives it the widest browser support range.
+- [Nightwatch](https://nightwatchjs.org/) یک راه حل تست انتها به انتها (E2E) است که بر پایه [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver) ساخته شده است. این امر باعث می‌شود Nightwatch از گسترده‌ترین پشتیبانی مرورگر در میان فریمورک‌های تست E2E برخوردار باشد.
 
-- [WebdriverIO](https://webdriver.io/) is a test automation framework for web and mobile testing based on the WebDriver protocol.
+- [WebdriverIO](https://webdriver.io/) یک چارچوب تست خودکار برای وب و موبایل است که بر اساس پروتکل WebDriver بنا شده است.
 
-## Recipes {#recipes}
+## دستورالعمل‌ها {#recipes}
 
-### Adding Vitest to a Project {#adding-vitest-to-a-project}
+### اضافه کردن Vitest به پروژه {#adding-vitest-to-a-project}
 
-In a Vite-based Vue project, run:
+در یک پروژه ویو (Vue) مبتنی بر ویت (Vite)، دستور زیر را اجرا کنید:
 
 ```sh
 > npm install -D vitest happy-dom @testing-library/vue
 ```
 
-Next, update the Vite configuration to add the `test` option block:
+در مرحله بعد، پیکربندی Vite را برای اضافه کردن بلاک گزینه `test` به روز رسانی کنید:
 
 ```js{6-12}
 // vite.config.js
@@ -300,8 +299,9 @@ export default defineConfig({
 })
 ```
 
-:::tip
-If you use TypeScript, add `vitest/globals` to the `types` field in your `tsconfig.json`.
+:::tip راهنمایی
+
+اگر از TypeScript استفاده می‌کنید، `vitest/globals` را به فیلد `types` در `tsconfig.json` خود اضافه کنید.
 
 ```json
 // tsconfig.json
@@ -315,7 +315,7 @@ If you use TypeScript, add `vitest/globals` to the `types` field in your `tsconf
 
 :::
 
-Then, create a file ending in `*.test.js` in your project. You can place all test files in a test directory in the project root or in test directories next to your source files. Vitest will automatically search for them using the naming convention.
+سپس، یک فایل با پسوند `*.test.js` در پروژه خود ایجاد کنید. شما می‌توانید تمامی فایل‌های تستی خود را در یک پوشه تست (test) در ریشه پروژه قرار دهید یا در پوشه‌های تست مجزایی کنار فایل‌های سورس (source) خود جایگذاری کنید. Vitest با استفاده از توافق نام‌گذاری (naming convention) به صورت خودکار به جستجوی آنها می‌پردازد.
 
 ```js
 // MyComponent.test.js
@@ -334,7 +334,7 @@ test('it should work', () => {
 })
 ```
 
-Finally, update `package.json` to add the test script and run it:
+در نهایت، package.json را برای اضافه کردن اسکریپت تست و اجرای آن به روز کنید:
 
 ```json{4}
 {
@@ -349,18 +349,18 @@ Finally, update `package.json` to add the test script and run it:
 > npm test
 ```
 
-### Testing Composables {#testing-composables}
+### تست کامپوزِبل‌ها {#testing-composables}
 
-> This section assumes you have read the [Composables](/guide/reusability/composables) section.
+> این بخش فرض می‌کند که شما بخش کامپوزِبل‌ها را مطالعه کرده‌اید [Composables](/guide/reusability/composables).
 
-When it comes to testing composables, we can divide them into two categories: composables that do not rely on a host component instance, and composables that do.
+وقتی صحبت از تست کامپوزِبل‌ها می‌شود، می‌توانیم آن‌ها را به دو دسته تقسیم کنیم: کامپوزِبل‌هایی که به نمونه‌ای از یک کامپوننت میزبان وابسته نیستند، و کامپوزِبل‌هایی که وابسته هستند.
 
-A composable depends on a host component instance when it uses the following APIs:
+یک کامپوزِبل به نمونه‌ای از یک کامپوننت میزبان وابسته است هنگامی که از API های زیر استفاده می کند:
 
-- Lifecycle hooks
-- Provide / Inject
+- قلاب‌های چرخه عمر (Lifecycle hooks)
+- فراهم کردن / دریافت (Provide / Inject)
 
-If a composable only uses Reactivity APIs, then it can be tested by directly invoking it and asserting its returned state/methods:
+اگر یک کامپوزِبل فقط از API های Reactivity استفاده کند، می‌توان آن را با فراخوانی مستقیم و بررسی خروجیِ حالت (state) و متدهای برگشتی، تست کرد:
 
 ```js
 // counter.js
@@ -390,7 +390,7 @@ test('useCounter', () => {
 })
 ```
 
-A composable that relies on lifecycle hooks or Provide / Inject needs to be wrapped in a host component to be tested. We can create a helper like the following:
+یک کامپوزِبلی که به قلاب‌های چرخه عمر (lifecycle hooks) یا الگوی Provide/Inject وابسته باشد، برای تست شدن نیاز به پوشاندن (wrap) شدن در یک کامپوننت میزبان دارد. ما می‌توانیم یک تابع کمکی (helper) به شکل زیر ایجاد کنیم:
 
 ```js
 // test-utils.js
@@ -427,7 +427,7 @@ test('useFoo', () => {
 })
 ```
 
-For more complex composables, it could also be easier to test it by writing tests against the wrapper component using [Component Testing](#component-testing) techniques.
+برای کامپوزِبل‌های پیچیده‌تر بیشتر، همچنین می‌توان با نوشتن تست برای کامپوننت Wrapper با استفاده از تکنیک‌های [Component Testing](#component-testing)، کار را آسان‌تر کرد.
 
 <!--
 TODO more testing recipes can be added in the future e.g.
