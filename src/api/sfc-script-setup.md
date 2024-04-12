@@ -17,11 +17,11 @@ console.log('hello script setup')
 </script>
 ```
 
-کد داخل اسکریپت تبدیل می شود به محتوای داخل تابع `()setup` کامپوننت. به این معنی که برخلاف تگ معمولی اسکریپت `<script>`, که فقط یک بار زمانی که کامپوننت برای بار اول ایمپرت شده است اجرا می شود, کد داخل `<script setup>` **هر با که یک instance از کامپوننت ساخته شود، اجرا می شود**.
+کد داخل اسکریپت تبدیل می شود به محتوای داخل تابع `()setup` کامپوننت. به این معنی که برخلاف تگ معمولی اسکریپت `<script>`، که فقط یک بار زمانی که کامپوننت برای بار اول ایمپرت شده است اجرا می شود، کد داخل `<script setup>` **هر با که یک instance از کامپوننت ساخته شود، اجرا می شود**.
 
 ### Top-level bindings are exposed to template {#top-level-bindings-are-exposed-to-template}
 
-زمانی که از `<script setup>` استفاده میکنید, هر top-level bindings (شامل متغیرها, توابع و ایمپرت ها) که داخل `<script setup>` قرار دارند، به صورت مستقیم در تمپلیت قابل استفاده هستند:
+زمانی که از `<script setup>` استفاده میکنید، هر top-level bindings (شامل متغیرها، توابع و ایمپرت ها) که داخل `<script setup>` قرار دارند، به صورت مستقیم در تمپلیت قابل استفاده هستند:
 
 ```vue
 <script setup>
@@ -80,12 +80,14 @@ import MyComponent from './MyComponent.vue'
 </template>
 ```
 
-`MyComponent` را به عنوان یک referenced variable در نظر بگیرید. اگر از JSX استفاده کرده اید, مدل فکری شبیه است. معادل kebab-case `<my-component>` در تمپلیت قابل استفاده است - اگرچه استفاده از تگ های PascalCase برای یکپارچگی توصیه می شود.
-همچنین برای تشخیص بهتر از Native HTML Elements بهتر است.
+
+MyComponent را یک referenced variable در نظر بگیرید. اگر تاکنون از JSX استفاده کرده اید، مدل فکری شبیه به همان است.
+نوشتار kebab-case که می شود `<my-component>` در تمپلیت قابل استفاده است. اما استفاده از تگ های PascalCase بخاطر امکان تشخیص راحت تر از تگ های نیتیو خود HTML بیشتر توصیه می شود.
+
 
 ### کامپوننت های Dynamic {#dynamic-components}
 
-از آن جایی که کامپوننت ها به جای کامپوننت های رجیستر شده با کلید، به عنوان referenced values در نظر گرفته می شوند , در `script setup` هنگام استفاده از کامپوننت های داینامیک باید از `is:` استفاده کنیم:
+از آن جایی که کامپوننت ها به جای کامپوننت های رجیستر شده با کلید، به عنوان referenced values در نظر گرفته می شوند ، در `script setup` هنگام استفاده از کامپوننت های داینامیک باید از `is:` استفاده کنیم:
 
 ```vue
 <script setup>
@@ -105,7 +107,7 @@ import Bar from './Bar.vue'
 
 <!-- An SFC can implicitly refer to itself via its filename. E.g. a file named `FooBar.vue` can refer to itself as `<FooBar/>` in its template.
 
-Note this has lower priority than imported components. If you have a named import that conflicts with the component's inferred name, you can alias the import: -->
+Note this has lower priority than imported components. If you have a named import that conflicts with the component's inferred name، you can alias the import: -->
 یک SFC میتواند صراحتا با استناد به اسم فایلش به خودش رفرنس شود.
 برای مثال یک فایل با اسم `FooBar.vue` می تواند به صورت `</ FooBar>` در تمپلیت استفاده شود.
 
@@ -140,7 +142,7 @@ Directiveهای مخلی نیازی ندارند که حتما در `<script set
 <script setup>
 const vMyDirective = {
   beforeMount: (el) => {
-    // do something with the element
+    // یک تغییری روی المان ایجاد کن
   }
 }
 </script>
@@ -162,7 +164,7 @@ import { myDirective as vMyDirective } from './MyDirective.js'
 
 ## defineProps() & defineEmits() {#defineprops-defineemits}
 
-برای تعریف کردن `props` و `emits` با پشتیبانی کامل تایپ اسکریپت, می توان از APIهای `defineProps` و `defineEmits` استفاده کرد که بصورت پیشفرض در `<script setup>` قابل دسترسی هستند:
+برای تعریف کردن `props` و `emits` با پشتیبانی کامل تایپ اسکریپت، می توان از APIهای `defineProps` و `defineEmits` استفاده کرد که بصورت پیشفرض در `<script setup>` قابل دسترسی هستند:
 
 ```vue
 <script setup>
@@ -170,14 +172,14 @@ const props = defineProps({
   foo: String
 })
 
-const emit = defineEmits(['change', 'delete'])
-// setup code
+const emit = defineEmits(['change'، 'delete'])
+// کد setup
 </script>
 ```
 
-- `defineProps` و `defineEmits` جزو **compiler macros** هستند و فقط داخل `<script setup>` قابل استفاده هستند. نیازی به ایمپرت کردن آن ها نیست, و هنگامی که `script setup` پردازش می شود، کامپایل می شوند.
+- `defineProps` و `defineEmits` جزو **compiler macros** هستند و فقط داخل `<script setup>` قابل استفاده هستند. نیازی به ایمپرت کردن آن ها نیست، و هنگامی که `script setup` پردازش می شود، کامپایل می شوند.
 
-- `defineProps` همان مقداری که آپشن props دریافت میکرد را دریافت میکند, 
+- `defineProps` همان مقداری که آپشن props دریافت میکرد را دریافت میکند، 
 - `defineProps` و `defineEmits`بر اساس دیتاهای ورودی تشخیص نوع داده مناسبی دارند .
 
 آپشن پاس داده شده به `defineProps` و `defineEmits` از تابع host، setup میشوند به خارج از اسکوپ ماژول.
@@ -193,11 +195,11 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'change', id: number): void
-  (e: 'update', value: string): void
+  (e: 'change'، id: number): void
+  (e: 'update'، value: string): void
 }>()
 
-// 3.3+: alternative, more succinct syntax
+// 3.3+: alternative، more succinct syntax
 const emit = defineEmits<{
   change: [id: number] // named tuple syntax
   update: [value: string]
@@ -206,11 +208,11 @@ const emit = defineEmits<{
 
 - از `defineProps` یا `defineEmits` یا در type  declaration و یا type declaration استفاده می شود . استفاده از هر دو به صورت همزمان باعث ایجاد کامپایل ارور می شود.
 
-- هنگام استفاده از type declaration, برای اطمینان از عملکرد درست هنگام اجرا معادل runtime declaration به صورت خودکار از روی static analysis ساخته می شود تا تعاریف تکراریرا حذف کند.
+- هنگام استفاده از type declaration، برای اطمینان از عملکرد درست هنگام اجرا معادل runtime declaration به صورت خودکار از روی static analysis ساخته می شود تا تعاریف تکراریرا حذف کند.
 
-  - در حالت توسعه, کامپایلر تلاش میکند تا نوع داده ها را بر اساس اعتبارسنجی متناظر آن ها تشخیص دهد.
+  - در حالت توسعه، کامپایلر تلاش میکند تا نوع داده ها را بر اساس اعتبارسنجی متناظر آن ها تشخیص دهد.
   برای مثال `foo: String` از نوع `foo: string` تشخیص داده می شود .  به دلیل این که کامپایلر اطلاعی از فایل های خارجی ندارد اگر  به یک نوعی که ایمپرت شده (imported type) رفرنس داده شود، نوعی که در نظر گرفته می شود `foo: null` خواهد بود (معادل `any`).
-  - در حالت پروداکشن, کامپایلر به منظور کاهش حجم باندل، یک آرایه از فرمت تعریف شده درست خواهد کرد (پراپ ها به `['foo', 'bar']` کامپایل می شوند)
+  - در حالت پروداکشن، کامپایلر به منظور کاهش حجم باندل، یک آرایه از فرمت تعریف شده درست خواهد کرد (پراپ ها به `['foo'، 'bar']` کامپایل می شوند)
 
 - در ورژن 3.2 و پایین تر، پارامترهای از جنس generic برای `defineProps()` به literal type و یا یک رفرنس به اینترفیس محلی (local interface) محدود بود.
 
@@ -227,15 +229,15 @@ export interface Props {
   labels?: string[]
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  msg: 'hello',
-  labels: () => ['one', 'two']
+const props = withDefaults(defineProps<Props>()، {
+  msg: 'hello'،
+  labels: () => ['one'، 'two']
 })
 ```
 
 نتیجه قطعه کد بالا معادل پراپ ها با مقدار پیش فرض در options API خواهد بود. علاوه بر این `withDefaults` برای مقادیر پیش فرض، نوع مقادیر را هم بررسی خواهد کرد و باعث می شود خروجی `props` پراپرتی هایی که مقدار پیش فرض دارند، اختیاری نباشند.
 
-## defineModel() <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
+## ()defineModel <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
 
 
 از این macro برای تعریف کردن پراپی استفاده می شود که با استفاده از v-model در کامپوننت والد عمل two-way binding برای آن ها اجرا شود.
@@ -244,7 +246,7 @@ const props = withDefaults(defineProps<Props>(), {
 پشت پرده، این macro یک model prop و یک ایونت متناسب با آپدیت شدن آن میسازد. اگر آرگومان اول یک رشته باشد، از آن برای استفاده از نام prop استفاده می شود; در غیر این صورت نام prop به طور پیش فرض به `"modelValue"` تغییر میکند.
 
 ```js
-// declares "modelValue" prop, consumed by parent via v-model
+// declares "modelValue" prop، consumed by parent via v-model
 const model = defineModel()
 // OR: declares "modelValue" prop with options
 const model = defineModel({ type: String })
@@ -252,16 +254,14 @@ const model = defineModel({ type: String })
 // emits "update:modelValue" when mutated
 model.value = 'hello'
 
-// declares "count" prop, consumed by parent via v-model:count
+// declares "count" prop، consumed by parent via v-model:count
 const count = defineModel('count')
 // OR: declares "count" prop with options
-// یا: declares "count" prop with options
-const count = defineModel('count', { type: Number, default: 0 })
+// OR: declares "count" prop with options
+const count = defineModel('count'، { type: Number، default: 0 })
 
 function inc() {
   // emits "update:count" when mutated
-  // بعد از اپدیت شدن 'update:count' امیت میشود
-
   count.value++
 }
 ```
@@ -284,12 +284,12 @@ const myRef = ref()
 
 :::
 
-### Modifiers and Transformers {#modifiers-and-transformers}
+### مودیفایر ها و تغییردهندگان {#modifiers-and-transformers}
 
 برای دسترسی به مدیفایرهایی که با دایرکتیو `v-model` استفاده می شوند، می توان مقدار خروجی را از `()defineModel` به این صورت تجزیه کرد:
 
 ```js
-const [modelValue, modelModifiers] = defineModel()
+const [modelValue، modelModifiers] = defineModel()
 
 // v-model.trim معادل با
 if (modelModifiers.trim) {
@@ -300,10 +300,10 @@ if (modelModifiers.trim) {
 در صورت وجود یک مودیفایر، ممکن است نیاز داشته باشیم قبل از آپدیت کردن مقدار آن در کامپوونت والد، تغییری روی مقدار جدید اعمال کنیم، می توان با استفاده از `get` و `set` این کار را انجام:
 
 ```js
-const [modelValue, modelModifiers] = defineModel({
-  // get() omitted as it is not needed here
+const [modelValue، modelModifiers] = defineModel({
+  // حذف می شود به طوریکه مورد نیاز نیست در اینجا get()
   set(value) {
-    // if the .trim modifier is used, return trimmed value
+    // if the .trim modifier is used، return trimmed value
     // اگر مودیفایر حذف کننده ی فاصلع استفاده شده بود، مقدار بدون فاصله را بر میگرداند
     if (modelModifiers.trim) {
       return value.trim()
@@ -322,12 +322,12 @@ const [modelValue, modelModifiers] = defineModel({
 const modelValue = defineModel<string>()
 //    ^? Ref<string | undefined>
 
-// default model with options, required removes possible undefined values
+// default model with options، required removes possible undefined values
 const modelValue = defineModel<string>({ required: true })
 //    ^? Ref<string>
 
-const [modelValue, modifiers] = defineModel<string, 'trim' | 'uppercase'>()
-//                 ^? Record<'trim' | 'uppercase', true | undefined>
+const [modelValue، modifiers] = defineModel<string، 'trim' | 'uppercase'>()
+//                 ^? Record<'trim' | 'uppercase'، true | undefined>
 ```
 
 ## ()defineExpose {#defineexpose}
@@ -344,13 +344,13 @@ const a = 1
 const b = ref(2)
 
 defineExpose({
-  a,
+  a،
   b
 })
 </script>
 ```
 
-وقتی توسط template refsها به یک کامپوننت دسترسی داریم، مقدار برگردانده شده بصورت `{ a: number, b: number }` خواهد بود.(نیازی به استفاده از value. نیست)
+وقتی توسط template refsها به یک کامپوننت دسترسی داریم، مقدار برگردانده شده بصورت `{ a: number، b: number }` خواهد بود.(نیازی به استفاده از value. نیست)
 
 ## ()defineOptions <sup class="vt-badge" data-text="3.3+" /> {#defineoptions}
 
@@ -358,7 +358,7 @@ defineExpose({
 ```vue
 <script setup>
 defineOptions({
-  inheritAttrs: false,
+  inheritAttrs: false،
   customOptions: {
     /* ... */
   }
@@ -369,7 +369,7 @@ defineOptions({
 - پشتیبانی شده در ورژن 3.3+.
 - این یک ماکرو است. ویژیگی های تعریف شده hoist می شوند و در `<script setup>` قابل دسترسی نیستند.
 
-## defineSlots()<sup class="vt-badge ts"/> {#defineslots}
+## ()defineSlots<sup class="vt-badge ts"/> {#defineslots}
 
 از این macro برای فراهم کردن نشانع های تایپ به IDE و چک کردن نوع داده ها استفاده می شود.
 
@@ -393,13 +393,13 @@ const slots = defineSlots<{
 
 ## `useSlots()` و `useAttrs()` {#useslots-useattrs}
 
-Usage of `slots` and `attrs` inside `<script setup>` should be relatively rare, since you can access them directly as `$slots` and `$attrs` in the template. In the rare case where you do need them, use the `useSlots` and `useAttrs` helpers respectively:
+Usage of `slots` and `attrs` inside `<script setup>` should be relatively rare، since you can access them directly as `$slots` and `$attrs` in the template. In the rare case where you do need them، use the `useSlots` and `useAttrs` helpers respectively:
 
 از آنجایی که در `<script setup>` مستقیما می توان از `$slots` و `$attrs` استفاده کرد، استفاده از `slots` و `attrs` به ندرت پیش خواهد آمد. در صورتی که نیاز به استفاده از آن ها داشتید، به صورت زیر از کمکی های `useSlots` و `useAttrs` استفاده کنید:
 
 ```vue
 <script setup>
-import { useSlots, useAttrs } from 'vue'
+import { useSlots، useAttrs } from 'vue'
 
 const slots = useSlots()
 const attrs = useAttrs()
@@ -408,7 +408,7 @@ const attrs = useAttrs()
 
 `useSlots` و `useAttrs` در حقیقت runtime functions هستند که معادل `setupContext.slots` و `setupContext.attrs` می باشند. می توان آنها را در کامپوزیشن ای پی آی به عنوان توابع استفاده کرد.
 
-## Usage alongside normal `<script>` {#usage-alongside-normal-script}
+## استفاده همزمان با اسکریپت معمولی {#usage-alongside-normal-script}
 
 `<script setup>` میتواند کنار یک `script` معمولی استفاده شود. یک `<script>` معمولی در شرایط زیر ممکن است نیاز باشد:
 
@@ -418,19 +418,19 @@ const attrs = useAttrs()
 
 ```vue
 <script>
-// normal <script>, executed in module scope (only once)
+// اسکریپت معمولی، فقط یکبار در اسکوپ ماژول اجرا می شود
 runSideEffectOnce()
-
+// تعریف ویژگی های اضافه تر
 // declare additional options
 export default {
-  inheritAttrs: false,
+  inheritAttrs: false،
   customOptions: {}
 }
-</>
+</script>
 
 <script setup>
 // اجرا شده در اسکوپ setup() (به ازای هر instance)
-</scrip>
+</script>
 ```
 
 پشتیبانی برای استفاده همزمان از `<script setup>` و `<script>` در یک کامپوننت محدود به حالت های توضیح داده شده در بالا است. توجه داشته باشید:
@@ -460,7 +460,7 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 
 ## جنریک ها <sup class="vt-badge ts" /> {#generics}
 
-Generic type parameters can be declared using the `generic` attribute on the `<script>` tag:
+با اضافه کردن اتریبیوت `generic` به تگ `<script>` می توان از پارامترهای تایپ جنریک استفاده کرد:
 
 ```vue
 <script setup lang="ts" generic="T">
@@ -471,13 +471,13 @@ defineProps<{
 </script>
 ```
 
-The value of `generic` works exactly the same as the parameter list between `<...>` in TypeScript. For example, you can use multiple parameters, `extends` constraints, default types, and reference imported types:
+مقدار `generic` دقیقا به همان شکل لیست پارامترهای بین `<...>` در تایپ اسکریپت عمل میکند. برای مثال، میتوان از چندین پارامتر، محدودیت های `extends`، مقادیر پیش فرض و اشاره به تایپ های و اشاره شده (reference imported) استفاده کرد:
 
 ```vue
 <script
   setup
   lang="ts"
-  generic="T extends string | number, U extends Item"
+  generic="T extends string | number، U extends Item"
 >
 import type { Item } from './types'
 defineProps<{
@@ -487,7 +487,7 @@ defineProps<{
 </script>
 ```
 
-## Restrictions {#restrictions}
+## محدودیت ها {#restrictions}
 
-- Due to the difference in module execution semantics, code inside `<script setup>` relies on the context of an SFC. When moved into external `.js` or `.ts` files, it may lead to confusion for both developers and tools. Therefore, **`<script setup>`** cannot be used with the `src` attribute.
-- `<script setup>` does not support In-DOM Root Component Template.([Related Discussion](https://github.com/vuejs/core/issues/8391))
+- بخاطر تفاوت در معناشناسی اجرای ماژول ها، کد داخل `<script setup>` وابسته به محتوای داخل SFC می باشد. انتقال آن به یک فایل خارجی `js.` یا `ts.`، ممکن است منجر به سردرگمی برای توسعه دهندگان و ابزارها شود. بنابراین **`<script setup>`** همراه با اتریبیوت `src` قابل استفاده نیست.
+- `<script setup>` از In-DOM Root Component Templateها پشتیبانی نمی کند. ([بحث مربوط](https://github.com/vuejs/core/issues/8391))
