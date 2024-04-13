@@ -318,6 +318,7 @@ h(Transition, {
   ```ts
   interface SuspenseProps {
     timeout?: string | number
+    suspensible?: boolean
   }
   ```
 
@@ -332,5 +333,8 @@ h(Transition, {
   `<Suspense>` دو slot را می‌پذیرد: اسلات `#default` و اسلات `#fallback`. محتوای اسلات fallback را در هنگام رندر کردن اسلات default موجود در حافظه نمایش می‌دهد.
 
   اگر با وابستگی‌های ناهمگام مواجه شود ([کامپوننت‌های ناهمگام](/guide/components/async) و کامپوننت‌های با [`()async setup`](/guide/built-ins/suspense#async-setup)) در هنگام رندر اسلات default، منتظر خواهد ماند تا پیش از نمایش اسلات default، همگی آنها resolve شوند.
+
+  با تنظیم Suspense به عنوان `suspensible`، تمام مدیریت وابستگی
+  async توسط Suspense والد مدیریت می شود. [جزئیات پیاده سازی](https://github.com/vuejs/core/pull/6736) را ببینید
 
 - **همچنین ببینید** [راهنما - تعلیق](/guide/built-ins/suspense)
