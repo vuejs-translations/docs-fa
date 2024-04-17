@@ -546,26 +546,26 @@ export const sidebar: ThemeConfig['sidebar'] = {
   ],
   '/style-guide/': [
     {
-      text: 'Style Guide',
+      text: 'راهنمای استایل',
       items: [
         {
-          text: 'Overview',
+          text: 'بررسی اجمالی',
           link: '/style-guide/'
         },
         {
-          text: 'A - Essential',
+          text: 'A - ضروری‌',
           link: '/style-guide/rules-essential'
         },
         {
-          text: 'B - Strongly Recommended',
+          text: 'B - به شدت توصیه می‌شود',
           link: '/style-guide/rules-strongly-recommended'
         },
         {
-          text: 'C - Recommended',
+          text: 'C - توصیه می‌شوند',
           link: '/style-guide/rules-recommended'
         },
         {
-          text: 'D - Use with Caution',
+          text: 'D - با احتیاط از آنها استفاده کنید',
           link: '/style-guide/rules-use-with-caution'
         }
       ]
