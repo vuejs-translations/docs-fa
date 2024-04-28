@@ -116,6 +116,7 @@ const nav: ThemeConfig['nav'] = [
         link: '/about/community-guide'
       },
       { text: 'منشور اخلاقی', link: '/about/coc' },
+      { text: 'حریم خصوصی', link: '/about/privacy' },
       {
         text: 'مستند',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'

@@ -296,7 +296,7 @@ data() {
 ```js
 const styleObject = reactive({
   color: 'red',
-  fontSize: '13px'
+  fontSize: '30px'
 })
 ```
 

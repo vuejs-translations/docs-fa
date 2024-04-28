@@ -389,13 +389,18 @@ defineProps({
     type: String,
     required: true
   },
-  // تایپ عدد با مقدار پیش فرض
+  // باشد null استرینگِ الزامی ولی می‌تواند
   propD: {
+    type: [String, null],
+    required: true
+  },
+  // تایپ عدد با مقدار پیش فرض
+  propE: {
     type: Number,
     default: 100
   },
   // تایپ آبجکت با مقدار پیش فرض
-  propE: {
+  propF: {
     type: Object,
     // آبجکت یا آرایه با مقدار پیش فرض باید از طریق
     // برگردانده شود factory function
@@ -406,14 +411,14 @@ defineProps({
   },
   // تابع اعتبارسنجی سفارشی
   // تمام پراپ‌ها به عنوان آرگومان دوم در 3.4+ پاس داده می‌شوند
-  propF: {
+  propG: {
     validator(value, props) {
       // باید یکی از سه مقدار زیر باشد value
       return ['success', 'warning', 'danger'].includes(value)
     }
   },
   // تابع با مقدار پیش فرض
-  propG: {
+  propH: {
     type: Function,
     // یک تابع سازنده نیست `default` برخلاف آبجکت یا آرایه
     // این خود این تابع به عنوان یک مقدار پیش فرض به شمار می‌رود
@@ -444,13 +449,18 @@ export default {
       type: String,
       required: true
     },
-    // تایپ عدد با مقدار پیش فرض
+    // باشد null استرینگِ الزامی ولی می‌تواند
     propD: {
+      type: [String, null],
+      required: true
+    },
+    // تایپ عدد با مقدار پیش فرض
+    propE: {
       type: Number,
       default: 100
     },
     // تایپ آبجکت با مقدار پیش فرض
-    propE: {
+    propF: {
       type: Object,
       // آبجکت یا آرایه با مقدار پیش فرض باید از طریق
       // برگردانده شود factory function
@@ -461,14 +471,14 @@ export default {
     },
     // تابع اعتبارسنجی سفارشی
     // تمام پراپ‌ها به عنوان آرگومان دوم در 3.4+ پاس داده می‌شوند
-    propF: {
+    propG: {
       validator(value, props) {
         // باید یکی از سه مقدار زیر باشد value
         return ['success', 'warning', 'danger'].includes(value)
       }
     },
     // تابع با مقدار پیش فرض
-    propG: {
+    propH: {
       type: Function,
       // یک تابع سازنده نیست `default` برخلاف آبجکت یا آرایه
       // این خود این تابع به عنوان یک مقدار پیش فرض به شمار می‌رود
@@ -557,6 +567,39 @@ export default {
 
 Vue از `instanceof Person` برای اعتبارسنجی اینکه آیا مقدار پراپ `author` واقعا یک نمونه از تایپ کلاس `Person` هست یا خیر استفاده می‌کند.
 
+### تایپ Nullable
+
+اگر به تایپ نیاز دارید اما متغیر قابل null شدن است، می‌توانید از دستور آرایه استفاده کنید که شامل `null` می‌شود:
+
+<div class="composition-api">
+
+```js
+defineProps({
+  id: {
+    type: [String, null],
+    required: true
+  }
+})
+```
+
+</div>
+<div class="options-api">
+
+```js
+export default {
+  props: {
+    id: {
+      type: [String, null],
+      required: true
+    }
+  }
+}
+```
+
+</div>
+
+توجه داشته باشید که اگر `type` فقط `null` باشد بدون استفاده از دستور آرایه، هر تایپی را مجاز می‌کند.
+
 ## تبدیل تایپ داده منطقی (Boolean casting) {#boolean-casting}
 
 پراپ‌ها با تایپ داده منطقی (boolean) قانون تبدیل خاصی دارند تا بتوانند مدل رفتاری اتریبیوت‌های بومی مرورگر را تقلید کنند.
@@ -601,17 +644,17 @@ export default {
 defineProps({
   disabled: [Boolean, Number]
 })
-  
+
 // true تبدیل می‌شود به disabled
 defineProps({
   disabled: [Boolean, String]
 })
-  
+
 // true تبدیل می‌شود به disabled
 defineProps({
   disabled: [Number, Boolean]
 })
-  
+
 // به یک رشته خالی تبدیل می‌شود disabled
 defineProps({
   disabled: [String, Boolean]
@@ -628,22 +671,22 @@ export default {
     disabled: [Boolean, Number]
   }
 }
-  
+
 // true تبدیل می‌شود به disabled
 export default {
   props: {
     disabled: [Boolean, String]
   }
 }
-  
+
 // true تبدیل می‌شود به disabled
 export default {
   props: {
     disabled: [Number, Boolean]
   }
 }
-  
-// به یک رشته خالی تبدیل می‌شود disabled
+
+// disabled will be parsed as an empty string (disabled="")
 export default {
   props: {
     disabled: [String, Boolean]

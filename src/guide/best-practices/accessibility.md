@@ -169,7 +169,7 @@ watch(
 
 <!-- <common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-اگر این عنصر را در developer tools کروم خود بررسی کنید و تب Accessibility را درون تب Elements باز کنید، خواهید دید که چگونه input نام خود را از لیبل دریافت می کند:
+اگر این عنصر را در DevTools کروم خود بررسی کنید و تب Accessibility را درون تب Elements باز کنید، خواهید دید که چگونه input نام خود را از لیبل دریافت می کند:
 
 ![Chrome Developer Tools showing input accessible name from label](./images/AccessibleLabelChromeDevTools.png)
 

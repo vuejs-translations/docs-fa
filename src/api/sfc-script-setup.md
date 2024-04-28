@@ -52,6 +52,7 @@ import { capitalize } from './helpers'
 ```
 
 ## Reactivity {#reactivity}
+
 Reactive states باید دقیقا با استفاده از [Reactivity APIs](./reactivity-core) ساخته شوند. همانند دیتاهایی که از تابع `setup()` برگردانده می شوند، refs ها هم به صورت خودکار بدون نیاز به `.value` قابل استفاده هستند:
 
 ```vue
@@ -66,7 +67,7 @@ const count = ref(0)
 </template>
 ```
 
-## استفاده از کامپوننت ها {#using-components}
+## استفاده از کامپوننت‌ها {#using-components}
 
 مقادیر در  `<script setup>` به صورت مستقیم به عنوان تگ‌های یک کامپوننت قابل استفاده می باشد:
 
@@ -80,10 +81,7 @@ import MyComponent from './MyComponent.vue'
 </template>
 ```
 
-
-MyComponent را یک referenced variable در نظر بگیرید. اگر تاکنون از JSX استفاده کرده‌اید، مدل فکری شبیه به همان است.
-نوشتار kebab-case که می‌شود `<my-component>` در تمپلیت قابل استفاده است. اما استفاده از تگ‌های PascalCase بخاطر امکان تشخیص راحت تر از تگ‌های بومی HTML بیشتر توصیه می‌شود.
-
+MyComponent را یک referenced variable در نظر بگیرید. اگر تاکنون از JSX استفاده کرده‌اید، مدل فکری شبیه به همان است. نوشتار kebab-case که می‌شود `<my-component>` در تمپلیت قابل استفاده است. اما استفاده از تگ‌های PascalCase بخاطر امکان تشخیص راحت تر از تگ‌های بومی HTML بیشتر توصیه می‌شود.
 
 ### کامپوننت‌های Dynamic {#dynamic-components}
 
@@ -105,12 +103,7 @@ import Bar from './Bar.vue'
 
 ### کامپوننت‌های Recursive {#recursive-components}
 
-<!-- An SFC can implicitly refer to itself via its filename. E.g. a file named `FooBar.vue` can refer to itself as `<FooBar/>` in its template.
-
-Note this has lower priority than imported components. If you have a named import that conflicts with the component's inferred name، you can alias the import: -->
-یک SFC میتواند صراحتا با استناد به اسم فایلش به خودش رفرنس شود.
-برای مثال یک فایل با اسم `FooBar.vue` می‌تواند به صورت `</ FooBar>` در تمپلیت استفاده شود.
-
+یک SFC می‌تواند صراحتا با استناد به اسم فایلش به خودش رفرنس شود. برای مثال یک فایل با اسم `FooBar.vue` می‌تواند به صورت `</ FooBar>` در تمپلیت استفاده شود.
 
 ```js
 import { FooBar as FooBarChild } from './components'
@@ -449,7 +442,7 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 
 
 :::warning نکته
-`()async setup` باید همراه با `Suspense` استفاده شود، که هنوز یک ویژگی آزمایشی است. ما قصد نهایی کردن مستندات را در یک ریلیز آینده خواهیم داشت - اما اگر کنجکاو هستید، می‌توانید با مشاهده گیتهاب [tests](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts) ببینید به چه صورت کار میکند.
+`()async setup` باید همراه با [`Suspense`](/guide/built-ins/suspense.html) استفاده شود، که هنوز یک ویژگی آزمایشی است. ما قصد نهایی کردن مستندات را در یک ریلیز آینده خواهیم داشت - اما اگر کنجکاو هستید، می‌توانید با مشاهده گیتهاب [tests](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts) ببینید به چه صورت کار میکند.
 
 :::
 
