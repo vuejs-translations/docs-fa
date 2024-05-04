@@ -79,6 +79,7 @@ const question = ref('')
 const answer = ref('.سوالی که مینویسید باید شامل علامت سوال (؟) باشد')
 const loading = ref(false)
 
+// watch works directly on a ref
 watch(question, async (newQuestion, oldQuestion) => {
   if (newQuestion.includes('?')) {
     loading.value = true
@@ -108,7 +109,7 @@ watch(question, async (newQuestion, oldQuestion) => {
 
 ### تایپ‌های منابع نظارتی {#watch-source-types}
 
-اولین آرگومان `watch` می‌تواند تایپ‌های مختلفی از «منابع» reactive باشد: می‌تواند یک ref (شامل computed refs)، یک reactive object، یک تابع getter یا آرایه‌ باشد:
+اولین آرگومان `watch` می‌تواند تایپ‌های مختلفی از «منابع» reactive باشد: می‌تواند یک ref (شامل computed refs)، یک reactive object، یک [getter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description) یا آرایه‌ باشد:
 
 ```js
 const x = ref(0)
@@ -140,7 +141,7 @@ const obj = reactive({ count: 0 })
 // پاس می‌دهیم watch() را به number کار نمی‌کند زیرا داریم یک
 
 watch(obj.count, (count) => {
-  console.log(`count is: ${count}`)
+  console.log(`Count is: ${count}`)
 })
 ```
 
@@ -152,7 +153,7 @@ watch(obj.count, (count) => {
 watch(
   () => obj.count,
   (count) => {
-    console.log(`count is: ${count}`)
+    console.log(`Count is: ${count}`)
   }
 )
 ```
@@ -272,13 +273,12 @@ watch(
 
 </div>
 
-
 ## Once Watchers <sup class="vt-badge" data-text="3.4+" /> {#once-watchers}
 
 هر زمانی که منبع داده ناظر تغییر کند ناظر کالبک خود را فراخوانی می‌کند. اگر می‌خواهید کالبک ناظر فقط یک بار در زمان تغییر داده صدا زده شود، از آپشن `once: true` استفاده کنید.
 
 <div class="options-api">
-  
+
 ```js
 export default {
   watch: {

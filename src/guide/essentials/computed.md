@@ -130,7 +130,7 @@ const publishedBooksMessage = computed(() => {
 
 [آن را در Playground امتحان کنید](https://play.vuejs.org/#eNp1kE9Lw0AQxb/KI5dtoTainkoaaREUoZ5EEONhm0ybYLO77J9CCfnuzta0vdjbzr6Zeb95XbIwZroPlMySzJW2MR6OfDB5oZrWaOvRwZIsfbOnCUrdmuCpQo+N1S0ET4pCFarUynnI4GttMT9PjLpCAUq2NIN41bXCkyYxiZ9rrX/cDF/xDYiPQLjDDRbVXqqSHZ5DUw2tg3zP8lK6pvxHe2DtvSasDs6TPTAT8F2ofhzh0hTygm5pc+I1Yb1rXE3VMsKsyDm5JcY/9Y5GY8xzHI+wnIpVw4nTI/10R2rra+S4xSPEJzkBvvNNs310ztK/RDlLLjy1Zic9cQVkJn+R7gIwxJGlMXiWnZEq77orhH3Pq2NH9DjvTfpfSBSbmA==)
 
-در اینجا یک پراپرتی computed به نام `publishedBooksMessage` تعریف کرده‌ایم. تابع `computed()‎` انتظار دارد که یک تابع به عنوان ورودی دریافت کند که مقدار بازگشتی آن از نوع **computed ref** باشد. مشابه ref های عادی، شما می‌توانید به نتیجه محاسبه شده با عنوان `publishedBooksMessage.value` دسترسی پیدا کنید. computed ref ها همچنین در تمپلیت‌ها به صورت خودکار باز می‌شوند، بنابراین می‌توانید بدون نیاز به `‎.value` به آنها دسترسی پیدا کنید.
+در اینجا یک پراپرتی computed به نام `publishedBooksMessage` تعریف کرده‌ایم. تابع `computed()‎` انتظار دارد که یک [getter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description) به عنوان ورودی دریافت کند که مقدار بازگشتی آن از نوع **computed ref** باشد. مشابه ref های عادی، شما می‌توانید به نتیجه محاسبه شده با عنوان `publishedBooksMessage.value` دسترسی پیدا کنید. computed ref ها همچنین در تمپلیت‌ها به صورت خودکار باز می‌شوند، بنابراین می‌توانید بدون نیاز به `‎.value` به آنها دسترسی پیدا کنید.
 
 یک پراپرتی computed به طور خودکار وابستگی‌های reactive خود را دنبال می‌کند. Vue می‌داند که محاسبه `publishedBooksMessage` به `author.books` وابستگی دارد، بنابراین هنگامی که `author.books` تغییر می‌کند، هر اتصالی که به `publishedBooksMessage` وابسته باشد، به‌روزرسانی می‌شود.
 

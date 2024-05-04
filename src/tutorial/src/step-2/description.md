@@ -63,7 +63,7 @@ setup() {‎
 
 ```vue-html
 <h1>{{ message }}</h1>
-<p>count is: {{ counter.count }}</p>
+<p>Count is: {{ counter.count }}</p>
 ```
 
 توجه کنید که نیازی به استفاده از `‎.value` هنگام دسترسی به `message` که ref است در تمپلیت‌ها نیست: به طور خودکار برای کوتاه‌سازی تبدیل می‌شود.

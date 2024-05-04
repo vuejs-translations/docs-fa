@@ -14,7 +14,7 @@ outline: deep
 
 ```vue-html
 <!-- template of <MyButton> -->
-<button>click me</button>
+<button>Click Me</button>
 ```
 
 و یک والد که از این کامپوننت به شکل زیر استفاده می‌کند:
@@ -26,7 +26,7 @@ outline: deep
 DOM نهایی رندر شده به این صورت خواهد بود:
 
 ```html
-<button class="large">click me</button>
+<button class="large">Click Me</button>
 ```
 
 در اینجا، `<MyButton>`  ویژگی `class` را به عنوان یک prop پذیرفته شده اعلام نکرده است. بنابراین، `class` به عنوان یک ویژگی fallthrough در نظر گرفته شده و به طور خودکار به root element کامپوننت `<MyButton>` اضافه می‌شود.
@@ -37,13 +37,13 @@ DOM نهایی رندر شده به این صورت خواهد بود:
 
 ```vue-html
 <!-- template of <MyButton> -->
-<button class="btn">click me</button>
+<button class="btn">Click Me</button>
 ```
 
 سپس DOM نهایی رندر شده به این صورت خواهد بود:
 
 ```html
-<button class="btn large">click me</button>
+<button class="btn large">Click Me</button>
 ```
 
 ### ارث‌بری listenerهای `v-on` {#v-on-listener-inheritance}
@@ -112,7 +112,7 @@ defineOptions({
 
 ```vue-html
 <div class="btn-wrapper">
-  <button class="btn">click me</button>
+  <button class="btn">Click Me</button>
 </div>
 ```
 
@@ -120,7 +120,7 @@ defineOptions({
 
 ```vue-html{2}
 <div class="btn-wrapper">
-  <button class="btn" v-bind="$attrs">click me</button>
+  <button class="btn" v-bind="$attrs">Click Me</button>
 </div>
 ```
 

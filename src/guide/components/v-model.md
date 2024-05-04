@@ -19,7 +19,7 @@ function update() {
 </script>
 
 <template>
-  <div>parent bound v-model is: {{ model }}</div>
+  <div>Parent bound v-model is: {{ model }}</div>
 </template>
 ```
 
@@ -53,12 +53,13 @@ const model = defineModel()
 
 `defineModel` یک ماکرو میانبر است. کامپایلر آن را برای موارد زیر توسعه می‌دهد:
 
-- یک پراپ به نام `modelValue` که مقدار ref محلی با آن همگام‌سازی می‌شود؛
+- یک پراپ به نام `modelValue` که مقدار ref محلی با آن همگام‌سازی می‌شود.
 - یک رویداد به نام `update:modelValue` که هنگام تغییر مقدار ref محلی ارسال می‌شود.
 
 روش پیاده‌سازی همان کامپوننت فرزند نشان داده شده در بالا قبل از نسخه 3.4 به این صورت است:
 
 ```vue
+<!-- Child.vue -->
 <script setup>
 const props = defineProps(['modelValue'])
 const emit = defineEmits(['update:modelValue'])
@@ -70,6 +71,16 @@ const emit = defineEmits(['update:modelValue'])
     @input="emit('update:modelValue', $event.target.value)"
   />
 </template>
+```
+
+سپس `v-model="modelValue"‎` در کامپوننت والد کامپایل می‌شود به:
+
+```vue-html
+<!-- Parent.vue -->
+<Child
+  :modelValue="foo"
+  @update:modelValue="$event => (foo = $event)"
+/>
 ```
 
 همان‌طور که می‌بینید، کمی طولانی‌تر است. با این حال، درک آنچه در زیر پوسته اتفاق می‌افتد مفید است.
@@ -190,7 +201,7 @@ export default {
 
 </div>
 
-## آرگومان‌های v-model {#v-model-arguments}
+## آرگومان‌های `v-model` {#v-model-arguments}
 
 همچنین `v-model` روی کامپوننت می‌تواند آرگومان بپذیرد:
 
@@ -213,7 +224,7 @@ const title = defineModel('title')
 </template>
 ```
 
-[آزمایش این مورد در Playground](https://play.vuejs.org/#eNqFkl9PwjAUxb9K05dhglsMb2SQqOFBE9Soj31Zxh0Uu7bpHxxZ9t29LWOiQXzaes7p2a+9a+mt1unOA53S3JaGa0csOK/nTPJaK+NISwxUpCOVUTVJMJoM1nJ/r/BNgnS9nWYnWujFMCFMlkpaRxx3AsgsFI6S3XWtViBIYda+Dg3QFLUWkFwxmWcHFqTAhQPUCwe4IiTf3Mzbtq/qujzDddRPYfruaUzNGI1PRkmG0Twb+uiY/sI9cw0/0VdQcQnL0D5KovgfL5fa4/69jiDQOOTo+S6SOYtfrvg63VolkauNN0lLxOUCzLN2HMkYnZLoBK8QQn0+Rs0ZD+OjXm6g/Dijb20TNEZfDFgwOwQZPIdzAWQN9uLtKXIPJtL7gH3BfAWrhA+Mh9idlyvEPslF2of4J3G5freLxoG0x0MF0JDsYp5RHE6Y1F9H/8adpJO4j8mOdl/Hw/nf)
+[آزمایش این مورد در Playground](https://play.vuejs.org/#eNqFU9tu2zAM/RVBKOAWyGIM25PhFbugDxuwC7a+VX3wEiZ1K0uCRHkuDP/7SKlxk16BILbIQ/KcQ3mUn5xb9hFkJeuw8q3DU2XazlmP4vvtF0tvBgyKjbedKJblXozLCmWUgSHB17BpokYxKiPEaocKlRgPOk0Lzq8bbI5PMlYIDxi92Z2E+GvtzXmLGipR9G86uwYtGr+NHTeAoemc5tEMnfhBf/Sry1kBHRAI1SDQSYj66u3pON73FdNUlxRLuX12d9MqZNQHJecKJUVJ8Lqc+8qFfODGgYlPueK8dWTIRZHaF5fJCuhadumiiI5cgTy6uHxVUmtcxGwC3jomizCgkjlU9Y2OKZjZ5+jHVETRI556fDhyIY6gZylIXgMp4g4nufSxdgwrazbtdnkdrCHlSaCSvPhWg//psLUmKEn7z7OVbLS2/76lGPoISX2quYLVzRPx6zBwTMlfHgL4nmTMucwxp8/+/EjK5yTtMLLoF5K/IVgdmWOGfY5mTbT3cInt1/QptGZ7Hs4GBBN2ophounoJryStn+/Cc9Lv6b5bvt9dWTn9B6F1Lrs=)
 
 اگر آپشن‌های پراپ نیز مورد نیاز است، باید پس از نام مدل پاس داده شوند:
 

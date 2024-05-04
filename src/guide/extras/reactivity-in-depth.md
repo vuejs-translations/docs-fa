@@ -67,7 +67,7 @@ whenDepsChange(update)
 
 در واقع نمی‌توانیم مانند مثال بالا متغیرهای محلی را ردیابی کنیم. در جاوااسکریپت ساده هیچ مکانیزمی برای انجام این کار وجود ندارد. اما آنچه **می‌توانیم** انجام دهیم رهگیری خواندن و نوشتن **خواص شیء** است.
 
-دو روش برای رهگیری دسترسی به خاصیت در جاوااسکریپت وجود دارد: آنها [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get)/[setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set) و [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) هستند. Vue 2 به دلیل محدودیت‌های پشتیبانی مرورگرها فقط از getter / setters استفاده می‌کرد. در Vue 3 از پراکسی برای شی‌های واکنش‌پذیر (reactive objects) و از getter / setters برای رف‌ها (ref) استفاده می‌شود. شبه‌کد زیر نحوه کار آن‌ها را نشان می‌دهد:
+دو روش برای رهگیری دسترسی به خاصیت در جاوااسکریپت وجود دارد: آنها [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description)/[setters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set#description) و [Proxies](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) هستند. Vue 2 به دلیل محدودیت‌های پشتیبانی مرورگرها فقط از getter / setters استفاده می‌کرد. در Vue 3 از پراکسی برای شی‌های واکنش‌پذیر (reactive objects) و از getter / setters برای رف‌ها (ref) استفاده می‌شود. شبه‌کد زیر نحوه کار آن‌ها را نشان می‌دهد:
 
 ```js{4,9,17,22}
 function reactive(obj) {
@@ -191,7 +191,7 @@ import { ref, watchEffect } from 'vue'
 const count = ref(0)
 
 watchEffect(() => {
-  document.body.innerHTML = `count is: ${count.value}`
+  document.body.innerHTML = `Count is: ${count.value}`
 })
 
 // را بروز می‌کند DOM
@@ -409,7 +409,7 @@ export function useMachine(options) {
 
 از نظر اصولی، سیگنال‌ها همان نوع ابتدایی واکنش‌پذیری مثل refs در Vue هستند. یک کانتینر که ردیابی وابستگی را در دسترسی و فعال‌سازی افکت جانبی در تغییر فراهم می‌کند. این پارادایم مبتنی بر اصول واکنش‌پذیری مفهوم جدیدی در دنیای فرانت‌اند نیست: به پیاده‌سازی‌هایی مثل [observables در Knockout](https://knockoutjs.com/documentation/observables.html) و [Tracker در Meteor](https://docs.meteor.com/api/tracker.html) بیش از یک دهه پیش برمی‌گردد. Options API در Vue و کتابخانه مدیریت state React به نام [MobX](https://mobx.js.org/) نیز بر همان اصول مبتنی هستند.
 
-اگرچه لزومی برای تعریف چیزی به عنوان سیگنال نیست، امروزه این مفهوم اغلب در کنار مدل رندرینگی مطرح می‌شود که به‌روزرسانی‌ها از طریق اشتراک‌های ظریف‌تر انجام می‌شود. به دلیل استفاده از DOM مجازی، Vue در حال حاضر به [کامپایلرها برای دستیابی به بهینه‌سازی‌های مشابه متکی است](/guide/extras/rendering-mechanism#compiler-informed-virtual-dom). با این حال، ما همچنین در حال بررسی یک استراتژی کامپایل جدید الهام گرفته از Solid (حالت Vapor) هستیم که به DOM مجازی متکی نیست و از سیستم واکنش‌پذیری درونی Vue بیشتر استفاده می‌کند.
+اگرچه لزومی برای تعریف چیزی به عنوان سیگنال نیست، امروزه این مفهوم اغلب در کنار مدل رندرینگی مطرح می‌شود که به‌روزرسانی‌ها از طریق اشتراک‌های ظریف‌تر انجام می‌شود. به دلیل استفاده از DOM مجازی، Vue در حال حاضر به [کامپایلرها برای دستیابی به بهینه‌سازی‌های مشابه متکی است](/guide/extras/rendering-mechanism#compiler-informed-virtual-dom). با این حال، ما همچنین در حال بررسی یک استراتژی کامپایل جدید الهام گرفته از Solid ([حالت Vapor](https://github.com/vuejs/core-vapor)) هستیم که به DOM مجازی متکی نیست و از سیستم واکنش‌پذیری درونی Vue بیشتر استفاده می‌کند.
 
 ### بده بستان طراحی API {#api-design-trade-offs}
 

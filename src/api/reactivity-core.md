@@ -45,7 +45,7 @@
 
 ## computed()‎ {#computed}
 
-یک تابع getter می‌گیرد و به ازای مقدار بازگشت داده شده از getter یک آبجکت [ref](#ref) که readonly و reactive است را برمی‌گرداند. همچنین می‌تواند یک آبجکت با تابع‌های `get` و `set` برای ایجاد یک آبجکت ref که writable است را بگیرد.
+یک [getter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set#description) می‌گیرد و به ازای مقدار بازگشت داده شده از getter یک آبجکت [ref](#ref) که readonly و reactive است را برمی‌گرداند. همچنین می‌تواند یک آبجکت با تابع‌های `get` و `set` برای ایجاد یک آبجکت ref که writable است را بگیرد.
 
 - **تایپ (Type)**
 

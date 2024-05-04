@@ -154,8 +154,6 @@ watch(
 </form>
 ```
 
-<!-- <common-codepen-snippet title="Simple Form" slug="dyNzzWZ" :height="368" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 توجه کنید که می‌توانید `autocomplete='on'‎` را روی عنصر form قرار دهید و این ویژگی برای تمام inputهای فرم اعمال می‌شود. همچنین می‌توانید برای هر input [مقدار متفاوتی برای ویژگی autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) تعیین کنید.
 
 ### Labels {#labels}
@@ -166,8 +164,6 @@ watch(
 <label for="name">Name: </label>
 <input type="text" name="name" id="name" v-model="name" />
 ```
-
-<!-- <common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 اگر این عنصر را در DevTools کروم خود بررسی کنید و تب Accessibility را درون تب Elements باز کنید، خواهید دید که چگونه input نام خود را از لیبل دریافت می کند:
 
@@ -201,8 +197,6 @@ watch(
 />
 ```
 
-<!-- <common-codepen-snippet title="Form ARIA label" slug="NWdvvYQ" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 این عنصر را در ابزارهای توسعه‌دهنده کروم بررسی کنید تا ببینید چگونه نام تغییر کرده است:
 
 ![Chrome Developer Tools showing input accessible name from aria-label](./images/AccessibleARIAlabelDevTools.png)
@@ -233,8 +227,6 @@ watch(
 </form>
 ```
 
-<!-- <common-codepen-snippet title="Form ARIA labelledby" slug="MWJvvBe" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 ![Chrome Developer Tools showing input accessible name from aria-labelledby](./images/AccessibleARIAlabelledbyDevTools.png)
 
 #### `aria-describedby` {#aria-describedby}
@@ -264,8 +256,6 @@ watch(
   <button type="submit">Submit</button>
 </form>
 ```
-
-<!-- <common-codepen-snippet title="Form ARIA describedby" slug="gOgxxQE" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 شما می‌توانید description را با بررسی Chrome DevTools ببینید:
 
@@ -352,8 +342,6 @@ watch(
 </fieldset>
 ```
 
-<!-- <common-codepen-snippet title="Form Instructions" slug="WNREEqv" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 ### پنهان کردن محتوا {#hiding-content}
 
 معمولاً توصیه نمی‌شود label ها را پنهان کرد، حتی اگر input مقدار accessible name را داشته باشد. با این حال، اگر عملکرد ورودی با محتوای اطراف آن قابل درک باشد، می‌توانیم label را بطور بصری پنهان کنیم.
@@ -386,8 +374,6 @@ watch(
 }
 ```
 
-<!-- <common-codepen-snippet title="Form Search" slug="QWdMqWy" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 #### `aria-hidden="true"‎` {#aria-hidden-true}
 
 اضافه کردن `aria-hidden="true"‎` عنصر را از دید فناوری کمکی پنهان می‌کند اما آن را به صورت بصری برای سایر کاربران در دسترس نگه می‌دارد. از آن روی عناصر قابل focus استفاده نکنید، صرفاً روی محتوای تزئینی، تکراری یا خارج از صفحه استفاده کنید.
@@ -413,8 +399,6 @@ watch(
   <input type="submit" value="Submit" />
 </form>
 ```
-
-<!-- <common-codepen-snippet title="Form Buttons" slug="JjEyrYZ" :height="467" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 ### Functional Images {#functional-images}
 
@@ -449,8 +433,6 @@ watch(
   </button>
 </form>
 ```
-
-<!-- <common-codepen-snippet title="Functional Images" slug="jOyLGqM" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 ## استانداردها {#standards}
 

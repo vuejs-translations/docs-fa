@@ -212,10 +212,10 @@
 
 - **جزئیات**
 
-  اولین آرگومان منبع watch است که می‌تواند یک string نام متعلق به یک پراپرتی از یک کامپوننت، یک dot-delimited path string، یک string ساده و یا یک تابع getter باشد.
+  اولین آرگومان منبع watch است که می‌تواند یک string نام متعلق به یک پراپرتی از یک کامپوننت، یک dot-delimited path string، یک string ساده و یا یک [getter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description) باشد.
 
   دومین آرگومان یک تابع callback است. این تابع مقدار جدید و قدیم متعلق به منبع watch را دریافت می‌کند.
-  
+
   - **`immediate`**: تابع callback را بلافاصله در موقع ساخت watcher فراخوانی می‌کند. در فراخوانی اول مقدار قدیمی `undefined` خواهد بود.
   - **`deep`**: اگر منبع یک آبجکت باشد پیمایش عمیق (deep traversal) را روی آن تحمیل می‌کند و تابع callback هنگام تغییرات عمیق (deep mutations) روی آبجکت فراخوانی می‌شود. همچنین [Deep Watchers](/guide/essentials/watchers#deep-watchers) را مطالعه کنید.
   - **`flush`**: زمانبندی flush مربوط به تابع  callback را تنظیم می‌کند. همچنین [Callback Flush Timing](/guide/essentials/watchers#callback-flush-timing) و [`()watchEffect`](/api/reactivity-core#watcheffect) را مطالعه کنید.

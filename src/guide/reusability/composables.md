@@ -199,7 +199,7 @@ const { data, error } = useFetch(url)
 url.value = '/new-url'
 ```
 
-یا یک تابع دریافت کننده (getter) را قبول کند:
+یا یک [getter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get#description) را قبول کند:
 
 ```js
 // تغییر کرد، دوباره درخواست بزند props.id وقتی

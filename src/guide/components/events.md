@@ -32,7 +32,7 @@ if (typeof window !== 'undefined') {
 
 ```vue-html
 <!-- MyComponent -->
-<button @click="$emit('someEvent')">click me</button>
+<button @click="$emit('someEvent')">Click Me</button>
 ```
 
 <div class="options-api">
