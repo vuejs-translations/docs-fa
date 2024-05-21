@@ -99,7 +99,8 @@ Vue از سینتکس تمپلیت که برپایه HTML گسترش یافته 
 ```js
 const objectOfAttrs = {
   id: 'container',
-  class: 'wrapper'
+  class: 'wrapper',
+  style: 'background-color:green'
 }
 ```
 

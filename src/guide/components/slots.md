@@ -444,33 +444,37 @@ function MyComponent(slots) {
 اگر اسلات‌های نام گذاری شده را با اسلات‌های دارای اسکوپ default ترکیب کنید، نیاز هست که تگ `<template>` را به طور مشخص برای اسلات پیش فرض به کار ببرید. تلاش برای قرار دادن دایرکتیو `v-slot` به صورت مستقیم بر روی کامپوننت خطای کامپایلر را نتیجه خواهد داد. این کار برای جلوگیری از هرگونه ابهام درباره محدوده پراپ‌های اسلات پیش فرض است. برای مثال:
 
 ```vue-html
+<!-- <MyComponent> template -->
+<div>
+  <slot :message="hello"></slot>
+  <slot name="footer" />
+</div>
+```
+
+```vue-html
 <!-- این تمپلیت کامپایل نخواهد شد -->
-<template>
-  <MyComponent v-slot="{ message }">
+<MyComponent v-slot="{ message }">
+  <p>{{ message }}</p>
+  <template #footer>
+    <!-- message به اسلات پیش فرض تعلق دارد و اینجا قابل دسترس نیست -->
     <p>{{ message }}</p>
-    <template #footer>
-      <!-- message به اسلات پیش فرض تعلق دارد و اینجا قابل دسترس نیست -->
-      <p>{{ message }}</p>
-    </template>
-  </MyComponent>
-</template>
+  </template>
+</MyComponent>
 ```
 
 استفاده از تگ `<template>` به طور مشخص برای اسلات پیش فرض به روشن شدن اینکه پراپ `message` درون اسلات دیگر قابل دسترس نیست کمک می‌کند:
 
 ```vue-html
-<template>
-  <MyComponent>
-    <!-- از اسلات پیش فرض مشخص استفاده کنید -->
-    <template #default="{ message }">
-      <p>{{ message }}</p>
-    </template>
+<MyComponent>
+  <!-- از اسلات پیش فرض مشخص استفاده کنید -->
+  <template #default="{ message }">
+    <p>{{ message }}</p>
+  </template>
 
-    <template #footer>
-      <p>Here's some contact info</p>
-    </template>
-  </MyComponent>
-</template>
+  <template #footer>
+    <p>Here's some contact info</p>
+  </template>
+</MyComponent>
 ```
 
 ### مثال Fancy List {#fancy-list-example}

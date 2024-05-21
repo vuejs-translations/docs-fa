@@ -196,7 +196,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
 ```
 
-[نمونه در Codepen](https://codepen.io/vuejs-examples/pen/QWJwJLp)
+[نمونه در CodePen](https://codepen.io/vuejs-examples/pen/QWJwJLp)
 
 </div>
 
@@ -221,7 +221,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
 ```
 
-[نمونه در Codepen](https://codepen.io/vuejs-examples/pen/eYQpQEG)
+[نمونه در CodePen](https://codepen.io/vuejs-examples/pen/eYQpQEG)
 
 :::tip نکته
 بسیاری از نمونه‌های Composition API در سراسر راهنما از سینتکس `<script setup>` استفاده خواهند کرد که نیاز به ابزارهای بیلد دارد. اگر قصد استفاده از Composition API بدون مرحله بیلد گرفتن را دارید، استفاده از [ویژگی `setup()‎`](/api/composition-api-setup) را مشاهده کنید.
@@ -278,12 +278,12 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 <div class="options-api">
 
-[نمونه در Codepen](https://codepen.io/vuejs-examples/pen/VwVYVZO)
+[نمونه در CodePen](https://codepen.io/vuejs-examples/pen/VwVYVZO)
 
 </div>
 <div class="composition-api">
 
-[نمونه در Codepen](https://codepen.io/vuejs-examples/pen/MWzazEv)
+[نمونه در CodePen](https://codepen.io/vuejs-examples/pen/MWzazEv)
 
 </div>
 
@@ -323,7 +323,7 @@ import { createApp } from 'vue'
 </script>
 ```
 
-[نمونه در Codepen](https://codepen.io/vuejs-examples/pen/wvQKQyM)
+[نمونه در CodePen](https://codepen.io/vuejs-examples/pen/wvQKQyM)
 
 </div>
 
@@ -354,7 +354,7 @@ import { createApp } from 'vue'
 </script>
 ```
 
-[نمونه در Codepen](https://codepen.io/vuejs-examples/pen/YzRyRYM)
+[نمونه در CodePen](https://codepen.io/vuejs-examples/pen/YzRyRYM)
 
 </div>
 

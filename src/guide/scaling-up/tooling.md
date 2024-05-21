@@ -192,7 +192,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 - [VueUse Playground](https://play.vueuse.org)
 - [Vue + Vite در Repl.it](https://replit.com/@templates/VueJS-with-Vite)
-- [Vue در CodeSandbox](https://codesandbox.io/s/vue-3)
+- [Vue در CodeSandbox](https://codesandbox.io/p/devbox/github/codesandbox/sandbox-templates/tree/main/vue-vite)
 - [Vue در Codepen](https://codepen.io/pen/editor/vue)
 - [Vue در Components.studio](https://components.studio/create/vue3)
 - [Vue در WebComponents.dev](https://webcomponents.dev/create/cevue)

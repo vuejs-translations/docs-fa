@@ -15,13 +15,14 @@ aside: false
 - [Português / پرتغالی](https://pt.vuejs.org) [[مخزن](https://github.com/vuejs-translations/docs-pt)]
 - [বাংলা / بنگالی](https://bn.vuejs.org) [[مخزن](https://github.com/vuejs-translations/docs-bn)]
 - [Italiano / ایتالیایی](https://it.vuejs.org) [[مخزن](https://github.com/vuejs-translations/docs-it)]
-- [فارسی / Persian](https://fa.vuejs.org) [[source](https://github.com/vuejs-translations/docs-fa)]
-- [Русский / Russian](https://ru.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ru)]
+- [فارسی / Persian](https://fa.vuejs.org) [[مخزن](https://github.com/vuejs-translations/docs-fa)]
+- [Русский / Russian](https://ru.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-ru)]
 - [Čeština / چکی](https://cs.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-cs)]
+- [繁體中文 / چینی سنتی](https://zh-hk.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-zh-hk)]
 
 ## زبان‌های درحال پیشرفت {#work-in-progress-languages}
 
-- [العربية / Arabic](https://ar.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ar)]
+- [العربية / Arabic](https://ar.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-ar)]
 
 ## شروع یک ترجمه جدید {#starting-a-new-translation}
 

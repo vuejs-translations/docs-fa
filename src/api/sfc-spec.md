@@ -54,13 +54,11 @@ export default {
 
 - اسکریپت از قبل پردازش شده و به عنوان تابع کامپوننت `()setup` استفاده می شود، به این معنی که **برای هر نمونه (Instance) از کامپوننت** اجرا می شود. پیوندهای سطح بالا در `<script setup>` به طور خودکار در template قرار می گیرند. برای جزئیات بیشتر، [اسناد اختصاصی در `<script setup>`](/api/sfc-script-setup) را ببینید.
 
-
 ### `<style>` {#style}
 
 - یک فایل &lrm;`*.vue` می‌تواند حاوی چندین تگ `<style>` باشد.
 
 - یک تگ `<style>` می‌تواند دارای ویژگی‌های `scoped` یا `module` باشد (برای جزئیات بیشتر به [SFC Style Features](/api/sfc-css-features) مراجعه کنید) تا به کپسوله کردن استایل ها در کامپوننت فعلی کمک کند. چندین تگ `<style>` با حالت‌های کپسوله‌سازی متفاوت را می‌توان در یک کامپوننت یکسان ترکیب کرد.
-
 
 ### بلوک های سفارشی {#custom-blocks}
 
@@ -68,9 +66,7 @@ export default {
 
 - [استفاده از Gridsome با بلوک سفارشی: `<page-query>`](https://gridsome.org/docs/querying-data/)
 - [استفاده از vite-plugin-vue-gql با بلوک سفارشی: `<gql>`](https://github.com/wheatjs/vite-plugin-vue-gql)
-- [استفاده از vue-i18n با بلوک سفارشی: `<i18n>`](https://github.com/intlify/bundle-tools/tree/main/packages/vite-plugin-vue-i18n#i18n-custom-block)
-
-مدیریت بلوک های سفارشی به ابزارسازی بستگی دارد - اگر می خواهید ادغامی از بلوک های سفارشی خود را بسازید، برای اطلاعات بیشتر به [بخش ابزار ادغام بلوک های سفارشی کامپوننت های تک فایلی | SFC](/guide/scaling-up/tooling#sfc-custom-block-integrations) مراجعه کنید.
+- [استفاده از vue-i18n با بلوک سفارشی: `<i18n>`](https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n#i18n-custom-block)
 
 ## پیش‌بینی خودکار نام {#automatic-name-inference}
 
