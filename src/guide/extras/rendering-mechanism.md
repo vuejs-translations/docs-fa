@@ -178,7 +178,7 @@ div (block root)
   <div>
     <div v-if> <!-- if block -->
       ...
-    <div>
+    </div>
   </div>
 </div>
 ```

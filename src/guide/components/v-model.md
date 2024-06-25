@@ -20,6 +20,7 @@ function update() {
 
 <template>
   <div>Parent bound v-model is: {{ model }}</div>
+  <button @click="update">Increment</button>
 </template>
 ```
 
@@ -73,7 +74,7 @@ const emit = defineEmits(['update:modelValue'])
 </template>
 ```
 
-سپس `v-model="modelValue"‎` در کامپوننت والد کامپایل می‌شود به:
+سپس `v-model="foo"‎` در کامپوننت والد کامپایل می‌شود به:
 
 ```vue-html
 <!-- Parent.vue -->

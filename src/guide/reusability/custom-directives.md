@@ -111,23 +111,23 @@ app.directive('focus', {
 const myDirective = {
   // قبل از اتصال اتریبیوت‌های المنت 
   // ها صدا زده می‌شود event listener یا اعمال شدن 
-  created(el, binding, vnode, prevVnode) {
+  created(el, binding, vnode) {
     //  برای جزئیات بیشتر در مورد آرگومان‌ها به پایین مراجعه کنید
   },
   // شود صدا زده می‌شود DOM درست قبل از اینکه المنت وارد
-  beforeMount(el, binding, vnode, prevVnode) {},
+  beforeMount(el, binding, vnode) {},
   // هنگامی صدا زده می‌شود که تمام المنت‌های کامپوننت والد
   // قرار گرفته DOM به همراه تمامی فرزندانش درون
-  mounted(el, binding, vnode, prevVnode) {},
+  mounted(el, binding, vnode) {},
   // قبل از اینکه کامپوننت والد بروز رسانی شود صدا زده می‌شود
   beforeUpdate(el, binding, vnode, prevVnode) {},
   // بعد از اینکه کامپوننت والد و 
   // همه فرزاندش به روز رسانی شدند صدا زده می‌شود
   updated(el, binding, vnode, prevVnode) {},
   // شود صدا زده می‌شود Unmount قبل از اینکه کامپوننت والد
-  beforeUnmount(el, binding, vnode, prevVnode) {},
+  beforeUnmount(el, binding, vnode) {},
   // شده Unmount هنگامی صدا زده می‌شود که کامپوننت والد
-  unmounted(el, binding, vnode, prevVnode) {}
+  unmounted(el, binding, vnode) {}
 }
 ```
 
