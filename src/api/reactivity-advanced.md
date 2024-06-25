@@ -16,9 +16,9 @@
 
 - **جزئیات**
 
-برخلاف `ref`، مقدار درونی یک `shallowRef` همانطور که هست ذخیره و بازیابی می‌شود و عمیقا reactive نمی‌شود. فقط دسترسی مقدار «value» از آن reactive خواهد بود.
+  برخلاف `ref`، مقدار درونی یک `shallowRef` همانطور که هست ذخیره و بازیابی می‌شود و عمیقا reactive نمی‌شود. فقط دسترسی مقدار «value» از آن reactive خواهد بود.
 
-   ‍`shallowRef` معمولاً برای بهینه‌سازی عملکرد داده ساختار های بزرگ و یا ادغام با سیستم‌های مدیریت state خارجی، استفاده می‌شود.
+  `shallowRef` معمولاً برای بهینه‌سازی عملکرد داده ساختار های بزرگ و یا ادغام با سیستم‌های مدیریت state خارجی، استفاده می‌شود.
 
 - **مثال**
 
@@ -31,7 +31,6 @@
   // باعث بروز تغییر می شود
   state.value = { count: 2 }
   ```
-  تنها زمانی بروز تغییر اتفاق می افتد که reference مقدار `value` تغییر کرده باشد.
 
 - **این مطالب را هم ببینید**
   - [راهنما - کاهش هزینه‌ی بیش از حد واکنش‌پذیری برای ساختارهای بزرگِ غیرقابل تغییر](/guide/best-practices/performance#reduce-reactivity-overhead-for-large-immutable-structures)
@@ -40,7 +39,6 @@
 ## triggerRef {#triggerref}
 
 این تابع Effectهایی را که به یک [shallow ref](#shallowref) وابسه هستند، به صورت اجباری، اجرا می‌کند. از این تابع معمولا زمانی استفاده می‌شود که بر روی value داخلی یک `shallowRef` تغییرات عمیق (تغییراتی که reference را تغییر نمی‌دهند) انجام شده باشد.
-
 
 - **تایپ**
 
@@ -118,7 +116,7 @@
   }
   ```
 
-استفاده از آن در کامپوننت:
+  استفاده از آن در کامپوننت:
 
   ```vue
   <script setup>
@@ -133,7 +131,15 @@
 
   [در Playground امتحان کنید](https://play.vuejs.org/#eNplUkFugzAQ/MqKC1SiIekxIpEq9QVV1BMXCguhBdsyaxqE/PcuGAhNfYGd3Z0ZDwzeq1K7zqB39OI205UiaJGMOieiapTUBAOYFt/wUxqRYf6OBVgotGzA30X5Bt59tX4iMilaAsIbwelxMfCvWNfSD+Gw3++fEhFHTpLFuCBsVJ0ScgUQjw6Az+VatY5PiroHo3IeaeHANlkrh7Qg1NBL43cILUmlMAfqVSXK40QUOSYmHAZHZO0KVkIZgu65kTnWp8Qb+4kHEXfjaDXkhd7DTTmuNZ7MsGyzDYbz5CgSgbdppOBFqqT4l0eX1gZDYOm057heOBQYRl81coZVg9LQWGr+IlrchYKAdJp9h0C6KkvUT3A6u8V1dq4ASqRgZnVnWg04/QWYNyYzC2rD5Y3/hkDgz8fY/cOT1ZjqizMZzGY3rDPC12KGZYyd3J26M8ny1KKx7c3X25q1c1wrZN3L9LCMWs/+AmeG6xI=)
 
-## shallowReactive {#shallowreactive}
+  :::tip هشدار با احتیاط استفاده کنید
+  هنگام استفاده از customRef، باید در مورد مقدار بازگشتی getter آن محتاط باشیم، به ویژه زمانی که هر بار که getter اجرا می‌شود، تایپ داده آبجکت جدید تولید می‌کند. این امر بر رابطه بین کامپوننت‌های والد و فرزند تأثیر می‌گذارد، جایی که چنین customRef به عنوان یک prop منتقل شده است.
+
+  تابع render کامپوننت والد ممکن است توسط تغییرات در یک حالت reactive دیگر فعال شود. در طول رندر مجدد، مقدار customRef ما مجدداً ارزیابی می‌شود و یک تایپ داده آبجکت جدید را به عنوان prop به یک کامپوننت فرزند برمی‌گرداند. این prop با آخرین مقدار آن در کامپوننت فرزند مقایسه می‌شود و از آنجایی که متفاوت هستند، وابستگی‌های reactive مربوط به customRef در کامپوننت فرزند فعال می‌شوند. در همین حال، وابستگی‌های reactive در کامپوننت والد اجرا نمی‌شوند زیرا setter مربوط به customRef فراخوانی نشده و در نتیجه وابستگی‌های آن فعال نشده‌اند.
+
+  [آن را در Playground ببینید](https://play.vuejs.org/#eNqFVEtP3DAQ/itTS9Vm1ZCt1J6WBZUiDvTQIsoNcwiOkzU4tmU7+9Aq/71jO1mCWuhlN/PyfPP45kAujCk2HSdLsnLMCuPBcd+Zc6pEa7T1cADWOa/bW17nYMPPtvRsDT3UVrcww+DZ0flStybpKSkWQQqPU0IVVUwr58FYvdvDWXgpu6ek1pqSHL0fS0vJw/z0xbN1jUPHY/Ys87Zkzzl4K5qG2zmcnUN2oAqg4T6bQ/wENKNXNk+CxWKsSlmLTSk7XlhedYxnWclYDiK+MkQCoK4wnVtnIiBJuuEJNA2qPof7hzkEoc8DXgg9yzYTBBFgNr4xyY4FbaK2p6qfI0iqFgtgulOe27HyQRy69Dk1JXY9C03JIeQ6wg4xWvJCqFpnlNytOcyC2wzYulQNr0Ao+Mhw0KnTTEttl/CIaIJiMz8NGBHFtYetVrPwa58/IL48Zag4N0ssquNYLYBoW16J0vOkC3VQtVqk7cG9QcHz1kj0QAlgVYkNMFk6d0bJ1pbGYKUkmtD42HmvFfi94WhOEiXwjUnBnlEz9OLTJwy5qCo44D4O7en71SIFjI/F9VuG4jEy/GHQKq5hQrJAKOc4uNVighBF5/cygS0GgOMoK+HQb7+EWvLdMM7weVIJy5kXWi0Rj+xaNRhLKRp1IvB9hxYegA6WJ1xkUe9PcF4e9a+suA3YwYiC5MQ79KlFUzw5rZCZEUtoRWuE5PaXCXmxtuWIkpJSSr39EXXHQcWYNWfP/9A/uV3QUXJjueN2E1ZhtPnSIqGS+er3T77D76Ox1VUn0fsd4y3HfewCxuT2vVMVwp74RbTX8WQI1dy5qx12xI1Fpa1K5AreeEHCCN8q/QXul+LrSC3s4nh93jltkVPDIYt5KJkcIKStCReo4rVQ/CZI6dyEzToCCJu7hAtry/1QH/qXncQB400KJwqPxZHxEyona0xS/E3rt1m9Ld1rZl+uhaxecRtP3EjtgddCyimtXyj9H/Ii3eId7uOGTkyk/wOEbQ9h)
+:::
+
+## shallowReactive() {#shallowreactive}
 
 نسخه سطحی یا Shallow از  [`reactive`](./reactivity-core#reactive).
 

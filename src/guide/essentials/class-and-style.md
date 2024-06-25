@@ -189,7 +189,7 @@ data() {
 البته، ممکن است کمی طولانی شود اگر چندین کلاس شرطی داشته باشید. به همین دلیل امکان استفاده از سینتکس آبجکت درون سینتکس آرایه وجود دارد:
 
 ```vue-html
-<div :class="[{ activeClass: isActive }, errorClass]"></div>
+<div :class="[{ [activeClass]: isActive }, errorClass]"></div>
 ```
 
 ### با کامپوننت‌ها {#with-components}
