@@ -4,7 +4,7 @@ import SiteMap from './SiteMap.vue'
 // import NewsLetter from './NewsLetter.vue'
 import { load, data, base } from './sponsors'
 import SponsorsGroup from './SponsorsGroup.vue'
-import VueMasteryModal from './VueMasteryModal.vue'
+// import VueMasteryModal from './VueMasteryModal.vue'
 
 onMounted(load)
 </script>
@@ -25,6 +25,7 @@ onMounted(load)
       <a class="get-started" href="/guide/introduction.html">
         <svg
           class="icon"
+          style="margin-top: 4px;"
           xmlns="http://www.w3.org/2000/svg"
           width="10"
           height="10"
@@ -40,6 +41,7 @@ onMounted(load)
       <a class="security" href="https://v2.vuejs.org/eol/" target="_blank">
        Vue 2 دریافت به‌روزرسانی‌های امنیتی برای
         <svg
+          style="margin-top: 4px;"
           class="icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
