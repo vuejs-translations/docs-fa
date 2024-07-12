@@ -304,7 +304,7 @@
 - **تایپ**
 
   ```ts
-  function withModifiers(fn: Function, modifiers: string[]): Function
+  function withModifiers(fn: Function, modifiers: ModifierGuardsKeys[]): Function
   ```
 
 - **مثال**
