@@ -40,8 +40,9 @@ onMounted(load)
       <a class="setup" href="/guide/quick-start.html">نصب</a>
       <a class="security" href="https://v2.vuejs.org/eol/" target="_blank">
        Vue 2 دریافت به‌روزرسانی‌های امنیتی برای
+
         <svg
-          style="margin-top: 4px;"
+          style="margin-top: 4px;transform: rotate(0deg);"
           class="icon"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"

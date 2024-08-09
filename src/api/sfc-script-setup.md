@@ -443,10 +443,8 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 
 به علاوه، عبارتی که await می‌شود، به طور خودکار به حالتی تبدیل می‌شود که حالت فعلی اش را حفظ می‌کند.
 
-
 :::warning نکته
 `()async setup` باید همراه با [`Suspense`](/guide/built-ins/suspense.html) استفاده شود، که هنوز یک ویژگی آزمایشی است. ما قصد نهایی کردن مستندات را در یک ریلیز آینده خواهیم داشت - اما اگر کنجکاو هستید، می‌توانید با مشاهده گیت‌هاب [tests](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts) ببینید به چه صورت کار می‌کند.
-
 :::
 
 ## جنریک‌ها <sup class="vt-badge ts" /> {#generics}
@@ -476,6 +474,24 @@ defineProps<{
   list: U[]
 }>()
 </script>
+```
+
+برای استفاده از ارجاع به یک کامپوننت عمومی در یک `ref`، شما نیاز دارید از کتابخانه [`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers) استفاده کنید زیرا `InstanceType` کار نخواهد کرد.
+
+```vue
+<script
+  setup
+  lang="ts"
+>
+import componentWithoutGenerics from '../component-without-generics.vue';
+import genericComponent from '../generic-component.vue';
+
+import type { ComponentExposed } from 'vue-component-type-helpers';
+
+// Works for a component without generics
+ref<InstanceType<typeof componentWithoutGenerics>>();
+
+ref<ComponentExposed<typeof genericComponent>>();
 ```
 
 ## محدودیت‌ها {#restrictions}
