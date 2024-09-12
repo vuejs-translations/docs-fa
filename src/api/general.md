@@ -17,7 +17,7 @@
 ## nextTick() {#nexttick}
 
 یک ابزار است که برای انتظار به‌روزرسانی بعدی DOM به‌کار می‌رود.
- 
+
 - **تایپ**
 
   ```ts
@@ -26,8 +26,7 @@
 
 - **جزئیات**
 
-  وقتی در Vue حالت واکنشی(reactive state) را فعال می‌کنید، به‌روزرسانی‌های DOM به صورت همزمان اعمال نمی‌شوند. به جای اینکه Vue آن‌ها را در همان لحظه اعمال کند،بدون توجه به تعداد تغییراتی که در آن حالت ایجاد کرده‌اید،
-  آن‌ها را درون «صف انتظار» قرار می‌دهد تا اطمینان حاصل شود که هر مؤلفه فقط یک بار به‌روزرسانی می‌شود.
+  وقتی در Vue حالت واکنشی(reactive state) را فعال می‌کنید، به‌روزرسانی‌های DOM به صورت همزمان اعمال نمی‌شوند. به جای اینکه Vue آن‌ها را در همان لحظه اعمال کند،بدون توجه به تعداد تغییراتی که در آن حالت ایجاد کرده‌اید، آن‌ها را درون «صف انتظار» قرار می‌دهد تا اطمینان حاصل شود که هر مؤلفه فقط یک بار به‌روزرسانی می‌شود.
 
   می‌توانید `nextTick()` را فوراً پس از تغییر وضعیت صدا بزنید و منتظر بمانید تا به‌روزرسانی‌های DOM اعمال شود. این کار را می‌توان با استفاده از یک تابع فراخوانی یا یک Promise برگشتی ناهمگام انجام داد.
 
@@ -130,7 +129,9 @@
   type FooInstance = InstanceType<typeof Foo>
   ```
 
-  ### امضای تابع <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
+  ### امضای تابع {#function-signature}
+
+  - فقط در 3.3+ پشتیبانی می‌شود.
 
   `defineComponent()` همچنین یک نوع امضای جایگزین دارد که برای استفاده با Composition API و [توابع رندر یا JSX](/guide/extras/render-function.html) مناسب است.
 
@@ -176,7 +177,8 @@
     }
   )
   ```
-   در آینده، قصد داریم یک پلاگین Babel ارائه دهیم که به طور خودکار ویژگی‌های زمان اجرا (مانند  `defineProps` در فایل‌های SFC) را استخراج و درج کند، به طوری که تعریف ویژگی‌های زمان اجرا قابل حذف باشد.
+
+  در آینده، قصد داریم یک پلاگین Babel ارائه دهیم که به طور خودکار ویژگی‌های زمان اجرا (مانند  `defineProps` در فایل‌های SFC) را استخراج و درج کند، به طوری که تعریف ویژگی‌های زمان اجرا قابل حذف باشد.
 
   ### یادداشتی درباره ترمیم وب‌پک {#note-on-webpack-treeshaking}
 
@@ -187,6 +189,7 @@
   ```js
   export default /*#__PURE__*/ defineComponent(/* ... */)
   ```
+
   اگر از Vite استفاده می‌کنید، نیازی به این کار نیست؛ چرا که Rollup (بسته‌بندی تولیدی اصلی که Vite از آن استفاده می‌کند) هوشمندانه تشخیص می‌دهد که `defineComponent()` در واقع بدون اثر جانبی است و نیازی به نشانه‌گذاری دستی ندارد.
 
 - **مشاهده بیشتر**  [راهنما - استفاده از Vue با TypeScript](/guide/typescript/overview#general-usage-notes)
@@ -221,46 +224,3 @@
   ```
 
 - **مشاهده بیشتر** [راهنما - کامپوننت های ناهمگام](/guide/components/async)
-
-## defineCustomElement() {#definecustomelement}
-
-این تابع همان آرگومانی را که در [`defineComponent`](#definecomponent) استفاده می‌شود را قبول می‌کند، اما به جای آن، یک سازنده (constructor)  کلاس اصلی برای [المان سفارشی](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)  برمی‌گرداند.
-
-- **تایپ**
-
-  ```ts
-  function defineCustomElement(
-    component:
-      | (ComponentOptions & { styles?: string[] })
-      | ComponentOptions['setup']
-  ): {
-    new (props?: object): HTMLElement
-  }
-  ```
-
-  > تایپ ساده‌تر شده است تا خوانایی بیشتری داشته باشد.
-
-- **جزئیات**
-
-  همچنین، به جز گزینه‌های معمول کامپوننت، `defineCustomElement()` از یک گزینه ویژه به نام `styles` نیز پشتیبانی می‌کند. این گزینه باید شامل یک آرایه از رشته‌های CSS باشد که برای تزریق استایل‌ها به ریشه عنصر موردنظر استفاده می‌شود.
-
-  مقدار بازگشتی ، یک سازنده عنصر سفارشی است که می‌توان از طریق [`customElements.define()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define) ثبت نمود.
-
-- **مثال**
-
-  ```js
-  import { defineCustomElement } from 'vue'
-
-  const MyVueElement = defineCustomElement({
-    /* component گزینه های */
-  })
-
-  // المان شخصی سازی شده ثبت می شود.
-  customElements.define('my-vue-element', MyVueElement)
-  ```
-
-- **مشاهده بیشتر**
-
-  - [راهنما - ساخت المان شخصی سازی شده با  Vue](/guide/extras/web-components#building-custom-elements-with-vue)
-
-  - همچنین به یاد داشته باشید که `defineCustomElement()` وقتی با کامپوننت تک فایلی استفاده می شود نیاز به [تنظیمات ویژه](/guide/extras/web-components#sfc-as-custom-element) دارد.

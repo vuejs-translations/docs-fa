@@ -1,6 +1,6 @@
 # API واکنش پذیری: توابع کاربردی {#reactivity-api-utilities}
 
-## isRef() {#isref}
+## isRef()‎ {#isref}
 
 بررسی می‌کند که آیا یک مقدار، یک شی ref است یا خیر.
 
@@ -20,7 +20,7 @@
   }
   ```
 
-## unref() {#unref}
+## unref()‎ {#unref}
 
 اگر آرگومان یک ref باشد مقدار داخلی را برمی‌گرداند، در غیر این صورت خود آرگومان را برمی‌گرداند. این یک تابع ساده‌سازی شده برای `val = isRef(val) ? val.value : val` است. 
 
@@ -39,7 +39,7 @@
   }
   ```
 
-## toRef() {#toref}
+## toRef()‎ {#toref}
 
 می‌توان از آن برای نرمال‌سازی و تبدیل مقدارها، refها و getterها به ref استفاده کرد. (از ورژن ۳.۳ به بالا)
 
@@ -131,7 +131,9 @@
 
   هنگام استفاده از امضای پروپرتی شی، `toRef()` یک ref قابل استفاده برمی‌گرداند حتی اگر پروپرتی منبع در حال حاضر وجود نداشته باشد. این کار با پروپرتی‌های اختیاری را ممکن می‌سازد، که توسط [`toRefs`](#torefs) قابل دریافت نیستند.
 
-## toValue() <sup class="vt-badge" data-text="3.3+" /> {#tovalue}
+## toValue()‎ {#tovalue}
+
+- فقط در 3.3+ پشتیبانی می شود
 
 مقدارها، refها و getterها را به مقدار نرمال‌سازی می‌کند. این شبیه به [unref()](#unref) است، با این تفاوت که getterها را نیز نرمال‌سازی می‌کند. اگر آرگومان getter باشد، فراخوانی می‌شود و مقدار برگشتی آن برگردانده می‌شود.
 
@@ -168,7 +170,7 @@
   useFeature(() => 1)
   ```
 
-## toRefs() {#torefs}
+## toRefs()‎ {#torefs}
 
 یک شی واکنش‌پذیر را به یک شیء ساده تبدیل می‌کند که در آن هر پروپرتی از شیء به دست آمده یک ref است که به پروپرتی متناظر شی اصلی اشاره می‌کند. هر مرجع با استفاده از [`toRef()`](#toref) ایجاد می‌شود.
 
@@ -229,7 +231,7 @@
 
   `toRefs` فقط برای پروپرتی‌هایی که در زمان فراخوانی روی شی مبدأ قابل شمارش هستند، ref ایجاد می‌کند. برای ایجاد ref برای پروپرتی‌ای که ممکن است هنوز وجود نداشته باشد، به جای آن از [`toRef`](#toref) استفاده کنید.
 
-## isProxy() {#isproxy}
+## isProxy()‎ {#isproxy}
 
 بررسی می‌کند که آیا یک شی، proxyای است که توسط [`reactive()`](./reactivity-core#reactive), [`readonly()`](./reactivity-core#readonly), [`shallowReactive()`](./reactivity-advanced#shallowreactive) یا [`shallowReadonly()`](./reactivity-advanced#shallowreadonly) ساخته شده است یا خیر.
 
@@ -239,7 +241,7 @@
   function isProxy(value: any): boolean
   ```
 
-## isReactive() {#isreactive}
+## isReactive()‎ {#isreactive}
 
 بررسی می‌کند که آیا یک شی، proxyای است که توسط [`reactive()`](./reactivity-core#reactive) یا [`shallowReactive()`](./reactivity-advanced#shallowreactive) ساخته شده است یا خیر.
 
@@ -249,7 +251,7 @@
   function isReactive(value: unknown): boolean
   ```
 
-## isReadonly() {#isreadonly}
+## isReadonly()‎ {#isreadonly}
 
 بررسی می‌کند که آیا مقدار ارسال شده، یک شی “فقط خواندنی” است یا خیر. پروپرتی‌های یک شی فقط خواندنی می‌تواند تغییر کند، اما نمی‌توان آنها را مستقیماً از طریق شی ارسال شده انتساب داد.
 

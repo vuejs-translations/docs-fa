@@ -107,7 +107,9 @@
   - [Guide - Provide / Inject](/guide/components/provide-inject)
   - [Guide - Typing Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
-## hasInjectionContext() <sup class="vt-badge" data-text="3.3+" /> {#has-injection-context}
+## hasInjectionContext() {#has-injection-context}
+
+- Only supported in 3.3+
 
 این تابع وقتی [()inject](#inject) را بتوان بدون هشدار (warning) درباره فراخوانی در محل اشتباه فراخوانی کرد مقدار true برمی‌گرداند (برای مثال بیرون از تابع ()setup). این تابع برای استفاده توسط کتابخانه ها طراحی شده که می‌خواهند از تابع `()inject` به صورت داخلی بدون trigger کردن هشدار به کاربر استفاده کنند.
 

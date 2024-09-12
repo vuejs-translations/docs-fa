@@ -105,6 +105,8 @@ import Bar from './Bar.vue'
 
 یک SFC می‌تواند صراحتا با استناد به اسم فایلش به خودش رفرنس شود. برای مثال یک فایل با اسم `FooBar.vue` می‌تواند به صورت `</ FooBar>` در تمپلیت استفاده شود.
 
+توجه داشته باشید که اولویت کمتری نسبت به کامپوننت‌های ایمپورت شده دارد. اگر یک import با نام دارید که با نام استنباط شده کامپوننت در تضاد است، می توانید با نام مستعار import کنید:
+
 ```js
 import { FooBar as FooBarChild } from './components'
 ```
@@ -127,8 +129,8 @@ import * as Form from './form-components'
 
 ## Using Custom Directives (Directiveهای سفارشی سازی شده) {#using-custom-directives}
 
-Directiveهای سفارشی‌سازی‌شده‌ی گلوبال به صورت نرمال قابل استفاده هستند.
-دایرکتیو‌های سفارشی‌سازی‌شده‌ی سراسری به صورت نرمال قابل استفاده هستند. دایرکتیو‌های محلی نیازی ندارند که حتما در `<script setup>` رجسیتر شوند، اما برای نام گذاری باید از این اسکیما و طرح پیروی کنند `vNameOfDirective` :
+Directiveهای سفارشی‌سازی‌شده‌ی گلوبال به صورت نرمال قابل استفاده هستند. دایرکتیو‌های سفارشی‌سازی‌شده‌ی سراسری به صورت نرمال قابل استفاده هستند. دایرکتیو‌های محلی نیازی ندارند که حتما در `<script setup>` رجسیتر شوند، اما برای نام گذاری باید از این اسکیما و طرح پیروی کنند `vNameOfDirective` :
+
 ```vue
 <script setup>
 const vMyDirective = {
@@ -143,9 +145,6 @@ const vMyDirective = {
 ```
 
 اگر یک directive .را از جای دیگری ایمپورت می‌کنید، می‌توانید به نام دلخواه خود تغییرش دهید.
-
-اسکیما:
-
 
 ```vue
 <script setup>
@@ -170,14 +169,15 @@ const emit = defineEmits(['change'، 'delete'])
 
 - `defineProps` و `defineEmits` جزو **ماکرو‌های کامپایلر** هستند و فقط داخل `<script setup>` قابل استفاده هستند. نیازی به ایمپورت کردن آنها نیست، و هنگامی که `script setup` پردازش می‌شود، کامپایل می شوند.
 
-- `defineProps` همان مقداری که آپشن props دریافت می‌کرد را دریافت می‌کند، 
-- `defineProps` و `defineEmits`بر اساس دیتاهای ورودی تشخیص نوع داده مناسبی دارند .
+- `defineProps` همان مقادیری را می‌پذیرد که در آپشن `props` استفاده می‌شود، در حالی که `defineEmits` مقادیری مشابه با آپشن `emits` را می‌پذیرد.
 
-آپشن پاس داده شده به `defineProps` و `defineEmits` از تابع host، setup می‌شوند به خارج از اسکوپ ماژول.
+- `defineProps` و `defineEmits` بر اساس آپشن‌های پاس‌داده‌شده تایپ یابی صحیحی (type inference) ارائه می‌دهند.
+
+- آپشن‌های پاس‌داده‌شده به `defineProps` و `defineEmits` به اسکوپ ماژول برده می‌شوند (hoisted). بنابراین، این آپشن‌ها نمی‌توانند به متغیرهای محلی که درون محدوده setup تعریف شده‌اند ارجاع دهند؛ در غیر این صورت، با خطای کامپایل مواجه می‌شوید. اما می‌توانند به متغیرهای ایمپورت شده (imported bindings) ارجاع دهند، زیرا آن‌ها نیز در اسکوپ ماژول هستند.
 
 ### Type-only props/emit declarations<sup class="vt-badge ts" /> {#type-only-props-emit-declarations}
 
-پراپ‌ها و امیت‌ها همچنین می‌توانند با استفاده از pure-type syntax با پاس دادن یک literal type به `defineProps` یا `defineEmits` استفاده کرد: 
+پراپ‌ها و امیت‌ها همچنین می‌توانند با استفاده از pure-type syntax با پاس دادن یک literal type به `defineProps` یا `defineEmits` استفاده کرد:
 
 ```ts
 const props = defineProps<{
@@ -201,39 +201,77 @@ const emit = defineEmits<{
 
 - هنگام استفاده از type declaration، برای اطمینان از عملکرد درست هنگام اجرا معادل runtime declaration به صورت خودکار از روی static analysis ساخته می‌شود تا تعاریف تکراری را حذف کند.
 
-  - در حالت توسعه، کامپایلر تلاش می‌کند تا نوع داده‌ها را بر اساس اعتبارسنجی متناظر آن‌ها تشخیص دهد.
   - در حالت توسعه، کامپایلر تلاش می‌کند تا تایپ داده‌ها را بر اساس اعتبارسنجی متناظر آن‌ها تشخیص دهد. برای مثال `foo: String` از تایپ `foo: string` تشخیص داده می‌شود. به دلیل این که کامپایلر اطلاعی از فایل‌های خارجی ندارد اگر  به یک تایپ که ایمپورت شده (imported type) رفرنس داده شود، تایپی که در نظر گرفته می‌شود `foo: null` خواهد بود (معادل `any`).
-- در ورژن 3.2 و پایین‌تر، پارامترهایی از جنس generic برای `()defineProps` به literal type و یا یک رفرنس به اینترفیس محلی (local interface) محدود بود.
+  
+  - در ورژن 3.2 و پایین‌تر، پارامترهایی از جنس generic برای `()defineProps` به literal type و یا یک رفرنس به اینترفیس محلی (local interface) محدود بود.
 
   این محدودیت در ورژن 3.3 رفع شده است. آخرین ورژن از ویو از refenrencing imported و یک قسمتی از انواع پیچیده در type parameter position پشتیبانی می‌کند.
+
   اگرچه، به دلیل اینکه تبدیل نوع در هنگام اجرا هنوز AST-based می‌باشد، بعضی از انواع پیچیده نیازمند تحلیل نوع واقعی می‌باشند. برای مثال انواع شرطی (conditional types) پشتیبانی نمی‌شوند. می‌توانید از انواع شرطی برای نوع یک یک پراپ استفاده کنید، اما نه برای کل آبجکت پراپ‌ها.
 
-### مقادیر پیش‌فرض پراپ‌ها هنگام تعریف پراپ‌ها {#default-props-values-when-using-type-declaration}
+### Reactive Props Destructure <sup class="vt-badge" data-text="3.5+" /> {#reactive-props-destructure}
 
-یکی از نقاط منفی استفاده از `defineProps` این است که راهی برای مقدار دهی پیش‌فرض به پراپ‌ها ندارد. برای حل این مشکل از compiler macro `withDefaults` استفاده می‌کنیم:
+در Vue 3.5 و بالاتر، متغیرهایی که از مقدار بازگشتی `defineProps` استخراج می‌شوند، reactive هستند. کامپایلر Vue به‌صورت خودکار `props.‎` را به کد اضافه می‌کند زمانی که در همان بلاک `<script setup>` به متغیرهای استخراج‌شده از `defineProps` دسترسی پیدا می‌شود:
 
 ```ts
-export interface Props {
+const { foo } = defineProps(['foo'])
+
+watchEffect(() => {
+  // runs only once before 3.5
+  // re-runs when the "foo" prop changes in 3.5+
+  console.log(foo)
+})
+```
+
+کد بالا به معادل زیر کامپایل می‌شود:
+
+```js {5}
+const props = defineProps(['foo'])
+
+watchEffect(() => {
+  // `foo` transformed to `props.foo` by the compiler
+  console.log(props.foo)
+})
+```
+
+علاوه بر این، می‌توانید از سینتکس مقدار پیش‌فرض بومی جاوااسکریپت برای تعیین مقادیر پیش‌فرض پراپ‌ها استفاده کنید. این ویژگی به خصوص زمانی مفید است که از تعریف پراپ‌ها به‌صورت type-based استفاده می‌کنید:
+
+```ts
+interface Props {
   msg?: string
   labels?: string[]
 }
 
-const props = withDefaults(defineProps<Props>()، {
-  msg: 'hello'،
-  labels: () => ['one'، 'two']
+const { msg = 'hello', labels = ['one', 'two'] } = defineProps<Props>()
+```
+
+### مقادیر پیش‌فرض برای پراپس‌ها هنگام استفاده از تعریف تایپ <sup class="vt-badge ts" /> {#default-props-values-when-using-type-declaration}
+
+در نسخه 3.5 و بالاتر، می‌توان مقدار پیش‌فرض را به‌صورت طبیعی هنگام استفاده از استخراج پراپ‌های reactive تعیین کرد. اما در نسخه 3.4 و پایین‌تر، ویژگی استخراج پراپ‌های reactive به‌صورت پیش‌فرض فعال نیست. برای اعلام مقدار پیش‌فرض پراپ‌ها همراه با تعریف مبتنی بر تایپ (type-based)، ماکرو کامپایلر `withDefaults` مورد نیاز است:
+
+```ts
+interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  msg: 'hello',
+  labels: () => ['one', 'two']
 })
 ```
 
 نتیجه قطعه کد بالا معادل پراپ‌ها با مقدار پیش‌فرض در options API خواهد بود. علاوه بر این `withDefaults` برای مقادیر پیش‌فرض، نوع مقادیر را هم بررسی خواهد کرد و باعث می‌شود خروجی `props` پراپرتی‌هایی که مقدار پیش فرض دارند، اختیاری نباشند.
 
-:::info نکته
-توجه داشته باشید که مقادیر پیش‌فرض برای رفرنس تایپ‌های قابل تغییر (مانند آرایه‌ها یا آبجکت‌ها) باید در توابع پیچیده شوند تا از تغییر تصادفی و اثرات جانبی خارجی جلوگیری شود. این کار اطمینان می‌دهد که هر نمونه از کامپوننت، نسخه خاص خود از مقدار پیش‌فرض را دریافت می‌کند.
+:::info
+توجه داشته باشید که هنگام استفاده از `withDefaults`، مقدار پیش‌فرض برای تایپ‌های رفرنس داده شده قابل تغییر (مانند آرایه‌ها یا آبجکت‌ها) باید درون توابع قرار گیرند تا از تغییرات تصادفی و اثرات جانبی خارجی جلوگیری شود. این کار تضمین می‌کند که هر نمونه از کامپوننت، نسخه مخصوص به خود از مقدار پیش‌فرض را دریافت کند. این کار هنگام استفاده از مقادیر پیش‌فرض با استخراج (destructure) ضروری نیست.
 :::
 
-## ()defineModel <sup class="vt-badge" data-text="3.4+" /> {#definemodel}
+## defineModel()‎ {#definemodel}
 
-از این macro برای تعریف کردن پراپی استفاده می‌شود که با استفاده از v-model در کامپوننت والد عمل two-way binding برای آن‌ها اجرا شود.
-مثال‌های برای چگونگی استفاده کردن در [Component `v-model`](/guide/components/v-model) در دسترسی است.
+- پشتیبانی شده در ورژن 3.3+.
+
+از این macro برای تعریف کردن پراپی استفاده می‌شود که با استفاده از v-model در کامپوننت والد عمل two-way binding برای آن‌ها اجرا شود. مثال‌های برای چگونگی استفاده کردن در [Component `v-model`](/guide/components/v-model) در دسترسی است.
 
 پشت پرده، این macro یک model prop و یک ایونت متناسب با آپدیت شدن آن می‌سازد. اگر آرگومان اول یک رشته باشد، از آن برای استفاده از نام prop استفاده می‌شود؛ در غیر این صورت نام prop به طور پیش فرض به `"modelValue"` تغییر می‌کند.
 
@@ -249,7 +287,6 @@ model.value = 'hello'
 // declares "count" prop، consumed by parent via v-model:count
 const count = defineModel('count')
 // OR: declares "count" prop with options
-// OR: declares "count" prop with options
 const count = defineModel('count'، { type: Number، default: 0 })
 
 function inc() {
@@ -259,7 +296,6 @@ function inc() {
 ```
 
 :::warning هشدار
-
 اگر مقدار پیش‌فرض برای پراپ `defineModel` تعریف شده باشد و مقداری از کامپوننت والد برای آن فراهم نشده باشد، می‌تواند باعث ناهماهنگی بین کامپوننت والد و فرزند شود. در مثال پایین، `myRef` والد تعریف نشده است، ولی در کامپوننت فرزند `model` برابر با 1 است:
 
 ```js
@@ -343,9 +379,12 @@ defineExpose({
 
 وقتی توسط template refsها به یک کامپوننت دسترسی داریم، مقدار برگردانده شده بصورت `{ a: number، b: number }` خواهد بود.(نیازی به استفاده از value. نیست)
 
-## ()defineOptions <sup class="vt-badge" data-text="3.3+" /> {#defineoptions}
+## ()defineOptions {#defineoptions}
+
+- پشتیبانی شده در ورژن 3.3+.
 
 از این macro برای تعریف مستقیم پراپرتی‌های کامپوننت، داخل `<script setup>` بدون نیاز به استفاده از یک بلاک `<script>` جدا استفاده می‌شود:
+
 ```vue
 <script setup>
 defineOptions({
@@ -357,20 +396,17 @@ defineOptions({
 </script>
 ```
 
-- پشتیبانی شده در ورژن 3.3+.
 - این یک ماکرو است. ویژیگی‌های تعریف شده hoist می‌شوند و در `<script setup>` قابل دسترسی نیستند.
 
-## ()defineSlots<sup class="vt-badge ts"/> {#defineslots}
+## defineSlots()<sup class="vt-badge ts"/> {#defineslots}
+
+- پشتیبانی شده در ورژن 3.3+.
 
 از این macro برای فراهم کردن نشانع های تایپ به IDE و چک کردن نوع داده ها استفاده می‌شود.
 
-
-`defineSlots` فقط تایپ پارامتر می‌پذیرد و هیچ runtime arguments نمی‌پذیرد. تایپ پارامتر باید یک type literal باشد به طوری که کلید آن اسم اسلات، و مقدار آن تابع آن اسلات می باشد.
- آرگومان اول تابع آن پراپی می‌باشد که اسلات انتظار دارد آن را دریافت کند، و نوع آن برای استفاده در تمپلیت اسلات استفاده می‌شود.
- نوع خروجی در حال حاضر نادیده گرفته می‌شود (`any`)، اما در آینده ممکن است برای بررسی محتوای اسلات ها تغییراتی بدهیم.
+`defineSlots` فقط تایپ پارامتر می‌پذیرد و هیچ runtime arguments نمی‌پذیرد. تایپ پارامتر باید یک type literal باشد به طوری که کلید آن اسم اسلات، و مقدار آن تابع آن اسلات می باشد.  آرگومان اول تابع آن پراپی می‌باشد که اسلات انتظار دارد آن را دریافت کند، و نوع آن برای استفاده در تمپلیت اسلات استفاده می‌شود. نوع خروجی در حال حاضر نادیده گرفته می‌شود (`any`)، اما در آینده ممکن است برای بررسی محتوای اسلات ها تغییراتی بدهیم.
 
 همچنین مقدار `slots` را برمی‌گرداند، که معادل آبجکت `slots` می باشد که در setup context یا توسط `()useSlots` به آن دسترسی داریم.
-
 
 ```vue
 <script setup lang="ts">
@@ -380,11 +416,7 @@ const slots = defineSlots<{
 </script>
 ```
 
-- پشتیبانی شده در ورژن 3.3+.
-
 ## `useSlots()` و `useAttrs()` {#useslots-useattrs}
-
-Usage of `slots` and `attrs` inside `<script setup>` should be relatively rare، since you can access them directly as `$slots` and `$attrs` in the template. In the rare case where you do need them، use the `useSlots` and `useAttrs` helpers respectively:
 
 از آنجایی که در `<script setup>` مستقیما می‌توان از `$slots` و `$attrs` استفاده کرد، استفاده از `slots` و `attrs` به ندرت پیش خواهد آمد. در صورتی که نیاز به استفاده از آنها داشتید، به صورت زیر از کمکی‌های `useSlots` و `useAttrs` استفاده کنید:
 

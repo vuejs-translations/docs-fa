@@ -101,7 +101,13 @@
 
   </div>
 
-- **همچنین ببینید** [Fallthrough Attributes](/guide/components/attrs)
+- **همچنین ببینید**
+
+  - [اتریبیوت‌های fallthrough](/guide/components/attrs)
+  <div class="composition-api">
+
+  - [استفاده از `inheritAttrs` در `‎<script>‎`](/api/sfc-script-setup.html#usage-alongside-normal-script)
+  </div>
 
 ## کامپوننت‌ها {#components}
 

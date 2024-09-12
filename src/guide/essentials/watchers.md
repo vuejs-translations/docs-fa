@@ -138,8 +138,8 @@ watch([x, () => y.value], ([newX, newY]) => {
 
 ```js
 const obj = reactive({ count: 0 })
-// پاس می‌دهیم watch() را به number کار نمی‌کند زیرا داریم یک
 
+// پاس می‌دهیم watch() را به number کار نمی‌کند زیرا داریم یک
 watch(obj.count, (count) => {
   console.log(`Count is: ${count}`)
 })
@@ -149,7 +149,6 @@ watch(obj.count, (count) => {
 
 ```js
 // instead, use a getter:
-
 watch(
   () => obj.count,
   (count) => {
@@ -225,6 +224,8 @@ watch(
 
 </div>
 
+در Vue 3.5+، آپشن `deep` می‌تواند عددی باشد که حداکثر عمق پیمایش را نشان می‌دهد - یعنی Vue چند سطح باید از ویژگی‌های تودرتوی یک آبجکت عبور کند.
+
 :::warning احتیاط کنید
 نظارت عمیق نیازمند بررسی تمام ویژگی‌های تودرتو در آبجکت مشاهده شده است و ممکن است زمان‌بر باشد، به ویژه زمانی که بر روی ساختارهای داده بزرگ استفاده می‌شود. از آن تنها زمانی استفاده کنید که واقعاً ضروری باشد و مراقب پیامدهای عملکردی آن باشید.
 :::
@@ -273,7 +274,9 @@ watch(
 
 </div>
 
-## Once Watchers <sup class="vt-badge" data-text="3.4+" /> {#once-watchers}
+## Once Watchers {#once-watchers}
+
+- Only supported in 3.4+
 
 هر زمانی که منبع داده ناظر تغییر کند ناظر کالبک خود را فراخوانی می‌کند. اگر می‌خواهید کالبک ناظر فقط یک بار در زمان تغییر داده صدا زده شود، از آپشن `once: true` استفاده کنید.
 
@@ -362,6 +365,128 @@ watchEffect(async () => {
 - `watchEffect` از سوی دیگر، ردیابی وابستگی و اجرای اثر جانبی را در یک مرحله ترکیب می‌کند. و به طور خودکار هر پراپرتی را که کد شما به آن دسترسی دارد را در حالی که به طور همزمان اجرا می‌شود، ردیابی می‌کند. به عبارت ساده‌تر، وقتی از watchEffect استفاده می‌کنید، به تمام داده ها یا ویژگی‌هایی که کد شما در داخل بلوک کد خود با آنها تعامل دارد توجه می‌کند. این روش به کدنویسی بهتر و ساده‌تر منجر می‌شود، اما وابستگی‌های آن کمتر مشخص اند.
 
 </div>
+
+## پاکسازی اثرات جانبی {#side-effect-cleanup}
+
+گاهی اوقات ممکن است اثرات جانبی داشته باشیم، به عنوان مثال. درخواست‌های ناهمزمان، در یک ناظر:
+
+<div class="composition-api">
+
+```js
+watch(id, (newId) => {
+  fetch(`/api/${newId}`).then(() => {
+    // callback logic
+  })
+})
+```
+
+</div>
+<div class="options-api">
+
+```js
+export default {
+  watch: {
+    id(newId) {
+      fetch(`/api/${newId}`).then(() => {
+        // callback logic
+      })
+    }
+  }
+}
+```
+
+</div>
+
+اما اگر `id` قبل از تکمیل درخواست تغییر کند چه؟ هنگامی که درخواست قبلی تکمیل شد، باز هم پاسخ تماس را با یک مقدار آیدی که قبلاً فرستاده شده است ارسال می کند. در حالت ایده‌آل، می‌خواهیم زمانی که `id` به یک مقدار جدید تغییر می‌کند، بتوانیم درخواست قدیمی را لغو کنیم.
+
+ما می‌توانیم از [`onWatcherCleanup()‎`](/api/reactivity-core#onwatchercleanup) <sup class="vt-badge" data-text="3.5+" /> API برای ثبت یک تابع پاکسازی استفاده کنیم که وقتی ناظر نامعتبر شد و در شرف اجرای مجدد است فراخوانی می‌شود:
+
+<div class="composition-api">
+
+```js {10-13}
+import { watch, onWatcherCleanup } from 'vue'
+
+watch(id, (newId) => {
+  const controller = new AbortController()
+
+  fetch(`/api/${newId}`, { signal: controller.signal }).then(() => {
+    // callback logic
+  })
+
+  onWatcherCleanup(() => {
+    // abort stale request
+    controller.abort()
+  })
+})
+```
+
+</div>
+<div class="options-api">
+
+```js {12-15}
+import { onWatcherCleanup } from 'vue'
+
+export default {
+  watch: {
+    id(newId) {
+      const controller = new AbortController()
+
+      fetch(`/api/${newId}`, { signal: controller.signal }).then(() => {
+        // callback logic
+      })
+
+      onWatcherCleanup(() => {
+        // abort stale request
+        controller.abort()
+      })
+    }
+  }
+}
+```
+
+</div>
+
+توجه داشته باشید که `onWatcherCleanup` فقط در Vue 3.5+ پشتیبانی می‌شود و باید در حین اجرای همزمان یک تابع افکت `watchEffect` یا تابع callback برای `watch` فراخوانی شود: نمی‌توانید آن را پس از یک عبارت `await` در یک تابع async فراخوانی کنید.
+
+از طرف دیگر، یک تابع `onCleanup` نیز به عنوان آرگومان سوم به تابع کالبک watch <span class="composition-api">و به عنوان اولین آرگومان به تابع `watchEffect`</span> ارسال می شود:
+
+<div class="composition-api">
+
+```js
+watch(id, (newId, oldId, onCleanup) => {
+  // ...
+  onCleanup(() => {
+    // cleanup logic
+  })
+})
+
+watchEffect((onCleanup) => {
+  // ...
+  onCleanup(() => {
+    // cleanup logic
+  })
+})
+```
+
+</div>
+<div class="options-api">
+
+```js
+export default {
+  watch: {
+    id(newId, oldId, onCleanup) {
+      // ...
+      onCleanup(() => {
+        // cleanup logic
+      })
+    }
+  }
+}
+```
+
+</div>
+
+این در نسخه های قبل از 3.5 کار می کند. علاوه بر این، `onCleanup` که از طریق آرگومان تابع ارسال می‌شود به نمونه تماشاگر محدود می‌شود، بنابراین تحت محدودیت همزمان `onWatcherCleanup` قرار نمی‌گیرد.
 
 ## زمانبندی اجرای callback ها {#callback-flush-timing}
 

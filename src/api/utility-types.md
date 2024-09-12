@@ -34,15 +34,15 @@
 
 ## MaybeRef\<T> {#mayberef}
 
-نام مستعار برای `T | Ref<T>‎`. مفید برای حاشیه نویسی آرگومان‌های [Composables](/guide/reusability/composables.html).
-
 - فقط در 3.3+ پشتیبانی می‌شود.
+
+نام مستعار برای `T | Ref<T>‎`. مفید برای حاشیه نویسی آرگومان‌های [Composables](/guide/reusability/composables.html).
 
 ## MaybeRefOrGetter\<T> {#maybereforgetter}
 
-نام مستعار برای `T | Ref<T> | (() => T)‎`. مفید برای حاشیه نویسی آرگومان‌های [Composables](/guide/reusability/composables.html).
-
 - فقط در 3.3+ پشتیبانی می‌شود.
+
+نام مستعار برای `T | Ref<T> | (() => T)‎`. مفید برای حاشیه نویسی آرگومان‌های [Composables](/guide/reusability/composables.html).
 
 ## ExtractPropTypes\<T> {#extractproptypes}
 
@@ -77,9 +77,9 @@
 
 ## ExtractPublicPropTypes\<T> {#extractpublicproptypes}
 
-تایپ‌های پراپ را از یک آبجکت آپشن‌های پراپ‌های ران‌تایم را استخراج کنید. تایپ‌های استخراج شده در معرض عموم قرار دارند - یعنی پراپ‌هایی که والد مجاز به عبور از آنها است.
+- فقط در 3.3+ پشتیبانی می‌شود.
 
-- فقط در 3.3+ پشتیبانی می شود.
+تایپ‌های پراپ را از یک آبجکت آپشن‌های پراپ‌های ران‌تایم را استخراج کنید. تایپ‌های استخراج شده در معرض عموم قرار دارند - یعنی پراپ‌هایی که والد مجاز به عبور از آنها است.
 
 - **مثال**
 

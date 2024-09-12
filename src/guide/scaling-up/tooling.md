@@ -43,7 +43,11 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
   <VTCodeGroupTab label="yarn">
   
   ```sh
+  # For Yarn Modern (v2+)
   $ yarn create vue@latest
+  
+  # For Yarn ^v4.11
+  $ yarn dlx create-vue@latest
   ```
 
   </VTCodeGroupTab>
@@ -104,16 +108,13 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ## Browser Devtools {#browser-devtools}
 
-<VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Free Vue.js Devtools Lesson"/>
-
 افزونه devtools در Vue به شما اجازه می‌دهد درخت کامپوننت‌های یک برنامه را کاوش کنید، وضعیت کامپوننت‌‌ها را بررسی کنید، رویدادهای state management را ردیابی کنید و عملکرد برنامه را پروفایل کنید.
 
-![devtools screenshot](https://raw.githubusercontent.com/vuejs/devtools/main/media/screenshot-shadow.png)
+![devtools screenshot](./images/devtools.png)
 
 - [مستندات](https://devtools.vuejs.org/)
 - [افزونه Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-- [افزونه Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-- [افزونه Edge](https://microsoftedge.microsoft.com/addons/detail/vuejs-devtools/olofadcdnkkjdfgjcmjaadnlehnnihnl)
+- [پلاگین Vite](https://devtools.vuejs.org/guide/vite-plugin)
 - [Standalone Electron app](https://devtools.vuejs.org/guide/installation.html#standalone)
 
 ## TypeScript {#typescript}

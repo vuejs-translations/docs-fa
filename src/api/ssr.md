@@ -212,11 +212,31 @@ console.log(ctx.teleports) // { '#teleported': 'teleported content' }
 <script setup>
 import { useSSRContext } from 'vue'
 
-// make sure to only call it during SSR
+// فراخوانی کنید SSR مطمئن شوید که این تابع را فقط در زمان
 // https://vitejs.dev/guide/ssr.html#conditional-logic
 if (import.meta.env.SSR) {
   const ctx = useSSRContext()
-  // ...attach properties to the context
+  // ...خواص مورد نیاز را به کانتکست اضافه کنید
 }
 </script>
 ```
+
+## data-allow-mismatch <sup class="vt-badge" data-text="3.5+" /> {#data-allow-mismatch}
+
+یک اتریبیوت خاص که می‌تواند برای جلوگیری از هشدارهای [hydration mismatch](/guide/scaling-up/ssr#hydration-mismatch) استفاده شود.
+
+- **مثال**
+
+  ```html
+  <div data-allow-mismatch="text">{{ data.toLocaleString() }}</div>
+  ```
+
+  مقدار این اتریبیوت می‌تواند عدم تطابق مجاز را به یک تایپ خاص محدود کند. مقادیر مجاز عبارتند از:
+
+  - `text`
+  - `children` (فقط عدم تطابق برای فرزندان مستقیم مجاز است)
+  - `class`
+  - `style`
+  - `attribute`
+
+  اگر هیچ مقداری ارائه نشود، تمام انواع عدم تطابق‌ها مجاز خواهند بود.

@@ -112,7 +112,7 @@
   - [راهنما - پراپرتی‌‌های Computed](/guide/essentials/computed)
   - [راهنما - دیباگ کردن Computed ](/guide/extras/reactivity-in-depth#computed-debugging)
   - [راهنما - Typing `computed()‎`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
-  - [راهنما - کارایی - Computed Stability](/guide/best-practices/performance#computed-stability) <sup class="vt-badge" data-text="3.4+" />
+  - [راهنما - کارایی - Computed Stability](/guide/best-practices/performance#computed-stability)
 
 ## reactive()‎ {#reactive}
 
@@ -238,7 +238,7 @@
   function watchEffect(
     effect: (onCleanup: OnCleanup) => void,
     options?: WatchEffectOptions
-  ): StopHandle
+  ): WatchHandle
 
   type OnCleanup = (cleanupFn: () => void) => void
 
@@ -248,7 +248,12 @@
     onTrigger?: (event: DebuggerEvent) => void
   }
 
-  type StopHandle = () => void
+  interface WatchHandle {
+    (): void // callable, same as `stop`
+    pause: () => void
+    resume: () => void
+    stop: () => void
+  }
   ```
 
 - **جزئیات**
@@ -295,6 +300,47 @@
   stop()
   ```
 
+  مکث / از سرگیری ناظر:  <sup class="vt-badge" data-text="3.5+" />
+
+  ```js
+  const { stop, pause, resume } = watchEffect(() => {})
+
+  // temporarily pause the watcher
+  pause()
+
+  // resume later
+  resume()
+
+  // stop
+  stop()
+  ```
+
+  پاکسازی اثرات جانبی:
+
+  ```js
+  watchEffect(async (onCleanup) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` will be called if `id` changes, cancelling
+    // the previous request if it hasn't completed yet
+    onCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
+  پاکسازی اثرات جانبی در 3.5+:
+
+  ```js
+  import { onWatcherCleanup } from 'vue'
+
+  watchEffect(async () => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` will be called if `id` changes, cancelling
+    // the previous request if it hasn't completed yet
+    onWatcherCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
   آپشن‌ها:
 
   ```js
@@ -333,14 +379,14 @@
     source: WatchSource<T>,
     callback: WatchCallback<T>,
     options?: WatchOptions
-  ): StopHandle
+  ): WatchHandle
 
   // watching multiple sources
   function watch<T>(
     sources: WatchSource<T>[],
     callback: WatchCallback<T[]>,
     options?: WatchOptions
-  ): StopHandle
+  ): WatchHandle
 
   type WatchCallback<T> = (
     value: T,
@@ -357,11 +403,18 @@
 
   interface WatchOptions extends WatchEffectOptions {
     immediate?: boolean // default: false
-    deep?: boolean // default: false
+    deep?: boolean | number // default: false
     flush?: 'pre' | 'post' | 'sync' // default: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
     once?: boolean // default: false (3.4+)
+  }
+
+  interface WatchHandle {
+    (): void // callable, same as `stop`
+    pause: () => void
+    resume: () => void
+    stop: () => void
   }
   ```
 
@@ -385,10 +438,10 @@
   سومین آرگومان اختیاری یک options object است که گزینه‌های زیر را پشتیبانی می‌کند:
 
   - **`immediate`**: ‌کال‌بک (callback) را درست در زمان ایجاد ناظر به‌کار می‌اندازد. در اولین فراخوانی مقدار قدیمی `undefined` خواهد بود.
-  - **`deep`**: اگر منبع، یک آبجکت باشد باالاجبار منبع را به شکل عمیق پیمایش می‌کند تا callback در تغییرات عمیق منبع نیز اجرا شود. ببینید [ناظران عمیق](/guide/essentials/watchers#deep-watchers).
+  - **`deep`**: اگر منبع، یک آبجکت باشد باالاجبار منبع را به شکل عمیق پیمایش می‌کند تا callback در تغییرات عمیق منبع نیز اجرا شود. در 3.5+، همچنین می تواند عددی باشد که حداکثر عمق پیمایش را نشان می دهد. [ناظران عمیق](/guide/essentials/watchers#deep-watchers) را ببینید.
   - **`flush`**: زمانبندی اجرای callback را تنظیم می‌کند. ببینید [زمانبندی اجرای Callback](/guide/essentials/watchers#callback-flush-timing) و [`watchEffect()‎`](/api/reactivity-core#watcheffect).
   - **`onTrack / onTrigger`**: وابستگی‌های ناظر را دیباگ می‌کند. ببینید [دیباگ‌ کردن ناظر](/guide/extras/reactivity-in-depth#watcher-debugging).
-  - **`once`**: تنها یک بار کالبک را اجرا کند. ناظر پس از اولین اجرای کالبک به طور خودکار متوقف می‌شود. <sup class="vt-badge" data-text="3.4+" />
+  - **`once`**: (+3.4) تنها یک بار کالبک را اجرا کند. ناظر پس از اولین اجرای کالبک به طور خودکار متوقف می‌شود.
 
   ‌`watch()‎`در مقایسه با [`watchEffect()‎`](#watcheffect) به ما اجازه می‌دهد که:
 
@@ -472,6 +525,21 @@
   stop()
   ```
 
+  مکث / از سرگیری ناظر: <sup class="vt-badge" data-text="3.5+" />
+
+  ```js
+  const { stop, pause, resume } = watchEffect(() => {})
+
+  // temporarily pause the watcher
+  pause()
+
+  // resume later
+  resume()
+
+  // stop
+  stop()
+  ```
+
   پاکسازِ عوارض جانبی (Side effect cleanup):
 
   ```js
@@ -484,7 +552,45 @@
   })
   ```
 
+  پاکسازی اثرات جانبی در 3.5+:
+
+  ```js
+  import { onWatcherCleanup } from 'vue'
+
+  watch(id, async (newId) => {
+    const { response, cancel } = doAsyncWork(newId)
+    onWatcherCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
 - **همچنین ببینید**
 
   - [راهنما - ناظران](/guide/essentials/watchers)
   - [راهنما - دیباگ کردن ناظران](/guide/extras/reactivity-in-depth#watcher-debugging)
+
+## onWatcherCleanup()‎ <sup class="vt-badge" data-text="3.5+" /> {#onwatchercleanup}
+
+یک تابع پاکسازی (cleanup function) را ثبت کنید که زمانی که watcher فعلی در آستانه اجرای مجدد است، اجرا شود. این تابع فقط در حین اجرای هم‌زمان یک `watchEffect` یا تابع بازگشتی (callback) برای watch قابل فراخوانی است (یعنی نمی‌توان آن را بعد از یک عبارت `await` در یک تابع غیرهم‌زمان فراخوانی کرد).
+
+- **تایپ**
+
+  ```ts
+  function onWatcherCleanup(
+    cleanupFn: () => void,
+    failSilently?: boolean
+  ): void
+  ```
+
+- **مثال**
+
+  ```ts
+  import { watch, onWatcherCleanup } from 'vue'
+
+  watch(id, (newId) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` will be called if `id` changes, cancelling
+    // the previous request if it hasn't completed yet
+    onWatcherCleanup(cancel)
+  })
+  ```

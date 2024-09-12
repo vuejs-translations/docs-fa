@@ -108,6 +108,105 @@ const AsyncComp = defineAsyncComponent({
 
 اگر یک کامپوننت خطا ارائه شود، زمانی نمایش داده می‌شود که Promise برگردانده شده توسط تابع بارگذار رد شود. همچنین می‌توانید یک تایم‌اوت را مشخص کنید تا کامپوننت خطا، زمانی که درخواست خیلی طول می‌کشد نمایش داده شود.
 
+## هایدریشن تنبل (lazy) <sup class="vt-badge" data-text="3.5+" /> {#lazy-hydration}
+
+>این بخش فقط زمانی کاربرد دارد که از [رندرینگ سمت سرور](/guide/scaling-up/ssr) استفاده می‌کنید.
+
+در Vue 3.5+، کامپوننت‌های ناهمگام می‌توانند زمان هیدراته شدن خود را با ارائه یک استراتژی هایدریشن کنترل کنند.
+
+- Vue چندین استراتژی هایدریشن داخلی ارائه می‌دهد. این استراتژی‌های داخلی باید به صورت جداگانه ایمپورت شوند تا در صورت عدم استفاده، از درخت پروژه حذف شوند (tree-shaken).
+
+- طراحی این قابلیت عمداً در سطح پایین انجام شده تا انعطاف‌پذیری بیشتری داشته باشد. ممکن است در آینده سینتکس راحت‌تری برای این قابلیت در هسته یا راه‌حل‌های سطح بالاتر (مثل Nuxt) اضافه شود.
+
+### هایدرشن در زمان بیکار (Idle)
+
+هایدرشن با استفاده از `requestIdleCallback`. (یعنی وقتی کاربر هیچ فعالیتی انجام نمی‌دهد و پردازش‌های ضروری دیگری در مرورگر وجود ندارد)
+
+```js
+import { defineAsyncComponent, hydrateOnIdle } from 'vue'
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: hydrateOnIdle(/* optionally pass a max timeout */)
+})
+```
+
+### هایدریشن در زمان دیده شدن
+
+هایدریشن زمانی که عنصر(ها) از طریق `IntersectionObserver` قابل مشاهده شوند.
+
+```js
+import { defineAsyncComponent, hydrateOnVisible } from 'vue'
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: hydrateOnVisible()
+})
+```
+
+می‌توانید به‌صورت اختیاری یک آبجکت تنظیمات برای مشاهده‌گر ارسال کنید:
+
+```js
+hydrateOnVisible({ rootMargin: '100px' })
+```
+
+### هایدریشن بر اساس Media Query
+
+هایدریشن زمانی که کوئری مشخص شده منطبق باشد.
+
+```js
+import { defineAsyncComponent, hydrateOnMediaQuery } from 'vue'
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: hydrateOnMediaQuery('(max-width:500px)')
+})
+```
+
+### هایدریشن بر اساس تعامل
+
+هایدریشن زمانی که رویداد(های) مشخص شده بر روی عنصر(های) کامپوننت اتفاق بیفتد. رویدادی که هایدریشن را تحریک کرده است، پس از تکمیل هایدریشن نیز دوباره پخش خواهد شد.
+
+```js
+import { defineAsyncComponent, hydrateOnInteraction } from 'vue'
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: hydrateOnInteraction('click')
+})
+```
+
+همچنین می‌تواند یک لیست از چندین تایپ رویداد باشد:
+
+```js
+hydrateOnInteraction(['wheel', 'mouseover'])
+```
+
+### استراتژی سفارشی
+
+```ts
+import { defineAsyncComponent, type HydrationStrategy } from 'vue'
+
+const myStrategy: HydrationStrategy = (hydrate, forEachElement) => {
+  // forEachElement is a helper to iterate through all the root elememts
+  // in the component's non-hydrated DOM, since the root can be a fragment
+  // instead of a single element
+  forEachElement(el => {
+    // ...
+  })
+  // call `hydrate` when ready
+  hydrate()
+  return () => {
+    // return a teardown function if needed
+  }
+}
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: myStrategy
+})
+```
+
 ## کاربرد Suspence در ترکیب با کامپوننت‌های ناهمگام {#using-with-suspense}
 
 کامپوننت‌های ناهمگام می‌توانند همراه با کامپوننت داخلی `<Suspense>` استفاده شوند. تعامل بین `<Suspense>` و کامپوننت‌های ناهمگام در [بخش تخصیص‌یافته‌شده به `<Suspense>`](/guide/built-ins/suspense) مستند شده است.

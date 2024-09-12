@@ -333,7 +333,7 @@ const activeUsers = computed(() => {
 
 برای اپلیکیشن‌ها، استایل سطح بالا در کامپوننت `App` و کامپوننت‌های layout ممکن است به صورت سراسری باشد، ولی برای کامپوننت‌های دیگر همیشه باید استایل‌ها به صورت scoped باشد.
 
-این تنها در مورد [Single-File Components](/guide/scaling-up/sfc) مرتبط است. این موضوع نیازی به استفاده از [`scoped` attribute](https://vue-loader.vuejs.org/en/features/scoped-css.html) ندارد. این محدود کردن می‌تواند از طریق [ماژول‌های CSS](https://vue-loader.vuejs.org/en/features/css-modules)، یک استراتژی مبتنی بر کلاس مانند [BEM](http://getbem.com/) یا یک کتابخانه/توافق دیگر باشد.
+این تنها در مورد [Single-File Components](/guide/scaling-up/sfc) مرتبط است. این موضوع نیازی به استفاده از [`scoped` attribute](https://vue-loader.vuejs.org/en/guide/scoped-css.html) ندارد. این محدود کردن می‌تواند از طریق [ماژول‌های CSS](https://vue-loader.vuejs.org/en/guide/css-modules.html)، یک استراتژی مبتنی بر کلاس مانند [BEM](http://getbem.com/) یا یک کتابخانه/توافق دیگر باشد.
 
 **اما کتابخانه‌های کامپوننت، بهتر است به جای استفاده از ویژگی `scoped`، از یک استراتژی مبتنی بر کلاس استفاده کنند.**
 

@@ -286,6 +286,12 @@ h(Transition, {
      * Can be changed dynamically.
      */
     disabled?: boolean
+    /**
+     * When `true`, the Teleport will defer until other
+     * parts of the application have been mounted before
+     * resolving its target. (3.5+)
+     */
+    defer?: boolean
   }
   ```
 
@@ -305,6 +311,15 @@ h(Transition, {
   <Teleport to="#popup" :disabled="displayVideoInline">
     <video src="./my-movie.mp4">
   </Teleport>
+  ```
+
+  تأخیر در تعیین هدف <sup class="vt-badge" data-text="3.5+" />:
+
+  ```vue-html
+  <Teleport defer to="#late-div">...</Teleport>
+
+  <!-- جایی در ادامه تمپلیت -->
+  <div id="late-div"></div>
   ```
 
 - **همچنین ببینید** [راهنما - تلپورت](/guide/built-ins/teleport)

@@ -90,6 +90,18 @@
   }
   ```
 
+## app.onUnmount()‎ <sup class="vt-badge" data-text="3.5+" /> {#app-onunmount}
+
+زمانی که برنامه از حالت نصب خارج می‌شود، یک تماس برای متد برگشتی ثبت می‌کند.
+
+- **تایپ**
+
+  ```ts
+  interface App {
+    onUnmount(callback: () => any): void
+  }
+  ```
+
 ## app.component()‎ {#app-component}
 
 اگر نام و تعریف کامپوننت هر دو به عنوان ورودی داده شود ، یک کامپوننت به صورت گلوبال ثبت می‌شود. اما اگر فقط نام داده شود، کامپوننتی که قبلاً ثبت شده، بازیابی می شود.
@@ -271,7 +283,9 @@
   - [App-level Provide](/guide/components/provide-inject#app-level-provide)
   - [app.runWithContext()](#app-runwithcontext)
 
-## app.runWithContext()‎<sup class="vt-badge" data-text="3.3+" /> {#app-runwithcontext}
+## app.runWithContext()‎ {#app-runwithcontext}
+
+- فقط در 3.3+ پشتیبانی می شود
 
 از برنامه فعلی به عنوان زمینه استفاده و یک تابع بازگشتی (callback) انجام می دهد.
 
@@ -605,4 +619,42 @@ console.log(app.config)
   // 'Hello Vue' را لاگ میگیرد
   ```
 
-- **مشاهده بیشتر** [نمونه کامپوننت  - `$options`](/api/component-instance#options)
+- **مشاهده بیشتر** [نمونه کامپوننت  - `‎$options`](/api/component-instance#options)
+
+## app.config.idPrefix <sup class="vt-badge" data-text="3.5+" /> {#app-config-idprefix}
+
+پیکربندی یک پیشوند برای تمام IDهایی که از طریق [useId()‎](/api/general#useid) در این اپلیکیشن تولید می‌شوند.
+
+- **تایپ:** `string`
+
+- **پیش‌فرض:** `undefined`
+
+- **مثال**
+
+  ```js
+  app.config.idPrefix = 'my-app'
+  ```
+
+  ```js
+  // in a component:
+  const id1 = useId() // 'my-app:0'
+  const id2 = useId() // 'my-app:1'
+  ```
+
+## app.config.throwUnhandledErrorInProduction <sup class="vt-badge" data-text="3.5+" /> {#app-config-throwunhandlederrorinproduction}
+
+اجبار به پرتاب (thrown) خطاهای غیرمدیریت‌شده در حالت production.
+
+- **تایپ:** `boolean`
+
+- **پیش‌فرض:** `false`
+
+- **جزئیات**
+
+  به‌طور پیش‌فرض، خطاهایی که در داخل اپلیکیشن Vue پرتاب می‌شوند ولی به‌طور صریح مدیریت نمی‌شوند، رفتار متفاوتی بین حالت توسعه (development) و تولید (production) دارند:
+
+  - در حالت توسعه، خطا پرتاب می‌شود و ممکن است باعث توقف اپلیکیشن شود. این کار برای برجسته‌سازی خطا انجام می‌شود تا در حین توسعه شناسایی و رفع شود.
+
+  - در حالت پروداکشن، خطا فقط در کنسول ثبت می‌شود تا تأثیر کمتری روی کاربران نهایی داشته باشد. اما این ممکن است باعث شود خطاهایی که فقط در تولید رخ می‌دهند توسط سرویس‌های نظارت بر خطا شناسایی نشوند.
+
+  با تنظیم `app.config.throwUnhandledErrorInProduction` به `true`، خطاهای غیرمدیریت‌شده حتی در حالت پروداکشن نیز پرتاب خواهند شد.

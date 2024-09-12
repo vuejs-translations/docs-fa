@@ -47,15 +47,15 @@ export default {
 ```js
 // vue.config.js
 module.exports = {
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.module
       .rule('vue')
       .use('vue-loader')
-      .tap(options => ({
+      .tap((options) => ({
         ...options,
         compilerOptions: {
-          // شروع شود را به‌عنوان المنت‌های سفارشی در نظر بگیر ion- هر تگی که با
-          isCustomElement: tag => tag.startsWith('ion-')
+          // treat any tag that starts with ion- as custom elements
+          isCustomElement: (tag) => tag.startsWith('ion-')
         }
       }))
   }
@@ -81,7 +81,7 @@ module.exports = {
 
 ### defineCustomElement {#definecustomelement}
 
-Vue از طریق متد [`defineCustomElement`](/api/general#definecustomelement) از ایجاد المنت‌های سفارشی با استفاده از دقیقاً همان APIهای کامپوننت Vue پشتیبانی می‌کند. این متد همان آرگومان‌های [`defineComponent`](/api/general#definecomponent) را می‌پذیرد، اما به جای آن یک سازنده المنت سفارشی را که از `HTMLElement` مشتق شده را بازمی‌گرداند:
+Vue از طریق متد [`defineCustomElement`](/api/custom-elements#definecustomelement) از ایجاد المنت‌های سفارشی با استفاده از دقیقاً همان APIهای کامپوننت Vue پشتیبانی می‌کند. این متد همان آرگومان‌های [`defineComponent`](/api/general#definecomponent) را می‌پذیرد، اما به جای آن یک سازنده المنت سفارشی را که از `HTMLElement` مشتق شده را بازمی‌گرداند:
 
 ```vue-html
 <my-vue-element></my-vue-element>
@@ -171,6 +171,20 @@ document.body.appendChild(
 
 API مربوط به [Provide / Inject](/guide/components/provide-inject#provide-inject) و [معادل آن در Composition API](/api/composition-api-dependency-injection#provide) در المنت‌های سفارشی تعریف‌شده با Vue کار می‌کنند. با این حال، توجه داشته باشید که این فقط بین المنت‌های سفارشی کار می‌کند. یعنی یک المنت سفارشی تعریف‌شده در Vue نمی‌تواند پراپرتی‌های ارائه‌شده توسط یک کامپوننت Vue غیرسفارشی را تزریق کند.
 
+#### App Level Config <sup class="vt-badge" data-text="3.5+" /> {#app-level-config}
+
+می توانید نمونه برنامه یک کامپوننت سفارشی Vue را با استفاده از آپشن `configureApp` پیکربندی کنید:
+
+```js
+defineCustomElement(MyComponent, {
+  configureApp(app) {
+    app.config.errorHandler = (err) => {
+      /* ... */
+    }
+  }
+})
+```
+
 ### SFC به عنوان المنت سفارشی {#sfc-as-custom-element}
 
 `‍defineCustomElement‍` همچنین با Vue Single-File Components (SFCs) کار می‌کند. با این حال، با تنظیم پیش‌فرض ابزار، ‍`<style>`‍ داخل SFCها در حین بیلد پروداکشن استخراج و با هم به یک فایل CSS ترکیب می‌شوند. هنگام استفاده از یک SFC به عنوان یک المنت سفارشی، اغلب مطلوب است که تگ‌های `‍<style>`‍ را به جای آن به shadow root المنت سفارشی تزریق کنیم.
@@ -242,7 +256,7 @@ export const Counter = defineCustomElement(CounterSFC)
 // register global typings
 declare module 'vue' {
   export interface GlobalComponents {
-    'Counter': typeof Counter,
+    Counter: typeof Counter
   }
 }
 ```
