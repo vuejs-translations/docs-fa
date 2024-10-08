@@ -82,7 +82,7 @@ Vue از سینتکس تمپلیت که برپایه HTML گسترش یافته 
 
 ### اتریبیوت‌های بولین {#boolean-attributes}
 
-[اتریبیوت‌های بولین](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) اتریبیوت‌هایی هستند که می‌توان true / false بودن مقادیر را با حضور آنها بر یک المنت نشان داد. برای مثال، [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) یکی رایج ترین اتریبیوت‌های بولین استفاده شده می‌باشد.
+[اتریبیوت‌های بولین](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) اتریبیوت‌هایی هستند که می‌توان true / false بودن مقادیر را با حضور آنها بر یک المنت نشان داد. برای مثال، [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) یکی از رایج ترین اتریبیوت‌های بولین استفاده شده می‌باشد.
 
 `v-bind` در این مورد مقداری متفاوت عمل می‌کند:
 
@@ -90,7 +90,7 @@ Vue از سینتکس تمپلیت که برپایه HTML گسترش یافته 
 <button :disabled="isButtonDisabled">دکمه</button>
 ```
 
-اگر `isButtonDisabled` [یک مقدار truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) داشته باشد شامل اتریبیوت `disabled` خواهد شد. همچنین اگر مقدار یک رشته خالی باشد، برای حفظ سازگاری با `‎<button disabled="">‎` شامل خواهد شد. برای بقیه [مقدارهای falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) اتریبیوت حذف خواهد شد.
+اگر `isButtonDisabled` [یک مقدار truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) داشته باشد شامل اتریبیوت `disabled` خواهد شد. همچنین اگر مقدار آن یک رشته خالی باشد، برای حفظ سازگاری با HTML مقدار آن به صورت truthy در نظر گرفته میشود و معادل آن باین صورت است `‎<button disabled="">‎`. برای بقیه [مقدارهای falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) اتریبیوت حذف خواهد شد.
 
 ### اتصال چندین اتریبیوت بصورت پویا {#dynamically-binding-multiple-attributes}
 
