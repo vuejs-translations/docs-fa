@@ -6,6 +6,13 @@
 
   --vt-scroll-thumb-color-dark: #767676;
   --vt-scroll-track-color-dark: #242424;
+
+  --vt-font-family-base: 'Vazirmatn', 'Inter var experimental', 'Inter var',
+    Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif !important;
+  --vt-font-family-mono: Menlo, Monaco, Consolas, 'Vazirmatn',
+    'Courier New', monospace !important;
 }
 
 /* Firefox */
@@ -60,11 +67,6 @@ p,
 ul,
 li {
   direction: rtl;
-}
-
-:root {
-  --vt-font-family-base: 'Vazirmatn', sans-serif !important;
-  --vp-font-family-mono: 'Vazirmatn', sans-serif !important;
 }
 
 .license {
@@ -169,6 +171,6 @@ li {
   padding-top: 0.5px;
 }
 
-.vt-banner-text{
+.vt-banner-text {
   direction: ltr;
 }
