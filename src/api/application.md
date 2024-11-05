@@ -623,7 +623,7 @@ console.log(app.config)
 
 ## app.config.idPrefix <sup class="vt-badge" data-text="3.5+" /> {#app-config-idprefix}
 
-پیکربندی یک پیشوند برای تمام IDهایی که از طریق [useId()‎](/api/general#useid) در این اپلیکیشن تولید می‌شوند.
+پیکربندی یک پیشوند برای تمام IDهایی که از طریق [useId()‎](/api/composition-api-helpers.html#useid) در این اپلیکیشن تولید می‌شوند.
 
 - **تایپ:** `string`
 

@@ -80,6 +80,10 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 [مثال کامل](/examples/#list-transition)
 
+### کلاس‌های سفارشی TransitionGroup
+
+همچنین می‌توانید کلاس‌های انتقال سفارشی را برای عنصر در حال حرکت با ارسال ویژگی `moveClass` به `<TransitionGroup>` مشخص کنید، درست مانند [کلاس‌های انتقال سفارشی در `<Transition>`](https://vuejs.org/guide/built-ins/transition.html#custom-transition-classes).
+
 ## ترنزیشن‌های متوالی در لیست {#staggering-list-transitions}
 
 از طریق data-attribute ها، می‌توانیم ترنزیشن‌های متوالی در یک لیست به وجود آوریم. ابتدا ما ایندکس را به عنوان یک data-attribute روی المان اعمال می‌کنیم.
