@@ -45,6 +45,7 @@ const nav: ThemeConfig['nav'] = [
         text: 'منابع',
         items: [
           { text: 'همکاران', link: '/partners/' },
+          { text: 'توسعه دهندگان', link: '/developers/' },
           { text: 'تم‌ها', link: '/ecosystem/themes' },
           { text: 'UI Components', link: 'https://ui-libs.vercel.app/' },
           {
@@ -128,9 +129,13 @@ const nav: ThemeConfig['nav'] = [
     link: '/sponsor/'
   },
   {
-    text: 'همکاران',
-    link: '/partners/',
-    activeMatch: `^/partners/`
+    text: 'کارشناسان',
+    badge: { text: 'جدید' },
+    activeMatch: `^/(partners|developers)/`,
+    items: [
+      { text: 'شرکا', link: '/partners/' },
+      { text: 'توسعه دهندگان', link: '/developers/', badge: { text: 'جدید' } }
+    ]
   }
 ]
 

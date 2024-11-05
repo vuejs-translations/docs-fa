@@ -112,7 +112,7 @@ export default defineComponent({
 همچنین ببینید:
 
 - [یادداشتی درباره webpack Treeshaking](/api/general#note-on-webpack-treeshaking)
-- [تست‌های تایپ برای `defineComponent`](https://github.com/vuejs/core/blob/main/packages/dts-test/defineComponent.test-d.tsx)
+- [تست‌های تایپ برای `defineComponent`](https://github.com/vuejs/core/blob/main/packages-private/dts-test/defineComponent.test-d.tsx)
 
 :::tip نکته
 تابع `defineComponent()‎` همچنین قابلیت استنباط تایپ را برای کامپوننت‌های تعریف شده به صورت جاوااسکریپت ساده فراهم می‌کند.

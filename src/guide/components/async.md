@@ -118,7 +118,7 @@ const AsyncComp = defineAsyncComponent({
 
 - طراحی این قابلیت عمداً در سطح پایین انجام شده تا انعطاف‌پذیری بیشتری داشته باشد. ممکن است در آینده سینتکس راحت‌تری برای این قابلیت در هسته یا راه‌حل‌های سطح بالاتر (مثل Nuxt) اضافه شود.
 
-### هایدرشن در زمان بیکار (Idle)
+### هایدرشن در زمان بیکار (Idle) {#hydrate-on-idle}
 
 هایدرشن با استفاده از `requestIdleCallback`. (یعنی وقتی کاربر هیچ فعالیتی انجام نمی‌دهد و پردازش‌های ضروری دیگری در مرورگر وجود ندارد)
 
@@ -131,7 +131,7 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### هایدریشن در زمان دیده شدن
+### هایدریشن در زمان دیده شدن {#hydrate-on-visible}
 
 هایدریشن زمانی که عنصر(ها) از طریق `IntersectionObserver` قابل مشاهده شوند.
 
@@ -150,7 +150,7 @@ const AsyncComp = defineAsyncComponent({
 hydrateOnVisible({ rootMargin: '100px' })
 ```
 
-### هایدریشن بر اساس Media Query
+### هایدریشن بر اساس Media Query {#hydrate-on-media-query}
 
 هایدریشن زمانی که کوئری مشخص شده منطبق باشد.
 
@@ -163,7 +163,7 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### هایدریشن بر اساس تعامل
+### هایدریشن بر اساس تعامل {#hydrate-on-interaction}
 
 هایدریشن زمانی که رویداد(های) مشخص شده بر روی عنصر(های) کامپوننت اتفاق بیفتد. رویدادی که هایدریشن را تحریک کرده است، پس از تکمیل هایدریشن نیز دوباره پخش خواهد شد.
 
@@ -182,7 +182,7 @@ const AsyncComp = defineAsyncComponent({
 hydrateOnInteraction(['wheel', 'mouseover'])
 ```
 
-### استراتژی سفارشی
+### استراتژی سفارشی {#custom-strategy}
 
 ```ts
 import { defineAsyncComponent, type HydrationStrategy } from 'vue'

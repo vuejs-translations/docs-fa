@@ -261,14 +261,14 @@ describe('increment', () => {
 
 ### پیشنهاد {#recommendation-2}
 
-- [Cypress](https://www.cypress.io/)
+- [Playwright](https://playwright.dev/) یک راهکار عالی برای تست E2E است که از Chromium، WebKit و Firefox پشتیبانی می‌کند. امکان تست بر روی ویندوز، لینوکس و macOS را فراهم می‌کند، چه به صورت محلی یا روی CI، به صورت headless یا headed با شبیه‌سازی بومی موبایل برای گوگل کروم اندروید و موبایل سافاری. دارای رابط کاربری آموزنده، قابلیت اشکال‌زدایی عالی، assertion های داخلی، اجرای موازی، ردیابی و برای حذف تست‌های ناپایدار طراحی شده است. پشتیبانی از [تست کامپوننت](https://playwright.dev/docs/test-components) در دسترس است، اما به عنوان آزمایشی علامت‌گذاری شده است. Playwright متن‌باز است و توسط مایکروسافت نگهداری می‌شود.
 
-  به طور کلی، ما معتقدیم که Cypress با برخورداری از ویژگی‌هایی مانند رابط گرافیکی آموزنده، قابلیت اشکال‌زدایی عالی، تعیینات (assertions) و استاب‌های (stubs) داخلی، مقاومت در برابر ناپایداری (flake-resistance)، موازی‌سازی (parallelization) و اسنپ‌شات‌ها، کامل‌ترین راه‌حل برای تست‌های E2E را ارائه می‌دهد. همانطور که پیش‌تر ذکر شد، همچنین از تست کامپوننت [ComponentTesting](https://docs.cypress.io/guides/component-testing/introduction). پشتیبانی می‌کند. لازم به ذکر است که از مرورگرهای مبتنی بر کرومیوم، فایرفاکس و الکترون پشتیبانی می‌کند. پشتیبانی از WebKit نیز موجود است، اما به عنوان آزمایشی علامت گذاری شده است.
+- [Cypress](https://www.cypress.io/) دارای رابط گرافیکی، قابلیت اشکال‌زدایی عالی، assertion های داخلی، stub ها، مقاومت در برابر ناپایداری و قابلیت snapshot است. همانطور که در بالا ذکر شد، پشتیبانی پایداری را برای [تست کامپوننت](https://docs.cypress.io/guides/component-testing/introduction) فراهم می‌کند. Cypress از مرورگرهای مبتنی بر Chromium، Firefox و Electron پشتیبانی می‌کند. پشتیبانی از WebKit در دسترس است، اما به عنوان آزمایشی علامت‌گذاری شده است. Cypress تحت لایسنس MIT است، اما برخی از ویژگی‌ها مانند اجرای موازی نیاز به اشتراک در Cypress Cloud دارند.
 
 ### انتخاب های دیگر {#other-options-2}
 
-- [Playwright](https://playwright.dev/) یک راه حل آزمایش E2E عالی نیز هست که از تمام موتورهای رندر مدرن از جمله Chromium و WebKit و Firefox پشتیبانی می‌کند. آزمایش در ویندوز، لینوکس و macOS، لوکال یا در CI، بدون رابط کاربری یا همراه با شبیه‌سازی موبایل بومی Google Chrome برای اندروید و Mobile Safari.
 - [Nightwatch](https://nightwatchjs.org/) یک راه حل تست انتها به انتها (E2E) است که بر پایه [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver) ساخته شده است. این امر باعث می‌شود Nightwatch از گسترده‌ترین پشتیبانی مرورگر در میان فریمورک‌های تست E2E برخوردار باشد، از جمله آزمایش موبایل بومی. راه حل های مبتنی بر سلنیوم از Playwright یا Cypress کندتر خواهند بود.
+
 - [WebdriverIO](https://webdriver.io/) یک چارچوب تست خودکار برای وب و موبایل است که بر اساس پروتکل WebDriver بنا شده است.
 
 ## دستورالعمل‌ها {#recipes}

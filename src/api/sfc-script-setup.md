@@ -479,6 +479,19 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 `()async setup` باید همراه با [`Suspense`](/guide/built-ins/suspense.html) استفاده شود، که هنوز یک ویژگی آزمایشی است. ما قصد نهایی کردن مستندات را در یک ریلیز آینده خواهیم داشت - اما اگر کنجکاو هستید، می‌توانید با مشاهده گیت‌هاب [tests](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts) ببینید به چه صورت کار می‌کند.
 :::
 
+## عبارات Import
+
+عبارات import در Vue از مشخصات ماژول ECMAScript پیروی می‌کنند. علاوه بر این، شما می‌توانید از نام‌های مستعار (aliases) که در تنظیمات ابزار ساخت خود تعریف کرده‌اید استفاده کنید.
+
+```vue
+<script setup>
+import { ref } from 'vue'
+import { componentA } from './Components'
+import { componentB } from '@/Components'
+import { componentC } from '~/Components'
+</script>
+```
+
 ## جنریک‌ها <sup class="vt-badge ts" /> {#generics}
 
 با اضافه کردن اتریبیوت `generic` به تگ `<script>` می‌توان از پارامترهای تایپ جنریک استفاده کرد:

@@ -68,6 +68,8 @@ export default {
 - [استفاده از vite-plugin-vue-gql با بلوک سفارشی: `<gql>`](https://github.com/wheatjs/vite-plugin-vue-gql)
 - [استفاده از vue-i18n با بلوک سفارشی: `<i18n>`](https://github.com/intlify/bundle-tools/tree/main/packages/unplugin-vue-i18n#i18n-custom-block)
 
+نحوه مدیریت بلوک‌های سفارشی (Custom Blocks) به ابزارهای مورد استفاده بستگی دارد. اگر می‌خواهید بلوک‌های سفارشی خود را یکپارچه‌سازی کنید، برای اطلاعات بیشتر به بخش «[یکپارچه‌سازی بلوک‌های سفارشی SFC در ابزارها](/guide/scaling-up/tooling#sfc-custom-block-integrations)» در راهنمای ما مراجعه کنید.
+
 ## پیش‌بینی خودکار نام {#automatic-name-inference}
 
 یک SFC به طور خودکار نام مؤلفه را از **نام فایل** آن در موارد زیر پیش‌بینی می‌کند:
@@ -80,12 +82,12 @@ export default {
 
 بلوک‌ها می‌توانند زبان‌های پیش‌پردازنده را با استفاده از ویژگی `lang` اعلام کنند. رایج ترین مورد، استفاده از TypeScript برای بلوک `<script>` است:
 
-
 ```vue-html
 <script lang="ts">
   // use TypeScript
 </script>
 ```
+
 `lang` را می‌توان برای هر بلوکی اعمال کرد - برای مثال می‌توانیم از [Sass](https://sass-lang.com/) داخل بلوک `<style>` و از [Pug](https://pugjs.org/api/getting-started.html) داخل `<template>` استفاده کنیم:
 
 ```vue-html
@@ -111,7 +113,6 @@ p {{ msg }}
 
 اگر ترجیح می‌دهید کامپوننت‌های &lrm;`*.vue` خود را به چندین فایل تقسیم کنید، می‌توانید از ویژگی `src` برای ایمپورت کردن یک فایل خارجی برای یک بلوک زبان استفاده کنید:
 
-
 ```vue
 <template src="./template.html"></template>
 <style src="./style.css"></style>
@@ -135,7 +136,13 @@ p {{ msg }}
 </unit-test>
 ```
 
+:::warning توجه
+هنگام استفاده از نام‌های مستعار در پوشه `src`، از علامت `~` در ابتدا استفاده نکنید. هر چیزی که بعد از آن بیاید به عنوان یک درخواست ماژول تفسیر می‌شود. این بدین معناست که شما می‌توانید به فایل‌های موجود در پوشه node_modules ارجاع دهید.
+```vue
+<img src="~some-npm-package/foo.png">
+```
+:::
+
 ## کامنت‌ها {#comments}
 
 در داخل هر بلوک باید از سینتکس کامنت‌گذاری زبان مورد استفاده (HTML، CSS، جاوا اسکریپت، Pug و غیره) پیروی کنید. برای کامنت گذاری سطح بالا، از سینتکس کامنت گذاری HTML استفاده کنید: `<!-- مطالب را در اینجا کامنت کنید -->`
-

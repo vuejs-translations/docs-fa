@@ -127,10 +127,6 @@ watch(
 | form            | role="form"          | مجموعه‌ای از عناصر مرتبط با فرم                                                              |
 | section         | role="region"        | محتوایی که مرتبط با خواست کاربر است و احتمالا کاربران می خواهند به آن مراجعه کنند. لیبل باید برای این عنصر فراهم شود |
 
-:::tip نکته
-توصیه می‌شود از landmark HTML به همراه landmark مازاد برای بیشینه کردن سازگاری با [مرورگرهای قدیمی که از عناصر معنایی HTML5 پشتیبانی نمی‌کنند](https://caniuse.com/#feat=html5semantic) استفاده کنید.
-:::
-
 [بیشتر در مورد landmark ها بخوانید](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
 
 ## فرم‌های معنایی | Semantic Forms {#semantic-forms}

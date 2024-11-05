@@ -230,7 +230,7 @@ declare module 'vue' {
 
 همچنین ببینید:
 
-- [یونیت تست‌ها در TypeScript برای افزونگی تایپ کامپوننت](https://github.com/vuejs/core/blob/main/packages/dts-test/componentTypeExtensions.test-d.tsx)
+- [یونیت تست‌ها در TypeScript برای افزونگی تایپ کامپوننت](https://github.com/vuejs/core/blob/main/packages-private/dts-test/componentTypeExtensions.test-d.tsx)
 
 ### مکان قرارگیری افزایش تایپ {#type-augmentation-placement}
 
@@ -290,4 +290,4 @@ declare module 'vue' {
 
 همچنین ببینید:
 
-- [یونیت تست‌ها در TypeScript برای افزونگی نوع کامپوننت](https://github.com/vuejs/core/blob/main/packages/dts-test/componentTypeExtensions.test-d.tsx)
+- [یونیت تست‌ها در TypeScript برای افزونگی نوع کامپوننت](https://github.com/vuejs/core/blob/main/packages-private/dts-test/componentTypeExtensions.test-d.tsx)

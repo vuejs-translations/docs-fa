@@ -31,7 +31,7 @@ onMounted(() => {
 </template>
 ```
 
-هنگام استفاده از TypeScript و IDE پشتیبانی شده توسط Vue و `vue-tsc` به طور خودکار تایپ `inputRef.value` را بر اساس عنصر یا کامپوننت ای که ویژگی ref منطبق بر روی آن استفاده می شود، استنتاج می کند.
+هنگام استفاده از TypeScript و IDE پشتیبانی شده توسط Vue و `vue-tsc` به طور خودکار تایپ `input.value` را بر اساس عنصر یا کامپوننت ای که ویژگی ref منطبق بر روی آن استفاده می شود، استنتاج می کند.
 
 <details>
 <summary>روش استفاده قبل از 3.5</summary>
@@ -115,7 +115,7 @@ watchEffect(() => {
 
 ## استفاده از ارجاع‌ها درون `v-for` {#refs-inside-v-for}
 
-> به نسخه v3.2.25 یا بالاتر نیاز دارد
+> به نسخه v3.5 یا بالاتر نیاز دارد
 
 <div class="composition-api">
 
@@ -147,6 +147,8 @@ onMounted(() => console.log(itemRefs.value))
 
 <details>
 <summary>روش استفاده قبل از 3.5</summary>
+
+در نسخه‌های قبل از 3.5 که `useTemplateRef()‎` معرفی نشده بود، ما نیاز داشتیم یک ref تعریف کنیم که نام آن با مقدار اتریبیوت template ref مطابقت داشته باشد. همچنین این ref باید حاوی یک مقدار آرایه‌ای باشد:
 
 ```vue
 <script setup>

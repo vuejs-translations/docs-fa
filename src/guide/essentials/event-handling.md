@@ -286,7 +286,7 @@ methods: {
 <input @keyup.enter="submit" />
 ```
 
-شما می‌توانید مستقیماً از هر نام کلید معتبری که از طریق [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values) در اختیار قرار گرفته است به عنوان تغییردهنده‌ با تبدیل آن‌ها به فرم kebab-case استفاده کنید.
+شما می‌توانید مستقیماً از هر نام کلید معتبری که از طریق [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values) در اختیار قرار گرفته است به عنوان تغییردهنده‌ با تبدیل آن‌ها به فرم kebab-case استفاده کنید.
 
 ```vue-html
 <input @keyup.page-down="onPageDown" />

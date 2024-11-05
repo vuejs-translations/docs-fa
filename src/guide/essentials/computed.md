@@ -259,6 +259,114 @@ const fullName = computed({
 
 </div>
 
+## دریافت مقدار قبلی {#previous}
+
+- فقط در نسخه 3.4+ پشتیبانی می‌شود
+
+در صورتی که نیاز داشته باشید، می‌توانید مقدار قبلی برگردانده شده توسط پراپرتی computed را
+با دسترسی به آرگومان اول تابع getter دریافت کنید:
+
+<div class="options-api">
+
+```js
+export default {
+  data() {
+    return {
+      count: 2
+    }
+  },
+  computed: {
+    // را زمانی برمی‌گرداند که کمتر یا مساوی 3 باشد count مقدار computed این
+    // باشد، آخرین مقداری که شرط ما را برآورده کرده است، برگردانده می شود count >=4 وقتی
+    // کمتر یا مساوی 3 شود count تا زمانی که
+    alwaysSmall(previous) {
+      if (this.count <= 3) {
+        return this.count;
+      }
+
+      return previous;
+    }
+  }
+}
+```
+</div>
+
+<div class="composition-api">
+
+```vue
+<script setup>
+import { ref, computed } from 'vue'
+
+const count = ref(2)
+
+// را زمانی برمی‌گرداند که کمتر یا مساوی 3 باشد count مقدار computed این
+// باشد، آخرین مقداری که شرط ما را برآورده کرده است، برگردانده می شود count >=4 وقتی
+// کمتر یا مساوی 3 شود count تا زمانی که
+const alwaysSmall = computed((previous) => {
+  if (count.value <= 3) {
+    return count.value;
+  }
+
+  return previous;
+})
+</script>
+```
+</div>
+
+In case you're using a writable computed:
+
+<div class="options-api">
+
+```js
+export default {
+  data() {
+    return {
+      count: 2
+    }
+  },
+  computed: {
+    alwaysSmall: {
+      get(previous) {
+        if (this.count <= 3) {
+          return this.count;
+        }
+
+        return previous;
+      },
+      set(newValue) {
+        this.count = newValue * 2;
+      }
+    }
+  }
+}
+```
+
+</div>
+<div class="composition-api">
+
+```vue
+<script setup>
+import { ref, computed } from 'vue'
+
+const count = ref(2)
+
+const alwaysSmall = computed({
+  get(previous) {
+    if (count.value <= 3) {
+      return count.value;
+    }
+
+    return previous;
+  },
+  set(newValue) {
+    count.value = newValue * 2;
+  }
+})
+</script>
+```
+
+</div>
+
 ## بهترین شیوه‌ها{#best-practices}
 
 ### توابع getter باید فقط مقدار مورد نظر را برگردانند و تغییر دیگری در برنامه ایجاد نکنند.{#getters-should-be-side-effect-free}
