@@ -170,34 +170,6 @@
     "sponsor": true
   },
   {
-    "name": "Rahul Kadyan",
-    "title": "مهندس نرم‌افزار",
-    "company": "Grammarly",
-    "companyLink": "https://grammarly.com/",
-    "projects": [
-      {
-        "label": "vuejs/core",
-        "url": "https://github.com/vuejs/core"
-      },
-      { "label": "VueDX", "url": "https://github.com/vuedx" },
-      {
-        "label": "rollup-plugin-vue",
-        "url": "https://github.com/vuejs/rollup-plugin-vue"
-      }
-    ],
-    "location": "هند، بنگلور",
-    "languages": ["هندی", "انگلیسی"],
-    "socials": {
-      "github": "znck",
-      "twitter": "znck0"
-    },
-    "website": {
-      "label": "znck.me",
-      "url": "https://znck.me"
-    },
-    "sponsor": true
-  },
-  {
     "name": "Linusborg",
     "title": "Hive-Mind Community Wrangler (Probably a Bot)",
     "location": "آلمان، مانهایم",
@@ -428,22 +400,6 @@
       "url": "https://antfu.me/"
     },
     "sponsor": true
-  },
-  {
-    "name": "HcySunYang",
-    "title": "توسعه دهنده",
-    "projects": [
-      {
-        "label": "vuejs/core",
-        "url": "https://github.com/vuejs/core"
-      }
-    ],
-    "location": "چین، بیجینگ (پکن)",
-    "languages": ["چینی", "انگلیسی"],
-    "socials": {
-      "github": "HcySunYang",
-      "twitter": "HcySunYang"
-    }
   },
   {
     "name": "Johnson Chu",
