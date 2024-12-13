@@ -25,7 +25,7 @@ Vue به شما امکان می‌دهد علاوه بر مجموعه دایرک
 
 ما دو روش باز استفاده کد در Vue را معرفی کردیم: [کامپوننت ها](/guide/essentials/component-basics) و [کامپوزبل ها](./composables). کامپوننت‌ها قالب‌های اصلی ساخت هستند در حالیکه کامپوزبل‌ها روی استفاده دوباره منطق با نگه داشتن وضعیت قبلی سیستم تمرکز کرده‌اند. از طرف دیگر، دایرکتیو‌های سفارشی، اساسا برای استفاده دوباره منطقی که شامل دسترسی سطح پایین DOM به المنت‌های ساده هستند تعیین شدند.
 
-یک دایرکتیو سفارشی به عنوان یک آبجکت شامل هوک‌های چرخه حیات می‌باشد که مشابه هوک‌های کامپوننت هستند. هوک‌‌ها المنتی که به دایرکتیو متصل (bound) هست را دریافت می‌کنند. در اینجا مثالی از یک دایرکتیو آورده شده که عمل فوکس(focus) را بر روی المنت input هنگاهی که Vue المنت input را درون DOM وارد می‌کند انجام می‌دهد:
+یک دایرکتیو سفارشی به عنوان یک آبجکت شامل هوک‌های چرخه حیات می‌باشد که مشابه هوک‌های کامپوننت هستند. هوک‌‌ها المنتی که به دایرکتیو متصل (bound) هست را دریافت می‌کنند. در اینجا مثالی از یک دایرکتیو آورده شده که یک کلاس را هنگامی که Vue المنت را درون DOM وارد می‌کند اضافه می‌کند:
 
 <div class="composition-api">
 
@@ -156,59 +156,11 @@ export default {
 
 این دایرکتیو از اتریبیوت `autofocus` مفیدتر است زیرا نه تنها در صفحه لود شده کار می‌‌کند بلکه درون المنت‌هایی که به صورت پویا (dynamic) توسط Vue ساخته شده‌اند نیز کار می‌‌کند!
 
-Declarative templating with built-in directives such as `v-bind` is recommended when possible because they are more efficient and server-rendering friendly.
-
-
-
 دایرکتیوهای سفارشی فقط باید زمانی استفاده شوند که عملکرد مورد نظر فقط از طریق دستکاری مستقیم DOM حاصل شود. در صورت امکان، قالب اعلامی با استفاده از دایرکتیوهای نهادینه شده مانند `v-bind` را ترجیح دهید زیرا کارامد تر و سرور-رندر دوستانه تر هستند.
-
-
-<div class="composition-api">
-
-In `<script setup>`, any camelCase variable that starts with the `v` prefix can be used as a custom directive. In the example above, `vFocus` can be used in the template as `v-focus`.
-
-If not using `<script setup>`, custom directives can be registered using the `directives` option:
-
-```js
-export default {
-  setup() {
-    /*...*/
-  },
-  directives: {
-    // enables v-focus in template
-    focus: {
-      /* ... */
-    }
-  }
-}
-```
-
-</div>
-
-<div class="options-api">
-
-Similar to components, custom directives must be registered so that they can be used in templates. In the example above, we are using local registration via the `directives` option.
-
-</div>
-
-It is also common to globally register custom directives at the app level:
-
-```js
-const app = createApp({})
-
-// make v-focus usable in all components
-app.directive('focus', {
-  /* ... */
-})
-```
-
-:::tip
-Custom directives should only be used when the desired functionality can only be achieved via direct DOM manipulation. Prefer declarative templating using built-in directives such as `v-bind` when possible because they are more efficient and server-rendering friendly.
-:::
 
 ## هوک‌های دایرکتیو {#directive-hooks}
 
-یک شی دایرکتیو میتونه چندین تابع هوک چرخه حیات را فراهم کند (همگی اختیاری هستند):
+یک آبجکت دایرکتیو میتونه چندین تابع هوک چرخه حیات را فراهم کند (همگی اختیاری هستند):
 
 ```js
 const myDirective = {
@@ -316,6 +268,7 @@ app.directive('demo', (el, binding) => {
 :::warning توصیه نمی‌شود
 استفاده از دایرکتیوهای سفارشی بر روی کامپوننت‌ها توصیه نمی‌شود. زمانی که یک کامپوننت دارای چندین گره ریشه باشد ممکن است رفتار غیرمنتظره‌ای رخ دهد.
 :::
+
 دایرکتیوهای سفارشی همانند [Fallthrough Attributes](/guide/components/attrs) برای استفاده در کامپوننت‌‌ها باید در نود ریشه (root node) به کار روند.
 
 ```vue-html

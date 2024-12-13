@@ -80,9 +80,9 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 [مثال کامل](/examples/#list-transition)
 
-### کلاس‌های سفارشی TransitionGroup
+### کلاس‌های سفارشی TransitionGroup {#custom-transitiongroup-classes}
 
-همچنین می‌توانید کلاس‌های انتقال سفارشی را برای عنصر در حال حرکت با ارسال ویژگی `moveClass` به `<TransitionGroup>` مشخص کنید، درست مانند [کلاس‌های انتقال سفارشی در `<Transition>`](https://vuejs.org/guide/built-ins/transition.html#custom-transition-classes).
+همچنین می‌توانید کلاس‌های انتقال سفارشی را برای عنصر در حال حرکت با ارسال ویژگی `moveClass` به `<TransitionGroup>` مشخص کنید، درست مانند [کلاس‌های انتقال سفارشی در `<Transition>`](/guide/built-ins/transition.html#custom-transition-classes).
 
 ## ترنزیشن‌های متوالی در لیست {#staggering-list-transitions}
 

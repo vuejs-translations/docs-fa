@@ -220,6 +220,8 @@ customElements.define('my-example', ExampleElement)
 توصیه می‌شود سازنده‌های المنت‌های جدا از هم را export کنید تا به کاربرانتان انعطاف‌پذیری بدهید آن‌ها را در زمان نیاز import کنند و با نام تگ دلخواه ثبت نمایند. همچنین می‌توانید یک تابع مقداردهی اولیه را export کنید تا خودکار همه المنت‌ها را ثبت کند. مثالی از نقطه ورود یک کتابخانه المنت‌های سفارشی Vue:
 
 ```js
+// elements.js
+
 import { defineCustomElement } from 'vue'
 import Foo from './MyFoo.ce.vue'
 import Bar from './MyBar.ce.vue'
@@ -236,30 +238,275 @@ export function register() {
 }
 ```
 
-اگر کامپوننت‌های زیادی دارید، می‌توانید از ویژگی‌های ابزارهای بیلد مانند [glob import](https://vitejs.dev/guide/features.html#glob-import) در Vite یا [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) وب‌پک برای بارگذاری همه کامپوننت‌ها از یک دایرکتوری هم استفاده کنید.
+مصرف‌کننده می‌تواند از المنت‌های موجود در یک فایل Vue استفاده کند.
 
-### Web Components and TypeScript {#web-components-and-typescript}
+```vue
+<script setup>
+import { register } from 'path/to/elements.js'
+register()
+</script>
 
-اگر در حال توسعه یک برنامه یا کتابخانه هستید، ممکن است بخواهید کامپوننت‌های Vue خود از جمله آن‌هایی که به عنوان المنت‌های سفارشی تعریف شده‌اند را [type check](/guide/scaling-up/tooling.html#typescript) کنید.
+<template>
+  <my-foo ...>
+    <my-bar ...></my-bar>
+  </my-foo>
+</template>
+```
 
-المنت‌های سفارشی به طور سراسری با استفاده از APIهای بومی ثبت می‌شوند، بنابراین به طور پیش‌فرض هنگام استفاده در تمپلیت‌های Vue ما type inference نخواهیم داشت. برای فراهم کردن پشتیبانی از تایپ برای کامپوننت‌های Vue ما، که به عنوان المنت‌های سفارشی ثبت شده‌اند، می‌توانیم تایپ‌های سراسری کامپوننت را با استفاده از [`GlobalComponents` interface](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage) در تمپلیت‌های Vue و یا در [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements) ثبت کنیم:
+یا در هر فریم‌ورک دیگری مانند فریم‌ورکی که از JSX استفاده می‌کند، و با نام‌های دلخواه:
+
+```jsx
+import { MyFoo, MyBar } from 'path/to/elements.js'
+
+customElements.define('some-foo', MyFoo)
+customElements.define('some-bar', MyBar)
+
+export function MyComponent() {
+  return <>
+    <some-foo ...>
+      <some-bar ...></some-bar>
+    </some-foo>
+  </>
+}
+```
+
+### کامپوننت‌های وب مبتنی بر Vue و TypeScript {#web-components-and-typescript}
+
+هنگام نوشتن تمپلیت تک صفحه‌ای vue، ممکن است بخواهید کامپوننت‌های Vue خود از جمله آن‌هایی که به عنوان المنت‌های سفارشی تعریف شده‌اند را [type check](/guide/scaling-up/tooling.html#typescript) کنید.
+
+المنت‌های سفارشی به طور سراسری در مرورگر با استفاده از APIهای بومی ثبت می‌شوند، بنابراین به طور پیش‌فرض هنگام استفاده در تمپلیت‌های Vue ما type inference نخواهیم داشت. برای فراهم کردن پشتیبانی از تایپ برای کامپوننت‌های Vue ما، که به عنوان المنت‌های سفارشی ثبت شده‌اند، می‌توانیم تایپ‌های سراسری کامپوننت را با استفاده از [GlobalComponents interface](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage) در تمپلیت‌های Vue و یا در [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements) ثبت کنیم.
+
+در اینجا نحوه تعریف تایپ یک المنت سفارشی ساخته شده با Vue آمده است:
 
 ```typescript
 import { defineCustomElement } from 'vue'
 
-// vue SFC
-import CounterSFC from './src/components/counter.ce.vue'
+// Import the Vue component.
+import SomeComponent from './src/components/SomeComponent.ce.vue'
 
-// turn component into web components
-export const Counter = defineCustomElement(CounterSFC)
+// Turn the Vue component into a Custom Element class.
+export const SomeElement = defineCustomElement(SomeComponent)
 
-// register global typings
+// Remember to register the element class with the browser.
+customElements.define('some-element', SomeElement)
+
+// Add the new element type to Vue's GlobalComponents type.
 declare module 'vue' {
-  export interface GlobalComponents {
-    Counter: typeof Counter
+  interface GlobalComponents {
+    // Be sure to pass in the Vue component type here (SomeComponent, *not* SomeElement).
+    // Custom Elements require a hyphen in their name, so use the hyphenated element name here.
+    'some-element': typeof SomeComponent
   }
 }
 ```
+
+## کامپوننت‌های وب غیر Vue و TypeScript {#non-vue-web-components-and-typescript}
+
+در اینجا روش پیشنهادی برای فعال کردن بررسی تایپ (Type Checking) در تمپلیت‌های SFC
+برای المنت‌های سفارشی که با Vue ساخته نشده‌اند، ارائه شده است.
+
+:::tip نکته
+این روش یکی از راه‌های ممکن برای انجام آن است، اما ممکن است بسته به فریمورکی که برای ساخت المنت‌های سفارشی استفاده می‌شود، متفاوت باشد.
+:::
+
+فرض کنید یک المنت سفارشی داریم که دارای برخی ویژگی‌های جاوا اسکریپتی (JS Properties) و رویدادهای تعریف شده است
+و در یک کتابخانه به نام `some-lib` ارائه می‌شود:
+
+```ts
+// file: some-lib/src/SomeElement.ts
+
+// Define a class with typed JS properties.
+export class SomeElement extends HTMLElement {
+  foo: number = 123
+  bar: string = 'blah'
+
+  lorem: boolean = false
+
+  // This method should not be exposed to template types.
+  someMethod() {
+    /* ... */
+  }
+
+  // ... implementation details omitted ...
+  // ... assume the element dispatches events named "apple-fell" ...
+}
+
+customElements.define('some-element', SomeElement)
+
+// This is a list of properties of SomeElement that will be selected for type
+// checking in framework templates (f.e. Vue SFC templates). Any other
+// properties will not be exposed.
+export type SomeElementAttributes = 'foo' | 'bar'
+
+// Define the event types that SomeElement dispatches.
+export type SomeElementEvents = {
+  'apple-fell': AppleFellEvent
+}
+
+export class AppleFellEvent extends Event {
+  /* ... details omitted ... */
+}
+```
+
+جزئیات پیاده‌سازی حذف شده‌اند،اما بخش مهم این است که ما تعریف‌های تایپ برای دو مورد داریم:
+انواع ویژگی‌ها (Prop Types) و انواع رویدادها (Event Types).  
+
+بیایید یک کمکی برای ثبت آسان تعریف‌های تایپ المنت‌های سفارشی در Vue ایجاد کنیم:
+
+```ts
+// file: some-lib/src/DefineCustomElement.ts
+
+// We can re-use this type helper per each element we need to define.
+type DefineCustomElement<
+  ElementType extends HTMLElement,
+  Events extends EventMap = {},
+  SelectedAttributes extends keyof ElementType = keyof ElementType
+> = new () => ElementType & {
+  // Use $props to define the properties exposed to template type checking. Vue
+  // specifically reads prop definitions from the `$props` type. Note that we
+  // combine the element's props with the global HTML props and Vue's special
+  // props.
+  /** @deprecated Do not use the $props property on a Custom Element ref, this is for template prop types only. */
+  $props: HTMLAttributes &
+    Partial<Pick<ElementType, SelectedAttributes>> &
+    PublicProps
+
+  // Use $emit to specifically define event types. Vue specifically reads event
+  // types from the `$emit` type. Note that `$emit` expects a particular format
+  // that we map `Events` to.
+  /** @deprecated Do not use the $emit property on a Custom Element ref, this is for template prop types only. */
+  $emit: VueEmit<Events>
+}
+
+type EventMap = {
+  [event: string]: Event
+}
+
+// This maps an EventMap to the format that Vue's $emit type expects.
+type VueEmit<T extends EventMap> = EmitFn<{
+  [K in keyof T]: (event: T[K]) => void
+}>
+```
+
+:::tip نکته
+ما پراپرتی‌های `‎$props` و `‎$emit` را به‌عنوان منسوخ شده علامت‌گذاری کرده‌ایم
+تا زمانی که به یک المنت سفارشی ارجاع (`ref`) می‌گیریم، از این پراپرتی‌های استفاده نکنیم.
+این پراپرتی‌های فقط برای بررسی تایپ در کد مورد استفاده قرار می‌گیرند و در واقع روی نمونه‌های واقعی المنت سفارشی وجود ندارند.
+:::
+
+با استفاده از این کمکی تایپ (type helper)، اکنون می‌توانیم ویژگی‌های جاوا اسکریپتی
+(JS properties) که باید برای بررسی تایپ در تمپلیت‌های Vue نمایش داده شوند را انتخاب کنیم:
+
+```ts
+// file: some-lib/src/SomeElement.vue.ts
+
+import {
+  SomeElement,
+  SomeElementAttributes,
+  SomeElementEvents
+} from './SomeElement.js'
+import type { Component } from 'vue'
+import type { DefineCustomElement } from './DefineCustomElement'
+
+// Add the new element type to Vue's GlobalComponents type.
+declare module 'vue' {
+  interface GlobalComponents {
+    'some-element': DefineCustomElement<
+      SomeElement,
+      SomeElementAttributes,
+      SomeElementEvents
+    >
+  }
+}
+```
+
+فرض کنید که `some-lib` فایل‌های TypeScript خود را در پوشه `dist/‎` کامپایل می‌کند.
+سپس یک کاربر از `some-lib` می‌تواند `SomeElement` را ایمپورت کرده و آن را در یک SFC ویو به این صورت استفاده کند:
+
+```vue
+<script setup lang="ts">
+// This will create and register the element with the browser.
+import 'some-lib/dist/SomeElement.js'
+
+// A user that is using TypeScript and Vue should additionally import the
+// Vue-specific type definition (users of other frameworks may import other
+// framework-specific type definitions).
+import type {} from 'some-lib/dist/SomeElement.vue.js'
+
+import { useTemplateRef, onMounted } from 'vue'
+
+const el = useTemplateRef('el')
+
+onMounted(() => {
+  console.log(
+    el.value!.foo,
+    el.value!.bar,
+    el.value!.lorem,
+    el.value!.someMethod()
+  )
+
+  // Do not use these props, they are `undefined` (IDE will show them crossed out):
+  el.$props
+  el.$emit
+})
+</script>
+
+<template>
+  <!-- Now we can use the element, with type checking: -->
+  <some-element
+    ref="el"
+    :foo="456"
+    :blah="'hello'"
+    @apple-fell="
+      (event) => {
+        // The type of `event` is inferred here to be `AppleFellEvent`
+      }
+    "
+  ></some-element>
+</template>
+```
+
+اگر یک المنت تعریف‌های تایپ را نداشته باشد،
+انواع ویژگی‌ها و رویدادها را می‌توان به صورت دستی‌تر تعریف کرد:
+
+```vue
+<script setup lang="ts">
+// Suppose that `some-lib` is plain JS without type definitions, and TypeScript
+// cannot infer the types:
+import { SomeElement } from 'some-lib'
+
+// We'll use the same type helper as before.
+import { DefineCustomElement } from './DefineCustomElement'
+
+type SomeElementProps = { foo?: number; bar?: string }
+type SomeElementEvents = { 'apple-fell': AppleFellEvent }
+interface AppleFellEvent extends Event {
+  /* ... */
+}
+
+// Add the new element type to Vue's GlobalComponents type.
+declare module 'vue' {
+  interface GlobalComponents {
+    'some-element': DefineCustomElement<
+      SomeElementProps,
+      SomeElementEvents
+    >
+  }
+}
+
+// ... same as before, use a reference to the element ...
+</script>
+
+<template>
+  <!-- ... same as before, use the element in the template ... -->
+</template>
+```
+
+نویسندگان المنت‌های سفارشی نباید به طور خودکار تعاریف تایپ المنت‌های سفارشی مختص فریمورک‌ها را از کتابخانه‌های خود اکسپورت کنند.
+به عنوان مثال، نباید این تعاریف را از یک فایل `index.ts`
+که سایر بخش‌های کتابخانه را نیز اکسپورت می‌کند، اکسپورت کنند؛
+زیرا در غیر این صورت، کاربران با ارورهای غیرمنتظره‌ای در مورد گسترش ماژول (module augmentation) مواجه خواهند شد.
+کاربران باید فایل تعریف تایپ مختص فریمورکی را که نیاز دارند ایمپورت کنند.
 
 ## کامپوننت‌های Web در مقابل کامپوننت‌های Vue {#web-components-vs-vue-components}
 

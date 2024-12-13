@@ -1,6 +1,29 @@
 <script setup>
 import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
+<style>
+.lambdatest {
+  background-color: var(--vt-c-bg-soft);
+  border-radius: 8px;
+  padding: 12px 16px 12px 12px;
+  font-size: 13px;
+  a {
+    display: flex;
+    color: var(--vt-c-text-2);
+  }
+  img {
+    background-color: #fff;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-right: 24px;
+  }
+  .testing-partner {
+    color: var(--vt-c-text-1);
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+</style>
 
 # تست و بررسی {#testing}
 
@@ -40,7 +63,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ```js
 // helpers.js
-export function increment (current, max = 10) {
+export function increment(current, max = 10) {
   if (current < max) {
     return current + 1
   }
@@ -129,62 +152,66 @@ describe('increment', () => {
 <VTCodeGroup>
   <VTCodeGroupTab label="Vue Test Utils">
 
-  ```js
-  const valueSelector = '[data-testid=stepper-value]'
-  const buttonSelector = '[data-testid=increment]'
+```js
+const valueSelector = '[data-testid=stepper-value]'
+const buttonSelector = '[data-testid=increment]'
 
-  const wrapper = mount(Stepper, {
-    props: {
-      max: 1
-    }
-  })
+const wrapper = mount(Stepper, {
+  props: {
+    max: 1
+  }
+})
 
-  expect(wrapper.find(valueSelector).text()).toContain('0')
+expect(wrapper.find(valueSelector).text()).toContain('0')
 
-  await wrapper.find(buttonSelector).trigger('click')
+await wrapper.find(buttonSelector).trigger('click')
 
-  expect(wrapper.find(valueSelector).text()).toContain('1')
-  ```
+expect(wrapper.find(valueSelector).text()).toContain('1')
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="Cypress">
 
-  ```js
-  const valueSelector = '[data-testid=stepper-value]'
-  const buttonSelector = '[data-testid=increment]'
+```js
+const valueSelector = '[data-testid=stepper-value]'
+const buttonSelector = '[data-testid=increment]'
 
-  mount(Stepper, {
-    props: {
-      max: 1
-    }
-  })
+mount(Stepper, {
+  props: {
+    max: 1
+  }
+})
 
-  cy.get(valueSelector).should('be.visible').and('contain.text', '0')
-    .get(buttonSelector).click()
-    .get(valueSelector).should('contain.text', '1')
-  ```
+cy.get(valueSelector)
+  .should('be.visible')
+  .and('contain.text', '0')
+  .get(buttonSelector)
+  .click()
+  .get(valueSelector)
+  .should('contain.text', '1')
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="Testing Library">
 
-  ```js
-  const { getByText } = render(Stepper, {
-    props: {
-      max: 1
-    }
-  })
+```js
+const { getByText } = render(Stepper, {
+  props: {
+    max: 1
+  }
+})
 
-  getByText('0') // Implicit assertion that "0" is within the component
+getByText('0') // Implicit assertion that "0" is within the component
 
-  const button = getByRole('button', { name: /increment/i })
+const button = getByRole('button', { name: /increment/i })
 
-  // Dispatch a click event to our increment button.
-  await fireEvent.click(button)
+// Dispatch a click event to our increment button.
+await fireEvent.click(button)
 
-  getByText('1')
+getByText('1')
 
-  await fireEvent.click(button)
-  ```
+await fireEvent.click(button)
+```
 
   </VTCodeGroupTab>
 </VTCodeGroup>
@@ -265,6 +292,16 @@ describe('increment', () => {
 
 - [Cypress](https://www.cypress.io/) دارای رابط گرافیکی، قابلیت اشکال‌زدایی عالی، assertion های داخلی، stub ها، مقاومت در برابر ناپایداری و قابلیت snapshot است. همانطور که در بالا ذکر شد، پشتیبانی پایداری را برای [تست کامپوننت](https://docs.cypress.io/guides/component-testing/introduction) فراهم می‌کند. Cypress از مرورگرهای مبتنی بر Chromium، Firefox و Electron پشتیبانی می‌کند. پشتیبانی از WebKit در دسترس است، اما به عنوان آزمایشی علامت‌گذاری شده است. Cypress تحت لایسنس MIT است، اما برخی از ویژگی‌ها مانند اجرای موازی نیاز به اشتراک در Cypress Cloud دارند.
 
+<div dir="rtl" class="lambdatest">
+  <a href="https://lambdatest.com" target="_blank">
+    <img src="/images/lambdatest.svg">
+    <div>
+      <div class="testing-partner">حامی تست</div>
+      <div>لامبداتست یک پلتفرم ابری برای انجام تست‌های E2E، دسترسی‌پذیری و رگرسیون بصری در تمامی مرورگرهای اصلی و دستگاه‌های واقعی است، با تولید تست‌های هوش مصنوعی کمکی!</div>
+    </div>
+  </a>
+</div>
+
 ### انتخاب های دیگر {#other-options-2}
 
 - [Nightwatch](https://nightwatchjs.org/) یک راه حل تست انتها به انتها (E2E) است که بر پایه [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver) ساخته شده است. این امر باعث می‌شود Nightwatch از گسترده‌ترین پشتیبانی مرورگر در میان فریمورک‌های تست E2E برخوردار باشد، از جمله آزمایش موبایل بومی. راه حل های مبتنی بر سلنیوم از Playwright یا Cypress کندتر خواهند بود.
@@ -300,7 +337,6 @@ export default defineConfig({
 ```
 
 :::tip راهنمایی
-
 اگر از TypeScript استفاده می‌کنید، `vitest/globals` را به فیلد `types` در `tsconfig.json` خود اضافه کنید.
 
 ```json

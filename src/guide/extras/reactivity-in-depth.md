@@ -403,7 +403,7 @@ export function useMachine(options) {
 چندین فریمورک دیگر هم مفاهیم اولیه واکنش‌پذیری مشابه refs از Composition API Vue را با عنوان "سیگنال‌ها" معرفی کرده‌اند:
 
 - [سیگنال‌ها در Solid](https://www.solidjs.com/docs/latest/api#createsignal)
-- [سیگنال‌ها در Angular](https://angular.io/guide/signals)
+- [سیگنال‌ها در Angular](https://angular.dev/guide/signals)
 - [سیگنال‌ها در Preact](https://preactjs.com/guide/v10/signals/)
 - [سیگنال‌ها در Qwik](https://qwik.builder.io/docs/components/state/#usesignal)
 

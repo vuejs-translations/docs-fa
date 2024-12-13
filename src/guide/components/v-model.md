@@ -100,11 +100,15 @@ const model = defineModel({ default: 0 })
 
 اگر برای پراپ `defineModel` مقدار `default` تعریف کرده باشید و هیچ مقداری به آن از کامپوننت والد پاس ندهید، می‌تواند باعث ناهمگام‌سازی (de-synchronization) بین کامپوننت‌های والد و فرزند شود. در مثال زیر `myRef` والد برابر undefined است، اما `model` در فرزند برابر ۱ است:
 
-```js
-// child component:
-const model = defineModel({ default: 1 })
+**Child component:**
 
-// parent component:
+```js
+const model = defineModel({ default: 1 })
+```
+
+**Parent component:**
+
+```js
 const myRef = ref()
 ```
 
