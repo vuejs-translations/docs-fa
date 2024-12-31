@@ -238,7 +238,7 @@ export function register() {
 }
 ```
 
-مصرف‌کننده می‌تواند از المنت‌های موجود در یک فایل Vue استفاده کند.
+مصرف‌کننده می‌تواند از المنت‌های موجود در یک فایل Vue استفاده کند:
 
 ```vue
 <script setup>
@@ -263,8 +263,8 @@ customElements.define('some-bar', MyBar)
 
 export function MyComponent() {
   return <>
-    <some-foo ...>
-      <some-bar ...></some-bar>
+    <some-foo ... >
+      <some-bar ... ></some-bar>
     </some-foo>
   </>
 }
@@ -293,8 +293,10 @@ customElements.define('some-element', SomeElement)
 // Add the new element type to Vue's GlobalComponents type.
 declare module 'vue' {
   interface GlobalComponents {
-    // Be sure to pass in the Vue component type here (SomeComponent, *not* SomeElement).
-    // Custom Elements require a hyphen in their name, so use the hyphenated element name here.
+    // Be sure to pass in the Vue component type here 
+    // (SomeComponent, *not* SomeElement).
+    // Custom Elements require a hyphen in their name, 
+    // so use the hyphenated element name here.
     'some-element': typeof SomeComponent
   }
 }
@@ -302,15 +304,13 @@ declare module 'vue' {
 
 ## کامپوننت‌های وب غیر Vue و TypeScript {#non-vue-web-components-and-typescript}
 
-در اینجا روش پیشنهادی برای فعال کردن بررسی تایپ (Type Checking) در تمپلیت‌های SFC
-برای المنت‌های سفارشی که با Vue ساخته نشده‌اند، ارائه شده است.
+در اینجا روش پیشنهادی برای فعال کردن بررسی تایپ (Type Checking) در تمپلیت‌های SFC برای المنت‌های سفارشی که با Vue ساخته نشده‌اند، ارائه شده است.
 
 :::tip نکته
 این روش یکی از راه‌های ممکن برای انجام آن است، اما ممکن است بسته به فریمورکی که برای ساخت المنت‌های سفارشی استفاده می‌شود، متفاوت باشد.
 :::
 
-فرض کنید یک المنت سفارشی داریم که دارای برخی ویژگی‌های جاوا اسکریپتی (JS Properties) و رویدادهای تعریف شده است
-و در یک کتابخانه به نام `some-lib` ارائه می‌شود:
+فرض کنید یک المنت سفارشی داریم که دارای برخی ویژگی‌های جاوا اسکریپتی (JS Properties) و رویدادهای تعریف شده است و در یک کتابخانه به نام `some-lib` ارائه می‌شود:
 
 ```ts
 // file: some-lib/src/SomeElement.ts
@@ -348,8 +348,7 @@ export class AppleFellEvent extends Event {
 }
 ```
 
-جزئیات پیاده‌سازی حذف شده‌اند،اما بخش مهم این است که ما تعریف‌های تایپ برای دو مورد داریم:
-انواع ویژگی‌ها (Prop Types) و انواع رویدادها (Event Types).  
+جزئیات پیاده‌سازی حذف شده‌اند،اما بخش مهم این است که ما تعریف‌های تایپ برای دو مورد داریم: تایپ پراپ‌ها (Prop Types) و تایپ رویدادها (Event Types).
 
 بیایید یک کمکی برای ثبت آسان تعریف‌های تایپ المنت‌های سفارشی در Vue ایجاد کنیم:
 
@@ -366,7 +365,8 @@ type DefineCustomElement<
   // specifically reads prop definitions from the `$props` type. Note that we
   // combine the element's props with the global HTML props and Vue's special
   // props.
-  /** @deprecated Do not use the $props property on a Custom Element ref, this is for template prop types only. */
+  /** @deprecated Do not use the $props property on a Custom Element ref, 
+    this is for template prop types only. */
   $props: HTMLAttributes &
     Partial<Pick<ElementType, SelectedAttributes>> &
     PublicProps
@@ -374,7 +374,8 @@ type DefineCustomElement<
   // Use $emit to specifically define event types. Vue specifically reads event
   // types from the `$emit` type. Note that `$emit` expects a particular format
   // that we map `Events` to.
-  /** @deprecated Do not use the $emit property on a Custom Element ref, this is for template prop types only. */
+  /** @deprecated Do not use the $emit property on a Custom Element ref, 
+    this is for template prop types only. */
   $emit: VueEmit<Events>
 }
 
@@ -394,8 +395,7 @@ type VueEmit<T extends EventMap> = EmitFn<{
 این پراپرتی‌های فقط برای بررسی تایپ در کد مورد استفاده قرار می‌گیرند و در واقع روی نمونه‌های واقعی المنت سفارشی وجود ندارند.
 :::
 
-با استفاده از این کمکی تایپ (type helper)، اکنون می‌توانیم ویژگی‌های جاوا اسکریپتی
-(JS properties) که باید برای بررسی تایپ در تمپلیت‌های Vue نمایش داده شوند را انتخاب کنیم:
+با استفاده از این کمکی تایپ (type helper)، اکنون می‌توانیم ویژگی‌های جاوا اسکریپتی (JS properties) که باید برای بررسی تایپ در تمپلیت‌های Vue نمایش داده شوند را انتخاب کنیم:
 
 ```ts
 // file: some-lib/src/SomeElement.vue.ts
@@ -420,8 +420,7 @@ declare module 'vue' {
 }
 ```
 
-فرض کنید که `some-lib` فایل‌های TypeScript خود را در پوشه `dist/‎` کامپایل می‌کند.
-سپس یک کاربر از `some-lib` می‌تواند `SomeElement` را ایمپورت کرده و آن را در یک SFC ویو به این صورت استفاده کند:
+فرض کنید که `some-lib` فایل‌های TypeScript خود را در پوشه `dist/‎` کامپایل می‌کند. سپس یک کاربر از `some-lib` می‌تواند `SomeElement` را ایمپورت کرده و آن را در یک SFC ویو به این صورت استفاده کند:
 
 ```vue
 <script setup lang="ts">
@@ -445,7 +444,8 @@ onMounted(() => {
     el.value!.someMethod()
   )
 
-  // Do not use these props, they are `undefined` (IDE will show them crossed out):
+  // Do not use these props, they are `undefined`
+  // IDE will show them crossed out
   el.$props
   el.$emit
 })
@@ -466,8 +466,7 @@ onMounted(() => {
 </template>
 ```
 
-اگر یک المنت تعریف‌های تایپ را نداشته باشد،
-انواع ویژگی‌ها و رویدادها را می‌توان به صورت دستی‌تر تعریف کرد:
+اگر یک المنت تعریف‌های تایپ را نداشته باشد، انواع ویژگی‌ها و رویدادها را می‌توان به صورت دستی‌تر تعریف کرد:
 
 ```vue
 <script setup lang="ts">
@@ -502,11 +501,7 @@ declare module 'vue' {
 </template>
 ```
 
-نویسندگان المنت‌های سفارشی نباید به طور خودکار تعاریف تایپ المنت‌های سفارشی مختص فریمورک‌ها را از کتابخانه‌های خود اکسپورت کنند.
-به عنوان مثال، نباید این تعاریف را از یک فایل `index.ts`
-که سایر بخش‌های کتابخانه را نیز اکسپورت می‌کند، اکسپورت کنند؛
-زیرا در غیر این صورت، کاربران با ارورهای غیرمنتظره‌ای در مورد گسترش ماژول (module augmentation) مواجه خواهند شد.
-کاربران باید فایل تعریف تایپ مختص فریمورکی را که نیاز دارند ایمپورت کنند.
+نویسندگان المنت‌های سفارشی نباید به طور خودکار تعاریف تایپ المنت‌های سفارشی مختص فریمورک‌ها را از کتابخانه‌های خود اکسپورت کنند. به عنوان مثال، نباید این تعاریف را از یک فایل `index.ts` که سایر بخش‌های کتابخانه را نیز اکسپورت می‌کند، اکسپورت کنند؛ زیرا در غیر این صورت، کاربران با ارورهای غیرمنتظره‌ای در مورد گسترش ماژول (module augmentation) مواجه خواهند شد. کاربران باید فایل تعریف تایپ مختص فریمورکی را که نیاز دارند ایمپورت کنند.
 
 ## کامپوننت‌های Web در مقابل کامپوننت‌های Vue {#web-components-vs-vue-components}
 

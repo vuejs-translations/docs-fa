@@ -190,10 +190,6 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: 'اتصال input در فرم',
           link: '/guide/essentials/forms'
         },
-        {
-          text: 'هوک‌های چرخه حیات',
-          link: '/guide/essentials/lifecycle'
-        },
         { text: 'ناظرها - Watchers', link: '/guide/essentials/watchers' },
         {
           text: 'ارجاع از طریق تمپلیت - Template Refs',
@@ -202,6 +198,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
         {
           text: 'مبانی کامپوننت‌ها',
           link: '/guide/essentials/component-basics'
+        },
+        {
+          text: 'هوک‌های چرخه حیات',
+          link: '/guide/essentials/lifecycle'
         }
       ]
     },

@@ -314,6 +314,8 @@ defineExpose({
 
 هنگامی که والد نمونه‌ای از این کامپوننت را از طریق ارجاع تمپلیت می‌گیرد، نمونه بازیابی شده به شکل `{ a: number, b: number }` خواهد بود (refها همانند نمونه‌های معمولی به صورت خودکار unwrap می‌شوند)
 
+توجه داشته باشید که `defineExpose` باید قبل از هر عملیات `await` فراخوانی شود. در غیر این صورت، ویژگی‌ها و متدهایی که پس از عملیات `await` مشخص می‌شوند، قابل دسترسی نخواهند بود.
+
 همچنین ببینید: [Typing Component Template Refs](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
 </div>

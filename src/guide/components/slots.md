@@ -303,7 +303,7 @@ function BaseLayout(slots) {
 می‌توانید از پراپرتی [‎$slots](/api/component-instance.html#slots) در ترکیب با [v-if](/guide/essentials/conditional.html#v-if) برای رسیدن به این هدف استفاده کنید.
 
 در مثال زیر یک کامپوننت کارت را با سه اسلات شرطی تعریف می‌کنیم: `header` و `footer` و یک `default`.
-زمانی که header / footer / default  حضور داشته باشد، می‌خواهیم آنها را با یک المنت جدا بپیچیم تا استایل اضافی اعمال شود:
+زمانی که محتوا برای header / footer / default  حضور داشته باشد، می‌خواهیم آنها را با یک المنت جدا بپیچیم تا استایل اضافی اعمال شود:
 
 ```vue-html
 <template>
