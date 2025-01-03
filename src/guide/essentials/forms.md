@@ -77,7 +77,7 @@ const multiSelected = ref([])
 برای زبان هایی که به [IME](https://en.wikipedia.org/wiki/Input_method) نیاز دارند (چینی، ژاپنی، کره ای و غیره)، متوجه خواهید شد که `v-model` در طول ترکیب IME به روز نمی شود. اگر می‌خواهید به این به‌روزرسانی‌ها نیز پاسخ دهید، به‌جای استفاده از `v-model` از شنونده رویداد `input` و پیوند `value` خود استفاده کنید.
 :::
 
-### Multiline text {#multiline-text}
+### Multiline Text {#multiline-text}
 
 ```vue-html
 <span>پیام چند خطی برابر است با:</span>
