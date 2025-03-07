@@ -13,6 +13,7 @@
 معمولاً این کار در بالای `App.vue` انجام می شود زیرا اولین عنصر قابل تمرکز بر روی تمام صفحات شما خواهد بود:
 
 ```vue-html
+<span ref="backToTop" tabindex="-1" />
 <ul class="skip-links">
   <li>
     <a href="#main" ref="skipLink" class="skip-link">Skip to main content</a>
@@ -23,6 +24,9 @@
 همچنین برای مخفی سازی لینک تا هنگامی که بر روی آن فوکوس شود می‌توانید از استایل زیر استفاده کنید:
 
 ```css
+.skip-links {
+  list-style: none;
+}
 .skip-link {
   white-space: nowrap;
   margin: 1em auto;
@@ -40,7 +44,7 @@
 }
 ```
 
-هنگامی که کاربر route را تغییر می دهد، focus را به لینک اسکیپ بازگردانید. این کار با صدا زدن تابع focus روی template ref پیوند اسکیپ (با فرض استفاده از `vue-router`) امکان پذیر است: (مترجم: به `ref="skipLink"‎` در بالا توجه کنید.)
+هنگامی که کاربر route را تغییر می دهد،  فوکوس را به ابتدای صفحه، درست قبل از لینک اسکیپ بازگردانید. این کار با صدا زدن تابع focus روی  روی `backToTop` (که یک template ref است) انجام داد. پیوند اسکیپ (با فرض استفاده از `vue-router`) امکان پذیر است:
 
 <div class="options-api">
 
@@ -49,7 +53,7 @@
 export default {
   watch: {
     $route() {
-      this.$refs.skipLink.focus()
+      this.$refs.backToTop.focus()
     }
   }
 }
@@ -65,12 +69,12 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const skipLink = ref()
+const backToTop = ref()
 
 watch(
   () => route.path,
   () => {
-    skipLink.value.focus()
+    backToTop.value.focus()
   }
 )
 </script>
@@ -78,7 +82,7 @@ watch(
 
 </div>
 
-[اسناد اتصال لینک اسکیپ به محتوای اصلی را بخوانید](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
+[اسناد اتصال لینک اسکیپ به محتوای اصلی](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
 ## ساختار محتوا {#content-structure}
 

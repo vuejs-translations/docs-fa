@@ -32,7 +32,6 @@ const vnode = {
 
 اگر دو نسخه مختلف از درخت virtual DOM داشته باشیم، رندرر می‌تواند دو درخت را پیمایش و مقایسه کند تا تفاوت‌ها را مشخص و بر روی DOM واقعی اعمال کند. به این فرایند **patch** گفته می‌شود که همچنین با "diffing" یا "reconciliation" نیز شناخته می‌شود.
 
-
 دستاورد اصلی virtual DOM این است که به توسعه‌دهنده این امکان را می‌دهد تا به صورت اختیاری و از طریق کدهایی که به راحتی قابل فهم و تعمیم‌پذیر هستند، ساختارهای UI مورد نیاز خود را تعریف کند، در حالی که تغییر مستقیم بر روی DOM و تعامل با آن به عهده رندرر (Renderer) باشد.
 
 ## رَوند رندرینگ | Render Pipeline {#render-pipeline}
@@ -56,6 +55,7 @@ const vnode = {
 پس چرا Vue به طور پیش‌فرض تمپلیت‌ها را توصیه می‌کند؟ چند دلیل وجود دارد:
 
 1. تمپلیت‌ها نزدیک‌تر به HTML واقعی هستند. این موضوع باعث می‌شود استفاده مجدد از اسنیپت‌های HTML، اعمال روش‌های خوب دسترسی‌پذیری، استایل دادن با CSS و همچنین درک کد و یا اصلاح آن توسط طراحانی که الزاما دانش برنامه نویسی ندارند، بسیار آسان‌تر شود.
+
 2. تحلیل کد تمپلیت، به دلیل سینتکس خاص‌شان، برای کامپایلر ساده تر است. این موضوع به کامپایلر اجازه می دهد که بسیاری از بهینه‌سازی‌های زمان کامپایل را برای بهبود عملکرد virtual DOM (که در ادامه بحث خواهیم کرد) اعمال کند.
 
 در عمل و در بیشتر موارد، استفاده از تمپلیت کافی خواهد بود. render function معمولاً فقط در کامپوننت‌ های با قابل استفاده مجدد که نیاز به مدیریت منطق رندرینگ بسیار پویا دارند، استفاده می‌شوند. استفاده از render function ها در [Render Functions & JSX](./render-function) با جزئیات بیشتر مورد بحث قرار گرفته است.
@@ -64,29 +64,27 @@ const vnode = {
 
 پیاده سازی virtual DOM در React و بیشتر فریم‌ورک های دیگر، صرفا محدود به رانتایم است: الگوریتم reconciliation (تطابق) نمی‌تواند هیچ فرضی در مورد درخت virtual DOM ورودی داشته باشد، بنابراین برای تضمین صحت، باید به طور کامل درخت را پیمایش کند و diffing را برای props هر vnode انجام دهد. علاوه بر این، حتی اگر قسمتی از درخت هرگز تغییر نکند، مجدداً vnode های جدیدی برای آن‌ها در هر بازرندر ایجاد می‌شود که منجر به فشار غیرضروری به حافظه می گردد. این موضوع یکی جدی ترین انتقاد های وارد شده به virtual DOM است: فرایند reconciliation به نوعی "نا به خردانه" است، چرا که بدون در نظر گرفتن بهینه‌سازی‌ها، کل درخت virtual DOM را بررسی و مقایسه می‌کند. این کار باعث افت کارایی می‌شود، اما در عوض این اطمینان را می‌دهد که رندرینگ به درستی انجام شود. بنابراین می‌توان گفت این روش، کارایی را برای declarative (تعریفی‌) بودن و صحت قربانی می‌کند.
 
-اما لزومی برای وجود تقابل بین declrative بودن و کارایی نیست. در Vue، فریم‌ورک هم کامپایلر و هم رانتایم را کنترل می‌کند. این به ما اجازه می‌دهد تا بسیاری از بهینه‌سازی‌ها را در زمان کامپایل پیاده‌سازی کنیم که فقط یک رندرر مجهز و ادغام شده می‌تواند از آن‌ها بهره ببرد. کامپایلر می‌تواند تمپلیت را به صورت استاتیک تجزیه و تحلیل کرده و راهنمایی‌هایی در کد تولید شده قرار دهد تا رانتایم بتواند هر جا که ممکن است از این راهنمایی ها به عنوان میان‌بر استفاده کند. در عین حال، همچنان قابلیت رفتن به لایه render function با هدف کنترل مستقیم‌تر در موارد خاص، برای کاربر حفظ می‌شود.
-
-به این رویکرد ترکیبی **Compiler-Informed Virtual DOM (Virtual DOM آگاه از کامپایلر)** می‌گوییم.
+اما لزومی برای وجود تقابل بین declrative بودن و کارایی نیست. در Vue، فریم‌ورک هم کامپایلر و هم رانتایم را کنترل می‌کند. این به ما اجازه می‌دهد تا بسیاری از بهینه‌سازی‌ها را در زمان کامپایل پیاده‌سازی کنیم که فقط یک رندرر مجهز و ادغام شده می‌تواند از آن‌ها بهره ببرد. کامپایلر می‌تواند تمپلیت را به صورت استاتیک تجزیه و تحلیل کرده و راهنمایی‌هایی در کد تولید شده قرار دهد تا رانتایم بتواند هر جا که ممکن است از این راهنمایی ها به عنوان میان‌بر استفاده کند. در عین حال، همچنان قابلیت رفتن به لایه render function با هدف کنترل مستقیم‌تر در موارد خاص، برای کاربر حفظ می‌شود. به این رویکرد ترکیبی **Compiler-Informed Virtual DOM (Virtual DOM آگاه از کامپایلر)** می‌گوییم.
 
 در ادامه، چندین نمونه از بهینه‌سازی‌های کامپایلر تمپلیت Vue را (که با هدف بهبود عملکرد رانتایم virtual DOM انجام می‌دهد) بررسی خواهیم کرد.
 
-### Static Hoisting {#static-hoisting}
+### Cache Static {#cache-static}
 
 اغلب اوقات قسمت‌هایی در تمپلیت وجود دارد که هیچ binding پویایی ندارند:
 
 ```vue-html{2-3}
 <div>
-  <div>foo</div> <!-- hoisted -->
-  <div>bar</div> <!-- hoisted -->
+  <div>foo</div> <!-- cached -->
+  <div>bar</div> <!-- cached -->
   <div>{{ dynamic }}</div>
 </div>
 ```
 
-[در Template Explorer بررسی کنید](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGhvaXN0ZWQgLS0+XG4gIDxkaXY+YmFyPC9kaXY+IDwhLS0gaG9pc3RlZCAtLT5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj5cbiIsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
+[در Template Explorer بررسی کنید](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGNhY2hlZCAtLT5cbiAgPGRpdj5iYXI8L2Rpdj4gPCEtLSBjYWNoZWQgLS0+XG4gIDxkaXY+e3sgZHluYW1pYyB9fTwvZGl2PlxuPC9kaXY+XG4iLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)
 
-دو تگ div با متن `foo` و `bar` استاتیک هستند - بنابراین ایحاد vnodeها و مقایسه آن‌ها در هر بازرندر غیرضروری است. کامپایلر Vue به صورت خودکار فراخوانی ایجاد این دسته از vnode ها  را از render function خارج می‌کند و همان vnodeها را در هر رندر، مجددا استفاده می‌کند. رندرر زمانی که متوجه شود vnode قدیمی و vnode جدید یکسان هستند، از انجام مقایسه (diffing) خودداری می‌کند.
+دو تگ `div` با متن `foo` و `bar` استاتیک هستند - بنابراین ایجاد vnodeها و مقایسه آن‌ها در هر بار رندر غیرضروری است. کامپایلر Vue به‌صورت خودکار فراخوانی ایجاد این vnodeها را از تابع رندر خارج کرده و در هر رندر مجدداً از همان vnodeها استفاده می‌کند. علاوه بر این، رندرر زمانی که متوجه شود vnode قدیمی و جدید یکسان هستند، فرایند مقایسه (diffing) را به‌طور کامل نادیده می‌گیرد.
 
-علاوه بر این، هنگامی که تعداد کافی از عناصر استاتیک پشت سر هم قرار بگیرند، به عنوان یک "static vnode" در نظر گرفته می‌شوند و این vnode استاتیک حاوی رشته HTML ساده برای تمام این نودها خواهد بود ([مثال](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). این vnode های استاتیک با تنظیم مستقیم `innerHTML` در برنامه mount می‌شوند. همچنین نودهای DOM متناظر خود را در mount اولیه Cache می‌کنند - اگر همان قطعه محتوا در جای دیگر برنامه استفاده شود، نودهای DOM جدید با استفاده از `cloneNode()‎` که یکی از API های DOM و بسیار کارآمد است، ایجاد می‌شوند.
+علاوه بر این، هنگامی که تعداد کافی از عناصر استاتیک پشت سر هم قرار بگیرند، به عنوان یک "static vnode" در نظر گرفته می‌شوند و این vnode استاتیک حاوی رشته HTML ساده برای تمام این نودها خواهد بود ([مثال](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). این vnode های استاتیک با تنظیم مستقیم `innerHTML` در برنامه mount می‌شوند.
 
 ### Patch Flags {#patch-flags}
 
