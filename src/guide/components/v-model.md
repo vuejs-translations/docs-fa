@@ -523,7 +523,7 @@ export default {
 
 </div>
 
-### modifierها برای v-model‌های آرگومان‌دار {#modifiers-for-v-model-with-arguments}
+### modifierها برای `v-model`‌ های آرگومان‌دار {#modifiers-for-v-model-with-arguments}
 
 <div class="options-api">
 

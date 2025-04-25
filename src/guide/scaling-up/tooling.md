@@ -113,7 +113,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 ![devtools screenshot](./images/devtools.png)
 
 - [مستندات](https://devtools.vuejs.org/)
-- [افزونه Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
+- [افزونه Chrome](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 - [پلاگین Vite](https://devtools.vuejs.org/guide/vite-plugin)
 - [Standalone Electron app](https://devtools.vuejs.org/guide/installation.html#standalone)
 

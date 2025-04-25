@@ -123,7 +123,9 @@ const message = inject('message')
 </script>
 ```
 
-اگر مقدار ارائه شده یک ref باشد، بدون تغییر تزریق می‌شود و به طور خودکار unwrap نمی‌شود. این امکان اتصال reactive به کامپوننت ارائه‌دهنده را برای کامپوننت تزریق‌کننده حفظ می‌کند. به عبارت دیگر، مقدار به صورت "as-is" و بدون تغییر تزریق می‌شود.
+اگر چند والد داده‌ای با یک کلید یکسان ارائه دهند، تابع `inject` مقدار مربوط به نزدیک‌ترین والد را در زنجیره والدین کامپوننت بازمی‌گرداند.
+
+اگر مقدار ارائه شده یک ref باشد، بدون تغییر تزریق می‌شود و به طور خودکار unwrap **نمی‌شود**. این امکان اتصال reactive به کامپوننت ارائه‌دهنده را برای کامپوننت تزریق‌کننده حفظ می‌کند. به عبارت دیگر، مقدار به صورت "as-is" و بدون تغییر تزریق می‌شود.
 
 [نمونه کامل از provide و inject با reactive](https://play.vuejs.org/#eNqFUUFugzAQ/MrKF1IpxfeIVKp66Kk/8MWFDXYFtmUbpArx967BhURRU9/WOzO7MzuxV+fKcUB2YlWovXYRAsbBvQije2d9hAk8Xo7gvB11gzDDxdseCuIUG+ZN6a7JjZIvVRIlgDCcw+d3pmvTglz1okJ499I0C3qB1dJQT9YRooVaSdNiACWdQ5OICj2WwtTWhAg9hiBbhHNSOxQKu84WT8LkNQ9FBhTHXyg1K75aJHNUROxdJyNSBVBp44YI43NvG+zOgmWWYGt7dcipqPhGZEe2ef07wN3lltD+lWN6tNkV/37+rdKjK2rzhRTt7f3u41xhe37/xJZGAL2PLECXa9NKdD/a6QTTtGnP88LgiXJtYv4BaLHhvg==)
 
@@ -169,7 +171,7 @@ export default {
 }
 ```
 
-اگر چندین والد داده‌ای با یک کلید یکسان ارائه دهند، مقدار `inject` از اولین والدی که در زنجیره والدین قرار دارد، مقدار را دریافت خواهد کرد.
+اگر چند والد داده‌ای با کلید یکسان ارائه دهند، `inject` مقداری را برمی‌گرداند که از نزدیک‌ترین والد در زنجیره‌ی والدین کامپوننت دریافت شده باشد.
 
 [نمونه کامل از provide + inject](https://play.vuejs.org/#eNqNkcFqwzAQRH9l0EUthOhuRKH00FO/oO7B2JtERZaEvA4F43+vZCdOTAIJCImRdpi32kG8h7A99iQKobs6msBvpTNt8JHxcTC2wS76FnKrJpVLZelKR39TSUO7qreMoXRA7ZPPkeOuwHByj5v8EqI/moZeXudCIBL30Z0V0FLXVXsqIA9krU8R+XbMR9rS0mqhS4KpDbZiSgrQc5JKQqvlRWzEQnyvuc9YuWbd4eXq+TZn0IvzOeKr8FvsNcaK/R6Ocb9Uc4FvefpE+fMwP0wH8DU7wB77nIo6x6a2hvNEME5D0CpbrjnHf+8excI=)
 

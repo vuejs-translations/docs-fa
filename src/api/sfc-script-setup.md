@@ -479,9 +479,10 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 `()async setup` باید همراه با [`Suspense`](/guide/built-ins/suspense.html) استفاده شود، که هنوز یک ویژگی آزمایشی است. ما قصد نهایی کردن مستندات را در یک ریلیز آینده خواهیم داشت - اما اگر کنجکاو هستید، می‌توانید با مشاهده گیت‌هاب [tests](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts) ببینید به چه صورت کار می‌کند.
 :::
 
-## عبارات Import
+## عبارات Import {#imports-statements}
 
-عبارات import در Vue از مشخصات ماژول ECMAScript پیروی می‌کنند. علاوه بر این، شما می‌توانید از نام‌های مستعار (aliases) که در تنظیمات ابزار ساخت خود تعریف کرده‌اید استفاده کنید.
+عبارات import در Vue از مشخصات ماژول ECMAScript پیروی می‌کنند.
+علاوه بر این، شما می‌توانید از نام‌های مستعار (aliases) که در تنظیمات ابزار ساخت خود تعریف کرده‌اید استفاده کنید.
 
 ```vue
 <script setup>
@@ -519,6 +520,18 @@ defineProps<{
   list: U[]
 }>()
 </script>
+```
+
+می‌توانید از دستور `‎@vue-generic` برای مشخص کردن تایپ‌ها به‌صورت صریح استفاده کنید، مخصوصاً زمانی که تایپ به‌صورت خودکار قابل تشخیص نیست.
+
+```vue
+<template>
+  <!-- @vue-generic {import('@/api').Actor} -->
+  <ApiSelect v-model="peopleIds" endpoint="/api/actors" id-prop="actorId" />
+
+  <!-- @vue-generic {import('@/api').Genre} -->
+  <ApiSelect v-model="genreIds" endpoint="/api/genres" id-prop="genreId" />
+</template>
 ```
 
 برای استفاده از ارجاع به یک کامپوننت عمومی در یک `ref`، شما نیاز دارید از کتابخانه [`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers) استفاده کنید زیرا `InstanceType` کار نخواهد کرد.

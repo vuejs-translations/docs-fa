@@ -19,13 +19,13 @@ aside: false
 - [Русский / روسی](https://ru.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-ru)]
 - [Čeština / چکی](https://cs.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-cs)]
 - [繁體中文 / چینی سنتی](https://zh-hk.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-zh-hk)]
+- [Polski / لهستانی](https://pl.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-pl)]
 
 ## زبان‌های درحال پیشرفت {#work-in-progress-languages}
 
 - [العربية / عربی](https://ar.vuejs.org/) [[مخزن](https://github.com/vuejs-translations/docs-ar)]
 - [Español / اسپانیایی](https://vue3-spanish-docs.netlify.app/) [[مخزن](https://github.com/icarusgk/vuejs-spanish-docs)]
 - [Deutsch / آلمانی](https://de.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-de)]
-- [Polski / لهستانی](https://pl.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-pl)]
 
 ## شروع یک ترجمه جدید {#starting-a-new-translation}
 

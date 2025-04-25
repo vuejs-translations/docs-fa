@@ -113,113 +113,6 @@ watchEffect(() => {
 
 </div>
 
-## استفاده از ارجاع‌ها درون `v-for` {#refs-inside-v-for}
-
-> به نسخه v3.5 یا بالاتر نیاز دارد
-
-<div class="composition-api">
-
-هنگامی که `ref` درون `v-for` استفاده می‌شود، ارجاع مربوطه باید شامل مقدار آرایه باشد، که این آرایه بعد از عمل mount با المنت‌ها پُر می‌شود.
-
-```vue
-<script setup>
-import { ref, useTemplateRef, onMounted } from 'vue'
-
-const list = ref([
-  /* ... */
-])
-
-const itemRefs = useTemplateRef('items')
-
-onMounted(() => console.log(itemRefs.value))
-</script>
-
-<template>
-  <ul>
-    <li v-for="item in list" ref="items">
-      {{ item }}
-    </li>
-  </ul>
-</template>
-```
-
-[آن را در Playground امتحان کنید](https://play.vuejs.org/#eNp9UsluwjAQ/ZWRLwQpDepyQoDUIg6t1EWUW91DFAZq6tiWF4oU5d87dtgqVRyyzLw3b+aN3bB7Y4ptQDZkI1dZYTw49MFMuBK10dZDAxZXOQSHC6yNLD3OY6zVsw7K4xJaWFldQ49UelxxVWnlPEhBr3GszT6uc7jJ4fazf4KFx5p0HFH+Kme9CLle4h6bZFkfxhNouAIoJVqfHQSKbSkDFnVpMhEpovC481NNVcr3SaWlZzTovJErCqgydaMIYBRk+tKfFLC9Wmk75iyqg1DJBWfRxT7pONvTAZom2YC23QsMpOg0B0l0NDh2YjnzjpyvxLrYOK1o3ckLZ5WujSBHr8YL2gxnw85lxEop9c9TynkbMD/kqy+svv/Jb9wu5jh7s+jQbpGzI+ZLu0byEuHZ+wvt6Ays9TJIYl8A5+i0DHHGjvYQ1JLGPuOlaR/TpRFqvXCzHR2BO5iKg0Zmm/ic0W2ZXrB+Gve2uEt1dJKs/QXbwePE)
-
-<details>
-<summary>روش استفاده قبل از 3.5</summary>
-
-در نسخه‌های قبل از 3.5 که `useTemplateRef()‎` معرفی نشده بود، ما نیاز داشتیم یک ref تعریف کنیم که نام آن با مقدار اتریبیوت template ref مطابقت داشته باشد. همچنین این ref باید حاوی یک مقدار آرایه‌ای باشد:
-
-```vue
-<script setup>
-import { ref, onMounted } from 'vue'
-
-const list = ref([
-  /* ... */
-])
-
-const itemRefs = ref([])
-
-onMounted(() => console.log(itemRefs.value))
-</script>
-
-<template>
-  <ul>
-    <li v-for="item in list" ref="itemRefs">
-      {{ item }}
-    </li>
-  </ul>
-</template>
-```
-
-</details>
-
-</div>
-<div class="options-api">
-
-هنگامی که `ref` درون `v-for` استفاده می‌شود، مقدار ارجاع حاصل آرایه‌ای شامل مقادیر مربوطه خواهد بود:
-
-```vue
-<script>
-export default {
-  data() {
-    return {
-      list: [
-        /* ... */
-      ]
-    }
-  },
-  mounted() {
-    console.log(this.$refs.items)
-  }
-}
-</script>
-
-<template>
-  <ul>
-    <li v-for="item in list" ref="items">
-      {{ item }}
-    </li>
-  </ul>
-</template>
-```
-
-[Try it in the Playground](https://play.vuejs.org/#eNpFjk0KwjAQha/yCC4Uaou6kyp4DuOi2KkGYhKSiQildzdNa4WQmTc/37xeXJwr35HEUdTh7pXjszT0cdYzWuqaqBm9NEDbcLPeTDngiaM3PwVoFfiI667AvsDhNpWHMQzF+L9sNEztH3C3JlhNpbaPNT9VKFeeulAqplfY5D1p0qurxVQSqel0w5QUUEedY8q0wnvbWX+SYgRAmWxIiuSzm4tBinkc6HvkuSE7TIBKq4lZZWhdLZfE8AWp4l3T)
-
-</div>
-
-باید توجه داشت که آرایه ساخته شده از ارجاع‌ها تضمین نمی‌کند که به همان ترتیب آرایه مبدا باشد.
-
-## ارجاع با استفاده از تابع {#function-refs}
-
-ویژگی `ref` همچنین می‌تواند به جای استفاده از یک کلید استرینگ به یک تابع وصل شود، که در هر بروزرسانی کامپوننت صدا زده می‌شود و به شما انعطاف کامل درباره اینکه کجا المنت را نگه دارید می‌دهد. تابع ارجاع دهنده، المنت را به عنوان اولین آرگومان دریافت می‌کند:
-
-```vue-html
-<input :ref="(el) => { /* اختصاص دهید ref را به یک پراپرتی یا el */ }">
-```
-
-توجه داشته باشید ما داریم از یک اتصال `‎:ref` پویا استفاده می‌کنیم تا بتوانیم یک تابع را به جای یک رشته برای نام ارجاع ارسال کنیم. هنگامی که المنت unmounted می‌شود، آرگومان `null` خواهد بود. البته که شما می‌توانید از یک متد به جای تابع خطی استفاده کنید.
-
 ## استفاده از ارجاع در کامپوننت {#ref-on-component}
 
 > این قسمت دانش [Components](/guide/essentials/component-basics) را فرض می‌کند. راحت از آن صرف نظر کنید و بعداً برگردید.
@@ -346,3 +239,110 @@ export default {
 در مثال بالا، والدی که به این کامپوننت از طریق ارجاع تمپلیت رجوع می‌کند فقط قادر خواهد بود به `publicData` و `publicMethod` دسترسی پیدا کند.
 
 </div>
+
+## استفاده از ارجاع‌ها درون `v-for` {#refs-inside-v-for}
+
+> به نسخه v3.5 یا بالاتر نیاز دارد
+
+<div class="composition-api">
+
+هنگامی که `ref` درون `v-for` استفاده می‌شود، ارجاع مربوطه باید شامل مقدار آرایه باشد، که این آرایه بعد از عمل mount با المنت‌ها پُر می‌شود.
+
+```vue
+<script setup>
+import { ref, useTemplateRef, onMounted } from 'vue'
+
+const list = ref([
+  /* ... */
+])
+
+const itemRefs = useTemplateRef('items')
+
+onMounted(() => console.log(itemRefs.value))
+</script>
+
+<template>
+  <ul>
+    <li v-for="item in list" ref="items">
+      {{ item }}
+    </li>
+  </ul>
+</template>
+```
+
+[آن را در Playground امتحان کنید](https://play.vuejs.org/#eNp9UsluwjAQ/ZWRLwQpDepyQoDUIg6t1EWUW91DFAZq6tiWF4oU5d87dtgqVRyyzLw3b+aN3bB7Y4ptQDZkI1dZYTw49MFMuBK10dZDAxZXOQSHC6yNLD3OY6zVsw7K4xJaWFldQ49UelxxVWnlPEhBr3GszT6uc7jJ4fazf4KFx5p0HFH+Kme9CLle4h6bZFkfxhNouAIoJVqfHQSKbSkDFnVpMhEpovC481NNVcr3SaWlZzTovJErCqgydaMIYBRk+tKfFLC9Wmk75iyqg1DJBWfRxT7pONvTAZom2YC23QsMpOg0B0l0NDh2YjnzjpyvxLrYOK1o3ckLZ5WujSBHr8YL2gxnw85lxEop9c9TynkbMD/kqy+svv/Jb9wu5jh7s+jQbpGzI+ZLu0byEuHZ+wvt6Ays9TJIYl8A5+i0DHHGjvYQ1JLGPuOlaR/TpRFqvXCzHR2BO5iKg0Zmm/ic0W2ZXrB+Gve2uEt1dJKs/QXbwePE)
+
+<details>
+<summary>روش استفاده قبل از 3.5</summary>
+
+در نسخه‌های قبل از 3.5 که `useTemplateRef()‎` معرفی نشده بود، ما نیاز داشتیم یک ref تعریف کنیم که نام آن با مقدار اتریبیوت template ref مطابقت داشته باشد. همچنین این ref باید حاوی یک مقدار آرایه‌ای باشد:
+
+```vue
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const list = ref([
+  /* ... */
+])
+
+const itemRefs = ref([])
+
+onMounted(() => console.log(itemRefs.value))
+</script>
+
+<template>
+  <ul>
+    <li v-for="item in list" ref="itemRefs">
+      {{ item }}
+    </li>
+  </ul>
+</template>
+```
+
+</details>
+
+</div>
+<div class="options-api">
+
+هنگامی که `ref` درون `v-for` استفاده می‌شود، مقدار ارجاع حاصل آرایه‌ای شامل مقادیر مربوطه خواهد بود:
+
+```vue
+<script>
+export default {
+  data() {
+    return {
+      list: [
+        /* ... */
+      ]
+    }
+  },
+  mounted() {
+    console.log(this.$refs.items)
+  }
+}
+</script>
+
+<template>
+  <ul>
+    <li v-for="item in list" ref="items">
+      {{ item }}
+    </li>
+  </ul>
+</template>
+```
+
+[آن را در Playground امتحان کنید](https://play.vuejs.org/#eNpFjk0KwjAQha/yCC4Uaou6kyp4DuOi2KkGYhKSiQildzdNa4WQmTc/37xeXJwr35HEUdTh7pXjszT0cdYzWuqaqBm9NEDbcLPeTDngiaM3PwVoFfiI667AvsDhNpWHMQzF+L9sNEztH3C3JlhNpbaPNT9VKFeeulAqplfY5D1p0qurxVQSqel0w5QUUEedY8q0wnvbWX+SYgRAmWxIiuSzm4tBinkc6HvkuSE7TIBKq4lZZWhdLZfE8AWp4l3T)
+
+</div>
+
+باید توجه داشت که آرایه ساخته شده از ارجاع‌ها تضمین نمی‌کند که به همان ترتیب آرایه مبدا باشد.
+
+## ارجاع با استفاده از تابع {#function-refs}
+
+ویژگی `ref` همچنین می‌تواند به جای استفاده از یک کلید استرینگ به یک تابع وصل شود، که در هر بروزرسانی کامپوننت صدا زده می‌شود و به شما انعطاف کامل درباره اینکه کجا المنت را نگه دارید می‌دهد. تابع ارجاع دهنده، المنت را به عنوان اولین آرگومان دریافت می‌کند:
+
+```vue-html
+<input :ref="(el) => { /* اختصاص دهید ref را به یک پراپرتی یا el */ }">
+```
+
+توجه داشته باشید ما داریم از یک اتصال `‎:ref` پویا استفاده می‌کنیم تا بتوانیم یک تابع را به جای یک رشته برای نام ارجاع ارسال کنیم. هنگامی که المنت unmounted می‌شود، آرگومان `null` خواهد بود. البته که شما می‌توانید از یک متد به جای تابع خطی استفاده کنید.

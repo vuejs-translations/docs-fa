@@ -53,7 +53,7 @@ Vue برای حل این مشکل API هایی برای "رندر" کردن بر
 
 اگرچه Vue اساساً برای ساخت برنامه های وب طراحی شده است، اما به هیچ وجه فقط به مرورگر محدود نمی‌شود. شما می‌توانید:
 
-- برنامه‌های دسکتاپ را با [Electron](https://www.electronjs.org/) بسازید
+- برنامه‌های دسکتاپ را با [Electron](https://www.electronjs.org/) یا [Wails](https://wails.io) بسازید
 - برنامه‌های موبایل را با [Ionic Vue](https://ionicframework.com/docs/vue/overview) بسازید
 - برنامه‌های دسکتاپ و تلفن همراه را با سورس کد مشترک با [Quasar](https://quasar.dev/) یا [Tauri](https://tauri.app) بسازید
 - وب ۳ بعدی WebGL را با [TresJS](https://tresjs.org/) تجربه کنید
