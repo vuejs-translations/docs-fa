@@ -1,42 +1,42 @@
-# Vue.js Privacy Policy {#vue.js-privacy-policy}
+# سیاست حفظ حریم خصوصی Vue.js {#vue.js-privacy-policy}
 
-> Effective Date: May 3, 2024
+> تاریخ اجرا: May 3, 2024
 
-This Privacy Policy describes the Vue.js organization ("Vue", "we", "us" or "our") practices for handling your information in connection with this website (https://vuejs.org) and our open source-related websites ("Websites") and any content, related documentation, information and services (e.g. tutorials, tools to support the developer workflow, access to resources, etc.) made available to you on this website (collectively, the "Services"). This Privacy Policy describes the personal information we process to support our Services.
+این سیاست حفظ حریم خصوصی، رویه های سازمان Vue.js ("Vue" یا "ما") برای مدیریت اطلاعات شما در ارتباط با این وبسایت (https://vuejs.org) و وبسایت‌های مربوطه‌ی متن باز ما ("وب سایت ها") و هرگونه محتوا، مستندات مربوطه، اطلاعات و سرویس ها (مانند آموزش ها، ابزار های پشتیبانی از روند کاری توسعه‌دهنده، دسترسی به منابع، و ...) که در این وبسایت برای شما فراهم شده است  (در مجموع، "سرویس ها") را شرح می‌دهد. این سیاست حفظ حریم خصوصی، اطلاعات شخصی ای که برای پشتیبانی از سرویس هایمان پردازش می‌کنیم را توصیف می‌کند.
 
-For clarity, this Privacy Policy does not apply to any:
+برای وضوح بیشتر، این سیاست حفظ حریم خصوصی درباره موارد زیر صدق نمی‌کند:
 
-1. Use of open source code, documentation or specifications made available on GitHub (https://github.com/), which are governed by the terms of the applicable open source license;
+1. استفاده از کد متن باز، مستندات یا مشخصات فنی‌ای که در گیت‌هاب (https://github.com/) در دسترس قرار گرفته اند، و تحت قوانین مجوز متن باز مربوطه مدیریت می‌شوند;
 
-2. Pull requests, issues and any other interactions or features related to participation in open source projects on GitHub, which are governed by GitHub's terms and conditions; or
+2. Pull Requests ها، Issue ها و هر گونه تعاملات یا خصیصه های دیگری که مربوط به مشارکت در پروژه های متن باز در گیت‌هاب باشند، که تحت قوانین و ضوابط گیت‌هاب مدیریت می‌شوند; یا
 
-3. Usage statistics of our published packages on NPM (https://npmjs.com/), which are governed by NPM's terms and conditions; or
+3. آمار استفاده از Package های منتشر شده توسط ما در NPM‏ (https://npmjs.com/)، که تحت قوانین و ضوابط NPM مدیریت می‌شوند; یا
 
-4. Usage statistics of our published browser / IDE extensions collected by the browser / IDE vendors. Such statistics are governed by the vendors' respective terms and conditions.
+4. آمار استفاده از افزونه های مرورگر / IDE منتشر شده توسط ما که توسط مرورگر / عرضه‌کنندگان IDE جمع آوری شده اند. این آمار تحت قوانین و ضوابط عرضه کننده مربوطه مدیریت می‌شوند.
 
-## What Kinds of Information Do We Collect? {#what-kinds-of-information-do-we-collect}
+## ما جه نوع اطلاعاتی را جمع‌آوری می‌کنیم؟ {#what-kinds-of-information-do-we-collect}
 
-We do **not** collect or store any type of personal data, whether through our websites or through our published npm packages or browser / IDE extensions.
+ما هیچ‌گونه اطلاعات شخصی ای را جمع‌آوری یا ذخیره **نمی‌کنیم**، چه از طریق وبسایت‌هایمان و چه از طریق package های npm یا افزونه های مرورگر / IDE منتشر شده‌مان.
 
-We may collect anonymized data via 3rd party services integrated in our websites:
+ما ممکن است داده هایی را به شکل ناشناس از طریق سرویس های 3rd party ای که در وبسایت‌هایمان به‌کار رفته‌اند جمع‌آوری کنیم:
 
-- **Visitor data to our websites.** Our website analytics is powered by [Fathom Analytics](https://usefathom.com/), which doesn't use cookies and complies with the GDPR, ePrivacy (including PECR), COPPA and CCPA. Using this privacy-friendly website analytics software, your IP address is only briefly processed, and we (running this website) have no way of identifying you. As per the CCPA, your personal information is de-identified. You can read more about this on Fathom Analytics' website.
+- **اطلاعات بازدیدکنندگان از وبسایت‌های ما.** تحلیل آمار وبسایت ما توسط [Fathom Analytics](https://usefathom.com/) انجام می‌شود، که از cookie ها استفاده نمی‌کند و از GDPR، ePrivacy (شامل PECR)، COPPA و CCPA پیروی می‌کند. با استفاده از این نرم‌افزارِ حریم خصوصی-دوست، آدرس IP شما تنها به طور مختصر پردازش می‌شود، و ما (که این وبسایت را اجرا می‌کنیم) هیچ راهی برای شناسایی شما نداریم. بر اساس CCPA، اطلاعات شخصی شما غیرقابل شناسایی شده است. شما می‌توانید در این باره در وبسایت Fathom Analytics بیشتر مطالعه کنید.
 
-  - Fathom Analytics' Privacy Policy: https://usefathom.com/legal/privacy
+  - سیاست حریم خصوصی Fathom Analytics:‏ https://usefathom.com/legal/privacy
 
-- **Usage data of the search functionality.** Our search functionality is powered by [Algolia DocSearch](https://docsearch.algolia.com/), which does not perform any type of user tracking or fingerprinting, and does not use cookies. Algolia services are GPDR compliant, CCPA compliant, and TRUSTe Certified.
+- **داده های استفاده از قابلیت جستجو.** قابلیت جستجو‌ی ما توسط [Algolia DocSearch](https://docsearch.algolia.com/) انجام می‌شود، که هیچ نوع رهگیری یا fingerprinting از کاربر انجام نمی‌دهد، و از cookie ها استفاده نمی‌کند. سرویس های Algolia از GPDR و CCPA پیروی می‌کنند و دارای گواهی  TRUSTe هستند.
 
-  - Algolia's privacy policy: https://www.algolia.com/policies/privacy/
-  - Algolia's security and privacy compliance: https://www.algolia.com/distributed-secure/security-compliance/
+  - سیاست حریم خصوصی Algolia:‏ https://www.algolia.com/policies/privacy/
+  - الزامات امنیتی و حریم خصوصی Algolia:‏ https://www.algolia.com/distributed-secure/security-compliance/
 
-## How Do We Use Information? {#how-do-we-use-information}
+## ما چگونه از اطلاعات استفاده می‌کنیم؟ {#how-do-we-use-information}
 
-The sole purpose of collecting the aforementioned data is to understand our website traffic and usage in the most privacy-friendly way possible so that we can continually improve our website and documentation quality. The lawful basis as per the GDPR is "Article 6(1)(f); where our legitimate interests are to improve our website and business continually." As per the explanation, no personal data is stored over time.
+تنها هدف ما از جمع‌آوری داده های ذکر شده، این است که ترافیک و استفاده از وبسایت‌‌مان را به حریم خصوصی-دوست ترین روش ممکن بفهمیم تا بتوانیم مستمرا کیفیت وبسایت و مستندات را بهبود دهیم. مبنای قانونی این کار بر اساس GDPR، "مقاله 6(1)(f); هنگامی که اهداف مشروع ما بهبود مستمر وبسایت و کسب و کارمان است." می‌باشد. مطابق با توضیح، هیچ گونه اطلاعات خصوصی‌ای در طول زمان ذخیره نمی‌شود. 
 
-## Data Retention {#data-retention}
+## نگه‌داری از داده ها {#data-retention}
 
-All data collected are stored on aforementioned 3rd party services and are subject to the services' respective data retention policies.
+تمام داده های جمع‌آوری شده، در سرویس های 3rd party مذکور ذخیره می‌شوند و تابع سیاست های نگه‌داری از داده‌ی مربوطه در سرویس ها هستند. 
 
-## Questions {#questions}
+## سوالات {#questions}
 
-If you have any questions about this Privacy Policy or our practices, please contact us via email at hello@vuejs.org.
+در صورتی که هر گونه سوالی درباره این سیاست حفظ حریم خصوصی یا شیوه های ما دارید، لطفا از طریق ایمیل  hello@vuejs.org با ما تماس بگیرید.
