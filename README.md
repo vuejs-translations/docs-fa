@@ -108,6 +108,7 @@
     <td align="center"><a href="https://github.com/ASafaeirad"><img src="https://avatars.githubusercontent.com/u/28571761?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Alireza Safaierad</b></sub></a></td>
     <td align="center"><a href="https://github.com/SinaQP"><img src="https://avatars.githubusercontent.com/u/60918925?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Sina Qasempour</b></sub></a></td>
     <td align="center"><a href="https://github.com/ftmSadat"><img src="https://avatars.githubusercontent.com/u/155294266?v=4&s=64" width="64px;" alt=""/><br /><sub><b>FatemehSadat Mirshamsi</b></sub></a></td>
+    <td align="center"><a href="https://github.com/KianoshArian"><img src="https://avatars.githubusercontent.com/u/68875392?v=4&s=64" width="64px;" alt=""/><br /><sub><b>Kianosh Arian</b></sub></a></td>
   </tr>
 </table>
 
