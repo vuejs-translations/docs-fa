@@ -1,4 +1,8 @@
-# Component v-model {#component-v-model}
+# v-model در کامپوننت {#component-v-model}
+
+<ScrimbaLink href="https://scrimba.com/links/vue-component-v-model" title="Free Vue.js Component v-model Lesson" type="scrimba">
+   یک درس ویدیویی تعاملی مرتبط در Scrimba تماشا کنید.
+</ScrimbaLink>
 
 ## استفاده پایه {#basic-usage}
 

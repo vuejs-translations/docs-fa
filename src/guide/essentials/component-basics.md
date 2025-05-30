@@ -1,5 +1,9 @@
 # مبانی کامپوننت‌ها {#components-basics}
 
+<ScrimbaLink href="https://scrimba.com/links/vue-component-basics" title="Free Vue.js Components Basics Lesson" type="scrimba">
+  یک درس ویدیویی تعاملی مرتبط در Scrimba تماشا کنید.
+</ScrimbaLink>
+
 کامپوننت‌‌ها به ما اجازه می‌دهند تا رابط کاربری را به قطعات مستقل و قابل استفاده مجدد تقسیم کنیم و در مورد هر قطعه به طور مجزا فکر کنیم. معمول است که یک برنامه به صورت درختی از کامپوننت‌‌های تودرتو سازماندهی شود:
 
 ![درخت کامپوننت ها](./images/components.png)

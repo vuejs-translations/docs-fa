@@ -515,10 +515,6 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: 'لیست با انیمیشن',
           link: '/examples/#list-transition'
         },
-        {
-          text: 'نمونه TodoMVC',
-          link: '/examples/#todomvc'
-        }
       ]
     },
     {

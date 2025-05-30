@@ -16,6 +16,8 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 - اگر شما از قبل با Node.js و مفهوم build tools آشنا هستید، می‌توانید یک تنظیم کامل ساخت را مستقیماً در مرورگر خود با [StackBlitz](https://vite.new/vue) امتحان کنید.
 
+- برای دریافت راهنمای گام‌به‌گام تنظیمات پیشنهادی، آموزش تعاملی [Scrimba](http://scrimba.com/links/vue-quickstart) را ببینید که به شما نشان می‌دهد چگونه اولین اپلیکیشن Vue خود را اجرا، ویرایش و منتشر کنید.
+
 ## ایجاد برنامه Vue {#creating-a-vue-application}
 
 :::tip پیش‌نیازها

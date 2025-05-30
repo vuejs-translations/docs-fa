@@ -174,3 +174,20 @@ li {
 .vt-banner-text {
   direction: ltr;
 }
+
+.scrimba {
+  direction: rtl !important;
+}
+.scrimba a {
+  padding-left: unset !important;
+  padding-right: 36px !important;
+}
+.scrimba a::before {
+  right: -4px !important;
+  left: unset !important;
+}
+.scrimba a::after {
+  right: 6px !important;
+  left: unset !important;
+
+}

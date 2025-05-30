@@ -1,2 +1,0 @@
-کاملا مطابق استندارد TODOMVC پیاده سازی یک
-https://todomvc.com/

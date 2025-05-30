@@ -1,5 +1,9 @@
 # تایپ اسکریپت با Composition API {#typescript-with-composition-api}
 
+<ScrimbaLink href="https://scrimba.com/links/vue-ts-composition-api" title="Free Vue.js TypeScript with Composition API Lesson" type="scrimba">
+  یک درس ویدیویی تعاملی مرتبط در Scrimba تماشا کنید.
+</ScrimbaLink>
+
 > در این صفحه فرض شده است که شما از قبل بخش مرور کلیِ [استفاده از Vue با TypeScript](./overview) را مطالعه کرده‌اید.
 
 ## تعریف تایپ برای Prop های کامپوننت‌ {#typing-component-props}
