@@ -263,8 +263,15 @@ const fullName = computed({
 
 - فقط در نسخه 3.4+ پشتیبانی می‌شود
 
+<p class="options-api">
+در صورتی که نیاز داشته باشید، می‌توانید مقدار قبلی برگردانده شده توسط پراپرتی computed را
+با دسترسی به آرگومان دوم تابع getter دریافت کنید:
+</p>
+
+<p class="composition-api">
 در صورتی که نیاز داشته باشید، می‌توانید مقدار قبلی برگردانده شده توسط پراپرتی computed را
 با دسترسی به آرگومان اول تابع getter دریافت کنید:
+</p>
 
 <div class="options-api">
 
@@ -326,7 +333,7 @@ export default {
   },
   computed: {
     alwaysSmall: {
-      get(previous) {
+      get(_, previous) {
         if (this.count <= 3) {
           return this.count
         }
