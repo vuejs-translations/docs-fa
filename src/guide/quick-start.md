@@ -30,43 +30,31 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 اطمینان حاصل کنید که شما یک نسخه به‌روز از [Node.js](https://nodejs.org/) را بصورت نصب شده دارید و دایرکتوری فعلی شما همان جایی است که قصد ایجاد یک پروژه جدید را دارید. دستور زیر را در command line خود اجرا کنید (بدون علامت `$`):
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-  ```sh
-  $ npm create vue@latest
-  ```
+```sh [npm]
+$ npm create vue@latest
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
+```sh [pnpm]
+$ pnpm create vue@latest
+```
 
-  ```sh
-  $ pnpm create vue@latest
-  ```
+```sh [yarn]
+# For Yarn (v1+)
+$ yarn create vue
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
-
-  ```sh
-  # For Yarn (v1+)
-  $ yarn create vue
-
-  # For Yarn Modern (v2+)
-  $ yarn create vue@latest
+# For Yarn Modern (v2+)
+$ yarn create vue@latest
   
-  # For Yarn ^v4.11
-  $ yarn dlx create-vue@latest
-  ```
+# For Yarn ^v4.11
+$ yarn dlx create-vue@latest
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-
-  ```sh
-  $ bun create vue@latest
-  ```
-
-  </VTCodeGroupTab>
-</VTCodeGroup>
+```sh [bun]
+$ bun create vue@latest
+```
+:::
 
 این دستور ابزار رسمی ایجاد اولیه پروژه Vue به نام [create-vue](https://github.com/vuejs/create-vue) را نصب و اجرا خواهد کرد. شما با گزینه‌هایی برای قابلیت‌های اختیاری مختلف مانند پشتیبانی از TypeScript و تست نویسی روبرو خواهید شد:
 
@@ -86,44 +74,34 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 اگر در مورد یک گزینه مطمئن نیستید، فعلاً با زدن enter برای انتخاب `No` آن را نادیده بگیرید. سپس وقتی پروژه ایجاد شد، دستورالعمل‌های زیر را برای نصب وابستگی‌ها و راه‌اندازی dev server دنبال کنید:
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-  ```sh-vue
-  $ cd {{'<your-project-name>'}}
-  $ npm install
-  $ npm run dev
-  ```
+```sh-vue [npm]
+$ cd {{'<your-project-name>'}}
+$ npm install
+$ npm run dev
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
+```sh-vue [pnpm]
+$ cd {{'<your-project-name>'}}
+$ pnpm install
+$ pnpm run dev
+```
 
-  ```sh-vue
-  $ cd {{'<your-project-name>'}}
-  $ pnpm install
-  $ pnpm run dev
-  ```
+```sh-vue [yarn]
+$ cd {{'<your-project-name>'}}
+$ yarn
+$ yarn dev
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
+```sh-vue [bun]
+$ cd {{'<your-project-name>'}}
+$ bun install
+$ bun run dev
+```
 
-  ```sh-vue
-  $ cd {{'<your-project-name>'}}
-  $ yarn
-  $ yarn dev
-  ```
+:::
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-
-  ```sh-vue
-  $ cd {{'<your-project-name>'}}
-  $ bun install
-  $ bun run dev
-  ```
-
-  </VTCodeGroupTab>
-</VTCodeGroup>
 
 حالا شما باید اولین پروژه Vue خود را بصورت اجرا شده داشته باشید! توجه داشته باشید که کامپوننت‌هایی که برای نمونه در پروژه ایجاد شده‌اند، به جای [Options API](/guide/introduction#options-api) با استفاده از [Composition API](/guide/introduction#composition-api) و `<script setup>` نوشته شده‌اند. چند نکته بیشتر:
 
@@ -134,36 +112,26 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 هنگامی که آماده ارسال برنامه خود به پروداکشن هستید، کامند زیر را اجرا کنید:
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-  ```sh
-  $ npm run build
-  ```
+```sh [npm]
+$ npm run build
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
+```sh [pnpm]
+$ pnpm run build
+```
 
-  ```sh
-  $ pnpm run build
-  ```
+```sh [yarn]
+$ yarn build
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
+```sh [bun]
+$ bun run build
+```
 
-  ```sh
-  $ yarn build
-  ```
+:::
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-
-  ```sh
-  $ bun run build
-  ```
-
-  </VTCodeGroupTab>
-</VTCodeGroup>
 
 این کار یک بیلد آماده برای محیط پروداکشن در دایرکتوری `‎./dist` پروژه شما ایجاد خواهد کرد. [راهنمای استقرار پروداکشن](/guide/best-practices/production-deployment) را برای یادگیری بیشتر در مورد ارسال برنامه خود به پروداکشن بررسی کنید.
 
@@ -383,8 +351,7 @@ Import Maps یک ویژگی نسبتاً جدید مرورگر است. مطمئ�
 
 هنگامی که عمیق‌تر به درون راهنما می‌رویم، ممکن است نیاز داشته باشیم کدمان را به فایل‌های JavaScript جداگانه‌ای تقسیم کنیم تا مدیریت آن‌ها آسان‌تر شود. برای مثال:
 
-```html
-<!-- index.html -->
+```html [index.html]
 <div id="app"></div>
 
 <script type="module">
@@ -397,8 +364,7 @@ Import Maps یک ویژگی نسبتاً جدید مرورگر است. مطمئ�
 
 <div class="options-api">
 
-```js
-// my-component.js
+```js [my-component.js]
 export default {
   data() {
     return { count: 0 }
@@ -410,8 +376,7 @@ export default {
 </div>
 <div class="composition-api">
 
-```js
-// my-component.js
+```js [my-component.js]
 import { ref } from 'vue'
 export default {
   setup() {

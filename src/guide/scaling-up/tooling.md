@@ -25,40 +25,29 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 برای شروع کار با Vite + Vue، فقط لازم است دستور زیر را در کامندلاین اجرا کنید:
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-  ```sh
-  $ npm create vue@latest
-  ```
+```sh [npm]
+$ npm create vue@latest
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
+```sh [pnpm]
+$ pnpm create vue@latest
+```
   
-  ```sh
-  $ pnpm create vue@latest
-  ```
-
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
+```sh [yarn]
+# For Yarn Modern (v2+)
+$ yarn create vue@latest
   
-  ```sh
-  # For Yarn Modern (v2+)
-  $ yarn create vue@latest
+# For Yarn ^v4.11
+$ yarn dlx create-vue@latest
+```
   
-  # For Yarn ^v4.11
-  $ yarn dlx create-vue@latest
-  ```
+```sh [bun]
+$ bun create vue@latest
+```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-  
-  ```sh
-  $ bun create vue@latest
-  ```
-
-  </VTCodeGroupTab>
-</VTCodeGroup>
+:::
 
 این دستور [create-vue](https://github.com/vuejs/create-vue) را نصب و اجرا می‌کند، ابزار رسمی ساخت پروژه Vue.
 

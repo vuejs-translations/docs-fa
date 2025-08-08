@@ -40,8 +40,7 @@ const myPlugin = {
 
 بیایید با آبجکت پلاگین شروع کنیم. توصیه می‌شود که آن را در یک فایل جداگانه ایجاد کرده و آن را اکسپورت کنید، همانطور که در زیر نشان داده شده است تا منطق کد ایزوله باقی بماند.
 
-```js
-// plugins/i18n.js
+```js [plugins/i18n.js]
 export default {
   install: (app, options) => {
     // کد پلاگین اینجا نوشته می شود.
@@ -57,8 +56,7 @@ export default {
 
 از آنجایی که این تابع باید به صورت گلوبال در تمام تمپلیت‌ها در دسترس باشد، آن را به `app.config.globalProperties` متصل می‌کنیم:
 
-```js{4-11}
-// plugins/i18n.js
+```js{3-10} [plugins/i18n.js]
 export default {
   install: (app, options) => {
     // به شکل سراسری $translate() تزریق متد
@@ -99,8 +97,7 @@ app.use(i18nPlugin, {
 
 افزونه‌ها این امکان را فراهم می‌کنند که با استفاده از `provide`، دسترسی به یک تابع یا ویژگی خاص را در اختیار کاربران افزونه قرار دهیم. برای نمونه، می‌توان به برنامه اجازه داد تا به پارامتر `options` دسترسی داشته باشد تا بتواند از آبجکت حاوی مقادیر ترجمه شده استفاده کند.
 
-```js{10}
-// plugins/i18n.js
+```js{3} [plugins/i18n.js]
 export default {
   install: (app, options) => {
     app.provide('i18n', options)
@@ -112,7 +109,7 @@ export default {
 
 <div class="composition-api">
 
-```vue
+```vue{4}
 <script setup>
 import { inject } from 'vue'
 
@@ -125,7 +122,7 @@ console.log(i18n.greetings.hello)
 </div>
 <div class="options-api">
 
-```js
+```js{2}
 export default {
   inject: ['i18n'],
   created() {

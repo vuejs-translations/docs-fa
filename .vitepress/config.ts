@@ -5,6 +5,7 @@ import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
 // import { textAdPlugin } from './textAdMdPlugin'
+import { groupIconMdPlugin,groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 
 const nav: ThemeConfig['nav'] = [
   {
@@ -786,6 +787,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     theme: 'github-dark',
     config(md) {
       md.use(headerPlugin)
+        .use(groupIconMdPlugin)
       // .use(textAdPlugin)
     }
   },

@@ -298,16 +298,20 @@ function inc() {
 :::warning هشدار
 اگر مقدار پیش‌فرض برای پراپ `defineModel` تعریف شده باشد و مقداری از کامپوننت والد برای آن فراهم نشده باشد، می‌تواند باعث ناهماهنگی بین کامپوننت والد و فرزند شود. در مثال پایین، `myRef` والد تعریف نشده است، ولی در کامپوننت فرزند `model` برابر با 1 است:
 
-```js
-// کامپوننت فرزند
+```vue [Child.vue]
+<script setup>
 const model = defineModel({ default: 1 })
-
-// کامپوننت والد
-const myRef = ref()
+</script>
 ```
 
-```html
-<Child v-model="myRef"></Child>
+```vue [Parent.vue]
+<script setup>
+const myRef = ref()
+</script>
+
+<template>
+  <Child v-model="myRef"></Child>
+</template>
 ```
 
 :::

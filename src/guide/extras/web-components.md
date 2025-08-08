@@ -24,8 +24,7 @@ app.config.compilerOptions.isCustomElement = (tag) => tag.includes('-')
 
 #### مثال از تنظیمات Vite {#example-vite-config}
 
-```js
-// vite.config.js
+```js [vite.config.js]
 import vue from '@vitejs/plugin-vue'
 
 export default {
@@ -44,8 +43,7 @@ export default {
 
 #### مثال از تنظیمات Vue CLI {#example-vue-cli-config}
 
-```js
-// vue.config.js
+```js [vue.config.js]
 module.exports = {
   chainWebpack: (config) => {
     config.module
@@ -219,8 +217,7 @@ customElements.define('my-example', ExampleElement)
 
 توصیه می‌شود سازنده‌های المنت‌های جدا از هم را export کنید تا به کاربرانتان انعطاف‌پذیری بدهید آن‌ها را در زمان نیاز import کنند و با نام تگ دلخواه ثبت نمایند. همچنین می‌توانید یک تابع مقداردهی اولیه را export کنید تا خودکار همه المنت‌ها را ثبت کند. مثالی از نقطه ورود یک کتابخانه المنت‌های سفارشی Vue:
 
-```js
-// elements.js
+```js [elements.js]
 
 import { defineCustomElement } from 'vue'
 import Foo from './MyFoo.ce.vue'
@@ -312,9 +309,7 @@ declare module 'vue' {
 
 فرض کنید یک المنت سفارشی داریم که دارای برخی ویژگی‌های جاوا اسکریپتی (JS Properties) و رویدادهای تعریف شده است و در یک کتابخانه به نام `some-lib` ارائه می‌شود:
 
-```ts
-// file: some-lib/src/SomeElement.ts
-
+```ts [some-lib/src/SomeElement.ts]
 // Define a class with typed JS properties.
 export class SomeElement extends HTMLElement {
   foo: number = 123
@@ -352,9 +347,7 @@ export class AppleFellEvent extends Event {
 
 بیایید یک کمکی برای ثبت آسان تعریف‌های تایپ المنت‌های سفارشی در Vue ایجاد کنیم:
 
-```ts
-// file: some-lib/src/DefineCustomElement.ts
-
+```ts [some-lib/src/DefineCustomElement.ts]
 // We can re-use this type helper per each element we need to define.
 type DefineCustomElement<
   ElementType extends HTMLElement,
@@ -397,9 +390,7 @@ type VueEmit<T extends EventMap> = EmitFn<{
 
 با استفاده از این کمکی تایپ (type helper)، اکنون می‌توانیم ویژگی‌های جاوا اسکریپتی (JS properties) که باید برای بررسی تایپ در تمپلیت‌های Vue نمایش داده شوند را انتخاب کنیم:
 
-```ts
-// file: some-lib/src/SomeElement.vue.ts
-
+```ts [some-lib/src/SomeElement.vue.ts]
 import {
   SomeElement,
   SomeElementAttributes,
@@ -422,7 +413,7 @@ declare module 'vue' {
 
 فرض کنید که `some-lib` فایل‌های TypeScript خود را در پوشه `dist/‎` کامپایل می‌کند. سپس یک کاربر از `some-lib` می‌تواند `SomeElement` را ایمپورت کرده و آن را در یک SFC ویو به این صورت استفاده کند:
 
-```vue
+```vue [SomeElementImpl.vue]
 <script setup lang="ts">
 // This will create and register the element with the browser.
 import 'some-lib/dist/SomeElement.js'
@@ -468,7 +459,7 @@ onMounted(() => {
 
 اگر یک المنت تعریف‌های تایپ را نداشته باشد، انواع ویژگی‌ها و رویدادها را می‌توان به صورت دستی‌تر تعریف کرد:
 
-```vue
+```vue [SomeElementImpl.vue]
 <script setup lang="ts">
 // Suppose that `some-lib` is plain JS without type definitions, and TypeScript
 // cannot infer the types:

@@ -12,8 +12,7 @@
 
 از Vue 3.4 به بعد، رویکرد توصیه شده برای انجام این کار استفاده از ماکرو [`defineModel()‎`](/api/sfc-script-setup#definemodel) است:
 
-```vue
-<!-- Child.vue -->
+```vue [Child.vue]
 <script setup>
 const model = defineModel()
 
@@ -30,8 +29,7 @@ function update() {
 
 سپس والد می‌تواند مقدار را با `v-model` متصل کند:
 
-```vue-html
-<!-- Parent.vue -->
+```vue-html [Parent.vue]
 <Child v-model="countModel" />
 ```
 
@@ -63,8 +61,7 @@ const model = defineModel()
 
 روش پیاده‌سازی همان کامپوننت فرزند نشان داده شده در بالا قبل از نسخه 3.4 به این صورت است:
 
-```vue
-<!-- Child.vue -->
+```vue [Child.vue]
 <script setup>
 const props = defineProps(['modelValue'])
 const emit = defineEmits(['update:modelValue'])
@@ -80,8 +77,7 @@ const emit = defineEmits(['update:modelValue'])
 
 سپس `v-model="foo"‎` در کامپوننت والد کامپایل می‌شود به:
 
-```vue-html
-<!-- Parent.vue -->
+```vue-html [Parent.vue]
 <Child
   :modelValue="foo"
   @update:modelValue="$event => (foo = $event)"
@@ -104,20 +100,20 @@ const model = defineModel({ default: 0 })
 
 اگر برای پراپ `defineModel` مقدار `default` تعریف کرده باشید و هیچ مقداری به آن از کامپوننت والد پاس ندهید، می‌تواند باعث ناهمگام‌سازی (de-synchronization) بین کامپوننت‌های والد و فرزند شود. در مثال زیر `myRef` والد برابر undefined است، اما `model` در فرزند برابر ۱ است:
 
-**Child component:**
-
-```js
+```vue [Child.vue]
+<script setup>
 const model = defineModel({ default: 1 })
+</script>
 ```
 
-**Parent component:**
-
-```js
+```vue [Parent.vue]
+<script setup>
 const myRef = ref()
-```
+</script>
 
-```html
-<Child v-model="myRef"></Child>
+<template>
+  <Child v-model="myRef"></Child>
+</template>
 ```
 
 :::
@@ -157,8 +153,7 @@ const myRef = ref()
 
 در اینجا این کار در عمل نمایش داده شده:
 
-```vue
-<!-- CustomInput.vue -->
+```vue [CustomInput.vue]
 <script>
 export default {
   props: ['modelValue'],
@@ -184,8 +179,7 @@ export default {
 
 یک راه دیگر برای پیاده‌سازی `v-model` درون این کامپوننت استفاده از یک پراپرتی `computed` قابل نوشتن با یک getter و یک setter است. تابع `get` باید مقدار پراپ `modelValue` را برگرداند و تابع `set` باید رویداد مربوط را منتشر کند:
 
-```vue
-<!-- CustomInput.vue -->
+```vue [CustomInput.vue]
 <script>
 export default {
   props: ['modelValue'],
@@ -222,8 +216,7 @@ export default {
 
 در کامپوننت فرزند، می‌توانیم آرگومان مربوطه را با پاس دادن یک رشته به عنوان اولین آرگومان `defineModel()‎` پشتیبانی کنیم:
 
-```vue
-<!-- MyComponent.vue -->
+```vue [MyComponent.vue]
 <script setup>
 const title = defineModel('title')
 </script>
@@ -244,8 +237,7 @@ const title = defineModel('title', { required: true })
 <details>
 <summary>استفاده قبل از 3.4</summary>
 
-```vue
-<!-- MyComponent.vue -->
+```vue [MyComponent.vue]
 <script setup>
 defineProps({
   title: {
@@ -272,8 +264,7 @@ defineEmits(['update:title'])
 
 در این مورد، به جای پراپ پیش‌فرض `modelValue` و رویداد `update:modelValue`، کامپوننت فرزند باید یک پراپ `title` و رویداد `update:title` برای به‌روزرسانی مقدار والد انتظار داشته باشد:
 
-```vue
-<!-- MyComponent.vue -->
+```vue [MyComponent.vue]
 <script>
 export default {
   props: ['title'],
@@ -413,7 +404,7 @@ console.log(modifiers) // { capitalize: true }
 
 برای تنظیم شرطی نحوه خواندن/نوشتن مقدار بر اساس modifierها، می‌توان آپشن‌های `get` و `set` را به `defineModel()‎` پاس داد. این دو آپشن مقدار داده را در هنگام خواندن/نوشتن ref مدل دریافت می‌کنند و باید مقدار تبدیل شده را برگردانند. در ادامه نحوه استفاده از آپشن `set` برای پیاده‌سازی modifier مورد نظر یعنی capitalize را می‌بینیم:
 
-```vue{6-8}
+```vue{4-6}
 <script setup>
 const [model, modifiers] = defineModel({
   set(value) {
@@ -578,10 +569,10 @@ console.log(lastNameModifiers) // { uppercase: true }
 ```vue{5,6,10,11}
 <script setup>
 const props = defineProps({
-firstName: String,
-lastName: String,
-firstNameModifiers: { default: () => ({}) },
-lastNameModifiers: { default: () => ({}) }
+  firstName: String,
+  lastName: String,
+  firstNameModifiers: { default: () => ({}) },
+  lastNameModifiers: { default: () => ({}) }
 })
 defineEmits(['update:firstName', 'update:lastName'])
 

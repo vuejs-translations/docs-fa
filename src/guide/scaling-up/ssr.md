@@ -156,8 +156,8 @@ app.mount('#app')
 
 اینجا ساده‌ترین پیکربندی را نشان می‌دهیم. ابتدا منطق ایجاد برنامه را در یک فایل جداگانه، `app.js`، تفکیک می‌کنیم:
 
-```js
-// app.js (بین سرور و کلاینت به اشتراک گذاشته می‌شود)
+```js [app.js]
+// (بین سرور و کلاینت به اشتراک گذاشته می‌شود)
 import { createSSRApp } from 'vue'
 
 export function createApp() {
@@ -172,8 +172,7 @@ export function createApp() {
 
 کلاینت کد یونیورسال را import می‌کند، برنامه را ایجاد می‌کند و mount می‌کند:
 
-```js
-// client.js
+```js [client.js]
 import { createApp } from './app.js'
 
 createApp().mount('#app')
@@ -181,8 +180,8 @@ createApp().mount('#app')
 
 و سرور از همان منطق ایجاد برنامه در هندلر درخواست استفاده می‌کند:
 
-```js{2,5}
-// server.js (irrelevant code omitted)
+```js{2,5} [server.js]
+// (irrelevant code omitted)
 import { createApp } from './app.js'
 
 server.get('/', (req, res) => {
@@ -267,8 +266,8 @@ Vite از پشتیبانی درونی برای [رندرینگ سرور ساید
 
 راه حل توصیه شده ایجاد یک نمونه جدید از تمام برنامه - شامل روتر و store های گلوبال - در هر درخواست است. سپس، به جای وارد کردن مستقیم آن در کامپوننت‌ها، state اشتراکی را با استفاده از provide در [سطح برنامه ارائه](/guide/components/provide-inject#app-level-provide) دهید و آن را در کامپوننت‌هایی که نیاز دارند inject کنید:
 
-```js
-// app.js (بین سرور و کلاینت به اشتراک گذاشته شده)
+```js [app.js]
+// (بین سرور و کلاینت به اشتراک گذاشته شده)
 import { createSSRApp } from 'vue'
 import { createStore } from './store.js'
 

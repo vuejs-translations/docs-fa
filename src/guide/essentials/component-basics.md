@@ -188,8 +188,7 @@ props صفات سفارشی هستند که می‌توانید روی یک کا
 
 <div class="options-api">
 
-```vue
-<!-- BlogPost.vue -->
+```vue [BlogPost.vue]
 <script>
 export default {
   props: ['title']
@@ -206,8 +205,7 @@ export default {
 </div>
 <div class="composition-api">
 
-```vue
-<!-- BlogPost.vue -->
+```vue [BlogPost.vue]
 <script setup>
 defineProps(['title'])
 </script>
@@ -352,8 +350,8 @@ const postFontSize = ref(1)
 
 حالا یک دکمه به تمپلیت کامپوننت `<BlogPost>` اضافه می‌کنیم:
 
-```vue{5}
-<!-- BlogPost.vue, omitting <script> -->
+```vue{5} [BlogPost.vue]
+<!-- omitting <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -373,8 +371,8 @@ const postFontSize = ref(1)
 
 سپس کامپوننت فرزند می‌تواند با فراخوانی [متد درونی **`‎$emit`** ](/api/component-instance#emit) و پاس دادن نام رویداد، روی خودش یک رویداد emit کند:
 
-```vue{5}
-<!-- BlogPost.vue, omitting <script> -->
+```vue{5} [BlogPost.vue]
+<!-- omitting <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -400,8 +398,7 @@ const postFontSize = ref(1)
 
 <div class="options-api">
 
-```vue{5}
-<!-- BlogPost.vue -->
+```vue{4} [BlogPost.vue]
 <script>
 export default {
   props: ['title'],
@@ -413,8 +410,7 @@ export default {
 </div>
 <div class="composition-api">
 
-```vue{4}
-<!-- BlogPost.vue -->
+```vue{3} [BlogPost.vue]
 <script setup>
 defineProps(['title'])
 defineEmits(['enlarge-text'])
@@ -472,8 +468,7 @@ export default {
 
 این کار با استفاده از المان سفارشی `<slot>` در Vue امکان‌پذیر است:
 
-```vue{5}
-<!-- AlertBox.vue -->
+```vue{4} [AlertBox.vue]
 <template>
   <div class="alert-box">
     <strong>این یک خطا برای اهداف نمایشی است</strong>

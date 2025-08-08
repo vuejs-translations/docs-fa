@@ -61,8 +61,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 برای مثال این تابع increment را در نظر بگیرید:
 
-```js
-// helpers.js
+```js [helpers.js]
 export function increment(current, max = 10) {
   if (current < max) {
     return current + 1
@@ -75,8 +74,7 @@ export function increment(current, max = 10) {
 
 شکست خودن هر کدام از این assertion ها نشان دهنده یک مشکل در تابع increament هست.
 
-```js{4-16}
-// helpers.spec.js
+```js{3-15} [helpers.spec.js]
 import { increment } from './helpers'
 
 describe('increment', () => {
@@ -149,10 +147,9 @@ describe('increment', () => {
 
   بدون در نظر گرفتن جزئیات داخلی کامپوننت شمارنده (Stepper)، تنها بر ورودی و خروجی آن تمرکز می‌کنیم: ورودی داده‌ی `max` و خروجی، وضعیت نهایی رابط کاربری است که کاربر می‌بیند.
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="Vue Test Utils">
+::: code-group
 
-```js
+```js [Vue Test Utils]
 const valueSelector = '[data-testid=stepper-value]'
 const buttonSelector = '[data-testid=increment]'
 
@@ -169,10 +166,7 @@ await wrapper.find(buttonSelector).trigger('click')
 expect(wrapper.find(valueSelector).text()).toContain('1')
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="Cypress">
-
-```js
+```js [Cypress]
 const valueSelector = '[data-testid=stepper-value]'
 const buttonSelector = '[data-testid=increment]'
 
@@ -191,10 +185,7 @@ cy.get(valueSelector)
   .should('contain.text', '1')
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="Testing Library">
-
-```js
+```js [Testing Library]
 const { getByText } = render(Stepper, {
   props: {
     max: 1
@@ -213,8 +204,7 @@ getByText('1')
 await fireEvent.click(button)
 ```
 
-  </VTCodeGroupTab>
-</VTCodeGroup>
+:::
 
 **نباید ها**
 
@@ -320,8 +310,7 @@ await fireEvent.click(button)
 
 در مرحله بعد، پیکربندی Vite را برای اضافه کردن بلاک گزینه `test` به روز رسانی کنید:
 
-```js{6-12}
-// vite.config.js
+```js{5-11} [vite.config.js]
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -339,9 +328,7 @@ export default defineConfig({
 :::tip راهنمایی
 اگر از TypeScript استفاده می‌کنید، `vitest/globals` را به فیلد `types` در `tsconfig.json` خود اضافه کنید.
 
-```json
-// tsconfig.json
-
+```json [tsconfig.json]
 {
   "compilerOptions": {
     "types": ["vitest/globals"]
@@ -353,8 +340,7 @@ export default defineConfig({
 
 سپس، یک فایل با پسوند `*.test.js` در پروژه خود ایجاد کنید. شما می‌توانید تمامی فایل‌های تستی خود را در یک پوشه تست (test) در ریشه پروژه قرار دهید یا در پوشه‌های تست مجزایی کنار فایل‌های سورس (source) خود جایگذاری کنید. Vitest با استفاده از توافق نام‌گذاری (naming convention) به صورت خودکار به جستجوی آنها می‌پردازد.
 
-```js
-// MyComponent.test.js
+```js [MyComponent.test.js]
 import { render } from '@testing-library/vue'
 import MyComponent from './MyComponent.vue'
 
@@ -372,7 +358,7 @@ test('it should work', () => {
 
 در نهایت، package.json را برای اضافه کردن اسکریپت تست و اجرای آن به روز کنید:
 
-```json{4}
+```json{4} [package.json]
 {
   // ...
   "scripts": {
@@ -398,8 +384,7 @@ test('it should work', () => {
 
 اگر یک کامپوزِبل فقط از API های Reactivity استفاده کند، می‌توان آن را با فراخوانی مستقیم و بررسی خروجیِ حالت (state) و متدهای برگشتی، تست کرد:
 
-```js
-// counter.js
+```js [counter.js]
 import { ref } from 'vue'
 
 export function useCounter() {
@@ -413,8 +398,7 @@ export function useCounter() {
 }
 ```
 
-```js
-// counter.test.js
+```js [counter.test.js]
 import { useCounter } from './counter.js'
 
 test('useCounter', () => {
@@ -428,8 +412,7 @@ test('useCounter', () => {
 
 یک کامپوزِبلی که به قلاب‌های چرخه عمر (lifecycle hooks) یا الگوی Provide/Inject وابسته باشد، برای تست شدن نیاز به پوشاندن (wrap) شدن در یک کامپوننت میزبان دارد. ما می‌توانیم یک تابع کمکی (helper) به شکل زیر ایجاد کنیم:
 
-```js
-// test-utils.js
+```js [test-utils.js]
 import { createApp } from 'vue'
 
 export function withSetup(composable) {
@@ -448,7 +431,7 @@ export function withSetup(composable) {
 }
 ```
 
-```js
+```js [foo.test.js]
 import { withSetup } from './test-utils'
 import { useFoo } from './foo'
 

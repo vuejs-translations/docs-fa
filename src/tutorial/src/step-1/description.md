@@ -32,8 +32,7 @@ import { ... } from 'vue/dist/vue.esm-bundler.js'
 
 درون اسکریپت‌هایتان یا ابزار بیلد خود را برای حل مسئله، `vue` را مطابق با آن تنظیم می‌کنید. تنظیمات نمونه برای [Vite](https://vitejs.dev/):
 
-```js
-// vite.config.js
+```js [vite.config.js]
 export default {
   resolve: {
     alias: {

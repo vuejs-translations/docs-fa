@@ -297,7 +297,7 @@ provide('read-only-count', readonly(count))
 
 برای ایجاد لینک reactive بین injections و provider، نیاز است یک پراپرتی computed با استفاده از تابع [computed()‎](/api/reactivity-core#computed) ارائه کنیم:
 
-```js{10}
+```js{12}
 import { computed } from 'vue'
 
 export default {
@@ -327,8 +327,7 @@ export default {
 
 توصیه می‌شود Symbolsها را در یک فایل جداگانه export کنید:
 
-```js
-// keys.js
+```js [keys.js]
 export const myInjectionKey = Symbol()
 ```
 

@@ -21,7 +21,7 @@ const { x, y } = useMouse()
 
 اگر بخواهیم عملکرد ردیابی ماوس را با استفاده از Composition API مستقیماً در داخل یک کامپوننت پیاده‌سازی کنیم، به شکل زیر خواهد بود:
 
-```vue
+```vue [MouseComponent.vue]
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
@@ -42,8 +42,7 @@ onUnmounted(() => window.removeEventListener('mousemove', update))
 
 اما اگر بخواهیم از یک منطق در چندین کامپوننت دوباره استفاده کنیم، چه؟ ما می‌توانیم منطق را به عنوان یک تابع composable در یک فایل خارجی export کنیم:
 
-```js
-// mouse.js
+```js [mouse.js]
 import { ref, onMounted, onUnmounted } from 'vue'
 
 // شروع می‌شود "use" با composable طبق قرارداد، نام توابع 
@@ -70,7 +69,7 @@ export function useMouse() {
 
 و به این صورت می‌توان از آن در کامپوننت‌ها استفاده کرد:
 
-```vue
+```vue [MouseComponent.vue]
 <script setup>
 import { useMouse } from './mouse.js'
 
@@ -92,8 +91,7 @@ const { x, y } = useMouse()
 
 به عنوان مثال، می‌توانیم منطق افزودن و حذف یک شنونده رویداد DOM را در composable خودش export کنیم:
 
-```js
-// event.js
+```js [event.js]
 import { onMounted, onUnmounted } from 'vue'
 
 export function useEventListener(target, event, callback) {
@@ -106,8 +104,7 @@ export function useEventListener(target, event, callback) {
 
 و حالا composable ما یعنی `useMouse()‎` می‌تواند ساده‌تر شود:
 
-```js{3,9-12}
-// mouse.js
+```js{2,8-11} [mouse.js]
 import { ref } from 'vue'
 import { useEventListener } from './event'
 
@@ -157,8 +154,7 @@ fetch('...')
 
 تکرار این الگو در هر کامپوننتی که نیاز به دریافت داده دارد، خسته‌کننده خواهد بود. بیایید آن را در یک composable بنویسیم:
 
-```js
-// fetch.js
+```js [fetch.js]
 import { ref } from 'vue'
 
 export function useFetch(url) {
@@ -208,8 +204,7 @@ const { data, error } = useFetch(() => `/posts/${props.id}`)
 
 می‌توانیم مثال پیاده‌سازی شده خود را با API های [`toValue()‎`](/api/reactivity-utilities.html#tovalue) و [`watchEffect()‎`](/api/reactivity-core.html#watcheffect) بازنویسی کنیم:
 
-```js{8,13}
-// fetch.js
+```js{7,12} [fetch.js]
 import { ref, watchEffect, toValue } from 'vue'
 
 export function useFetch(url) {

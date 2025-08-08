@@ -83,8 +83,7 @@ export default {
 
 اگر یک state داشته باشید که باید توسط چندین نمونه به اشتراک گذاشته شود، می‌توانید از [`reactive()‎`](/api/reactivity-core#reactive) برای ایجاد یک آبجکت reactive استفاده کنید، و سپس آن را در چندین کامپوننت import کنید:
 
-```js
-// store.js
+```js [store.js]
 import { reactive } from 'vue'
 
 export const store = reactive({
@@ -94,8 +93,7 @@ export const store = reactive({
 
 <div class="composition-api">
 
-```vue
-<!-- ComponentA.vue -->
+```vue [ComponentA.vue]
 <script setup>
 import { store } from './store.js'
 </script>
@@ -103,8 +101,7 @@ import { store } from './store.js'
 <template>From A: {{ store.count }}</template>
 ```
 
-```vue
-<!-- ComponentB.vue -->
+```vue [ComponentB.vue]
 <script setup>
 import { store } from './store.js'
 </script>
@@ -115,8 +112,7 @@ import { store } from './store.js'
 </div>
 <div class="options-api">
 
-```vue
-<!-- ComponentA.vue -->
+```vue [ComponentA.vue]
 <script>
 import { store } from './store.js'
 
@@ -132,8 +128,7 @@ export default {
 <template>From A: {{ store.count }}</template>
 ```
 
-```vue
-<!-- ComponentB.vue -->
+```vue [ComponentB.vue]
 <script>
 import { store } from './store.js'
 
@@ -165,8 +160,7 @@ export default {
 
 در حالی که این در موارد ساده کار می‌کند، اما state سراسری که به‌طور دلخواه توسط هر کامپوننتی قابل تغییر باشد، در بلندمدت چندان قابل نگهداری نخواهد بود. برای اطمینان از اینکه منطق تغییردهنده state مانند خود state متمرکز شده باشد، توصیه می‌شود متدهایی را با نام‌هایی که قصد آن action خاص را بیان می‌کنند، روی store تعریف کرد:
 
-```js{6-8}
-// store.js
+```js{5-7} [store.js]
 import { reactive } from 'vue'
 
 export const store = reactive({
