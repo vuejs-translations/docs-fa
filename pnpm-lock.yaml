@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@vue/repl':
         specifier: ^4.4.2
-        version: 4.6.3
+        version: 4.7.0
       '@vue/theme':
         specifier: ^2.3.0
         version: 2.3.0(@algolia/client-search@5.20.0)(search-insights@2.17.2)(vitepress@1.6.3(@algolia/client-search@5.20.0)(@types/node@22.7.5)(postcss@8.5.6)(search-insights@2.17.2)(typescript@5.6.3))(vue@3.5.18(typescript@5.6.3))
@@ -619,8 +619,8 @@ packages:
   '@vue/reactivity@3.5.18':
     resolution: {integrity: sha512-x0vPO5Imw+3sChLM5Y+B6G1zPjwdOri9e8V21NnTnlEvkxatHEH5B5KEAJcjuzQ7BsjGrKtfzuQ5eQwXh8HXBg==}
 
-  '@vue/repl@4.6.3':
-    resolution: {integrity: sha512-2ckL15D67pOlnH0wtPHkGCoggCzZiPqWuZbNeYvLQTY24ey6P6GX1TY6b7uruAIC6etecCJQdrGSnc+XXsWDDA==}
+  '@vue/repl@4.7.0':
+    resolution: {integrity: sha512-1veaAsfO6xYLblo8jr2hQDlegdPjaCZkchZuG7PRhC9zX0bN2aLenu2rT7AEPAXDXK0OXCsB2+WIUevOTyMvLg==}
 
   '@vue/runtime-core@3.5.18':
     resolution: {integrity: sha512-DUpHa1HpeOQEt6+3nheUfqVXRog2kivkXHUhoqJiKR33SO4x+a5uNOMkV487WPerQkL0vUuRvq/7JhRgLW3S+w==}
@@ -1726,7 +1726,7 @@ snapshots:
     dependencies:
       '@vue/shared': 3.5.18
 
-  '@vue/repl@4.6.3': {}
+  '@vue/repl@4.7.0': {}
 
   '@vue/runtime-core@3.5.18':
     dependencies:
