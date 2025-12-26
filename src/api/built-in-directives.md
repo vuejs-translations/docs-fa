@@ -8,7 +8,7 @@
 
 - **جزئیات**
 
-  `v-text` با تنظیم پراپرتی [textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) عنصر کار می‌کند، بنابراین محتوای موجود درون عنصر را جایگزین خواهد کرد. اگر نیاز به به‌روزرسانی بخشی از `textContent` دارید، باید به جای آن از [قابلیت درج متن](/guide/essentials/template-syntax#text-interpolation) استفاده کنید.
+  `v-text` با تنظیم پراپرتی [textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) عنصر کار می‌کند، بنابراین هر محتوای موجود درون عنصر را جایگزین خواهد کرد. اگر نیاز به به‌روزرسانی بخشی از `textContent` دارید، باید به جای آن از [قابلیت درج متن](/guide/essentials/template-syntax#text-interpolation) استفاده کنید. (به عنوان مثال: <span v-pre>`<span>این بخش را نگه دار اما {{dynamicPortion}} را به‌روزرسانی کن</span>`</span>)
 
 - **مثال**
 

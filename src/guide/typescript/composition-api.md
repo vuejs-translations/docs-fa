@@ -475,4 +475,42 @@ const openModal = () => {
 </script>
 ```
 
-توجه داشته باشید که با نسخه 2.1+ از `@vue/language-tools`، نوع static template refها به‌طور خودکار تشخیص داده می‌شود و مورد فوق فقط در موارد خاص و نادر نیاز است.
+توجه داشته باشید که با نسخه 2.1+ از `‎@vue/language-tools`، تایپ static template refها به‌طور خودکار تشخیص داده می‌شود و مورد فوق فقط در موارد خاص و نادر نیاز است.
+
+## تایپ‌دهی دایرکتیو سفارشی سراسری {#typing-global-custom-directives}
+
+برای دریافت راهنمای تایپ (type hints) و بررسی تایپ (type checking) برای دایرکتیو‌های سفارشی سراسری که با `app.directive()`‎ تعریف شده‌اند، می‌توانید اینترفیس `ComponentCustomProperties` را گسترش دهید.
+
+```ts [src/directives/highlight.ts]
+import type { Directive } from 'vue'
+
+export type HighlightDirective = Directive<HTMLElement, string>
+
+declare module 'vue' {
+  export interface ComponentCustomProperties {
+    // prefix with v (v-highlight)
+    vHighlight: HighlightDirective
+  }
+}
+
+export default {
+  mounted: (el, binding) => {
+    el.style.backgroundColor = binding.value
+  }
+} satisfies HighlightDirective
+```
+
+```ts [main.ts]
+import highlight from './directives/highlight'
+// ...other code
+const app = createApp(App)
+app.directive('highlight', highlight)
+```
+
+استفاده در کامپوننت
+
+```vue [App.vue]
+<template>
+  <p v-highlight="'blue'">This sentence is important!</p>
+</template>
+```

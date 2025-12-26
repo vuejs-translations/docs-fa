@@ -291,3 +291,7 @@ declare module 'vue' {
 همچنین ببینید:
 
 - [یونیت تست‌ها در TypeScript برای افزونگی نوع کامپوننت](https://github.com/vuejs/core/blob/main/packages-private/dts-test/componentTypeExtensions.test-d.tsx)
+
+## تایپ‌دهی دایرکتیو‌های سفارشی سراسری {#typing-global-custom-directives}
+
+مراجعه کنید به: [تایپ‌دهی دایرکتیو‌های سفارشی سراسری](/guide/typescript/composition-api#typing-global-custom-directives) <sup class="vt-badge ts" />
