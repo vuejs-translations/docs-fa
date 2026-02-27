@@ -2,7 +2,7 @@
 
 ## نام {#name}
 
-به صراحت یک نام نمایشی (display name) برای کامپوننت تعریف می‌کند.
+به صراحت یک نام نمایشی (display name) برای کامپوننت تعریف می‌‌کند.
 
 - **تایپ (Type)**
 
@@ -109,7 +109,7 @@
   - [استفاده از `inheritAttrs` در `‎<script>‎`](/api/sfc-script-setup.html#usage-alongside-normal-script)
   </div>
 
-## کامپوننت‌ها {#components}
+## کامپوننت‌‌ها {#components}
 
 یک آبجکت که کامپوننت‌ها را ثبت می‌کند تا در دسترس نمونه‌ی کامپوننت (component instance) باشد.
 
