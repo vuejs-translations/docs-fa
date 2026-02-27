@@ -33,8 +33,8 @@
 
 مراجع اضافی:
 
-- [راهنمای ساخت production در Vite](https://vitejs.dev/guide/build.html)
-- [راهنمای استقرار Vite](https://vitejs.dev/guide/static-deploy.html)
+- [راهنمای ساخت production در Vite](https://vite.dev/guide/build.html)
+- [راهنمای استقرار Vite](https://vite.dev/guide/static-deploy.html)
 - [راهنمای استقرار Vue CLI](https://cli.vuejs.org/guide/deployment.html)
 
 ## ردیابی خطاهای رانتایم {#tracking-runtime-errors}

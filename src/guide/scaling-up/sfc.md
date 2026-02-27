@@ -95,7 +95,7 @@ export default {
 
  برای درک بهتر SFC ها، می‌توانید کامپوننت های تک فایلی را در[Vue SFC Playground](https://play.vuejs.org/) امتحان کنید.
 
-در پروژه‌های واقعی، معمولاً کامپایلر SFC را با ابزار هایی مانند [Vite](https://vitejs.dev/) یا [Vue CLI](http://cli.vuejs.org/) (که بر اساس [webpack](https://webpack.js.org/) است) ادغام می‌کنیم، و Vue ابزارهای ساخت معتبری را فراهم می‌کند تا شما بتوانید تجربه بهتری از کامپوننت‌های تک فایلی داشته باشید. جزئیات بیشتر را در بخش [ابزارهای SFC](/guide/scaling-up/tooling) بررسی کنید.
+در پروژه‌های واقعی، معمولاً کامپایلر SFC را با ابزار هایی مانند [Vite](https://vite.dev/) یا [Vue CLI](http://cli.vuejs.org/) (که بر اساس [webpack](https://webpack.js.org/) است) ادغام می‌کنیم، و Vue ابزارهای ساخت معتبری را فراهم می‌کند تا شما بتوانید تجربه بهتری از کامپوننت‌های تک فایلی داشته باشید. جزئیات بیشتر را در بخش [ابزارهای SFC](/guide/scaling-up/tooling) بررسی کنید.
 
 ## تفکیک دغدغه‌ها چه می‌شود؟ {#what-about-separation-of-concerns}
 

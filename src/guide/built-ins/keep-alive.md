@@ -79,7 +79,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 ## حداکثر تعداد نمونه‌های کش شده {#max-cached-instances}
 
-ما می‌توانیم حداکثر تعداد نمونه‌های کامپوننت که می‌توانند در حافظه ذخیره شوند را توسط ویژگی `max` محدود کنیم. وقتی `max` مشخص شده باشد، `<KeepAlive>` مانند [ذخیره‌سازی LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)) عمل می‌کند: اگر تعداد نمونه‌های ذخیره شده بیشتر از تعداد max شود، نمونه‌ای که اخیراً کمترین استفاده از آن شده، نابود می‌شود تا جایگاه برای نمونه جدیدی ایجاد شود.
+ما می‌توانیم حداکثر تعداد نمونه‌های کامپوننت که می‌توانند در حافظه ذخیره شوند را توسط ویژگی `max` محدود کنیم. وقتی `max` مشخص شده باشد، `<KeepAlive>` مانند [ذخیره‌سازی LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_Recently_Used_(LRU)) عمل می‌کند: اگر تعداد نمونه‌های ذخیره شده بیشتر از تعداد max شود، نمونه‌ای که اخیراً کمترین استفاده از آن شده، نابود می‌شود تا جایگاه برای نمونه جدیدی ایجاد شود.
 
 ```vue-html
 <KeepAlive :max="10">

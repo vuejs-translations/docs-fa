@@ -105,7 +105,7 @@ p {{ msg }}
 
 توجه داشته باشید که ادغام با پیش پردازنده‌های مختلف ممکن است بسته به زنجیره ابزار متفاوت باشد. برای مثال اسناد مربوطه را بررسی کنید:
 
-- [Vite](https://vitejs.dev/guide/features.html#css-pre-processors)
+- [Vite](https://vite.dev/guide/features.html#css-pre-processors)
 - [Vue CLI](https://cli.vuejs.org/guide/css.html#pre-processors)
 - [webpack + vue-loader](https://vue-loader.vuejs.org/guide/pre-processors.html#using-pre-processors)
 

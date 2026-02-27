@@ -21,7 +21,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 ### Vite {#vite}
 
-[Vite](https://vitejs.dev/) یک ابزار سبک و سریع برای ساخت با پشتیبانی بسیار عالی از SFC در Vue است. توسط Evan You ایجاد شده است، که نویسنده Vue هم هست!
+[Vite](https://vite.dev/) یک ابزار سبک و سریع برای ساخت با پشتیبانی بسیار عالی از SFC در Vue است. توسط Evan You ایجاد شده است، که نویسنده Vue هم هست!
 
 برای شروع کار با Vite + Vue، فقط لازم است دستور زیر را در کامندلاین اجرا کنید:
 
@@ -51,7 +51,7 @@ $ bun create vue@latest
 
 این دستور [create-vue](https://github.com/vuejs/create-vue) را نصب و اجرا می‌کند، ابزار رسمی ساخت پروژه Vue.
 
-- برای یادگیری بیشتر در مورد Vite، [مستندات Vite](https://vitejs.dev) را ببینید.
+- برای یادگیری بیشتر در مورد Vite، [مستندات Vite](https://vite.dev/) را ببینید.
 - برای پیکربندی رفتارهای خاص Vue در یک پروژه ساخته شده با Vite، برای مثال پاس دادن گزینه‌هایی به کامپایلر Vue، مستندات [‎@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue/tree/main/packages/plugin-vue#readme) را ببینید.
 
 هر دو محیط آنلاینی که در بالا ذکر شدن از دانلود فایل‌ها به عنوان یک پروژه Vite پشتیبانی می‌کنند.

@@ -213,7 +213,7 @@ console.log(ctx.teleports) // { '#teleported': 'teleported content' }
 import { useSSRContext } from 'vue'
 
 // فراخوانی کنید SSR مطمئن شوید که این تابع را فقط در زمان
-// https://vitejs.dev/guide/ssr.html#conditional-logic
+// https://vite.dev/guide/ssr.html#conditional-logic
 if (import.meta.env.SSR) {
   const ctx = useSSRContext()
   // ...خواص مورد نیاز را به کانتکست اضافه کنید

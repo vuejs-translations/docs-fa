@@ -133,6 +133,6 @@ export default {
 
 </div>
 
-### نسخه باندل شده برای NPM
+### نسخه باندل شده برای NPM {#bundle-for-npm}
 
-اگر بخواهید پلاگین خود را برای استفاده دیگران بسازید و منتشر کنید، به [بخش Vite در حالت کتابخانه](https://vitejs.dev/guide/build.html#library-mode) مراجعه کنید.
+اگر بخواهید پلاگین خود را برای استفاده دیگران بسازید و منتشر کنید، به [بخش Vite در حالت کتابخانه](https://vite.dev/guide/build.html#library-mode) مراجعه کنید.

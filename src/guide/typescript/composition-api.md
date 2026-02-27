@@ -479,7 +479,7 @@ const openModal = () => {
 
 ## تایپ‌دهی دایرکتیو سفارشی سراسری {#typing-global-custom-directives}
 
-برای دریافت راهنمای تایپ (type hints) و بررسی تایپ (type checking) برای دایرکتیو‌های سفارشی سراسری که با `app.directive()`‎ تعریف شده‌اند، می‌توانید اینترفیس `ComponentCustomProperties` را گسترش دهید.
+برای دریافت راهنمای تایپ (type hints) و بررسی تایپ (type checking) برای دایرکتیو‌های سفارشی سراسری که با `app.directive()`‎ تعریف شده‌اند، می‌توانید اینترفیس `GlobalDirectives` را گسترش دهید.
 
 ```ts [src/directives/highlight.ts]
 import type { Directive } from 'vue'
@@ -487,7 +487,7 @@ import type { Directive } from 'vue'
 export type HighlightDirective = Directive<HTMLElement, string>
 
 declare module 'vue' {
-  export interface ComponentCustomProperties {
+  export interface GlobalDirectives {
     // prefix with v (v-highlight)
     vHighlight: HighlightDirective
   }

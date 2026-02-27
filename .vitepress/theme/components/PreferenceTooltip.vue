@@ -13,7 +13,7 @@ const { page } = useData()
 type Source = 'url-query' | 'url-header' | 'default'
 let source: Source | false =
   inBrowser && localStorage.getItem(preferCompositionKey) === null
-    ? 'default'
+    ? 'default' as Source
     : false
 
 if (inBrowser) {
@@ -104,7 +104,7 @@ function dismiss() {
           برخی صفحات محتوای متفاوتی بر اساس سبک API انتخاب شده دارند. از این سوئیچ می‌توانید برای تغییر بین سبک‌های API صفحه استفاده کنید.
         </p>
       </template>
-      <template v-if="source && source.startsWith('url')">
+      <template v-else-if="source && source.startsWith('url')">
         <p>
           محتوا فقط برای   
           {{ preferComposition ? 'Composition' : 'Options' }} API نمایش داده می‌شود. 

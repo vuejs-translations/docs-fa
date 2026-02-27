@@ -110,7 +110,7 @@ app.directive('highlight', {
 })
 ```
 
-می‌توان با گسترش اینترفیس `ComponentCustomProperties` از پکیج `vue`، دایرکتیو سفارشی سراسری را تایپ‌دهی کرد.
+می‌توان با گسترش اینترفیس `GlobalDirectives` از پکیج `vue`، دایرکتیو سفارشی سراسری را تایپ‌دهی کرد.
 
 جزئیات بیشتر: [تایپ‌دهی دایرکتیو سفارشی سراسری](/guide/typescript/composition-api#typing-global-custom-directives) <sup class="vt-badge ts" />
 

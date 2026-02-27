@@ -12,7 +12,7 @@ Vue به شما توصیه می‌کند که در اکثر موارد از تم
 
 ### ایجاد Vnodes {#creating-vnodes}
 
-ویو یک تابع `h()‎` برای ایجاد vnode ها فراهم می‌کند:
+vue تابع `h()‎` را برای ایجاد vnode ها فراهم می‌کند:
 
 ```js
 import { h } from 'vue'
@@ -215,6 +215,33 @@ function render() {
   )
 }
 ```
+
+### استفاده از VNodeها در `<template>` {#using-vnodes-in-template}
+
+```vue
+<script setup>
+import { h } from 'vue'
+
+const vnode = h('button', ['Hello'])
+</script>
+
+<template>
+  <!-- <component /> با -->
+  <component :is="vnode">Hi</component>
+
+  <!-- یا مستقیماً به عنوان المنت -->
+  <vnode />
+  <vnode>Hi</vnode>
+</template>
+```
+
+یک آبجکت vnode در `setup()`‎ تعریف شده است و می‌توانید آن را مانند یک کامپوننت معمولی برای رندر کردن استفاده کنید.
+
+:::warning هشدار
+یک vnode نمایانگر خروجی رندرِ از پیش ایجادشده است، نه تعریف یک کامپوننت. استفاده از vnode در `<template>` باعث ایجاد یک نمونه جدید از کامپوننت نمی‌شود و vnode دقیقاً همان‌طور که هست رندر می‌شود.
+
+این الگو باید با دقت استفاده شود و جایگزین کامپوننت‌های معمولی نیست.
+:::
 
 ## JSX / TSX {#jsx-tsx}
 

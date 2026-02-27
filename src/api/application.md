@@ -400,6 +400,11 @@ console.log(app.config)
   }
   ```
 
+- **پیش‌فرض**
+
+  مدیریت‌کننده پیش‌فرض خطا، در حالت توسعه خطاها را به‌صورت مستقیم نمایش می‌دهد (باعث کرش می‌شود) و در حالت پروداکشن فقط آن‌ها را در لاگ ثبت می‌کند.
+  این رفتار را می‌توانید با تنظیم ویژگی [throwUnhandledErrorInProduction](#app-config-throwunhandlederrorinproduction) تغییر دهید.
+
 ## app.config.warnHandler {#app-config-warnhandler}
 
   یک ناظر سفارشی برای هشدارهای زمان اجرای Vue تعیین می کند.

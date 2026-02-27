@@ -26,7 +26,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 - نصب [Node.js](https://nodejs.org/) نسخه ‎`^20.19.0 || >=22.12.0`
 :::
 
-در این بخش به ایجاد اولیه یک برنامه تک صفحه‌ای Vue بر روی کامپیوتر خود می‌پردازیم ([Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa)). پروژه ایجاد شده از یک ابزار راه اندازی ساخت مبتنی بر [Vite](https://vitejs.dev) استفاده خواهد کرد و به ما امکان می‌دهد از [کامپوننت‌های تک فایلی](/guide/scaling-up/sfc) Vue استفاده کنیم (SFC).
+در این بخش به ایجاد اولیه یک برنامه تک صفحه‌ای Vue بر روی کامپیوتر خود می‌پردازیم ([Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa)). پروژه ایجاد شده از یک ابزار راه اندازی ساخت مبتنی بر [Vite](https://vite.dev/) استفاده خواهد کرد و به ما امکان می‌دهد از [کامپوننت‌های تک فایلی](/guide/scaling-up/sfc) Vue استفاده کنیم (SFC).
 
 اطمینان حاصل کنید که شما یک نسخه به‌روز از [Node.js](https://nodejs.org/) را بصورت نصب شده دارید و دایرکتوری فعلی شما همان جایی است که قصد ایجاد یک پروژه جدید را دارید. دستور زیر را در command line خود اجرا کنید (بدون علامت `$`):
 
@@ -107,7 +107,7 @@ $ bun run dev
 
 - IDE توصیه شده [Visual Studio Code](https://code.visualstudio.com/) + [افزونه Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) است. اگر از ویرایشگرهای دیگر استفاده می‌کنید، بخش [پشتیبانی IDE](/guide/scaling-up/tooling#ide-support) را بررسی کنید.
 - جزئیات بیشتر ابزار، از جمله یکپارچه‌سازی با فریم‌ورک‌های بک‌اند، در [راهنمای ابزارها](/guide/scaling-up/tooling) مورد بحث قرار گرفته.
-- برای یادگیری بیشتر در مورد ابزار ساخت پایه Vite، [مستندات Vite](https://vitejs.dev) را بررسی کنید.
+- برای یادگیری بیشتر در مورد ابزار ساخت پایه Vite، [مستندات Vite](https://vite.dev/) را بررسی کنید.
 - اگر TypeScript را انتخاب کردید، [راهنمای استفاده از TypeScript](typescript/overview) را بررسی کنید.
 
 هنگامی که آماده ارسال برنامه خود به پروداکشن هستید، کامند زیر را اجرا کنید:
