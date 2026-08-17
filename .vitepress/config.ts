@@ -37,12 +37,12 @@ const nav: ThemeConfig['nav'] = [
     ]
   },
   {
-    text: '(API) میانجی‌های برنامه نویسی',
+    text: '(API) رابط‌های برنامه نویسی',
     activeMatch: `^/api/`,
     link: '/api/'
   },
   {
-    text: 'تفریحگاه',
+    text: 'محیط آزمایشی',
     link: 'https://play.vuejs.org'
   },
   {
@@ -54,7 +54,10 @@ const nav: ThemeConfig['nav'] = [
         items: [
           { text: 'همکاران', link: '/partners/' },
           { text: 'تم‌ها', link: '/ecosystem/themes' },
-          { text: 'کامپوننت‌های رابط کاربری', link: 'https://ui-libs.vercel.app/' },
+          {
+            text: 'کامپوننت‌های رابط کاربری',
+            link: 'https://ui-libs.vercel.app/'
+          },
           {
             text: 'افزونه‌ها',
             link: 'https://www.vue-plugins.org/'
